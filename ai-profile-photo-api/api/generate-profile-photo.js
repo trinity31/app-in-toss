@@ -1,16 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-
-// prompt.txt 내용을 상수로 포함
-const PROFILE_PHOTO_PROMPT = `
-Transform this casual selfie into a professional studio portrait.
-Enhance lighting with soft, balanced studio illumination that flatters facial features and skin tone.
-Apply flawless natural makeup suitable for a high-end photo shoot — even skin tone, soft contour, natural lip tint, subtle eye definition.
-Refine the hairstyle to appear well-styled and photo-ready — smooth, voluminous, and neatly arranged.
-Replace casual clothing with elegant studio attire that suits the subject's gender and age — such as a tailored blazer, silk blouse, or minimal dress/shirt.
-Use a clean, softly blurred background resembling a luxury photo studio, with perfect color harmony and depth of field.
-Adjust posture and composition to match a professional portrait aesthetic, maintaining realism and natural expression.
-Ultra-high resolution, cinematic lighting, detailed skin texture, professional studio look.
-`;
+import { PROFILE_PROMPTS, DEFAULT_PROMPT, VALID_PROFILE_TYPES } from './prompts.js';
 
 export default async function handler(req, res) {
   // CORS 헤더 설정
@@ -32,7 +21,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { imageBase64, mimeType = 'image/jpeg' } = req.body;
+    const { imageBase64, mimeType = 'image/jpeg', profileType = 'professional' } = req.body;
 
     // 입력 검증
     if (!imageBase64) {
@@ -41,6 +30,11 @@ export default async function handler(req, res) {
         error: 'imageBase64 is required'
       });
     }
+
+    // 프로필 타입 검증 및 프롬프트 선택
+    const selectedPrompt = VALID_PROFILE_TYPES.includes(profileType)
+      ? PROFILE_PROMPTS[profileType]
+      : DEFAULT_PROMPT;
 
     // API 키 확인
     if (!process.env.GEMINI_API_KEY) {
@@ -73,7 +67,7 @@ export default async function handler(req, res) {
         role: 'user',
         parts: [
           {
-            text: PROFILE_PHOTO_PROMPT
+            text: selectedPrompt
           },
           {
             inlineData: {
