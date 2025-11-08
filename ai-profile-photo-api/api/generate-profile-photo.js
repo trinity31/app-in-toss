@@ -1,0 +1,149 @@
+import { GoogleGenAI } from '@google/genai';
+
+// prompt.txt 내용을 상수로 포함
+const PROFILE_PHOTO_PROMPT = `
+Transform this casual selfie into a professional studio portrait.
+Enhance lighting with soft, balanced studio illumination that flatters facial features and skin tone.
+Apply flawless natural makeup suitable for a high-end photo shoot — even skin tone, soft contour, natural lip tint, subtle eye definition.
+Refine the hairstyle to appear well-styled and photo-ready — smooth, voluminous, and neatly arranged.
+Replace casual clothing with elegant studio attire that suits the subject's gender and age — such as a tailored blazer, silk blouse, or minimal dress/shirt.
+Use a clean, softly blurred background resembling a luxury photo studio, with perfect color harmony and depth of field.
+Adjust posture and composition to match a professional portrait aesthetic, maintaining realism and natural expression.
+Ultra-high resolution, cinematic lighting, detailed skin texture, professional studio look.
+`;
+
+export default async function handler(req, res) {
+  // CORS 헤더 설정
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // OPTIONS 요청 처리 (preflight)
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // POST만 허용
+  if (req.method !== 'POST') {
+    return res.status(405).json({
+      success: false,
+      error: 'Method not allowed'
+    });
+  }
+
+  try {
+    const { imageBase64, mimeType = 'image/jpeg' } = req.body;
+
+    // 입력 검증
+    if (!imageBase64) {
+      return res.status(400).json({
+        success: false,
+        error: 'imageBase64 is required'
+      });
+    }
+
+    // API 키 확인
+    if (!process.env.GEMINI_API_KEY) {
+      return res.status(500).json({
+        success: false,
+        error: 'GEMINI_API_KEY is not configured'
+      });
+    }
+
+    // GoogleGenAI 초기화
+    const ai = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY
+    });
+
+    // 이미지 생성 설정
+    const config = {
+      responseModalities: ['IMAGE'],
+      imageConfig: {
+        aspectRatio: '3:4', // 프로필 사진에 적합한 비율
+        imageSize: '1K'     // 1024x1024 정도 크기
+      }
+    };
+
+    // 모델 이름
+    const model = 'gemini-2.5-flash-image';
+
+    // 컨텐츠 구성
+    const contents = [
+      {
+        role: 'user',
+        parts: [
+          {
+            text: PROFILE_PHOTO_PROMPT
+          },
+          {
+            inlineData: {
+              data: imageBase64,
+              mimeType: mimeType
+            }
+          }
+        ]
+      }
+    ];
+
+    // 이미지 생성 (스트리밍)
+    const response = await ai.models.generateContentStream({
+      model,
+      config,
+      contents
+    });
+
+    // 스트림에서 이미지 데이터 수집
+    let generatedImage = null;
+
+    for await (const chunk of response) {
+      // chunk 구조 확인
+      if (!chunk.candidates || !chunk.candidates[0] || !chunk.candidates[0].content) {
+        continue;
+      }
+
+      const parts = chunk.candidates[0].content.parts;
+      if (!parts || parts.length === 0) {
+        continue;
+      }
+
+      // 이미지 데이터 찾기
+      for (const part of parts) {
+        if (part.inlineData) {
+          generatedImage = {
+            data: part.inlineData.data,
+            mimeType: part.inlineData.mimeType || 'image/png'
+          };
+          break;
+        }
+      }
+
+      // 이미지를 찾으면 루프 종료
+      if (generatedImage) {
+        break;
+      }
+    }
+
+    // 이미지가 생성되지 않은 경우
+    if (!generatedImage) {
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to generate image'
+      });
+    }
+
+    // 성공 응답
+    return res.status(200).json({
+      success: true,
+      image: generatedImage
+    });
+
+  } catch (error) {
+    console.error('Error generating profile photo:', error);
+
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error',
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+}
