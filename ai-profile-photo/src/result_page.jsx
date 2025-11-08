@@ -100,7 +100,7 @@ export default function ResultPage({ imageUrl, onClose, onSave }) {
             cursor: 'pointer'
           }}
         >
-          저장하기
+          공유하기
         </button>
       </div>
     </div>

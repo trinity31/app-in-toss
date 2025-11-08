@@ -4,7 +4,7 @@ import { colors } from '@toss/tds-colors';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
-export default function IntroPage({ onNext }) {
+export default function IntroPage({ onNext, error }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCameraClick = () => {
@@ -36,6 +36,15 @@ export default function IntroPage({ onNext }) {
       </div>
 
       <Spacing size={48} />
+
+      {error && (
+        <>
+          <div style={styles.errorMessage}>
+            {error}
+          </div>
+          <Spacing size={20} />
+        </>
+      )}
 
       <div style={styles.stepContainer}>
         <h3 style={styles.sectionTitle}>
@@ -302,5 +311,17 @@ const styles = {
     fontSize: '16px',
     fontWeight: '600',
     cursor: 'pointer',
+  },
+  errorMessage: {
+    width: '100%',
+    maxWidth: '400px',
+    padding: '16px',
+    backgroundColor: colors.red50,
+    color: colors.red600,
+    borderRadius: '12px',
+    fontSize: '14px',
+    fontWeight: '500',
+    textAlign: 'center',
+    border: `1px solid ${colors.red100}`,
   },
 };
