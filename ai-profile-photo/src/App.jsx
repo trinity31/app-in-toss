@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { fetchAlbumPhotos, saveBase64Data, openCamera } from '@apps-in-toss/web-framework'
 import IntroPage from './intro_page'
+import SelectionPage from './selection_page'
 import LoadingPage from './loading_page'
 import ResultPage from './result_page'
 import './App.css'
@@ -8,6 +9,7 @@ import './App.css'
 function App() {
   const [currentPage, setCurrentPage] = useState('intro')
   const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedProfileType, setSelectedProfileType] = useState('professional')
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null)
   const [error, setError] = useState(null)
 
@@ -65,10 +67,8 @@ function App() {
       console.log('Blob 타입:', imageBlob.type)
 
       setSelectedImage(imageBlob)
-      setCurrentPage('loading')
-
-      // API 호출
-      await uploadAndGenerateProfile(imageBlob)
+      // 갤러리 선택 후 용도 선택 페이지로 이동
+      setCurrentPage('selection')
 
     } catch (err) {
       console.error('이미지 선택 오류 상세:', err)
@@ -118,10 +118,8 @@ function App() {
       console.log('Blob 변환 완료:', imageBlob)
 
       setSelectedImage(imageBlob)
-      setCurrentPage('loading')
-
-      // API 호출
-      await uploadAndGenerateProfile(imageBlob)
+      // 카메라 촬영 후 용도 선택 페이지로 이동
+      setCurrentPage('selection')
 
     } catch (err) {
       console.error('카메라 촬영 오류 상세:', err)
@@ -153,7 +151,8 @@ function App() {
 
       const requestBody = {
         imageBase64: base64,
-        mimeType: imageFile.type || 'image/jpeg'
+        mimeType: imageFile.type || 'image/jpeg',
+        profileType: selectedProfileType
       }
 
       console.log('요청 데이터:', {
@@ -204,8 +203,23 @@ function App() {
   const handleReset = () => {
     setCurrentPage('intro')
     setSelectedImage(null)
+    setSelectedProfileType('professional')
     setGeneratedImageUrl(null)
     setError(null)
+  }
+
+  const handleProfileTypeSelect = async (profileType) => {
+    setSelectedProfileType(profileType)
+    setCurrentPage('loading')
+
+    // API 호출
+    await uploadAndGenerateProfile(selectedImage)
+  }
+
+  const handleBackToIntro = () => {
+    setSelectedImage(null)
+    setSelectedProfileType('professional')
+    setCurrentPage('intro')
   }
 
   const handleSave = async () => {
@@ -259,6 +273,14 @@ function App() {
             error={error}
           />
         )
+      case 'selection':
+        return (
+          <SelectionPage
+            selectedImage={selectedImage}
+            onSelect={handleProfileTypeSelect}
+            onBack={handleBackToIntro}
+          />
+        )
       case 'loading':
         return <LoadingPage />
       case 'result':
@@ -275,8 +297,11 @@ function App() {
             onNext={(type) => {
               if (type === 'album') {
                 handleAlbumSelect()
+              } else if (type === 'camera') {
+                handleCameraSelect()
               }
             }}
+            error={error}
           />
         )
     }
