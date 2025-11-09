@@ -25,16 +25,16 @@ Maintain a confident, approachable expression with a professional smile.
 Crisp lighting, corporate aesthetic, ultra-high resolution, LinkedIn-worthy professional look.
 `,
 
-  // 3. 아티스트 프로필 - 창의적이고 개성있는
+  // 3. 아티스트 프로필 - 자유분방하고 개성있는
   artist: `
-Transform this casual selfie into a creative, artistic portrait.
-Use dramatic, artistic lighting with creative shadows and highlights that add depth and character.
-Apply artistic makeup that enhances unique features - creative color choices, bold or subtle depending on subject.
-Style hair with creative flair - artistic, unique, expressing individual personality and style.
-Dress in artistic, expressive clothing - unique fashion choices, interesting textures, or statement pieces.
-Use a creative background with artistic elements, interesting textures, or abstract patterns.
-Capture an expressive, thoughtful look that conveys creativity and artistic sensibility.
-Artistic lighting, creative composition, high resolution, unique and memorable aesthetic.
+Transform this casual selfie into a stylish, free-spirited artist profile photo.
+Create natural, flattering lighting with soft shadows that adds depth and dimension without being overly dramatic.
+Apply tasteful makeup that enhances natural features - subtle yet distinctive, expressing personal style.
+Style hair in a relaxed, effortlessly cool way - slightly tousled, natural volume, creative but wearable style.
+Dress in trendy, creative casual wear - unique fashion sense and personal style.
+Use an urban or creative random background - cozy studio space, artistic cafe, or neutral backdrop with character.
+Capture a confident, relaxed expression with a subtle smile or thoughtful gaze that shows personality.
+Natural yet stylish lighting, modern artistic vibe, high resolution, authentic and cool aesthetic.
 `,
 
   // 4. 소개팅 프로필 - 매력적이고 따뜻한

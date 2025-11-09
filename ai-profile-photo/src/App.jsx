@@ -29,7 +29,7 @@ function App() {
       // 갤러리에서 사진 선택
       const photos = await fetchAlbumPhotos({
         maxCount: 1,
-        maxWidth: 512,  // 적절한 크기로 리사이징
+        maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
         base64: true    // Base64 형식으로
       })
       console.log('선택된 사진:', photos)
@@ -94,7 +94,7 @@ function App() {
 
       // 카메라로 사진 촬영
       const photo = await openCamera({
-        maxWidth: 512,  // 적절한 크기로 리사이징
+        maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
         base64: true    // Base64 형식으로
       })
 
@@ -130,10 +130,11 @@ function App() {
     }
   }
 
-  const uploadAndGenerateProfile = async (imageFile) => {
+  const uploadAndGenerateProfile = async (imageFile, profileType) => {
     try {
       console.log('API 호출 시작...')
       console.log('이미지 파일:', imageFile)
+      console.log('프로필 타입:', profileType)
 
       // Blob을 Base64로 변환
       const reader = new FileReader()
@@ -152,7 +153,7 @@ function App() {
       const requestBody = {
         imageBase64: base64,
         mimeType: imageFile.type || 'image/jpeg',
-        profileType: selectedProfileType
+        profileType: profileType
       }
 
       console.log('요청 데이터:', {
@@ -161,6 +162,8 @@ function App() {
       })
 
       const apiUrl = 'https://ai-profile-photo-api.vercel.app/api/generate-profile-photo'
+
+       //const apiUrl = 'http://192.168.0.26:3000/api/generate-profile-photo'
 
       console.log('API URL:', apiUrl)
 
@@ -212,8 +215,8 @@ function App() {
     setSelectedProfileType(profileType)
     setCurrentPage('loading')
 
-    // API 호출
-    await uploadAndGenerateProfile(selectedImage)
+    // API 호출 - profileType을 직접 전달
+    await uploadAndGenerateProfile(selectedImage, profileType)
   }
 
   const handleBackToIntro = () => {

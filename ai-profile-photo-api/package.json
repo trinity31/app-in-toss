@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "AI Profile Photo Generation API using Google Gemini",
   "type": "module",
-  "scripts": {
-    "dev": "vercel dev"
-  },
+  "scripts": {},
   "dependencies": {
     "@google/genai": "^1.0.0",
     "mime": "^4.0.0"

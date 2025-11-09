@@ -21,7 +21,13 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('=== API 요청 시작 ===');
+
     const { imageBase64, mimeType = 'image/jpeg', profileType = 'professional' } = req.body;
+
+    console.log('받은 profileType:', profileType);
+    console.log('이미지 크기:', imageBase64?.length, 'bytes');
+    console.log('MIME 타입:', mimeType);
 
     // 입력 검증
     if (!imageBase64) {
@@ -35,6 +41,9 @@ export default async function handler(req, res) {
     const selectedPrompt = VALID_PROFILE_TYPES.includes(profileType)
       ? PROFILE_PROMPTS[profileType]
       : DEFAULT_PROMPT;
+
+    console.log('선택된 프롬프트 타입:', VALID_PROFILE_TYPES.includes(profileType) ? profileType : 'DEFAULT (professional)');
+    console.log('프롬프트 길이:', selectedPrompt.length, 'chars');
 
     // API 키 확인
     if (!process.env.GEMINI_API_KEY) {

@@ -38,3 +38,7 @@ npm run preview
 - Vite 5
 - JavaScript (JSX)
 
+## 로컬 서버에서 테스트하기
+
+- App.jsx 에서 아래 주석처리한 부분 풀고 테스트
+  const apiUrl = 'http://192.168.0.26:3000/api/generate-profile-photo'
