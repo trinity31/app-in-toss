@@ -1,10 +1,16 @@
-import { useState } from 'react'
-import { fetchAlbumPhotos, saveBase64Data, openCamera } from '@apps-in-toss/web-framework'
+import { useState, useEffect, useRef } from 'react'
+import { fetchAlbumPhotos, saveBase64Data, openCamera, GoogleAdMob } from '@apps-in-toss/web-framework'
 import IntroPage from './intro_page'
 import SelectionPage from './selection_page'
 import LoadingPage from './loading_page'
 import ResultPage from './result_page'
 import './App.css'
+
+// 광고 그룹 ID
+const AD_GROUP_ID = 'ait-ad-test-rewarded-id'
+
+// 광고 로드 대기 시간 (10초)
+const AD_WAIT_TIMEOUT_MS = 10000
 
 function App() {
   const [currentPage, setCurrentPage] = useState('intro')
@@ -12,6 +18,15 @@ function App() {
   const [selectedProfileType, setSelectedProfileType] = useState('professional')
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null)
   const [error, setError] = useState(null)
+
+  // 광고 관련 상태
+  const [adLoaded, setAdLoaded] = useState(false)
+  const [waitingForAd, setWaitingForAd] = useState(false)
+
+  // Refs
+  const cleanupRef = useRef(undefined)
+  const adWaitTimeoutRef = useRef(undefined)
+  const rewardEarnedRef = useRef(false)
 
   const handleAlbumSelect = async () => {
     try {
@@ -131,77 +146,238 @@ function App() {
   }
 
   const uploadAndGenerateProfile = async (imageFile, profileType) => {
+    console.log('API 호출 시작...')
+    console.log('이미지 파일:', imageFile)
+    console.log('프로필 타입:', profileType)
+
+    // Blob을 Base64로 변환
+    const reader = new FileReader()
+    const base64 = await new Promise((resolve, reject) => {
+      reader.onloadend = () => {
+        const dataUrl = reader.result
+        const base64Data = dataUrl.split(',')[1]
+        resolve(base64Data)
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(imageFile)
+    })
+
+    console.log('Base64 변환 완료, 길이:', base64.length)
+
+    const requestBody = {
+      imageBase64: base64,
+      mimeType: imageFile.type || 'image/jpeg',
+      profileType: profileType
+    }
+
+    console.log('요청 데이터:', {
+      mimeType: requestBody.mimeType,
+      base64Length: requestBody.imageBase64.length
+    })
+
+    const apiUrl = 'https://ai-profile-photo-api.vercel.app/api/generate-profile-photo'
+
+    //const apiUrl = 'http://192.168.0.26:3000/api/generate-profile-photo'
+
+    console.log('API URL:', apiUrl)
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody)
+    })
+
+    console.log('응답 상태:', response.status, response.statusText)
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('API 에러 응답:', errorText)
+      throw new Error(`API 호출 실패 (${response.status}): ${errorText}`)
+    }
+
+    const data = await response.json()
+    console.log('API 응답 데이터:', data)
+
+    if (data.success && data.image && data.image.data) {
+      // Base64 이미지를 Data URI로 변환하여 반환
+      const imageDataUri = `data:${data.image.mimeType};base64,${data.image.data}`
+      return imageDataUri
+    } else {
+      throw new Error(data.error || '이미지를 생성하지 못했습니다.')
+    }
+  }
+
+  // 광고 로드 함수 (컴포넌트 마운트 시 실행)
+  const loadAd = () => {
     try {
-      console.log('API 호출 시작...')
-      console.log('이미지 파일:', imageFile)
-      console.log('프로필 타입:', profileType)
+      console.log('\n📥 광고 로드 시도')
 
-      // Blob을 Base64로 변환
-      const reader = new FileReader()
-      const base64 = await new Promise((resolve, reject) => {
-        reader.onloadend = () => {
-          const dataUrl = reader.result
-          const base64Data = dataUrl.split(',')[1]
-          resolve(base64Data)
-        }
-        reader.onerror = reject
-        reader.readAsDataURL(imageFile)
-      })
+      // 광고 기능 지원 여부 확인
+      const isSupported = GoogleAdMob?.loadAppsInTossAdMob?.isSupported?.()
+      console.log('🔍 loadAppsInTossAdMob.isSupported():', isSupported)
 
-      console.log('Base64 변환 완료, 길이:', base64.length)
-
-      const requestBody = {
-        imageBase64: base64,
-        mimeType: imageFile.type || 'image/jpeg',
-        profileType: profileType
+      if (isSupported !== true) {
+        console.warn('❌ 광고 기능 미지원. isSupported:', isSupported)
+        return
       }
 
-      console.log('요청 데이터:', {
-        mimeType: requestBody.mimeType,
-        base64Length: requestBody.imageBase64.length
-      })
+      // 기존 cleanup 함수 실행
+      cleanupRef.current?.()
+      cleanupRef.current = undefined
 
-      const apiUrl = 'https://ai-profile-photo-api.vercel.app/api/generate-profile-photo'
+      setAdLoaded(false)
+      console.log('🔄 광고 로드 시작...')
 
-       //const apiUrl = 'http://192.168.0.26:3000/api/generate-profile-photo'
-
-      console.log('API URL:', apiUrl)
-
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // 광고 로드
+      const cleanup = GoogleAdMob.loadAppsInTossAdMob({
+        options: { adGroupId: AD_GROUP_ID },
+        onEvent: (event) => {
+          if (event.type === 'loaded') {
+            console.log('✅ 광고 로드 완료:', event.data)
+            setAdLoaded(true)
+          }
         },
-        body: JSON.stringify(requestBody)
+        onError: (loadError) => {
+          console.error('❌ 광고 로드 실패:', loadError)
+          setAdLoaded(false)
+        }
       })
 
-      console.log('응답 상태:', response.status, response.statusText)
+      cleanupRef.current = cleanup
+    } catch (loadError) {
+      console.error('⚠️ 광고 로드 예외:', loadError)
+      setAdLoaded(false)
+    }
+  }
 
-      if (!response.ok) {
-        const errorText = await response.text()
-        console.error('API 에러 응답:', errorText)
-        throw new Error(`API 호출 실패 (${response.status}): ${errorText}`)
-      }
+  // 광고 표시 함수
+  const showAd = () => {
+    try {
+      console.log('✅ 광고 표시 시작')
+      rewardEarnedRef.current = false
 
-      const data = await response.json()
-      console.log('API 응답 데이터:', data)
+      GoogleAdMob.showAppsInTossAdMob({
+        options: { adGroupId: AD_GROUP_ID },
+        onEvent: (event) => {
+          console.log('광고 이벤트:', event.type)
 
-      if (data.success && data.image && data.image.data) {
-        // Base64 이미지를 Data URI로 변환
-        const imageDataUri = `data:${data.image.mimeType};base64,${data.image.data}`
-        setGeneratedImageUrl(imageDataUri)
-        setCurrentPage('result')
-      } else {
-        throw new Error(data.error || '이미지를 생성하지 못했습니다.')
-      }
+          switch (event.type) {
+            case 'requested':
+              console.log('✅ 광고 표시 요청 완료')
+              break
 
+            case 'show':
+              console.log('✅ 광고 컨텐츠 표시 시작')
+              break
+
+            case 'impression':
+              console.log('✅ 광고 노출 완료')
+              break
+
+            case 'clicked':
+              console.log('✅ 광고 클릭됨')
+              break
+
+            case 'userEarnedReward':
+              console.log('🎁 보상 획득!', event.data)
+              rewardEarnedRef.current = true
+              break
+
+            case 'dismissed':
+              console.log('광고 닫힘')
+
+              // 보상 획득 여부 확인
+              if (rewardEarnedRef.current) {
+                console.log('✅ 보상형 광고 완료 - 프로필 생성 진행')
+                setCurrentPage('loading')
+                generateProfile()
+              } else {
+                console.warn('⚠️ 보상형 광고 중도 종료 - 프로필 생성하지 않음')
+                setCurrentPage('intro')
+                setError('광고를 끝까지 시청해주세요')
+              }
+
+              // 다음 광고 로드
+              loadAd()
+              break
+
+            case 'failedToShow':
+              console.warn('⚠️ 광고 표시 실패 - 광고 없이 진행:', event.data)
+              setCurrentPage('loading')
+              generateProfile()
+              loadAd()
+              break
+          }
+        },
+        onError: (showError) => {
+          console.error('❌ 광고 표시 에러:', showError)
+          console.warn('⚠️ 광고 표시 에러 발생 - 광고 없이 진행')
+          setCurrentPage('loading')
+          generateProfile()
+          loadAd()
+        }
+      })
+    } catch (error) {
+      console.error('❌ 광고 표시 중 예외 발생:', error)
+      setCurrentPage('loading')
+      generateProfile()
+      loadAd()
+    }
+  }
+
+  // 프로필 생성 함수
+  const generateProfile = async () => {
+    if (!selectedImage) {
+      setError('사진을 다시 선택해주세요')
+      setCurrentPage('error')
+      return
+    }
+
+    try {
+      const imageDataUri = await uploadAndGenerateProfile(selectedImage, selectedProfileType)
+      setGeneratedImageUrl(imageDataUri)
+      setCurrentPage('result')
     } catch (err) {
-      console.error('API 호출 오류 상세:', err)
-      console.error('오류 스택:', err.stack)
+      console.error('프로필 생성 실패', err)
       setError(`프로필 사진 생성 중 오류가 발생했습니다: ${err.message}`)
       setCurrentPage('intro')
     }
   }
+
+  // 컴포넌트 마운트 시 광고 로드 및 언마운트 시 정리
+  useEffect(() => {
+    loadAd()
+
+    return () => {
+      // cleanup 함수 호출
+      cleanupRef.current?.()
+      cleanupRef.current = undefined
+
+      // 타이머 정리
+      if (adWaitTimeoutRef.current) {
+        clearTimeout(adWaitTimeoutRef.current)
+        adWaitTimeoutRef.current = undefined
+      }
+    }
+  }, [])
+
+  // 광고 로드 완료 시 대기 중이었다면 광고 표시
+  useEffect(() => {
+    if (waitingForAd && adLoaded) {
+      console.log('✅ 광고 로드 완료 - 광고 표시')
+      setWaitingForAd(false)
+
+      // 타이머 정리
+      if (adWaitTimeoutRef.current) {
+        clearTimeout(adWaitTimeoutRef.current)
+        adWaitTimeoutRef.current = undefined
+      }
+
+      showAd()
+    }
+  }, [adLoaded, waitingForAd])
 
   const handleReset = () => {
     setCurrentPage('intro')
@@ -209,14 +385,49 @@ function App() {
     setSelectedProfileType('professional')
     setGeneratedImageUrl(null)
     setError(null)
+
+    // 다음 생성을 위해 광고 로드
+    loadAd()
   }
 
   const handleProfileTypeSelect = async (profileType) => {
     setSelectedProfileType(profileType)
-    setCurrentPage('loading')
 
-    // API 호출 - profileType을 직접 전달
-    await uploadAndGenerateProfile(selectedImage, profileType)
+    try {
+      const isSupported = GoogleAdMob?.showAppsInTossAdMob?.isSupported?.()
+      console.log('🔍 showAppsInTossAdMob.isSupported():', isSupported)
+      console.log('📊 adLoaded 상태:', adLoaded)
+
+      if (isSupported !== true) {
+        console.warn('광고 표시 기능 미지원. isSupported:', isSupported)
+        setCurrentPage('loading')
+        generateProfile()
+        return
+      }
+
+      // 광고 로드 중이라면 로딩 화면 표시하고 대기
+      if (adLoaded === false) {
+        console.log('⏳ 광고 로드 대기 중 - 로딩 화면 표시')
+        setCurrentPage('loading')
+        setWaitingForAd(true)
+
+        // 최대 대기 시간 후 광고 없이 진행
+        adWaitTimeoutRef.current = setTimeout(() => {
+          console.warn(`⚠️ 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
+          setWaitingForAd(false)
+          generateProfile()
+        }, AD_WAIT_TIMEOUT_MS)
+
+        return
+      }
+
+      // 광고가 이미 로드된 경우 바로 표시
+      showAd()
+    } catch (error) {
+      console.error('❌ 광고 표시 중 예외 발생:', error)
+      setCurrentPage('loading')
+      generateProfile()
+    }
   }
 
   const handleBackToIntro = () => {
