@@ -1,7 +1,7 @@
 {
-  "name": "ai-profile-photo-api",
+  "name": "ai-profile-photo-studio-api",
   "version": "1.0.0",
-  "description": "AI Profile Photo Generation API using Google Gemini",
+  "description": "AI Profile Photo Studio - API using Google Gemini",
   "type": "module",
   "scripts": {},
   "dependencies": {

@@ -1,9 +1,27 @@
 import { GoogleGenAI } from '@google/genai';
 import { PROFILE_PROMPTS, DEFAULT_PROMPT, VALID_PROFILE_TYPES } from './prompts.js';
 
+// 허용된 Origin 목록
+function getAllowedOrigins() {
+  return [
+    'https://ai-profile-photo-studio.apps.tossmini.com',
+    'https://ai-profile-photo-studio.private-apps.tossmini.com',
+    'http://localhost:5173',
+    'http://192.168.0.26:5173'
+  ];
+}
+
 export default async function handler(req, res) {
-  // CORS 헤더 설정
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Origin 검증 및 CORS 헤더 설정
+  const origin = req.headers.origin;
+  const allowedOrigins = getAllowedOrigins();
+
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  }
+  // 허용되지 않은 origin인 경우 CORS 헤더를 설정하지 않음 (브라우저가 차단함)
+
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
