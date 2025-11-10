@@ -80,7 +80,7 @@ export default function IntroPage({ onNext, error }) {
           style={styles.button}
           onClick={() => setIsOpen(true)}
         >
-          다음
+          시작하기
         </button>
       </div>
 

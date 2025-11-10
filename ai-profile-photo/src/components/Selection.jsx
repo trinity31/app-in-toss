@@ -291,7 +291,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
             cursor: 'pointer',
           }}
         >
-          프로필 사진 생성하기
+          광고 보고 프로필 생성하기
         </button>
 
         <button

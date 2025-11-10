@@ -26,6 +26,7 @@ export default function ProfilePage() {
   const cleanupRef = useRef(undefined)
   const adWaitTimeoutRef = useRef(undefined)
   const rewardEarnedRef = useRef(false)
+  const selectedProfileTypeRef = useRef('professional') // 선택한 프로필 타입 저장
 
   const handleAlbumSelect = async () => {
     try {
@@ -335,7 +336,8 @@ export default function ProfilePage() {
     }
 
     try {
-      const imageDataUri = await uploadAndGenerateProfile(selectedImage, selectedProfileType)
+      // ref에 저장된 profileType 사용 (state 업데이트 타이밍 문제 방지)
+      const imageDataUri = await uploadAndGenerateProfile(selectedImage, selectedProfileTypeRef.current)
       setGeneratedImageUrl(imageDataUri)
       setCurrentPage('result')
     } catch (err) {
@@ -382,6 +384,7 @@ export default function ProfilePage() {
     setCurrentPage('intro')
     setSelectedImage(null)
     setSelectedProfileType('professional')
+    selectedProfileTypeRef.current = 'professional' // ref도 초기화
     setGeneratedImageUrl(null)
     setError(null)
 
@@ -391,11 +394,13 @@ export default function ProfilePage() {
 
   const handleProfileTypeSelect = async (profileType) => {
     setSelectedProfileType(profileType)
+    selectedProfileTypeRef.current = profileType // ref에도 저장
 
     try {
       const isSupported = GoogleAdMob?.showAppsInTossAdMob?.isSupported?.()
       console.log('🔍 showAppsInTossAdMob.isSupported():', isSupported)
       console.log('📊 adLoaded 상태:', adLoaded)
+      console.log('📝 선택된 프로필 타입:', profileType)
 
       if (isSupported !== true) {
         console.warn('광고 표시 기능 미지원. isSupported:', isSupported)
@@ -432,6 +437,7 @@ export default function ProfilePage() {
   const handleBackToIntro = () => {
     setSelectedImage(null)
     setSelectedProfileType('professional')
+    selectedProfileTypeRef.current = 'professional' // ref도 초기화
     setCurrentPage('intro')
   }
 
