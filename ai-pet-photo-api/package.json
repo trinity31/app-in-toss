@@ -1,0 +1,14 @@
+{
+  "name": "ai-profile-photo-api",
+  "version": "1.0.0",
+  "description": "AI Profile Photo Studio - API using Google Gemini",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "mime": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  }
+}

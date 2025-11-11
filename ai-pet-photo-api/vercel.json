@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/generate-profile-photo.js": {
+      "maxDuration": 60,
+      "memory": 1024
+    }
+  }
+}
