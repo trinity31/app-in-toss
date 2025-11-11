@@ -1,8 +1,33 @@
-import { useState } from 'react';
-import { Asset } from '@toss/tds-mobile';
+import { useState, useEffect } from 'react';
+import { Asset, Menu } from '@toss/tds-mobile';
 import { colors } from '@toss/tds-colors';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
+
+// 스크롤바 스타일을 위한 CSS 추가
+const scrollbarStyle = `
+  .dropdown-menu::-webkit-scrollbar {
+    width: 10px;
+    -webkit-appearance: none;
+  }
+  .dropdown-menu::-webkit-scrollbar-track {
+    background: ${colors.grey100};
+    border-radius: 5px;
+    margin: 4px 0;
+  }
+  .dropdown-menu::-webkit-scrollbar-thumb {
+    background: ${colors.grey400};
+    border-radius: 5px;
+    border: 2px solid ${colors.grey100};
+  }
+  .dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: ${colors.grey500};
+  }
+  .dropdown-menu {
+    scrollbar-width: thin;
+    scrollbar-color: ${colors.grey400} ${colors.grey100};
+  }
+`;
 
 const PROFILE_TYPES = [
   {
@@ -40,6 +65,17 @@ const PROFILE_TYPES = [
 export default function SelectionPage({ selectedImage, onSelect, onBack }) {
   const [selectedType, setSelectedType] = useState('professional');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // 스크롤바 스타일 추가
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = scrollbarStyle;
+    document.head.appendChild(styleElement);
+
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
 
   const handleTypeSelect = (typeId) => {
     setSelectedType(typeId);
@@ -186,19 +222,26 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
 
         {/* 드롭다운 메뉴 */}
         {isDropdownOpen && (
-          <div style={{
-            position: 'absolute',
-            top: 'calc(100% + 8px)',
-            left: 0,
-            right: 0,
-            backgroundColor: colors.white,
-            border: `1px solid ${colors.grey200}`,
-            borderRadius: '12px',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
-            zIndex: 1000,
-            overflow: 'hidden',
-          }}>
-            {PROFILE_TYPES.map((type, index) => (
+          <div style={{ position: 'relative' }}>
+            <div
+              className="dropdown-menu"
+              style={{
+                position: 'absolute',
+                bottom: 'calc(100% + 8px)',
+                left: 0,
+                right: 0,
+                backgroundColor: colors.white,
+                border: `1px solid ${colors.grey200}`,
+                borderRadius: '12px',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                zIndex: 1000,
+                maxHeight: '500px',
+                overflowY: 'scroll',
+                overflowX: 'hidden',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {PROFILE_TYPES.map((type, index) => (
               <button
                 key={type.id}
                 onClick={() => handleTypeSelect(type.id)}
@@ -263,6 +306,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                 )}
               </button>
             ))}
+            </div>
           </div>
         )}
       </div>
