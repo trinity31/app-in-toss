@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/generate-profile-photo.js": {
+    "api/generate-pet-photo.js": {
       "maxDuration": 60,
       "memory": 1024
     }
