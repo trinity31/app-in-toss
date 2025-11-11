@@ -59,6 +59,18 @@ Dress in elegant, formal attire with romantic elements - soft fabrics, elegant n
 Use a romantic background with soft, dreamy elements - soft pastels, delicate bokeh, or elegant simplicity.
 Capture a serene, joyful expression with a gentle smile and soft, loving eyes.
 Soft, romantic lighting, dreamy atmosphere, ultra-high resolution, timeless elegant beauty.
+`,
+
+  // 6. 디지털 노마드 프로필 - 자유로운 영혼
+  nomad: `
+Transform this casual selfie into a free-spirited, adventurous digital nomad profile photo.
+Create bright, natural outdoor lighting with a tropical or beachy feel - warm sunlight, breezy atmosphere, vacation vibes.
+Apply minimal, sun-kissed makeup - healthy glowing skin, natural beach-ready look, effortless and fresh.
+Style hair in a relaxed, carefree way - windswept, natural waves, tousled beach hair, or casually tied up, low-maintenance travel style.
+Dress in casual comfortable travel wear - relaxed t-shirt, linen shirt, tank top, casual summer clothing, or comfortable everyday travel attire.
+Use a tropical lifestyle background - beach setting with palm trees, seaside cafe with ocean view, resort poolside workspace, coastal scenery, or laptop on beach table with tropical drinks, suggesting remote work paradise.
+Capture a genuinely happy, free-spirited expression with a relaxed smile, eyes full of wanderlust and adventure.
+Natural sunlight, tropical vacation atmosphere, beachy lifestyle aesthetic, high resolution, authentic freedom and adventure vibe.
 `
 };
 

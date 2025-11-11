@@ -54,11 +54,17 @@ const PROFILE_TYPES = [
     description: '매력적이고 따뜻한',
     icon: 'u1F496.png' // 💖
   },
+  // {
+  //   id: 'wedding',
+  //   title: '웨딩 프로필',
+  //   description: '우아하고 로맨틱한',
+  //   icon: 'u1F492.png' // 💒
+  // },
   {
-    id: 'wedding',
-    title: '웨딩 프로필',
-    description: '우아하고 로맨틱한',
-    icon: 'u1F492.png' // 💒
+    id: 'nomad',
+    title: '디지털 노마드',
+    description: '자유로운 영혼',
+    icon: 'u2708.png' // ✈️
   }
 ];
 
