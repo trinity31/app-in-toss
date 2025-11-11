@@ -157,7 +157,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: colors.blue50,
+              backgroundColor: colors.orange50,
               borderRadius: '50%',
             }}>
               <Asset.Image
@@ -205,7 +205,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                 style={{
                   width: '100%',
                   padding: '16px',
-                  backgroundColor: selectedType === type.id ? colors.blue50 : colors.white,
+                  backgroundColor: selectedType === type.id ? colors.orange50 : colors.white,
                   border: 'none',
                   borderBottom: index < PET_TYPES.length - 1 ? `1px solid ${colors.grey100}` : 'none',
                   display: 'flex',
@@ -220,7 +220,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = selectedType === type.id ? colors.blue50 : colors.white;
+                  e.currentTarget.style.backgroundColor = selectedType === type.id ? colors.orange50 : colors.white;
                 }}
               >
                 <div style={{
@@ -229,7 +229,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: colors.blue50,
+                  backgroundColor: colors.orange50,
                   borderRadius: '50%',
                   flexShrink: 0,
                 }}>
@@ -282,7 +282,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
           style={{
             width: '100%',
             padding: '16px',
-            backgroundColor: '#db5c7f',
+            backgroundColor: '#FF8C42',
             color: colors.white,
             border: 'none',
             borderRadius: '12px',

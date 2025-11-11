@@ -84,7 +84,7 @@ export default function ResultPage({ imageUrl, onClose, onSave }) {
           onClick={onSave}
           style={{
             padding: '16px',
-            backgroundColor: '#db5c7f',
+            backgroundColor: '#FF8C42',
             color: 'white',
             border: 'none',
             borderRadius: '12px',
