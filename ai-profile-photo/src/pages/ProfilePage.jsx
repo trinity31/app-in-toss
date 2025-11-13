@@ -4,6 +4,7 @@ import Intro from '../components/Intro'
 import Selection from '../components/Selection'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
+import { API_ENDPOINTS } from '../config/api'
 
 // 광고 그룹 ID
 const AD_GROUP_ID = 'ait.live.b1ba8a40762945e6'
@@ -175,13 +176,9 @@ export default function ProfilePage() {
       base64Length: requestBody.imageBase64.length
     })
 
-    const apiUrl = 'https://ai-profile-photo-api.vercel.app/api/generate-profile-photo'
+    console.log('API URL:', API_ENDPOINTS.GENERATE_PROFILE)
 
-    //const apiUrl = 'http://192.168.0.50:3000/api/generate-profile-photo'
-
-    console.log('API URL:', apiUrl)
-
-    const response = await fetch(apiUrl, {
+    const response = await fetch(API_ENDPOINTS.GENERATE_PROFILE, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

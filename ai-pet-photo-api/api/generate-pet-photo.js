@@ -7,7 +7,7 @@ function getAllowedOrigins() {
     'https://ai-pet-photo.apps.tossmini.com',
     'https://ai-pet-photo.private-apps.tossmini.com',
     'http://localhost:5173',
-    'http://192.168.0.26:5173'
+    'http://192.168.0.50:5173'
   ];
 }
 

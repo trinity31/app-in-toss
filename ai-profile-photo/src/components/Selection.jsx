@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Asset, Menu } from '@toss/tds-mobile';
 import { colors } from '@toss/tds-colors';
+import { API_ENDPOINTS } from '../config/api';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -63,9 +64,6 @@ const FALLBACK_PROFILE_TYPES = [
   }
 ];
 
-// API URL
-const API_URL = 'https://ai-profile-photo-api.vercel.app/api/get-profile-types';
-
 export default function SelectionPage({ selectedImage, onSelect, onBack }) {
   const [selectedType, setSelectedType] = useState('professional');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -81,7 +79,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_ENDPOINTS.GET_PROFILE_TYPES, {
           signal: controller.signal
         });
 
@@ -282,7 +280,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                 borderRadius: '12px',
                 boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
                 zIndex: 1000,
-                maxHeight: '500px',
+                maxHeight: '400px',
                 overflowY: 'scroll',
                 overflowX: 'hidden',
                 WebkitOverflowScrolling: 'touch',

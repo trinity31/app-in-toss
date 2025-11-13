@@ -22,15 +22,15 @@ export const PROFILE_TYPES_METADATA = {
     description: '매력적이고 따뜻한',
     icon: 'u1F496.png' // 💖
   },
-  wedding: {
-    title: '웨딩 프로필',
-    description: '우아하고 로맨틱한',
-    icon: 'u1F492.png' // 💒
-  },
   nomad: {
     title: '디지털 노마드',
     description: '자유롭고 모던한',
     icon: 'u2708.png' // ✈️
+  },
+  doctor: {
+    title: '의사 프로필',
+    description: '전문적이고 신뢰감 있는',
+    icon: 'u1FA7A.png' // 🩺
   }
 };
 
@@ -83,19 +83,7 @@ Capture a genuine, warm smile with friendly, inviting eyes that convey approacha
 Soft, romantic lighting, warm color tones, high resolution, attractive and genuine look.
 `,
 
-  // 5. 웨딩 프로필 - 우아하고 로맨틱한
-  wedding: `
-Transform this casual selfie into an elegant, romantic wedding-style portrait.
-Create soft, dreamy lighting with gentle highlights that give an ethereal, romantic glow.
-Apply elegant bridal makeup - luminous skin, soft romantic colors, timeless beauty enhancement.
-Style hair in an elegant, romantic manner - sophisticated updo or soft romantic waves, wedding-appropriate.
-Dress in elegant, formal attire with romantic elements - soft fabrics, elegant necklines, or classic formal wear.
-Use a romantic background with soft, dreamy elements - soft pastels, delicate bokeh, or elegant simplicity.
-Capture a serene, joyful expression with a gentle smile and soft, loving eyes.
-Soft, romantic lighting, dreamy atmosphere, ultra-high resolution, timeless elegant beauty.
-`,
-
-  // 6. 디지털 노마드 프로필 - 자유로운 영혼
+  // 5. 디지털 노마드 프로필 - 자유로운 영혼
   nomad: `
 Transform this casual selfie into a free-spirited, adventurous digital nomad profile photo.
 Create bright, natural outdoor lighting with a tropical or beachy feel - warm sunlight, breezy atmosphere, vacation vibes.
@@ -105,6 +93,19 @@ Dress in casual comfortable travel wear - relaxed t-shirt, linen shirt, tank top
 Use a tropical lifestyle background - beach setting with palm trees, seaside cafe with ocean view, resort poolside workspace, coastal scenery, or laptop on beach table with tropical drinks, suggesting remote work paradise.
 Capture a genuinely happy, free-spirited expression with a relaxed smile, eyes full of wanderlust and adventure.
 Natural sunlight, tropical vacation atmosphere, beachy lifestyle aesthetic, high resolution, authentic freedom and adventure vibe.
+`,
+
+  // 6. 의사 프로필 - 전문적이고 신뢰감 있는
+  doctor: `
+Transform this casual selfie into a professional, trustworthy medical doctor profile photo.
+Create clean, bright clinical lighting that conveys professionalism and expertise - well-lit, clear, and professional medical environment feel.
+Apply professional, minimal makeup - clean, healthy appearance, naturally confident look, subtle and refined.
+Style hair in a neat, professional medical manner - well-groomed, clean, professional healthcare standard, polished and tidy.
+Dress in white medical coat or professional medical scrubs - clean white coat over professional attire, or neat medical scrubs, suggesting healthcare professional.
+Pose with arms crossed confidently in front of chest - professional, confident medical doctor stance with arms folded, conveying authority and expertise.
+Use a clean medical office or clinical background - professional medical setting, clean white walls, medical office environment, or subtle clinical backdrop with soft medical equipment hints.
+Capture a confident, compassionate expression with a warm professional smile and trustworthy, caring eyes that inspire patient confidence.
+Bright clinical lighting, professional medical atmosphere, ultra-high resolution, credible and caring healthcare professional aesthetic.
 `
 };
 
