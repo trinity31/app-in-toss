@@ -29,7 +29,8 @@ const scrollbarStyle = `
   }
 `;
 
-const PROFILE_TYPES = [
+// Fallback 프로필 타입 (API 실패 시 사용)
+const FALLBACK_PROFILE_TYPES = [
   {
     id: 'sns',
     title: 'SNS 프로필',
@@ -54,23 +55,63 @@ const PROFILE_TYPES = [
     description: '매력적이고 따뜻한',
     icon: 'u1F496.png' // 💖
   },
-  // {
-  //   id: 'wedding',
-  //   title: '웨딩 프로필',
-  //   description: '우아하고 로맨틱한',
-  //   icon: 'u1F492.png' // 💒
-  // },
   {
     id: 'nomad',
     title: '디지털 노마드',
-    description: '자유로운 영혼',
+    description: '자유롭고 모던한',
     icon: 'u2708.png' // ✈️
   }
 ];
 
+// API URL
+const API_URL = 'https://ai-profile-photo-api.vercel.app/api/get-profile-types';
+
 export default function SelectionPage({ selectedImage, onSelect, onBack }) {
   const [selectedType, setSelectedType] = useState('professional');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [profileTypes, setProfileTypes] = useState(FALLBACK_PROFILE_TYPES);
+
+  // 프로필 타입 목록 가져오기 (백그라운드에서 실행)
+  useEffect(() => {
+    const fetchProfileTypes = async () => {
+      try {
+        console.log('프로필 타입 목록 가져오기 시작...');
+
+        // 5초 타임아웃 설정
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const response = await fetch(API_URL, {
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`API 호출 실패: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('프로필 타입 API 응답:', data);
+
+        if (data.success && data.profileTypes) {
+          setProfileTypes(data.profileTypes);
+          console.log('프로필 타입 목록 업데이트 완료:', data.profileTypes.length, '개');
+        } else {
+          console.warn('API 응답이 올바르지 않음, fallback 사용');
+        }
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          console.warn('프로필 타입 API 타임아웃, fallback 사용');
+        } else {
+          console.error('프로필 타입 목록 가져오기 실패, fallback 사용:', error);
+        }
+        // 이미 FALLBACK_PROFILE_TYPES로 초기화되어 있으므로 추가 작업 불필요
+      }
+    };
+
+    fetchProfileTypes();
+  }, []);
 
   // 스크롤바 스타일 추가
   useEffect(() => {
@@ -94,7 +135,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
 
   // selectedImage를 미리보기용 URL로 변환
   const imagePreviewUrl = selectedImage ? URL.createObjectURL(selectedImage) : null;
-  const selectedTypeInfo = PROFILE_TYPES.find(type => type.id === selectedType) || PROFILE_TYPES[1];
+  const selectedTypeInfo = profileTypes.find(type => type.id === selectedType) || profileTypes[1];
 
   return (
     <div style={{
@@ -247,7 +288,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                 WebkitOverflowScrolling: 'touch',
               }}
             >
-              {PROFILE_TYPES.map((type, index) => (
+              {profileTypes.map((type, index) => (
               <button
                 key={type.id}
                 onClick={() => handleTypeSelect(type.id)}
@@ -256,7 +297,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                   padding: '16px',
                   backgroundColor: selectedType === type.id ? colors.blue50 : colors.white,
                   border: 'none',
-                  borderBottom: index < PROFILE_TYPES.length - 1 ? `1px solid ${colors.grey100}` : 'none',
+                  borderBottom: index < profileTypes.length - 1 ? `1px solid ${colors.grey100}` : 'none',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',

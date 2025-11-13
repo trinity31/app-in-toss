@@ -177,7 +177,7 @@ export default function ProfilePage() {
 
     const apiUrl = 'https://ai-profile-photo-api.vercel.app/api/generate-profile-photo'
 
-    //const apiUrl = 'http://192.168.0.26:3000/api/generate-profile-photo'
+    //const apiUrl = 'http://192.168.0.50:3000/api/generate-profile-photo'
 
     console.log('API URL:', apiUrl)
 

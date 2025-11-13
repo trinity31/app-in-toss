@@ -1,5 +1,39 @@
 // 용도별 프로필 사진 생성 프롬프트
 
+// 프로필 타입 메타데이터
+export const PROFILE_TYPES_METADATA = {
+  sns: {
+    title: 'SNS 프로필',
+    description: '밝고 친근한 느낌',
+    icon: 'u1F4F1.png' // 📱
+  },
+  professional: {
+    title: '전문가 프로필',
+    description: '취업·비즈니스용',
+    icon: 'u1F4BC.png' // 💼
+  },
+  artist: {
+    title: '아티스트 프로필',
+    description: '창의적이고 개성있는',
+    icon: 'u1F3A8.png' // 🎨
+  },
+  dating: {
+    title: '소개팅 프로필',
+    description: '매력적이고 따뜻한',
+    icon: 'u1F496.png' // 💖
+  },
+  wedding: {
+    title: '웨딩 프로필',
+    description: '우아하고 로맨틱한',
+    icon: 'u1F492.png' // 💒
+  },
+  nomad: {
+    title: '디지털 노마드',
+    description: '자유롭고 모던한',
+    icon: 'u2708.png' // ✈️
+  }
+};
+
 export const PROFILE_PROMPTS = {
   // 1. SNS 프로필 - 밝고 친근한 느낌
   sns: `
