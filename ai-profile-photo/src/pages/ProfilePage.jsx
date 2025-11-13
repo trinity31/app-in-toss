@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 import Result from '../components/Result'
 
 // 광고 그룹 ID
-const AD_GROUP_ID = 'ait-ad-test-rewarded-id'
+const AD_GROUP_ID = 'ait.live.b1ba8a40762945e6'
 
 // 광고 로드 대기 시간 (10초)
 const AD_WAIT_TIMEOUT_MS = 10000
