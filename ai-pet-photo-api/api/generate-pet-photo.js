@@ -4,8 +4,8 @@ import { PET_PROMPTS, DEFAULT_PROMPT, VALID_PET_TYPES } from './prompts.js';
 // 허용된 Origin 목록
 function getAllowedOrigins() {
   return [
-    'https://ai-pet-photo.apps.tossmini.com',
-    'https://ai-pet-photo.private-apps.tossmini.com',
+    'https://ai-pet-studio.apps.tossmini.com',
+    'https://ai-pet-studio.private-apps.tossmini.com',
     'http://localhost:5173',
     'http://192.168.0.50:5173'
   ];
