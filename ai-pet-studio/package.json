@@ -1,0 +1,29 @@
+{
+  "name": "ai-pet-studio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "granite dev",
+    "build": "granite build",
+    "preview": "vite preview",
+    "deploy": "ait deploy"
+  },
+  "dependencies": {
+    "@apps-in-toss/web-framework": "^1.4.5",
+    "@emotion/react": "^11.14.0",
+    "@toss/tds-colors": "^0.1.0",
+    "@toss/tds-mobile": "^2.1.2",
+    "@toss/tds-mobile-ait": "^2.1.2",
+    "browser-image-compression": "^2.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.9.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8"
+  }
+}
