@@ -39,6 +39,66 @@ const PET_TYPES = [
     title: '만화 캐릭터',
     description: '귀여운 애니메이션',
     icon: 'u1F3AC.png' // 🎬
+  },
+  {
+    id: 'hybrid-animal',
+    title: '다른 동물과 합체',
+    description: '신기한 하이브리드',
+    icon: 'u1F98B.png' // 🦋
+  },
+  {
+    id: 'fairytale-hero',
+    title: '동화 주인공',
+    description: '클래식 동화',
+    icon: 'u1F9DA.png' // 🧚
+  },
+  {
+    id: 'figure',
+    title: '피규어',
+    description: '수집용 피규어',
+    icon: 'u1F5FF.png' // 🗿
+  },
+  {
+    id: 'plush-toy',
+    title: '봉제인형',
+    description: '귀여운 인형',
+    icon: 'u1F9F8.png' // 🧸
+  },
+  {
+    id: 'looney-tunes',
+    title: '루니툰 스타일',
+    description: '클래식 카툰',
+    icon: 'u1F43E.png' // 🐾
+  },
+  {
+    id: 'sticker',
+    title: '스티커',
+    description: 'SNS용 스티커',
+    icon: 'u1F3F7.png' // 🏷
+  },
+  {
+    id: 'emoticon',
+    title: '이모티콘',
+    description: '귀여운 이모티콘',
+    icon: 'u1F60A.png' // 😊
+  },
+  {
+    id: 'disney-character',
+    title: '디즈니 주인공',
+    description: '디즈니 애니메이션',
+    icon: 'u2728.png' // ✨
+  },
+  {
+    id: 'angel',
+    title: '천사',
+    description: '순수한 천사',
+    icon: 'u1F47C.png' // 👼
+  },
+  {
+    id: 'santa',
+    title: '산타',
+    description: '크리스마스 산타',
+    icon: 'u1F385.png' // 🎅
   }
 ];
 
