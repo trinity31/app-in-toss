@@ -5,6 +5,7 @@ import Selection from '../components/Selection'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
 import { API_ENDPOINTS } from '../config/api'
+import { getModelForProfileType } from '../config/models'
 
 // 광고 그룹 ID
 const AD_GROUP_ID = 'ait.live.b1ba8a40762945e6'
@@ -151,6 +152,10 @@ export default function ProfilePage() {
     console.log('이미지 파일:', imageFile)
     console.log('프로필 타입:', profileType)
 
+    // 프로필 타입에 따라 모델 선택
+    const selectedModel = getModelForProfileType(profileType)
+    console.log('선택된 모델:', selectedModel)
+
     // Blob을 Base64로 변환
     const reader = new FileReader()
     const base64 = await new Promise((resolve, reject) => {
@@ -168,12 +173,14 @@ export default function ProfilePage() {
     const requestBody = {
       imageBase64: base64,
       mimeType: imageFile.type || 'image/jpeg',
-      profileType: profileType
+      profileType: profileType,
+      model: selectedModel  // 모델 파라미터 추가
     }
 
     console.log('요청 데이터:', {
       mimeType: requestBody.mimeType,
-      base64Length: requestBody.imageBase64.length
+      base64Length: requestBody.imageBase64.length,
+      model: requestBody.model
     })
 
     console.log('API URL:', API_ENDPOINTS.GENERATE_PROFILE)
