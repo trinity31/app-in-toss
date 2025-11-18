@@ -4,12 +4,7 @@ import Intro from '../components/Intro'
 import Selection from '../components/Selection'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
-
-// 광고 그룹 ID
-const AD_GROUP_ID = 'ait-ad-test-rewarded-id'
-
-// 광고 로드 대기 시간 (10초)
-const AD_WAIT_TIMEOUT_MS = 10000
+import { API_ENDPOINTS, AD_GROUP_ID, AD_WAIT_TIMEOUT_MS } from '../config/const'
 
 export default function ProfilePage() {
   const [currentPage, setCurrentPage] = useState('intro')
@@ -175,13 +170,9 @@ export default function ProfilePage() {
       base64Length: requestBody.imageBase64.length
     })
 
-    const apiUrl = 'https://ai-pet-photo-api.vercel.app/api/generate-pet-photo'
+    console.log('API URL:', API_ENDPOINTS.GENERATE_PET_PHOTO)
 
-    //const apiUrl = 'http://192.168.0.26:3000/api/generate-pet-photo'
-
-    console.log('API URL:', apiUrl)
-
-    const response = await fetch(apiUrl, {
+    const response = await fetch(API_ENDPOINTS.GENERATE_PET_PHOTO, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,10 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Asset } from '@toss/tds-mobile';
 import { colors } from '@toss/tds-colors';
+import { API_ENDPOINTS } from '../config/const';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
-const PET_TYPES = [
+// 스크롤바 스타일을 위한 CSS 추가
+const scrollbarStyle = `
+  .dropdown-menu::-webkit-scrollbar {
+    width: 10px;
+    -webkit-appearance: none;
+  }
+  .dropdown-menu::-webkit-scrollbar-track {
+    background: ${colors.grey100};
+    border-radius: 5px;
+    margin: 4px 0;
+  }
+  .dropdown-menu::-webkit-scrollbar-thumb {
+    background: ${colors.grey400};
+    border-radius: 5px;
+    border: 2px solid ${colors.grey100};
+  }
+  .dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: ${colors.grey500};
+  }
+  .dropdown-menu {
+    scrollbar-width: thin;
+    scrollbar-color: ${colors.grey400} ${colors.grey100};
+  }
+`;
+
+// Fallback 반려동물 타입 (API 실패 시 사용)
+const FALLBACK_PET_TYPES = [
   {
     id: 'masterpiece',
     title: '명화 속 주인공',
@@ -40,6 +67,60 @@ const PET_TYPES = [
 export default function SelectionPage({ selectedImage, onSelect, onBack }) {
   const [selectedType, setSelectedType] = useState('masterpiece');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [petTypes, setPetTypes] = useState(FALLBACK_PET_TYPES);
+
+  // 반려동물 타입 목록 가져오기 (백그라운드에서 실행)
+  useEffect(() => {
+    const fetchPetTypes = async () => {
+      try {
+        console.log('반려동물 타입 목록 가져오기 시작...');
+
+        // 5초 타임아웃 설정
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const response = await fetch(API_ENDPOINTS.GET_PET_TYPES, {
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`API 호출 실패: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('반려동물 타입 API 응답:', data);
+
+        if (data.success && data.profileTypes) {
+          setPetTypes(data.profileTypes);
+          console.log('반려동물 타입 목록 업데이트 완료:', data.profileTypes.length, '개');
+        } else {
+          console.warn('API 응답이 올바르지 않음, fallback 사용');
+        }
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          console.warn('반려동물 타입 API 타임아웃, fallback 사용');
+        } else {
+          console.error('반려동물 타입 목록 가져오기 실패, fallback 사용:', error);
+        }
+        // 이미 FALLBACK_PET_TYPES로 초기화되어 있으므로 추가 작업 불필요
+      }
+    };
+
+    fetchPetTypes();
+  }, []);
+
+  // 스크롤바 스타일 추가
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = scrollbarStyle;
+    document.head.appendChild(styleElement);
+
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
 
   const handleTypeSelect = (typeId) => {
     setSelectedType(typeId);
@@ -52,7 +133,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
 
   // selectedImage를 미리보기용 URL로 변환
   const imagePreviewUrl = selectedImage ? URL.createObjectURL(selectedImage) : null;
-  const selectedTypeInfo = PET_TYPES.find(type => type.id === selectedType) || PET_TYPES[0];
+  const selectedTypeInfo = petTypes.find(type => type.id === selectedType) || petTypes[0];
 
   return (
     <div style={{
@@ -186,19 +267,26 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
 
         {/* 드롭다운 메뉴 */}
         {isDropdownOpen && (
-          <div style={{
-            position: 'absolute',
-            top: 'calc(100% + 8px)',
-            left: 0,
-            right: 0,
-            backgroundColor: colors.white,
-            border: `1px solid ${colors.grey200}`,
-            borderRadius: '12px',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
-            zIndex: 1000,
-            overflow: 'hidden',
-          }}>
-            {PET_TYPES.map((type, index) => (
+          <div style={{ position: 'relative' }}>
+            <div
+              className="dropdown-menu"
+              style={{
+                position: 'absolute',
+                bottom: 'calc(100% + 8px)',
+                left: 0,
+                right: 0,
+                backgroundColor: colors.white,
+                border: `1px solid ${colors.grey200}`,
+                borderRadius: '12px',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                zIndex: 1000,
+                maxHeight: '400px',
+                overflowY: 'scroll',
+                overflowX: 'hidden',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {petTypes.map((type, index) => (
               <button
                 key={type.id}
                 onClick={() => handleTypeSelect(type.id)}
@@ -207,7 +295,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                   padding: '16px',
                   backgroundColor: selectedType === type.id ? colors.orange50 : colors.white,
                   border: 'none',
-                  borderBottom: index < PET_TYPES.length - 1 ? `1px solid ${colors.grey100}` : 'none',
+                  borderBottom: index < petTypes.length - 1 ? `1px solid ${colors.grey100}` : 'none',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
@@ -263,6 +351,7 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
                 )}
               </button>
             ))}
+            </div>
           </div>
         )}
       </div>
