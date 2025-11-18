@@ -41,4 +41,4 @@ npm run preview
 ## 로컬 서버에서 테스트하기
 
 - App.jsx 에서 아래 주석처리한 부분 풀고 테스트
-  const apiUrl = 'http://192.168.0.50:3000/api/generate-profile-photo'
+  const apiUrl = 'http://192.168.0.25:3000/api/generate-profile-photo'

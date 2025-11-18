@@ -6,7 +6,7 @@ function getAllowedOrigins() {
     'https://ai-profile-photo-studio.apps.tossmini.com',
     'https://ai-profile-photo-studio.private-apps.tossmini.com',
     'http://localhost:5173',
-    'http://192.168.0.50:5173'
+    'http://192.168.0.25:5173'
   ];
 }
 

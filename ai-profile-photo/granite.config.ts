@@ -17,7 +17,7 @@ export default defineConfig({
     { name: 'photos', access: 'read' },
   ],
   web: {
-    host: '192.168.0.50',
+    host: '192.168.0.25',
     port: 5173,
     commands: {
       dev: 'vite --host',

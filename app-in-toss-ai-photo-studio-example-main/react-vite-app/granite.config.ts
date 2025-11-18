@@ -17,7 +17,7 @@ export default defineConfig({
     { name: 'photos', access: 'read' },
   ],
   web: {
-    host: '192.168.0.26', // 실기기에서 접근할 수 있는 IP 주소
+    host: '192.168.0.50', // 실기기에서 접근할 수 있는 IP 주소
     port: 5173,
     commands: {
       dev: 'vite --host',
