@@ -10,19 +10,19 @@
 // sdxl - Stable Diffusion XL
 export const PROFILE_TYPE_MODEL_MAP = {
   // SNS 프로필 - 밝고 친근한
-  'sns': 'seededit',
+  'sns': 'google/nano-banana',
 
   // 전문가 프로필 - 취업·비즈니스용
   'professional': 'google/nano-banana',
 
   // 아티스트 프로필 - 창의적이고 개성있는
-  'artist': 'seededit',
+  'artist': 'google/nano-banana',
 
   // 소개팅 프로필 - 매력적이고 따뜻한
-  'dating': 'seededit',
+  'dating': 'google/nano-banana',
 
   // 디지털 노마드 - 자유롭고 모던한
-  'nomad': 'qwen',
+  'nomad': 'google/nano-banana',
 
   // 의사 프로필 - 전문적이고 신뢰감 있는
   'doctor': 'google/nano-banana'
@@ -31,7 +31,7 @@ export const PROFILE_TYPE_MODEL_MAP = {
 /**
  * 기본 모델 (매핑에 없는 타입의 경우)
  */
-export const DEFAULT_MODEL = 'seededit';
+export const DEFAULT_MODEL = 'google/nano-banana';
 
 /**
  * 프로필 타입에 따라 적절한 모델 선택

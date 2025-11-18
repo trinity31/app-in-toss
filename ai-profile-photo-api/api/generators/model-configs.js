@@ -80,7 +80,7 @@ export const MODEL_CONFIGS = {
 };
 
 // 기본 모델
-export const DEFAULT_MODEL = 'seededit';
+export const DEFAULT_MODEL = 'google/nano-banana';
 
 // 지원되는 모델 목록
 export const SUPPORTED_MODELS = Object.keys(MODEL_CONFIGS);
