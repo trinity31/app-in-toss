@@ -93,6 +93,8 @@ export class ReplicateGenerator extends BaseImageGenerator {
       input.images = [imageDataUrl];
     } else if (params.imageField === 'input_image') {
       input.input_image = imageValue;
+    } else if (params.imageField === 'image_input') {
+      input.image_input = imageValue;
     }
 
     // 내부 설정 제거

@@ -42,12 +42,15 @@ export const MODEL_CONFIGS = {
     }
   },
 
-  // Google Nano Banana - GoogleGenAI SDK 사용 (검증 통과용, 실제로는 generators/index.js에서 처리)
+  // Google Nano Banana - Replicate API 사용
   'google/nano-banana': {
-    name: 'Gemini 2.5 Flash (SDK)',
-    model: 'gemini-2.0-flash-exp',
+    name: 'Gemini 2.5 Flash Image',
+    model: 'google/gemini-2.5-flash-image',
     params: {
-      imageField: 'image'
+      imageField: 'image_input',
+      imageAsArray: true,
+      aspect_ratio: 'match_input_image',
+      output_format: 'jpg'
     }
   },
 
