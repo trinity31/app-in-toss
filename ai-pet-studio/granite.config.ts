@@ -3,10 +3,14 @@ import { defineConfig } from '@apps-in-toss/web-framework/config';
 export default defineConfig({
   appName: 'ai-pet-studio',
   brand: {
-    displayName: 'ai-pet-studio', // 화면에 노출될 앱의 한글 이름으로 바꿔주세요.
-    primaryColor: '#ff8c43', // 화면에 노출될 앱의 기본 색상으로 바꿔주세요.
-    icon: '', // 화면에 노출될 앱의 아이콘 이미지 주소로 바꿔주세요.
+    displayName: 'AI 펫 사진관',
+    icon: 'https://static.toss.im/appsintoss/7011/c2ee99be-8729-4b79-850e-2bd528ad7be7.png',
+    primaryColor: '#ff8c43',
     bridgeColorMode: 'basic',
+  },
+  navigationBar: {
+    withBackButton: true,
+    withHomeButton: true,
   },
   web: {
     host: '192.168.0.25',
