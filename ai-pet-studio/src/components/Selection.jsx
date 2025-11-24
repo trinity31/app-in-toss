@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Asset } from '@toss/tds-mobile';
 import { colors } from '@toss/tds-colors';
+import { Analytics } from '@apps-in-toss/web-framework';
 import { API_ENDPOINTS } from '../config/const';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
@@ -75,9 +76,9 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
       try {
         console.log('반려동물 타입 목록 가져오기 시작...');
 
-        // 5초 타임아웃 설정
+        // 10초 타임아웃 설정 (Vercel cold start + 네트워크 지연 고려)
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
 
         const response = await fetch(API_ENDPOINTS.GET_PET_TYPES, {
           signal: controller.signal
@@ -123,6 +124,12 @@ export default function SelectionPage({ selectedImage, onSelect, onBack }) {
   }, []);
 
   const handleTypeSelect = (typeId) => {
+    // 타입 선택 이벤트 로깅
+    Analytics.click({
+      button_name: 'pet_type_select',
+      pet_type: typeId
+    });
+
     setSelectedType(typeId);
     setIsDropdownOpen(false);
   };
