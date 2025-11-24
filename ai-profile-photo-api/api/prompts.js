@@ -31,6 +31,11 @@ export const PROFILE_TYPES_METADATA = {
     title: '의사 프로필',
     description: '전문적이고 신뢰감 있는',
     icon: 'u1FA7A.png' // 🩺
+  },
+  wicked: {
+    title: '위키드 프로필',
+    description: '매력적이고 신비로운',
+    icon: 'u1F9D9-u200D-u2640-uFE0F.png' // 🧙‍♀️
   }
 };
 
@@ -106,6 +111,19 @@ Pose with arms crossed confidently in front of chest - professional, confident m
 Use a clean medical office or clinical background - professional medical setting, clean white walls, medical office environment, or subtle clinical backdrop with soft medical equipment hints.
 Capture a confident, compassionate expression with a warm professional smile and trustworthy, caring eyes that inspire patient confidence.
 Bright clinical lighting, professional medical atmosphere, ultra-high resolution, credible and caring healthcare professional aesthetic.
+`,
+
+  // 7. 위키드 프로필 - 매력적이고 신비로운
+  wicked: `
+Transform this casual selfie into an enchanting, mystical Wicked-inspired witch or wizard profile photo.
+Create dramatic, magical lighting with emerald green ethereal glow - mysterious yet alluring atmosphere with subtle magical sparkles and mystical ambiance.
+Apply captivating, theatrical makeup with emerald green accents - flawless, porcelain-like skin with subtle green shimmer, dramatic yet beautiful eyes with green undertones, elegant dark lip color, enchanting and sophisticated look.
+Style hair in a dramatic, elegant witchy manner - flowing, voluminous, perfectly styled with slight magical windswept effect, dark or dramatically colored hair, sophisticated witch aesthetic.
+Dress in elegant, theatrical witch attire - stylish black witch costume with emerald green accents, sophisticated pointed witch hat, elegant dark robes or dress with mystical details, fashionable magical aesthetic.
+Use a mystical, dramatic background - enchanted forest with green magical mist, gothic castle interior, magical library, or starry night sky with green aurora effects.
+Capture a confident, alluring expression with mysterious eyes and an enchanting smile - captivating, powerful, and magnetically attractive witch presence.
+IMPORTANT: Maintain an attractive, beautiful appearance - elegant facial features, symmetrical face, stunning and charismatic look.
+Dramatic emerald green lighting, magical mystical atmosphere, theatrical aesthetic, ultra-high resolution, captivating and beautiful witch/wizard portrait.
 `
 };
 
