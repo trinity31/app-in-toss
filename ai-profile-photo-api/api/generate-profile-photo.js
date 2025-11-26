@@ -1,6 +1,18 @@
 import { PROFILE_PROMPTS, DEFAULT_PROMPT, VALID_PROFILE_TYPES } from './prompts.js';
 import { createGenerator, DEFAULT_MODEL, SUPPORTED_MODELS } from './generators/index.js';
 
+// 타입별 모델 매핑 (클라이언트가 모델을 지정하지 않은 경우)
+// 테스트를 위해 각 타입에 다른 모델을 할당하여 품질/비용 비교 가능
+const TYPE_TO_MODEL_MAPPING = {
+  'sns': 'google/nano-banana',        // $0.039 - 기본 모델
+  'professional': 'google/nano-banana',         // $0.03
+  'artist': 'google/nano-banana',                   // $0.03
+  'dating': 'google/nano-banana',     // $0.039
+  'nomad': 'google/nano-banana',                // $0.03
+  'doctor': 'google/nano-banana',                   // $0.03
+  'wicked': 'google/nano-banana'      // $0.039
+};
+
 // 허용된 Origin 목록
 function getAllowedOrigins() {
   return [
@@ -45,11 +57,15 @@ export default async function handler(req, res) {
       imageBase64,
       mimeType = 'image/jpeg',
       profileType = 'professional',
-      model = DEFAULT_MODEL // 기본값: flux-dev
+      model  // 클라이언트가 지정하지 않으면 undefined
     } = req.body;
+
+    // 모델 선택: 클라이언트가 지정하지 않으면 타입별 매핑 사용, 매핑에 없으면 기본 모델 사용
+    const selectedModel = model || TYPE_TO_MODEL_MAPPING[profileType] || DEFAULT_MODEL;
 
     console.log('받은 profileType:', profileType);
     console.log('받은 model:', model);
+    console.log('선택된 model:', selectedModel, model ? '(클라이언트 지정)' : `(타입 매핑: ${profileType})`);
     console.log('이미지 크기:', imageBase64?.length, 'bytes');
     console.log('MIME 타입:', mimeType);
 
@@ -62,10 +78,10 @@ export default async function handler(req, res) {
     }
 
     // 모델 검증
-    if (!SUPPORTED_MODELS.includes(model)) {
+    if (!SUPPORTED_MODELS.includes(selectedModel)) {
       return res.status(400).json({
         success: false,
-        error: `Invalid model: ${model}. Supported models: ${SUPPORTED_MODELS.join(', ')}`
+        error: `Invalid model: ${selectedModel}. Supported models: ${SUPPORTED_MODELS.join(', ')}`
       });
     }
 
@@ -78,7 +94,7 @@ export default async function handler(req, res) {
     console.log('프롬프트 길이:', selectedPrompt.length, 'chars');
 
     // Generator 생성
-    const generator = createGenerator(model);
+    const generator = createGenerator(selectedModel);
 
     // 이미지 생성
     const generatedImage = await generator.generate({
@@ -101,7 +117,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       image: generatedImage,
-      model: model // 어떤 모델을 사용했는지 반환
+      model: selectedModel // 실제 사용된 모델 반환
     });
 
   } catch (error) {

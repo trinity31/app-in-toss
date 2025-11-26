@@ -5,7 +5,6 @@ import Selection from '../components/Selection'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
 import { API_ENDPOINTS, AD_GROUP_ID, AD_WAIT_TIMEOUT_MS } from '../config/const'
-import { getModelForPetType } from '../config/models'
 
 export default function ProfilePage() {
   const [currentPage, setCurrentPage] = useState('intro')
@@ -146,10 +145,6 @@ export default function ProfilePage() {
     console.log('이미지 파일:', imageFile)
     console.log('반려동물 타입:', petType)
 
-    // 타입에 맞는 모델 선택
-    const selectedModel = getModelForPetType(petType)
-    console.log('선택된 모델:', selectedModel)
-
     // Blob을 Base64로 변환
     const reader = new FileReader()
     const base64 = await new Promise((resolve, reject) => {
@@ -164,20 +159,25 @@ export default function ProfilePage() {
 
     console.log('Base64 변환 완료, 길이:', base64.length)
 
+    // API 요청 바디 (모델은 서버에서 타입별로 자동 선택됨)
     const requestBody = {
       imageBase64: base64,
       mimeType: imageFile.type || 'image/jpeg',
-      petType: petType,
-      model: selectedModel
+      petType: petType
     }
 
     console.log('요청 데이터:', {
       mimeType: requestBody.mimeType,
       base64Length: requestBody.imageBase64.length,
-      model: requestBody.model
+      petType: requestBody.petType
     })
 
     console.log('API URL:', API_ENDPOINTS.GENERATE_PET_PHOTO)
+    console.log('🔥 API 요청 본문:', JSON.stringify({
+      petType: requestBody.petType,
+      mimeType: requestBody.mimeType,
+      hasModel: 'model' in requestBody ? '있음' : '없음 (서버 자동 선택)'
+    }))
 
     const response = await fetch(API_ENDPOINTS.GENERATE_PET_PHOTO, {
       method: 'POST',
