@@ -30,8 +30,11 @@ export default function IntroPage({ onNext, error }) {
 
         <Spacing size={12} />
 
-        <p style={styles.subtitle}>
-          AI가 만드는 프로필 사진
+        <Spacing size={8} />
+
+        <p style={styles.description}>
+          구글 최신 이미지 모델 나노바나나🍌를 사용해서<br />
+          퀄리티 높은 이미지를 생성합니다
         </p>
       </div>
 
@@ -180,6 +183,17 @@ const styles = {
     textAlign: 'center',
     margin: 0,
     lineHeight: 1.5,
+  },
+  description: {
+    fontSize: '16px',
+    fontWeight: 600,
+    color: colors.blue500,
+    textAlign: 'center',
+    margin: 0,
+    lineHeight: 1.5,
+    backgroundColor: colors.blue50,
+    padding: '12px 20px',
+    borderRadius: '16px',
   },
   stepContainer: {
     width: '100%',

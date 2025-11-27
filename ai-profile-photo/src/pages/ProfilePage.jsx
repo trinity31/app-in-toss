@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { fetchAlbumPhotos, saveBase64Data, openCamera, GoogleAdMob } from '@apps-in-toss/web-framework'
+import ConfirmModal from '../components/ConfirmModal'
 import Intro from '../components/Intro'
 import Selection from '../components/Selection'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
-import { API_ENDPOINTS } from '../config/api'
+import { API_ENDPOINTS, AD_GROUP_ID } from '../config/api'
 
-// 광고 그룹 ID
-const AD_GROUP_ID = 'ait.live.b1ba8a40762945e6'
+
 
 // 광고 로드 대기 시간 (10초)
 const AD_WAIT_TIMEOUT_MS = 10000
@@ -22,11 +22,15 @@ export default function ProfilePage() {
   // 광고 관련 상태
   const [adLoaded, setAdLoaded] = useState(false)
   const [waitingForAd, setWaitingForAd] = useState(false)
+  const [adLoadError, setAdLoadError] = useState(false) // 광고 로드 에러 상태
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false) // 광고 시청 확인 다이얼로그 상태
+  const [loadingMessage, setLoadingMessage] = useState(null) // 로딩 메시지 상태
 
   // Refs
   const cleanupRef = useRef(undefined)
   const adWaitTimeoutRef = useRef(undefined)
   const rewardEarnedRef = useRef(false)
+  const adPlayCountRef = useRef(0) // 광고 시청 횟수 추적
   const selectedProfileTypeRef = useRef('professional') // 선택한 프로필 타입 저장
 
   const handleAlbumSelect = async () => {
@@ -42,18 +46,44 @@ export default function ProfilePage() {
 
       console.log('갤러리 열기 시작...')
 
-      // 갤러리에서 사진 선택
-      const photos = await fetchAlbumPhotos({
-        maxCount: 1,
-        maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
-        base64: true    // Base64 형식으로
+      // 갤러리 열기 전 로딩 표시
+      setLoadingMessage({
+        title: '사진을 불러오고 있어요',
+        description: '잠시만 기다려주세요'
       })
+      setCurrentPage('loading')
+
+      // 갤러리에서 사진 선택
+      let photos;
+      try {
+        photos = await fetchAlbumPhotos({
+          maxCount: 1,
+          maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
+          base64: true    // Base64 형식으로
+        })
+      } catch (apiError) {
+        console.error('fetchAlbumPhotos 에러:', apiError)
+        // API 호출 실패 시 Intro로 복귀
+        setLoadingMessage(null)
+        setCurrentPage('intro')
+        return
+      }
+
       console.log('선택된 사진:', photos)
 
       if (!photos || photos.length === 0) {
         console.log('사진이 선택되지 않음')
-        return // 사용자가 취소한 경우
+        // 취소 시 Intro로 복귀
+        setLoadingMessage(null)
+        setCurrentPage('intro')
+        return
       }
+
+      // 사진 처리 중 로딩 메시지 변경
+      setLoadingMessage({
+        title: '사진을 처리하고 있어요',
+        description: '잠시만 기다려주세요'
+      })
 
       const photo = photos[0]
       console.log('사진 정보:', photo)
@@ -84,6 +114,7 @@ export default function ProfilePage() {
 
       setSelectedImage(imageBlob)
       // 갤러리 선택 후 용도 선택 페이지로 이동
+      setLoadingMessage(null) // 로딩 메시지 초기화
       setCurrentPage('selection')
 
     } catch (err) {
@@ -92,6 +123,7 @@ export default function ProfilePage() {
       console.error('오류 메시지:', err.message)
       console.error('오류 스택:', err.stack)
       setError(`이미지를 선택하는 중 오류가 발생했습니다: ${err.message}`)
+      setLoadingMessage(null)
       setCurrentPage('intro')
     }
   }
@@ -108,18 +140,43 @@ export default function ProfilePage() {
 
       console.log('카메라 열기 시작...')
 
-      // 카메라로 사진 촬영
-      const photo = await openCamera({
-        maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
-        base64: true    // Base64 형식으로
+      // 카메라 열기 전 로딩 표시
+      setLoadingMessage({
+        title: '카메라를 불러오고 있어요',
+        description: '잠시만 기다려주세요'
       })
+      setCurrentPage('loading')
+
+      // 카메라로 사진 촬영
+      let photo;
+      try {
+        photo = await openCamera({
+          maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
+          base64: true    // Base64 형식으로
+        })
+      } catch (apiError) {
+        console.error('openCamera 에러:', apiError)
+        // API 호출 실패 시 Intro로 복귀
+        setLoadingMessage(null)
+        setCurrentPage('intro')
+        return
+      }
 
       console.log('촬영된 사진:', photo)
 
       if (!photo || !photo.dataUri) {
         console.log('사진이 촬영되지 않음')
-        return // 사용자가 취소한 경우
+        // 취소 시 Intro로 복귀
+        setLoadingMessage(null)
+        setCurrentPage('intro')
+        return
       }
+
+      // 사진 처리 중 로딩 메시지 변경
+      setLoadingMessage({
+        title: '사진을 처리하고 있어요',
+        description: '잠시만 기다려주세요'
+      })
 
       // dataUri 정규화 (data: 접두사 확인)
       const normalizedDataUri = photo.dataUri.startsWith('data:')
@@ -135,6 +192,7 @@ export default function ProfilePage() {
 
       setSelectedImage(imageBlob)
       // 카메라 촬영 후 용도 선택 페이지로 이동
+      setLoadingMessage(null) // 로딩 메시지 초기화
       setCurrentPage('selection')
 
     } catch (err) {
@@ -142,6 +200,7 @@ export default function ProfilePage() {
       console.error('오류 이름:', err.name)
       console.error('오류 메시지:', err.message)
       setError(`카메라 촬영 중 오류가 발생했습니다: ${err.message}`)
+      setLoadingMessage(null)
       setCurrentPage('intro')
     }
   }
@@ -232,6 +291,7 @@ export default function ProfilePage() {
       cleanupRef.current = undefined
 
       setAdLoaded(false)
+      setAdLoadError(false) // 에러 상태 초기화
       console.log('🔄 광고 로드 시작...')
 
       // 광고 로드
@@ -245,14 +305,18 @@ export default function ProfilePage() {
         },
         onError: (loadError) => {
           console.error('❌ 광고 로드 실패:', loadError)
+          console.error('❌ 광고 로드 실패:', loadError)
           setAdLoaded(false)
+          setAdLoadError(true) // 에러 상태 설정
         }
       })
 
       cleanupRef.current = cleanup
     } catch (loadError) {
       console.error('⚠️ 광고 로드 예외:', loadError)
+      console.error('⚠️ 광고 로드 예외:', loadError)
       setAdLoaded(false)
+      setAdLoadError(true) // 에러 상태 설정
     }
   }
 
@@ -294,17 +358,28 @@ export default function ProfilePage() {
 
               // 보상 획득 여부 확인
               if (rewardEarnedRef.current) {
-                console.log('✅ 보상형 광고 완료 - 프로필 생성 진행')
-                setCurrentPage('loading')
-                generateProfile()
+                // 광고 시청 횟수 증가
+                adPlayCountRef.current += 1
+                console.log(`✅ 보상형 광고 완료 (${adPlayCountRef.current}/2)`)
+
+                if (adPlayCountRef.current >= 2) {
+                  console.log('🎉 2회 시청 완료 - 프로필 생성 진행')
+                  setCurrentPage('loading')
+                  generateProfile()
+                  // 다음 생성을 위해 미리 로드
+                  loadAd()
+                } else {
+                  console.log('⏳ 1회 시청 완료 - 한 번 더 시청 필요')
+                  setIsConfirmDialogOpen(true)
+                  // 여기서는 loadAd()를 호출하지 않음 (다이얼로그 확인 시 호출)
+                }
               } else {
                 console.warn('⚠️ 보상형 광고 중도 종료 - 프로필 생성하지 않음')
                 setCurrentPage('intro')
                 setError('광고를 끝까지 시청해주세요')
+                // 중도 종료 시에는 다음 광고 로드
+                loadAd()
               }
-
-              // 다음 광고 로드
-              loadAd()
               break
 
             case 'failedToShow':
@@ -388,7 +463,9 @@ export default function ProfilePage() {
     setCurrentPage('intro')
     setSelectedImage(null)
     setSelectedProfileType('professional')
+    setSelectedProfileType('professional')
     selectedProfileTypeRef.current = 'professional' // ref도 초기화
+    adPlayCountRef.current = 0 // 광고 시청 횟수 초기화
     setGeneratedImageUrl(null)
     setError(null)
 
@@ -399,6 +476,7 @@ export default function ProfilePage() {
   const handleProfileTypeSelect = async (profileType) => {
     setSelectedProfileType(profileType)
     selectedProfileTypeRef.current = profileType // ref에도 저장
+    adPlayCountRef.current = 0 // 타입 변경 시 광고 시청 횟수 초기화
 
     try {
       const isSupported = GoogleAdMob?.showAppsInTossAdMob?.isSupported?.()
@@ -442,6 +520,7 @@ export default function ProfilePage() {
     setSelectedImage(null)
     setSelectedProfileType('professional')
     selectedProfileTypeRef.current = 'professional' // ref도 초기화
+    adPlayCountRef.current = 0 // 광고 시청 횟수 초기화
     setCurrentPage('intro')
   }
 
@@ -481,6 +560,19 @@ export default function ProfilePage() {
     }
   }
 
+  const handleConfirmDialogConfirm = () => {
+    setIsConfirmDialogOpen(false)
+
+    // 다음 광고 로드 및 표시 준비
+    setWaitingForAd(true)
+
+    // 로딩 화면 표시 (Loader가 포함된 Loading 컴포넌트)
+    setCurrentPage('loading')
+
+    // 광고 로드 (이미 로드되어 있을 수도 있지만 확실히 하기 위해 호출)
+    loadAd()
+  }
+
   const renderPage = () => {
     switch (currentPage) {
       case 'intro':
@@ -505,7 +597,14 @@ export default function ProfilePage() {
           />
         )
       case 'loading':
-        return <Loading />
+        return (
+          <Loading
+            error={adLoadError}
+            onRetry={loadAd}
+            title={loadingMessage?.title}
+            description={loadingMessage?.description}
+          />
+        )
       case 'result':
         return (
           <Result
@@ -530,5 +629,25 @@ export default function ProfilePage() {
     }
   }
 
-  return renderPage()
+
+
+  return (
+    <>
+      {renderPage()}
+      <ConfirmModal
+        open={isConfirmDialogOpen}
+        onClose={() => setIsConfirmDialogOpen(false)}
+        title="광고를 한 번 더 시청해주세요"
+        description={'프로필 생성을 위해서는\n광고를 총 2번 시청해야 해요.'}
+        confirmButton={{
+          text: '시청하기',
+          onClick: handleConfirmDialogConfirm
+        }}
+        cancelButton={{
+          text: '취소',
+          onClick: () => setIsConfirmDialogOpen(false)
+        }}
+      />
+    </>
+  )
 }

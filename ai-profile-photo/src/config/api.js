@@ -9,3 +9,7 @@ export const API_ENDPOINTS = {
   GET_PROFILE_TYPES: `${API_BASE_URL}/get-profile-types`,
   GENERATE_PROFILE: `${API_BASE_URL}/generate-profile-photo`
 };
+
+// 광고 그룹 ID
+export const AD_GROUP_ID = 'ait.live.b1ba8a40762945e6';  //라이브
+//export const AD_GROUP_ID = 'ait-ad-test-rewarded-id';  //테스트
