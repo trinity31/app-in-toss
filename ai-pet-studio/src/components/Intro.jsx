@@ -30,8 +30,15 @@ export default function IntroPage({ onNext, error }) {
 
         <Spacing size={12} />
 
-        <p style={styles.subtitle}>
-          AI가 만드는 반려동물 사진
+        {/* <p style={styles.subtitle}>
+          AI가 만드는 프로필 사진
+        </p> */}
+
+        <Spacing size={8} />
+
+        <p style={styles.description}>
+          구글 최신 이미지 모델 나노바나나🍌 로, <br />
+          퀄리티 높은 이미지를 생성합니다
         </p>
       </div>
 
@@ -180,6 +187,17 @@ const styles = {
     textAlign: 'center',
     margin: 0,
     lineHeight: 1.5,
+  },
+  description: {
+    fontSize: '16px',
+    fontWeight: 600,
+    color: '#FF1493', // Hot Pink (DeepPink for readability)
+    textAlign: 'center',
+    margin: 0,
+    lineHeight: 1.5,
+    backgroundColor: 'rgba(255, 20, 147, 0.1)', // Transparent Hot Pink
+    padding: '12px 20px',
+    borderRadius: '16px',
   },
   stepContainer: {
     width: '100%',
