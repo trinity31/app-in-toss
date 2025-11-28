@@ -30,12 +30,12 @@ export default function Loading({ error, onRetry, title, description }) {
             <div style={styles.loaderWrapper}>
               <Loader size="large" />
             </div>
-            <h2 style={styles.title}>{title || 'AI 프로필 생성 중...'}</h2>
+            <h2 style={styles.title}>{title || 'AI 펫 프로필 생성 중...'}</h2>
             <p style={styles.description}>
               {description || (
                 <>
                   잠시만 기다려주세요.<br />
-                  멋진 프로필을 만들고 있어요.
+                  멋진 펫 프로필을 만들고 있어요.
                 </>
               )}
             </p>

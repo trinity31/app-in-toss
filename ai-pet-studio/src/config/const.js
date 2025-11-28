@@ -12,6 +12,7 @@ export const API_ENDPOINTS = {
 
 // 광고 그룹 ID
 export const AD_GROUP_ID = 'ait.live.75b5007d7da84183';
+//export const AD_GROUP_ID = 'ait-ad-test-rewarded-id';  //테스트
 
 // 광고 로드 대기 시간 (10초)
 export const AD_WAIT_TIMEOUT_MS = 10000;

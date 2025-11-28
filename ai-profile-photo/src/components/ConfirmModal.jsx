@@ -65,7 +65,7 @@ const styles = {
     lineHeight: 1.4,
   },
   description: {
-    fontSize: '14px',
+    fontSize: '16px',
     fontWeight: 400,
     color: colors.grey700,
     margin: 0,

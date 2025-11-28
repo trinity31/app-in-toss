@@ -32,6 +32,7 @@ export default function ProfilePage() {
   const rewardEarnedRef = useRef(false)
   const adPlayCountRef = useRef(0) // 광고 시청 횟수 추적
   const selectedProfileTypeRef = useRef('professional') // 선택한 프로필 타입 저장
+  const preloadedImageUrlRef = useRef(null) // 미리 로드된 이미지 URL 저장
 
   const handleAlbumSelect = async () => {
     try {
@@ -365,7 +366,18 @@ export default function ProfilePage() {
                 if (adPlayCountRef.current >= 2) {
                   console.log('🎉 2회 시청 완료 - 프로필 생성 진행')
                   setCurrentPage('loading')
-                  generateProfile()
+
+                  // 미리 로드된 이미지가 있으면 사용, 없으면 새로 생성
+                  if (preloadedImageUrlRef.current) {
+                    console.log('✅ 미리 로드된 이미지 사용')
+                    setGeneratedImageUrl(preloadedImageUrlRef.current)
+                    setCurrentPage('result')
+                    preloadedImageUrlRef.current = null // 사용 후 초기화
+                  } else {
+                    console.log('⏳ 이미지 생성 대기 중')
+                    generateProfile()
+                  }
+
                   // 다음 생성을 위해 미리 로드
                   loadAd()
                 } else {
@@ -466,6 +478,7 @@ export default function ProfilePage() {
     setSelectedProfileType('professional')
     selectedProfileTypeRef.current = 'professional' // ref도 초기화
     adPlayCountRef.current = 0 // 광고 시청 횟수 초기화
+    preloadedImageUrlRef.current = null // 미리 로드된 이미지 초기화
     setGeneratedImageUrl(null)
     setError(null)
 
@@ -560,7 +573,7 @@ export default function ProfilePage() {
     }
   }
 
-  const handleConfirmDialogConfirm = () => {
+  const handleConfirmDialogConfirm = async () => {
     setIsConfirmDialogOpen(false)
 
     // 다음 광고 로드 및 표시 준비
@@ -571,6 +584,34 @@ export default function ProfilePage() {
 
     // 광고 로드 (이미 로드되어 있을 수도 있지만 확실히 하기 위해 호출)
     loadAd()
+
+    // 최대 대기 시간 후 광고 없이 진행
+    adWaitTimeoutRef.current = setTimeout(() => {
+      console.warn(`⚠️ 2번째 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
+      setWaitingForAd(false)
+
+      // 미리 로드된 이미지가 있으면 즉시 표시, 없으면 생성
+      if (preloadedImageUrlRef.current) {
+        console.log('✅ 미리 로드된 이미지 사용')
+        setGeneratedImageUrl(preloadedImageUrlRef.current)
+        setCurrentPage('result')
+        preloadedImageUrlRef.current = null
+      } else {
+        console.log('⏳ 이미지 생성 대기 중')
+        generateProfile()
+      }
+    }, AD_WAIT_TIMEOUT_MS)
+
+    // 동시에 API 호출 시작 (백그라운드에서 실행)
+    console.log('🚀 두 번째 광고 로딩과 동시에 API 호출 시작')
+    try {
+      const imageDataUri = await uploadAndGenerateProfile(selectedImage, selectedProfileTypeRef.current)
+      preloadedImageUrlRef.current = imageDataUri
+      console.log('✅ API 응답 완료 - 이미지 미리 로드됨')
+    } catch (err) {
+      console.error('❌ 미리 로드 실패:', err)
+      // 실패한 경우 preloadedImageUrlRef는 null로 유지되어 나중에 다시 시도함
+    }
   }
 
   const renderPage = () => {
@@ -638,7 +679,7 @@ export default function ProfilePage() {
         open={isConfirmDialogOpen}
         onClose={() => setIsConfirmDialogOpen(false)}
         title="광고를 한 번 더 시청해주세요"
-        description={'프로필 생성을 위해서는\n광고를 총 2번 시청해야 해요.'}
+        description={'광고를 시청하는 동안\n프로필 사진을 생성할게요.'}
         confirmButton={{
           text: '시청하기',
           onClick: handleConfirmDialogConfirm
