@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function GenderSelect({ onNext, onBack }) {
-  const [selectedGender, setSelectedGender] = useState(null)
+export default function GenderSelect({ onNext, onBack, initialGender = null }) {
+  const [selectedGender, setSelectedGender] = useState(initialGender)
+
+  useEffect(() => {
+    setSelectedGender(initialGender)
+  }, [initialGender])
 
   const handleGenderSelect = (gender) => {
     setSelectedGender(gender)

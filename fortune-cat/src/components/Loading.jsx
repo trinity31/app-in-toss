@@ -13,7 +13,7 @@ export default function Loading({ userData, onNext }) {
   useEffect(() => {
     const loadAd = async () => {
       try {
-        const { GoogleAdMob } = await import('@apps-in-toss/framework')
+        const { GoogleAdMob } = await import('@apps-in-toss/web-framework')
 
         const isAdUnsupported = GoogleAdMob.loadAppsInTossAdMob.isSupported?.() === false
 
@@ -78,7 +78,7 @@ export default function Loading({ userData, onNext }) {
 
   const showAd = async () => {
     try {
-      const { GoogleAdMob } = await import('@apps-in-toss/framework')
+      const { GoogleAdMob } = await import('@apps-in-toss/web-framework')
 
       const isAdUnsupported = GoogleAdMob.showAppsInTossAdMob.isSupported?.() === false
 

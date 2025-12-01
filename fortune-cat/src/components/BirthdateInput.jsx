@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react'
 
-export default function BirthdateInput({ name, onNext, onBack }) {
-  const [year, setYear] = useState('')
-  const [month, setMonth] = useState('')
-  const [day, setDay] = useState('')
-  const [hour, setHour] = useState('')
-  const [minute, setMinute] = useState('')
+export default function BirthdateInput({ name, onNext, onBack, initialBirthdate = {} }) {
+  const [year, setYear] = useState(initialBirthdate?.year || '')
+  const [month, setMonth] = useState(initialBirthdate?.month || '')
+  const [day, setDay] = useState(initialBirthdate?.day || '')
+  const [hour, setHour] = useState(initialBirthdate?.hour || '')
+  const [minute, setMinute] = useState(initialBirthdate?.minute || '')
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
   const isValid = year && month && day
+
+  useEffect(() => {
+    if (initialBirthdate) {
+      setYear(initialBirthdate.year || '')
+      setMonth(initialBirthdate.month || '')
+      setDay(initialBirthdate.day || '')
+      setHour(initialBirthdate.hour || '')
+      setMinute(initialBirthdate.minute || '')
+    }
+  }, [initialBirthdate])
 
   useEffect(() => {
     const handleResize = () => {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Intro from '../components/Intro'
 import NameInput from '../components/NameInput'
 import BirthdateInput from '../components/BirthdateInput'
@@ -7,14 +7,33 @@ import FortuneTypeSelect from '../components/FortuneTypeSelect'
 import PhotoUpload from '../components/PhotoUpload'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
+import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 
 export default function SajuPage() {
   const [currentPage, setCurrentPage] = useState('intro')
   const [userData, setUserData] = useState({})
+  const [isInitializing, setIsInitializing] = useState(true)
+
+  const { loading, storedUserInfo, saveUserInfo } = useUserInfoStorage()
+
+  // 저장된 정보로 초기화
+  useEffect(() => {
+    if (!loading) {
+      if (storedUserInfo) {
+        setUserData(storedUserInfo)
+      }
+      setIsInitializing(false)
+    }
+  }, [loading, storedUserInfo])
 
   const handleNext = (data) => {
     const updatedData = { ...userData, ...data }
     setUserData(updatedData)
+
+    // 사용자 기본 정보만 저장 (name, birthdate, gender)
+    if (data.name || data.birthdate || data.gender) {
+      saveUserInfo(updatedData)
+    }
 
     // 페이지 순서대로 이동
     if (currentPage === 'intro') {
@@ -59,11 +78,11 @@ export default function SajuPage() {
       case 'intro':
         return <Intro onNext={handleNext} />
       case 'name':
-        return <NameInput onNext={handleNext} onBack={handleBack} />
+        return <NameInput onNext={handleNext} onBack={handleBack} initialValue={userData.name || ''} />
       case 'birthdate':
-        return <BirthdateInput name={userData.name} onNext={handleNext} onBack={handleBack} />
+        return <BirthdateInput name={userData.name} onNext={handleNext} onBack={handleBack} initialBirthdate={userData.birthdate || {}} />
       case 'gender':
-        return <GenderSelect onNext={handleNext} onBack={handleBack} />
+        return <GenderSelect onNext={handleNext} onBack={handleBack} initialGender={userData.gender || null} />
       case 'fortuneType':
         return <FortuneTypeSelect onNext={handleNext} onBack={handleBack} />
       case 'photoUpload':
@@ -75,6 +94,21 @@ export default function SajuPage() {
       default:
         return <Intro onNext={handleNext} />
     }
+  }
+
+  if (isInitializing) {
+    return (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        fontSize: '16px',
+        color: '#8B95A1'
+      }}>
+        로딩 중...
+      </div>
+    )
   }
 
   return renderPage()

@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
 
-export default function NameInput({ onNext }) {
-  const [name, setName] = useState('')
+export default function NameInput({ onNext, initialValue = '' }) {
+  const [name, setName] = useState(initialValue)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+
+  useEffect(() => {
+    setName(initialValue)
+  }, [initialValue])
 
   useEffect(() => {
     const handleResize = () => {

@@ -9,7 +9,7 @@ export default function PhotoUpload({ onNext, onBack }) {
       setIsLoading(true)
 
       // Apps in Toss 프레임워크의 fetchAlbumPhotos API 호출
-      const { fetchAlbumPhotos } = await import('@apps-in-toss/framework')
+      const { fetchAlbumPhotos } = await import('@apps-in-toss/web-framework')
 
       // 권한 확인
       const permission = await fetchAlbumPhotos.getPermission()
