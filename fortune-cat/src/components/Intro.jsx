@@ -60,7 +60,7 @@ export default function Intro({ onNext }) {
           aria-label="이전"
         >
           <svg width="16" height="48" viewBox="0 0 16 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 6L4 24L12 42" stroke="#B0B8C1" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 6L4 24L12 42" stroke="#B0B8C1" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
         <img
@@ -82,7 +82,7 @@ export default function Intro({ onNext }) {
           aria-label="다음"
         >
           <svg width="16" height="48" viewBox="0 0 16 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6L12 24L4 42" stroke="#B0B8C1" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4 6L12 24L4 42" stroke="#B0B8C1" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>

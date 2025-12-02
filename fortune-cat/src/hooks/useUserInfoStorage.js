@@ -23,6 +23,7 @@ export function useUserInfoStorage() {
     setLoading(true)
     try {
       const jsonString = await Storage.getItem(USER_INFO_STORAGE_KEY)
+      console.log('[Storage] 불러온 데이터:', jsonString)
 
       if (!jsonString) {
         setStoredUserInfo(null)
@@ -30,14 +31,16 @@ export function useUserInfoStorage() {
       }
 
       const parsed = JSON.parse(jsonString)
+      console.log('[Storage] 파싱된 데이터:', parsed)
 
       if (!isValidUserInfo(parsed)) {
-        console.warn('저장된 데이터가 유효하지 않습니다.')
+        console.warn('[Storage] 저장된 데이터가 유효하지 않습니다:', parsed)
         await Storage.removeItem(USER_INFO_STORAGE_KEY)
         setStoredUserInfo(null)
         return null
       }
 
+      console.log('[Storage] 유효한 데이터 로드 성공:', parsed)
       setStoredUserInfo(parsed)
       return parsed
     } catch (error) {
@@ -56,12 +59,17 @@ export function useUserInfoStorage() {
 
   const saveUserInfo = useCallback(async (userInfo) => {
     try {
+      console.log('[Storage] 저장 시도:', userInfo)
+
       if (!isValidUserInfo(userInfo)) {
+        console.error('[Storage] 유효하지 않은 데이터:', userInfo)
         throw new Error('유효하지 않은 사용자 정보입니다.')
       }
 
       const jsonString = JSON.stringify(userInfo)
+      console.log('[Storage] JSON 변환 완료:', jsonString)
       await Storage.setItem(USER_INFO_STORAGE_KEY, jsonString)
+      console.log('[Storage] 저장 완료')
       setStoredUserInfo(userInfo)
       return true
     } catch (error) {

@@ -53,10 +53,10 @@ export default function NameInput({ onNext, initialValue = '' }) {
           placeholder="이름 또는 닉네임"
           style={{
             width: '100%',
-            padding: '16px 0',
-            fontSize: '16px',
+            padding: '20px 0',
+            fontSize: '24px',
             border: 'none',
-            borderBottom: '1px solid #E5E8EB',
+            borderBottom: '2px solid #E5E8EB',
             outline: 'none',
             color: '#191F28'
           }}

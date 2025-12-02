@@ -32,7 +32,13 @@ export default function SajuPage() {
 
     // 사용자 기본 정보만 저장 (name, birthdate, gender)
     if (data.name || data.birthdate || data.gender) {
-      saveUserInfo(updatedData)
+      // 저장할 때는 필요한 필드만 추출 (순환 참조 방지)
+      const dataToSave = {
+        name: updatedData.name,
+        birthdate: updatedData.birthdate,
+        gender: updatedData.gender
+      }
+      saveUserInfo(dataToSave)
     }
 
     // 페이지 순서대로 이동
@@ -80,7 +86,7 @@ export default function SajuPage() {
       case 'name':
         return <NameInput onNext={handleNext} onBack={handleBack} initialValue={userData.name || ''} />
       case 'birthdate':
-        return <BirthdateInput name={userData.name} onNext={handleNext} onBack={handleBack} initialBirthdate={userData.birthdate || {}} />
+        return <BirthdateInput name={userData.name} onNext={handleNext} onBack={handleBack} initialBirthdate={userData.birthdate || null} />
       case 'gender':
         return <GenderSelect onNext={handleNext} onBack={handleBack} initialGender={userData.gender || null} />
       case 'fortuneType':

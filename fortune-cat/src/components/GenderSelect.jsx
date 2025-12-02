@@ -1,17 +1,29 @@
 import { useState, useEffect } from 'react'
 
 export default function GenderSelect({ onNext, onBack, initialGender = null }) {
-  const [selectedGender, setSelectedGender] = useState(initialGender)
+  const [selectedGender, setSelectedGender] = useState(initialGender || null)
 
   useEffect(() => {
-    setSelectedGender(initialGender)
+    setSelectedGender(initialGender || null)
   }, [initialGender])
 
   const handleGenderSelect = (gender) => {
+    // 이미 선택된 성별을 다시 클릭한 경우 바로 이동
+    if (selectedGender === gender) {
+      onNext({ gender })
+      return
+    }
+    // 새로운 성별 선택
     setSelectedGender(gender)
     setTimeout(() => {
       onNext({ gender })
     }, 500)
+  }
+
+  const handleSubmit = () => {
+    if (selectedGender) {
+      onNext({ gender: selectedGender })
+    }
   }
 
   return (
@@ -24,7 +36,6 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <button
             onClick={() => handleGenderSelect('female')}
-            disabled={selectedGender !== null}
             style={{
               width: '100%',
               padding: '20px',
@@ -34,7 +45,7 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
               background: selectedGender === 'female' ? 'var(--color-primary-light)' : 'var(--color-white)',
               border: `2px solid ${selectedGender === 'female' ? 'var(--color-primary)' : 'var(--color-gray-200)'}`,
               borderRadius: '12px',
-              cursor: selectedGender !== null ? 'not-allowed' : 'pointer',
+              cursor: 'pointer',
               textAlign: 'left',
               transition: 'all 0.2s ease'
             }}
@@ -44,7 +55,6 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
 
           <button
             onClick={() => handleGenderSelect('male')}
-            disabled={selectedGender !== null}
             style={{
               width: '100%',
               padding: '20px',
@@ -54,7 +64,7 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
               background: selectedGender === 'male' ? 'var(--color-primary-light)' : 'var(--color-white)',
               border: `2px solid ${selectedGender === 'male' ? 'var(--color-primary)' : 'var(--color-gray-200)'}`,
               borderRadius: '12px',
-              cursor: selectedGender !== null ? 'not-allowed' : 'pointer',
+              cursor: 'pointer',
               textAlign: 'left',
               transition: 'all 0.2s ease'
             }}
@@ -71,13 +81,15 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
         right: 0,
         padding: '16px 20px calc(16px + env(safe-area-inset-bottom))',
         background: '#fff',
+        display: 'flex',
+        gap: '12px',
         zIndex: 1000,
         boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.08)'
       }}>
         <button
           onClick={onBack}
           style={{
-            width: '100%',
+            flex: 1,
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -90,6 +102,24 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
         >
           이전
         </button>
+        {selectedGender && (
+          <button
+            onClick={handleSubmit}
+            style={{
+              flex: 1,
+              padding: '16px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: '#fff',
+              background: 'var(--color-primary)',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            다음
+          </button>
+        )}
       </div>
     </>
   )

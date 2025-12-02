@@ -61,7 +61,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
   return (
     <>
       <div style={{ padding: '20px 20px 100px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 24px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
           원하는 결과를 선택해 주세요
         </h1>
 
