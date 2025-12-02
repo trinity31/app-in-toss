@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { Menu } from '@toss/tds-mobile'
 
 export default function BirthdateInput({ name, onNext, onBack, initialBirthdate = {} }) {
   const [year, setYear] = useState(initialBirthdate?.year || '')
@@ -10,9 +9,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
   const [minuteRange, setMinuteRange] = useState('')
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const [periodMenuOpen, setPeriodMenuOpen] = useState(false)
-  const [hourMenuOpen, setHourMenuOpen] = useState(false)
-  const [minuteMenuOpen, setMinuteMenuOpen] = useState(false)
+  const [activeMenu, setActiveMenu] = useState(null)
 
   const yearRef = useRef(null)
   const monthRef = useRef(null)
@@ -234,179 +231,269 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
 
         <div style={{ margin: '0 -20px' }}>
           <div style={{ padding: '0 20px' }}>
-            <div style={{ display: 'flex', gap: '1px', alignItems: 'center' }}>
-          <div style={{ flex: 1 }}>
-            <Menu.Trigger
-              open={periodMenuOpen}
-              onOpen={() => setPeriodMenuOpen(true)}
-              onClose={() => setPeriodMenuOpen(false)}
-              placement="bottom-start"
-              dropdown={
-                <Menu.Dropdown header={<Menu.Header>시간대</Menu.Header>}>
-                  <Menu.DropdownCheckItem
-                    checked={period === 'AM'}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        setPeriod('AM')
-                        setPeriodMenuOpen(false)
-                      }
-                    }}
-                  >
-                    오전
-                  </Menu.DropdownCheckItem>
-                  <Menu.DropdownCheckItem
-                    checked={period === 'PM'}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        setPeriod('PM')
-                        setPeriodMenuOpen(false)
-                      }
-                    }}
-                  >
-                    오후
-                  </Menu.DropdownCheckItem>
-                </Menu.Dropdown>
-              }
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div style={{ flex: '1 1 0' }}>
+            <button
+              onClick={() => setActiveMenu('period')}
+              style={{
+                width: '100%',
+                padding: '20px 12px',
+                fontSize: '16px',
+                border: '1px solid #E5E8EB',
+                borderRadius: '8px',
+                color: period ? '#191F28' : '#8B95A1',
+                background: '#fff',
+                cursor: 'pointer',
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                whiteSpace: 'nowrap',
+                minHeight: '56px',
+                boxSizing: 'border-box'
+              }}
             >
-              <div
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  fontSize: '18px',
-                  border: '1px solid #E5E8EB',
-                  borderRadius: '8px',
-                  color: period ? '#191F28' : '#8B95A1',
-                  background: '#fff',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
-                }}
-              >
-                {period === 'AM' ? '오전' : period === 'PM' ? '오후' : '오전/오후'}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
-                </svg>
-              </div>
-            </Menu.Trigger>
+              {period === 'AM' ? '오전' : period === 'PM' ? '오후' : '시간대'}
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+              </svg>
+            </button>
           </div>
 
-          <div style={{ flex: 1 }}>
-            <Menu.Trigger
-              open={hourMenuOpen}
-              onOpen={() => setHourMenuOpen(true)}
-              onClose={() => setHourMenuOpen(false)}
-              placement="bottom-start"
-              dropdown={
-                <Menu.Dropdown
-                  header={<Menu.Header>시간 선택</Menu.Header>}
-                  style={{ maxHeight: '300px', overflowY: 'auto' }}
-                >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((h) => (
-                    <Menu.DropdownCheckItem
-                      key={h}
-                      checked={hour12 === String(h)}
-                      onCheckedChange={(checked) => {
-                        if (checked) {
-                          setHour12(String(h))
-                          setHourMenuOpen(false)
-                        }
-                      }}
-                    >
-                      {h}시
-                    </Menu.DropdownCheckItem>
-                  ))}
-                </Menu.Dropdown>
-              }
+          <div style={{ flex: '1 1 0' }}>
+            <button
+              onClick={() => setActiveMenu('hour')}
+              style={{
+                width: '100%',
+                padding: '20px 12px',
+                fontSize: '16px',
+                border: '1px solid #E5E8EB',
+                borderRadius: '8px',
+                color: hour12 ? '#191F28' : '#8B95A1',
+                background: '#fff',
+                cursor: 'pointer',
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                whiteSpace: 'nowrap',
+                minHeight: '56px',
+                boxSizing: 'border-box'
+              }}
             >
-              <div
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  fontSize: '18px',
-                  border: '1px solid #E5E8EB',
-                  borderRadius: '8px',
-                  color: hour12 ? '#191F28' : '#8B95A1',
-                  background: '#fff',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
-                }}
-              >
-                {hour12 ? `${hour12}시` : '시'}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
-                </svg>
-              </div>
-            </Menu.Trigger>
+              {hour12 ? `${hour12}시` : '시'}
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+              </svg>
+            </button>
           </div>
 
-          <div style={{ flex: 1.1 }}>
-            <Menu.Trigger
-              open={minuteMenuOpen}
-              onOpen={() => setMinuteMenuOpen(true)}
-              onClose={() => setMinuteMenuOpen(false)}
-              placement="bottom-start"
-              dropdown={
-                <Menu.Dropdown header={<Menu.Header>분 선택</Menu.Header>}>
-                  <Menu.DropdownCheckItem
-                    checked={minuteRange === '0-29'}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        setMinuteRange('0-29')
-                        setMinuteMenuOpen(false)
-                      }
-                    }}
-                  >
-                    0~29분
-                  </Menu.DropdownCheckItem>
-                  <Menu.DropdownCheckItem
-                    checked={minuteRange === '30-59'}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        setMinuteRange('30-59')
-                        setMinuteMenuOpen(false)
-                      }
-                    }}
-                  >
-                    30~59분
-                  </Menu.DropdownCheckItem>
-                </Menu.Dropdown>
-              }
+          <div style={{ flex: '1 1 0' }}>
+            <button
+              onClick={() => setActiveMenu('minute')}
+              style={{
+                width: '100%',
+                padding: '20px 12px',
+                fontSize: '16px',
+                border: '1px solid #E5E8EB',
+                borderRadius: '8px',
+                color: minuteRange ? '#191F28' : '#8B95A1',
+                background: '#fff',
+                cursor: 'pointer',
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                whiteSpace: 'nowrap',
+                minHeight: '56px',
+                boxSizing: 'border-box'
+              }}
             >
-              <div
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  fontSize: '18px',
-                  border: '1px solid #E5E8EB',
-                  borderRadius: '8px',
-                  color: minuteRange ? '#191F28' : '#8B95A1',
-                  background: '#fff',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '4px'
-                }}
-              >
-                {minuteRange === '0-29' ? '0~29분' : minuteRange === '30-59' ? '30~59분' : '분'}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
-                </svg>
-              </div>
-            </Menu.Trigger>
+              {minuteRange === '0-29' ? '0~29분' : minuteRange === '30-59' ? '30~59분' : '분'}
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+              </svg>
+            </button>
           </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* 커스텀 드롭다운 모달 */}
+      {activeMenu && (
+        <>
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 2000
+            }}
+            onClick={() => setActiveMenu(null)}
+          />
+          <div
+            style={{
+              position: 'fixed',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: '#fff',
+              borderTopLeftRadius: '24px',
+              borderTopRightRadius: '24px',
+              padding: '28px 20px calc(28px + env(safe-area-inset-bottom))',
+              zIndex: 2001
+            }}
+          >
+            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#191F28', margin: '0 0 20px 0', textAlign: 'center' }}>
+              {activeMenu === 'period' && '시간대 선택'}
+              {activeMenu === 'hour' && '시간 선택'}
+              {activeMenu === 'minute' && '분 선택'}
+            </h3>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '300px', overflowY: 'auto' }}>
+              {activeMenu === 'period' && (
+                <>
+                  <button
+                    onClick={() => {
+                      setPeriod('AM')
+                      setActiveMenu(null)
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      color: '#191F28',
+                      background: '#fff',
+                      border: '1px solid #E5E8EB',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      textAlign: 'center'
+                    }}
+                  >
+                    오전
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPeriod('PM')
+                      setActiveMenu(null)
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      color: '#191F28',
+                      background: '#fff',
+                      border: '1px solid #E5E8EB',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      textAlign: 'center'
+                    }}
+                  >
+                    오후
+                  </button>
+                </>
+              )}
+
+              {activeMenu === 'hour' &&
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((h) => (
+                  <button
+                    key={h}
+                    onClick={() => {
+                      setHour12(String(h))
+                      setActiveMenu(null)
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      color: '#191F28',
+                      background: '#fff',
+                      border: '1px solid #E5E8EB',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {h}시
+                  </button>
+                ))}
+
+              {activeMenu === 'minute' && (
+                <>
+                  <button
+                    onClick={() => {
+                      setMinuteRange('0-29')
+                      setActiveMenu(null)
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      color: '#191F28',
+                      background: '#fff',
+                      border: '1px solid #E5E8EB',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      textAlign: 'center'
+                    }}
+                  >
+                    0~29분
+                  </button>
+                  <button
+                    onClick={() => {
+                      setMinuteRange('30-59')
+                      setActiveMenu(null)
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      color: '#191F28',
+                      background: '#fff',
+                      border: '1px solid #E5E8EB',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      textAlign: 'center'
+                    }}
+                  >
+                    30~59분
+                  </button>
+                </>
+              )}
+            </div>
+
+            <button
+              onClick={() => setActiveMenu(null)}
+              style={{
+                width: '100%',
+                marginTop: '20px',
+                padding: '16px',
+                fontSize: '16px',
+                fontWeight: '600',
+                color: '#191F28',
+                background: '#F2F4F6',
+                border: 'none',
+                borderRadius: '12px',
+                cursor: 'pointer'
+              }}
+            >
+              취소
+            </button>
+          </div>
+        </>
+      )}
 
       <div style={{
         position: 'fixed',
