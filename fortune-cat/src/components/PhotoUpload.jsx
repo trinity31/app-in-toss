@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Loader } from '@toss/tds-mobile'
 
 export default function PhotoUpload({ onNext, onBack }) {
   const [selectedPhoto, setSelectedPhoto] = useState(null)
@@ -117,7 +118,22 @@ export default function PhotoUpload({ onNext, onBack }) {
         </h1>
         <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 24px 0' }}>사진을 올리면 본인 얼굴을 반영해서 만들어 드려요</p>
 
-        {selectedPhoto ? (
+        {isLoading ? (
+          <div style={{
+            width: '100%',
+            padding: '60px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '16px',
+            background: '#F2F4F6',
+            borderRadius: '12px'
+          }}>
+            <Loader />
+            <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>사진을 불러오는 중...</p>
+          </div>
+        ) : selectedPhoto ? (
           <div style={{ marginBottom: '24px' }}>
             <img
               src={selectedPhoto.previewUri}
@@ -153,7 +169,6 @@ export default function PhotoUpload({ onNext, onBack }) {
               console.log('[PhotoUpload] 사진 선택 버튼 클릭')
               setIsMenuOpen(true)
             }}
-            disabled={isLoading}
             style={{
               width: '100%',
               padding: '60px 20px',
@@ -163,11 +178,11 @@ export default function PhotoUpload({ onNext, onBack }) {
               background: '#F2F4F6',
               border: '2px dashed #E5E8EB',
               borderRadius: '12px',
-              cursor: isLoading ? 'not-allowed' : 'pointer',
+              cursor: 'pointer',
               textAlign: 'center'
             }}
           >
-            {isLoading ? '사진을 불러오는 중...' : '사진 선택하기'}
+            사진 선택하기
           </button>
         )}
       </div>
