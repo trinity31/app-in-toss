@@ -79,6 +79,18 @@ export default function SajuPage() {
     }
   }
 
+  const handleRestart = () => {
+    setUserData({})
+    setCurrentPage('intro')
+  }
+
+  const handleBackToTypeSelect = () => {
+    // fortuneResult와 photo 데이터는 제거하고 타입 선택 화면으로 이동
+    const { fortuneResult, photo, fortuneType, themeType, readingType, ...restData } = userData
+    setUserData(restData)
+    setCurrentPage('fortuneType')
+  }
+
   const renderPage = () => {
     switch (currentPage) {
       case 'intro':
@@ -96,7 +108,7 @@ export default function SajuPage() {
       case 'loading':
         return <Loading userData={userData} onNext={handleNext} />
       case 'result':
-        return <Result userData={userData} />
+        return <Result userData={userData} onRestart={handleRestart} onBackToTypeSelect={handleBackToTypeSelect} />
       default:
         return <Intro onNext={handleNext} />
     }

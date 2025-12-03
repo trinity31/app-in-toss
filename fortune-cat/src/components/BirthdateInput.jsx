@@ -108,7 +108,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
           month,
           day,
           hour: hour24,
-          minute: minute
+          minute: minute,
+          period: period ? period.toLowerCase() : 'unknown',
+          hour12: hour12 || null,
+          minuteRange: minuteRange || null
         }
       })
     }
