@@ -1,14 +1,24 @@
 export default function Result({ userData, onRestart, onBackToTypeSelect }) {
   const { name, birthdate, fortuneResult } = userData
 
+  // image_description JSON 파싱
+  let descriptionItems = []
+  if (fortuneResult?.image_description) {
+    try {
+      const parsed = JSON.parse(fortuneResult.image_description)
+      descriptionItems = parsed.items || []
+    } catch (e) {
+      console.error('image_description 파싱 실패:', e)
+    }
+  }
+
   return (
-    <div style={{ padding: '20px 20px 120px', minHeight: '100vh', background: '#F9FAFB' }}>
+    <div style={{ minHeight: '100vh', background: '#fff', paddingBottom: '100px' }}>
       <div style={{
         background: '#fff',
         borderRadius: '16px',
         padding: '24px',
         marginBottom: '16px',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
       }}>
         <h1 style={{
           fontSize: '24px',
@@ -37,15 +47,33 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
                 objectFit: 'cover'
               }}
             />
-            {fortuneResult.image_description && (
-              <p style={{
-                fontSize: '13px',
-                color: '#8B95A1',
-                marginTop: '8px',
-                fontStyle: 'italic'
+            {descriptionItems.length > 0 && (
+              <div style={{
+                marginTop: '12px',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '8px'
               }}>
-                {fortuneResult.image_description}
-              </p>
+                {descriptionItems.map((item, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      padding: '6px 12px',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      color: '#191F28',
+                      background: '#fff',
+                      border: '1px solid #E5E8EB',
+                      borderRadius: '16px',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
         )}
@@ -81,7 +109,7 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
         bottom: 0,
         left: 0,
         right: 0,
-        padding: '16px 20px calc(16px + env(safe-area-inset-bottom))',
+        padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
         background: '#fff',
         display: 'flex',
         gap: '12px',

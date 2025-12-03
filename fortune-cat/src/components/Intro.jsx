@@ -134,7 +134,7 @@ export default function Intro({ onNext }) {
         hideLine={true}
       />
 
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '16px 20px', background: '#fff' }}>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '16px 20px calc(24px + env(safe-area-inset-bottom))', background: '#fff' }}>
         <button
           onClick={onNext}
           style={{

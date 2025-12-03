@@ -51,11 +51,11 @@ export default function SajuPage() {
     } else if (currentPage === 'gender') {
       setCurrentPage('fortuneType')
     } else if (currentPage === 'fortuneType') {
-      // 타입이 'basic'인 경우에만 사진 업로드
-      if (data.fortuneType === 'basic') {
+      // 사진 업로드가 필요한 타입들
+      const photoUploadTypes = ['basic', 'lookbook', 'travel_lookbook', 'hobby', 'job']
+      if (photoUploadTypes.includes(data.fortuneType)) {
         setCurrentPage('photoUpload')
       } else {
-        // 다른 타입은 바로 로딩으로 이동 (TODO: 각 타입별 분기 구현 필요)
         setCurrentPage('loading')
       }
     } else if (currentPage === 'photoUpload') {

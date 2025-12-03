@@ -42,7 +42,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
     setSelectedType(type.id)
     setTimeout(() => {
       onNext({
-        fortuneType: type.id,
+        fortuneType: type.code,
         themeType: type.theme_type,
         readingType: type.reading_type
       })
@@ -105,6 +105,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
                   borderRight: 'none',
                   borderBottom: '1px solid #F2F4F6',
                   background: selectedType === type.id ? 'var(--color-primary-light)' : 'none',
+                  borderRadius: '8px',
                   cursor: selectedType !== null ? 'not-allowed' : 'pointer',
                   textAlign: 'left',
                   transition: 'background 0.2s ease',
@@ -147,7 +148,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
         )}
       </div>
 
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '16px 20px', background: '#fff' }}>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '16px 20px calc(24px + env(safe-area-inset-bottom))', background: '#fff' }}>
         <button
           onClick={onBack}
           style={{

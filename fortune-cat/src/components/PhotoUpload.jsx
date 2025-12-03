@@ -116,7 +116,7 @@ export default function PhotoUpload({ onNext, onBack }) {
         <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 8px 0' }}>
           얼굴 사진을 선택해 주세요
         </h1>
-        <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 24px 0' }}>사진을 올리면 본인 얼굴을 반영해서 만들어 드려요</p>
+        <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 24px 0' }}>사진을 선택하면 얼굴을 반영해서 만들어 드려요</p>
 
         {isLoading ? (
           <div style={{
@@ -192,7 +192,7 @@ export default function PhotoUpload({ onNext, onBack }) {
         bottom: 0,
         left: 0,
         right: 0,
-        padding: '16px 20px calc(16px + env(safe-area-inset-bottom))',
+        padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
         background: '#fff',
         display: 'flex',
         gap: '12px',

@@ -503,7 +503,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
         bottom: `${keyboardHeight}px`,
         left: 0,
         right: 0,
-        padding: '16px 20px calc(16px + env(safe-area-inset-bottom))',
+        padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
         background: '#fff',
         display: 'flex',
         gap: '12px',

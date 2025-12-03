@@ -73,7 +73,7 @@ export default function NameInput({ onNext, initialValue = '' }) {
         bottom: `${keyboardHeight}px`,
         left: 0,
         right: 0,
-        padding: '16px 20px calc(16px + env(safe-area-inset-bottom))',
+        padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
         background: '#fff',
         zIndex: 1000,
         boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.08)',
