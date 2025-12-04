@@ -22,58 +22,31 @@ export class GeminiGenerator extends BaseImageGenerator {
     try {
       console.log('Gemini 생성 시작...');
 
-      // 이미지 생성 설정
-      const config = {
-        responseModalities: ['IMAGE'],
-        imageConfig: {
-          aspectRatio: '3:4', // 프로필 사진에 적합한 비율
-          imageSize: '1K'     // 1024x1024 정도 크기
-        }
-      };
-
-      // 모델 이름
-      const model = 'gemini-2.5-flash-image';
-
       // 컨텐츠 구성
       const contents = [
         {
-          role: 'user',
-          parts: [
-            {
-              text: prompt
-            },
-            {
-              inlineData: {
-                data: imageBase64,
-                mimeType: mimeType
-              }
-            }
-          ]
+          text: prompt
+        },
+        {
+          inlineData: {
+            mimeType: mimeType,
+            data: imageBase64
+          }
         }
       ];
 
-      // 이미지 생성 (스트리밍)
-      const response = await this.ai.models.generateContentStream({
-        model,
-        config,
-        contents
+      // 이미지 생성
+      const response = await this.ai.models.generateContent({
+        model: 'gemini-2.5-flash-image',
+        contents: contents
       });
 
-      // 스트림에서 이미지 데이터 수집
+      // 응답에서 이미지 추출
       let generatedImage = null;
 
-      for await (const chunk of response) {
-        // chunk 구조 확인
-        if (!chunk.candidates || !chunk.candidates[0] || !chunk.candidates[0].content) {
-          continue;
-        }
+      if (response.candidates && response.candidates[0] && response.candidates[0].content) {
+        const parts = response.candidates[0].content.parts;
 
-        const parts = chunk.candidates[0].content.parts;
-        if (!parts || parts.length === 0) {
-          continue;
-        }
-
-        // 이미지 데이터 찾기
         for (const part of parts) {
           if (part.inlineData) {
             generatedImage = {
@@ -82,11 +55,6 @@ export class GeminiGenerator extends BaseImageGenerator {
             };
             break;
           }
-        }
-
-        // 이미지를 찾으면 루프 종료
-        if (generatedImage) {
-          break;
         }
       }
 
