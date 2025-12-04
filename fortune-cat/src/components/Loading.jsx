@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { formatBirthdate, formatBirthTime, formatGender, base64ToBlob } from '../utils/dataTransform'
 
-const TEST_AD_GROUP_ID = 'ait-ad-test-rewarded-id'
+const AD_GROUP_ID = import.meta.env.VITE_AD_GROUP_ID || 'ait-ad-test-rewarded-id'
 
 export default function Loading({ userData, onNext }) {
   const [loadingMessage, setLoadingMessage] = useState('광고를 준비하고 있습니다...')
@@ -36,7 +36,7 @@ export default function Loading({ userData, onNext }) {
 
         const cleanup = GoogleAdMob.loadAppsInTossAdMob({
           options: {
-            adGroupId: TEST_AD_GROUP_ID,
+            adGroupId: AD_GROUP_ID,
           },
           onEvent: (event) => {
             if (event.type === 'loaded') {
@@ -96,7 +96,7 @@ export default function Loading({ userData, onNext }) {
 
       GoogleAdMob.showAppsInTossAdMob({
         options: {
-          adGroupId: TEST_AD_GROUP_ID,
+          adGroupId: AD_GROUP_ID,
         },
         onEvent: (event) => {
           switch (event.type) {
@@ -340,7 +340,7 @@ export default function Loading({ userData, onNext }) {
         textAlign: 'center',
         lineHeight: '1.6'
       }}>
-        {!adRewarded && '광고를 시청하면 더 빠르게 결과를 확인할 수 있습니다'}
+        {!adRewarded && '광고를 시청하면서 결과를 기다려 주세요.'}
         {adRewarded && !apiCompleted && '잠시만 기다려 주세요'}
         {adRewarded && apiCompleted && '곧 결과가 표시됩니다'}
       </p>

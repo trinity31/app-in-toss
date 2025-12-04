@@ -1,14 +1,30 @@
 export default function Result({ userData, onRestart, onBackToTypeSelect }) {
   const { name, birthdate, fortuneResult } = userData
 
-  // image_description JSON 파싱
+  // image_description 처리
   let descriptionItems = []
+  let isJsonArray = false
   if (fortuneResult?.image_description) {
+    let description = fortuneResult.image_description
+
+    // 마크다운 코드 블록 형식 제거 (```json ... ``` 또는 '''json ... ''')
+    description = description.replace(/^```json\s*/i, '').replace(/\s*```$/, '')
+    description = description.replace(/^'''json\s*/i, '').replace(/\s*'''$/, '')
+    description = description.trim()
+
     try {
-      const parsed = JSON.parse(fortuneResult.image_description)
+      // JSON 형식인 경우 파싱 시도
+      const parsed = JSON.parse(description)
       descriptionItems = parsed.items || []
+      isJsonArray = true
     } catch (e) {
-      console.error('image_description 파싱 실패:', e)
+      // JSON이 아닌 단순 문자열인 경우 그대로 사용
+      // OOO님을 실제 이름으로 치환
+      if (name) {
+        description = description.replace(/OOO님/g, `${name}님`)
+      }
+      descriptionItems = [description]
+      isJsonArray = false
     }
   }
 
@@ -55,23 +71,24 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
                 gap: '8px'
               }}>
                 {descriptionItems.map((item, index) => (
-                  <span
+                  <div
                     key={index}
                     style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      padding: '6px 12px',
+                      display: 'inline-block',
+                      padding: isJsonArray ? '8px 14px' : '14px 18px',
                       fontSize: '14px',
-                      fontWeight: '500',
-                      color: '#191F28',
-                      background: '#fff',
-                      border: '1px solid #E5E8EB',
-                      borderRadius: '16px',
-                      whiteSpace: 'nowrap'
+                      fontWeight: '600',
+                      lineHeight: '1.5',
+                      color: '#4E5968',
+                      background: '#F2F4F6',
+                      borderRadius: '12px',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'break-word',
+                      maxWidth: '100%'
                     }}
                   >
                     {item}
-                  </span>
+                  </div>
                 ))}
               </div>
             )}

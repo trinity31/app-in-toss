@@ -5,8 +5,9 @@ import './App.css'
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<SajuPage />} />
       <Route path="/saju" element={<SajuPage />} />
-      <Route path="*" element={<Navigate to="/saju" replace />} />
+      <Route path="*" element={<SajuPage />} />
     </Routes>
   )
 }

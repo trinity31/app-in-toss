@@ -8,6 +8,10 @@ export default defineConfig({
     icon: 'https://static.toss.im/appsintoss/7011/eb6e95b2-de8d-4ca5-9025-662cfd7ece00.png', // 화면에 노출될 앱의 아이콘 이미지 주소로 바꿔주세요.
     bridgeColorMode: 'basic',
   },
+  navigationBar: {
+    withBackButton: true,
+    withHomeButton: true,
+  },
   web: {
     host: '192.168.0.38',
     port: 5173,
