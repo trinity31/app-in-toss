@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase, getMenuImageUrl } from '../lib/supabase'
 import { Loader } from '@toss/tds-mobile'
 
 export default function FortuneTypeSelect({ onNext, onBack }) {
@@ -133,7 +133,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
                   </div>
                 </div>
                 <img
-                  src={type.image_url}
+                  src={getMenuImageUrl(type.image_url)}
                   alt={type.title_ko}
                   style={{
                     width: '60px',
