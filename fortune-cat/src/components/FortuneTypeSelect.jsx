@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase, getMenuImageUrl } from '../lib/supabase'
 import { Loader } from '@toss/tds-mobile'
+import { Analytics } from '@apps-in-toss/web-framework'
 
 export default function FortuneTypeSelect({ onNext, onBack }) {
   const [selectedType, setSelectedType] = useState(null)
@@ -39,6 +40,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
   }, [])
 
   const handleTypeSelect = (type) => {
+    Analytics.click({ button_name: type.title_ko })
     setSelectedType(type.id)
     setTimeout(() => {
       onNext({
