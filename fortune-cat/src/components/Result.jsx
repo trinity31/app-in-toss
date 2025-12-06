@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { saveBase64Data } from '@apps-in-toss/web-framework'
+import { saveBase64Data, Analytics } from '@apps-in-toss/web-framework'
 
 const AD_GROUP_ID = import.meta.env.VITE_AD_GROUP_ID || 'ait-ad-test-rewarded-id'
 
@@ -59,6 +59,7 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
   // 광고 재생 후 타입 선택으로 이동
   const handleBackToTypeSelectWithAd = async () => {
     try {
+      Analytics.click({ button_name: 'back_to_type_select' })
       setIsLoadingAd(true)
       const { GoogleAdMob } = await import('@apps-in-toss/web-framework')
 
