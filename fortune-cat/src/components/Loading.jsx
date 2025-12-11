@@ -192,7 +192,10 @@ export default function Loading({ userData, onNext }) {
       // 7. language
       formData.append('language', 'ko')
 
-      // 8. image (선택적 - 사진이 있는 경우)
+      // 8. output_mode
+      formData.append('output_mode', 'base64')
+
+      // 9. image (선택적 - 사진이 있는 경우)
       if (userData.photo?.dataUri) {
         const imageBlob = base64ToBlob(userData.photo.dataUri)
         if (imageBlob) {

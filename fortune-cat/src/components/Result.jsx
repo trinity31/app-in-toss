@@ -7,46 +7,27 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
   const { name, birthdate, fortuneResult } = userData
   const [isLoadingAd, setIsLoadingAd] = useState(false)
   const [isSavingImage, setIsSavingImage] = useState(false)
-
   // 이미지 저장/공유
   const handleSaveImage = async () => {
     try {
       setIsSavingImage(true)
 
-      if (!fortuneResult?.image_url) {
+      if (!fortuneResult?.image_base64) {
         alert('저장할 이미지가 없습니다.')
         return
       }
 
-      console.log('이미지 저장 시작...', fortuneResult.image_url)
-
-      // HTTP URL에서 이미지 가져오기
-      const response = await fetch(fortuneResult.image_url)
-      const blob = await response.blob()
-
-      // Blob을 Base64로 변환
-      const reader = new FileReader()
-      const base64Data = await new Promise((resolve, reject) => {
-        reader.onloadend = () => {
-          const dataUrl = reader.result
-          const base64 = dataUrl.split(',')[1]
-          resolve(base64)
-        }
-        reader.onerror = reject
-        reader.readAsDataURL(blob)
-      })
-
+      const base64Data = fortuneResult.image_base64
+      const mimeType = 'image/png'
+      const fileName = `saju-${Date.now()}.png`
       // 저장/공유
       await saveBase64Data({
         data: base64Data,
-        fileName: `saju_${name}_${Date.now()}.png`,
-        mimeType: 'image/png'
+        fileName: fileName,
+        mimeType: mimeType
       })
 
-      console.log('이미지 저장 완료')
-
     } catch (err) {
-      console.error('이미지 저장 오류:', err)
       // 사용자 취소는 조용히 처리
       if (err.message && !err.message.toLowerCase().includes('cancel')) {
         alert(`이미지 저장 중 오류가 발생했습니다: ${err.message}`)
@@ -166,10 +147,10 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
           {birthdate.year}년 {birthdate.month}월 {birthdate.day}일
         </p>
 
-        {fortuneResult?.image_url && (
+        {fortuneResult?.image_base64 && (
           <div style={{ marginBottom: '24px' }}>
             <img
-              src={fortuneResult.image_url}
+              src={`data:image/png;base64,${fortuneResult.image_base64}`}
               alt="사주 이미지"
               style={{
                 width: '100%',
