@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import { saveBase64Data, Analytics } from '@apps-in-toss/web-framework'
 
-const AD_GROUP_ID = import.meta.env.VITE_AD_GROUP_ID || 'ait-ad-test-rewarded-id'
-
 export default function Result({ userData, onRestart, onBackToTypeSelect }) {
   const { name, birthdate, fortuneResult } = userData
-  const [isLoadingAd, setIsLoadingAd] = useState(false)
   const [isSavingImage, setIsSavingImage] = useState(false)
   // 이미지 저장/공유
   const handleSaveImage = async () => {
@@ -37,63 +34,10 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
     }
   }
 
-  // 광고 재생 후 타입 선택으로 이동
-  const handleBackToTypeSelectWithAd = async () => {
-    try {
-      Analytics.click({ button_name: 'back_to_type_select' })
-      setIsLoadingAd(true)
-      const { GoogleAdMob } = await import('@apps-in-toss/web-framework')
-
-      const isAdUnsupported = GoogleAdMob.showAppsInTossAdMob.isSupported?.() === false
-
-      if (isAdUnsupported) {
-        console.warn('광고 재생이 지원되지 않습니다.')
-        onBackToTypeSelect()
-        return
-      }
-
-      // 광고 로드
-      const loadCleanup = GoogleAdMob.loadAppsInTossAdMob({
-        options: {
-          adGroupId: AD_GROUP_ID,
-        },
-        onEvent: (event) => {
-          if (event.type === 'loaded') {
-            console.log('광고 로드 완료')
-            // 광고 재생
-            GoogleAdMob.showAppsInTossAdMob({
-              options: {
-                adGroupId: AD_GROUP_ID,
-              },
-              onEvent: (showEvent) => {
-                if (showEvent.type === 'dismissed' || showEvent.type === 'userEarnedReward') {
-                  console.log('광고 시청 완료')
-                  setIsLoadingAd(false)
-                  onBackToTypeSelect()
-                }
-              },
-              onError: (error) => {
-                console.error('광고 재생 실패', error)
-                setIsLoadingAd(false)
-                onBackToTypeSelect()
-              },
-            })
-          }
-        },
-        onError: (error) => {
-          console.error('광고 로드 실패', error)
-          setIsLoadingAd(false)
-          onBackToTypeSelect()
-        },
-      })
-
-      // cleanup 함수는 나중에 필요할 때 사용
-      return () => loadCleanup?.()
-    } catch (error) {
-      console.error('광고 모듈 로드 실패:', error)
-      setIsLoadingAd(false)
-      onBackToTypeSelect()
-    }
+  // 타입 선택으로 이동
+  const handleBackToTypeSelect = () => {
+    Analytics.click({ button_name: 'back_to_type_select' })
+    onBackToTypeSelect()
   }
 
   // image_description 처리
@@ -251,22 +195,20 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
         boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.08)'
       }}>
         <button
-          onClick={handleBackToTypeSelectWithAd}
-          disabled={isLoadingAd}
+          onClick={handleBackToTypeSelect}
           style={{
             flex: 1,
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#191F28',
-            background: isLoadingAd ? '#E5E8EB' : '#F2F4F6',
+            background: '#F2F4F6',
             border: 'none',
             borderRadius: '8px',
-            cursor: isLoadingAd ? 'not-allowed' : 'pointer',
-            opacity: isLoadingAd ? 0.6 : 1
+            cursor: 'pointer'
           }}
         >
-          {isLoadingAd ? '광고 로딩 중...' : '타입 선택으로'}
+          타입 선택으로
         </button>
         <button
           onClick={onRestart}

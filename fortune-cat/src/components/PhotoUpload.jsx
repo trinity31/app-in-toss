@@ -100,21 +100,12 @@ export default function PhotoUpload({ onNext, onBack }) {
     }
   }
 
-  const handleSubmit = () => {
-    if (selectedPhoto) {
-      onNext({ photo: selectedPhoto })
-    }
-  }
-
-  const handleSkip = () => {
-    onNext({ photo: null })
-  }
 
   return (
     <>
       <div style={{ padding: '20px 20px 0', marginBottom: '120px' }}>
         <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 8px 0' }}>
-          얼굴 사진을 선택해 주세요
+          얼굴 사진을 선택해 주세요 (선택)
         </h1>
         <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 24px 0' }}>사진을 선택하면 얼굴을 반영해서 만들어 드려요</p>
 
@@ -215,41 +206,22 @@ export default function PhotoUpload({ onNext, onBack }) {
         >
           이전
         </button>
-        {selectedPhoto ? (
-          <button
-            onClick={handleSubmit}
-            style={{
-              flex: 1,
-              padding: '16px',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              color: '#fff',
-              background: 'var(--color-primary)',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer'
-            }}
-          >
-            다음
-          </button>
-        ) : (
-          <button
-            onClick={handleSkip}
-            style={{
-              flex: 1,
-              padding: '16px',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              color: '#8B95A1',
-              background: '#fff',
-              border: '1px solid #E5E8EB',
-              borderRadius: '8px',
-              cursor: 'pointer'
-            }}
-          >
-            건너뛰기
-          </button>
-        )}
+        <button
+          onClick={() => onNext({ photo: selectedPhoto })}
+          style={{
+            flex: 1,
+            padding: '16px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            color: '#fff',
+            background: 'var(--color-primary)',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer'
+          }}
+        >
+          광고 보고 생성하기
+        </button>
       </div>
 
       {/* 사진 선택 메뉴 모달 */}

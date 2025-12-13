@@ -3,6 +3,9 @@ import { supabase, getMenuImageUrl } from '../lib/supabase'
 import { Loader } from '@toss/tds-mobile'
 import { Analytics } from '@apps-in-toss/web-framework'
 
+// 사진 업로드가 필요한 타입들
+const PHOTO_UPLOAD_TYPES = ['basic', 'lookbook', 'travel_lookbook']
+
 export default function FortuneTypeSelect({ onNext, onBack }) {
   const [selectedType, setSelectedType] = useState(null)
   const [fortuneTypes, setFortuneTypes] = useState([])
@@ -41,14 +44,32 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
 
   const handleTypeSelect = (type) => {
     Analytics.click({ button_name: type.title_ko })
-    setSelectedType(type.id)
-    setTimeout(() => {
+
+    // 사진 업로드가 필요한 타입은 바로 이동
+    if (PHOTO_UPLOAD_TYPES.includes(type.code)) {
+      setSelectedType(type.id)
+      setTimeout(() => {
+        onNext({
+          fortuneType: type.code,
+          themeType: type.theme_type,
+          readingType: type.reading_type
+        })
+      }, 500)
+    } else {
+      // 사진 업로드가 필요 없는 타입은 선택만 (자동 이동 안함)
+      setSelectedType(type.id)
+    }
+  }
+
+  const handleNext = () => {
+    const selectedTypeData = fortuneTypes.find(t => t.id === selectedType)
+    if (selectedTypeData) {
       onNext({
-        fortuneType: type.code,
-        themeType: type.theme_type,
-        readingType: type.reading_type
+        fortuneType: selectedTypeData.code,
+        themeType: selectedTypeData.theme_type,
+        readingType: selectedTypeData.reading_type
       })
-    }, 500)
+    }
   }
 
   return (
@@ -98,29 +119,26 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
               <button
                 key={type.id}
                 onClick={() => handleTypeSelect(type)}
-                disabled={selectedType !== null}
                 style={{
                   width: '100%',
-                  padding: '20px 0',
-                  borderTop: 'none',
-                  borderLeft: 'none',
-                  borderRight: 'none',
-                  borderBottom: '1px solid #F2F4F6',
-                  background: selectedType === type.id ? 'var(--color-primary-light)' : 'none',
-                  borderRadius: '8px',
-                  cursor: selectedType !== null ? 'not-allowed' : 'pointer',
+                  padding: '16px',
+                  background: selectedType === type.id ? '#F7F8FA' : '#fff',
+                  border: selectedType === type.id ? '2px solid var(--color-primary)' : '1px solid #E5E8EB',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
                   textAlign: 'left',
-                  transition: 'background 0.2s ease',
+                  transition: 'all 0.2s ease',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '16px'
+                  gap: '16px',
+                  marginBottom: '8px'
                 }}
               >
                 <div style={{ flex: 1 }}>
                   <div style={{
                     fontSize: '16px',
-                    fontWeight: 'bold',
-                    color: selectedType === type.id ? 'var(--color-primary)' : '#191F28',
+                    fontWeight: '600',
+                    color: selectedType === type.id ? '#191F28' : '#191F28',
                     marginBottom: '4px',
                     transition: 'color 0.2s ease'
                   }}>
@@ -128,7 +146,7 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
                   </div>
                   <div style={{
                     fontSize: '14px',
-                    color: selectedType === type.id ? 'var(--color-primary)' : '#8B95A1',
+                    color: selectedType === type.id ? '#4E5968' : '#8B95A1',
                     transition: 'color 0.2s ease'
                   }}>
                     {type.description_ko}
@@ -141,7 +159,9 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
                     width: '60px',
                     height: '60px',
                     borderRadius: '8px',
-                    objectFit: 'cover'
+                    objectFit: 'cover',
+                    border: selectedType === type.id ? '2px solid var(--color-primary)' : 'none',
+                    transition: 'border 0.2s ease'
                   }}
                 />
               </button>
@@ -150,11 +170,22 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
         )}
       </div>
 
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '16px 20px calc(24px + env(safe-area-inset-bottom))', background: '#fff' }}>
+      <div style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
+        background: '#fff',
+        display: 'flex',
+        gap: '12px',
+        zIndex: 1000,
+        boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.08)'
+      }}>
         <button
           onClick={onBack}
           style={{
-            width: '100%',
+            flex: selectedType && !PHOTO_UPLOAD_TYPES.includes(fortuneTypes.find(t => t.id === selectedType)?.code) ? 1 : '100%',
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -167,6 +198,26 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
         >
           이전
         </button>
+
+        {/* 사진 업로드가 필요 없는 타입이 선택된 경우에만 표시 */}
+        {selectedType && !PHOTO_UPLOAD_TYPES.includes(fortuneTypes.find(t => t.id === selectedType)?.code) && (
+          <button
+            onClick={handleNext}
+            style={{
+              flex: 1,
+              padding: '16px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: '#fff',
+              background: 'var(--color-primary)',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            광고 보고 생성하기
+          </button>
+        )}
       </div>
     </>
   )

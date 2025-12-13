@@ -52,7 +52,7 @@ export default function SajuPage() {
       setCurrentPage('fortuneType')
     } else if (currentPage === 'fortuneType') {
       // 사진 업로드가 필요한 타입들
-      const photoUploadTypes = ['basic', 'lookbook', 'travel_lookbook', 'hobby', 'job']
+      const photoUploadTypes = ['basic', 'lookbook', 'travel_lookbook']
       if (photoUploadTypes.includes(data.fortuneType)) {
         setCurrentPage('photoUpload')
       } else {
