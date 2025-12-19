@@ -1,10 +1,72 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Asset, ListRow } from '@toss/tds-mobile';
 import { colors } from '@toss/tds-colors';
+import { newYearImages, profileImages } from '../config/images';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
-export default function IntroPage({ onNext, error }) {
+// Horizontal Auto Scroll 컴포넌트
+function HorizontalAutoScroll({ images }) {
+  const scrollRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollWidth = scrollContainer.scrollWidth;
+    const clientWidth = scrollContainer.clientWidth;
+    const maxScroll = scrollWidth - clientWidth;
+
+    const interval = setInterval(() => {
+      setScrollPosition((prev) => {
+        const next = prev + 1;
+        // 끝에 도달하면 처음으로
+        if (next >= maxScroll) {
+          return 0;
+        }
+        return next;
+      });
+    }, 30); // 30ms마다 1px씩 이동
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollPosition;
+    }
+  }, [scrollPosition]);
+
+  return (
+    <div
+      ref={scrollRef}
+      style={styles.horizontalScrollContainer}
+    >
+      <div style={styles.horizontalScrollContent}>
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt=""
+            style={styles.horizontalScrollImage}
+          />
+        ))}
+        {/* 무한 스크롤을 위해 이미지 복제 */}
+        {images.map((image, index) => (
+          <img
+            key={`duplicate-${index}`}
+            src={image}
+            alt=""
+            style={styles.horizontalScrollImage}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function IntroPage({ onNext, error, pageType = 'profile' }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCameraClick = () => {
@@ -17,32 +79,30 @@ export default function IntroPage({ onNext, error }) {
     onNext('album');
   };
 
+  // 페이지 타입에 따라 이미지 선택
+  const images = pageType === 'newyear' ? newYearImages : profileImages;
+
+  // 페이지 타입에 따른 스텝 텍스트
+  const steps = pageType === 'newyear'
+    ? [
+        { number: '1', text: '반려동물 사진 한장 올리고', iconSrc: 'u1F436.png' },
+        { number: '2', text: '크리스마스 카드나 연하장 선택하면', iconSrc: 'u2728.png' },
+        { number: '3', text: '1분 안에 특별한 카드 완성!', iconSrc: 'u1F389.png' }
+      ]
+    : [
+        { number: '1', text: '반려동물 사진 한장 올리고', iconSrc: 'u1F436.png' },
+        { number: '2', text: '변신 스타일을 선택하면', iconSrc: 'u2728.png' },
+        { number: '3', text: '1분 안에 특별한 사진 완성!', iconSrc: 'u1F389.png' }
+      ];
+
   return (
     <div style={styles.container}>
-      <Spacing size={40} />
+      <Spacing size={20} />
 
-      <div style={styles.heroSection}>
-        <h1 style={styles.title}>
-          우리 반려동물
-          <br />
-          특별하게 변신시키기
-        </h1>
+      {/* Horizontal Auto Scroll */}
+      <HorizontalAutoScroll images={images} />
 
-        <Spacing size={12} />
-
-        {/* <p style={styles.subtitle}>
-          AI가 만드는 프로필 사진
-        </p> */}
-
-        <Spacing size={8} />
-
-        <p style={styles.description}>
-          구글 최신 이미지 모델 나노바나나🍌 로, <br />
-          퀄리티 높은 이미지를 생성합니다
-        </p>
-      </div>
-
-      <Spacing size={48} />
+      <Spacing size={20} />
 
       {error && (
         <>
@@ -55,15 +115,11 @@ export default function IntroPage({ onNext, error }) {
 
       <div style={styles.stepContainer}>
         <h3 style={styles.sectionTitle}>
-          이렇게 사용해요
+          이렇게 만들어요
         </h3>
 
         <div style={styles.stepList}>
-          {[
-            { number: '1', text: '반려동물 사진 한장 올리고', iconSrc: 'u1F436.png', desc: '' },
-            { number: '2', text: '변신 스타일을 선택하면', iconSrc: 'u2728.png', desc: '' },
-            { number: '3', text: '1분 안에 특별한 사진 완성!', iconSrc: 'u1F389.png', desc: '' }
-          ].map((step) => (
+          {steps.map((step) => (
             <div key={step.number} style={styles.stepCard}>
               <div style={styles.stepIconWrapper}>
                 <Asset.Image
@@ -80,7 +136,7 @@ export default function IntroPage({ onNext, error }) {
         </div>
       </div>
 
-      <Spacing size={100} />
+      <Spacing size={80} />
 
       <div style={styles.buttonContainer}>
         <button
@@ -180,24 +236,23 @@ const styles = {
     lineHeight: 1.4,
     letterSpacing: '-0.5px',
   },
-  subtitle: {
-    fontSize: '16px',
-    fontWeight: 400,
-    color: colors.grey700,
-    textAlign: 'center',
-    margin: 0,
-    lineHeight: 1.5,
+  horizontalScrollContainer: {
+    width: '100%',
+    overflowX: 'hidden',
+    position: 'relative',
   },
-  description: {
-    fontSize: '16px',
-    fontWeight: 600,
-    color: '#FF1493', // Hot Pink (DeepPink for readability)
-    textAlign: 'center',
-    margin: 0,
-    lineHeight: 1.5,
-    backgroundColor: 'rgba(255, 20, 147, 0.1)', // Transparent Hot Pink
-    padding: '12px 20px',
-    borderRadius: '16px',
+  horizontalScrollContent: {
+    display: 'flex',
+    gap: '12px',
+    paddingLeft: '20px',
+  },
+  horizontalScrollImage: {
+    width: '200px',
+    height: '260px',
+    objectFit: 'cover',
+    borderRadius: '12px',
+    flexShrink: 0,
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
   },
   stepContainer: {
     width: '100%',
@@ -235,9 +290,6 @@ const styles = {
     backgroundColor: colors.orange50,
     borderRadius: '50%',
     flexShrink: 0,
-  },
-  stepContent: {
-    flex: 1,
   },
   stepText: {
     fontSize: '16px',

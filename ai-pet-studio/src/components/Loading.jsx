@@ -34,8 +34,7 @@ export default function Loading({ error, onRetry, title, description }) {
             <p style={styles.description}>
               {description || (
                 <>
-                  잠시만 기다려주세요.<br />
-                  멋진 펫 프로필을 만들고 있어요.
+                  잠시만 기다려주세요...
                 </>
               )}
             </p>
