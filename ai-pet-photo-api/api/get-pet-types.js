@@ -17,6 +17,12 @@ const PET_TYPES = [
     icon: 'u1F3A8.png' // 🎨
   },
   {
+    id: 'halloween',
+    title: '할로윈 마녀',
+    description: '귀엽고 재미있는 할로윈',
+    icon: 'u1F383.png' // 🎃
+  },
+  {
     id: 'royal',
     title: '왕족/귀족',
     description: '우아하고 고귀한 느낌',
@@ -51,24 +57,6 @@ const PET_TYPES = [
     title: '이모티콘',
     description: '귀여운 이모티콘',
     icon: 'u1F60A.png' // 😊
-  },
-  {
-    id: 'santa',
-    title: '산타',
-    description: '크리스마스 산타',
-    icon: 'u1F385.png' // 🎅
-  },
-  {
-    id: 'christmas-card',
-    title: '크리스마스 카드',
-    description: '홀리데이 그리팅 카드',
-    icon: 'u1F384.png' // 🎄
-  },
-  {
-    id: 'new-year-card',
-    title: '연하장',
-    description: '새해 인사 카드',
-    icon: 'u1F389.png' // 🎉
   }
 ];
 
