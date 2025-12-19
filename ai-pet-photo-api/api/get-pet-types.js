@@ -17,34 +17,10 @@ const PET_TYPES = [
     icon: 'u1F3A8.png' // 🎨
   },
   {
-    id: 'halloween',
-    title: '할로윈 마녀',
-    description: '귀엽고 재미있는 할로윈',
-    icon: 'u1F383.png' // 🎃
-  },
-  {
-    id: 'superhero',
-    title: '슈퍼히어로',
-    description: '멋진 히어로 컨셉',
-    icon: 'u1F9B8.png' // 🦸
-  },
-  {
     id: 'royal',
     title: '왕족/귀족',
     description: '우아하고 고귀한 느낌',
     icon: 'u1F451.png' // 👑
-  },
-  {
-    id: 'cartoon',
-    title: '만화 캐릭터',
-    description: '귀여운 애니메이션',
-    icon: 'u1F3AC.png' // 🎬
-  },
-  {
-    id: 'hybrid-animal',
-    title: '다른 동물과 합체',
-    description: '신기한 하이브리드',
-    icon: 'u1F98B.png' // 🦋
   },
   {
     id: 'fairytale-hero',
@@ -65,12 +41,6 @@ const PET_TYPES = [
     icon: 'u1F9F8.png' // 🧸
   },
   {
-    id: 'looney-tunes',
-    title: '루니툰 스타일',
-    description: '클래식 카툰',
-    icon: 'u1F43E.png' // 🐾
-  },
-  {
     id: 'sticker',
     title: '스티커',
     description: 'SNS용 스티커',
@@ -83,22 +53,22 @@ const PET_TYPES = [
     icon: 'u1F60A.png' // 😊
   },
   {
-    id: 'disney-character',
-    title: '디즈니 주인공',
-    description: '디즈니 애니메이션',
-    icon: 'u2728.png' // ✨
-  },
-  {
-    id: 'angel',
-    title: '천사',
-    description: '순수한 천사',
-    icon: 'u1F47C.png' // 👼
-  },
-  {
     id: 'santa',
     title: '산타',
     description: '크리스마스 산타',
     icon: 'u1F385.png' // 🎅
+  },
+  {
+    id: 'christmas-card',
+    title: '크리스마스 카드',
+    description: '홀리데이 그리팅 카드',
+    icon: 'u1F384.png' // 🎄
+  },
+  {
+    id: 'new-year-card',
+    title: '연하장',
+    description: '새해 인사 카드',
+    icon: 'u1F389.png' // 🎉
   }
 ];
 

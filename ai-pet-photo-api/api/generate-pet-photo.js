@@ -18,7 +18,9 @@ const TYPE_TO_MODEL_MAPPING = {
   'emoticon': 'google/nano-banana',                      // $0.03
   'disney-character': 'google/nano-banana', // $0.039
   'angel': 'seededit',                     // $0.03 -> seededit OK
-  'santa': 'qwen'                          // $0.03 -> qwen OK
+  'santa': 'qwen',                         // $0.03 -> qwen OK
+  'christmas-card': 'google/nano-banana',          // flux-pro-2 - 크리스마스 카드
+  'new-year-card': 'google/nano-banana'            // flux-pro-2 - 연하장
 };
 
 // 허용된 Origin 목록

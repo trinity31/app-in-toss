@@ -41,8 +41,17 @@ export class ReplicateGenerator extends BaseImageGenerator {
 
       console.log(`${this.modelConfig.name} API 응답:`, typeof output, Array.isArray(output) ? `배열(${output.length}개)` : '단일값');
 
-      // output은 URL 배열 또는 단일 URL
-      const imageUrl = Array.isArray(output) ? output[0] : output;
+      // flux-2-pro는 FileOutput 객체를 반환 (url() 메서드 호출 필요)
+      let imageUrl;
+      if (this.modelConfig.model === 'black-forest-labs/flux-2-pro') {
+        if (!output || !output.url) {
+          throw new Error(`${this.modelConfig.name} did not return FileOutput object`);
+        }
+        imageUrl = output.url();
+      } else {
+        // 다른 모델들은 URL 배열 또는 단일 URL 반환
+        imageUrl = Array.isArray(output) ? output[0] : output;
+      }
 
       if (!imageUrl) {
         throw new Error(`${this.modelConfig.name} API did not return image URL`);
@@ -55,9 +64,14 @@ export class ReplicateGenerator extends BaseImageGenerator {
 
       console.log(`${this.modelConfig.name} 생성 완료`);
 
+      // flux-2-pro는 jpg 형식으로 반환
+      const outputMimeType = this.modelConfig.model === 'black-forest-labs/flux-2-pro'
+        ? 'image/jpeg'
+        : 'image/png';
+
       return {
         data: base64Data,
-        mimeType: 'image/png'
+        mimeType: outputMimeType
       };
 
     } catch (error) {

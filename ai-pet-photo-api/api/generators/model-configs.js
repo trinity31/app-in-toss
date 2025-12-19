@@ -13,7 +13,7 @@ export const MODEL_CONFIGS = {
       seed: 42,
       guidance_scale: 7.5,
       num_inference_steps: 50,
-      negative_prompt: "worst quality, low quality, normal quality, lowres, bad anatomy, bad hands, multiple eyebrow, cropped, extra limb, missing limbs, deformed hands, long neck, long body, bad hands, signature, username, artist name, conjoined fingers, deformed fingers, ugly eyes, imperfect eyes, skewed eyes, unnatural face, stiff face, stiff body, unbalanced body, unnatural body"
+      negative_prompt: "worst quality, low quality, normal quality, lowres, bad anatomy, bad hands, multiple eyebrow, cropped, extra limb, missing limbs, deformed hands, long neck, long body, bad hands, signature, username, artist name, conjoined fingers, deformed fingers, ugly eyes, imperfect eyes, skewed eyes, unnatural face, stiff face, stiff body, unbalanced body, unnatural body, rotated, tilted, upside down, diagonal composition, blurry, grotesque, disturbing, scary, horror"
     }
   },
 
@@ -51,6 +51,8 @@ export const MODEL_CONFIGS = {
       imageAsArray: true,
       aspect_ratio: 'match_input_image',
       output_format: 'jpg'
+      // Note: Gemini does not support negative_prompt parameter
+      // Quality control is handled through detailed positive prompts and safety settings
     }
   },
 
@@ -64,7 +66,8 @@ export const MODEL_CONFIGS = {
       num_inference_steps: 30,
       guidance_scale: 7.5,
       seed: -1,
-      output_format: "png"
+      output_format: "png",
+      negative_prompt: "worst quality, low quality, bad anatomy, distorted features, deformed body, ugly, bad proportions, extra limbs, missing limbs, rotated, tilted, upside down, blurry, grotesque, disturbing, scary, signature, watermark"
     }
   },
 
@@ -77,7 +80,33 @@ export const MODEL_CONFIGS = {
       num_inference_steps: 40,
       guidance_scale: 7.5,
       scheduler: "K_EULER",
-      refine: "expert_ensemble_refiner"
+      refine: "expert_ensemble_refiner",
+      negative_prompt: "worst quality, low quality, bad anatomy, distorted features, deformed body, ugly, bad proportions, extra limbs, missing limbs, rotated, tilted, upside down, blurry, grotesque, disturbing, scary, signature, watermark"
+    }
+  },
+
+  // Sana - Nvidia의 고효율 이미지 생성 모델
+  'sana': {
+    name: 'Sana',
+    model: 'nvidia/sana',
+    params: {
+      imageField: 'image',
+      num_inference_steps: 20,
+      guidance_scale: 5.0,
+      output_format: "png",
+      negative_prompt: "worst quality, low quality, bad anatomy, distorted features, deformed body, ugly, bad proportions, extra limbs, missing limbs, rotated, tilted, upside down, blurry, grotesque, disturbing, scary, signature, watermark"
+    }
+  },
+
+  // Flux Pro 2 - 최고품질 이미지 생성 (크리스마스 카드, 연하장)
+  'flux-pro-2': {
+    name: 'Flux Pro 2',
+    model: 'black-forest-labs/flux-2-pro',
+    params: {
+      imageField: 'image',
+      aspect_ratio: '3:4',
+      output_format: 'jpg',
+      output_quality: 90
     }
   }
 };

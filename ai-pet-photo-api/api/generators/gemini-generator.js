@@ -39,7 +39,21 @@ export class GeminiGenerator extends BaseImageGenerator {
       // 이미지 생성
       const response = await this.ai.models.generateContent({
         model: 'gemini-2.5-flash-image',
-        contents: contents
+        contents: contents,
+        safetySettings: [
+          {
+            category: 'HARM_CATEGORY_HARASSMENT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          },
+          {
+            category: 'HARM_CATEGORY_HATE_SPEECH',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          },
+          {
+            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          }
+        ]
       });
 
       // 응답에서 이미지 추출
