@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { formatBirthdate, formatBirthTime, formatGender, base64ToBlob } from '../utils/dataTransform'
+import { formatBirthdate, formatGender, base64ToBlob } from '../utils/dataTransform'
 
 const AD_GROUP_ID = import.meta.env.VITE_AD_GROUP_ID || 'ait-ad-test-rewarded-id'
 
@@ -167,16 +167,17 @@ export default function Loading({ userData, onNext }) {
       const datetime = formatBirthdate(userData.birthdate)
       formData.append('datetime', datetime)
 
-      // 3. birth_time (태어난 시간 - 선택적)
+      // 3. hour, minute, am_pm (태어난 시간 - 선택적)
       if (userData.birthdate?.period && userData.birthdate?.period !== 'unknown') {
-        const birthTime = formatBirthTime(
-          userData.birthdate.period,
-          userData.birthdate.hour12,
-          userData.birthdate.minuteRange
-        )
-        if (birthTime) {
-          formData.append('birth_time', birthTime)
+        if (userData.birthdate?.hour12) {
+          formData.append('hour', userData.birthdate.hour12)
         }
+        if (userData.birthdate?.minuteRange) {
+          // 0-29 -> 15, 30-59 -> 45
+          const minute = userData.birthdate.minuteRange === '0-29' ? '15' : '45'
+          formData.append('minute', minute)
+        }
+        formData.append('am_pm', userData.birthdate.period)
       }
 
       // 4. gender

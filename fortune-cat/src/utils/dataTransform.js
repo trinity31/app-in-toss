@@ -18,8 +18,8 @@ export function formatBirthdate(birthdate) {
 /**
  * 태어난 시간 데이터를 API 형식(HH:mm)으로 변환
  * @param {string} period - 'am' | 'pm' | 'unknown'
- * @param {number} hour12 - 1-12 (12시간 형식)
- * @param {string} minuteRange - '00-29' | '30-59'
+ * @param {number|string} hour12 - 1-12 (12시간 형식)
+ * @param {string} minuteRange - '0-29' | '30-59'
  * @returns {string} "HH:mm" 형식의 시간 문자열 또는 null (시간을 모르는 경우)
  */
 export function formatBirthTime(period, hour12, minuteRange) {
@@ -31,16 +31,19 @@ export function formatBirthTime(period, hour12, minuteRange) {
     throw new Error('태어난 시간 정보가 올바르지 않습니다.')
   }
 
+  // 문자열을 숫자로 변환
+  const hour12Num = typeof hour12 === 'string' ? parseInt(hour12) : hour12
+
   // 12시간 형식을 24시간 형식으로 변환
-  let hour24 = hour12
-  if (period === 'pm' && hour12 !== 12) {
-    hour24 = hour12 + 12
-  } else if (period === 'am' && hour12 === 12) {
+  let hour24 = hour12Num
+  if (period === 'pm' && hour12Num !== 12) {
+    hour24 = hour12Num + 12
+  } else if (period === 'am' && hour12Num === 12) {
     hour24 = 0
   }
 
-  // minuteRange에서 중간값 추출 (00-29 → 15, 30-59 → 45)
-  const minute = minuteRange === '00-29' ? 15 : 45
+  // minuteRange에서 중간값 추출 (0-29 → 15, 30-59 → 45)
+  const minute = minuteRange === '0-29' ? 15 : 45
 
   const hourStr = hour24.toString().padStart(2, '0')
   const minuteStr = minute.toString().padStart(2, '0')
