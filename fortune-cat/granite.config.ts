@@ -13,7 +13,7 @@ export default defineConfig({
     withHomeButton: true,
   },
   web: {
-    host: '192.168.0.25',
+    host: '192.168.0.28',
     port: 5173,
     commands: {
       dev: 'vite --host',
