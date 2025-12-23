@@ -49,7 +49,7 @@ export const MODEL_CONFIGS = {
     params: {
       imageField: 'image_input',
       imageAsArray: true,
-      aspect_ratio: 'match_input_image',
+      aspect_ratio: '2:3',
       output_format: 'jpg'
       // Note: Gemini does not support negative_prompt parameter
       // Quality control is handled through detailed positive prompts and safety settings
@@ -103,10 +103,15 @@ export const MODEL_CONFIGS = {
     name: 'Flux Pro 2',
     model: 'black-forest-labs/flux-2-pro',
     params: {
-      imageField: 'image',
-      aspect_ratio: '3:4',
+      imageField: 'input_images',
+      imageAsArray: true,
+      resolution: '1 MP',
+      aspect_ratio: '2:3',
       output_format: 'jpg',
-      output_quality: 90
+      output_quality: 90,
+      safety_tolerance: 2,
+      guidance: 4.0,
+      num_inference_steps: 40
     }
   }
 };

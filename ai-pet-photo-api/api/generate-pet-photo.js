@@ -1,5 +1,10 @@
-import { PET_PROMPTS, DEFAULT_PROMPT, VALID_PET_TYPES } from './prompts.js';
+import { PET_PROMPTS, FLUX_PROMPTS, DEFAULT_PROMPT, VALID_PET_TYPES, getFluxPromptWithRandomComposition } from './prompts.js';
 import { createGenerator, DEFAULT_MODEL, SUPPORTED_MODELS } from './generators/index.js';
+
+// 카드 타입(크리스마스, 연하장) 모델 설정
+// 'google/nano-banana' 또는 'flux-pro-2' 중 선택
+const CARD_MODEL = 'flux-pro-2';
+//const CARD_MODEL = 'google/nano-banana';
 
 // 타입별 모델 매핑 (클라이언트가 모델을 지정하지 않은 경우)
 // 테스트를 위해 각 타입에 다른 모델을 할당하여 품질/비용 비교 가능
@@ -19,8 +24,8 @@ const TYPE_TO_MODEL_MAPPING = {
   'disney-character': 'google/nano-banana', // $0.039
   'angel': 'seededit',                     // $0.03 -> seededit OK
   'santa': 'qwen',                         // $0.03 -> qwen OK
-  'christmas-card': 'google/nano-banana',          // flux-pro-2 - 크리스마스 카드
-  'new-year-card': 'google/nano-banana'            // flux-pro-2 - 연하장
+  'christmas-card': CARD_MODEL,            // 크리스마스 카드 (상단 CARD_MODEL 변수로 제어)
+  'new-year-card': CARD_MODEL              // 연하장 (상단 CARD_MODEL 변수로 제어)
 };
 
 // 허용된 Origin 목록
@@ -29,7 +34,7 @@ function getAllowedOrigins() {
     'https://ai-pet-studio.apps.tossmini.com',
     'https://ai-pet-studio.private-apps.tossmini.com',
     'http://localhost:5173',
-    'http://192.168.0.25:5173'
+    'http://192.168.0.28:5173'
   ];
 }
 
@@ -96,11 +101,24 @@ export default async function handler(req, res) {
     }
 
     // 반려동물 타입 검증 및 프롬프트 선택
-    const selectedPrompt = VALID_PET_TYPES.includes(petType)
-      ? PET_PROMPTS[petType]
-      : DEFAULT_PROMPT;
+    // Flux-2 Pro 모델인 경우 FLUX_PROMPTS 사용, 아니면 PET_PROMPTS 사용
+    let selectedPrompt;
+    const isFluxModel = selectedModel === 'flux-pro-2';
+    const isCardType = petType === 'christmas-card' || petType === 'new-year-card';
 
-    console.log('선택된 프롬프트 타입:', VALID_PET_TYPES.includes(petType) ? petType : 'DEFAULT (masterpiece)');
+    if (isFluxModel && isCardType && FLUX_PROMPTS[petType]) {
+      // Flux 모델 + 카드 타입인 경우 Flux 전용 프롬프트 사용 (랜덤 컴포지션 적용)
+      selectedPrompt = getFluxPromptWithRandomComposition(petType);
+      console.log('선택된 프롬프트:', `FLUX_${petType} (with random composition)`);
+    } else if (VALID_PET_TYPES.includes(petType)) {
+      // 일반 모델 또는 일반 타입인 경우 기본 프롬프트 사용
+      selectedPrompt = PET_PROMPTS[petType];
+      console.log('선택된 프롬프트 타입:', petType);
+    } else {
+      selectedPrompt = DEFAULT_PROMPT;
+      console.log('선택된 프롬프트 타입:', 'DEFAULT (masterpiece)');
+    }
+
     console.log('프롬프트 길이:', selectedPrompt.length, 'chars');
 
     // Generator 생성

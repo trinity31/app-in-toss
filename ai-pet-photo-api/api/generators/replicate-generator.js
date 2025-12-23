@@ -41,16 +41,20 @@ export class ReplicateGenerator extends BaseImageGenerator {
 
       console.log(`${this.modelConfig.name} API 응답:`, typeof output, Array.isArray(output) ? `배열(${output.length}개)` : '단일값');
 
-      // flux-2-pro는 FileOutput 객체를 반환 (url() 메서드 호출 필요)
+      // 모든 모델이 URL 배열 또는 단일 URL 반환
       let imageUrl;
-      if (this.modelConfig.model === 'black-forest-labs/flux-2-pro') {
-        if (!output || !output.url) {
-          throw new Error(`${this.modelConfig.name} did not return FileOutput object`);
-        }
+      if (Array.isArray(output)) {
+        imageUrl = output[0];
+      } else if (typeof output === 'string') {
+        imageUrl = output;
+      } else if (output && typeof output.url === 'function') {
+        // FileOutput 객체인 경우
         imageUrl = output.url();
+      } else if (output && typeof output === 'object' && output.url) {
+        // url 속성이 있는 객체인 경우
+        imageUrl = output.url;
       } else {
-        // 다른 모델들은 URL 배열 또는 단일 URL 반환
-        imageUrl = Array.isArray(output) ? output[0] : output;
+        imageUrl = output;
       }
 
       if (!imageUrl) {
@@ -109,6 +113,8 @@ export class ReplicateGenerator extends BaseImageGenerator {
       input.input_image = imageValue;
     } else if (params.imageField === 'image_input') {
       input.image_input = imageValue;
+    } else if (params.imageField === 'input_images') {
+      input.input_images = [imageDataUrl];
     }
 
     // 내부 설정 제거

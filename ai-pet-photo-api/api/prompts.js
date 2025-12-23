@@ -428,6 +428,8 @@ IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - 
 
   // 16. 크리스마스 카드 - 홀리데이 그리팅 카드 스타일
   'christmas-card': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The pet in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the pet's identity.
+
 Transform this pet into a beautiful Christmas greeting card design with festive holiday elements AND greeting text.
 Create a professional holiday card composition with the pet as the central charming subject surrounded by Christmas decorations.
 Apply festive Christmas styling - cozy winter sweater, Santa hat, reindeer antlers, or elf costume that looks natural and adorable on the pet.
@@ -462,20 +464,22 @@ QUALITY REQUIREMENTS:
 - Clean, polished rendering with festive effects and warm lighting
 - Rich but balanced Christmas colors perfect for printing and sharing
 
-NATURAL ENHANCEMENT:
-- Gently enhance the pet's appearance while maintaining their recognizable features and joyful personality
-- Naturally clean up minor imperfections for perfect holiday card presentation
-- Keep the overall look and unique characteristics of the pet intact
-- Make improvements subtle and natural - the pet should still look like themselves in holiday attire
-- Enhance fur to look festive, clean, and holiday-ready with soft seasonal glow
-- Brighten and clear the eyes naturally to convey warm Christmas spirit and joy
-- Remove any distracting blemishes while preserving distinctive markings and lovable features
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the pet's unique face shape, eye shape, nose shape, mouth proportions, and facial structure completely identical to the original photo
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear in the original
+- ENHANCE MINOR FLAWS: Fix minor imperfections while maintaining the pet's actual features
+- NATURAL GROOMING ONLY: Clean up fur appearance while maintaining the exact coat pattern, texture, and natural look
+- SUBTLE EYE ENHANCEMENT: Brighten eyes naturally without changing their shape, color, size, or the pet's natural expression
+- EXPRESSION CONSISTENCY: Keep the pet's original expression and emotional state - maintain their authentic look and personality
+- NO ARTIFICIAL CHANGES: Do not make the pet look different, prettier, or more stylized - keep their real, authentic appearance
 
 IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
 `,
 
   // 17. 연하장 - 한국식 새해 인사 카드
   'new-year-card': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The pet in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the pet's identity.
+
 Transform this pet into a beautiful Korean New Year greeting card design with traditional and modern festive elements AND greeting text.
 Create a professional New Year card composition with the pet as the charming central figure celebrating the new year.
 Apply festive New Year styling - traditional Korean hanbok elements, lucky symbols, or modern celebratory accessories that look adorable on the pet.
@@ -514,16 +518,95 @@ QUALITY REQUIREMENTS:
 - Rich but balanced colors appropriate for Korean New Year aesthetics
 - High resolution output suitable for both digital sharing and physical card printing
 
-NATURAL ENHANCEMENT:
-- Gently enhance the pet's appearance while maintaining their recognizable features and joyful personality
-- Naturally clean up minor imperfections for perfect New Year card presentation symbolizing fresh start
-- Keep the overall look and unique characteristics of the pet intact
-- Make improvements subtle and natural - the pet should still look like themselves in festive attire
-- Enhance fur to look fresh, clean, and celebration-ready with auspicious glow
-- Brighten and clear the eyes naturally to convey hopeful New Year spirit and optimism
-- Remove any distracting blemishes while preserving distinctive markings and lovable features
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the pet's unique face shape, eye shape, nose shape, mouth proportions, and facial structure completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The pet must be instantly recognizable - preserve their distinct facial characteristics, expression, and personality
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears, or face shape from the original photo
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear in the original
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections like blur or lighting issues - never change the pet's actual features
+- NATURAL GROOMING ONLY: Clean up fur appearance while maintaining the exact coat pattern, texture, and natural look
+- SUBTLE EYE ENHANCEMENT: Brighten eyes naturally without changing their shape, color, size, or the pet's natural expression
+- EXPRESSION CONSISTENCY: Keep the pet's original expression and emotional state - maintain their authentic look and personality
+- NO ARTIFICIAL CHANGES: Do not make the pet look different, prettier, or more stylized - keep their real, authentic appearance
 
 IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`
+};
+
+// 크리스마스 카드 컴포지션 모듈 (17가지: 12개 구도 + 5개 조명)
+export const CHRISTMAS_COMPOSITION_MODULES = [
+  "Composition: wide street perspective illustration with colorful buildings on both sides and warm glowing windows. Overhead hanging string lights and small ornaments create leading lines into the distance. Place the pet centered in the foreground on a snowy path. Symmetrical framing from both sides, cozy depth, gentle snowfall.",
+
+  "Composition: illustrated cozy cabin interior. Fireplace on the left with stockings and candles, Christmas tree on the right with twinkling lights. Wrapped presents with red ribbons placed on both sides of the pet. Warm candlelight glow, clean premium card balance.",
+
+  "Composition: minimal illustrated holiday vignette. Large decorative candles left and right, small tree and gifts near the base. Keep background clean with tasteful gold confetti dots near the border. Pet centered, medium shot, snowfall soft and fine.",
+
+  "Composition: illustrated desk flat-lay frame around the edges: letters, envelope, ribbon, candy cane, lantern, ornaments, stationery. Keep the center clear for the pet. Add subtle gold foil specks only on the desk props and border, not on the pet.",
+
+  "Composition: illustrated warm indoor stage. A simple microphone stand in front of the pet (keep it minimal so the pet remains the hero). Soft illustrated spotlights, music-note bokeh in the background, festive confetti accents along the edges, balanced card layout.",
+
+  "Composition: illustrated large Christmas tree centered behind the pet, ornaments and candy canes evenly distributed. Presents placed symmetrically on both sides. Snowy ground with subtle sparkle. Pet centered at the tree base, clean and iconic.",
+
+  "Composition: illustrated winter forest landscape with cozy cabins and warm yellow windows. Pine trees layered for depth, soft blue-gray sky, gentle snowfall. Pet centered in the foreground on snow, with a calm premium greeting-card atmosphere.",
+
+  "Composition: illustrated frosty window frame behind the pet, snowfall visible outside. Inside warm fairy lights and small gifts placed symmetrically left and right. Use the window frame for strong symmetry and cozy depth.",
+
+  "Composition: minimal illustrated background with soft ivory-to-warm-gray gradient and subtle paper grain. Thin gold foil border frame, small wreath behind the pet (kept away from the face). Large negative space, premium luxury card design.",
+
+  "Composition: illustrated decorative border frame made of wreaths, holly leaves, ornaments, and gold ribbons around the edges. Keep the center clean for the pet. Background softly illustrated, symmetrical framing, premium print-ready finish.",
+
+  "Composition: illustrated festive storefront scene with warm window glow, small wreath on the door, hanging decorations, and snow on awnings. The pet sits centered in the foreground with gifts on both sides. Cozy city holiday mood, balanced composition.",
+
+  "Composition: illustrated Scandinavian-style card background with simple geometric holiday patterns at the top and bottom borders. Center area stays clean for the pet. A stylized illustrated tree behind the pet, minimal ornaments, premium paper texture.",
+
+  "Lighting & mood: a lavish Christmas tree packed with warm golden fairy lights and red ornaments, creating dense bokeh circles across the background. Add soft glowing light bloom around the brightest bulbs, tiny star-shaped sparkles scattered subtly. Warm fireplace-like ambience with rich amber highlights, gentle snowfall particles floating in the air. Premium holiday card glow, cozy and luminous.",
+
+  "Lighting & mood: an illustrated window background wrapped with thick Christmas garlands and string lights outlining the window frame and upper walls. The lights form bright luminous lines with soft halo glow, producing layered bokeh and a dreamy festive haze. Add a few hanging ornaments catching the light with gold glints, and subtle twinkling points around the text area. Warm indoor candlelight mixed with fairy lights.",
+
+  "Lighting & mood: festive multi-colored fairy lights (warm gold, red, green) densely arranged in the background with pronounced bokeh. Add sparkling dust and glitter-like light flecks drifting near the border. Strong contrast between sharp photoreal pet and soft glowing illustrated light field behind. Lush holiday spectacle, high-end greeting card shine.",
+
+  "Lighting & mood: elegant luxury Christmas lighting with warm golden fairy lights and subtle gold-foil accents on illustrated ornaments and border. Add refined starbursts (small, crisp) around a few highlights, plus soft bokeh lights behind the pet. The scene feels premium and polished: bright but not messy, with clean composition and controlled sparkle.",
+
+  "Lighting & mood: layered warm lighting with a glowing fireplace/candles on one side and a brilliantly lit Christmas tree on the other. Create depth using foreground tiny bokeh specks and background large bokeh orbs. Add gentle snowfall and a soft vignette that draws attention to the pet. Cozy, cinematic holiday glow with rich reds and greens and golden highlights."
+];
+
+// 랜덤 컴포지션 모듈을 선택하여 프롬프트를 생성하는 함수
+export function getFluxPromptWithRandomComposition(promptType) {
+  const basePrompt = FLUX_PROMPTS[promptType];
+
+  if (promptType === 'christmas-card' && basePrompt.includes('RANDOM_COMPOSITION_MODULE')) {
+    const randomIndex = Math.floor(Math.random() * CHRISTMAS_COMPOSITION_MODULES.length);
+    const randomComposition = CHRISTMAS_COMPOSITION_MODULES[randomIndex];
+
+    // 선택된 컴포지션 로그 출력
+    const compositionType = randomComposition.startsWith('Composition:') ? 'Composition' : 'Lighting & mood';
+    const compositionPreview = randomComposition.substring(0, 80) + '...';
+    console.log(`🎄 선택된 ${compositionType} [${randomIndex + 1}/17]:`, compositionPreview);
+
+    return basePrompt.replace('RANDOM_COMPOSITION_MODULE', randomComposition);
+  }
+
+  return basePrompt;
+}
+
+// Flux-2 Pro 전용 프롬프트 (Flux 가이드라인 최적화: 긍정적 표현, 중요도순 구성)
+export const FLUX_PROMPTS = {
+  'christmas-card': `
+Use image 0 as the ONLY identity reference for the pet. The pet must remain the exact same individual from image 0: identical fur base color tone, identical fur pattern and markings in the same exact locations, identical eye color, identical eyelid openness, identical pupil size, identical gaze direction, identical facial expression, identical ear shape, identical whisker pattern, identical nose color, and identical body proportions. Keep the pet strictly photorealistic like a real photo.
+
+Only do subtle cleanup on the pet: gently clean minor eye discharge, remove tiny dirt specks, tidy stray fur without changing natural color, texture, or markings.
+
+Transform only the outfit and the card setting. Dress the pet in a realistic Santa hat (red with white trim) and a cozy red knit sweater with white trim, fitting naturally without changing anatomy.
+
+Create a split-style composite greeting card: the pet stays photorealistic, while the entire background and all props are illustrated greeting-card style (flat illustration / paper-cut collage look) with subtle paper grain and crisp clean shapes. Add a soft realistic contact shadow under the pet so it feels placed in the scene.
+
+Design a vertical premium Christmas card, print-ready, balanced layout. Add gentle illustrated snowfall and illustrated bokeh Christmas lights in the background only. Use a rich red and forest green palette with warm gold accents and crisp white highlights. Add the exact text "Merry Christmas" in elegant white script with a subtle warm gold shadow at the top area, readable and not covering the pet's face.
+
+RANDOM_COMPOSITION_MODULE
+`,
+
+  'new-year-card': `
+This exact individual pet from the reference image in traditional Korean New Year styling. Copy the reference pet's precise fur coloration - if brown tabby keep brown tabby, if orange keep orange, if gray keep gray, if white keep white, if black keep black - match the exact base color tone. Copy the exact fur pattern from reference - if striped tabby keep striped tabby, if spotted keep spotted, if solid keep solid, if calico keep calico - preserve all distinctive markings, color patches, and stripe patterns in identical locations. Match the reference photo's exact eye shape and opening - if eyes are narrowed keep them narrowed, if eyes are half-closed keep them half-closed, if eyes are wide keep them wide. Keep the identical eyelid position, pupil size, eye color, and eye opening level from the reference photo. Preserve the exact facial expression - same eye gaze direction, same mouth position, same emotional state from the reference. Copy the pet's unique face shape, ear shape, nose color, whisker pattern, and body proportions exactly as they appear in the reference photo. Clean and brighten only minor imperfections: gently clean eye area discharge, remove dirt spots, tidy messy fur while keeping the exact natural color, texture, and pattern from reference. Transform only the outfit and setting, keeping the pet's appearance completely unchanged from reference. The pet sits upright facing forward in centered composition, adorned with traditional Korean hanbok collar in lucky red silk with golden embroidery, or modern celebratory party hat with confetti pattern. Auspicious color palette of prosperity gold, lucky red, pure white, jade green, and royal blue. Traditional Korean decorative patterns frame the pet, delicate plum blossoms on branches create natural framing, festive lanterns with golden tassels hang in background, modern fireworks burst with celebratory sparkles, or fusion of both traditional and contemporary elements. Elegant "Happy New Year" text in gold serif font with red decorative plum blossom accents positioned at top center of card. Bright hopeful lighting with golden hour warmth suggesting new beginnings, floating plum blossom petals and golden sparkles add celebratory magic, auspicious light rays create optimistic atmosphere. Professional Korean greeting card composition with harmonious balance, sharp focus on pet maintaining exact coloration, pattern, and features from reference image, print-ready quality with culturally appropriate festive aesthetic.
 `
 };
 

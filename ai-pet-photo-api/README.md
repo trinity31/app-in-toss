@@ -5,7 +5,7 @@
 ## 로컬에서 실행하기
 
 ```
-vercel dev --listen 192.168.0.25:3000
+vercel dev --listen 192.168.0.28:3000
 ```
 
 ## API 엔드포인트
