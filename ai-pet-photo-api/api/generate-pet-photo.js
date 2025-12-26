@@ -24,8 +24,24 @@ const TYPE_TO_MODEL_MAPPING = {
   'disney-character': 'google/nano-banana', // $0.039
   'angel': 'seededit',                     // $0.03 -> seededit OK
   'santa': 'qwen',                         // $0.03 -> qwen OK
-  'christmas-card': CARD_MODEL,            // 크리스마스 카드 (상단 CARD_MODEL 변수로 제어)
-  'new-year-card': CARD_MODEL              // 연하장 (상단 CARD_MODEL 변수로 제어)
+  'christmas-card': 'google/nano-banana',            // 크리스마스 카드 (상단 CARD_MODEL 변수로 제어)
+  'new-year-card': 'google/nano-banana',   // 연하장 - nano banana로 비용 절감 (하위 호환)
+  'new-year-card-cat': 'google/nano-banana', // 복고양이 연하장 (하위 호환)
+  'new-year-card-dog': 'google/nano-banana',  // 복강아지 연하장 (하위 호환)
+
+  // 고양이 연하장 3종 (한/일/중)
+  'new-year-card-cat-korea': 'google/nano-banana', // 한국풍 고양이 (하위 호환)
+  'new-year-card-cat-korea-male': 'google/nano-banana', // 한국풍 고양이 남아
+  'new-year-card-cat-korea-female': 'google/nano-banana', // 한국풍 고양이 여아
+  'new-year-card-cat-japan': 'google/nano-banana', // 일본풍 고양이 (마네키네코)
+  'new-year-card-cat-china': 'google/nano-banana', // 중국풍 고양이
+
+  // 강아지 연하장 3종 (한/일/중)
+  'new-year-card-dog-korea': 'google/nano-banana', // 한국풍 강아지 (하위 호환)
+  'new-year-card-dog-korea-male': 'google/nano-banana', // 한국풍 강아지 남아
+  'new-year-card-dog-korea-female': 'google/nano-banana', // 한국풍 강아지 여아
+  'new-year-card-dog-japan': 'google/nano-banana', // 일본풍 강아지
+  'new-year-card-dog-china': 'google/nano-banana'  // 중국풍 강아지
 };
 
 // 허용된 Origin 목록
