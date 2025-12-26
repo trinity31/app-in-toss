@@ -105,10 +105,10 @@ export const MODEL_CONFIGS = {
     params: {
       imageField: 'input_images',
       imageAsArray: true,
-      resolution: '1 MP',
+      resolution: '0.5 MP',
       aspect_ratio: '2:3',
-      output_format: 'jpg',
-      output_quality: 90,
+      output_format: 'webp',
+      output_quality: 70,
       safety_tolerance: 2,
       guidance: 4.0,
       num_inference_steps: 40

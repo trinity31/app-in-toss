@@ -1,6 +1,6 @@
 import Replicate from 'replicate';
 import { BaseImageGenerator } from './base-generator.js';
-import { urlToBase64 } from '../utils/image-utils.js';
+import { urlToBase64, compressImageToSizeLimit } from '../utils/image-utils.js';
 
 /**
  * Replicate 통합 Generator
@@ -26,8 +26,21 @@ export class ReplicateGenerator extends BaseImageGenerator {
       console.log(`${this.modelConfig.name} 생성 시작...`);
       console.log('프롬프트 길이:', prompt.length, 'chars');
 
+      // flux-2-pro 모델은 이미지 압축 적용
+      let processedImageBase64 = imageBase64;
+      if (this.modelConfig.model === 'black-forest-labs/flux-2-pro') {
+        try {
+          console.log('flux-2-pro 모델: 이미지 압축 시작...');
+          processedImageBase64 = await compressImageToSizeLimit(imageBase64, mimeType, 500);
+          console.log('이미지 압축 완료');
+        } catch (error) {
+          console.error('이미지 압축 실패, 원본 이미지 사용:', error.message);
+          // 압축 실패 시 원본 사용 (Replicate API에서 처리)
+        }
+      }
+
       // Base64를 data URL로 변환
-      const imageDataUrl = `data:${mimeType};base64,${imageBase64}`;
+      const imageDataUrl = `data:${mimeType};base64,${processedImageBase64}`;
 
       // 모델별 입력 파라미터 구성
       const input = this.buildInput(imageDataUrl, prompt);
