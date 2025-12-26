@@ -530,6 +530,620 @@ NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
 - NO ARTIFICIAL CHANGES: Do not make the pet look different, prettier, or more stylized - keep their real, authentic appearance
 
 IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 18. 복고양이 연하장 - 고양이 특화 새해 인사 카드
+  'new-year-card-cat': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The cat in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the cat's identity.
+
+Transform this cat into a beautiful Korean New Year greeting card design with traditional festive elements AND greeting text.
+Create a professional New Year card composition with the cat as the elegant central figure celebrating the new year.
+Apply festive New Year styling - traditional Korean hanbok elements in warm colors (red, orange, gold), lucky symbols, or modern celebratory accessories that look adorable on the cat.
+Use auspicious New Year color palette - lucky reds, prosperity golds, warm oranges, pure whites, jade greens, with bright optimistic lighting.
+Add New Year card background elements - traditional Korean patterns, delicate plum blossoms, pine trees, bamboo, or modern fireworks display, confetti, champagne celebrations.
+Include lucky symbolic elements - fortune character, traditional bojagi patterns, lucky bags, golden coins, sunrise, or celebratory balloons.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/red text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms, clouds, or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, gentle snow, confetti, or auspicious light rays.
+Capture a joyful, elegant, graceful expression that conveys New Year hope and celebration - cats are known for their dignified and refined demeanor.
+Create a traditional Korean aesthetic with hanbok and patterns, emphasizing elegance and sophistication befitting a cat's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic greeting card composition with the cat sitting in elegant, dignified pose
+- The cat must be facing forward symbolizing facing the new year ahead (no more than 30 degrees angle)
+- Keep the subject upright and properly oriented - no rotation, tilting, or upside-down positioning
+- Maintain a balanced, harmonious composition following aesthetic principles
+- Center the cat in the frame with decorative traditional elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned, following greeting card layout
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus and clear details
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the cat's unique face shape, eye shape, nose shape, mouth proportions, and facial structure completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The cat must be instantly recognizable - preserve their distinct facial characteristics, expression, and personality
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears, or face shape from the original photo
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear in the original
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections like blur or lighting issues - never change the cat's actual features
+- NATURAL GROOMING ONLY: Clean up fur appearance while maintaining the exact coat pattern, texture, and natural look
+- SUBTLE EYE ENHANCEMENT: Brighten eyes naturally without changing their shape, color, size, or the cat's natural expression
+- EXPRESSION CONSISTENCY: Keep the cat's original expression and emotional state - maintain their authentic look and personality
+- NO ARTIFICIAL CHANGES: Do not make the cat look different, prettier, or more stylized - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 19. 복강아지 연하장 - 강아지 특화 새해 인사 카드
+  'new-year-card-dog': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The dog in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the dog's identity.
+
+Transform this dog into a beautiful Korean New Year greeting card design with festive and cheerful elements AND greeting text.
+Create a professional New Year card composition with the dog as the friendly central figure celebrating the new year.
+Apply festive New Year styling - traditional Korean hanbok elements in bright colors (blue, green, gold), lucky symbols, or modern celebratory accessories that look adorable on the dog.
+Use auspicious New Year color palette - prosperity golds, bright blues, joyful greens, pure whites, royal blues, with bright optimistic lighting.
+Add New Year card background elements - traditional Korean patterns, plum blossoms, pine trees, bamboo, or modern fireworks display, confetti, champagne celebrations.
+Include lucky symbolic elements - fortune character, traditional bojagi patterns, lucky bags, golden coins, sunrise, or celebratory balloons.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/blue text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms, clouds, or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, gentle snow, confetti, or auspicious light rays.
+Capture a joyful, friendly, cheerful expression that conveys New Year hope and celebration - dogs are known for their bright and energetic personality.
+Create a fusion of traditional Korean aesthetic with modern celebratory elements, emphasizing friendliness and warmth befitting a dog's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic greeting card composition with the dog sitting in friendly, welcoming pose
+- The dog must be facing forward symbolizing facing the new year ahead (no more than 30 degrees angle)
+- Keep the subject upright and properly oriented - no rotation, tilting, or upside-down positioning
+- Maintain a balanced, harmonious composition following aesthetic principles
+- Center the dog in the frame with decorative traditional or modern elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned, following greeting card layout
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus and clear details
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the dog's unique face shape, eye shape, nose shape, mouth proportions, and facial structure completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The dog must be instantly recognizable - preserve their distinct facial characteristics, expression, and personality
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears, or face shape from the original photo
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear in the original
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections like blur or lighting issues - never change the dog's actual features
+- NATURAL GROOMING ONLY: Clean up fur appearance while maintaining the exact coat pattern, texture, and natural look
+- SUBTLE EYE ENHANCEMENT: Brighten eyes naturally without changing their shape, color, size, or the dog's natural expression
+- EXPRESSION CONSISTENCY: Keep the dog's original expression and emotional state - maintain their authentic look and personality
+- NO ARTIFICIAL CHANGES: Do not make the dog look different, prettier, or more stylized - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 20. 한국풍 고양이 연하장
+  'new-year-card-cat-korea': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The cat in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the cat's identity.
+
+Transform this cat into a beautiful Korean New Year greeting card design with traditional Korean festive elements.
+Create a professional New Year card composition with the cat as the elegant central figure celebrating the Korean new year.
+Apply traditional Korean festive styling - hanbok elements with bojagi (복주머니) lucky bag, norigae (노리개) traditional ornaments.
+Use auspicious Korean New Year color palette - lucky reds, warm oranges, prosperity golds, pure whites, with bright optimistic lighting.
+Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
+Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/red text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Korean card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
+Capture an elegant, dignified, graceful expression that conveys Korean New Year hope and celebration - cats are known for their refined demeanor.
+Create a traditional Korean aesthetic emphasizing elegance and sophistication befitting a cat's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Korean greeting card composition with the cat sitting in elegant, dignified pose
+- The cat must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Korean aesthetic principles
+- Center the cat in the frame with traditional Korean decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the cat's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The cat must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the cat look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 20-1. 한국풍 고양이 남아 연하장
+  'new-year-card-cat-korea-male': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The cat in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the cat's identity.
+
+Transform this cat into a beautiful Korean New Year greeting card design with traditional Korean festive elements for a boy cat.
+Create a professional New Year card composition with the cat as the elegant central figure celebrating the Korean new year.
+Apply traditional Korean festive styling for boys - hanbok elements in BLUE and GREEN colors (파랑색/초록색 저고리), traditional masculine hanbok style, bojagi (복주머니) lucky bag, traditional knots (매듭).
+Use auspicious Korean New Year color palette for boys - royal blues, jade greens, prosperity golds, silvers, pure whites, with bright optimistic lighting.
+Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
+Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/blue text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Korean card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
+Capture a dignified, confident, graceful expression that conveys Korean New Year hope and celebration - emphasizing noble masculine charm.
+Create a traditional Korean aesthetic emphasizing dignity and confidence befitting a boy cat's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Korean greeting card composition with the cat sitting in dignified, confident pose
+- The cat must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Korean aesthetic principles
+- Center the cat in the frame with traditional Korean decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the cat's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The cat must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the cat look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 20-2. 한국풍 고양이 여아 연하장
+  'new-year-card-cat-korea-female': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The cat in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the cat's identity.
+
+Transform this cat into a beautiful Korean New Year greeting card design with traditional Korean festive elements for a girl cat.
+Create a professional New Year card composition with the cat as the elegant central figure celebrating the Korean new year.
+Apply traditional Korean festive styling for girls - hanbok elements in RED and PINK colors (빨강색/분홍색 저고리), feminine traditional hanbok style, norigae (노리개) traditional ornaments, flower decorations (꽃 장식), bojagi (복주머니) lucky bag.
+Use auspicious Korean New Year color palette for girls - lucky reds, soft pinks, warm oranges, prosperity golds, pure whites, with bright optimistic lighting.
+Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
+Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, flower decorations, cranes, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/red text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Korean card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
+Capture an elegant, graceful, lovely expression that conveys Korean New Year hope and celebration - emphasizing graceful feminine charm.
+Create a traditional Korean aesthetic emphasizing elegance and loveliness befitting a girl cat's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Korean greeting card composition with the cat sitting in elegant, graceful pose
+- The cat must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Korean aesthetic principles
+- Center the cat in the frame with traditional Korean decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the cat's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The cat must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the cat look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 21. 일본풍 고양이 연하장 (마네키네코)
+  'new-year-card-cat-japan': `
+Create a richly detailed illustrated New Year greeting card image.
+
+Use the uploaded cat photo as reference and preserve the cat's unique
+facial features, eye shape, expression, fur pattern, and coloring
+as closely as possible.
+
+Transform the cat into a traditional Japanese maneki-neko style character.
+Focus on capturing the iconic maneki-neko look and atmosphere,
+while keeping the cat recognizable as the original pet.
+
+As traditional maneki-neko posture, the cat should raise one paw, and one paw should remain on the ground. Never arrange extra paw on the ground. A paw which is raised shouldn't touch the ground at the same time.
+
+The expression should feel calm, warm, and gently joyful.
+The cat wears a red collar with a small golden bell.
+
+Illustration style only — soft pastel colors, elegant Japanese decorative
+aesthetics, smooth rounded line art, refined shading,
+and a polished hand-drawn illustration finish.
+Avoid photorealism completely.
+
+Design the image as a vertical New Year greeting card.
+The background is visually rich with layered Japanese New Year patterns:
+plum blossoms, traditional waves, clouds, circular motifs,
+and subtle gold accents.
+
+The cat should be slightly smaller than the full frame
+and positioned in the lower portion of the composition,
+allowing the upper area to feel lighter and suitable for later text overlay,
+without creating empty boxes or panels.
+
+IMPORTANT:
+Do NOT include any text, letters, numbers, symbols, or typography.
+Do NOT add duplicated anatomy or extra limbs.
+
+Overall mood: festive, refined, lucky, and elegant —
+a classic maneki-neko inspired New Year illustration.
+`,
+
+  // 22. 중국풍 고양이 연하장
+  'new-year-card-cat-china': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The cat in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the cat's identity.
+
+Transform this cat into a beautiful Chinese New Year greeting card design with traditional Chinese festive elements.
+Create a professional New Year card composition with the cat as the elegant central figure celebrating the Chinese new year.
+Apply traditional Chinese festive styling - red ribbons, golden ornaments, Chinese traditional accessories.
+Use auspicious Chinese New Year color palette - lucky reds, prosperity golds, crimson, pure whites, jade greens, with bright optimistic lighting.
+Add Chinese New Year card background elements - traditional Chinese patterns, peony flowers (모란꽃), fortune character (福), red lanterns (등불), Chinese knots (매듭).
+Include Chinese lucky symbolic elements - fortune character, golden coins, red envelopes, cloud patterns, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/red text on light background, or white text with shadow/outline on colorful background.
+Style the text with Chinese traditional decorations like peony flowers or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Chinese card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating peony petals, or auspicious light rays.
+Capture an elegant, dignified, graceful expression that conveys Chinese New Year hope and celebration - emphasizing fortune and prosperity.
+Create a splendid Chinese aesthetic emphasizing fortune and magnificence befitting the Chinese new year tradition.
+Professional Chinese greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Chinese greeting card composition with the cat sitting in elegant, dignified pose
+- The cat must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Chinese aesthetic principles
+- Center the cat in the frame with traditional Chinese decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Chinese greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Chinese New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the cat's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The cat must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the cat look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 23. 한국풍 강아지 연하장
+  'new-year-card-dog-korea': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The dog in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the dog's identity.
+
+Transform this dog into a beautiful Korean New Year greeting card design with traditional Korean festive elements.
+Create a professional New Year card composition with the dog as the friendly central figure celebrating the Korean new year.
+Apply traditional Korean festive styling - hanbok elements with colorful saekdong (색동) stripes, traditional accessories.
+Use auspicious Korean New Year color palette - joyful blues, prosperity greens, golds, pure whites, with bright optimistic lighting.
+Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
+Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/blue text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Korean card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
+Capture a friendly, cheerful, welcoming expression that conveys Korean New Year hope and celebration - dogs are known for their bright personality.
+Create a traditional Korean aesthetic emphasizing friendliness and warmth befitting a dog's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Korean greeting card composition with the dog sitting in friendly, welcoming pose
+- The dog must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Korean aesthetic principles
+- Center the dog in the frame with traditional Korean decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the dog's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The dog must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the dog look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 23-1. 한국풍 강아지 남아 연하장
+  'new-year-card-dog-korea-male': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The dog in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the dog's identity.
+
+Transform this dog into a beautiful Korean New Year greeting card design with traditional Korean festive elements for a boy dog.
+Create a professional New Year card composition with the dog as the friendly central figure celebrating the Korean new year.
+Apply traditional Korean festive styling for boys - hanbok elements in BLUE and GREEN colors (파랑색/초록색 저고리), traditional masculine hanbok style, bojagi (복주머니) lucky bag, traditional knots (매듭).
+Use auspicious Korean New Year color palette for boys - royal blues, jade greens, prosperity golds, silvers, pure whites, with bright optimistic lighting.
+Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
+Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/blue text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Korean card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
+Capture a cheerful, confident, energetic expression that conveys Korean New Year hope and celebration - emphasizing bright masculine energy.
+Create a traditional Korean aesthetic emphasizing confidence and energy befitting a boy dog's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Korean greeting card composition with the dog sitting in confident, energetic pose
+- The dog must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Korean aesthetic principles
+- Center the dog in the frame with traditional Korean decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the dog's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The dog must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the dog look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 23-2. 한국풍 강아지 여아 연하장
+  'new-year-card-dog-korea-female': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The dog in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the dog's identity.
+
+Transform this dog into a beautiful Korean New Year greeting card design with traditional Korean festive elements for a girl dog.
+Create a professional New Year card composition with the dog as the friendly central figure celebrating the Korean new year.
+Apply traditional Korean festive styling for girls - hanbok elements in RED and PINK colors (빨강색/분홍색 저고리), feminine traditional hanbok style with colorful saekdong (색동) skirt, norigae (노리개) traditional ornaments, flower decorations (꽃 장식), bojagi (복주머니) lucky bag.
+Use auspicious Korean New Year color palette for girls - lucky reds, soft pinks, warm oranges, prosperity golds, pure whites, with bright optimistic lighting.
+Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
+Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, flower decorations, cranes, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/red text on light background, or white text with shadow/outline on colorful background.
+Style the text with Korean traditional decorations like plum blossoms or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Korean card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
+Capture a cheerful, lovely, bright expression that conveys Korean New Year hope and celebration - emphasizing lovable feminine charm.
+Create a traditional Korean aesthetic emphasizing loveliness and brightness befitting a girl dog's nature.
+Professional Korean greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Korean greeting card composition with the dog sitting in lovely, cheerful pose
+- The dog must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Korean aesthetic principles
+- Center the dog in the frame with traditional Korean decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Korean greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Korean New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the dog's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The dog must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the dog look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+`,
+
+  // 24. 일본풍 강아지 연하장
+  'new-year-card-dog-japan': `
+Create a richly detailed illustrated New Year greeting card image.
+
+Use the uploaded dog photo as reference and preserve the dog's unique
+facial features, eye shape, expression, fur pattern, and coloring
+as closely as possible.
+
+Transform the dog into a traditional Japanese "Fukuken" (lucky dog) style character,
+symbolizing protection, health, and good fortune for the New Year.
+The dog should feel dignified, friendly, and trustworthy.
+
+The expression should be warm, calm, and reassuring.
+The dog wears a red collar with a small golden bell or charm.
+
+Illustration style only — soft pastel colors, refined Japanese decorative
+aesthetics, smooth rounded line art, gentle shading,
+and a high-quality hand-drawn illustration look.
+Avoid photorealism completely.
+
+Design the image as a vertical New Year greeting card.
+The background is visually rich with elegant Japanese New Year patterns:
+plum blossoms, clouds, traditional wave motifs,
+soft circular patterns, and subtle gold accents.
+
+The dog should be slightly smaller than the full canvas
+and positioned toward the lower portion of the image,
+creating visual balance and natural space above for later text overlay,
+without drawing boxes or framed areas.
+
+IMPORTANT:
+Do NOT include any text, letters, numbers, symbols, or typography.
+Do NOT add exaggerated human-like poses or duplicated anatomy.
+
+Overall mood: peaceful, lucky, protective, and celebratory —
+a refined and auspicious New Year dog illustration.
+`,
+
+  // 25. 중국풍 강아지 연하장
+  'new-year-card-dog-china': `
+CRITICAL: Use the input image as the PRIMARY REFERENCE. The dog in the output MUST be the EXACT SAME individual animal from the input photo - same face, same fur pattern, same color, same markings. Transform ONLY the setting and outfit, NEVER change the dog's identity.
+
+Transform this dog into a beautiful Chinese New Year greeting card design with traditional Chinese festive elements inspired by Chinese Lion Dog (Fu Dog) concept.
+Create a professional New Year card composition with the dog as the friendly central figure celebrating the Chinese new year.
+Apply traditional Chinese festive styling - red ribbons, golden ornaments, Chinese traditional accessories.
+Use auspicious Chinese New Year color palette - lucky reds, prosperity golds, vibrant oranges, pure whites, with bright optimistic lighting.
+Add Chinese New Year card background elements - traditional Chinese patterns, peony flowers (牡丹), fortune character (福), red lanterns, Chinese knots.
+Include Chinese lucky symbolic elements - fortune character, golden coins, red envelopes, cloud patterns, or celebratory elements.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual New Year greeting text on the card image. Add the following message in beautiful typography:
+- "Happy New Year"
+
+Place the text prominently at the top or center-top of the card in elegant font (modern serif/sans-serif or decorative festive font).
+Make the text clearly readable with excellent contrast - use gold/red text on light background, or white text with shadow/outline on colorful background.
+Style the text with Chinese traditional decorations like peony flowers or auspicious symbols around the letters.
+The text should look professionally designed and culturally appropriate, integrated beautifully into the Chinese card layout.
+
+Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
+Add celebratory effects like golden sparkles, floating peony petals, or auspicious light rays.
+Capture a friendly, cheerful, energetic expression that conveys Chinese New Year hope and celebration - emphasizing fortune and prosperity.
+Create a splendid Chinese aesthetic emphasizing friendliness and bringing fortune befitting the Chinese new year tradition.
+Professional Chinese greeting card quality with integrated text, auspicious New Year design, culturally appropriate, print-ready resolution.
+
+ORIENTATION AND COMPOSITION:
+- Classic Chinese greeting card composition with the dog sitting in friendly, welcoming pose
+- The dog must be facing forward symbolizing facing the new year ahead
+- Keep the subject upright and properly oriented
+- Maintain a balanced, harmonious composition following Chinese aesthetic principles
+- Center the dog in the frame with traditional Chinese decorative elements framing naturally
+- Leave compositional space for greeting text placement
+- The head should be at the top, body naturally positioned
+
+QUALITY REQUIREMENTS:
+- Professional Chinese greeting card printing quality with sharp focus
+- Proper proportions and appealing anatomy - no distorted features
+- Clean, polished rendering with festive effects and auspicious lighting
+- Rich but balanced colors appropriate for Chinese New Year aesthetics
+- High resolution output suitable for both digital sharing and physical card printing
+
+NATURAL ENHANCEMENT - CRITICAL IDENTITY PRESERVATION:
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the dog's unique face shape, eye shape, nose shape completely identical to the original photo
+- MAINTAIN ORIGINAL IDENTITY: The dog must be instantly recognizable
+- KEEP EXACT PROPORTIONS: Do not alter the size or position of eyes, nose, mouth, ears
+- PRESERVE DISTINCTIVE MARKINGS: Keep all unique fur patterns, color markings, spots, stripes exactly as they appear
+- ENHANCE ONLY MINOR FLAWS: Fix only small technical imperfections
+- NO ARTIFICIAL CHANGES: Do not make the dog look different - keep their real, authentic appearance
+
+IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
 `
 };
 
