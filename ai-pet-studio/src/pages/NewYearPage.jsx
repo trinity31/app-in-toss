@@ -12,7 +12,7 @@ const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 export default function NewYearPage() {
   const [currentPage, setCurrentPage] = useState('intro')
   const [selectedImage, setSelectedImage] = useState(null)
-  const [selectedPetType, setSelectedPetType] = useState('christmas-card')
+  const [selectedPetType, setSelectedPetType] = useState('new-year-card-cat-korea')
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null)
   const [error, setError] = useState(null)
 
@@ -28,7 +28,7 @@ export default function NewYearPage() {
   const adWaitTimeoutRef = useRef(undefined)
   const rewardEarnedRef = useRef(false)
   const adPlayCountRef = useRef(0)
-  const selectedPetTypeRef = useRef('christmas-card')
+  const selectedPetTypeRef = useRef('new-year-card-cat-korea')
   const preloadedImageUrlRef = useRef(null)
 
   const handleAlbumSelect = async () => {
@@ -380,8 +380,8 @@ export default function NewYearPage() {
   const handleReset = () => {
     setCurrentPage('intro')
     setSelectedImage(null)
-    setSelectedPetType('christmas-card')
-    selectedPetTypeRef.current = 'christmas-card'
+    setSelectedPetType('new-year-card-cat-korea')
+    selectedPetTypeRef.current = 'new-year-card-cat-korea'
     adPlayCountRef.current = 0
     preloadedImageUrlRef.current = null
     setGeneratedImageUrl(null)
@@ -429,8 +429,8 @@ export default function NewYearPage() {
 
   const handleBackToIntro = () => {
     setSelectedImage(null)
-    setSelectedPetType('christmas-card')
-    selectedPetTypeRef.current = 'christmas-card'
+    setSelectedPetType('new-year-card-cat-korea')
+    selectedPetTypeRef.current = 'new-year-card-cat-korea'
     adPlayCountRef.current = 0
     setCurrentPage('intro')
   }
@@ -601,21 +601,53 @@ export default function NewYearPage() {
 // 연말 특별 선택 컴포넌트
 function NewYearSelection({ selectedImage, onSelect, onBack }) {
   const [selectedType, setSelectedType] = useState(null)
+  const [selectedGender, setSelectedGender] = useState(null)
 
   const petTypes = [
+    // 고양이 3종
     {
-      id: 'christmas-card',
-      title: '크리스마스 카드',
-      description: '따뜻한 크리스마스 카드',
-      icon: 'u1F384.png', // 🎄
+      id: 'new-year-card-cat-korea',
+      title: '한국 고양이 연하장',
+      description: '한복 입은 고양이',
+      icon: 'u1F431.png', // 🐱
+      color: colors.orange50,
+      hasGenderOption: true
+    },    // 강아지 3종
+    {
+      id: 'new-year-card-dog-korea',
+      title: '한국 강아지 연하장',
+      description: '한복 입은 강아지',
+      icon: 'u1F436.png', // 🐶
+      color: colors.blue50,
+      hasGenderOption: true
+    },
+    {
+      id: 'new-year-card-cat-japan',
+      title: '일본 고양이 연하장',
+      description: '마네키네코 스타일',
+      icon: 'u1F431.png', // 🐱
       color: colors.red50
     },
     {
-      id: 'new-year-card',
-      title: '연하장',
-      description: '새해 인사 카드',
-      icon: 'u1F389.png', // 🎉
-      color: colors.blue50
+      id: 'new-year-card-dog-japan',
+      title: '일본 강아지 연하장',
+      description: '일본 복강아지',
+      icon: 'u1F436.png', // 🐶
+      color: colors.purple50
+    },
+    {
+      id: 'new-year-card-cat-china',
+      title: '중국 고양이 연하장',
+      description: '중국 전통 고양이',
+      icon: 'u1F431.png', // 🐱
+      color: colors.yellow50
+    },
+    {
+      id: 'new-year-card-dog-china',
+      title: '중국 강아지 연하장',
+      description: '중국 사자개 스타일',
+      icon: 'u1F436.png', // 🐶
+      color: colors.green50
     }
   ]
 
@@ -649,27 +681,71 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
 
       <div style={styles.typeGrid}>
         {petTypes.map((type) => (
-          <div
-            key={type.id}
-            style={{
-              ...styles.typeCard,
-              backgroundColor: selectedType === type.id ? type.color : colors.white,
-              border: selectedType === type.id ? `2px solid ${colors.blue500}` : `1px solid ${colors.grey200}`,
-            }}
-            onClick={() => setSelectedType(type.id)}
-          >
-            <div style={styles.typeIconWrapper}>
-              <Asset.Image
-                frameShape={Asset.frameShape.CleanW24}
-                backgroundColor="transparent"
-                src={`https://static.toss.im/2d-emojis/png/4x/${type.icon}`}
-                aria-hidden={true}
-                style={{ aspectRatio: '1/1', width: '48px', height: '48px' }}
-              />
+          <div key={type.id}>
+            <div
+              style={{
+                ...styles.typeCard,
+                backgroundColor: selectedType === type.id ? type.color : colors.white,
+                border: selectedType === type.id ? `2px solid ${colors.blue500}` : `1px solid ${colors.grey200}`,
+              }}
+              onClick={() => {
+                setSelectedType(type.id)
+                // 한국풍이 아니면 성별 초기화
+                if (!type.hasGenderOption) {
+                  setSelectedGender(null)
+                }
+              }}
+            >
+              <div style={styles.typeIconWrapper}>
+                <Asset.Image
+                  frameShape={Asset.frameShape.CleanW24}
+                  backgroundColor="transparent"
+                  src={`https://static.toss.im/2d-emojis/png/4x/${type.icon}`}
+                  aria-hidden={true}
+                  style={{ aspectRatio: '1/1', width: '48px', height: '48px' }}
+                />
+              </div>
+              <Spacing size={12} />
+              <h3 style={styles.typeTitle}>{type.title}</h3>
+              <p style={styles.typeDescription}>{type.description}</p>
             </div>
-            <Spacing size={12} />
-            <h3 style={styles.typeTitle}>{type.title}</h3>
-            <p style={styles.typeDescription}>{type.description}</p>
+
+            {/* 한국풍일 때만 성별 선택 UI 표시 */}
+            {selectedType === type.id && type.hasGenderOption && (
+              <div style={styles.genderSelector}>
+                <Spacing size={12} />
+                <div style={styles.genderButtonGroup}>
+                  <button
+                    style={{
+                      ...styles.genderButton,
+                      backgroundColor: selectedGender === 'male'
+                        ? colors.blue100
+                        : colors.grey50,
+                      border: selectedGender === 'male'
+                        ? `2px solid ${colors.blue500}`
+                        : `1px solid ${colors.grey200}`
+                    }}
+                    onClick={() => setSelectedGender('male')}
+                  >
+                    남아 👦
+                  </button>
+                  <button
+                    style={{
+                      ...styles.genderButton,
+                      backgroundColor: selectedGender === 'female'
+                        ? colors.pink100
+                        : colors.grey50,
+                      border: selectedGender === 'female'
+                        ? `2px solid ${colors.pink500}`
+                        : `1px solid ${colors.grey200}`
+                    }}
+                    onClick={() => setSelectedGender('female')}
+                  >
+                    여아 👧
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -680,15 +756,41 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
         <button
           style={{
             ...styles.button,
-            opacity: selectedType ? 1 : 0.5,
-            cursor: selectedType ? 'pointer' : 'not-allowed'
+            opacity: (() => {
+              if (!selectedType) return 0.5
+              const selectedPetType = petTypes.find(t => t.id === selectedType)
+              if (selectedPetType?.hasGenderOption && !selectedGender) return 0.5
+              return 1
+            })(),
+            cursor: (() => {
+              if (!selectedType) return 'not-allowed'
+              const selectedPetType = petTypes.find(t => t.id === selectedType)
+              if (selectedPetType?.hasGenderOption && !selectedGender) return 'not-allowed'
+              return 'pointer'
+            })()
           }}
           onClick={() => {
-            if (selectedType) {
-              onSelect(selectedType)
+            if (!selectedType) return
+
+            const selectedPetType = petTypes.find(t => t.id === selectedType)
+
+            // 한국풍이고 성별이 선택된 경우 타입 변환
+            let finalPetType = selectedType
+            if (selectedPetType?.hasGenderOption && selectedGender) {
+              finalPetType = `${selectedType}-${selectedGender}`
+            } else if (selectedPetType?.hasGenderOption && !selectedGender) {
+              // 한국풍인데 성별 미선택 시 실행 안 함
+              return
             }
+
+            onSelect(finalPetType)
           }}
-          disabled={!selectedType}
+          disabled={(() => {
+            if (!selectedType) return true
+            const selectedPetType = petTypes.find(t => t.id === selectedType)
+            if (selectedPetType?.hasGenderOption && !selectedGender) return true
+            return false
+          })()}
         >
           광고 보고 생성하기
         </button>
@@ -796,5 +898,23 @@ const styles = {
     fontSize: '16px',
     fontWeight: '600',
     transition: 'opacity 0.2s ease',
+  },
+  genderSelector: {
+    paddingTop: '12px',
+  },
+  genderButtonGroup: {
+    display: 'flex',
+    gap: '8px',
+    justifyContent: 'center',
+  },
+  genderButton: {
+    flex: 1,
+    padding: '12px 16px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    border: '1px solid #e5e8eb',
   },
 }
