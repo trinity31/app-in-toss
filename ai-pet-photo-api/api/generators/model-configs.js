@@ -49,9 +49,9 @@ export const MODEL_CONFIGS = {
     params: {
       imageField: 'image_input',
       imageAsArray: true,
-      aspect_ratio: '2:3',
       output_format: 'jpg'
-      // Note: Gemini does not support negative_prompt parameter
+      // Note: Gemini does not support negative_prompt or aspect_ratio parameters
+      // Aspect ratio must be specified in the prompt text
       // Quality control is handled through detailed positive prompts and safety settings
     }
   },
