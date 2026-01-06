@@ -7,6 +7,16 @@ import Loading from '../components/Loading'
 import Result from '../components/Result'
 import { API_ENDPOINTS, AD_GROUP_ID, AD_WAIT_TIMEOUT_MS } from '../config/const'
 
+// 연하장 썸네일 이미지
+import catKoreaMaleImg from '../assets/images/newyear/cat_korea_male.png'
+import catKoreaFemaleImg from '../assets/images/newyear/cat_korea_female.png'
+import catJapanImg from '../assets/images/newyear/cat_japan.png'
+import catChinaImg from '../assets/images/newyear/cat_china.png'
+import dogKoreaMaleImg from '../assets/images/newyear/dog_korea_male.png'
+import dogKoreaFemaleImg from '../assets/images/newyear/dog_korea_female.png'
+import dogJapanImg from '../assets/images/newyear/dog_japan.png'
+import dogChinaImg from '../assets/images/newyear/dog_china.png'
+
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
 export default function NewYearPage() {
@@ -537,6 +547,7 @@ export default function NewYearPage() {
         return (
           <Result
             imageUrl={generatedImageUrl}
+            petType={selectedPetType}
             onClose={handleReset}
             onSave={handleSave}
           />
@@ -609,15 +620,20 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
       id: 'new-year-card-cat-korea',
       title: '한국 고양이 연하장',
       description: '한복 입은 고양이',
-      icon: 'u1F431.png', // 🐱
+      thumbnail: catKoreaMaleImg,
+      thumbnailMale: catKoreaMaleImg,
+      thumbnailFemale: catKoreaFemaleImg,
       color: colors.orange50,
       hasGenderOption: true
-    },    // 강아지 3종
+    },
+    // 강아지 3종
     {
       id: 'new-year-card-dog-korea',
       title: '한국 강아지 연하장',
       description: '한복 입은 강아지',
-      icon: 'u1F436.png', // 🐶
+      thumbnail: dogKoreaMaleImg,
+      thumbnailMale: dogKoreaMaleImg,
+      thumbnailFemale: dogKoreaFemaleImg,
       color: colors.blue50,
       hasGenderOption: true
     },
@@ -625,28 +641,28 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
       id: 'new-year-card-cat-japan',
       title: '일본 고양이 연하장',
       description: '마네키네코 스타일',
-      icon: 'u1F431.png', // 🐱
+      thumbnail: catJapanImg,
       color: colors.red50
     },
     {
       id: 'new-year-card-dog-japan',
       title: '일본 강아지 연하장',
       description: '일본 복강아지',
-      icon: 'u1F436.png', // 🐶
+      thumbnail: dogJapanImg,
       color: colors.purple50
     },
     {
       id: 'new-year-card-cat-china',
       title: '중국 고양이 연하장',
       description: '중국 전통 고양이',
-      icon: 'u1F431.png', // 🐱
+      thumbnail: catChinaImg,
       color: colors.yellow50
     },
     {
       id: 'new-year-card-dog-china',
       title: '중국 강아지 연하장',
       description: '중국 사자개 스타일',
-      icon: 'u1F436.png', // 🐶
+      thumbnail: dogChinaImg,
       color: colors.green50
     }
   ]
@@ -679,9 +695,9 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
 
       <Spacing size={30} />
 
-      <div style={styles.typeGrid}>
+      <div style={styles.typeList}>
         {petTypes.map((type) => (
-          <div key={type.id}>
+          <div key={type.id} style={styles.typeListItem}>
             <div
               style={{
                 ...styles.typeCard,
@@ -696,56 +712,67 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
                 }
               }}
             >
-              <div style={styles.typeIconWrapper}>
-                <Asset.Image
-                  frameShape={Asset.frameShape.CleanW24}
-                  backgroundColor="transparent"
-                  src={`https://static.toss.im/2d-emojis/png/4x/${type.icon}`}
-                  aria-hidden={true}
-                  style={{ aspectRatio: '1/1', width: '48px', height: '48px' }}
+              <div style={styles.typeThumbnailWrapper}>
+                <img
+                  src={
+                    selectedType === type.id && type.hasGenderOption && selectedGender
+                      ? selectedGender === 'male'
+                        ? type.thumbnailMale
+                        : type.thumbnailFemale
+                      : type.thumbnail
+                  }
+                  alt={type.title}
+                  style={styles.typeThumbnail}
                 />
               </div>
-              <Spacing size={12} />
-              <h3 style={styles.typeTitle}>{type.title}</h3>
-              <p style={styles.typeDescription}>{type.description}</p>
-            </div>
+              <div style={styles.typeTextContainer}>
+                <h3 style={styles.typeTitle}>{type.title}</h3>
+                <p style={styles.typeDescription}>{type.description}</p>
 
-            {/* 한국풍일 때만 성별 선택 UI 표시 */}
-            {selectedType === type.id && type.hasGenderOption && (
-              <div style={styles.genderSelector}>
-                <Spacing size={12} />
-                <div style={styles.genderButtonGroup}>
-                  <button
-                    style={{
-                      ...styles.genderButton,
-                      backgroundColor: selectedGender === 'male'
-                        ? colors.blue100
-                        : colors.grey50,
-                      border: selectedGender === 'male'
-                        ? `2px solid ${colors.blue500}`
-                        : `1px solid ${colors.grey200}`
-                    }}
-                    onClick={() => setSelectedGender('male')}
-                  >
-                    남아 👦
-                  </button>
-                  <button
-                    style={{
-                      ...styles.genderButton,
-                      backgroundColor: selectedGender === 'female'
-                        ? colors.pink100
-                        : colors.grey50,
-                      border: selectedGender === 'female'
-                        ? `2px solid ${colors.pink500}`
-                        : `1px solid ${colors.grey200}`
-                    }}
-                    onClick={() => setSelectedGender('female')}
-                  >
-                    여아 👧
-                  </button>
-                </div>
+                {/* 성별 선택 UI - 텍스트 아래에 표시 */}
+                {selectedType === type.id && type.hasGenderOption && (
+                  <div style={styles.genderSelector}>
+                    {/* <Spacing size={8} /> */}
+                    <div style={styles.genderButtonGroup}>
+                      <button
+                        style={{
+                          ...styles.genderButton,
+                          backgroundColor: selectedGender === 'male'
+                            ? colors.blue100
+                            : colors.grey50,
+                          border: selectedGender === 'male'
+                            ? `2px solid ${colors.blue500}`
+                            : `1px solid ${colors.grey200}`
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedGender('male');
+                        }}
+                      >
+                        남아
+                      </button>
+                      <button
+                        style={{
+                          ...styles.genderButton,
+                          backgroundColor: selectedGender === 'female'
+                            ? colors.blue100
+                            : colors.grey50,
+                          border: selectedGender === 'female'
+                            ? `2px solid ${colors.blue500}`
+                            : `1px solid ${colors.grey200}`
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedGender('female');
+                        }}
+                      >
+                        여아
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>
@@ -844,20 +871,23 @@ const styles = {
     height: '100%',
     objectFit: 'cover',
   },
-  typeGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '16px',
+  typeList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
     width: '100%',
     maxWidth: '400px',
   },
+  typeListItem: {
+    width: '100%',
+  },
   typeCard: {
-    padding: '24px 16px',
-    borderRadius: '16px',
+    padding: '16px',
+    borderRadius: '12px',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
-    textAlign: 'center',
+    gap: '16px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
   },
@@ -868,6 +898,26 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  typeThumbnailWrapper: {
+    width: '80px',
+    minWidth: '80px',
+    height: '80px',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    backgroundColor: colors.grey100,
+  },
+  typeThumbnail: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+  typeTextContainer: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+    textAlign: 'left',
+  },
   typeTitle: {
     fontSize: '16px',
     fontWeight: 600,
@@ -875,10 +925,10 @@ const styles = {
     margin: 0,
   },
   typeDescription: {
-    fontSize: '12px',
+    fontSize: '13px',
     fontWeight: 400,
     color: colors.grey600,
-    margin: '4px 0 0 0',
+    margin: 0,
   },
   buttonContainer: {
     width: 'calc(100% - 40px)',

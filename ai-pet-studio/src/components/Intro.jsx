@@ -86,7 +86,7 @@ export default function IntroPage({ onNext, error, pageType = 'profile' }) {
   const steps = pageType === 'newyear'
     ? [
         { number: '1', text: '반려동물 사진 한장 올리고', iconSrc: 'u1F436.png' },
-        { number: '2', text: '크리스마스 카드나 연하장 선택하면', iconSrc: 'u2728.png' },
+        { number: '2', text: '원하는 연하장 스타일 선택하면', iconSrc: 'u2728.png' },
         { number: '3', text: '1분 안에 특별한 카드 완성!', iconSrc: 'u1F389.png' }
       ]
     : [

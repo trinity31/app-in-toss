@@ -55,10 +55,10 @@ export default function Home() {
         >
           <ImageSlider images={newYearImages} />
           <div style={styles.cardContent}>
-            <h2 style={styles.cardTitle}>연말 특별 사진</h2>
+            <h2 style={styles.cardTitle}>연하장</h2>
             <Spacing size={4} />
             <p style={styles.cardDescription}>
-              크리스마스 카드와 연하장
+              다양한 스타일의 연하장
             </p>
             <Spacing size={8} />
             <div style={styles.badge}>🎄 연말 한정</div>
