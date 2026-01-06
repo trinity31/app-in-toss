@@ -650,12 +650,14 @@ Use auspicious Korean New Year color palette - lucky reds, warm oranges, prosper
 Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
 Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
@@ -701,12 +703,14 @@ Use auspicious Korean New Year color palette for boys - royal blues, jade greens
 Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
 Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
@@ -752,12 +756,14 @@ Use auspicious Korean New Year color palette for girls - lucky reds, soft pinks,
 Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
 Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, flower decorations, cranes, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
@@ -821,11 +827,20 @@ and subtle gold accents.
 
 The cat should be slightly smaller than the full frame
 and positioned in the lower portion of the composition,
-allowing the upper area to feel lighter and suitable for later text overlay,
-without creating empty boxes or panels.
+allowing the upper area to accommodate the greeting text.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual Korean New Year greeting text on the card image. Add the following messages in beautiful typography:
+- "2026" (in large, bold red font - use Noto Sans KR style, color: #D32F2F)
+- "새해 복 많이 받으세요" (in elegant calligraphic Korean font - Nanum Pen Script style, black color: #000000)
+
+Place "2026" at the very top of the card (approximately 2.5% from top).
+Place "새해 복 많이 받으세요" below "2026" with proper spacing (approximately 16-18% from top).
+Center both text elements horizontally.
+Make the text clearly readable with white outline/shadow for contrast.
+The text should look professionally designed and naturally integrated into the Japanese illustration style card layout.
 
 IMPORTANT:
-Do NOT include any text, letters, numbers, symbols, or typography.
 Do NOT add duplicated anatomy or extra limbs.
 
 Overall mood: festive, refined, lucky, and elegant —
@@ -843,12 +858,14 @@ Use auspicious Chinese New Year color palette - lucky reds, prosperity golds, cr
 Add Chinese New Year card background elements - traditional Chinese patterns, peony flowers (모란꽃), fortune character (福), red lanterns (등불), Chinese knots (매듭).
 Include Chinese lucky symbolic elements - fortune character, golden coins, red envelopes, cloud patterns, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating peony petals, or auspicious light rays.
@@ -894,12 +911,14 @@ Use auspicious Korean New Year color palette - joyful blues, prosperity greens, 
 Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
 Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
@@ -945,12 +964,14 @@ Use auspicious Korean New Year color palette for boys - royal blues, jade greens
 Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
 Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, cranes, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
@@ -996,12 +1017,14 @@ Use auspicious Korean New Year color palette for girls - lucky reds, soft pinks,
 Add Korean New Year card background elements - traditional Korean patterns (dancheong 단청), plum blossoms (매화), pine trees (소나무), lucky fortune symbols (복 문양).
 Include Korean lucky symbolic elements - fortune character (복), traditional wrapping cloth patterns, lucky bags, flower decorations, cranes, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating plum blossoms, or auspicious light rays.
@@ -1063,11 +1086,20 @@ soft circular patterns, and subtle gold accents.
 
 The dog should be slightly smaller than the full canvas
 and positioned toward the lower portion of the image,
-creating visual balance and natural space above for later text overlay,
-without drawing boxes or framed areas.
+creating visual balance and natural space above to accommodate the greeting text.
+
+IMPORTANT - TEXT REQUIREMENT:
+Include actual Korean New Year greeting text on the card image. Add the following messages in beautiful typography:
+- "2026" (in large, bold red font - use Noto Sans KR style, color: #D32F2F)
+- "새해 복 많이 받으세요" (in elegant calligraphic Korean font - Nanum Pen Script style, black color: #000000)
+
+Place "2026" at the very top of the card (approximately 2.5% from top).
+Place "새해 복 많이 받으세요" below "2026" with proper spacing (approximately 16-18% from top).
+Center both text elements horizontally.
+Make the text clearly readable with white outline/shadow for contrast.
+The text should look professionally designed and naturally integrated into the Japanese illustration style card layout.
 
 IMPORTANT:
-Do NOT include any text, letters, numbers, symbols, or typography.
 Do NOT add exaggerated human-like poses or duplicated anatomy.
 
 Overall mood: peaceful, lucky, protective, and celebratory —
@@ -1085,12 +1117,14 @@ Use auspicious Chinese New Year color palette - lucky reds, prosperity golds, vi
 Add Chinese New Year card background elements - traditional Chinese patterns, peony flowers (牡丹), fortune character (福), red lanterns, Chinese knots.
 Include Chinese lucky symbolic elements - fortune character, golden coins, red envelopes, cloud patterns, or celebratory elements.
 
-COMPOSITION - TEXT SPACE:
-- Leave generous empty space at the top portion of the VERTICAL card (approximately 20-25% of image height)
-- This space is reserved for text overlay to be added later
-- Ensure the background decorations in this area are not too busy
-- The decorative elements should frame naturally around this reserved space
-- Position the pet subject in the lower 2/3 of the vertical frame to accommodate top text area
+IMPORTANT - TEXT REQUIREMENT:
+Include Korean New Year greeting text on the card image:
+- "2026" (year number)
+- "새해 복 많이 받으세요" (New Year greeting)
+
+Design the text with typography, colors, and placement that harmonize naturally with the overall card style.
+Make the text clearly readable and professionally integrated into the composition.
+Position the pet subject to accommodate the greeting text
 
 Apply professional greeting card lighting - bright, hopeful, optimistic with golden hour warmth suggesting new beginnings.
 Add celebratory effects like golden sparkles, floating peony petals, or auspicious light rays.

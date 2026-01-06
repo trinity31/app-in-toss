@@ -3,16 +3,18 @@ import { BaseImageGenerator } from './base-generator.js';
 
 /**
  * Google Gemini Generator
- * Gemini 2.5 Flash Image 모델 사용
+ * Gemini 이미지 생성 모델 사용
  */
 export class GeminiGenerator extends BaseImageGenerator {
-  constructor() {
+  constructor(modelName = 'gemini-2.5-flash-image', config = null) {
     super();
 
     if (!process.env.GEMINI_API_KEY) {
       throw new Error('GEMINI_API_KEY is not configured');
     }
 
+    this.modelName = modelName;
+    this.config = config;
     this.ai = new GoogleGenAI({
       apiKey: process.env.GEMINI_API_KEY
     });
@@ -20,7 +22,7 @@ export class GeminiGenerator extends BaseImageGenerator {
 
   async generate({ imageBase64, mimeType, prompt }) {
     try {
-      console.log('Gemini 2.5 Flash Image 생성 시작...');
+      console.log(`Gemini (${this.modelName}) 생성 시작...`);
       console.log('프롬프트 길이:', prompt.length, 'chars');
 
       // 컨텐츠 구성
@@ -36,25 +38,40 @@ export class GeminiGenerator extends BaseImageGenerator {
         }
       ];
 
+      // 이미지 생성 파라미터 구성
+      const generateParams = {
+        model: this.modelName,
+        contents: contents
+      };
+
+      // config에서 aspect_ratio와 resolution 추가
+      if (this.config && this.config.params) {
+        const imageConfig = {};
+
+        if (this.config.params.aspect_ratio) {
+          imageConfig.aspectRatio = this.config.params.aspect_ratio;
+          console.log('Aspect ratio 설정:', this.config.params.aspect_ratio);
+        }
+        if (this.config.params.resolution) {
+          imageConfig.imageSize = this.config.params.resolution;
+          console.log('Resolution 설정:', this.config.params.resolution);
+        }
+
+        if (Object.keys(imageConfig).length > 0) {
+          generateParams.config = {
+            responseModalities: ['TEXT', 'IMAGE'],
+            imageConfig: imageConfig
+          };
+        }
+      }
+
       // 이미지 생성
-      const response = await this.ai.models.generateContent({
-        model: 'gemini-2.5-flash-image',
-        contents: contents,
-        safetySettings: [
-          {
-            category: 'HARM_CATEGORY_HARASSMENT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          },
-          {
-            category: 'HARM_CATEGORY_HATE_SPEECH',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          },
-          {
-            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          }
-        ]
-      });
+      console.log('generateParams:', JSON.stringify({
+        model: generateParams.model,
+        config: generateParams.config,
+        contentsLength: generateParams.contents.length
+      }, null, 2));
+      const response = await this.ai.models.generateContent(generateParams);
 
       // 응답에서 이미지 추출
       let generatedImage = null;
@@ -84,6 +101,10 @@ export class GeminiGenerator extends BaseImageGenerator {
 
     } catch (error) {
       console.error('Gemini 생성 실패:', error);
+      console.error('에러 상세:', JSON.stringify(error, null, 2));
+      if (error.response) {
+        console.error('API 응답:', error.response);
+      }
       throw new Error(`Gemini generation failed: ${error.message}`);
     }
   }

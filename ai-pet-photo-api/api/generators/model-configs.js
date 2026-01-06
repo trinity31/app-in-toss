@@ -56,6 +56,20 @@ export const MODEL_CONFIGS = {
     }
   },
 
+  // Google Nano Banana Pro - Gemini SDK 직접 사용
+  'google/nano-banana-pro': {
+    name: 'Gemini 3 Pro Image',
+    model: 'gemini-3-pro-image-preview',
+    params: {
+      imageField: 'image_input',
+      imageAsArray: true,
+      aspect_ratio: '2:3',
+      resolution: '1K',
+      output_format: 'png'
+      // Note: Gemini SDK를 직접 사용하므로 일부 파라미터는 SDK 호출 시 적용
+    }
+  },
+
   // Qwen Image Edit Plus
   'qwen': {
     name: 'Qwen Image Edit Plus',
@@ -119,5 +133,9 @@ export const MODEL_CONFIGS = {
 // 기본 모델
 export const DEFAULT_MODEL = 'google/nano-banana';
 
-// 지원되는 모델 목록
-export const SUPPORTED_MODELS = Object.keys(MODEL_CONFIGS);
+// 지원되는 모델 목록 (Replicate 기반 + Gemini SDK 직접 사용)
+export const SUPPORTED_MODELS = [
+  ...Object.keys(MODEL_CONFIGS),
+  'gemini-sdk',
+  'google/nano-banana-pro'
+];

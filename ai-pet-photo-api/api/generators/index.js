@@ -12,7 +12,14 @@ export function createGenerator(model = DEFAULT_MODEL) {
 
   // Gemini SDK 직접 사용
   if (model === 'gemini-sdk' || model === 'google/nano-banana') {
-    return new GeminiGenerator();
+    const config = MODEL_CONFIGS[model] || MODEL_CONFIGS['google/nano-banana'];
+    return new GeminiGenerator('gemini-2.5-flash-image', config);
+  }
+
+  // Gemini Pro 모델
+  if (model === 'google/nano-banana-pro') {
+    const config = MODEL_CONFIGS[model];
+    return new GeminiGenerator('gemini-3-pro-image-preview', config);
   }
 
   // Replicate 기반 모델
