@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260">
+  <defs>
+    <linearGradient id="warmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE8D6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD4A3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="260" fill="url(#warmGrad)"/>
+
+  <!-- Warm sun -->
+  <circle cx="160" cy="40" r="25" fill="#FFB347" opacity="0.6"/>
+
+  <!-- Simple person illustration -->
+  <circle cx="100" cy="100" r="30" fill="#FFA07A"/>
+  <rect x="70" y="130" width="60" height="80" rx="10" fill="#FF8C69"/>
+
+  <!-- Simple decorative elements -->
+  <circle cx="40" cy="60" r="8" fill="#FFD700" opacity="0.7"/>
+  <circle cx="50" cy="180" r="6" fill="#FFD700" opacity="0.7"/>
+  <circle cx="150" cy="200" r="7" fill="#FFD700" opacity="0.7"/>
+
+  <!-- Text -->
+  <text x="100" y="240" font-family="Arial, sans-serif" font-size="14" fill="#8B4513" text-anchor="middle" font-weight="600">심플하고 따뜻한 일러스트</text>
+</svg>

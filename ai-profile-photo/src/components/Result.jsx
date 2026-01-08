@@ -28,18 +28,18 @@ export default function ResultPage({ imageUrl, onClose, onSave }) {
             <div style={{
               width: '100%',
               maxWidth: '400px',
-              aspectRatio: '3/4',
               borderRadius: '12px',
               overflow: 'hidden',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              backgroundColor: colors.grey50
             }}>
               <img
                 src={imageUrl}
                 alt="생성된 프로필 사진"
                 style={{
                   width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
+                  height: 'auto',
+                  display: 'block'
                 }}
               />
             </div>
@@ -47,7 +47,7 @@ export default function ResultPage({ imageUrl, onClose, onSave }) {
             <div style={{
               width: '100%',
               maxWidth: '400px',
-              aspectRatio: '3/4',
+              aspectRatio: '2/3',
               borderRadius: '12px',
               backgroundColor: colors.grey100,
               display: 'flex',

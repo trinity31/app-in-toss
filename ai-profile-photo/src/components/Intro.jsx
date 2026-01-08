@@ -4,7 +4,7 @@ import { colors } from '@toss/tds-colors';
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
-export default function IntroPage({ onNext, error }) {
+export default function IntroPage({ onNext, error, pageType = 'profile' }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCameraClick = () => {
@@ -17,15 +17,37 @@ export default function IntroPage({ onNext, error }) {
     onNext('album');
   };
 
+  // 페이지 타입에 따른 문구 설정
+  const content = pageType === 'newyear' ? {
+    title: '2026년 특별한\n연하장 만들기',
+    description: '구글 최신 이미지 모델 나노바나나 프로🍌',
+    steps: [
+      { number: '1', text: '사진을 최대 3장까지 올리고', subText: '가족이나 친구, 반려동물과 함께 만들 수 있어요', iconSrc: 'u1F4F8.png' },
+      { number: '2', text: '원하는 스타일 선택하면', iconSrc: 'u2728.png' },
+      { number: '3', text: '1분 안에 특별한 연하장 완성!', iconSrc: 'u1F389.png' }
+    ]
+  } : {
+    title: '스튜디오 안 부러운\n프로필 사진 만들기',
+    description: '구글 최신 이미지 모델 나노바나나🍌 로,\n퀄리티 높은 이미지를 생성합니다',
+    steps: [
+      { number: '1', text: '얼굴 사진 한장 올리고', iconSrc: 'u1F4F8.png' },
+      { number: '2', text: '원하는 스타일을 선택하면', iconSrc: 'u23F3.png' },
+      { number: '3', text: '1분 안에 프로필 사진 완성!', iconSrc: 'u1F5BC.png' }
+    ]
+  };
+
   return (
     <div style={styles.container}>
       <Spacing size={40} />
 
       <div style={styles.heroSection}>
         <h1 style={styles.title}>
-          스튜디오 안 부러운
-          <br />
-          프로필 사진 만들기
+          {content.title.split('\n').map((line, i) => (
+            <span key={i}>
+              {line}
+              {i < content.title.split('\n').length - 1 && <br />}
+            </span>
+          ))}
         </h1>
 
         <Spacing size={12} />
@@ -33,8 +55,12 @@ export default function IntroPage({ onNext, error }) {
         <Spacing size={8} />
 
         <p style={styles.description}>
-          구글 최신 이미지 모델 나노바나나🍌 로, <br />
-          퀄리티 높은 이미지를 생성합니다
+          {content.description.split('\n').map((line, i) => (
+            <span key={i}>
+              {line}
+              {i < content.description.split('\n').length - 1 && <br />}
+            </span>
+          ))}
         </p>
       </div>
 
@@ -55,11 +81,7 @@ export default function IntroPage({ onNext, error }) {
         </h3>
 
         <div style={styles.stepList}>
-          {[
-            { number: '1', text: '얼굴 사진 한장 올리고', iconSrc: 'u1F4F8.png', desc: '' },
-            { number: '2', text: '사진 용도를 선택하면', iconSrc: 'u23F3.png', desc: '' },
-            { number: '3', text: '1분 안에 프로필 사진 완성!', iconSrc: 'u1F5BC.png', desc: '' }
-          ].map((step) => (
+          {content.steps.map((step) => (
             <div key={step.number} style={styles.stepCard}>
               <div style={styles.stepIconWrapper}>
                 <Asset.Image
@@ -70,7 +92,12 @@ export default function IntroPage({ onNext, error }) {
                   style={{ aspectRatio: '1/1' }}
                 />
               </div>
-              <p style={styles.stepText}>{step.text}</p>
+              <div style={styles.stepContent}>
+                <p style={styles.stepText}>{step.text}</p>
+                {step.subText && (
+                  <p style={styles.stepSubText}>{step.subText}</p>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -240,6 +267,13 @@ const styles = {
     fontWeight: 600,
     color: colors.grey900,
     margin: 0,
+  },
+  stepSubText: {
+    fontSize: '13px',
+    fontWeight: 400,
+    color: colors.grey600,
+    margin: '6px 0 0 0',
+    lineHeight: 1.4,
   },
   buttonContainer: {
     width: 'calc(100% - 40px)',
