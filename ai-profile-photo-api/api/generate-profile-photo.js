@@ -10,7 +10,12 @@ const TYPE_TO_MODEL_MAPPING = {
   'dating': 'google/nano-banana',     // $0.039
   'nomad': 'google/nano-banana',                // $0.03
   'doctor': 'google/nano-banana',                   // $0.03
-  'wicked': 'google/nano-banana'      // $0.039
+  'wicked': 'google/nano-banana',      // $0.039
+
+  // 연하장 3가지 스타일
+  'new-year-card-illustration': 'google/nano-banana-pro',  // 심플하고 따뜻한 느낌의 일러스트
+  'new-year-card-anime': 'google/nano-banana-pro',         // 일본 만화풍
+  'new-year-card-chinese': 'google/nano-banana-pro'        // 화려한 중국풍
 };
 
 // 허용된 Origin 목록
@@ -55,6 +60,7 @@ export default async function handler(req, res) {
 
     const {
       imageBase64,
+      images,  // 다중 이미지 배열 [{imageBase64, mimeType}, ...]
       mimeType = 'image/jpeg',
       profileType = 'professional',
       model  // 클라이언트가 지정하지 않으면 undefined
@@ -66,14 +72,15 @@ export default async function handler(req, res) {
     console.log('받은 profileType:', profileType);
     console.log('받은 model:', model);
     console.log('선택된 model:', selectedModel, model ? '(클라이언트 지정)' : `(타입 매핑: ${profileType})`);
-    console.log('이미지 크기:', imageBase64?.length, 'bytes');
+    console.log('이미지 크기:', imageBase64?.length || '다중 이미지', 'bytes');
+    console.log('다중 이미지 개수:', images?.length || 0);
     console.log('MIME 타입:', mimeType);
 
-    // 입력 검증
-    if (!imageBase64) {
+    // 입력 검증 - 단일 또는 다중 이미지 중 하나는 있어야 함
+    if (!imageBase64 && (!images || images.length === 0)) {
       return res.status(400).json({
         success: false,
-        error: 'imageBase64 is required'
+        error: 'imageBase64 or images array is required'
       });
     }
 
@@ -96,9 +103,10 @@ export default async function handler(req, res) {
     // Generator 생성
     const generator = createGenerator(selectedModel);
 
-    // 이미지 생성
+    // 이미지 생성 - 다중 이미지 지원
     const generatedImage = await generator.generate({
       imageBase64,
+      images,  // 다중 이미지 배열 전달
       mimeType,
       prompt: selectedPrompt
     });

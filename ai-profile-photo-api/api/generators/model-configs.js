@@ -54,6 +54,15 @@ export const MODEL_CONFIGS = {
     }
   },
 
+  // Google Nano Banana Pro - Gemini SDK 직접 사용
+  'google/nano-banana-pro': {
+    name: 'Gemini 3 Pro Image Preview',
+    model: 'gemini-3-pro-image-preview',
+    params: {
+      // Gemini SDK 직접 사용하므로 params 불필요
+    }
+  },
+
   // Qwen Image Edit Plus
   'qwen': {
     name: 'Qwen Image Edit Plus',

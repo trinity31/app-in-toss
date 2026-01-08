@@ -11,7 +11,7 @@ export function createGenerator(model = DEFAULT_MODEL) {
   console.log('Generator 생성:', model);
 
   // Gemini SDK 직접 사용
-  if (model === 'gemini-sdk' || model === 'google/nano-banana') {
+  if (model === 'gemini-sdk' || model === 'google/nano-banana' || model === 'google/nano-banana-pro') {
     return new GeminiGenerator();
   }
 

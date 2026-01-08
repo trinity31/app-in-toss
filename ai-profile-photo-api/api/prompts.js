@@ -39,7 +39,177 @@ export const PROFILE_TYPES_METADATA = {
   }
 };
 
+// 연하장 공통 프롬프트 (DRY 원칙)
+const NEW_YEAR_CARD_COMMON_PROMPT = `
+CRITICAL IDENTITY PRESERVATION:
+- Use the input image(s) as PRIMARY REFERENCE(S)
+- The person/people in the output MUST be the EXACT SAME individual(s) from the input photo(s)
+- Preserve same face(s), same facial features, same expressions completely
+- PRESERVE THE EXACT FACIAL FEATURES: Keep the person's/people's face(s) identical to the original(s)
+- MAINTAIN ORIGINAL IDENTITY: The person/people must be instantly recognizable
+- KEEP NATURAL APPEARANCE: Transform to the specified style but preserve their unique features
+- NO ARTIFICIAL CHANGES: Keep their authentic appearance in the transformed style
+
+CLOTHING AND STYLING TRANSFORMATION:
+- REPLACE the original clothing with festive, style-appropriate attire
+- DO NOT keep casual clothing like tracksuits, t-shirts, or everyday wear from the input photos
+- Dress each person in elegant, celebratory outfits that match the card's artistic style
+- The clothing should feel festive, special, and appropriate for a New Year greeting card
+- Maintain the person's body proportions and pose, only changing the clothing style
+
+CARD LAYOUT AND COMPOSITION (CRITICAL):
+- VERTICAL GREETING CARD FORMAT with proper margins and breathing room
+- Position subjects in the LOWER TWO-THIRDS of the card (bottom 60-70% of the image)
+- Reserve the UPPER THIRD (top 30-40%) for the greeting text and decorative sky/background
+- Subjects should be MEDIUM SIZE - not too large, leaving generous space around them
+- Include a rich, detailed BACKGROUND SCENE that fills the card:
+  * For multiple people: arrange them naturally in a group, well-spaced
+  * Background should be atmospheric and festive with appropriate scenery
+  * Add environmental elements: scenery, decorative objects, celebratory elements
+  * Create depth with foreground, midground, and background layers
+- GENEROUS MARGINS on all sides (at least 10-15% padding from edges)
+- BALANCED COMPOSITION with subjects not filling the entire frame
+
+TEXT PLACEMENT REQUIREMENTS:
+- Include "2026" and Korean New Year greeting "새해 복 많이 받으세요" in the UPPER PORTION of the card
+- "2026" should be placed prominently (can be above or integrated with the Korean greeting)
+- Position text at approximately 15-25% from the top edge
+- Text must be FULLY CONTAINED within the image boundaries - NO text cutoff
+- Leave clear space above and around the text
+- Text should be clearly readable with proper contrast
+- Text style should match the artistic style of the card
+- Use elegant Korean font that suits the greeting card style
+
+QUALITY STANDARDS:
+- Professional greeting card printing quality with sharp focus
+- Natural proportions and appealing composition
+- Clean, polished rendering with festive effects
+- Rich but balanced colors appropriate for New Year aesthetics
+- High resolution output suitable for sharing and printing
+`;
+
 export const PROFILE_PROMPTS = {
+  // 연하장 3가지 스타일
+  'new-year-card-illustration': NEW_YEAR_CARD_COMMON_PROMPT + `
+
+ILLUSTRATION STYLE SPECIFIC:
+Transform this person/people into a beautiful 2026 New Year greeting card with a simple, warm illustration style.
+Create a soft, heartwarming illustration that feels gentle and welcoming - like watercolor or pastel art.
+
+VISUAL STYLE:
+- Simple, clean lines with soft edges and warm tones
+- Watercolor or pastel-like texture with gentle color gradients
+- Minimalist approach with focus on warmth and emotion
+- Hand-drawn illustration quality with artistic brushstrokes
+- Warm color palette: soft oranges, gentle yellows, warm browns, cream whites
+
+CLOTHING STYLE FOR ILLUSTRATION:
+- Dress people in cozy, elegant winter attire: soft knit sweaters, cardigans, turtlenecks
+- Use warm, muted colors: beige, cream, soft brown, warm gray, dusty rose
+- Simple, comfortable yet refined clothing that matches the gentle illustration style
+- Avoid patterns - prefer solid colors or subtle textures
+- The clothing should feel warm and inviting, like a cozy winter gathering
+
+BACKGROUND AND ATMOSPHERE:
+- Soft, dreamy background with warm seasonal scenery (winter garden, cozy indoor setting, or gentle outdoor scene)
+- Add subtle decorative touches: simple flowers, soft light rays, gentle patterns, winter elements
+- Create a warm, inviting atmosphere with lots of negative space
+- Keep the illustration simple and uncluttered but with complete scene composition
+
+LIGHTING AND EFFECTS:
+- Apply soft, diffused lighting - warm golden hour glow or gentle morning light
+- Add subtle effects like soft bokeh, gentle sparkles, or warm light particles
+- Capture gentle, warm expressions that convey hope and happiness
+
+TEXT STYLING:
+- Place "2026" and "새해 복 많이 받으세요" at the top in simple, elegant handwritten-style Korean font
+- "2026" can be displayed above or near the Korean greeting
+- Soft contrast that matches the warm illustration style
+- Text naturally integrated into the artwork with proper spacing
+`,
+
+  'new-year-card-anime': NEW_YEAR_CARD_COMMON_PROMPT + `
+
+ANIME STYLE SPECIFIC:
+Transform this person/people into a beautiful 2026 New Year greeting card with Japanese anime/manga art style.
+Create a vibrant, expressive anime-style illustration with characteristic large eyes, dynamic poses, and bold colors.
+
+VISUAL STYLE:
+- Classic Japanese anime art style with clean linework and cell-shading
+- Characteristic anime features: expressive large eyes, detailed hair with highlights, smooth skin
+- Bold, vibrant colors with strong contrast and cel-shaded lighting
+- Dynamic composition with energy and movement
+- Manga/anime color palette: bright pinks, vivid blues, pure whites, deep shadows
+
+CLOTHING STYLE FOR ANIME:
+- Dress people in stylish, modern festive outfits: fashionable dresses, smart blazers, elegant tops
+- Use vibrant anime-appropriate colors: bright reds, blues, purples, whites with accent colors
+- Modern, trendy clothing that fits the dynamic anime aesthetic
+- Can include fashionable accessories: scarves, jewelry, hair ornaments
+- The clothing should feel energetic, youthful, and celebratory in anime style
+
+BACKGROUND AND ATMOSPHERE:
+- Background with anime aesthetic: gradient skies, festive outdoor or indoor scene, dynamic patterns
+- Include festive New Year elements in anime style: stylized fireworks, cute decorations, celebration items
+- Add anime-typical effects: speed lines, sparkles, star bursts, light effects
+- Create depth with layered background elements
+
+LIGHTING AND EFFECTS:
+- Apply dramatic anime-style lighting - strong highlights, defined shadows, vibrant glow effects
+- Add anime-typical visual effects: floating sparkles, lens flares, screen tones, cherry blossoms
+- Capture bright, cheerful anime expressions - big smile, sparkling eyes, energetic pose
+
+TEXT STYLING:
+- Place "2026" and "새해 복 많이 받으세요" at the top in bold, modern anime-style Korean lettering
+- "2026" can be displayed above or near the Korean greeting with dynamic styling
+- Strong contrast with optional text effects (outline, shadow, glow)
+- Text matches the energetic anime aesthetic
+`,
+
+  'new-year-card-chinese': NEW_YEAR_CARD_COMMON_PROMPT + `
+
+CHINESE STYLE SPECIFIC:
+Transform this person/people into a beautiful 2026 New Year greeting card with gorgeous traditional Chinese style.
+Create a luxurious, ornate design with rich traditional Chinese aesthetics, symbols, and celebratory elements.
+
+VISUAL STYLE:
+- Traditional Chinese art aesthetic with intricate patterns and ornamental details
+- Rich, luxurious color palette: auspicious reds, prosperity golds, imperial yellows, jade greens
+- Elegant traditional Chinese fashion elements or festive attire
+- Symmetrical or balanced composition reflecting Chinese design principles
+
+CLOTHING STYLE FOR CHINESE:
+- Dress people in luxurious traditional or modern-traditional fusion attire
+- Options: elegant qipao/cheongsam, traditional Chinese robes, or modern elegant outfits with Chinese elements
+- Use auspicious colors: rich reds, prosperity golds, imperial yellows, jade greens
+- Include traditional elements: Chinese collars, embroidered patterns, silk fabrics, ornate buttons
+- The clothing should feel elegant, luxurious, and culturally festive
+- Can add traditional accessories: jade jewelry, ornamental hair pieces, silk sashes
+
+BACKGROUND AND ATMOSPHERE:
+- Rich, layered background with traditional Chinese architectural elements or festive scenery
+- Add traditional Chinese New Year elements: red lanterns, gold ingots, plum blossoms, firecrackers
+- Include auspicious symbols: dragons (subtle), phoenixes, peonies, bamboo, lucky coins
+- Ornate decorative frames or borders with traditional patterns
+- Create depth and grandeur with multiple background layers
+
+DECORATIVE ELEMENTS:
+- Chinese clouds, phoenixes, peonies, lucky coins, lanterns
+- Traditional patterns: cloud motifs, wave patterns, floral emblems, geometric designs
+
+LIGHTING AND EFFECTS:
+- Apply rich, dramatic lighting - golden glow, warm radiance, lustrous highlights
+- Add luxury effects: gold sparkles, gentle light rays, auspicious glow, floating petals
+- Capture elegant, dignified expressions with warm celebration and prosperity
+
+TEXT STYLING:
+- Place "2026" and "새해 복 많이 받으세요" prominently at the top in elegant, ornate Korean lettering with gold accents
+- "2026" can be displayed above or near the Korean greeting in luxurious style
+- Luxurious appearance - gold color, ornate borders, or decorative frames
+- Text clearly readable while matching the opulent Chinese aesthetic
+- Optional decorative elements around the text
+`,
+
   // 1. SNS 프로필 - 밝고 친근한 느낌
   sns: `
 Transform this casual selfie into a vibrant, friendly SNS profile photo.
