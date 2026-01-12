@@ -8,8 +8,8 @@ import Result from '../components/Result'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 import { Analytics } from '@apps-in-toss/web-framework'
 import { colors } from '@toss/tds-colors'
-import { StepperRow } from '@toss/tds-mobile'
-import newYearCard from '../assets/images/new-year-2026-fortune.png'
+import { StepperRow, Loader } from '@toss/tds-mobile'
+import { supabase } from '../lib/supabase'
 
 export default function NewYearPage() {
   const [currentPage, setCurrentPage] = useState('intro')
@@ -77,7 +77,7 @@ export default function NewYearPage() {
 
   const handleBackToTypeSelect = () => {
     // fortuneResult 등 데이터 제거하고 타입 선택으로
-    const { fortuneResult, ...restData } = userData
+    const { fortuneResult, fortuneTypeTitle, ...restData } = userData
     setUserData(restData)
     setCurrentPage('newYearType')
   }
@@ -93,8 +93,8 @@ export default function NewYearPage() {
           <Intro
             onNext={handleNext}
             title="2026년 신년운세"
-            subtitle="2026년 나의 운명과 행운의 연하장을 확인해보세요"
-            heroImages={[newYearCard]}
+            subtitle="2026년 나의 운명을 확인해 보세요."
+            heroImages={['/images/new-year-2026.png']}
             steps={
               <>
                 <StepperRow
@@ -112,7 +112,7 @@ export default function NewYearPage() {
                   center={
                     <StepperRow.Texts
                       type="A"
-                      title="신년운세 보기를 선택하면"
+                      title="신년운세 종류를 선택하면"
                       description=""
                     />
                   }
@@ -122,7 +122,7 @@ export default function NewYearPage() {
                   center={
                     <StepperRow.Texts
                       type="A"
-                      title="2026년 신년운세와 연하장 이미지 완성!"
+                      title="나만의 2026년 산년운세를 알려드려요"
                       description=""
                     />
                   }
@@ -168,20 +168,48 @@ export default function NewYearPage() {
 }
 
 function NewYearTypeSelect({ onNext, onBack }) {
-  const [isSelected, setIsSelected] = useState(false)
+  const [selectedType, setSelectedType] = useState(null)
+  const [fortuneTypes, setFortuneTypes] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  // 2026 신년운세 타입 하드코딩
-  const handleSelect = () => {
-    setIsSelected(true)
+  useEffect(() => {
+    async function fetchNewYearTypes() {
+      try {
+        setIsLoading(true)
+        const { data, error } = await supabase
+          .from('new_year_fortune_types')
+          .select('*')
+          .eq('is_active', true)
+          .order('display_order', { ascending: true })
+
+        if (error) throw error
+        setFortuneTypes(data || [])
+      } catch (err) {
+        console.error('[NewYearTypeSelect] 조회 실패:', err)
+        setError('운세 타입을 불러오는데 실패했습니다.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchNewYearTypes()
+  }, [])
+
+  const handleTypeSelect = (type) => {
+    Analytics.click({ button_name: type.code })
+    setSelectedType(type.id)
   }
 
-  const handleNextStep = () => {
-    Analytics.click({ button_name: 'new_year_2026_select' })
-    onNext({
-      fortuneType: 'new_year_2026',
-      themeType: 'new_year_2026',
-      readingType: 'new_year_2026'
-    })
+  const handleNext = () => {
+    const selectedTypeData = fortuneTypes.find(t => t.id === selectedType)
+    if (selectedTypeData) {
+      onNext({
+        fortuneType: selectedTypeData.code,
+        themeType: selectedTypeData.theme_type,
+        readingType: selectedTypeData.reading_type,
+        fortuneTypeTitle: selectedTypeData.title_ko
+      })
+    }
   }
 
   return (
@@ -191,54 +219,97 @@ function NewYearTypeSelect({ onNext, onBack }) {
           원하는 결과를 선택해 주세요
         </h1>
 
-        <button
-          onClick={handleSelect}
-          style={{
-            width: '100%',
-            padding: '16px',
-            background: isSelected ? '#F7F8FA' : '#fff',
-            border: isSelected ? '2px solid var(--color-primary)' : '1px solid #E5E8EB',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            textAlign: 'left',
-            transition: 'all 0.2s ease',
+        {isLoading ? (
+          <div style={{
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '16px',
-            marginBottom: '8px'
-          }}
-        >
-          <div style={{ flex: 1 }}>
-            <div style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#191F28',
-              marginBottom: '4px',
-              transition: 'color 0.2s ease'
-            }}>
-              2026 신년운세
-            </div>
-            <div style={{
-              fontSize: '14px',
-              color: isSelected ? '#4E5968' : '#8B95A1',
-              transition: 'color 0.2s ease'
-            }}>
-              내년 나의 운명은 어떨까요?
-            </div>
+            justifyContent: 'center',
+            padding: '60px 20px',
+            gap: '16px'
+          }}>
+            <Loader />
+            <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>운세 타입을 불러오는 중...</p>
           </div>
-          <img
-            src={newYearCard}
-            alt="2026 신년운세"
-            style={{
-              width: '60px',
-              height: '60px',
-              borderRadius: '8px',
-              objectFit: 'cover',
-              border: isSelected ? '2px solid var(--color-primary)' : 'none',
-              transition: 'border 0.2s ease'
-            }}
-          />
-        </button>
+        ) : error ? (
+          <div style={{
+            padding: '40px 20px',
+            textAlign: 'center'
+          }}>
+            <p style={{ fontSize: '16px', color: '#F04452', marginBottom: '16px' }}>{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              style={{
+                padding: '12px 24px',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                color: '#fff',
+                background: 'var(--color-primary)',
+                border: 'none',
+                borderRadius: '8px',
+                cursor: 'pointer'
+              }}
+            >
+              다시 시도
+            </button>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {fortuneTypes.map((type) => (
+              <button
+                key={type.id}
+                onClick={() => handleTypeSelect(type)}
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  background: selectedType === type.id ? '#F7F8FA' : '#fff',
+                  border: selectedType === type.id ? '2px solid var(--color-primary)' : '1px solid #E5E8EB',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  marginBottom: '8px'
+                }}
+              >
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    color: '#191F28',
+                    marginBottom: '4px',
+                    transition: 'color 0.2s ease'
+                  }}>
+                    {type.title_ko}
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    color: selectedType === type.id ? '#4E5968' : '#8B95A1',
+                    transition: 'color 0.2s ease'
+                  }}>
+                    {type.description_ko}
+                  </div>
+                </div>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '40px',
+                  background: selectedType === type.id ? '#FFF' : '#F7F8FA',
+                  border: selectedType === type.id ? '2px solid var(--color-primary)' : 'none',
+                  transition: 'all 0.2s ease'
+                }}>
+                  {type.icon}
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div style={{
@@ -256,7 +327,7 @@ function NewYearTypeSelect({ onNext, onBack }) {
         <button
           onClick={onBack}
           style={{
-            flex: isSelected ? 1 : '100%',
+            flex: selectedType ? 1 : '100%',
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -269,9 +340,9 @@ function NewYearTypeSelect({ onNext, onBack }) {
         >
           이전
         </button>
-        {isSelected && (
+        {selectedType && (
           <button
-            onClick={handleNextStep}
+            onClick={handleNext}
             style={{
               flex: 1,
               padding: '16px',

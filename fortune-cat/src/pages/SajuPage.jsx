@@ -86,7 +86,7 @@ export default function SajuPage() {
 
   const handleBackToTypeSelect = () => {
     // fortuneResult와 photo 데이터는 제거하고 타입 선택 화면으로 이동
-    const { fortuneResult, photo, fortuneType, themeType, readingType, ...restData } = userData
+    const { fortuneResult, photo, fortuneType, themeType, readingType, fortuneTypeTitle, ...restData } = userData
     setUserData(restData)
     setCurrentPage('fortuneType')
   }

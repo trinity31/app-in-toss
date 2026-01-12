@@ -1,9 +1,35 @@
 import { useState } from 'react'
 import { saveBase64Data, Analytics } from '@apps-in-toss/web-framework'
+import ReactMarkdown from 'react-markdown'
 
 export default function Result({ userData, onRestart, onBackToTypeSelect }) {
-  const { name, birthdate, fortuneResult } = userData
+  const { name, birthdate, fortuneResult, readingType, fortuneTypeTitle } = userData
   const [isSavingImage, setIsSavingImage] = useState(false)
+
+  // 신년운세 타입들인지 확인
+  const isNewYearType = readingType?.startsWith('new_year_')
+
+  // 일반 타입의 제목 처리
+  const getDisplayTitle = () => {
+    if (isNewYearType) {
+      return `${name}님의 ${fortuneTypeTitle || '2026 신년 운세'}`
+    }
+
+    const title = fortuneTypeTitle || '사주풀이'
+
+    // "나만의"가 포함되면 "Trinity님의"로 치환
+    if (title.includes('나만의')) {
+      return title.replace('나만의', `${name}님의`)
+    }
+
+    // "내"가 포함되면 "Trinity님의"로 치환
+    if (title.includes('내')) {
+      return title.replace('내', `${name}님의`)
+    }
+
+    // 그 외에는 앞에 "Trinity님의" 붙임
+    return `${name}님의 ${title}`
+  }
   // 이미지 저장/공유
   const handleSaveImage = async () => {
     try {
@@ -81,7 +107,7 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
           color: '#191F28',
           marginBottom: '8px'
         }}>
-          {name}님의 사주풀이
+          {getDisplayTitle()}
         </h1>
         <p style={{
           fontSize: '14px',
@@ -103,26 +129,28 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
               }}
             />
 
-            {/* 공유하기 버튼 */}
-            <button
-              onClick={handleSaveImage}
-              disabled={isSavingImage}
-              style={{
-                width: '100%',
-                marginTop: '12px',
-                padding: '16px',
-                backgroundColor: isSavingImage ? '#E5E8EB' : 'var(--color-primary)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '12px',
-                fontSize: '16px',
-                fontWeight: '600',
-                cursor: isSavingImage ? 'not-allowed' : 'pointer',
-                opacity: isSavingImage ? 0.6 : 1
-              }}
-            >
-              {isSavingImage ? '저장 중...' : '공유하기'}
-            </button>
+            {/* 공유하기 버튼 (신년운세 타입은 숨김) */}
+            {!isNewYearType && (
+              <button
+                onClick={handleSaveImage}
+                disabled={isSavingImage}
+                style={{
+                  width: '100%',
+                  marginTop: '12px',
+                  padding: '16px',
+                  backgroundColor: isSavingImage ? '#E5E8EB' : 'var(--color-primary)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  cursor: isSavingImage ? 'not-allowed' : 'pointer',
+                  opacity: isSavingImage ? 0.6 : 1
+                }}
+              >
+                {isSavingImage ? '저장 중...' : '공유하기'}
+              </button>
+            )}
 
             {descriptionItems.length > 0 && (
               <div style={{
@@ -162,22 +190,89 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
             borderRadius: '12px',
             padding: '20px'
           }}>
-            <h2 style={{
-              fontSize: '18px',
-              fontWeight: 'bold',
-              color: 'var(--color-primary)',
-              marginBottom: '12px'
-            }}>
-              사주 풀이
-            </h2>
-            <p style={{
-              fontSize: '15px',
-              lineHeight: '1.8',
-              color: '#4E5968',
-              whiteSpace: 'pre-wrap'
-            }}>
-              {fortuneResult.reading}
-            </p>
+            {isNewYearType ? (
+              <div style={{
+                fontSize: '16px',
+                lineHeight: '1.8',
+                color: '#4E5968',
+                fontFamily: "'Do Hyeon', sans-serif",
+                fontWeight: 400
+              }}>
+                <ReactMarkdown
+                  components={{
+                    h2: ({node, ...props}) => (
+                      <h2 style={{
+                        fontSize: '17px',
+                        fontWeight: 'bold',
+                        color: 'var(--color-primary)',
+                        marginTop: '20px',
+                        marginBottom: '10px',
+                        lineHeight: '1.4'
+                      }} {...props} />
+                    ),
+                    h3: ({node, ...props}) => (
+                      <h3 style={{
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        color: '#191F28',
+                        marginTop: '16px',
+                        marginBottom: '8px',
+                        lineHeight: '1.4'
+                      }} {...props} />
+                    ),
+                    p: ({node, ...props}) => (
+                      <p style={{
+                        marginBottom: '12px',
+                        lineHeight: '1.8'
+                      }} {...props} />
+                    ),
+                    ul: ({node, ...props}) => (
+                      <ul style={{
+                        paddingLeft: '20px',
+                        marginBottom: '12px'
+                      }} {...props} />
+                    ),
+                    ol: ({node, ...props}) => (
+                      <ol style={{
+                        paddingLeft: '20px',
+                        marginBottom: '12px'
+                      }} {...props} />
+                    ),
+                    li: ({node, ...props}) => (
+                      <li style={{
+                        marginBottom: '6px',
+                        lineHeight: '1.7'
+                      }} {...props} />
+                    ),
+                    strong: ({node, ...props}) => (
+                      <strong style={{
+                        fontWeight: '700',
+                        color: '#191F28'
+                      }} {...props} />
+                    ),
+                    em: ({node, ...props}) => (
+                      <em style={{
+                        fontStyle: 'italic',
+                        color: 'var(--color-primary)'
+                      }} {...props} />
+                    )
+                  }}
+                >
+                  {fortuneResult.reading}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <p style={{
+                fontSize: '15px',
+                lineHeight: '1.8',
+                color: '#4E5968',
+                whiteSpace: 'pre-wrap',
+                fontFamily: "'Do Hyeon', sans-serif",
+                fontWeight: 400
+              }}>
+                {fortuneResult.reading}
+              </p>
+            )}
           </div>
         )}
       </div>

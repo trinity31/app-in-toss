@@ -52,7 +52,8 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
         onNext({
           fortuneType: type.code,
           themeType: type.theme_type,
-          readingType: type.reading_type
+          readingType: type.reading_type,
+          fortuneTypeTitle: type.title_ko
         })
       }, 500)
     } else {
@@ -67,7 +68,8 @@ export default function FortuneTypeSelect({ onNext, onBack }) {
       onNext({
         fortuneType: selectedTypeData.code,
         themeType: selectedTypeData.theme_type,
-        readingType: selectedTypeData.reading_type
+        readingType: selectedTypeData.reading_type,
+        fortuneTypeTitle: selectedTypeData.title_ko
       })
     }
   }
