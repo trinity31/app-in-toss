@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import * as Sentry from '@sentry/react'
 import { formatBirthdate, formatGender, base64ToBlob } from '../utils/dataTransform'
 
 const AD_GROUP_ID = import.meta.env.VITE_AD_GROUP_ID || 'ait-ad-test-rewarded-id'
@@ -237,6 +238,15 @@ export default function Loading({ userData, onNext }) {
 
     } catch (error) {
       console.error('API 호출 오류:', error)
+
+      // Sentry로 에러 리포트 전송
+      Sentry.captureException(error, {
+        extra: {
+          userName: userData?.name,
+          themeType: userData?.themeType,
+          readingType: userData?.readingType,
+        }
+      })
 
       if (error.name === 'AbortError') {
         setApiError('요청 시간이 초과되었습니다. 다시 시도해 주세요.')
