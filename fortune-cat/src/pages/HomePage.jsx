@@ -24,6 +24,26 @@ export default function HomePage() {
       <Spacing size={32} />
 
       <div style={styles.cardContainer}>
+        {/* 부적 이미지 카드 */}
+        <div
+          style={{ ...styles.card, border: `2px solid ${colors.purple400}`, background: colors.purple50 }}
+          onClick={() => navigate('/amulet')}
+        >
+          <div style={styles.cardIcon}>🧿</div>
+          <div style={styles.cardContent}>
+            <div style={styles.cardHeader}>
+              <h2 style={styles.cardTitle}>나만의 부적</h2>
+              <span style={{ ...styles.newBadge, backgroundColor: colors.purple500 }}>NEW</span>
+            </div>
+            <p style={styles.cardDescription}>
+              사주에 맞는 특별한 부적 이미지
+            </p>
+          </div>
+          <div style={styles.arrowIcon}>›</div>
+        </div>
+
+        <Spacing size={16} />
+
         {/* 신년운세 카드 */}
         <div
           style={{ ...styles.card, border: `2px solid ${colors.red400}`, background: colors.red50 }}
