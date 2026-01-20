@@ -40,7 +40,6 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
       onNext({
         amuletType: selectedTypeData.code,
         amuletTypeTitle: selectedTypeData.title_ko,
-        themeType: selectedTypeData.theme_type
       })
     }
   }

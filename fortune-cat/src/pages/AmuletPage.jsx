@@ -4,7 +4,9 @@ import NameInput from '../components/NameInput'
 import BirthdateInput from '../components/BirthdateInput'
 import GenderSelect from '../components/GenderSelect'
 import AmuletTypeSelect from '../components/AmuletTypeSelect'
-import EmailInput from '../components/EmailInput'
+import TossLogin from '../components/TossLogin'
+import ContactInput from '../components/ContactInput'
+import AmuletPayment from '../components/AmuletPayment'
 import AmuletResult from '../components/AmuletResult'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 import { StepperRow } from '@toss/tds-mobile'
@@ -47,8 +49,12 @@ export default function AmuletPage() {
     } else if (currentPage === 'gender') {
       setCurrentPage('amuletType')
     } else if (currentPage === 'amuletType') {
-      setCurrentPage('email')
-    } else if (currentPage === 'email') {
+      setCurrentPage('tossLogin')
+    } else if (currentPage === 'tossLogin') {
+      setCurrentPage('contactInput')
+    } else if (currentPage === 'contactInput') {
+      setCurrentPage('payment')
+    } else if (currentPage === 'payment') {
       setCurrentPage('result')
     }
   }
@@ -62,8 +68,12 @@ export default function AmuletPage() {
       setCurrentPage('birthdate')
     } else if (currentPage === 'amuletType') {
       setCurrentPage('gender')
-    } else if (currentPage === 'email') {
+    } else if (currentPage === 'tossLogin') {
       setCurrentPage('amuletType')
+    } else if (currentPage === 'contactInput') {
+      setCurrentPage('tossLogin')
+    } else if (currentPage === 'payment') {
+      setCurrentPage('contactInput')
     }
   }
 
@@ -73,7 +83,7 @@ export default function AmuletPage() {
   }
 
   const handleBackToTypeSelect = () => {
-    const { amuletType, amuletTypeTitle, email, ...restData } = userData
+    const { amuletType, amuletTypeTitle, tossUserInfo, orderId, email, phone, ...restData } = userData
     setUserData(restData)
     setCurrentPage('amuletType')
   }
@@ -132,8 +142,12 @@ export default function AmuletPage() {
         return <GenderSelect onNext={handleNext} onBack={handleBack} initialGender={userData.gender || null} />
       case 'amuletType':
         return <AmuletTypeSelect onNext={handleNext} onBack={handleBack} />
-      case 'email':
-        return <EmailInput onNext={handleNext} onBack={handleBack} initialEmail={userData.email || ''} />
+      case 'tossLogin':
+        return <TossLogin onNext={handleNext} onBack={handleBack} userData={userData} />
+      case 'contactInput':
+        return <ContactInput onNext={handleNext} onBack={handleBack} userData={userData} />
+      case 'payment':
+        return <AmuletPayment onNext={handleNext} onBack={handleBack} userData={userData} />
       case 'result':
         return <AmuletResult userData={userData} onRestart={handleRestart} onBackToTypeSelect={handleBackToTypeSelect} />
       default:

@@ -1,5 +1,5 @@
 export default function AmuletResult({ userData, onRestart, onBackToTypeSelect }) {
-  const { name, birthdate, amuletTypeTitle, email } = userData
+  const { name, birthdate, amuletTypeTitle, email, phone } = userData
 
   return (
     <div style={{ minHeight: '100vh', background: '#fff', paddingBottom: '100px' }}>
@@ -35,7 +35,7 @@ export default function AmuletResult({ userData, onRestart, onBackToTypeSelect }
             fontSize: '64px',
             marginBottom: '20px'
           }}>
-            &#x2709;&#xfe0f;
+            📱
           </div>
           <h2 style={{
             fontSize: '20px',
@@ -43,7 +43,7 @@ export default function AmuletResult({ userData, onRestart, onBackToTypeSelect }
             color: '#191F28',
             marginBottom: '12px'
           }}>
-            24시간 이내에 이메일로 전송됩니다
+            24시간 이내에 문자로 전송됩니다
           </h2>
           <p style={{
             fontSize: '15px',
@@ -60,21 +60,40 @@ export default function AmuletResult({ userData, onRestart, onBackToTypeSelect }
             padding: '16px',
             border: '1px solid #E5E8EB'
           }}>
-            <p style={{
-              fontSize: '13px',
-              color: '#8B95A1',
-              marginBottom: '4px'
-            }}>
-              발송 예정 이메일
-            </p>
-            <p style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#191F28',
-              wordBreak: 'break-all'
-            }}>
-              {email}
-            </p>
+            <div style={{ marginBottom: '12px' }}>
+              <p style={{
+                fontSize: '13px',
+                color: '#8B95A1',
+                marginBottom: '4px'
+              }}>
+                발송 예정 이메일
+              </p>
+              <p style={{
+                fontSize: '16px',
+                fontWeight: '600',
+                color: '#191F28',
+                margin: 0
+              }}>
+                {email}
+              </p>
+            </div>
+            <div>
+              <p style={{
+                fontSize: '13px',
+                color: '#8B95A1',
+                marginBottom: '4px'
+              }}>
+                휴대폰 번호
+              </p>
+              <p style={{
+                fontSize: '16px',
+                fontWeight: '600',
+                color: '#191F28',
+                margin: 0
+              }}>
+                {phone}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -98,8 +117,7 @@ export default function AmuletResult({ userData, onRestart, onBackToTypeSelect }
             paddingLeft: '20px',
             margin: 0
           }}>
-            <li>부적 이미지는 고화질 PNG 파일로 제공됩니다</li>
-            <li>스팸 메일함도 꼭 확인해 주세요</li>
+            <li>부적 이미지는 고화질 이미지 링크로 제공됩니다</li>
             <li>24시간 이후에도 미수신 시 고객센터로 문의해 주세요</li>
           </ul>
         </div>
