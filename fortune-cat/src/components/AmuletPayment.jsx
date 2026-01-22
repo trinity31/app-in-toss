@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Loader } from '@toss/tds-mobile'
+import { usePendingOrderStorage } from '../hooks/usePendingOrderStorage'
 
 // /saju-reading 경로를 제거하여 base URL 추출
 const API_BASE_URL = import.meta.env.VITE_SAJU_AI_ENDPOINT.replace('/saju-reading', '')
@@ -10,13 +11,64 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [error, setError] = useState(null)
   const [productInfo, setProductInfo] = useState(null)
+  const { savePendingOrderData, clearPendingOrderData } = usePendingOrderStorage()
+
+  // 백엔드 API 호출하여 상품 지급 처리
+  const grantProduct = async (orderId, sku) => {
+    const bd = userData.birthdate
+    const formattedBirthdate = {
+      year: parseInt(bd?.year) || 0,
+      month: parseInt(bd?.month) || 0,
+      day: parseInt(bd?.day) || 0,
+      hour: bd?.hour ? parseInt(bd.hour) : null,
+      minute: bd?.minute ? parseInt(bd.minute) : null,
+      isLunar: false,
+    }
+
+    const requestBody = {
+      orderId,
+      userKey: userData.tossUserInfo?.userKey,
+      tossName: userData.tossUserInfo?.name,
+      phone: userData.phone,
+      email: userData.email,
+      name: userData.name,
+      birthdate: formattedBirthdate,
+      gender: userData.gender,
+      amuletType: userData.amuletType,
+      amuletTypeTitle: userData.amuletTypeTitle,
+      productSku: sku,
+    }
+    console.log('[AmuletPayment] 상품 지급 요청:', JSON.stringify(requestBody, null, 2))
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/amulet-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      })
+
+      if (!response.ok) {
+        console.error('[AmuletPayment] 주문 등록 실패')
+        return false
+      }
+
+      console.log('[AmuletPayment] 주문 등록 성공')
+      return true
+    } catch (err) {
+      console.error('[AmuletPayment] 주문 등록 에러:', err)
+      return false
+    }
+  }
 
   // 상품 정보 조회
   useEffect(() => {
-    async function fetchProductInfo() {
+    async function initializePayment() {
       try {
         setIsLoading(true)
         const { IAP } = await import('@apps-in-toss/web-framework')
+
         const response = await IAP.getProductItemList()
 
         if (response?.products) {
@@ -24,7 +76,6 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
           if (amuletProduct) {
             setProductInfo(amuletProduct)
           } else {
-            // SKU가 없으면 첫 번째 상품 사용 (개발용)
             setProductInfo(response.products[0] || null)
           }
         }
@@ -35,10 +86,16 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
       }
     }
 
-    fetchProductInfo()
+    initializePayment()
   }, [])
 
   const handlePurchase = async () => {
+    // 중복 호출 방지
+    if (isPurchasing) {
+      console.log('[AmuletPayment] 이미 결제 진행 중')
+      return
+    }
+
     const sku = productInfo?.sku || AMULET_PRODUCT_SKU
     console.log('[AmuletPayment] SKU:', sku)
 
@@ -47,8 +104,25 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
       return
     }
 
+    // 결제 진행 상태를 먼저 설정하여 중복 클릭 방지
     setIsPurchasing(true)
     setError(null)
+
+    // 결제 시작 전 사용자 데이터 저장 (복원용) - 필요한 필드만 저장
+    savePendingOrderData({
+      name: userData.name,
+      birthdate: userData.birthdate,
+      gender: userData.gender,
+      amuletType: userData.amuletType,
+      amuletTypeTitle: userData.amuletTypeTitle,
+      email: userData.email,
+      phone: userData.phone,
+      tossUserInfo: userData.tossUserInfo ? {
+        userKey: userData.tossUserInfo.userKey,
+        name: userData.tossUserInfo.name,
+      } : null,
+      productSku: sku,
+    })
 
     const { IAP } = await import('@apps-in-toss/web-framework')
 
@@ -59,54 +133,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
         // 결제 성공 시 상품 지급 로직 실행
         processProductGrant: async ({ orderId }) => {
           console.log('[AmuletPayment] 상품 지급 로직 실행:', orderId)
-
-          // birthdate 형식 변환 (문자열 → 정수)
-          const bd = userData.birthdate
-          const formattedBirthdate = {
-            year: parseInt(bd?.year) || 0,
-            month: parseInt(bd?.month) || 0,
-            day: parseInt(bd?.day) || 0,
-            hour: bd?.hour ? parseInt(bd.hour) : null,
-            minute: bd?.minute ? parseInt(bd.minute) : null,
-            isLunar: false,
-          }
-
-          const requestBody = {
-            orderId,
-            userKey: userData.tossUserInfo?.userKey,
-            tossName: userData.tossUserInfo?.name,
-            phone: userData.phone,
-            email: userData.email,
-            name: userData.name,
-            birthdate: formattedBirthdate,
-            gender: userData.gender,
-            amuletType: userData.amuletType,
-            amuletTypeTitle: userData.amuletTypeTitle,
-            productSku: sku,
-          }
-          console.log('[AmuletPayment] 요청 데이터:', JSON.stringify(requestBody, null, 2))
-
-          try {
-            // 백엔드 API 호출하여 부적 주문 등록
-            const response = await fetch(`${API_BASE_URL}/amulet-order`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(requestBody),
-            })
-
-            if (!response.ok) {
-              console.error('[AmuletPayment] 주문 등록 실패')
-              return false
-            }
-
-            console.log('[AmuletPayment] 주문 등록 성공')
-            return true
-          } catch (err) {
-            console.error('[AmuletPayment] 주문 등록 에러:', err)
-            return false
-          }
+          return await grantProduct(orderId, sku)
         },
       },
       onEvent: (event) => {
@@ -115,7 +142,8 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
         setIsPurchasing(false)
 
         if (event.type === 'success') {
-          // 결과 화면으로 이동
+          // 결제 성공 시 저장된 데이터 삭제 후 결과 화면으로 이동
+          clearPendingOrderData()
           onNext({
             orderId: event.data?.orderId,
           })
@@ -125,7 +153,14 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
         console.error('[AmuletPayment] 결제 에러:', error)
         cleanup?.()
         setIsPurchasing(false)
-        setError(error.message || '결제에 실패했습니다. 다시 시도해 주세요.')
+
+        // 에러 메시지 표시 (서버 전송 실패 시 앱 재시작하면 AmuletPage에서 복구 가능)
+        const errorMsg = error.message || ''
+        if (errorMsg.includes('서버') || errorMsg.includes('processProductGrant')) {
+          setError('결제가 완료되었지만 서버 전송에 실패했습니다. 앱을 다시 시작후 부적 페이지에 진입하면 복구할 수 있습니다.')
+        } else {
+          setError(error.message || '결제에 실패했습니다. 다시 시도해 주세요.')
+        }
       },
     })
   }
@@ -224,7 +259,9 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             padding: '16px',
             marginTop: '16px'
           }}>
-            <p style={{ fontSize: '14px', color: '#F04452', margin: 0 }}>{error}</p>
+            <p style={{ fontSize: '14px', color: '#F04452', margin: 0, fontWeight: '600' }}>
+              {error}
+            </p>
           </div>
         )}
       </div>
