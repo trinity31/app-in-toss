@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 
 export default function ContactInput({ onNext, onBack, userData }) {
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState(userData?.email || '')
+  const [phone, setPhone] = useState(userData?.phone || '')
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const emailRef = useRef(null)
 

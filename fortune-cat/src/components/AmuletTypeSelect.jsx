@@ -1,188 +1,210 @@
-import { useState, useEffect } from 'react'
-import { Loader } from '@toss/tds-mobile'
-import { supabase, getMenuImageUrl } from '../lib/supabase'
+import { useState, useEffect } from "react";
+import { Loader } from "@toss/tds-mobile";
+import { supabase, getAmuletStyleImageUrl } from "../lib/supabase";
+import { logEvent } from "../lib/firebase";
 
 export default function AmuletTypeSelect({ onNext, onBack }) {
-  const [selectedType, setSelectedType] = useState(null)
-  const [amuletTypes, setAmuletTypes] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [selectedType, setSelectedType] = useState(null);
+  const [amuletTypes, setAmuletTypes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchAmuletTypes() {
       try {
-        setIsLoading(true)
+        setIsLoading(true);
         const { data, error } = await supabase
-          .from('amulet_types')
-          .select('*')
-          .eq('is_active', true)
-          .order('display_order', { ascending: true })
+          .from("amulet_types")
+          .select("*")
+          .eq("is_active", true)
+          .order("display_order", { ascending: true });
 
-        if (error) throw error
-        setAmuletTypes(data || [])
+        if (error) throw error;
+        setAmuletTypes(data || []);
       } catch (err) {
-        console.error('[AmuletTypeSelect] 조회 실패:', err)
-        setError('부적 스타일을 불러오는데 실패했습니다.')
+        console.error("[AmuletTypeSelect] 조회 실패:", err);
+        setError("부적 스타일을 불러오는데 실패했습니다.");
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }
-    fetchAmuletTypes()
-  }, [])
+    fetchAmuletTypes();
+  }, []);
 
   const handleTypeSelect = (type) => {
-    setSelectedType(type.id)
-  }
+    setSelectedType(type.id);
+  };
 
   const handleNext = () => {
-    const selectedTypeData = amuletTypes.find(t => t.id === selectedType)
+    const selectedTypeData = amuletTypes.find((t) => t.id === selectedType);
     if (selectedTypeData) {
+      logEvent("amulet_style_selected", {
+        amulet_type: selectedTypeData.code,
+        amulet_title: selectedTypeData.title_ko,
+      });
       onNext({
         amuletType: selectedTypeData.code,
         amuletTypeTitle: selectedTypeData.title_ko,
-      })
+      });
     }
-  }
+  };
 
   return (
     <>
-      <div style={{ padding: '20px 20px 100px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
+      <div style={{ padding: "20px 20px 100px" }}>
+        <h1
+          style={{
+            fontSize: "22px",
+            lineHeight: "1.4",
+            fontWeight: "bold",
+            color: "#191F28",
+            margin: "0 0 12px 0",
+          }}
+        >
           원하는 부적 스타일을 선택해 주세요
         </h1>
 
         {isLoading ? (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '60px 20px',
-            gap: '16px'
-          }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "60px 20px",
+              gap: "16px",
+            }}
+          >
             <Loader />
-            <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>부적 스타일을 불러오는 중...</p>
+            <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
+              부적 스타일을 불러오는 중...
+            </p>
           </div>
         ) : error ? (
-          <div style={{
-            padding: '40px 20px',
-            textAlign: 'center'
-          }}>
-            <p style={{ fontSize: '16px', color: '#F04452', marginBottom: '16px' }}>{error}</p>
+          <div
+            style={{
+              padding: "40px 20px",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "16px",
+                color: "#F04452",
+                marginBottom: "16px",
+              }}
+            >
+              {error}
+            </p>
             <button
               onClick={() => window.location.reload()}
               style={{
-                padding: '12px 24px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                color: '#fff',
-                background: 'var(--color-primary)',
-                border: 'none',
-                borderRadius: '8px',
-                cursor: 'pointer'
+                padding: "12px 24px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                color: "#fff",
+                background: "var(--color-primary)",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
               }}
             >
               다시 시도
             </button>
           </div>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {amuletTypes.map((type) => (
               <button
                 key={type.id}
                 onClick={() => handleTypeSelect(type)}
                 style={{
-                  width: '100%',
-                  padding: '16px',
-                  background: selectedType === type.id ? '#F7F8FA' : '#fff',
-                  border: selectedType === type.id ? '2px solid var(--color-primary)' : '1px solid #E5E8EB',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                  transition: 'all 0.2s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  marginBottom: '8px'
+                  width: "100%",
+                  padding: "16px",
+                  background: selectedType === type.id ? "#F7F8FA" : "#fff",
+                  border:
+                    selectedType === type.id
+                      ? "2px solid var(--color-primary)"
+                      : "1px solid #E5E8EB",
+                  borderRadius: "12px",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "16px",
+                  marginBottom: "8px",
                 }}
               >
                 <div style={{ flex: 1 }}>
-                  <div style={{
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    color: '#191F28',
-                    marginBottom: '4px',
-                    transition: 'color 0.2s ease'
-                  }}>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "#191F28",
+                      marginBottom: "4px",
+                      transition: "color 0.2s ease",
+                    }}
+                  >
                     {type.title_ko}
                   </div>
-                  <div style={{
-                    fontSize: '14px',
-                    color: selectedType === type.id ? '#4E5968' : '#8B95A1',
-                    transition: 'color 0.2s ease'
-                  }}>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      color: selectedType === type.id ? "#4E5968" : "#8B95A1",
+                      transition: "color 0.2s ease",
+                    }}
+                  >
                     {type.description_ko}
                   </div>
                 </div>
-                {type.image_url ? (
-                  <img
-                    src={getMenuImageUrl(type.image_url)}
-                    alt={type.title_ko}
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      borderRadius: '8px',
-                      objectFit: 'cover',
-                      border: selectedType === type.id ? '2px solid var(--color-primary)' : 'none',
-                      transition: 'border 0.2s ease'
-                    }}
-                  />
-                ) : (
-                  <div style={{
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '32px',
-                    background: selectedType === type.id ? '#FFF' : '#F7F8FA',
-                    border: selectedType === type.id ? '2px solid var(--color-primary)' : 'none',
-                    transition: 'all 0.2s ease'
-                  }}>
-                    {type.icon}
-                  </div>
-                )}
+                <img
+                  src={getAmuletStyleImageUrl(type.code)}
+                  alt={type.title_ko}
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "8px",
+                    objectFit: "cover",
+                    border:
+                      selectedType === type.id
+                        ? "2px solid var(--color-primary)"
+                        : "none",
+                    transition: "border 0.2s ease",
+                  }}
+                />
               </button>
             ))}
           </div>
         )}
       </div>
 
-      <div style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
-        display: 'flex',
-        gap: '12px',
-        zIndex: 1000,
-        boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.08)'
-      }}>
+      <div
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
+          background: "#fff",
+          display: "flex",
+          gap: "12px",
+          zIndex: 1000,
+          boxShadow: "0 -2px 8px rgba(0, 0, 0, 0.08)",
+        }}
+      >
         <button
           onClick={onBack}
           style={{
-            flex: selectedType ? 1 : '100%',
-            padding: '16px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer'
+            flex: selectedType ? 1 : "100%",
+            padding: "16px",
+            fontSize: "16px",
+            fontWeight: "bold",
+            color: "#191F28",
+            background: "#F2F4F6",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
           }}
         >
           이전
@@ -192,14 +214,14 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
             onClick={handleNext}
             style={{
               flex: 1,
-              padding: '16px',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              color: '#fff',
-              background: 'var(--color-primary)',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer'
+              padding: "16px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              color: "#fff",
+              background: "var(--color-primary)",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
             }}
           >
             다음
@@ -207,5 +229,5 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
         )}
       </div>
     </>
-  )
+  );
 }

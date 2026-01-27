@@ -12,6 +12,8 @@ function isValidUserInfo(userInfo) {
   if (!birthdate.year || !birthdate.month || !birthdate.day) return false
   if (!['male', 'female'].includes(gender)) return false
 
+  // email, phone은 선택적 필드이므로 유효성 검사하지 않음
+
   return true
 }
 
