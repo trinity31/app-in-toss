@@ -187,9 +187,24 @@ export default function Intro({
       )}
 
       {useHorizontalScroll ? (
-        <div style={{ padding: "20px 0" }}>
-          <HorizontalAutoScroll images={heroImages} />
-        </div>
+        heroImages.length === 1 ? (
+          <div style={{ padding: "20px 0", width: "100%" }}>
+            <img
+              src={heroImages[0]}
+              alt=""
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+        ) : (
+          <div style={{ padding: "20px 0" }}>
+            <HorizontalAutoScroll images={heroImages} />
+          </div>
+        )
       ) : (
         <div
           style={{

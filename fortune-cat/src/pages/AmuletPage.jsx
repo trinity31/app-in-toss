@@ -14,10 +14,9 @@ import {
   shouldSkipAutoRestore,
 } from "../hooks/usePendingOrderStorage";
 import {
-  supabase,
-  getAmuletStyleImageUrl,
   getTodayOrderCount,
   getAmuletConfig,
+  getAmuletIntroImageUrl,
   DEFAULT_DAILY_ORDER_LIMIT,
   DEFAULT_LOW_STOCK_THRESHOLD,
 } from "../lib/supabase";
@@ -35,7 +34,6 @@ export default function AmuletPage() {
   const [isInitializing, setIsInitializing] = useState(true);
   const [isRestoringOrder, setIsRestoringOrder] = useState(false);
   const [pendingOrders, setPendingOrders] = useState([]); // 미완료 주문 목록
-  const [amuletStyleImages, setAmuletStyleImages] = useState([]);
   const [remainingCount, setRemainingCount] = useState(null);
 
   const { loading, storedUserInfo, saveUserInfo } = useUserInfoStorage();
@@ -44,29 +42,6 @@ export default function AmuletPage() {
     pendingOrderData,
     clearPendingOrderData,
   } = usePendingOrderStorage();
-
-  // 부적 스타일 이미지 가져오기
-  useEffect(() => {
-    async function fetchAmuletStyleImages() {
-      try {
-        const { data, error } = await supabase
-          .from("amulet_types")
-          .select("code")
-          .eq("is_active", true)
-          .order("display_order", { ascending: true });
-
-        if (error) throw error;
-
-        const imageUrls = (data || []).map((type) =>
-          getAmuletStyleImageUrl(type.code),
-        );
-        setAmuletStyleImages(imageUrls);
-      } catch (err) {
-        console.error("[AmuletPage] 부적 스타일 이미지 로드 실패:", err);
-      }
-    }
-    fetchAmuletStyleImages();
-  }, []);
 
   // 남은 주문 수량 확인 (LOW_STOCK_THRESHOLD 미만일 때만 표시)
   useEffect(() => {
@@ -339,10 +314,8 @@ export default function AmuletPage() {
             onNext={handleNext}
             title="행운을 부르는 나만의 부적 이미지"
             subtitle="내 사주에 필요한 오행 에너지를 보충해 주는 맞춤 부적 아트 이미지입니다"
-            heroImages={
-              amuletStyleImages.length > 0 ? amuletStyleImages : undefined
-            }
-            useHorizontalScroll={amuletStyleImages.length > 0}
+            heroImages={[getAmuletIntroImageUrl()]}
+            useHorizontalScroll={true}
             remainingCount={remainingCount}
             steps={
               <>
@@ -377,6 +350,27 @@ export default function AmuletPage() {
                   }
                   hideLine={true}
                 />
+                <div
+                  style={{
+                    padding: "16px 20px",
+                    background: "#F7F8FA",
+                    borderRadius: "12px",
+                    margin: "16px 20px 100px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "#4E5968",
+                      lineHeight: "1.6",
+                      margin: 0,
+                      fontWeight: "500",
+                    }}
+                  >
+                    ✓ 휴대폰 배경화면으로 사용하기 좋은 9:16 비율의 이미지로
+                    생성해 드려요.
+                  </p>
+                </div>
               </>
             }
           />
