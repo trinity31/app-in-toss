@@ -4,6 +4,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
   const [year, setYear] = useState(initialBirthdate?.year || '')
   const [month, setMonth] = useState(initialBirthdate?.month || '')
   const [day, setDay] = useState(initialBirthdate?.day || '')
+  const [birthdayType, setBirthdayType] = useState(initialBirthdate?.birthdayType || 'solar')
   const [period, setPeriod] = useState('')
   const [hour12, setHour12] = useState('')
   const [minuteRange, setMinuteRange] = useState('')
@@ -21,6 +22,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
     if (initialBirthdate?.year) setYear(initialBirthdate.year)
     if (initialBirthdate?.month) setMonth(initialBirthdate.month)
     if (initialBirthdate?.day) setDay(initialBirthdate.day)
+    if (initialBirthdate?.birthdayType) setBirthdayType(initialBirthdate.birthdayType)
 
     // 24시간 형식에서 12시간 형식으로 변환
     if (initialBirthdate?.hour !== undefined && initialBirthdate?.hour !== null && initialBirthdate?.hour !== '') {
@@ -107,6 +109,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
           year,
           month,
           day,
+          birthdayType,
           hour: hour24,
           minute: minute,
           period: period ? period.toLowerCase() : 'unknown',
@@ -224,6 +227,46 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 e.target.style.borderColor = '#E5E8EB'
               }}
             />
+          </div>
+        </div>
+
+        {/* 양력/음력 선택 */}
+        <div style={{ marginBottom: '32px' }}>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button
+              onClick={() => setBirthdayType('solar')}
+              style={{
+                flex: 1,
+                padding: '14px',
+                fontSize: '15px',
+                fontWeight: '600',
+                color: birthdayType === 'solar' ? '#fff' : '#191F28',
+                background: birthdayType === 'solar' ? 'var(--color-primary)' : '#F7F8FA',
+                border: birthdayType === 'solar' ? 'none' : '1px solid #E5E8EB',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+            >
+              양력
+            </button>
+            <button
+              onClick={() => setBirthdayType('lunar')}
+              style={{
+                flex: 1,
+                padding: '14px',
+                fontSize: '15px',
+                fontWeight: '600',
+                color: birthdayType === 'lunar' ? '#fff' : '#191F28',
+                background: birthdayType === 'lunar' ? 'var(--color-primary)' : '#F7F8FA',
+                border: birthdayType === 'lunar' ? 'none' : '1px solid #E5E8EB',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+            >
+              음력
+            </button>
           </div>
         </div>
 

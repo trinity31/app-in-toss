@@ -25,13 +25,15 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
   // 백엔드 API 호출하여 상품 지급 처리
   const grantProduct = async (orderId, sku) => {
     const bd = userData.birthdate;
+    const birthdayType = bd?.birthdayType || 'solar';
+
     const formattedBirthdate = {
       year: parseInt(bd?.year) || 0,
       month: parseInt(bd?.month) || 0,
       day: parseInt(bd?.day) || 0,
       hour: bd?.hour ? parseInt(bd.hour) : null,
       minute: bd?.minute ? parseInt(bd.minute) : null,
-      isLunar: false,
+      isLunar: birthdayType === 'lunar',
     };
 
     const requestBody = {
@@ -42,6 +44,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
       email: userData.email,
       name: userData.name,
       birthdate: formattedBirthdate,
+      birthday_type: birthdayType,
       gender: userData.gender,
       amuletType: userData.amuletType,
       amuletTypeTitle: userData.amuletTypeTitle,
