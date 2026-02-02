@@ -161,9 +161,9 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
       phone: userData.phone,
       tossUserInfo: userData.tossUserInfo
         ? {
-            userKey: userData.tossUserInfo.userKey,
-            name: userData.tossUserInfo.name,
-          }
+          userKey: userData.tossUserInfo.userKey,
+          name: userData.tossUserInfo.name,
+        }
         : null,
       productSku: sku,
     });
@@ -216,7 +216,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
 
   return (
     <>
-      <div style={{ padding: "20px 20px 100px" }}>
+      <div style={{ padding: "20px 20px 140px" }}>
         <h1
           style={{
             fontSize: "22px",
@@ -350,7 +350,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
                 style={{
                   background: "var(--color-primary-light)",
                   borderRadius: "16px",
-                  padding: "20px",
+                  padding: "16px",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
@@ -385,21 +385,10 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
                   background:
                     "linear-gradient(135deg, #E8F5E9 0%, #E3F2FD 100%)",
                   borderRadius: "12px",
-                  padding: "20px",
+                  padding: "12px",
                   border: "2px solid #4CAF50",
                 }}
               >
-                {/* <p
-                  style={{
-                    fontSize: "15px",
-                    fontWeight: "700",
-                    color: "#1B5E20",
-                    marginBottom: "16px",
-                    margin: 0,
-                  }}
-                >
-                  📦 배송 안내
-                </p> */}
                 <div
                   style={{
                     display: "flex",
@@ -408,28 +397,28 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
                     marginTop: "8px",
                   }}
                 >
-                  <span style={{ fontSize: "16px", marginRight: "8px" }}>
+                  <span style={{ fontSize: "12px", marginRight: "4px" }}>
                     ✓
                   </span>
                   <p
                     style={{
-                      fontSize: "15px",
+                      fontSize: "14px",
                       color: "#1B5E20",
                       lineHeight: "1.6",
                       margin: 0,
                       fontWeight: "500",
                     }}
                   >
-                    선택한 스타일로 제작한 이미지 5장을 보내드려요
+                    선택한 스타일로 제작한 이미지 4장을 보내드려요
                   </p>
                 </div>
                 <div style={{ display: "flex", alignItems: "flex-start" }}>
-                  <span style={{ fontSize: "16px", marginRight: "8px" }}>
+                  <span style={{ fontSize: "12px", marginRight: "4px" }}>
                     ✓
                   </span>
                   <p
                     style={{
-                      fontSize: "15px",
+                      fontSize: "14px",
                       color: "#1B5E20",
                       lineHeight: "1.6",
                       margin: 0,
@@ -440,6 +429,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
                   </p>
                 </div>
               </div>
+
             </>
           )
         )}

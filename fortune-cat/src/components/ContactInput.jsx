@@ -57,7 +57,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
 
   return (
     <>
-      <div style={{ padding: '20px 20px 0', marginBottom: '80px' }}>
+      <div style={{ padding: '20px 20px 0', marginBottom: '120px' }}>
         <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 8px 0' }}>
           부적 이미지를 받을<br />연락처를 입력해 주세요
         </h1>

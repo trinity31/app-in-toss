@@ -59,7 +59,7 @@ export default function TossLogin({ onNext, onBack, userData }) {
 
   return (
     <>
-      <div style={{ padding: '20px 20px 100px' }}>
+      <div style={{ padding: '20px 20px 140px' }}>
         <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
           토스 로그인이 필요해요
         </h1>

@@ -360,15 +360,14 @@ export default function AmuletPage() {
                 >
                   <p
                     style={{
-                      fontSize: "14px",
-                      color: "#4E5968",
+                      fontSize: "16px",
+                      color: "#FF5722",
                       lineHeight: "1.6",
                       margin: 0,
-                      fontWeight: "500",
+                      fontWeight: "600",
                     }}
                   >
-                    ✓ 휴대폰 배경화면으로 사용하기 좋은 9:16 비율의 이미지로
-                    생성해 드려요.
+                    ✓ 휴대폰 배경화면으로 사용하기 좋은 9:16 사이즈로 제작한 고화질 이미지 4장을 보내드려요
                   </p>
                 </div>
               </>

@@ -7,7 +7,7 @@ export default function AmuletResult({
 
   return (
     <div
-      style={{ minHeight: "100vh", background: "#fff", paddingBottom: "100px" }}
+      style={{ minHeight: "100vh", background: "#fff", paddingBottom: "140px" }}
     >
       <div
         style={{
@@ -155,7 +155,7 @@ export default function AmuletResult({
               margin: 0,
             }}
           >
-            <li>이미지는 고화질 이미지 5장으로 보내드려요.</li>
+            <li>이미지는 고화질 이미지 4장으로 보내드려요.</li>
             <li>24시간후 미수신시 아래의 이메일로 문의해 주세요.</li>
             <li>스팸 메일함도 꼭 확인해 주세요.</li>
           </ul>

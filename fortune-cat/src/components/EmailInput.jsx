@@ -46,7 +46,7 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
 
   return (
     <>
-      <div style={{ padding: '20px 20px 0' }}>
+      <div style={{ padding: '20px 20px 120px' }}>
         <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
           부적 이미지를 받을<br />이메일을 입력해 주세요
         </h1>
