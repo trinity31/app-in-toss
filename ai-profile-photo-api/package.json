@@ -6,6 +6,7 @@
   "scripts": {},
   "dependencies": {
     "@google/genai": "^1.0.0",
+    "@supabase/supabase-js": "^2.39.0",
     "mime": "^4.0.0",
     "replicate": "^0.34.1"
   },
