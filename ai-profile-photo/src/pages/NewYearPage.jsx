@@ -1,18 +1,27 @@
 import { useState, useEffect, useRef } from 'react'
-import { fetchAlbumPhotos, saveBase64Data, openCamera, GoogleAdMob } from '@apps-in-toss/web-framework'
-import { Modal, Button } from '@toss/tds-mobile'
+import { useNavigate } from 'react-router-dom'
+import { fetchAlbumPhotos, saveBase64Data, openCamera } from '@apps-in-toss/web-framework'
 import { colors } from '@toss/tds-colors'
 import Intro from '../components/Intro'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
-import { API_ENDPOINTS, AD_GROUP_ID } from '../config/api'
+import NewYearPayment from '../components/NewYearPayment'
+import TossLogin from '../components/TossLogin'
+import { API_ENDPOINTS } from '../config/api'
+import { usePendingOrderStorage, shouldSkipAutoRestore } from '../hooks/usePendingOrderStorage'
 
 // 연하장 썸네일 이미지
 import { illustrationImg, animeImg, chineseImg } from '../config/images'
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
-const AD_WAIT_TIMEOUT_MS = 10000;
+function getUserKey() {
+  return localStorage.getItem('newyear_user_key')
+}
+
+function saveUserKey(userKey) {
+  localStorage.setItem('newyear_user_key', userKey)
+}
 
 export default function NewYearPage() {
   const [currentPage, setCurrentPage] = useState('intro')
@@ -21,21 +30,51 @@ export default function NewYearPage() {
   const [maxPhotos, setMaxPhotos] = useState(3)
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null)
   const [error, setError] = useState(null)
-
-  // 광고 관련 상태
-  const [adLoaded, setAdLoaded] = useState(false)
-  const [waitingForAd, setWaitingForAd] = useState(false)
-  const [adLoadError, setAdLoadError] = useState(false)
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
   const [loadingMessage, setLoadingMessage] = useState(null)
+  const [pendingOrders, setPendingOrders] = useState([])
+  const [isRestoring, setIsRestoring] = useState(false)
+  const [tossUserInfo, setTossUserInfo] = useState(null)
 
-  // Refs
-  const cleanupRef = useRef(undefined)
-  const adWaitTimeoutRef = useRef(undefined)
-  const rewardEarnedRef = useRef(false)
-  const adPlayCountRef = useRef(0)
+  const navigate = useNavigate()
   const selectedCardTypeRef = useRef('new-year-card-illustration')
-  const preloadedImageUrlRef = useRef(null)
+
+  const {
+    loading: pendingLoading,
+    pendingOrderData,
+    clearPendingOrderData,
+  } = usePendingOrderStorage()
+
+  // 앱 시작 시 미완료 주문 확인
+  useEffect(() => {
+    async function checkPendingOrders() {
+      if (pendingLoading) return
+
+      if (shouldSkipAutoRestore()) {
+        console.log('[NewYearPage] 미완료 주문 확인 건너뛰기 (테스트 모드)')
+        return
+      }
+
+      if (pendingOrderData) {
+        try {
+          const { IAP } = await import('@apps-in-toss/web-framework')
+          const response = await IAP.getPendingOrders()
+          const orders = Array.isArray(response)
+            ? response
+            : response?.orders || response?.pendingOrders || []
+
+          if (orders?.length > 0) {
+            setPendingOrders(orders)
+          } else {
+            clearPendingOrderData()
+          }
+        } catch (err) {
+          console.error('[NewYearPage] 미완료 주문 확인 실패:', err)
+        }
+      }
+    }
+
+    checkPendingOrders()
+  }, [pendingLoading])
 
   const handleAlbumSelect = async () => {
     try {
@@ -275,127 +314,32 @@ export default function NewYearPage() {
     }
   }
 
-  const loadAd = () => {
-    try {
-      console.log('\n📥 광고 로드 시도')
-
-      const isSupported = GoogleAdMob?.loadAppsInTossAdMob?.isSupported?.()
-      console.log('🔍 loadAppsInTossAdMob.isSupported():', isSupported)
-
-      if (isSupported !== true) {
-        console.warn('❌ 광고 기능 미지원. isSupported:', isSupported)
-        return
-      }
-
-      cleanupRef.current?.()
-      cleanupRef.current = undefined
-
-      setAdLoaded(false)
-      console.log('🔄 광고 로드 시작...')
-
-      const cleanup = GoogleAdMob.loadAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
-        onEvent: (event) => {
-          if (event.type === 'loaded') {
-            console.log('✅ 광고 로드 완료:', event.data)
-            setAdLoaded(true)
-          }
-        },
-        onError: (loadError) => {
-          console.error('❌ 광고 로드 실패:', loadError)
-          setAdLoaded(false)
-          setAdLoadError(true)
+  // Cloudflare Images에 백그라운드 업로드 (fire-and-forget)
+  const uploadToCloudflare = (imageDataUri, cardType) => {
+    const userKey = tossUserInfo?.userKey || getUserKey()
+    if (!userKey) {
+      console.error('[NewYearPage] Cloudflare 업로드 실패: userKey 없음')
+      return
+    }
+    const base64Data = imageDataUri.split(',')[1]
+    fetch(API_ENDPOINTS.UPLOAD_IMAGE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        imageBase64: base64Data,
+        userId: userKey,
+        cardType,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log('[NewYearPage] Cloudflare 업로드 성공:', data.imageId)
+        } else {
+          console.error('[NewYearPage] Cloudflare 업로드 실패:', data.error)
         }
       })
-
-      cleanupRef.current = cleanup
-    } catch (loadError) {
-      console.error('⚠️ 광고 로드 예외:', loadError)
-      setAdLoaded(false)
-      setAdLoadError(true)
-    }
-  }
-
-  const showAd = () => {
-    try {
-      console.log('✅ 광고 표시 시작')
-      rewardEarnedRef.current = false
-
-      GoogleAdMob.showAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
-        onEvent: (event) => {
-          console.log('광고 이벤트:', event.type)
-
-          switch (event.type) {
-            case 'userEarnedReward':
-              console.log('🎁 보상 획득!', event.data)
-              rewardEarnedRef.current = true
-              break
-
-            case 'dismissed':
-              console.log('광고 닫힘')
-
-              if (rewardEarnedRef.current) {
-                console.log('✅ 보상형 광고 완료 - 연하장 생성 진행')
-                setLoadingMessage({
-                  title: '연하장 생성 중...',
-                  description: '잠시만 기다려주세요...'
-                })
-                setCurrentPage('loading')
-
-                if (preloadedImageUrlRef.current) {
-                  console.log('✅ 미리 로드된 이미지 사용')
-                  setGeneratedImageUrl(preloadedImageUrlRef.current)
-                  setCurrentPage('result')
-                  preloadedImageUrlRef.current = null
-                } else {
-                  console.log('⏳ 이미지 생성 대기 중')
-                  generateCard()
-                }
-
-                loadAd()
-              } else {
-                console.warn('⚠️ 보상형 광고 중도 종료')
-                setCurrentPage('intro')
-                setError('광고를 끝까지 시청해주세요')
-                loadAd()
-              }
-              break
-
-            case 'failedToShow':
-              console.warn('⚠️ 광고 표시 실패 - 광고 없이 진행:', event.data)
-              setLoadingMessage({
-                title: '연하장 생성 중...',
-                description: '잠시만 기다려주세요...'
-              })
-              setCurrentPage('loading')
-              generateCard()
-              loadAd()
-              break
-          }
-        },
-        onError: (showError) => {
-          console.error('❌ 광고 표시 에러:', showError)
-          console.warn('⚠️ 광고 표시 에러 발생 - 광고 없이 진행')
-          setLoadingMessage({
-            title: '연하장 생성 중...',
-            description: '잠시만 기다려주세요...'
-          })
-          setCurrentPage('loading')
-          generateCard()
-          loadAd()
-        }
-      })
-    } catch (error) {
-      console.error('❌ 광고 표시 중 예외 발생:', error)
-      setLoadingMessage({
-        title: '연하장 생성 중...',
-        description: '잠시만 기다려주세요...'
-      })
-      setCurrentPage('loading')
-      generateCard()
-      loadAd()
-    }
+      .catch(err => console.error('[NewYearPage] Cloudflare 업로드 에러:', err))
   }
 
   const generateCard = async () => {
@@ -407,90 +351,80 @@ export default function NewYearPage() {
 
     try {
       const imageDataUri = await uploadAndGenerateCard(selectedImages, selectedCardTypeRef.current)
+      clearPendingOrderData()
+      // Cloudflare Images에 백그라운드 업로드
+      uploadToCloudflare(imageDataUri, selectedCardTypeRef.current)
       setGeneratedImageUrl(imageDataUri)
       setCurrentPage('result')
     } catch (err) {
       console.error('연하장 생성 실패', err)
-      setError(`연하장 생성 중 오류가 발생했습니다: ${err.message}`)
+      setError(`연하장 생성 중 오류가 발생했습니다: ${err.message}. 앱을 다시 시작하면 추가 결제 없이 재시도할 수 있습니다.`)
       setCurrentPage('intro')
     }
   }
 
-  useEffect(() => {
-    loadAd()
+  // 미완료 주문 복구
+  const handleRestoreOrder = async () => {
+    if (!pendingOrderData || pendingOrders.length === 0) return
 
-    return () => {
-      cleanupRef.current?.()
-      cleanupRef.current = undefined
+    setIsRestoring(true)
+    setLoadingMessage({
+      title: '연하장 이미지 생성 중...',
+      description: '잠시만 기다려주세요'
+    })
+    setCurrentPage('loading')
 
-      if (adWaitTimeoutRef.current) {
-        clearTimeout(adWaitTimeoutRef.current)
-        adWaitTimeoutRef.current = undefined
+    try {
+      // Base64 데이터에서 Blob으로 변환
+      const imageBlobs = await Promise.all(
+        pendingOrderData.selectedImages.map(async (dataUri) => {
+          const response = await fetch(dataUri)
+          return await response.blob()
+        })
+      )
+
+      const cardType = pendingOrderData.selectedCardType
+      const imageDataUri = await uploadAndGenerateCard(imageBlobs, cardType)
+
+      // 성공 시 IAP 완료 처리
+      const { IAP } = await import('@apps-in-toss/web-framework')
+      for (const order of pendingOrders) {
+        const orderId = order.orderId || order
+        try {
+          await IAP.completeProductGrant({ params: { orderId } })
+        } catch (completeErr) {
+          console.error('[NewYearPage] completeProductGrant 에러:', completeErr)
+        }
       }
+
+      clearPendingOrderData()
+      setPendingOrders([])
+      // Cloudflare Images에 백그라운드 업로드
+      uploadToCloudflare(imageDataUri, cardType)
+      setGeneratedImageUrl(imageDataUri)
+      setCurrentPage('result')
+    } catch (err) {
+      console.error('[NewYearPage] 복구 실패:', err)
+      setError(`이미지 생성 실패: ${err.message}. 다시 시도해주세요.`)
+      setCurrentPage('intro')
+    } finally {
+      setIsRestoring(false)
+      setLoadingMessage(null)
     }
-  }, [])
-
-  useEffect(() => {
-    if (waitingForAd && adLoaded) {
-      console.log('✅ 광고 로드 완료 - 광고 표시')
-      setWaitingForAd(false)
-
-      if (adWaitTimeoutRef.current) {
-        clearTimeout(adWaitTimeoutRef.current)
-        adWaitTimeoutRef.current = undefined
-      }
-
-      showAd()
-    }
-  }, [adLoaded, waitingForAd])
+  }
 
   const handleReset = () => {
     setCurrentPage('intro')
     setSelectedImages([])
-    adPlayCountRef.current = 0
-    preloadedImageUrlRef.current = null
     setGeneratedImageUrl(null)
     setError(null)
-
-    loadAd()
   }
 
-  const handleCardTypeSelect = async (cardType, maxCount) => {
+  const handleCardTypeSelect = (cardType, maxCount) => {
     setSelectedCardType(cardType)
     selectedCardTypeRef.current = cardType
     setMaxPhotos(maxCount)
-    adPlayCountRef.current = 0
-
-    try {
-      const isSupported = GoogleAdMob?.showAppsInTossAdMob?.isSupported?.()
-
-      if (isSupported !== true) {
-        console.warn('광고 표시 기능 미지원. isSupported:', isSupported)
-        setCurrentPage('loading')
-        generateCard()
-        return
-      }
-
-      if (adLoaded === false) {
-        console.log('⏳ 광고 로드 대기 중 - 로딩 화면 표시')
-        setCurrentPage('loading')
-        setWaitingForAd(true)
-
-        adWaitTimeoutRef.current = setTimeout(() => {
-          console.warn(`⚠️ 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
-          setWaitingForAd(false)
-          generateCard()
-        }, AD_WAIT_TIMEOUT_MS)
-
-        return
-      }
-
-      showAd()
-    } catch (error) {
-      console.error('❌ 광고 표시 중 예외 발생:', error)
-      setCurrentPage('loading')
-      generateCard()
-    }
+    setCurrentPage('tossLogin')
   }
 
   const handleBackToIntro = () => {
@@ -498,7 +432,6 @@ export default function NewYearPage() {
     setSelectedCardType('new-year-card-single')
     selectedCardTypeRef.current = 'new-year-card-single'
     setMaxPhotos(1)
-    adPlayCountRef.current = 0
     setCurrentPage('intro')
   }
 
@@ -538,17 +471,94 @@ export default function NewYearPage() {
     switch (currentPage) {
       case 'intro':
         return (
-          <Intro
-            onNext={(type) => {
-              if (type === 'album') {
-                handleAlbumSelect()
-              } else if (type === 'camera') {
-                handleCameraSelect()
-              }
-            }}
-            error={error}
-            pageType="newyear"
-          />
+          <div>
+            {/* 미완료 주문 복구 배너 */}
+            {pendingOrders.length > 0 && pendingOrderData && (
+              <div style={{
+                background: '#FFF8E6',
+                padding: '16px 20px',
+                borderBottom: '1px solid #FFE4B5'
+              }}>
+                <p style={{ fontSize: '15px', fontWeight: '600', color: '#B86E00', margin: '0 0 8px 0' }}>
+                  이전에 결제하신 연하장이 있습니다
+                </p>
+                <p style={{ fontSize: '13px', color: '#8B7355', margin: '0 0 12px 0' }}>
+                  이미지 생성에 실패했습니다. 추가 결제 없이 다시 시도할 수 있습니다.
+                </p>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button
+                    onClick={handleRestoreOrder}
+                    disabled={isRestoring}
+                    style={{
+                      flex: 1,
+                      padding: '12px',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#fff',
+                      background: isRestoring ? '#ccc' : '#B86E00',
+                      border: 'none',
+                      borderRadius: '8px',
+                      cursor: isRestoring ? 'not-allowed' : 'pointer'
+                    }}
+                  >
+                    {isRestoring ? '이미지 생성 중...' : '다시 생성하기'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      clearPendingOrderData()
+                      setPendingOrders([])
+                    }}
+                    disabled={isRestoring}
+                    style={{
+                      padding: '12px 16px',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#8B7355',
+                      background: '#fff',
+                      border: '1px solid #E5D9C3',
+                      borderRadius: '8px',
+                      cursor: isRestoring ? 'not-allowed' : 'pointer'
+                    }}
+                  >
+                    무시
+                  </button>
+                </div>
+              </div>
+            )}
+            <div style={{
+              padding: '12px 20px',
+              borderBottom: `1px solid ${colors.grey200}`,
+              display: 'flex',
+              justifyContent: 'center',
+            }}>
+              <button
+                onClick={() => navigate('/newyear/history')}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: colors.blue500,
+                  background: 'transparent',
+                  border: `1px solid ${colors.blue500}`,
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                }}
+              >
+                이전 결과 보기
+              </button>
+            </div>
+            <Intro
+              onNext={(type) => {
+                if (type === 'album') {
+                  handleAlbumSelect()
+                } else if (type === 'camera') {
+                  handleCameraSelect()
+                }
+              }}
+              error={error}
+              pageType="newyear"
+            />
+          </div>
         )
       case 'selection':
         return (
@@ -558,11 +568,36 @@ export default function NewYearPage() {
             onBack={handleBackToIntro}
           />
         )
+      case 'tossLogin':
+        return (
+          <TossLogin
+            onBack={() => setCurrentPage('selection')}
+            onNext={({ tossUserInfo: userInfo }) => {
+              setTossUserInfo(userInfo)
+              saveUserKey(userInfo.userKey)
+              setCurrentPage('payment')
+            }}
+          />
+        )
+      case 'payment':
+        return (
+          <NewYearPayment
+            selectedImages={selectedImages}
+            selectedCardType={selectedCardType}
+            onBack={() => setCurrentPage('tossLogin')}
+            onNext={() => {
+              setLoadingMessage({
+                title: '연하장 생성 중...',
+                description: '잠시만 기다려주세요...'
+              })
+              setCurrentPage('loading')
+              generateCard()
+            }}
+          />
+        )
       case 'loading':
         return (
           <Loading
-            error={adLoadError}
-            onRetry={loadAd}
             title={loadingMessage?.title}
             description={loadingMessage?.description}
           />
@@ -699,7 +734,7 @@ function NewYearSelection({ selectedImages, onSelect, onBack }) {
           }}
           disabled={!selectedType}
         >
-          광고 보고 생성하기
+          결제하고 생성하기
         </button>
       </div>
     </div>
