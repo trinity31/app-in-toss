@@ -5,6 +5,16 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+// 디버그 로그를 Supabase에 저장 (fire-and-forget, await 하지 않음)
+export function logDebug(stage, orderId, data = {}) {
+  supabase
+    .from("debug_logs")
+    .insert({ stage, order_id: orderId, data })
+    .then(({ error }) => {
+      if (error) console.warn("[logDebug] 저장 실패:", error);
+    });
+}
+
 export function getMenuImageUrl(imagePath) {
   // "/images/food-fortune.png" -> "food-fortune.png"
   const fileName = imagePath.replace("/images/", "");

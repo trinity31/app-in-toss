@@ -61,16 +61,6 @@ export default function AmuletPage() {
         }
         const count = await getTodayOrderCount();
         const remaining = dailyOrderLimit - count;
-        console.log(
-          "[AmuletPage] 오늘 주문 수:",
-          count,
-          "남은 수량:",
-          remaining,
-          "LIMIT:",
-          dailyOrderLimit,
-          "THRESHOLD:",
-          lowStockThreshold,
-        );
         if (remaining < lowStockThreshold) {
           setRemainingCount(remaining);
         }
@@ -84,13 +74,15 @@ export default function AmuletPage() {
   // 백엔드 API 호출하여 상품 지급 처리
   const grantProduct = async (orderId, orderData) => {
     const bd = orderData.birthdate;
+    const birthdayType = bd?.birthdayType || 'solar';
+
     const formattedBirthdate = {
       year: parseInt(bd?.year) || 0,
       month: parseInt(bd?.month) || 0,
       day: parseInt(bd?.day) || 0,
       hour: bd?.hour ? parseInt(bd.hour) : null,
       minute: bd?.minute ? parseInt(bd.minute) : null,
-      isLunar: false,
+      isLunar: birthdayType === 'lunar',
     };
 
     const requestBody = {
@@ -101,34 +93,32 @@ export default function AmuletPage() {
       email: orderData.email,
       name: orderData.name,
       birthdate: formattedBirthdate,
+      birthday_type: birthdayType,
       gender: orderData.gender,
       amuletType: orderData.amuletType,
       amuletTypeTitle: orderData.amuletTypeTitle,
       productSku: orderData.productSku,
     };
-    console.log(
-      "[AmuletPage] 주문 복원 요청:",
-      JSON.stringify(requestBody, null, 2),
-    );
+
+    const endpoint = `${API_BASE_URL}/amulet-order`;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/amulet-order`, {
+      const response = await fetch(endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
       });
 
       if (!response.ok) {
-        console.error("[AmuletPage] 주문 등록 실패");
+        console.error("[AmuletPage] 주문 복원 실패:", response.status);
         return false;
       }
 
-      console.log("[AmuletPage] 주문 등록 성공");
+      await response.json();
       return true;
+
     } catch (err) {
-      console.error("[AmuletPage] 주문 등록 에러:", err);
+      console.error("[AmuletPage] 주문 복원 에러:", err.message);
       return false;
     }
   };
@@ -155,12 +145,9 @@ export default function AmuletPage() {
         try {
           const { IAP } = await import("@apps-in-toss/web-framework");
           const response = await IAP.getPendingOrders();
-          console.log("[AmuletPage] getPendingOrders 응답:", response);
-
           const orders = Array.isArray(response)
             ? response
             : response?.orders || response?.pendingOrders || [];
-          console.log("[AmuletPage] 파싱된 미완료 주문:", orders);
 
           if (orders?.length > 0) {
             setPendingOrders(orders);
@@ -190,23 +177,14 @@ export default function AmuletPage() {
       for (let i = 0; i < pendingOrders.length; i++) {
         const order = pendingOrders[i];
         const orderId = order.orderId || order;
-        console.log("[AmuletPage] 주문 복원 시도:", orderId);
 
         const success = await grantProduct(orderId, pendingOrderData);
 
         if (success) {
-          console.log(
-            "[AmuletPage] completeProductGrant 호출 - orderId:",
-            orderId,
-          );
           try {
             await IAP.completeProductGrant({ params: { orderId } });
-            console.log("[AmuletPage] completeProductGrant 완료");
           } catch (completeErr) {
-            console.error(
-              "[AmuletPage] completeProductGrant 에러:",
-              completeErr,
-            );
+            console.error("[AmuletPage] completeProductGrant 에러:", completeErr);
           }
 
           // 복원 성공 시 결과 화면으로 이동

@@ -50,29 +50,26 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
       amuletTypeTitle: userData.amuletTypeTitle,
       productSku: sku,
     };
-    console.log(
-      "[AmuletPayment] 상품 지급 요청:",
-      JSON.stringify(requestBody, null, 2),
-    );
+
+    const endpoint = `${API_BASE_URL}/amulet-order`;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/amulet-order`, {
+      const response = await fetch(endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
       });
 
       if (!response.ok) {
-        console.error("[AmuletPayment] 주문 등록 실패");
+        console.error("[AmuletPayment] 주문 등록 실패:", response.status);
         return false;
       }
 
-      console.log("[AmuletPayment] 주문 등록 성공");
+      await response.json();
       return true;
+
     } catch (err) {
-      console.error("[AmuletPayment] 주문 등록 에러:", err);
+      console.error("[AmuletPayment] 주문 등록 에러:", err.message);
       return false;
     }
   };
@@ -108,10 +105,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
 
   const handlePurchase = async () => {
     // 중복 호출 방지
-    if (isPurchasing) {
-      console.log("[AmuletPayment] 이미 결제 진행 중");
-      return;
-    }
+    if (isPurchasing) return;
 
     // 품절 체크
     try {
@@ -126,12 +120,6 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
         );
       }
       const todayCount = await getTodayOrderCount();
-      console.log(
-        "[AmuletPayment] 품절 체크 - 오늘 주문:",
-        todayCount,
-        "/ 제한:",
-        dailyOrderLimit,
-      );
       if (todayCount >= dailyOrderLimit) {
         setError("오늘 주문이 마감되었습니다. 내일 다시 시도해 주세요.");
         return;
@@ -142,7 +130,6 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
     }
 
     const sku = productInfo?.sku || AMULET_PRODUCT_SKU;
-    console.log("[AmuletPayment] SKU:", sku);
 
     if (!sku) {
       setError("상품 SKU가 설정되지 않았습니다");
@@ -177,27 +164,33 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
     const cleanup = IAP.createOneTimePurchaseOrder({
       options: {
         sku,
-        // 결제 성공 시 상품 지급 로직 실행
-        processProductGrant: async ({ orderId }) => {
-          console.log("[AmuletPayment] 상품 지급 로직 실행:", orderId);
-          return await grantProduct(orderId, sku);
+        // 결제 성공 시 즉시 true 반환 (공식 예제 패턴)
+        // 백엔드 API 호출은 onEvent에서 수행
+        processProductGrant: () => {
+          return true;
         },
       },
       onEvent: (event) => {
-        console.log("[AmuletPayment] 이벤트:", event);
         cleanup?.();
         setIsPurchasing(false);
 
         if (event.type === "success") {
-          // 결제 성공 시 저장된 데이터 삭제 후 결과 화면으로 이동
-          clearPendingOrderData();
-          onNext({
-            orderId: event.data?.orderId,
+          const orderId = event.data?.orderId;
+
+          // 즉시 결과 페이지로 이동
+          onNext({ orderId });
+
+          // 백엔드 API 호출은 백그라운드로
+          grantProduct(orderId, sku).then((result) => {
+            if (result) {
+              clearPendingOrderData();
+            } else {
+              alert("주문 접수에 실패했습니다. 앱을 다시 시작하면 자동으로 복구됩니다.");
+            }
           });
         }
       },
       onError: (error) => {
-        console.error("[AmuletPayment] 결제 에러:", error);
         cleanup?.();
         setIsPurchasing(false);
 
