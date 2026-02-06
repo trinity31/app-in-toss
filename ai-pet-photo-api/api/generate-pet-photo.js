@@ -41,7 +41,12 @@ const TYPE_TO_MODEL_MAPPING = {
   'new-year-card-dog-korea-male': 'google/nano-banana-pro', // 한국풍 강아지 남아
   'new-year-card-dog-korea-female': 'google/nano-banana-pro', // 한국풍 강아지 여아
   'new-year-card-dog-japan': 'google/nano-banana-pro', // 일본풍 강아지
-  'new-year-card-dog-china': 'google/nano-banana-pro'  // 중국풍 강아지
+  'new-year-card-dog-china': 'google/nano-banana-pro',  // 중국풍 강아지
+
+  // 새 스타일 연하장
+  'new-year-card-illustration': 'google/nano-banana-pro', // 심플한 일러스트
+  'new-year-card-minhwa': 'google/nano-banana-pro', // 한국 전통 민화
+  'new-year-card-clay': 'google/nano-banana-pro'  // 3D 클레이/점토
 };
 
 // 허용된 Origin 목록
