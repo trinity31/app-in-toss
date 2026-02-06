@@ -118,7 +118,7 @@ export default function NewYearPayment({ onNext, onBack, selectedImages, selecte
 
   return (
     <>
-      <div style={{ padding: '20px 20px 140px' }}>
+      <div style={{ padding: '20px 20px 140px', background: colors.white, minHeight: '100vh', width: '100%', boxSizing: 'border-box' }}>
         <h1 style={{
           fontSize: '22px',
           lineHeight: '1.4',

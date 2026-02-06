@@ -11,7 +11,7 @@ import { API_ENDPOINTS, NEWYEAR_PRODUCT_SKU } from '../config/api'
 import { usePendingOrderStorage, shouldSkipAutoRestore } from '../hooks/usePendingOrderStorage'
 
 // 연하장 썸네일 이미지
-import { illustrationImg, animeImg, chineseImg } from '../config/images'
+import { illustrationImg, minhwaImg, clayImg } from '../config/images'
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -671,27 +671,27 @@ function NewYearSelection({ selectedImages, onSelect, onBack, productPrice }) {
   const cardTypes = [
     {
       id: 'new-year-card-illustration',
-      title: '심플하고 따뜻한 느낌의 일러스트',
-      description: '따뜻한 일러스트 스타일',
+      title: '따뜻한 느낌의 일러스트',
+      description: '심플하고 따뜻한 일러스트 스타일',
       thumbnail: illustrationImg,
       maxPhotos: 3,
       color: colors.orange50
     },
     {
-      id: 'new-year-card-anime',
-      title: '일본 만화풍',
-      description: '애니메이션 스타일',
-      thumbnail: animeImg,
+      id: 'new-year-card-minhwa',
+      title: '한국 전통 민화',
+      description: '한국 전통 민화 스타일',
+      thumbnail: minhwaImg,
       maxPhotos: 3,
-      color: colors.pink50
+      color: colors.amber50
     },
     {
-      id: 'new-year-card-chinese',
-      title: '화려한 중국풍',
-      description: '전통 중국 스타일',
-      thumbnail: chineseImg,
+      id: 'new-year-card-clay',
+      title: '3D 클레이/점토',
+      description: '귀엽고 입체적인 클레이 스타일',
+      thumbnail: clayImg,
       maxPhotos: 3,
-      color: colors.red50
+      color: colors.green50
     }
   ]
 
@@ -834,7 +834,7 @@ const styles = {
   typeThumbnailWrapper: {
     width: '80px',
     minWidth: '80px',
-    height: '80px',
+    height: '120px',
     borderRadius: '8px',
     overflow: 'hidden',
     backgroundColor: colors.grey100,

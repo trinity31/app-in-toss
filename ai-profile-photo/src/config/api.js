@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
   GENERATE_PROFILE: `${API_BASE_URL}/generate-profile-photo`,
   UPLOAD_IMAGE: `${API_BASE_URL}/images/upload`,
   LIST_IMAGES: `${API_BASE_URL}/images/list`,
+  DELETE_IMAGE: `${API_BASE_URL}/images/delete`,
   TOSS_LOGIN: `${API_BASE_URL}/toss-login`,
 };
 
