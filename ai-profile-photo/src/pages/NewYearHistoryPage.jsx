@@ -9,6 +9,8 @@ export default function NewYearHistoryPage() {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [deleteTarget, setDeleteTarget] = useState(null)
+  const [isDeleting, setIsDeleting] = useState(false)
   const navigate = useNavigate()
   const { pendingOrderData } = usePendingOrderStorage()
 
@@ -70,6 +72,32 @@ export default function NewYearHistoryPage() {
 
   const handleRestore = () => {
     navigate('/newyear', { state: { restore: true } })
+  }
+
+  const handleDelete = async () => {
+    if (!deleteTarget) return
+
+    setIsDeleting(true)
+    try {
+      const userKey = localStorage.getItem('newyear_user_key')
+      const res = await fetch(
+        `${API_ENDPOINTS.DELETE_IMAGE}?userId=${encodeURIComponent(userKey)}&filePath=${encodeURIComponent(deleteTarget.id)}`,
+        { method: 'DELETE' }
+      )
+      const data = await res.json()
+
+      if (data.success) {
+        setImages(prev => prev.filter(img => img.id !== deleteTarget.id))
+        setDeleteTarget(null)
+      } else {
+        alert('이미지 삭제에 실패했습니다.')
+      }
+    } catch (err) {
+      console.error('[NewYearHistoryPage] 이미지 삭제 실패:', err)
+      alert('이미지 삭제 중 오류가 발생했습니다.')
+    } finally {
+      setIsDeleting(false)
+    }
   }
 
   // 헤더 컴포넌트
@@ -278,25 +306,122 @@ export default function NewYearHistoryPage() {
                   hour: '2-digit', minute: '2-digit',
                 })}
               </p>
-              <button
-                onClick={() => handleSave(image.url)}
-                style={{
-                  padding: '8px 16px',
-                  backgroundColor: '#db5c7f',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '8px',
-                  fontSize: '13px',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                }}
-              >
-                저장
-              </button>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button
+                  onClick={() => setDeleteTarget(image)}
+                  style={{
+                    padding: '8px 16px',
+                    backgroundColor: colors.grey100,
+                    color: colors.grey600,
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                  }}
+                >
+                  삭제
+                </button>
+                <button
+                  onClick={() => handleSave(image.url)}
+                  style={{
+                    padding: '8px 16px',
+                    backgroundColor: '#db5c7f',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                  }}
+                >
+                  저장
+                </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* 삭제 확인 모달 */}
+      {deleteTarget && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '20px',
+        }}>
+          <div style={{
+            backgroundColor: colors.white,
+            borderRadius: '16px',
+            padding: '24px',
+            width: '100%',
+            maxWidth: '320px',
+            textAlign: 'center',
+          }}>
+            <p style={{
+              fontSize: '18px',
+              fontWeight: '600',
+              color: colors.grey900,
+              margin: '0 0 8px 0',
+            }}>
+              연하장을 삭제할까요?
+            </p>
+            <p style={{
+              fontSize: '14px',
+              color: colors.grey500,
+              margin: '0 0 24px 0',
+            }}>
+              삭제된 이미지는 복구할 수 없어요
+            </p>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button
+                onClick={() => setDeleteTarget(null)}
+                disabled={isDeleting}
+                style={{
+                  flex: 1,
+                  padding: '14px',
+                  backgroundColor: colors.grey100,
+                  color: colors.grey700,
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  cursor: isDeleting ? 'not-allowed' : 'pointer',
+                  opacity: isDeleting ? 0.5 : 1,
+                }}
+              >
+                취소
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={isDeleting}
+                style={{
+                  flex: 1,
+                  padding: '14px',
+                  backgroundColor: colors.red500,
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  cursor: isDeleting ? 'not-allowed' : 'pointer',
+                  opacity: isDeleting ? 0.5 : 1,
+                }}
+              >
+                {isDeleting ? '삭제 중...' : '삭제'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
