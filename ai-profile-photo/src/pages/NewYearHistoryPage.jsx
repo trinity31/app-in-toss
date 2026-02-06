@@ -3,12 +3,14 @@ import { saveBase64Data } from '@apps-in-toss/web-framework'
 import { colors } from '@toss/tds-colors'
 import { useNavigate } from 'react-router-dom'
 import { API_ENDPOINTS } from '../config/api'
+import { usePendingOrderStorage } from '../hooks/usePendingOrderStorage'
 
 export default function NewYearHistoryPage() {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  const { pendingOrderData } = usePendingOrderStorage()
 
   useEffect(() => {
     async function fetchImages() {
@@ -66,9 +68,46 @@ export default function NewYearHistoryPage() {
     }
   }
 
+  const handleRestore = () => {
+    navigate('/newyear', { state: { restore: true } })
+  }
+
+  // 헤더 컴포넌트
+  const Header = () => (
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
+      <button
+        onClick={() => navigate('/newyear')}
+        style={{
+          padding: '8px 16px',
+          fontSize: '14px',
+          fontWeight: '600',
+          color: colors.grey700,
+          background: 'transparent',
+          border: `1px solid ${colors.grey300}`,
+          borderRadius: '8px',
+          cursor: 'pointer',
+        }}
+      >
+        돌아가기
+      </button>
+      <h2 style={{
+        flex: 1,
+        fontSize: '18px',
+        fontWeight: '700',
+        color: colors.grey900,
+        textAlign: 'center',
+        margin: 0,
+        paddingRight: '72px',
+      }}>
+        이전 결과
+      </h2>
+    </div>
+  )
+
   if (loading) {
     return (
       <div style={{
+        width: '100%',
         padding: '20px',
         minHeight: '100vh',
         display: 'flex',
@@ -81,78 +120,140 @@ export default function NewYearHistoryPage() {
     )
   }
 
-  if (error || images.length === 0) {
+  const hasPendingOrder = !!pendingOrderData
+  const hasImages = images.length > 0
+
+  if (!hasImages && !hasPendingOrder) {
     return (
       <div style={{
+        width: '100%',
         padding: '20px',
         minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: colors.white,
+        boxSizing: 'border-box',
       }}>
-        <p style={{ fontSize: '16px', color: colors.grey500, marginBottom: '20px' }}>
-          {error || '생성된 연하장이 없습니다'}
-        </p>
-        <button
-          onClick={() => navigate('/newyear')}
-          style={{
-            padding: '14px 28px',
-            backgroundColor: colors.red500,
-            color: 'white',
-            border: 'none',
-            borderRadius: '12px',
-            fontSize: '16px',
+        <Header />
+        <div style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '60px 20px',
+          textAlign: 'center',
+        }}>
+          <div style={{
+            width: '80px',
+            height: '80px',
+            borderRadius: '50%',
+            backgroundColor: colors.grey50,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '20px',
+            fontSize: '36px',
+          }}>
+            <span>&#127912;</span>
+          </div>
+          <p style={{
+            fontSize: '18px',
             fontWeight: '600',
-            cursor: 'pointer',
-          }}
-        >
-          연하장 만들기
-        </button>
+            color: colors.grey900,
+            margin: '0 0 8px 0',
+          }}>
+            {error || '아직 만든 연하장이 없어요'}
+          </p>
+          <p style={{
+            fontSize: '14px',
+            color: colors.grey500,
+            margin: '0 0 32px 0',
+            lineHeight: '1.5',
+          }}>
+            사진을 올리고 나만의 연하장을 만들어 보세요
+          </p>
+          <button
+            onClick={() => navigate('/newyear')}
+            style={{
+              padding: '14px 32px',
+              backgroundColor: colors.red500,
+              color: 'white',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '16px',
+              fontWeight: '600',
+              cursor: 'pointer',
+            }}
+          >
+            연하장 만들러 가기
+          </button>
+        </div>
       </div>
     )
   }
 
   return (
     <div style={{
+      width: '100%',
       padding: '20px',
-      maxWidth: '500px',
-      margin: '0 auto',
       minHeight: '100vh',
       backgroundColor: colors.white,
       boxSizing: 'border-box',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-        <button
-          onClick={() => navigate('/newyear')}
-          style={{
-            padding: '8px 16px',
-            fontSize: '14px',
-            fontWeight: '600',
-            color: colors.grey700,
-            background: 'transparent',
-            border: `1px solid ${colors.grey300}`,
-            borderRadius: '8px',
-            cursor: 'pointer',
-          }}
-        >
-          돌아가기
-        </button>
-        <h2 style={{
-          flex: 1,
-          fontSize: '18px',
-          fontWeight: '700',
-          color: colors.grey900,
-          textAlign: 'center',
-          margin: 0,
-          paddingRight: '72px',
-        }}>
-          이전 결과
-        </h2>
-      </div>
+      <Header />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        {/* 미완료 주문 (실패한 생성) 카드 */}
+        {hasPendingOrder && (
+          <div style={{
+            borderRadius: '12px',
+            overflow: 'hidden',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+            backgroundColor: colors.orange50,
+            border: `1px solid ${colors.orange200}`,
+          }}>
+            <div style={{
+              height: '200px',
+              backgroundColor: colors.grey100,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '12px',
+            }}>
+              <span style={{ fontSize: '48px', opacity: 0.5 }}>&#127912;</span>
+              <p style={{ fontSize: '14px', color: colors.grey500, margin: 0 }}>
+                이미지 생성이 완료되지 않았어요
+              </p>
+            </div>
+            <div style={{
+              padding: '12px 16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+              <p style={{ fontSize: '13px', color: colors.orange600, margin: 0, fontWeight: '600' }}>
+                미완성 연하장
+              </p>
+              <button
+                onClick={handleRestore}
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: colors.orange500,
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                }}
+              >
+                재생성
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 성공한 이미지 목록 */}
         {images.map((image) => (
           <div key={image.id} style={{
             borderRadius: '12px',

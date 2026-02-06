@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { fetchAlbumPhotos, saveBase64Data, openCamera } from '@apps-in-toss/web-framework'
 import { colors } from '@toss/tds-colors'
 import Intro from '../components/Intro'
@@ -7,7 +7,7 @@ import Loading from '../components/Loading'
 import Result from '../components/Result'
 import NewYearPayment from '../components/NewYearPayment'
 import TossLogin from '../components/TossLogin'
-import { API_ENDPOINTS } from '../config/api'
+import { API_ENDPOINTS, NEWYEAR_PRODUCT_SKU } from '../config/api'
 import { usePendingOrderStorage, shouldSkipAutoRestore } from '../hooks/usePendingOrderStorage'
 
 // 연하장 썸네일 이미지
@@ -34,8 +34,10 @@ export default function NewYearPage() {
   const [pendingOrders, setPendingOrders] = useState([])
   const [isRestoring, setIsRestoring] = useState(false)
   const [tossUserInfo, setTossUserInfo] = useState(null)
+  const [productPrice, setProductPrice] = useState(null)
 
   const navigate = useNavigate()
+  const location = useLocation()
   const selectedCardTypeRef = useRef('new-year-card-illustration')
 
   const {
@@ -75,6 +77,32 @@ export default function NewYearPage() {
 
     checkPendingOrders()
   }, [pendingLoading])
+
+  // 상품 가격 미리 조회
+  useEffect(() => {
+    async function fetchPrice() {
+      try {
+        const { IAP } = await import('@apps-in-toss/web-framework')
+        const response = await IAP.getProductItemList()
+        const products = response?.products || response || []
+        const product = (Array.isArray(products) ? products : []).find(p => p.sku === NEWYEAR_PRODUCT_SKU)
+        if (product) setProductPrice(product.displayAmount)
+      } catch (e) {
+        console.log('[NewYearPage] 가격 조회 실패:', e)
+      }
+    }
+    fetchPrice()
+  }, [])
+
+  // 히스토리 페이지에서 재생성 요청 시 자동 복구
+  useEffect(() => {
+    if (location.state?.restore && pendingOrderData && !pendingLoading) {
+      // state 초기화 먼저 (뒤로가기 시 재실행 방지)
+      navigate(location.pathname, { replace: true, state: {} })
+      // 그 후 복구 실행
+      handleRestoreOrder()
+    }
+  }, [location.state?.restore, pendingLoading])
 
   const handleAlbumSelect = async () => {
     try {
@@ -365,7 +393,7 @@ export default function NewYearPage() {
 
   // 미완료 주문 복구
   const handleRestoreOrder = async () => {
-    if (!pendingOrderData || pendingOrders.length === 0) return
+    if (!pendingOrderData) return
 
     setIsRestoring(true)
     setLoadingMessage({
@@ -528,23 +556,27 @@ export default function NewYearPage() {
             <div style={{
               padding: '12px 20px',
               borderBottom: `1px solid ${colors.grey200}`,
-              display: 'flex',
-              justifyContent: 'center',
             }}>
               <button
                 onClick={() => navigate('/newyear/history')}
                 style={{
-                  padding: '10px 20px',
-                  fontSize: '14px',
+                  width: '100%',
+                  padding: '14px 24px',
+                  fontSize: '15px',
                   fontWeight: '600',
-                  color: colors.blue500,
-                  background: 'transparent',
-                  border: `1px solid ${colors.blue500}`,
-                  borderRadius: '8px',
+                  color: colors.blue600,
+                  background: colors.blue50,
+                  border: 'none',
+                  borderRadius: '12px',
                   cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
                 }}
               >
-                이전 결과 보기
+                <span style={{ fontSize: '18px' }}>&#128444;</span>
+                이전에 만든 연하장 보기
               </button>
             </div>
             <Intro
@@ -566,6 +598,7 @@ export default function NewYearPage() {
             selectedImages={selectedImages}
             onSelect={handleCardTypeSelect}
             onBack={handleBackToIntro}
+            productPrice={productPrice}
           />
         )
       case 'tossLogin':
@@ -632,7 +665,7 @@ export default function NewYearPage() {
 }
 
 // 연하장 선택 컴포넌트
-function NewYearSelection({ selectedImages, onSelect, onBack }) {
+function NewYearSelection({ selectedImages, onSelect, onBack, productPrice }) {
   const [selectedType, setSelectedType] = useState(null)
 
   const cardTypes = [
@@ -734,7 +767,7 @@ function NewYearSelection({ selectedImages, onSelect, onBack }) {
           }}
           disabled={!selectedType}
         >
-          결제하고 생성하기
+          {productPrice ? `${productPrice}으로 생성하기` : '결제하고 생성하기'}
         </button>
       </div>
     </div>

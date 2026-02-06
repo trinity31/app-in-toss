@@ -48,14 +48,56 @@ export default function TossLogin({ onNext, onBack }) {
   }
 
   return (
-    <>
-      <div style={{ padding: '20px 20px 140px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: colors.grey900, margin: '0 0 12px 0' }}>
+    <div style={{
+      width: '100%',
+      minHeight: '100vh',
+      backgroundColor: '#F8F9FA',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '40px 20px 140px',
+        textAlign: 'center',
+      }}>
+        <div style={{
+          width: '72px',
+          height: '72px',
+          borderRadius: '50%',
+          backgroundColor: '#EBF2FF',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '24px',
+          fontSize: '32px',
+        }}>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#1E6BFA"/>
+          </svg>
+        </div>
+
+        <h1 style={{
+          fontSize: '22px',
+          lineHeight: '1.4',
+          fontWeight: 'bold',
+          color: colors.grey900,
+          margin: '0 0 12px 0',
+        }}>
           토스 로그인이 필요해요
         </h1>
-        <p style={{ fontSize: '14px', color: colors.grey600, lineHeight: '1.6', margin: '0 0 32px 0' }}>
-          연하장 생성을 위해<br />
-          토스 계정 인증이 필요합니다
+
+        <p style={{
+          fontSize: '15px',
+          color: colors.grey500,
+          lineHeight: '1.6',
+          margin: '0 0 32px 0',
+        }}>
+          토스 계정으로 간편하게 인증하고<br />
+          나만의 연하장을 만들어 보세요
         </p>
 
         {isLoading && (
@@ -64,7 +106,7 @@ export default function TossLogin({ onNext, onBack }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '40px 20px',
+            padding: '20px',
             gap: '16px'
           }}>
             <p style={{ fontSize: '14px', color: colors.grey600, margin: 0 }}>로그인 중...</p>
@@ -76,7 +118,9 @@ export default function TossLogin({ onNext, onBack }) {
             background: '#FEF2F2',
             borderRadius: '12px',
             padding: '16px',
-            marginBottom: '16px'
+            width: '100%',
+            maxWidth: '400px',
+            boxSizing: 'border-box',
           }}>
             <p style={{ fontSize: '14px', color: colors.red500, margin: 0 }}>{error}</p>
           </div>
@@ -131,6 +175,6 @@ export default function TossLogin({ onNext, onBack }) {
           토스로 로그인
         </button>
       </div>
-    </>
+    </div>
   )
 }
