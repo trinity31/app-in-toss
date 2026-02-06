@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
-import { fetchAlbumPhotos, saveBase64Data, openCamera, GoogleAdMob } from '@apps-in-toss/web-framework'
-import { Modal, Button, Asset } from '@toss/tds-mobile'
+import { fetchAlbumPhotos, saveBase64Data, openCamera, IAP } from '@apps-in-toss/web-framework'
 import { colors } from '@toss/tds-colors'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Intro from '../components/Intro'
 import Loading from '../components/Loading'
 import Result from '../components/Result'
-import { API_ENDPOINTS, AD_GROUP_ID, AD_WAIT_TIMEOUT_MS } from '../config/const'
+import TossLogin from '../components/TossLogin'
+import NewYearPayment from '../components/NewYearPayment'
+import { API_ENDPOINTS } from '../config/const'
+import { usePendingOrderStorage, shouldSkipAutoRestore } from '../hooks/usePendingOrderStorage'
 
 // 연하장 썸네일 이미지
 import catKoreaMaleImg from '../assets/images/newyear/cat_korea_male.png'
@@ -21,25 +24,115 @@ const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
 export default function NewYearPage() {
   const [currentPage, setCurrentPage] = useState('intro')
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedImages, setSelectedImages] = useState([])
   const [selectedPetType, setSelectedPetType] = useState('new-year-card-cat-korea')
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null)
   const [error, setError] = useState(null)
-
-  // 광고 관련 상태
-  const [adLoaded, setAdLoaded] = useState(false)
-  const [waitingForAd, setWaitingForAd] = useState(false)
-  const [adLoadError, setAdLoadError] = useState(false)
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
   const [loadingMessage, setLoadingMessage] = useState(null)
+  const [tossUserInfo, setTossUserInfo] = useState(null)
+  const [pendingOrders, setPendingOrders] = useState([])
+  const [isRestoring, setIsRestoring] = useState(false)
 
-  // Refs
-  const cleanupRef = useRef(undefined)
-  const adWaitTimeoutRef = useRef(undefined)
-  const rewardEarnedRef = useRef(false)
-  const adPlayCountRef = useRef(0)
+  const location = useLocation()
+  const navigate = useNavigate()
   const selectedPetTypeRef = useRef('new-year-card-cat-korea')
-  const preloadedImageUrlRef = useRef(null)
+  const { loading: pendingLoading, pendingOrderData, clearPendingOrderData } = usePendingOrderStorage()
+
+  // 미완료 주문 확인
+  useEffect(() => {
+    async function checkPendingOrders() {
+      if (pendingLoading) return
+
+      if (shouldSkipAutoRestore()) {
+        console.log('[NewYearPage] 미완료 주문 확인 건너뛰기 (테스트 모드)')
+        return
+      }
+
+      if (pendingOrderData) {
+        try {
+          const response = await IAP.getPendingOrders()
+          const orders = Array.isArray(response)
+            ? response
+            : response?.orders || response?.pendingOrders || []
+
+          if (orders?.length > 0) {
+            console.log('[NewYearPage] 미완료 주문 발견:', orders.length)
+            setPendingOrders(orders)
+          }
+          // pendingOrderData가 있으면 IAP pending order 여부와 관계없이 복구 가능
+          // (이미지 생성 실패 시 IAP는 완료되었지만 pendingOrderData는 남아있음)
+        } catch (err) {
+          console.error('[NewYearPage] 미완료 주문 확인 실패:', err)
+        }
+      }
+    }
+
+    checkPendingOrders()
+  }, [pendingLoading])
+
+  // 복원 모드 처리
+  useEffect(() => {
+    if (location.state?.restore && pendingOrderData && !shouldSkipAutoRestore()) {
+      console.log('[NewYearPage] 복원 모드 - 미완료 주문 복구 시작')
+      handleRestoreOrder()
+    }
+  }, [location.state, pendingOrderData])
+
+  const handleRestoreOrder = async () => {
+    if (!pendingOrderData) return
+
+    setIsRestoring(true)
+    try {
+      setLoadingMessage({
+        title: '연하장 복구 중...',
+        description: '이전에 생성하지 못한 연하장을 복구합니다'
+      })
+      setCurrentPage('loading')
+
+      // Base64 데이터를 Blob으로 변환
+      const imageBlobs = await Promise.all(
+        pendingOrderData.selectedImages.map(async (dataUri) => {
+          const res = await fetch(dataUri)
+          return res.blob()
+        })
+      )
+
+      setSelectedImages(imageBlobs)
+      setSelectedPetType(pendingOrderData.selectedCardType)
+      selectedPetTypeRef.current = pendingOrderData.selectedCardType
+
+      // 이미지 생성
+      const imageDataUri = await uploadAndGeneratePet(imageBlobs[0], pendingOrderData.selectedCardType)
+      setGeneratedImageUrl(imageDataUri)
+
+      // Supabase에 업로드
+      const userKey = localStorage.getItem('pet_newyear_user_key')
+      if (userKey) {
+        await uploadToSupabase(imageDataUri, userKey, pendingOrderData.selectedCardType)
+      }
+
+      // IAP 완료 처리
+      for (const order of pendingOrders) {
+        try {
+          await IAP.completeProductGrant({ params: { orderId: order.orderId } })
+        } catch (err) {
+          console.error('[NewYearPage] IAP 완료 처리 실패:', err)
+        }
+      }
+
+      // 데이터 정리
+      clearPendingOrderData()
+      setPendingOrders([])
+      setCurrentPage('result')
+
+    } catch (err) {
+      console.error('[NewYearPage] 복원 실패:', err)
+      setError(`복원 중 오류가 발생했습니다: ${err.message}`)
+      setCurrentPage('intro')
+    } finally {
+      setIsRestoring(false)
+    }
+  }
 
   const handleAlbumSelect = async () => {
     try {
@@ -95,7 +188,7 @@ export default function NewYearPage() {
       }
 
       const imageBlob = await response.blob()
-      setSelectedImage(imageBlob)
+      setSelectedImages([imageBlob])
       setLoadingMessage(null)
       setCurrentPage('selection')
 
@@ -155,7 +248,7 @@ export default function NewYearPage() {
 
       const response = await fetch(normalizedDataUri)
       const imageBlob = await response.blob()
-      setSelectedImage(imageBlob)
+      setSelectedImages([imageBlob])
       setLoadingMessage(null)
       setCurrentPage('selection')
 
@@ -218,139 +311,50 @@ export default function NewYearPage() {
     }
   }
 
-  const loadAd = () => {
+  const uploadToSupabase = async (imageDataUri, userId, cardType) => {
     try {
-      console.log('\n📥 광고 로드 시도')
+      const base64Data = imageDataUri.split(',')[1]
+      const response = await fetch(API_ENDPOINTS.UPLOAD_IMAGE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          imageBase64: base64Data,
+          userId,
+          cardType,
+        }),
+      })
 
-      const isSupported = GoogleAdMob?.loadAppsInTossAdMob?.isSupported?.()
-      console.log('🔍 loadAppsInTossAdMob.isSupported():', isSupported)
-
-      if (isSupported !== true) {
-        console.warn('❌ 광고 기능 미지원. isSupported:', isSupported)
-        return
+      const data = await response.json()
+      if (!data.success) {
+        console.error('[uploadToSupabase] 업로드 실패:', data)
+      } else {
+        console.log('[uploadToSupabase] 업로드 성공:', data.imageId)
       }
-
-      cleanupRef.current?.()
-      cleanupRef.current = undefined
-
-      setAdLoaded(false)
-      console.log('🔄 광고 로드 시작...')
-
-      const cleanup = GoogleAdMob.loadAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
-        onEvent: (event) => {
-          if (event.type === 'loaded') {
-            console.log('✅ 광고 로드 완료:', event.data)
-            setAdLoaded(true)
-          }
-        },
-        onError: (loadError) => {
-          console.error('❌ 광고 로드 실패:', loadError)
-          setAdLoaded(false)
-          setAdLoadError(true)
-        }
-      })
-
-      cleanupRef.current = cleanup
-    } catch (loadError) {
-      console.error('⚠️ 광고 로드 예외:', loadError)
-      setAdLoaded(false)
-      setAdLoadError(true)
-    }
-  }
-
-  const showAd = () => {
-    try {
-      console.log('✅ 광고 표시 시작')
-      rewardEarnedRef.current = false
-
-      GoogleAdMob.showAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
-        onEvent: (event) => {
-          console.log('광고 이벤트:', event.type)
-
-          switch (event.type) {
-            case 'userEarnedReward':
-              console.log('🎁 보상 획득!', event.data)
-              rewardEarnedRef.current = true
-              break
-
-            case 'dismissed':
-              console.log('광고 닫힘')
-
-              if (rewardEarnedRef.current) {
-                console.log('✅ 보상형 광고 완료 - 사진 생성 진행')
-                setLoadingMessage({
-                  title: '펫 포토 카드 생성 중...',
-                  description: '잠시만 기다려주세요...'
-                })
-                setCurrentPage('loading')
-
-                if (preloadedImageUrlRef.current) {
-                  console.log('✅ 미리 로드된 이미지 사용')
-                  setGeneratedImageUrl(preloadedImageUrlRef.current)
-                  setCurrentPage('result')
-                  preloadedImageUrlRef.current = null
-                } else {
-                  console.log('⏳ 이미지 생성 대기 중')
-                  generatePet()
-                }
-
-                loadAd()
-              } else {
-                console.warn('⚠️ 보상형 광고 중도 종료')
-                setCurrentPage('intro')
-                setError('광고를 끝까지 시청해주세요')
-                loadAd()
-              }
-              break
-
-            case 'failedToShow':
-              console.warn('⚠️ 광고 표시 실패 - 광고 없이 진행:', event.data)
-              setLoadingMessage({
-                title: '펫 포토 카드 생성 중...',
-                description: '잠시만 기다려주세요...'
-              })
-              setCurrentPage('loading')
-              generatePet()
-              loadAd()
-              break
-          }
-        },
-        onError: (showError) => {
-          console.error('❌ 광고 표시 에러:', showError)
-          console.warn('⚠️ 광고 표시 에러 발생 - 광고 없이 진행')
-          setLoadingMessage({
-            title: '펫 포토 카드 생성 중...',
-            description: '잠시만 기다려주세요...'
-          })
-          setCurrentPage('loading')
-          generatePet()
-          loadAd()
-        }
-      })
-    } catch (error) {
-      console.error('❌ 광고 표시 중 예외 발생:', error)
-      setLoadingMessage({
-        title: '펫 포토 카드 생성 중...',
-        description: '잠시만 기다려주세요...'
-      })
-      setCurrentPage('loading')
-      generatePet()
-      loadAd()
+    } catch (err) {
+      console.error('[uploadToSupabase] 에러:', err)
     }
   }
 
   const generatePet = async () => {
-    if (!selectedImage) {
+    if (!selectedImages || selectedImages.length === 0) {
       setError('사진을 다시 선택해주세요')
-      setCurrentPage('error')
+      setCurrentPage('intro')
       return
     }
 
     try {
-      const imageDataUri = await uploadAndGeneratePet(selectedImage, selectedPetTypeRef.current)
+      const imageDataUri = await uploadAndGeneratePet(selectedImages[0], selectedPetTypeRef.current)
       setGeneratedImageUrl(imageDataUri)
+
+      // Supabase에 업로드
+      const userKey = localStorage.getItem('pet_newyear_user_key')
+      if (userKey) {
+        await uploadToSupabase(imageDataUri, userKey, selectedPetTypeRef.current)
+      }
+
+      // pendingOrderData 삭제
+      clearPendingOrderData()
+
       setCurrentPage('result')
     } catch (err) {
       console.error('사진 생성 실패', err)
@@ -359,90 +363,55 @@ export default function NewYearPage() {
     }
   }
 
-  useEffect(() => {
-    loadAd()
-
-    return () => {
-      cleanupRef.current?.()
-      cleanupRef.current = undefined
-
-      if (adWaitTimeoutRef.current) {
-        clearTimeout(adWaitTimeoutRef.current)
-        adWaitTimeoutRef.current = undefined
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    if (waitingForAd && adLoaded) {
-      console.log('✅ 광고 로드 완료 - 광고 표시')
-      setWaitingForAd(false)
-
-      if (adWaitTimeoutRef.current) {
-        clearTimeout(adWaitTimeoutRef.current)
-        adWaitTimeoutRef.current = undefined
-      }
-
-      showAd()
-    }
-  }, [adLoaded, waitingForAd])
-
   const handleReset = () => {
     setCurrentPage('intro')
-    setSelectedImage(null)
+    setSelectedImages([])
     setSelectedPetType('new-year-card-cat-korea')
     selectedPetTypeRef.current = 'new-year-card-cat-korea'
-    adPlayCountRef.current = 0
-    preloadedImageUrlRef.current = null
     setGeneratedImageUrl(null)
     setError(null)
-
-    loadAd()
+    setTossUserInfo(null)
   }
 
-  const handlePetTypeSelect = async (petType) => {
+  const handleCardTypeSelect = (petType) => {
     setSelectedPetType(petType)
     selectedPetTypeRef.current = petType
-    adPlayCountRef.current = 0
 
-    try {
-      const isSupported = GoogleAdMob?.showAppsInTossAdMob?.isSupported?.()
-
-      if (isSupported !== true) {
-        console.warn('광고 표시 기능 미지원. isSupported:', isSupported)
-        setCurrentPage('loading')
-        generatePet()
-        return
-      }
-
-      if (adLoaded === false) {
-        console.log('⏳ 광고 로드 대기 중 - 로딩 화면 표시')
-        setCurrentPage('loading')
-        setWaitingForAd(true)
-
-        adWaitTimeoutRef.current = setTimeout(() => {
-          console.warn(`⚠️ 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
-          setWaitingForAd(false)
-          generatePet()
-        }, AD_WAIT_TIMEOUT_MS)
-
-        return
-      }
-
-      showAd()
-    } catch (error) {
-      console.error('❌ 광고 표시 중 예외 발생:', error)
-      setCurrentPage('loading')
-      generatePet()
+    // 이미 로그인된 경우 바로 결제 페이지로
+    const existingUserKey = localStorage.getItem('pet_newyear_user_key')
+    if (existingUserKey) {
+      setTossUserInfo({ userKey: existingUserKey })
+      setCurrentPage('payment')
+    } else {
+      setCurrentPage('tossLogin')
     }
+  }
+
+  const handleTossLoginSuccess = ({ tossUserInfo }) => {
+    setTossUserInfo(tossUserInfo)
+    localStorage.setItem('pet_newyear_user_key', tossUserInfo.userKey)
+    setCurrentPage('payment')
+  }
+
+  const handlePaymentSuccess = ({ orderId }) => {
+    console.log('[NewYearPage] 결제 성공, orderId:', orderId)
+    setLoadingMessage({
+      title: '펫 연하장 생성 중...',
+      description: '잠시만 기다려주세요'
+    })
+    setCurrentPage('loading')
+    generatePet()
   }
 
   const handleBackToIntro = () => {
-    setSelectedImage(null)
+    setSelectedImages([])
     setSelectedPetType('new-year-card-cat-korea')
     selectedPetTypeRef.current = 'new-year-card-cat-korea'
-    adPlayCountRef.current = 0
     setCurrentPage('intro')
+  }
+
+  const handleBackToSelection = () => {
+    setCurrentPage('selection')
   }
 
   const handleSave = async () => {
@@ -463,7 +432,7 @@ export default function NewYearPage() {
 
       await saveBase64Data({
         data: base64Data,
-        fileName: `newyear_${Date.now()}.png`,
+        fileName: `pet_newyear_${Date.now()}.png`,
         mimeType: 'image/png'
       })
 
@@ -477,68 +446,134 @@ export default function NewYearPage() {
     }
   }
 
-  const handleConfirmDialogConfirm = async () => {
-    setIsConfirmDialogOpen(false)
-
-    setWaitingForAd(true)
-    setCurrentPage('loading')
-
-    loadAd()
-
-    adWaitTimeoutRef.current = setTimeout(() => {
-      console.warn(`⚠️ 2번째 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
-      setWaitingForAd(false)
-
-      if (preloadedImageUrlRef.current) {
-        console.log('✅ 미리 로드된 이미지 사용')
-        setGeneratedImageUrl(preloadedImageUrlRef.current)
-        setCurrentPage('result')
-        preloadedImageUrlRef.current = null
-      } else {
-        console.log('⏳ 이미지 생성 대기 중')
-        generatePet()
-      }
-    }, AD_WAIT_TIMEOUT_MS)
-
-    console.log('🚀 두 번째 광고 로딩과 동시에 API 호출 시작')
-    try {
-      const imageDataUri = await uploadAndGeneratePet(selectedImage, selectedPetTypeRef.current)
-      preloadedImageUrlRef.current = imageDataUri
-      console.log('✅ API 응답 완료 - 이미지 미리 로드됨')
-    } catch (err) {
-      console.error('❌ 미리 로드 실패:', err)
-    }
+  const handleHistoryClick = () => {
+    navigate('/newyear/history')
   }
 
   const renderPage = () => {
     switch (currentPage) {
       case 'intro':
         return (
-          <Intro
-            onNext={(type) => {
-              if (type === 'album') {
-                handleAlbumSelect()
-              } else if (type === 'camera') {
-                handleCameraSelect()
-              }
-            }}
-            error={error}
-            pageType="newyear"
-          />
+          <div>
+            {/* 미완료 주문 복구 배너 */}
+            {pendingOrderData && (
+              <div style={{
+                background: '#FFF8E6',
+                padding: '16px 20px',
+                borderBottom: '1px solid #FFE4B5'
+              }}>
+                <p style={{ fontSize: '15px', fontWeight: '600', color: '#B86E00', margin: '0 0 8px 0' }}>
+                  이전에 결제하신 연하장이 있습니다
+                </p>
+                <p style={{ fontSize: '13px', color: '#8B7355', margin: '0 0 12px 0' }}>
+                  이미지 생성에 실패했습니다. 추가 결제 없이 다시 시도할 수 있습니다.
+                </p>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button
+                    onClick={handleRestoreOrder}
+                    disabled={isRestoring}
+                    style={{
+                      flex: 1,
+                      padding: '12px',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#fff',
+                      background: isRestoring ? '#ccc' : '#B86E00',
+                      border: 'none',
+                      borderRadius: '8px',
+                      cursor: isRestoring ? 'not-allowed' : 'pointer'
+                    }}
+                  >
+                    {isRestoring ? '이미지 생성 중...' : '다시 생성하기'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      clearPendingOrderData()
+                      setPendingOrders([])
+                    }}
+                    disabled={isRestoring}
+                    style={{
+                      padding: '12px 16px',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#8B7355',
+                      background: '#fff',
+                      border: '1px solid #E5D9C3',
+                      borderRadius: '8px',
+                      cursor: isRestoring ? 'not-allowed' : 'pointer'
+                    }}
+                  >
+                    무시
+                  </button>
+                </div>
+              </div>
+            )}
+            {/* 이전에 만든 연하장 보기 버튼 */}
+            <div style={{
+              padding: '0 20px',
+            }}>
+              <button
+                onClick={handleHistoryClick}
+                style={{
+                  width: '100%',
+                  padding: '14px 24px',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  color: colors.blue600,
+                  background: colors.blue50,
+                  border: 'none',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                이전에 만든 연하장 보기
+              </button>
+            </div>
+            <Intro
+              onNext={(type) => {
+                if (type === 'album') {
+                  handleAlbumSelect()
+                } else if (type === 'camera') {
+                  handleCameraSelect()
+                }
+              }}
+              error={error}
+              pageType="newyear"
+            />
+          </div>
         )
       case 'selection':
         return (
           <NewYearSelection
-            selectedImage={selectedImage}
-            onSelect={handlePetTypeSelect}
+            selectedImage={selectedImages[0]}
+            onSelect={handleCardTypeSelect}
             onBack={handleBackToIntro}
+          />
+        )
+      case 'tossLogin':
+        return (
+          <TossLogin
+            onNext={handleTossLoginSuccess}
+            onBack={handleBackToSelection}
+          />
+        )
+      case 'payment':
+        return (
+          <NewYearPayment
+            onNext={handlePaymentSuccess}
+            onBack={handleBackToSelection}
+            selectedImages={selectedImages}
+            selectedCardType={selectedPetType}
           />
         )
       case 'loading':
         return (
           <Loading
-            error={adLoadError}
-            onRetry={loadAd}
+            error={false}
+            onRetry={() => {}}
             title={loadingMessage?.title}
             description={loadingMessage?.description}
           />
@@ -563,50 +598,13 @@ export default function NewYearPage() {
               }
             }}
             error={error}
+            pageType="newyear"
           />
         )
     }
   }
 
-  return (
-    <>
-      {renderPage()}
-      <Modal
-        open={isConfirmDialogOpen}
-        onOpenChange={(open) => {
-          if (!open) setIsConfirmDialogOpen(false)
-        }}
-      >
-        <Modal.Overlay />
-        <Modal.Content
-          style={{
-            padding: '32px 20px 20px 20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-          }}
-        >
-          <h2 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>
-            광고를 한 번 더 시청해주세요
-          </h2>
-          <p style={{ fontSize: '14px', color: '#4E5968', marginBottom: '24px', whiteSpace: 'pre-line' }}>
-            {'광고를 시청하는 동안\n반려동물 사진을 생성할게요.'}
-          </p>
-          <Button
-            display="block"
-            color="primary"
-            onClick={() => {
-              setIsConfirmDialogOpen(false)
-              handleConfirmDialogConfirm()
-            }}
-          >
-            확인
-          </Button>
-        </Modal.Content>
-      </Modal>
-    </>
-  )
+  return renderPage()
 }
 
 // 연말 특별 선택 컴포넌트
@@ -671,12 +669,6 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
     <div style={styles.container}>
       <Spacing size={20} />
 
-      {/* <div style={styles.header}>
-        <button style={styles.backButton} onClick={onBack}>
-          ← 타입 선택으로 돌아가기
-        </button>
-      </div> */}
-
       <Spacing size={20} />
 
       <h2 style={styles.title}>어떤 스타일로 생성할까요?</h2>
@@ -732,7 +724,6 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
                 {/* 성별 선택 UI - 텍스트 아래에 표시 */}
                 {selectedType === type.id && type.hasGenderOption && (
                   <div style={styles.genderSelector}>
-                    {/* <Spacing size={8} /> */}
                     <div style={styles.genderButtonGroup}>
                       <button
                         style={{
@@ -819,7 +810,7 @@ function NewYearSelection({ selectedImage, onSelect, onBack }) {
             return false
           })()}
         >
-          광고 보고 생성하기
+          결제하고 생성하기
         </button>
       </div>
     </div>
