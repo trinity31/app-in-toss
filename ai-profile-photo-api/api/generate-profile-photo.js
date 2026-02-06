@@ -14,8 +14,8 @@ const TYPE_TO_MODEL_MAPPING = {
 
   // 연하장 3가지 스타일
   'new-year-card-illustration': 'google/nano-banana-pro',  // 심플하고 따뜻한 느낌의 일러스트
-  'new-year-card-anime': 'google/nano-banana-pro',         // 일본 만화풍
-  'new-year-card-chinese': 'google/nano-banana-pro'        // 화려한 중국풍
+  'new-year-card-minhwa': 'google/nano-banana-pro',        // 한국 전통 민화
+  'new-year-card-clay': 'google/nano-banana-pro'           // 3D 클레이/점토
 };
 
 // 허용된 Origin 목록

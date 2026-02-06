@@ -128,86 +128,95 @@ TEXT STYLING:
 - Text naturally integrated into the artwork with proper spacing
 `,
 
-  'new-year-card-anime': NEW_YEAR_CARD_COMMON_PROMPT + `
+  'new-year-card-minhwa': NEW_YEAR_CARD_COMMON_PROMPT + `
 
-ANIME STYLE SPECIFIC:
-Transform this person/people into a beautiful 2026 New Year greeting card with Japanese anime/manga art style.
-Create a vibrant, expressive anime-style illustration with characteristic large eyes, dynamic poses, and bold colors.
-
-VISUAL STYLE:
-- Classic Japanese anime art style with clean linework and cell-shading
-- Characteristic anime features: expressive large eyes, detailed hair with highlights, smooth skin
-- Bold, vibrant colors with strong contrast and cel-shaded lighting
-- Dynamic composition with energy and movement
-- Manga/anime color palette: bright pinks, vivid blues, pure whites, deep shadows
-
-CLOTHING STYLE FOR ANIME:
-- Dress people in stylish, modern festive outfits: fashionable dresses, smart blazers, elegant tops
-- Use vibrant anime-appropriate colors: bright reds, blues, purples, whites with accent colors
-- Modern, trendy clothing that fits the dynamic anime aesthetic
-- Can include fashionable accessories: scarves, jewelry, hair ornaments
-- The clothing should feel energetic, youthful, and celebratory in anime style
-
-BACKGROUND AND ATMOSPHERE:
-- Background with anime aesthetic: gradient skies, festive outdoor or indoor scene, dynamic patterns
-- Include festive New Year elements in anime style: stylized fireworks, cute decorations, celebration items
-- Add anime-typical effects: speed lines, sparkles, star bursts, light effects
-- Create depth with layered background elements
-
-LIGHTING AND EFFECTS:
-- Apply dramatic anime-style lighting - strong highlights, defined shadows, vibrant glow effects
-- Add anime-typical visual effects: floating sparkles, lens flares, screen tones, cherry blossoms
-- Capture bright, cheerful anime expressions - big smile, sparkling eyes, energetic pose
-
-TEXT STYLING:
-- Place "2026" and "새해 복 많이 받으세요" at the top in bold, modern anime-style Korean lettering
-- "2026" can be displayed above or near the Korean greeting with dynamic styling
-- Strong contrast with optional text effects (outline, shadow, glow)
-- Text matches the energetic anime aesthetic
-`,
-
-  'new-year-card-chinese': NEW_YEAR_CARD_COMMON_PROMPT + `
-
-CHINESE STYLE SPECIFIC:
-Transform this person/people into a beautiful 2026 New Year greeting card with gorgeous traditional Chinese style.
-Create a luxurious, ornate design with rich traditional Chinese aesthetics, symbols, and celebratory elements.
+KOREAN MINHWA FOLK PAINTING STYLE SPECIFIC:
+Transform this person/people into a beautiful 2026 Korean New Year greeting card in authentic Joseon Dynasty Minhwa (Folk Painting) style.
+Create an authentic Korean folk art illustration with bold outlines, flat color areas, and decorative traditional elements.
 
 VISUAL STYLE:
-- Traditional Chinese art aesthetic with intricate patterns and ornamental details
-- Rich, luxurious color palette: auspicious reds, prosperity golds, imperial yellows, jade greens
-- Elegant traditional Chinese fashion elements or festive attire
-- Symmetrical or balanced composition reflecting Chinese design principles
+- Authentic Korean Minhwa folk painting style with flat, decorative rendering
+- Bold black outlines around shapes typical of traditional folk art
+- Stylized, decorative treatment of all elements including the people
+- Traditional Korean paper (한지) texture feel
+- Traditional Korean color palette: vibrant reds, royal blues, jade greens, golden yellows, pure whites
 
-CLOTHING STYLE FOR CHINESE:
-- Dress people in luxurious traditional or modern-traditional fusion attire
-- Options: elegant qipao/cheongsam, traditional Chinese robes, or modern elegant outfits with Chinese elements
-- Use auspicious colors: rich reds, prosperity golds, imperial yellows, jade greens
-- Include traditional elements: Chinese collars, embroidered patterns, silk fabrics, ornate buttons
-- The clothing should feel elegant, luxurious, and culturally festive
-- Can add traditional accessories: jade jewelry, ornamental hair pieces, silk sashes
+CLOTHING STYLE FOR MINHWA:
+- Dress people in traditional Korean hanbok (한복) - elegant jeogori (저고리) and chima/baji
+- Use traditional Korean colors: lucky reds, royal blues, jade greens, prosperity golds
+- Include traditional hanbok accessories: norigae (노리개), binyeo (비녀) hair ornaments
+- The clothing should feel elegant, traditional, and festive in authentic Korean style
+- Can add traditional elements like bojagi (복주머니) lucky bags
 
 BACKGROUND AND ATMOSPHERE:
-- Rich, layered background with traditional Chinese architectural elements or festive scenery
-- Add traditional Chinese New Year elements: red lanterns, gold ingots, plum blossoms, firecrackers
-- Include auspicious symbols: dragons (subtle), phoenixes, peonies, bamboo, lucky coins
-- Ornate decorative frames or borders with traditional patterns
-- Create depth and grandeur with multiple background layers
+- Korean Minhwa background elements: stylized pine trees (소나무), magpies (까치), plum blossoms (매화)
+- Include traditional Korean lucky symbols: the sun and moon (일월), mountains (산), cranes (학)
+- Add ten longevity symbols (십장생): deer, turtles, bamboo, clouds
+- Traditional patterns: dancheong (단청) patterns, traditional borders
+- Create a symbolic, auspicious composition following Minhwa conventions
 
 DECORATIVE ELEMENTS:
-- Chinese clouds, phoenixes, peonies, lucky coins, lanterns
-- Traditional patterns: cloud motifs, wave patterns, floral emblems, geometric designs
+- Tigers (호랑이) in friendly Minhwa style, peonies (모란), clouds (구름), water waves (물결)
+- Traditional Korean patterns and borders with decorative frames
+- Pine, bamboo, and plum (세한삼우) as auspicious symbols
 
 LIGHTING AND EFFECTS:
-- Apply rich, dramatic lighting - golden glow, warm radiance, lustrous highlights
-- Add luxury effects: gold sparkles, gentle light rays, auspicious glow, floating petals
-- Capture elegant, dignified expressions with warm celebration and prosperity
+- Apply traditional Korean art lighting - bright, clear, with symbolic golden accents
+- Add decorative effects like stylized clouds, floating blossoms, auspicious patterns
+- Capture dignified, warm expressions that convey traditional Korean New Year blessings
 
 TEXT STYLING:
-- Place "2026" and "새해 복 많이 받으세요" prominently at the top in elegant, ornate Korean lettering with gold accents
-- "2026" can be displayed above or near the Korean greeting in luxurious style
-- Luxurious appearance - gold color, ornate borders, or decorative frames
-- Text clearly readable while matching the opulent Chinese aesthetic
-- Optional decorative elements around the text
+- Place "2026" and "새해 복 많이 받으세요" at the top in traditional Korean calligraphy or seal script style
+- "2026" can be displayed above or near the Korean greeting with traditional styling
+- Text harmonizes with Minhwa aesthetics - can include decorative seal stamps (도장)
+- Text clearly readable while matching the traditional Korean folk art aesthetic
+`,
+
+  'new-year-card-clay': NEW_YEAR_CARD_COMMON_PROMPT + `
+
+3D CLAY/CLAYMATION STYLE SPECIFIC:
+Transform this person/people into a cute 2026 New Year greeting card with 3D clay/claymation stop-motion animation style.
+Create an adorable clay figure composition that looks like a real clay sculpture photographed in a miniature set.
+
+VISUAL STYLE:
+- 3D clay/polymer clay styling with smooth rounded surfaces and soft matte texture
+- Visible but subtle clay texture (fingerprint marks, small imperfections for authenticity)
+- Slightly chunky, adorable proportions typical of clay figures (like Aardman animations)
+- Soft shadows and ambient occlusion like a real photographed clay model
+- Cheerful color palette: warm terracotta, soft pastels, bright primary colors
+
+CLOTHING STYLE FOR CLAY:
+- Dress clay figures in cozy, festive winter attire made to look like clay/felt
+- Options: knitted sweaters, scarves, winter hats, festive outfits all in clay style
+- Use bright, cheerful colors: warm reds, greens, yellows, soft pastels
+- Clothing should have that handcrafted, tactile clay/felt texture
+- The clothing should feel cute, cozy, and celebratory in claymation style
+- Can add miniature accessories: tiny clay scarves, small clay ornaments
+
+BACKGROUND AND ATMOSPHERE:
+- Miniature set design feel with depth and dimension like a diorama
+- Clay-style New Year elements: miniature clay decorations, tiny clay flowers, small clay ornaments
+- Include cute celebratory elements: tiny clay stars, small clay confetti, miniature clay presents
+- Create a handcrafted, tactile aesthetic throughout the scene
+- Background elements should all look like they're made of clay/plasticine
+
+DECORATIVE ELEMENTS:
+- Miniature clay trees, tiny clay lanterns, small clay lucky charms
+- Handcrafted feel elements: clay buttons, tiny felt decorations, miniature props
+- New Year symbols rendered in cute clay style
+
+LIGHTING AND EFFECTS:
+- Apply soft, diffused studio lighting typical of claymation productions
+- Add subtle depth of field effects to enhance the miniature feel
+- Capture cute, friendly expressions with slightly exaggerated features typical of clay characters
+- Warm, inviting lighting that makes the clay figures look huggable and charming
+
+TEXT STYLING:
+- Place "2026" and "새해 복 많이 받으세요" at the top, designed to look like clay letters or a clay sign/banner
+- "2026" can be displayed above or near the Korean greeting in 3D clay style
+- Text should look handcrafted, like it's made of actual clay or placed as a prop in the scene
+- Text clearly readable while matching the adorable claymation aesthetic
+- Can include tiny clay decorations around the text
 `,
 
   // 1. SNS 프로필 - 밝고 친근한 느낌
