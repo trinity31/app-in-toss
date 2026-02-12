@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import * as Sentry from '@sentry/react'
-import { formatBirthdate, formatGender, base64ToBlob } from '../utils/dataTransform'
+import { formatBirthdate } from '../utils/dataTransform'
 
 const AD_GROUP_ID = import.meta.env.VITE_AD_GROUP_ID || 'ait-ad-test-rewarded-id'
 
-export default function Loading({ userData, onNext }) {
+export default function DeepReadingLoading({ userData, onNext }) {
   const [loadingMessage, setLoadingMessage] = useState('광고를 준비하고 있습니다...')
   const [adLoaded, setAdLoaded] = useState(false)
   const [adRewarded, setAdRewarded] = useState(false)
@@ -24,11 +24,10 @@ export default function Loading({ userData, onNext }) {
 
         if (isAdUnsupported) {
           console.warn('광고가 지원되지 않습니다.')
-          // 광고가 지원되지 않는 환경이면 바로 API 대기로 진행
           setAdLoaded(true)
           setAdRewarded(true)
-          setLoadingMessage('사주를 풀이하고 있습니다...')
-          callSajuApi()
+          setLoadingMessage('신년운세를 풀이하고 있습니다...')
+          callDeepReadingApi()
           return
         }
 
@@ -48,22 +47,20 @@ export default function Loading({ userData, onNext }) {
           },
           onError: (error) => {
             console.error('광고 로드 실패', error)
-            // 광고 로드 실패해도 진행
             setAdLoaded(true)
             setAdRewarded(true)
-            setLoadingMessage('사주를 풀이하고 있습니다...')
-            callSajuApi()
+            setLoadingMessage('신년운세를 풀이하고 있습니다...')
+            callDeepReadingApi()
           },
         })
 
         cleanupRef.current = cleanup
       } catch (error) {
         console.error('광고 모듈 로드 실패:', error)
-        // 광고 모듈 로드 실패해도 진행
         setAdLoaded(true)
         setAdRewarded(true)
-        setLoadingMessage('사주를 풀이하고 있습니다...')
-        callSajuApi()
+        setLoadingMessage('신년운세를 풀이하고 있습니다...')
+        callDeepReadingApi()
       }
     }
 
@@ -90,8 +87,8 @@ export default function Loading({ userData, onNext }) {
       if (isAdUnsupported) {
         console.warn('광고 재생이 지원되지 않습니다.')
         setAdRewarded(true)
-        setLoadingMessage('사주를 풀이하고 있습니다...')
-        callSajuApi()
+        setLoadingMessage('신년운세를 풀이하고 있습니다...')
+        callDeepReadingApi()
         return
       }
 
@@ -103,48 +100,46 @@ export default function Loading({ userData, onNext }) {
           switch (event.type) {
             case 'show':
               console.log('광고 재생 시작')
-              // 광고 재생과 동시에 API 호출 시작
-              callSajuApi()
+              callDeepReadingApi()
               break
 
             case 'userEarnedReward':
               console.log('광고 시청 보상 획득')
               setAdRewarded(true)
-              setLoadingMessage('사주를 풀이하고 있습니다...')
+              setLoadingMessage('신년운세를 풀이하고 있습니다...')
               break
 
             case 'dismissed':
               console.log('광고 종료')
               if (!adRewarded) {
                 setAdRewarded(true)
-                setLoadingMessage('사주를 풀이하고 있습니다...')
+                setLoadingMessage('신년운세를 풀이하고 있습니다...')
               }
               break
 
             case 'failedToShow':
               console.log('광고 재생 실패')
               setAdRewarded(true)
-              setLoadingMessage('사주를 풀이하고 있습니다...')
+              setLoadingMessage('신년운세를 풀이하고 있습니다...')
               break
           }
         },
         onError: (error) => {
           console.error('광고 재생 실패', error)
           setAdRewarded(true)
-          setLoadingMessage('사주를 풀이하고 있습니다...')
+          setLoadingMessage('신년운세를 풀이하고 있습니다...')
         },
       })
     } catch (error) {
       console.error('광고 재생 중 오류:', error)
       setAdRewarded(true)
-      setLoadingMessage('사주를 풀이하고 있습니다...')
-      callSajuApi()
+      setLoadingMessage('신년운세를 풀이하고 있습니다...')
+      callDeepReadingApi()
     }
   }
 
-  // 실제 API 호출
-  const callSajuApi = async () => {
-    // 이미 호출되었으면 중복 호출 방지
+  // Deep Reading API 호출
+  const callDeepReadingApi = async () => {
     if (apiCalledRef.current) {
       console.log('API 이미 호출됨, 중복 호출 방지')
       return
@@ -152,64 +147,55 @@ export default function Loading({ userData, onNext }) {
     apiCalledRef.current = true
 
     try {
-      setLoadingMessage('사주풀이와 이미지를 생성하고 있어요.\n최대 1분 정도 걸려요...')
+      setLoadingMessage('2026년 신년운세를 풀이하고 있어요.\n10~30초 정도 걸려요...')
 
-      // AbortController 생성 (타임아웃용)
       abortControllerRef.current = new AbortController()
-      const timeoutId = setTimeout(() => abortControllerRef.current?.abort(), 180000) // 3분 타임아웃
+      const timeoutId = setTimeout(() => abortControllerRef.current?.abort(), 180000)
 
-      // FormData 생성
       const formData = new FormData()
 
-      // 1. name
+      // name
       formData.append('name', userData.name || '사용자')
 
-      // 2. datetime (생년월일)
-      const datetime = formatBirthdate(userData.birthdate)
-      formData.append('datetime', datetime)
+      // datetime (YYYY-MM-DD)
+      formData.append('datetime', formatBirthdate(userData.birthdate))
 
-      // 3. hour, minute, am_pm (태어난 시간 - 선택적)
-      if (userData.birthdate?.period && userData.birthdate?.period !== 'unknown') {
+      // gender: male/female 그대로 전송
+      formData.append('gender', userData.gender)
+
+      // hour, minute, am_pm (선택적)
+      if (userData.birthdate?.period && userData.birthdate.period !== 'unknown') {
         if (userData.birthdate?.hour12) {
           formData.append('hour', userData.birthdate.hour12)
         }
         if (userData.birthdate?.minuteRange) {
-          // 0-29 -> 15, 30-59 -> 45
-          const minute = userData.birthdate.minuteRange === '0-29' ? '15' : '45'
+          const minute = userData.birthdate.minuteRange === '0-29' ? '00' : '30'
           formData.append('minute', minute)
         }
-        formData.append('am_pm', userData.birthdate.period)
+        formData.append('am_pm', userData.birthdate.period.toUpperCase())
       }
 
-      // 4. gender
-      const gender = formatGender(userData.gender)
-      formData.append('gender', gender)
+      // birthday_type
+      formData.append('birthday_type', 'solar')
 
-      // 5. theme_type
-      formData.append('theme_type', userData.themeType || 'basic')
+      // reading_type
+      if (userData.readingType) {
+        formData.append('reading_type', userData.readingType)
+      }
 
-      // 6. reading_type
-      formData.append('reading_type', userData.themeType || 'basic')
+      // concerns: 선택된 운세 타입 제목
+      if (userData.fortuneTypeTitle) {
+        formData.append('concerns', userData.fortuneTypeTitle)
+      }
 
-      // 7. language
+      // language
       formData.append('language', 'ko')
 
-      // 8. output_mode
-      formData.append('output_mode', 'base64')
-
-      // 9. image (선택적 - 사진이 있는 경우)
-      if (userData.photo?.dataUri) {
-        const imageBlob = base64ToBlob(userData.photo.dataUri)
-        if (imageBlob) {
-          formData.append('image', imageBlob, 'photo.jpg')
-        }
-      }
-
-      // API 호출
       const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY
-      const endpoint = `${import.meta.env.VITE_API_BASE_URL}/saju-reading`
+      const baseUrl = import.meta.env.VITE_API_BASE_URL
+      const endpoint = `${baseUrl}/deep-reading/start`
 
-      console.log('API 호출 시작:', { endpoint, userData })
+      console.log('Deep Reading API 호출 시작:', { endpoint, userData })
 
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -228,22 +214,24 @@ export default function Loading({ userData, onNext }) {
       }
 
       const result = await response.json()
-      console.log('API 호출 성공:', result)
+      console.log('Deep Reading API 호출 성공:', result)
 
-      // API 완료 상태로 변경
       setApiCompleted(true)
 
-      // 결과를 onNext로 전달
-      onNext({ fortuneResult: result })
+      onNext({
+        fortuneResult: {
+          reading: result.reading,
+          thread_id: result.thread_id,
+          follow_up_questions: result.follow_up_questions,
+        }
+      })
 
     } catch (error) {
-      console.error('API 호출 오류:', error)
+      console.error('Deep Reading API 호출 오류:', error)
 
-      // Sentry로 에러 리포트 전송
       Sentry.captureException(error, {
         extra: {
           userName: userData?.name,
-          themeType: userData?.themeType,
           readingType: userData?.readingType,
         }
       })
@@ -251,7 +239,7 @@ export default function Loading({ userData, onNext }) {
       if (error.name === 'AbortError') {
         setApiError('요청 시간이 초과되었습니다. 다시 시도해 주세요.')
       } else {
-        setApiError('사주 풀이를 생성하는데 실패했습니다. 다시 시도해 주세요.')
+        setApiError('신년운세를 생성하는데 실패했습니다. 다시 시도해 주세요.')
       }
     }
   }
@@ -263,7 +251,6 @@ export default function Loading({ userData, onNext }) {
     }
   }, [])
 
-  // 에러가 발생한 경우 에러 화면 표시
   if (apiError) {
     return (
       <div style={{
@@ -275,12 +262,7 @@ export default function Loading({ userData, onNext }) {
         padding: '20px',
         background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)'
       }}>
-        <div style={{
-          fontSize: '48px',
-          marginBottom: '24px'
-        }}>
-          😢
-        </div>
+        <div style={{ fontSize: '48px', marginBottom: '24px' }}>😢</div>
 
         <h2 style={{
           fontSize: '20px',
@@ -322,11 +304,7 @@ export default function Loading({ userData, onNext }) {
       padding: '20px',
       background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)'
     }}>
-      <div style={{
-        width: '80px',
-        height: '80px',
-        marginBottom: '24px'
-      }}>
+      <div style={{ width: '80px', height: '80px', marginBottom: '24px' }}>
         <div style={{
           width: '100%',
           height: '100%',

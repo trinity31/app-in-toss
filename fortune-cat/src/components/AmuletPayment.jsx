@@ -7,11 +7,7 @@ import {
   DEFAULT_DAILY_ORDER_LIMIT,
 } from "../lib/supabase";
 
-// /saju-reading 경로를 제거하여 base URL 추출
-const API_BASE_URL = import.meta.env.VITE_SAJU_AI_ENDPOINT.replace(
-  "/saju-reading",
-  "",
-);
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const AMULET_PRODUCT_SKU = import.meta.env.VITE_AMULET_PRODUCT_SKU;
 
 export default function AmuletPayment({ onNext, onBack, userData }) {

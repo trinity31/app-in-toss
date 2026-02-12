@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Loader } from '@toss/tds-mobile'
 
-// /saju-reading 경로를 제거하여 base URL 추출
-const API_BASE_URL = import.meta.env.VITE_SAJU_AI_ENDPOINT.replace('/saju-reading', '')
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export default function TossLogin({ onNext, onBack, userData }) {
   const [isLoading, setIsLoading] = useState(false)

@@ -2,6 +2,17 @@ import { useState } from 'react'
 import { saveBase64Data, Analytics } from '@apps-in-toss/web-framework'
 import ReactMarkdown from 'react-markdown'
 
+// CommonMark에서 **text** 뒤에 바로 한글이 오면 bold 파싱 실패
+// **'문서'**가 → **'문서'** 가 (공백 추가)
+const normalizeMarkdown = (text) => {
+  if (!text) return ''
+  return text
+    // ** text** → **text** (여는 ** 뒤 공백 제거)
+    .replace(/\*\*\s+(.+?)\*\*/g, '**$1**')
+    // **text**가 → **text** 가 (닫는 ** 뒤 비공백 앞에 공백 추가)
+    .replace(/\*\*(.+?)\*\*(?=\S)/g, '**$1** ')
+}
+
 export default function Result({ userData, onRestart, onBackToTypeSelect }) {
   const { name, birthdate, fortuneResult, readingType, fortuneTypeTitle } = userData
   const [isSavingImage, setIsSavingImage] = useState(false)
@@ -258,7 +269,7 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
                     )
                   }}
                 >
-                  {fortuneResult.reading}
+                  {normalizeMarkdown(fortuneResult.reading)}
                 </ReactMarkdown>
               </div>
             ) : (

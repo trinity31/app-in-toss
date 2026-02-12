@@ -3,8 +3,8 @@ import Intro from '../components/Intro'
 import NameInput from '../components/NameInput'
 import BirthdateInput from '../components/BirthdateInput'
 import GenderSelect from '../components/GenderSelect'
-import Loading from '../components/Loading'
-import Result from '../components/Result'
+import DeepReadingLoading from '../components/DeepReadingLoading'
+import DeepReadingResult from '../components/DeepReadingResult'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 import { Analytics } from '@apps-in-toss/web-framework'
 import { colors } from '@toss/tds-colors'
@@ -141,9 +141,9 @@ export default function NewYearPage() {
       case 'newYearType':
         return <NewYearTypeSelect onNext={handleNext} onBack={handleBack} />
       case 'loading':
-        return <Loading userData={userData} onNext={handleNext} />
+        return <DeepReadingLoading userData={userData} onNext={handleNext} />
       case 'result':
-        return <Result userData={userData} onRestart={handleRestart} onBackToTypeSelect={handleBackToTypeSelect} />
+        return <DeepReadingResult userData={userData} onRestart={handleRestart} onBackToTypeSelect={handleBackToTypeSelect} />
       default:
         return <Intro onNext={handleNext} />
     }
