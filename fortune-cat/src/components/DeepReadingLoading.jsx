@@ -223,6 +223,8 @@ export default function DeepReadingLoading({ userData, onNext }) {
           reading: result.reading,
           thread_id: result.thread_id,
           follow_up_questions: result.follow_up_questions,
+          headline: result.headline,
+          summary: result.summary,
         }
       })
 

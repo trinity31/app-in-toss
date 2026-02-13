@@ -77,14 +77,29 @@ Development 환경에서는 생략 가능합니다.
 ```json
 {
   "thread_id": "550e8400-e29b-41d4-a716-446655440000",
-  "reading": "## 사주 분석 결과\n\n김철수님의 사주를 살펴보면..."
+  "headline": "당신의 사주는 '불꽃 리더' 유형입니다",
+  "summary": [
+    { "label": "재물운", "icon": "💰", "grade": "상", "description": "안정적인 수입 흐름" },
+    { "label": "연애운", "icon": "💕", "grade": "중", "description": "새로운 인연 가능성" },
+    { "label": "건강운", "icon": "💪", "grade": "상", "description": "활력 넘치는 한 해" },
+    { "label": "직장운", "icon": "💼", "grade": "중", "description": "변화의 기회 포착" }
+  ],
+  "reading": "## 사주 분석 결과\n\n김철수님의 사주를 살펴보면...",
+  "follow_up_questions": ["재물운을 더 자세히 알고 싶어요", "올해 주의할 점은?"]
 }
 ```
 
 | 필드 | 타입 | 설명 |
 |------|------|------|
 | `thread_id` | string | 대화 세션 ID — 이후 채팅에 필요하므로 반드시 저장 |
+| `headline` | string | 사주 유형을 한 문장으로 요약 (예: "당신의 사주는 '불꽃 리더' 유형입니다") |
+| `summary` | array | 카테고리별 운세 요약 카드 목록 |
+| `summary[].label` | string | 카테고리명 (예: "재물운", "연애운") |
+| `summary[].icon` | string | 카테고리 이모지 아이콘 |
+| `summary[].grade` | string | 등급 (`"상"`, `"중"`, `"하"`) |
+| `summary[].description` | string | 한줄 요약 |
 | `reading` | string | 풀이 결과 (마크다운 형식) |
+| `follow_up_questions` | array | 추천 후속 질문 목록 |
 
 #### cURL 예시
 

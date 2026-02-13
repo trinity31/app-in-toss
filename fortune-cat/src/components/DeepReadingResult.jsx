@@ -63,7 +63,7 @@ export default function DeepReadingResult({
   onRestart,
   onBackToTypeSelect,
 }) {
-  const { name, birthdate, fortuneResult, fortuneTypeTitle } = userData;
+  const { name, fortuneResult, fortuneTypeTitle } = userData;
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -269,20 +269,11 @@ export default function DeepReadingResult({
             fontSize: "22px",
             fontWeight: "bold",
             color: "#191F28",
-            marginBottom: "4px",
+            marginBottom: "0",
           }}
         >
           {name}님의 {fortuneTypeTitle || "2026 신년 운세"}
         </h1>
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#8B95A1",
-            margin: 0,
-          }}
-        >
-          {birthdate.year}년 {birthdate.month}월 {birthdate.day}일
-        </p>
       </div>
 
       {/* 메시지 목록 */}
@@ -294,6 +285,78 @@ export default function DeepReadingResult({
           overflowY: "auto",
         }}
       >
+        {/* 요약 섹션 */}
+        {fortuneResult.headline && (
+          <div style={{ marginBottom: "20px" }}>
+            <p
+              style={{
+                fontSize: "18px",
+                fontWeight: "bold",
+                color: "#191F28",
+                textAlign: "center",
+                lineHeight: "1.6",
+                margin: "0 0 16px 0",
+              }}
+            >
+              {fortuneResult.headline}
+            </p>
+            {fortuneResult.summary?.length > 0 && (
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: `repeat(${fortuneResult.summary.length}, 1fr)`,
+                  gap: "8px",
+                }}
+              >
+                {fortuneResult.summary.map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      background: "var(--color-primary-light)",
+                      borderRadius: "12px",
+                      padding: "14px 8px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <div style={{ fontSize: "24px", marginBottom: "6px" }}>
+                      {item.icon}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: "bold",
+                        color: "#191F28",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {item.label}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        color: "var(--color-primary)",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {item.grade}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        color: "#8B95A1",
+                        lineHeight: "1.4",
+                      }}
+                    >
+                      {item.description}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {messages.map((message, index) => {
           const isLastAssistant =
             message.role === "assistant" && index === messages.length - 1;
