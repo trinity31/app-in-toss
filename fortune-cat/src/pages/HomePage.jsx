@@ -4,6 +4,7 @@ import { colors } from "@toss/tds-colors";
 import basicFortune from "../assets/images/basic-fortune.png";
 import animalFortune from "../assets/images/animal-fortune.png";
 import jobFortune from "../assets/images/job-fortune.png";
+import heroBackground from "../assets/images/hero.png";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -30,11 +31,49 @@ export default function HomePage() {
 
   return (
     <div style={styles.container}>
-      <Spacing size={40} />
-
-      <div style={styles.header}>
-        <h1 style={styles.title}>복냥사주</h1>
-        <p style={styles.subtitle}>AI가 알려주는 당신의 운명</p>
+      <div
+        style={{
+          position: "relative",
+          width: "calc(100% + 40px)",
+          margin: "0 -20px",
+          backgroundImage: `url(${heroBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          padding: "48px 20px 32px",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2))",
+          }}
+        />
+        <h1
+          style={{
+            position: "relative",
+            fontSize: "32px",
+            fontWeight: "800",
+            color: "#fff",
+            margin: "0 0 8px 0",
+            textShadow: "0 1px 4px rgba(0,0,0,0.3)",
+          }}
+        >
+          복냥사주
+        </h1>
+        <p
+          style={{
+            position: "relative",
+            fontSize: "18px",
+            color: "#fff",
+            margin: 0,
+            textShadow:
+              "-1px -1px 0 rgba(0,0,0,0.5), 1px -1px 0 rgba(0,0,0,0.5), -1px 1px 0 rgba(0,0,0,0.5), 1px 1px 0 rgba(0,0,0,0.5)",
+          }}
+        >
+          AI가 알려주는 당신의 운명
+        </p>
       </div>
 
       <Spacing size={32} />
