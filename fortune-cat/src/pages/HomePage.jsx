@@ -123,7 +123,7 @@ export default function HomePage() {
               <h2 style={styles.cardTitle}>2026 신년운세</h2>
               <span style={styles.newBadge}>NEW</span>
             </div>
-            <p style={styles.cardDescription}>미리 보는 2026년 나의 운세는?</p>
+            <p style={styles.cardDescription}>운세 보고 질문도 무제한으로 하기</p>
           </div>
           <div style={styles.arrowIcon}>›</div>
         </div>

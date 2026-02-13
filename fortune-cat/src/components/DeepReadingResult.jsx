@@ -477,9 +477,33 @@ export default function DeepReadingResult({
                 background: "var(--color-primary-light)",
                 color: "#8B95A1",
                 fontSize: "14px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
               }}
             >
-              잠시만 기다려 주세요...
+              <div style={{ display: "flex", gap: "4px" }}>
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      background: "var(--color-primary)",
+                      opacity: 0.4,
+                      animation: `bounce 1.2s ${i * 0.2}s ease-in-out infinite`,
+                    }}
+                  />
+                ))}
+              </div>
+              잠시만 기다려 주세요
+              <style>{`
+                @keyframes bounce {
+                  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+                  30% { transform: translateY(-6px); opacity: 1; }
+                }
+              `}</style>
             </div>
           </div>
         )}
