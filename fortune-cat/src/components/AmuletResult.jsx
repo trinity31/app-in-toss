@@ -1,7 +1,6 @@
 export default function AmuletResult({
   userData,
   onRestart,
-  onBackToTypeSelect,
 }) {
   const { name, birthdate, amuletTypeTitle, email, phone } = userData;
 
@@ -249,25 +248,9 @@ export default function AmuletResult({
         }}
       >
         <button
-          onClick={onBackToTypeSelect}
-          style={{
-            flex: 1,
-            padding: "16px",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "#191F28",
-            background: "#F2F4F6",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          다른 부적 신청
-        </button>
-        <button
           onClick={onRestart}
           style={{
-            flex: 1,
+            width: "100%",
             padding: "16px",
             fontSize: "16px",
             fontWeight: "bold",

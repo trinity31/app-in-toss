@@ -15,7 +15,7 @@ const normalizeMarkdown = (text) => {
   );
 };
 
-export default function Result({ userData, onRestart, onBackToTypeSelect }) {
+export default function Result({ userData, onRestart }) {
   const { name, birthdate, fortuneResult, readingType, fortuneTypeTitle } =
     userData;
   const [isSavingImage, setIsSavingImage] = useState(false);
@@ -71,12 +71,6 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
     } finally {
       setIsSavingImage(false);
     }
-  };
-
-  // 타입 선택으로 이동
-  const handleBackToTypeSelect = () => {
-    Analytics.click({ button_name: "back_to_type_select" });
-    onBackToTypeSelect();
   };
 
   // image_description 처리
@@ -349,25 +343,9 @@ export default function Result({ userData, onRestart, onBackToTypeSelect }) {
         }}
       >
         <button
-          onClick={handleBackToTypeSelect}
-          style={{
-            flex: 1,
-            padding: "16px",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "#191F28",
-            background: "#F2F4F6",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          타입 선택으로
-        </button>
-        <button
           onClick={onRestart}
           style={{
-            flex: 1,
+            width: "100%",
             padding: "16px",
             fontSize: "16px",
             fontWeight: "bold",

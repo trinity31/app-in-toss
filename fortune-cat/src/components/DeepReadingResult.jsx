@@ -61,7 +61,6 @@ const normalizeMarkdown = (text) => {
 export default function DeepReadingResult({
   userData,
   onRestart,
-  onBackToTypeSelect,
 }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const [messages, setMessages] = useState([
@@ -155,11 +154,6 @@ export default function DeepReadingResult({
   const handleSendMessage = () => sendMessage(inputMessage);
 
   const handleFollowUpClick = (question) => sendMessage(question);
-
-  const handleBackToTypeSelect = () => {
-    Analytics.click({ button_name: "back_to_type_select" });
-    onBackToTypeSelect();
-  };
 
   const markdownComponents = {
     h2: ({ node, ...props }) => (
@@ -586,25 +580,9 @@ export default function DeepReadingResult({
         }}
       >
         <button
-          onClick={handleBackToTypeSelect}
-          style={{
-            flex: 1,
-            padding: "14px",
-            fontSize: "14px",
-            fontWeight: "bold",
-            color: "#191F28",
-            background: "#F2F4F6",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          타입 선택으로
-        </button>
-        <button
           onClick={onRestart}
           style={{
-            flex: 1,
+            width: "100%",
             padding: "14px",
             fontSize: "14px",
             fontWeight: "bold",

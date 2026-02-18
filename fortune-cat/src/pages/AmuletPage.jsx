@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-import Intro from "../components/Intro";
-import NameInput from "../components/NameInput";
-import BirthdateInput from "../components/BirthdateInput";
-import GenderSelect from "../components/GenderSelect";
-import AmuletTypeSelect from "../components/AmuletTypeSelect";
+import { useLocation, useNavigate } from "react-router-dom";
+import UserInfoInput from "../components/UserInfoInput";
 import TossLogin from "../components/TossLogin";
 import ContactInput from "../components/ContactInput";
 import AmuletPayment from "../components/AmuletPayment";
@@ -13,24 +10,20 @@ import {
   usePendingOrderStorage,
   shouldSkipAutoRestore,
 } from "../hooks/usePendingOrderStorage";
-import {
-  getTodayOrderCount,
-  getAmuletConfig,
-  getAmuletIntroImageUrl,
-  DEFAULT_DAILY_ORDER_LIMIT,
-  DEFAULT_LOW_STOCK_THRESHOLD,
-} from "../lib/supabase";
-import { StepperRow, Loader } from "@toss/tds-mobile";
+import { Loader } from "@toss/tds-mobile";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function AmuletPage() {
-  const [currentPage, setCurrentPage] = useState("intro");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const selectedType = location.state?.selectedType;
+
+  const [currentPage, setCurrentPage] = useState("userInfo");
   const [userData, setUserData] = useState({});
   const [isInitializing, setIsInitializing] = useState(true);
   const [isRestoringOrder, setIsRestoringOrder] = useState(false);
-  const [pendingOrders, setPendingOrders] = useState([]); // 미완료 주문 목록
-  const [remainingCount, setRemainingCount] = useState(null);
+  const [pendingOrders, setPendingOrders] = useState([]);
 
   const { loading, storedUserInfo, saveUserInfo } = useUserInfoStorage();
   const {
@@ -39,38 +32,17 @@ export default function AmuletPage() {
     clearPendingOrderData,
   } = usePendingOrderStorage();
 
-  // 남은 주문 수량 확인 (LOW_STOCK_THRESHOLD 미만일 때만 표시)
+  // 타입이 전달되지 않은 경우 홈으로 redirect
   useEffect(() => {
-    async function checkRemainingCount() {
-      try {
-        let dailyOrderLimit = DEFAULT_DAILY_ORDER_LIMIT;
-        let lowStockThreshold = DEFAULT_LOW_STOCK_THRESHOLD;
-        try {
-          const config = await getAmuletConfig();
-          dailyOrderLimit = config.dailyOrderLimit;
-          lowStockThreshold = config.lowStockThreshold;
-        } catch (configErr) {
-          console.warn(
-            "[AmuletPage] app_config 조회 실패, 기본값 사용:",
-            configErr,
-          );
-        }
-        const count = await getTodayOrderCount();
-        const remaining = dailyOrderLimit - count;
-        if (remaining < lowStockThreshold) {
-          setRemainingCount(remaining);
-        }
-      } catch (err) {
-        console.error("[AmuletPage] 주문 수량 확인 실패:", err);
-      }
+    if (!selectedType) {
+      navigate("/", { replace: true });
     }
-    checkRemainingCount();
-  }, []);
+  }, [selectedType, navigate]);
 
   // 백엔드 API 호출하여 상품 지급 처리
   const grantProduct = async (orderId, orderData) => {
     const bd = orderData.birthdate;
-    const birthdayType = bd?.birthdayType || 'solar';
+    const birthdayType = bd?.birthdayType || "solar";
 
     const formattedBirthdate = {
       year: parseInt(bd?.year) || 0,
@@ -78,7 +50,7 @@ export default function AmuletPage() {
       day: parseInt(bd?.day) || 0,
       hour: bd?.hour ? parseInt(bd.hour) : null,
       minute: bd?.minute ? parseInt(bd.minute) : null,
-      isLunar: birthdayType === 'lunar',
+      isLunar: birthdayType === "lunar",
     };
 
     const requestBody = {
@@ -112,31 +84,30 @@ export default function AmuletPage() {
 
       await response.json();
       return true;
-
     } catch (err) {
       console.error("[AmuletPage] 주문 복원 에러:", err.message);
       return false;
     }
   };
 
-  // 앱 시작 시 미완료 주문 확인
+  // 앱 시작 시 미완료 주문 확인 + 초기화
   useEffect(() => {
-    async function checkPendingOrders() {
+    async function initialize() {
       if (loading || pendingLoading) return;
 
-      // 저장된 사용자 정보 복원
-      if (storedUserInfo) {
-        setUserData(storedUserInfo);
+      const initialData = storedUserInfo ? { ...storedUserInfo } : {};
+      if (selectedType) {
+        Object.assign(initialData, selectedType);
       }
+      setUserData(initialData);
 
       // 테스트 모드에서는 미완료 주문 확인 건너뛰기
       if (shouldSkipAutoRestore()) {
-        console.log("[AmuletPage] 미완료 주문 확인 건너뛰기 (테스트 모드)");
         setIsInitializing(false);
         return;
       }
 
-      // 미완료 주문 확인 (pendingOrderData가 있을 때만)
+      // 미완료 주문 확인
       if (pendingOrderData) {
         try {
           const { IAP } = await import("@apps-in-toss/web-framework");
@@ -148,7 +119,6 @@ export default function AmuletPage() {
           if (orders?.length > 0) {
             setPendingOrders(orders);
           } else {
-            // 미완료 주문이 없으면 localStorage 정리
             clearPendingOrderData();
           }
         } catch (err) {
@@ -159,7 +129,7 @@ export default function AmuletPage() {
       setIsInitializing(false);
     }
 
-    checkPendingOrders();
+    initialize();
   }, [loading, pendingLoading]);
 
   // 복구 버튼 클릭 시 실행
@@ -180,10 +150,12 @@ export default function AmuletPage() {
           try {
             await IAP.completeProductGrant({ params: { orderId } });
           } catch (completeErr) {
-            console.error("[AmuletPage] completeProductGrant 에러:", completeErr);
+            console.error(
+              "[AmuletPage] completeProductGrant 에러:",
+              completeErr,
+            );
           }
 
-          // 복원 성공 시 결과 화면으로 이동
           setUserData({ ...pendingOrderData, orderId });
           clearPendingOrderData();
           setPendingOrders([]);
@@ -193,7 +165,6 @@ export default function AmuletPage() {
         }
       }
 
-      // 모든 복원 시도 실패
       alert("주문 복원에 실패했습니다. 잠시 후 다시 시도해 주세요.");
     } catch (err) {
       console.error("[AmuletPage] 주문 복원 실패:", err);
@@ -207,13 +178,7 @@ export default function AmuletPage() {
     const updatedData = { ...userData, ...data };
     setUserData(updatedData);
 
-    if (
-      data.name ||
-      data.birthdate ||
-      data.gender ||
-      data.email ||
-      data.phone
-    ) {
+    if (data.name || data.birthdate || data.gender || data.email || data.phone) {
       const dataToSave = {
         name: updatedData.name,
         birthdate: updatedData.birthdate,
@@ -224,15 +189,7 @@ export default function AmuletPage() {
       saveUserInfo(dataToSave);
     }
 
-    if (currentPage === "intro") {
-      setCurrentPage("name");
-    } else if (currentPage === "name") {
-      setCurrentPage("birthdate");
-    } else if (currentPage === "birthdate") {
-      setCurrentPage("gender");
-    } else if (currentPage === "gender") {
-      setCurrentPage("amuletType");
-    } else if (currentPage === "amuletType") {
+    if (currentPage === "userInfo") {
       setCurrentPage("tossLogin");
     } else if (currentPage === "tossLogin") {
       setCurrentPage("contactInput");
@@ -244,16 +201,10 @@ export default function AmuletPage() {
   };
 
   const handleBack = () => {
-    if (currentPage === "name") {
-      setCurrentPage("intro");
-    } else if (currentPage === "birthdate") {
-      setCurrentPage("name");
-    } else if (currentPage === "gender") {
-      setCurrentPage("birthdate");
-    } else if (currentPage === "amuletType") {
-      setCurrentPage("gender");
+    if (currentPage === "userInfo") {
+      navigate("/");
     } else if (currentPage === "tossLogin") {
-      setCurrentPage("amuletType");
+      setCurrentPage("userInfo");
     } else if (currentPage === "contactInput") {
       setCurrentPage("tossLogin");
     } else if (currentPage === "payment") {
@@ -262,119 +213,41 @@ export default function AmuletPage() {
   };
 
   const handleRestart = () => {
-    setUserData({});
-    setCurrentPage("intro");
+    navigate("/");
   };
 
-  const handleBackToTypeSelect = () => {
-    const {
-      amuletType,
-      amuletTypeTitle,
-      tossUserInfo,
-      orderId,
-      email,
-      phone,
-      ...restData
-    } = userData;
-    setUserData(restData);
-    setCurrentPage("amuletType");
-  };
+  if (!selectedType) return null;
+
+  if (isInitializing) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          gap: "16px",
+        }}
+      >
+        <Loader />
+        <p style={{ fontSize: "16px", color: "#8B95A1", margin: 0 }}>
+          로딩 중...
+        </p>
+      </div>
+    );
+  }
 
   const renderPage = () => {
     switch (currentPage) {
-      case "intro":
+      case "userInfo":
         return (
-          <Intro
-            onNext={handleNext}
-            title="행운을 부르는 나만의 부적 이미지"
-            subtitle="내 사주에 필요한 오행 에너지를 보충해 주는 맞춤 부적 아트 이미지입니다"
-            heroImages={[getAmuletIntroImageUrl()]}
-            useHorizontalScroll={true}
-            remainingCount={remainingCount}
-            steps={
-              <>
-                <StepperRow
-                  left={<StepperRow.NumberIcon number={1} />}
-                  center={
-                    <StepperRow.Texts
-                      type="A"
-                      title="생년월일과 태어난 시간을 입력하고"
-                      description=""
-                    />
-                  }
-                />
-                <StepperRow
-                  left={<StepperRow.NumberIcon number={2} />}
-                  center={
-                    <StepperRow.Texts
-                      type="A"
-                      title="원하는 부적 스타일을 선택하면"
-                      description=""
-                    />
-                  }
-                />
-                <StepperRow
-                  left={<StepperRow.NumberIcon number={3} />}
-                  center={
-                    <StepperRow.Texts
-                      type="A"
-                      title="24시간 내 이메일로 부적 이미지를 보내드려요"
-                      description=""
-                    />
-                  }
-                  hideLine={true}
-                />
-                <div
-                  style={{
-                    padding: "16px 20px",
-                    background: "#F7F8FA",
-                    borderRadius: "12px",
-                    margin: "16px 20px 100px",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      color: "#FF5722",
-                      lineHeight: "1.6",
-                      margin: 0,
-                      fontWeight: "600",
-                    }}
-                  >
-                    ✓ 휴대폰 배경화면으로 사용하기 좋은 9:16 사이즈로 제작한 고화질 이미지 4장을 보내드려요
-                  </p>
-                </div>
-              </>
-            }
-          />
-        );
-      case "name":
-        return (
-          <NameInput
+          <UserInfoInput
             onNext={handleNext}
             onBack={handleBack}
-            initialValue={userData.name || ""}
+            initialUserInfo={userData}
           />
         );
-      case "birthdate":
-        return (
-          <BirthdateInput
-            name={userData.name}
-            onNext={handleNext}
-            onBack={handleBack}
-            initialBirthdate={userData.birthdate || null}
-          />
-        );
-      case "gender":
-        return (
-          <GenderSelect
-            onNext={handleNext}
-            onBack={handleBack}
-            initialGender={userData.gender || null}
-          />
-        );
-      case "amuletType":
-        return <AmuletTypeSelect onNext={handleNext} onBack={handleBack} />;
       case "tossLogin":
         return (
           <TossLogin
@@ -404,39 +277,27 @@ export default function AmuletPage() {
           <AmuletResult
             userData={userData}
             onRestart={handleRestart}
-            onBackToTypeSelect={handleBackToTypeSelect}
           />
         );
       default:
-        return <Intro onNext={handleNext} />;
+        return (
+          <UserInfoInput
+            onNext={handleNext}
+            onBack={handleBack}
+            initialUserInfo={userData}
+          />
+        );
     }
   };
 
-  if (isInitializing) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-          gap: "16px",
-        }}
-      >
-        <Loader />
-        <p style={{ fontSize: "16px", color: "#8B95A1", margin: 0 }}>
-          로딩 중...
-        </p>
-      </div>
-    );
-  }
-
   // 복구할 주문이 있으면 배너 표시
-  if (pendingOrders.length > 0 && pendingOrderData && currentPage === "intro") {
+  if (
+    pendingOrders.length > 0 &&
+    pendingOrderData &&
+    currentPage === "userInfo"
+  ) {
     return (
       <div style={{ minHeight: "100vh", background: "#fff" }}>
-        {/* 복구 배너 */}
         <div
           style={{
             background: "#FFF8E6",
@@ -521,7 +382,6 @@ export default function AmuletPage() {
           </p>
         </div>
 
-        {/* Intro 페이지 렌더링 */}
         {renderPage()}
       </div>
     );

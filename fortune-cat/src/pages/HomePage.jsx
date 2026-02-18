@@ -1,17 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { colors } from "@toss/tds-colors";
-import basicFortune from "../assets/images/basic-fortune.png";
-import animalFortune from "../assets/images/animal-fortune.png";
-import jobFortune from "../assets/images/job-fortune.png";
+import { Loader } from "@toss/tds-mobile";
+import { supabase, getMenuImageUrl, getAmuletStyleImageUrl } from "../lib/supabase";
 import heroBackground from "../assets/images/hero.png";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const [newYearTypes, setNewYearTypes] = useState([]);
+  const [sajuTypes, setSajuTypes] = useState([]);
+  const [amuletTypes, setAmuletTypes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // 전역 에러 핸들러
   useEffect(() => {
     const handleError = (event) => {
       alert(
@@ -29,8 +31,80 @@ export default function HomePage() {
     };
   }, []);
 
+  useEffect(() => {
+    async function fetchAllTypes() {
+      try {
+        setIsLoading(true);
+        const [newYearRes, sajuRes, amuletRes] = await Promise.all([
+          supabase
+            .from("new_year_fortune_types")
+            .select("*")
+            .eq("is_active", true)
+            .order("display_order", { ascending: true }),
+          supabase
+            .from("saju_reading_types")
+            .select("*")
+            .order("id", { ascending: true }),
+          supabase
+            .from("amulet_types")
+            .select("*")
+            .eq("is_active", true)
+            .order("display_order", { ascending: true }),
+        ]);
+
+        if (newYearRes.data) setNewYearTypes(newYearRes.data);
+        if (sajuRes.data) setSajuTypes(sajuRes.data);
+        if (amuletRes.data) setAmuletTypes(amuletRes.data);
+      } catch (err) {
+        console.error("[HomePage] 데이터 로드 실패:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchAllTypes();
+  }, []);
+
+  const handleNewYearTypeClick = (type) => {
+    navigate("/newyear", {
+      state: {
+        selectedType: {
+          fortuneType: type.code,
+          themeType: type.theme_type,
+          readingType: type.reading_type,
+          fortuneTypeTitle: type.title_ko,
+        },
+      },
+    });
+  };
+
+  const handleSajuTypeClick = (type) => {
+    navigate("/saju", {
+      state: {
+        selectedType: {
+          fortuneType: type.code,
+          themeType: type.theme_type,
+          readingType: type.reading_type,
+          fortuneTypeTitle: type.title_ko,
+        },
+      },
+    });
+  };
+
+  const handleAmuletTypeClick = (type) => {
+    navigate("/amulet", {
+      state: {
+        selectedType: {
+          amuletType: type.code,
+          amuletTypeTitle: type.title_ko,
+        },
+      },
+    });
+  };
+
   return (
     <div style={styles.container}>
+      {/* 히어로 영역 */}
       <div
         style={{
           position: "relative",
@@ -76,76 +150,103 @@ export default function HomePage() {
         </p>
       </div>
 
-      <Spacing size={32} />
-
-      <div style={styles.cardContainer}>
-        {/* 부적 이미지 카드 */}
-        <div
-          style={{
-            ...styles.card,
-            border: `2px solid ${colors.purple400}`,
-            background: colors.purple50,
-          }}
-          onClick={() => navigate("/amulet")}
-        >
-          <div style={styles.cardIcon}>🧿</div>
-          <div style={styles.cardContent}>
-            <div style={styles.cardHeader}>
-              <h2 style={styles.cardTitle}>부적 아트 이미지</h2>
-              <span
-                style={{
-                  ...styles.newBadge,
-                  backgroundColor: colors.purple500,
-                }}
-              >
-                NEW
-              </span>
+      {isLoading ? (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', gap: '16px' }}>
+          <Loader />
+          <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>메뉴를 불러오는 중...</p>
+        </div>
+      ) : (
+        <div style={styles.sectionsContainer}>
+          {/* 섹션 1: 신년운세 */}
+          <section>
+            <div style={styles.sectionHeader}>
+              <span style={styles.sectionIcon}>🧧</span>
+              <h2 style={styles.sectionTitle}>2026 신년운세</h2>
+              <span style={{ ...styles.badge, backgroundColor: colors.red500 }}>NEW</span>
             </div>
-            <p style={styles.cardDescription}>나만을 위한 특별한 부적 이미지</p>
-          </div>
-          <div style={styles.arrowIcon}>›</div>
-        </div>
-
-        <Spacing size={16} />
-
-        {/* 신년운세 카드 */}
-        <div
-          style={{
-            ...styles.card,
-            border: `2px solid ${colors.red400}`,
-            background: colors.red50,
-          }}
-          onClick={() => navigate("/newyear")}
-        >
-          <div style={styles.cardIcon}>🧧</div>
-          <div style={styles.cardContent}>
-            <div style={styles.cardHeader}>
-              <h2 style={styles.cardTitle}>2026 신년운세</h2>
-              <span style={styles.newBadge}>NEW</span>
+            <p style={styles.sectionDescription}>운세 보고 질문도 무제한으로 하기</p>
+            <div style={styles.typeGrid}>
+              {newYearTypes.map((type) => (
+                <button
+                  key={type.id}
+                  onClick={() => handleNewYearTypeClick(type)}
+                  style={styles.typeCard}
+                >
+                  <div style={styles.typeIconWrapper}>
+                    <span style={{ fontSize: '32px' }}>{type.icon}</span>
+                  </div>
+                  <div style={styles.typeCardContent}>
+                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardDesc}>{type.description_ko}</div>
+                  </div>
+                </button>
+              ))}
             </div>
-            <p style={styles.cardDescription}>운세 보고 질문도 무제한으로 하기</p>
-          </div>
-          <div style={styles.arrowIcon}>›</div>
-        </div>
+          </section>
 
-        <Spacing size={16} />
+          <div style={styles.divider} />
 
-        {/* 이미지 사주 카드 */}
-        <div style={styles.card} onClick={() => navigate("/saju")}>
-          <div style={styles.cardImageWrapper}>
-            <img src={basicFortune} alt="" style={styles.cardImage} />
-            <img src={animalFortune} alt="" style={styles.cardImage} />
-            <img src={jobFortune} alt="" style={styles.cardImage} />
-          </div>
-          <div style={styles.cardContent}>
-            <h2 style={styles.cardTitle}>이미지 사주</h2>
-            <p style={styles.cardDescription}>
-              이미지와 함께 운세를 읽어드려요
-            </p>
-          </div>
-          <div style={styles.arrowIcon}>›</div>
+          {/* 섹션 2: 이미지 사주 */}
+          <section>
+            <div style={styles.sectionHeader}>
+              <h2 style={styles.sectionTitle}>이미지 사주</h2>
+            </div>
+            <p style={styles.sectionDescription}>이미지와 함께 운세를 읽어드려요</p>
+            <div style={styles.typeGrid}>
+              {sajuTypes.map((type) => (
+                <button
+                  key={type.id}
+                  onClick={() => handleSajuTypeClick(type)}
+                  style={styles.typeCard}
+                >
+                  <img
+                    src={getMenuImageUrl(type.image_url)}
+                    alt={type.title_ko}
+                    style={styles.typeImage}
+                  />
+                  <div style={styles.typeCardContent}>
+                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardDesc}>{type.description_ko}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <div style={styles.divider} />
+
+          {/* 섹션 3: 부적 아트 이미지 */}
+          <section>
+            <div style={styles.sectionHeader}>
+              <span style={styles.sectionIcon}>🧿</span>
+              <h2 style={styles.sectionTitle}>부적 아트 이미지</h2>
+              <span style={{ ...styles.badge, backgroundColor: colors.purple500 }}>NEW</span>
+            </div>
+            <p style={styles.sectionDescription}>나만을 위한 특별한 부적 이미지</p>
+            <div style={styles.typeGrid}>
+              {amuletTypes.map((type) => (
+                <button
+                  key={type.id}
+                  onClick={() => handleAmuletTypeClick(type)}
+                  style={styles.typeCard}
+                >
+                  <img
+                    src={getAmuletStyleImageUrl(type.code)}
+                    alt={type.title_ko}
+                    style={styles.typeImage}
+                  />
+                  <div style={styles.typeCardContent}>
+                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardDesc}>{type.description_ko}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <Spacing size={40} />
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -154,113 +255,102 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     minHeight: "100vh",
-    padding: "20px",
+    padding: "0 20px 20px",
     backgroundColor: "#fff",
     boxSizing: "border-box",
   },
-  header: {
+  sectionsContainer: {
     width: "100%",
     maxWidth: "400px",
-    textAlign: "left",
+    alignSelf: "center",
+    marginTop: "24px",
   },
-  title: {
-    fontSize: "28px",
-    fontWeight: "800",
-    color: "#191F28",
-    margin: "0 0 8px 0",
-  },
-  subtitle: {
-    fontSize: "16px",
-    color: "#8B95A1",
-    margin: 0,
-  },
-  cardContainer: {
-    width: "100%",
-    maxWidth: "400px",
-    display: "flex",
-    flexDirection: "column",
-  },
-  card: {
-    width: "100%",
-    padding: "24px 20px",
-    borderRadius: "24px",
-    backgroundColor: "#F9FAFB",
+  sectionHeader: {
     display: "flex",
     alignItems: "center",
-    boxSizing: "border-box",
-    cursor: "pointer",
-    transition: "transform 0.2s",
-    position: "relative",
-    overflow: "hidden",
-  },
-  cardIcon: {
-    fontSize: "40px",
-    marginRight: "16px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "60px",
-    height: "60px",
-    backgroundColor: "#fff",
-    borderRadius: "16px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-  },
-  cardImageWrapper: {
-    marginRight: "16px",
-    width: "60px",
-    height: "60px",
-    position: "relative",
-  },
-  cardImage: {
-    width: "40px",
-    height: "40px",
-    borderRadius: "10px",
-    position: "absolute",
-    border: "2px solid #fff",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    objectFit: "cover",
-    "&:nth-child(1)": { top: 0, left: 0, zIndex: 1 },
-    "&:nth-child(2)": { top: "10px", left: "10px", zIndex: 2 },
-    "&:nth-child(3)": { top: "20px", left: "20px", zIndex: 3 },
-  },
-  cardContent: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-  cardHeader: {
-    display: "flex",
-    alignItems: "center",
+    gap: "8px",
     marginBottom: "4px",
-    gap: "6px",
   },
-  cardTitle: {
-    fontSize: "18px",
+  sectionIcon: {
+    fontSize: "24px",
+  },
+  sectionTitle: {
+    fontSize: "20px",
     fontWeight: "700",
-    color: "#333D4B",
+    color: "#191F28",
     margin: 0,
   },
-  newBadge: {
+  badge: {
     fontSize: "10px",
     fontWeight: "700",
     color: "#fff",
-    backgroundColor: colors.red500,
     padding: "2px 6px",
     borderRadius: "4px",
   },
-  cardDescription: {
+  sectionDescription: {
     fontSize: "14px",
     color: "#6B7684",
-    margin: 0,
-    lineHeight: "1.4",
+    margin: "0 0 16px 0",
   },
-  arrowIcon: {
-    fontSize: "24px",
-    color: "#B0B8C1",
-    fontWeight: "300",
-    marginLeft: "8px",
+  typeGrid: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+  },
+  typeCard: {
+    width: "100%",
+    padding: "16px",
+    background: "#F9FAFB",
+    border: "1px solid #E5E8EB",
+    borderRadius: "16px",
+    cursor: "pointer",
+    textAlign: "left",
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    transition: "all 0.2s ease",
+    boxSizing: "border-box",
+  },
+  typeIconWrapper: {
+    width: "56px",
+    height: "56px",
+    borderRadius: "12px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+    flexShrink: 0,
+  },
+  typeImage: {
+    width: "56px",
+    height: "56px",
+    borderRadius: "12px",
+    objectFit: "cover",
+    flexShrink: 0,
+  },
+  typeCardContent: {
+    flex: 1,
+    minWidth: 0,
+  },
+  typeCardTitle: {
+    fontSize: "16px",
+    fontWeight: "600",
+    color: "#191F28",
+    marginBottom: "2px",
+  },
+  typeCardDesc: {
+    fontSize: "13px",
+    color: "#6B7684",
+    lineHeight: "1.4",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  divider: {
+    height: "1px",
+    backgroundColor: "#E5E8EB",
+    margin: "28px 0",
   },
 };
