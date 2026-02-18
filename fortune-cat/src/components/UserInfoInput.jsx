@@ -230,20 +230,20 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
         </div>
 
         {/* 양력/음력 선택 */}
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '32px' }}>
+        <div style={{ display: 'flex', gap: '12px', marginBottom: '32px' }}>
           <button
             onClick={() => setBirthdayType('solar')}
             style={{
               flex: 1,
-              padding: '12px',
-              fontSize: '15px',
-              fontWeight: '600',
-              color: birthdayType === 'solar' ? '#fff' : '#191F28',
-              background: birthdayType === 'solar' ? 'var(--color-primary)' : '#F7F8FA',
-              border: birthdayType === 'solar' ? 'none' : '1px solid #E5E8EB',
-              borderRadius: '8px',
+              padding: '16px',
+              fontSize: '16px',
+              fontWeight: birthdayType === 'solar' ? 'bold' : 'normal',
+              color: birthdayType === 'solar' ? 'var(--color-primary)' : 'var(--color-gray-700)',
+              background: birthdayType === 'solar' ? 'var(--color-primary-light)' : 'var(--color-white)',
+              border: `2px solid ${birthdayType === 'solar' ? 'var(--color-primary)' : 'var(--color-gray-200)'}`,
+              borderRadius: '12px',
               cursor: 'pointer',
-              transition: 'all 0.2s'
+              transition: 'all 0.2s ease'
             }}
           >
             양력
@@ -252,15 +252,15 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
             onClick={() => setBirthdayType('lunar')}
             style={{
               flex: 1,
-              padding: '12px',
-              fontSize: '15px',
-              fontWeight: '600',
-              color: birthdayType === 'lunar' ? '#fff' : '#191F28',
-              background: birthdayType === 'lunar' ? 'var(--color-primary)' : '#F7F8FA',
-              border: birthdayType === 'lunar' ? 'none' : '1px solid #E5E8EB',
-              borderRadius: '8px',
+              padding: '16px',
+              fontSize: '16px',
+              fontWeight: birthdayType === 'lunar' ? 'bold' : 'normal',
+              color: birthdayType === 'lunar' ? 'var(--color-primary)' : 'var(--color-gray-700)',
+              background: birthdayType === 'lunar' ? 'var(--color-primary-light)' : 'var(--color-white)',
+              border: `2px solid ${birthdayType === 'lunar' ? 'var(--color-primary)' : 'var(--color-gray-200)'}`,
+              borderRadius: '12px',
               cursor: 'pointer',
-              transition: 'all 0.2s'
+              transition: 'all 0.2s ease'
             }}
           >
             음력

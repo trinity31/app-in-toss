@@ -214,7 +214,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
       }
 
       // birthday_type
-      formData.append("birthday_type", "solar");
+      formData.append("birthday_type", userData.birthdate?.birthdayType || "solar");
 
       // reading_type
       if (userData.readingType) {

@@ -507,7 +507,7 @@ export default function DeepReadingResult({
       <div
         style={{
           position: "fixed",
-          bottom: "72px",
+          bottom: "88px",
           left: 0,
           right: 0,
           background: "#fff",
@@ -571,7 +571,7 @@ export default function DeepReadingResult({
           bottom: 0,
           left: 0,
           right: 0,
-          padding: "12px 20px calc(12px + env(safe-area-inset-bottom))",
+          padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
           background: "#fff",
           display: "flex",
           gap: "12px",
