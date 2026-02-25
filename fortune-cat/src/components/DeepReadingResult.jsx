@@ -58,10 +58,7 @@ const normalizeMarkdown = (text) => {
   );
 };
 
-export default function DeepReadingResult({
-  userData,
-  onRestart,
-}) {
+export default function DeepReadingResult({ userData, onRestart }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const [messages, setMessages] = useState([
     {

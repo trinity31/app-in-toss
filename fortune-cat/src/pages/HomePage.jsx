@@ -2,7 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { colors } from "@toss/tds-colors";
 import { Loader } from "@toss/tds-mobile";
-import { supabase, getMenuImageUrl, getAmuletStyleImageUrl } from "../lib/supabase";
+import {
+  getTossShareLink,
+  share,
+  getOperationalEnvironment,
+  env,
+} from "@apps-in-toss/web-framework";
+import {
+  supabase,
+  getMenuImageUrl,
+  getAmuletStyleImageUrl,
+  getOgImageUrl,
+} from "../lib/supabase";
 import heroBackground from "../assets/images/hero.png";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
@@ -102,6 +113,20 @@ export default function HomePage() {
     });
   };
 
+  const handleShare = async () => {
+    try {
+      const isSandbox = getOperationalEnvironment() === "sandbox";
+      const deepLink = isSandbox
+        ? `intoss-private://appsintoss?_deploymentId=${env.getDeploymentId()}`
+        : "intoss://fortune-cat";
+
+      const tossLink = await getTossShareLink(deepLink, getOgImageUrl());
+      await share({ message: tossLink });
+    } catch (error) {
+      console.error("[HomePage] 공유 실패:", error);
+    }
+  };
+
   return (
     <div style={styles.container}>
       {/* 히어로 영역 */}
@@ -127,33 +152,85 @@ export default function HomePage() {
         <h1
           style={{
             position: "relative",
-            fontSize: "32px",
+            fontSize: "36px",
             fontWeight: "800",
             color: "#fff",
-            margin: "0 0 8px 0",
+            margin: "0 0 0px 0",
             textShadow: "0 1px 4px rgba(0,0,0,0.3)",
           }}
         >
           복냥사주
         </h1>
-        <p
+        <div
           style={{
             position: "relative",
-            fontSize: "18px",
-            color: "#fff",
-            margin: 0,
-            textShadow:
-              "-1px -1px 0 rgba(0,0,0,0.5), 1px -1px 0 rgba(0,0,0,0.5), -1px 1px 0 rgba(0,0,0,0.5), 1px 1px 0 rgba(0,0,0,0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          AI가 알려주는 당신의 운명
-        </p>
+          <p
+            style={{
+              fontSize: "24px",
+              color: "#fff",
+              margin: 0,
+              textShadow:
+                "-1px -1px 0 rgba(0,0,0,0.5), 1px -1px 0 rgba(0,0,0,0.5), -1px 1px 0 rgba(0,0,0,0.5), 1px 1px 0 rgba(0,0,0,0.5)",
+            }}
+          >
+            AI가 알려주는 당신의 운명
+          </p>
+          <button
+            onClick={handleShare}
+            style={{
+              background: "rgba(255,255,255,0.8)",
+              border: "none",
+              borderRadius: "50%",
+              width: "44px",
+              height: "44px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              flexShrink: 0,
+              boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+            }}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#191F28"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {isLoading ? (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', gap: '16px' }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "60px 20px",
+            gap: "16px",
+          }}
+        >
           <Loader />
-          <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>메뉴를 불러오는 중...</p>
+          <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
+            메뉴를 불러오는 중...
+          </p>
         </div>
       ) : (
         <div style={styles.sectionsContainer}>
@@ -162,9 +239,13 @@ export default function HomePage() {
             <div style={styles.sectionHeader}>
               <span style={styles.sectionIcon}>🧧</span>
               <h2 style={styles.sectionTitle}>2026 신년운세</h2>
-              <span style={{ ...styles.badge, backgroundColor: colors.red500 }}>NEW</span>
+              <span style={{ ...styles.badge, backgroundColor: colors.red500 }}>
+                NEW
+              </span>
             </div>
-            <p style={styles.sectionDescription}>운세 보고 질문도 무제한으로 하기</p>
+            <p style={styles.sectionDescription}>
+              운세 보고 질문도 무제한으로 하기
+            </p>
             <div style={styles.typeGrid}>
               {newYearTypes.map((type) => (
                 <button
@@ -173,7 +254,7 @@ export default function HomePage() {
                   style={styles.typeCard}
                 >
                   <div style={styles.typeIconWrapper}>
-                    <span style={{ fontSize: '32px' }}>{type.icon}</span>
+                    <span style={{ fontSize: "32px" }}>{type.icon}</span>
                   </div>
                   <div style={styles.typeCardContent}>
                     <div style={styles.typeCardTitle}>{type.title_ko}</div>
@@ -191,7 +272,9 @@ export default function HomePage() {
             <div style={styles.sectionHeader}>
               <h2 style={styles.sectionTitle}>이미지 사주</h2>
             </div>
-            <p style={styles.sectionDescription}>이미지와 함께 운세를 읽어드려요</p>
+            <p style={styles.sectionDescription}>
+              이미지와 함께 운세를 읽어드려요
+            </p>
             <div style={styles.typeGrid}>
               {sajuTypes.map((type) => (
                 <button
@@ -220,9 +303,15 @@ export default function HomePage() {
             <div style={styles.sectionHeader}>
               <span style={styles.sectionIcon}>🧿</span>
               <h2 style={styles.sectionTitle}>부적 아트 이미지</h2>
-              <span style={{ ...styles.badge, backgroundColor: colors.purple500 }}>NEW</span>
+              <span
+                style={{ ...styles.badge, backgroundColor: colors.purple500 }}
+              >
+                NEW
+              </span>
             </div>
-            <p style={styles.sectionDescription}>나만을 위한 특별한 부적 이미지</p>
+            <p style={styles.sectionDescription}>
+              나만을 위한 특별한 부적 이미지
+            </p>
             <div style={styles.typeGrid}>
               {amuletTypes.map((type) => (
                 <button

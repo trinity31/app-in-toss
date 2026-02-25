@@ -33,6 +33,11 @@ export function getAmuletIntroImageUrl() {
   return data.publicUrl;
 }
 
+export function getOgImageUrl() {
+  const { data } = supabase.storage.from("menu_images").getPublicUrl("og_image.png");
+  return data.publicUrl;
+}
+
 // 부적 주문 제한 설정 (기본값, Supabase에서 가져오지 못할 경우 사용)
 export const DEFAULT_DAILY_ORDER_LIMIT = 50;
 export const DEFAULT_LOW_STOCK_THRESHOLD = 10;
