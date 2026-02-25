@@ -69,6 +69,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
   ]);
   const [inputMessage, setInputMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [lastFailedMessage, setLastFailedMessage] = useState(null);
 
   // callback ref: 로딩 표시가 DOM에 마운트되면 스크롤
   // setTimeout으로 사용자 메시지 버블의 레이아웃 완료를 기다린 후 스크롤
@@ -88,6 +89,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
 
     Analytics.click({ button_name: "deep_reading_chat" });
 
+    setLastFailedMessage(null);
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setIsSending(true);
 
@@ -136,11 +138,12 @@ export default function DeepReadingResult({ userData, onRestart }) {
         },
       });
 
+      setLastFailedMessage(userMessage);
       setMessages((prev) => [
         ...prev,
         {
           role: "error",
-          content: "메시지 전송에 실패했습니다. 다시 시도해 주세요.",
+          content: "메시지 전송에 실패했습니다.",
         },
       ]);
     } finally {
@@ -390,17 +393,41 @@ export default function DeepReadingResult({ userData, onRestart }) {
                       </ReactMarkdown>
                     </div>
                   ) : (
-                    <p
-                      style={{
-                        fontSize: "15px",
-                        lineHeight: "1.6",
-                        margin: 0,
-                        whiteSpace: "pre-wrap",
-                        color: message.role === "error" ? "#F04452" : undefined,
-                      }}
-                    >
-                      {message.content}
-                    </p>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: "15px",
+                          lineHeight: "1.6",
+                          margin: 0,
+                          whiteSpace: "pre-wrap",
+                          color: message.role === "error" ? "#F04452" : undefined,
+                        }}
+                      >
+                        {message.content}
+                      </p>
+                      {message.role === "error" && lastFailedMessage && (
+                        <button
+                          onClick={() => {
+                            // 에러 메시지 제거 후 재시도
+                            setMessages((prev) => prev.filter((m) => m !== message));
+                            sendMessage(lastFailedMessage);
+                          }}
+                          style={{
+                            marginTop: "8px",
+                            padding: "6px 14px",
+                            fontSize: "13px",
+                            fontWeight: "600",
+                            color: "#F04452",
+                            background: "transparent",
+                            border: "1px solid #F04452",
+                            borderRadius: "16px",
+                            cursor: "pointer",
+                          }}
+                        >
+                          다시 시도하기
+                        </button>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>

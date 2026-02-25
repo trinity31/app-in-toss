@@ -290,6 +290,13 @@ export default function DeepReadingLoading({ userData, onNext }) {
     };
   }, []);
 
+  const retryApiOnly = () => {
+    setApiError(null);
+    apiCalledRef.current = false;
+    setCurrentStep(-1);
+    callDeepReadingApi();
+  };
+
   if (apiError) {
     return (
       <div
@@ -318,7 +325,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
         </h2>
 
         <button
-          onClick={() => window.location.reload()}
+          onClick={retryApiOnly}
           style={{
             marginTop: "24px",
             padding: "16px 32px",
@@ -328,6 +335,22 @@ export default function DeepReadingLoading({ userData, onNext }) {
             background: "var(--color-primary)",
             border: "none",
             borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          다시 시도하기
+        </button>
+
+        <button
+          onClick={() => window.location.reload()}
+          style={{
+            marginTop: "12px",
+            padding: "12px 32px",
+            fontSize: "14px",
+            fontWeight: "500",
+            color: "var(--color-primary)",
+            background: "transparent",
+            border: "none",
             cursor: "pointer",
           }}
         >
