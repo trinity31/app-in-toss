@@ -26,7 +26,11 @@ export default function NewYearPage() {
   // 저장된 정보로 초기화 + 선택된 타입 세팅
   useEffect(() => {
     if (!loading) {
-      const initialData = storedUserInfo ? { ...storedUserInfo } : {}
+      const { partnerName, partnerBirthdate, partnerGender, ...baseInfo } = storedUserInfo || {}
+      const isCompatibility = selectedType?.fortuneType === 'ai_saju_compatibility'
+      const initialData = isCompatibility
+        ? { ...baseInfo, partnerName, partnerBirthdate, partnerGender }
+        : { ...baseInfo }
       if (selectedType) {
         Object.assign(initialData, selectedType)
       }
@@ -43,7 +47,10 @@ export default function NewYearPage() {
       const dataToSave = {
         name: updatedData.name,
         birthdate: updatedData.birthdate,
-        gender: updatedData.gender
+        gender: updatedData.gender,
+        partnerName: updatedData.partnerName || undefined,
+        partnerBirthdate: updatedData.partnerBirthdate || undefined,
+        partnerGender: updatedData.partnerGender || undefined,
       }
       saveUserInfo(dataToSave)
     }
@@ -84,12 +91,12 @@ export default function NewYearPage() {
 
   switch (currentPage) {
     case 'userInfo':
-      return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} />
+      return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} isCompatibility={selectedType?.fortuneType === 'ai_saju_compatibility'} />
     case 'loading':
       return <DeepReadingLoading userData={userData} onNext={handleNext} />
     case 'result':
       return <DeepReadingResult userData={userData} onRestart={handleRestart} />
     default:
-      return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} />
+      return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} isCompatibility={selectedType?.fortuneType === 'ai_saju_compatibility'} />
   }
 }

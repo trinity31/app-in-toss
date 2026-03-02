@@ -81,7 +81,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
     }
   }, []);
 
-  const sendMessage = async (messageText) => {
+  const sendMessage = async (messageText, { skipAd = false } = {}) => {
     if (!messageText.trim() || isSending) return;
 
     const userMessage = messageText.trim();
@@ -96,22 +96,27 @@ export default function DeepReadingResult({ userData, onRestart }) {
     try {
       const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      const endpoint = `${baseUrl}/deep-reading/chat`;
+      const isCompatibility = !!userData.partnerName;
+      const endpoint = isCompatibility
+        ? `${baseUrl}/deep-reading-match/chat`
+        : `${baseUrl}/deep-reading/chat`;
 
-      // 광고 표시와 API 호출을 동시에 시작
-      const [response] = await Promise.all([
-        fetch(endpoint, {
-          method: "POST",
-          headers: {
-            "X-API-Key": apiKey,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            thread_id: fortuneResult.thread_id,
-            message: userMessage,
-          }),
+      const apiCall = fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "X-API-Key": apiKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          thread_id: fortuneResult.thread_id,
+          message: userMessage,
         }),
-        showRewardedAd(),
+      });
+
+      // 재시도 시 광고 스킵
+      const [response] = await Promise.all([
+        apiCall,
+        skipAd ? Promise.resolve() : showRewardedAd(),
       ]);
 
       if (!response.ok) {
@@ -408,9 +413,9 @@ export default function DeepReadingResult({ userData, onRestart }) {
                       {message.role === "error" && lastFailedMessage && (
                         <button
                           onClick={() => {
-                            // 에러 메시지 제거 후 재시도
+                            // 에러 메시지 제거 후 광고 없이 재시도
                             setMessages((prev) => prev.filter((m) => m !== message));
-                            sendMessage(lastFailedMessage);
+                            sendMessage(lastFailedMessage, { skipAd: true });
                           }}
                           style={{
                             marginTop: "8px",

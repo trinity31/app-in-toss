@@ -20,6 +20,7 @@ const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const [aiSajuTypes, setAiSajuTypes] = useState([]);
   const [newYearTypes, setNewYearTypes] = useState([]);
   const [sajuTypes, setSajuTypes] = useState([]);
   const [amuletTypes, setAmuletTypes] = useState([]);
@@ -46,7 +47,12 @@ export default function HomePage() {
     async function fetchAllTypes() {
       try {
         setIsLoading(true);
-        const [newYearRes, sajuRes, amuletRes] = await Promise.all([
+        const [aiSajuRes, newYearRes, sajuRes, amuletRes] = await Promise.all([
+          supabase
+            .from("ai_saju_types")
+            .select("*")
+            .eq("is_active", true)
+            .order("display_order", { ascending: true }),
           supabase
             .from("new_year_fortune_types")
             .select("*")
@@ -63,6 +69,7 @@ export default function HomePage() {
             .order("display_order", { ascending: true }),
         ]);
 
+        if (aiSajuRes.data) setAiSajuTypes(aiSajuRes.data);
         if (newYearRes.data) setNewYearTypes(newYearRes.data);
         if (sajuRes.data) setSajuTypes(sajuRes.data);
         if (amuletRes.data) setAmuletTypes(amuletRes.data);
@@ -234,6 +241,41 @@ export default function HomePage() {
         </div>
       ) : (
         <div style={styles.sectionsContainer}>
+          {/* 섹션: AI 사주 분석 */}
+          <section>
+            <div style={styles.sectionHeader}>
+              <span style={styles.sectionIcon}>🔮</span>
+              <h2 style={styles.sectionTitle}>AI 사주 분석</h2>
+              <span
+                style={{ ...styles.badge, backgroundColor: colors.blue500 }}
+              >
+                NEW
+              </span>
+            </div>
+            <p style={styles.sectionDescription}>
+              사주팔자로 깊이 있는 분석을 받아보세요
+            </p>
+            <div style={styles.typeGrid}>
+              {aiSajuTypes.map((type) => (
+                <button
+                  key={type.id}
+                  onClick={() => handleNewYearTypeClick(type)}
+                  style={styles.typeCard}
+                >
+                  <div style={styles.typeIconWrapper}>
+                    <span style={{ fontSize: "32px" }}>{type.icon}</span>
+                  </div>
+                  <div style={styles.typeCardContent}>
+                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardDesc}>{type.description_ko}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <div style={styles.divider} />
+
           {/* 섹션 1: 신년운세 */}
           <section>
             <div style={styles.sectionHeader}>
@@ -433,9 +475,6 @@ const styles = {
     fontSize: "13px",
     color: "#6B7684",
     lineHeight: "1.4",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
   },
   divider: {
     height: "1px",

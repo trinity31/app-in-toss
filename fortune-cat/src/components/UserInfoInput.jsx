@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) {
+export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, isCompatibility = false }) {
   const [name, setName] = useState(initialUserInfo?.name || '')
   const [year, setYear] = useState(initialUserInfo?.birthdate?.year || '')
   const [month, setMonth] = useState(initialUserInfo?.birthdate?.month || '')
@@ -12,6 +12,9 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
   const [selectedGender, setSelectedGender] = useState(initialUserInfo?.gender || null)
   const [activeMenu, setActiveMenu] = useState(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+  const [inputStep, setInputStep] = useState(1)
+  const [myInfo, setMyInfo] = useState(null)
+  const [myInfoFields, setMyInfoFields] = useState(null)
 
   const yearRef = useRef(null)
   const monthRef = useRef(null)
@@ -98,7 +101,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
       minute = '45'
     }
 
-    onNext({
+    const personData = {
       name: name.trim(),
       birthdate: {
         year,
@@ -112,7 +115,36 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
         minuteRange: minuteRange || null
       },
       gender: selectedGender
-    })
+    }
+
+    if (isCompatibility && inputStep === 1) {
+      setMyInfo(personData)
+      setMyInfoFields({ name, year, month, day, birthdayType, period, hour12, minuteRange, selectedGender })
+      setName('')
+      setYear('')
+      setMonth('')
+      setDay('')
+      setBirthdayType('solar')
+      setPeriod('')
+      setHour12('')
+      setMinuteRange('')
+      setSelectedGender(null)
+      setInputStep(2)
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (isCompatibility && inputStep === 2) {
+      onNext({
+        ...myInfo,
+        partnerName: personData.name,
+        partnerBirthdate: personData.birthdate,
+        partnerGender: personData.gender
+      })
+      return
+    }
+
+    onNext(personData)
   }
 
   const handleYearChange = (e) => {
@@ -139,6 +171,26 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
   return (
     <>
       <div style={{ padding: '20px 20px 140px' }}>
+        {isCompatibility && (
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            marginBottom: '20px',
+            padding: '12px 16px',
+            background: inputStep === 1 ? '#EFF6FF' : '#FFF1F2',
+            borderRadius: '12px'
+          }}>
+            <span style={{ fontSize: '20px' }}>{inputStep === 1 ? '👤' : '💕'}</span>
+            <span style={{ fontSize: '16px', fontWeight: '600', color: '#191F28' }}>
+              {inputStep === 1 ? '나의 정보 입력' : '상대방 정보 입력'}
+            </span>
+            <span style={{ fontSize: '13px', color: '#6B7684', marginLeft: 'auto' }}>
+              {inputStep} / 2
+            </span>
+          </div>
+        )}
+
         {/* 이름 입력 */}
         <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
           이름을 입력해주세요
@@ -518,7 +570,25 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {} }) 
         transition: 'bottom 0.2s ease-out'
       }}>
         <button
-          onClick={onBack}
+          onClick={() => {
+            if (isCompatibility && inputStep === 2) {
+              if (myInfoFields) {
+                setName(myInfoFields.name)
+                setYear(myInfoFields.year)
+                setMonth(myInfoFields.month)
+                setDay(myInfoFields.day)
+                setBirthdayType(myInfoFields.birthdayType)
+                setPeriod(myInfoFields.period)
+                setHour12(myInfoFields.hour12)
+                setMinuteRange(myInfoFields.minuteRange)
+                setSelectedGender(myInfoFields.selectedGender)
+              }
+              setInputStep(1)
+              window.scrollTo(0, 0)
+            } else {
+              onBack()
+            }
+          }}
           style={{
             flex: 1,
             padding: '16px',

@@ -186,63 +186,106 @@ export default function DeepReadingLoading({ userData, onNext }) {
         180000,
       );
 
-      const formData = new FormData();
-
-      // name
-      formData.append("name", userData.name || "사용자");
-
-      // datetime (YYYY-MM-DD)
-      formData.append("datetime", formatBirthdate(userData.birthdate));
-
-      // gender: male/female 그대로 전송
-      formData.append("gender", userData.gender);
-
-      // hour, minute, am_pm (선택적)
-      if (
-        userData.birthdate?.period &&
-        userData.birthdate.period !== "unknown"
-      ) {
-        if (userData.birthdate?.hour12) {
-          formData.append("hour", userData.birthdate.hour12);
-        }
-        if (userData.birthdate?.minuteRange) {
-          const minute =
-            userData.birthdate.minuteRange === "0-29" ? "00" : "30";
-          formData.append("minute", minute);
-        }
-        formData.append("am_pm", userData.birthdate.period.toUpperCase());
-      }
-
-      // birthday_type
-      formData.append("birthday_type", userData.birthdate?.birthdayType || "solar");
-
-      // reading_type
-      if (userData.readingType) {
-        formData.append("reading_type", userData.readingType);
-      }
-
-      // concerns: 선택된 운세 타입 제목
-      if (userData.fortuneTypeTitle) {
-        formData.append("concerns", userData.fortuneTypeTitle);
-      }
-
-      // language
-      formData.append("language", "ko");
-
+      const isCompatibility = !!userData.partnerName;
       const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      const endpoint = `${baseUrl}/deep-reading/start`;
 
-      console.log("Deep Reading API 호출 시작:", { endpoint, userData });
+      const buildBirthTime = (birthdate) => {
+        if (birthdate?.period && birthdate.period !== "unknown" && birthdate?.hour) {
+          const h = String(birthdate.hour).padStart(2, "0");
+          const m = birthdate?.minute || "00";
+          return `${h}:${m}`;
+        }
+        return null;
+      };
 
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "X-API-Key": apiKey,
-        },
-        body: formData,
-        signal: abortControllerRef.current.signal,
-      });
+      let endpoint;
+      let fetchOptions;
+
+      if (isCompatibility) {
+        endpoint = `${baseUrl}/deep-reading-match/start`;
+
+        const body = {
+          person1: {
+            name: userData.name || "사용자",
+            gender: userData.gender,
+            birthday: formatBirthdate(userData.birthdate),
+            birthday_type: userData.birthdate?.birthdayType || "solar",
+          },
+          person2: {
+            name: userData.partnerName,
+            gender: userData.partnerGender,
+            birthday: formatBirthdate(userData.partnerBirthdate),
+            birthday_type: userData.partnerBirthdate?.birthdayType || "solar",
+          },
+          language: "ko",
+        };
+
+        const person1Time = buildBirthTime(userData.birthdate);
+        if (person1Time) body.person1.birth_time = person1Time;
+
+        const person2Time = buildBirthTime(userData.partnerBirthdate);
+        if (person2Time) body.person2.birth_time = person2Time;
+
+        if (userData.fortuneTypeTitle) {
+          body.concerns = userData.fortuneTypeTitle;
+        }
+
+        fetchOptions = {
+          method: "POST",
+          headers: {
+            "X-API-Key": apiKey,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+          signal: abortControllerRef.current.signal,
+        };
+      } else {
+        endpoint = `${baseUrl}/deep-reading/start`;
+
+        const formData = new FormData();
+        formData.append("name", userData.name || "사용자");
+        formData.append("datetime", formatBirthdate(userData.birthdate));
+        formData.append("gender", userData.gender);
+
+        if (
+          userData.birthdate?.period &&
+          userData.birthdate.period !== "unknown"
+        ) {
+          if (userData.birthdate?.hour12) {
+            formData.append("hour", userData.birthdate.hour12);
+          }
+          if (userData.birthdate?.minuteRange) {
+            const minute =
+              userData.birthdate.minuteRange === "0-29" ? "00" : "30";
+            formData.append("minute", minute);
+          }
+          formData.append("am_pm", userData.birthdate.period.toUpperCase());
+        }
+
+        formData.append("birthday_type", userData.birthdate?.birthdayType || "solar");
+
+        if (userData.readingType) {
+          formData.append("reading_type", userData.readingType);
+        }
+        if (userData.fortuneTypeTitle) {
+          formData.append("concerns", userData.fortuneTypeTitle);
+        }
+        formData.append("language", "ko");
+
+        fetchOptions = {
+          method: "POST",
+          headers: {
+            "X-API-Key": apiKey,
+          },
+          body: formData,
+          signal: abortControllerRef.current.signal,
+        };
+      }
+
+      console.log("Deep Reading API 호출 시작:", { endpoint, isCompatibility, userData });
+
+      const response = await fetch(endpoint, fetchOptions);
 
       clearTimeout(timeoutId);
 
