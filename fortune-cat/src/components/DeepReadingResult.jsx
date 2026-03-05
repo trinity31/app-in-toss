@@ -3,6 +3,7 @@ import { useState, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import * as Sentry from "@sentry/react";
 import { Analytics } from "@apps-in-toss/web-framework";
+import { logEvent } from "../lib/firebase";
 
 const AD_GROUP_ID =
   import.meta.env.VITE_AD_GROUP_ID || "ait-ad-test-rewarded-id";
@@ -81,12 +82,19 @@ export default function DeepReadingResult({ userData, onRestart }) {
     }
   }, []);
 
-  const sendMessage = async (messageText, { skipAd = false } = {}) => {
+  const sendMessage = async (messageText, { skipAd = false, inputType = "free_text" } = {}) => {
     if (!messageText.trim() || isSending) return;
 
     const userMessage = messageText.trim();
     setInputMessage("");
 
+    const questionIndex = messages.filter((m) => m.role === "user").length + 1;
+    logEvent("follow_up_question", {
+      fortune_type: userData.selectedType?.fortuneType || "",
+      fortune_title: fortuneTypeTitle || "",
+      question_index: questionIndex,
+      input_type: inputType,
+    });
     Analytics.click({ button_name: "deep_reading_chat" });
 
     setLastFailedMessage(null);
@@ -158,7 +166,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
 
   const handleSendMessage = () => sendMessage(inputMessage);
 
-  const handleFollowUpClick = (question) => sendMessage(question);
+  const handleFollowUpClick = (question) => sendMessage(question, { inputType: "follow_up_button" });
 
   const markdownComponents = {
     h2: ({ node, ...props }) => (

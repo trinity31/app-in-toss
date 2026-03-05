@@ -15,6 +15,7 @@ import {
   getOgImageUrl,
 } from "../lib/supabase";
 import heroBackground from "../assets/images/hero.png";
+import { logEvent } from "../lib/firebase";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -83,7 +84,12 @@ export default function HomePage() {
     fetchAllTypes();
   }, []);
 
-  const handleNewYearTypeClick = (type) => {
+  const handleNewYearTypeClick = (type, section) => {
+    logEvent("menu_click", {
+      section,
+      menu_code: type.code,
+      menu_title: type.title_ko,
+    });
     navigate("/newyear", {
       state: {
         selectedType: {
@@ -97,6 +103,11 @@ export default function HomePage() {
   };
 
   const handleSajuTypeClick = (type) => {
+    logEvent("menu_click", {
+      section: "image_saju",
+      menu_code: type.code,
+      menu_title: type.title_ko,
+    });
     navigate("/saju", {
       state: {
         selectedType: {
@@ -110,6 +121,11 @@ export default function HomePage() {
   };
 
   const handleAmuletTypeClick = (type) => {
+    logEvent("menu_click", {
+      section: "amulet",
+      menu_code: type.code,
+      menu_title: type.title_ko,
+    });
     navigate("/amulet", {
       state: {
         selectedType: {
@@ -121,6 +137,7 @@ export default function HomePage() {
   };
 
   const handleShare = async () => {
+    logEvent("share_click");
     try {
       const isSandbox = getOperationalEnvironment() === "sandbox";
       const deepLink = isSandbox
@@ -259,7 +276,7 @@ export default function HomePage() {
               {aiSajuTypes.map((type) => (
                 <button
                   key={type.id}
-                  onClick={() => handleNewYearTypeClick(type)}
+                  onClick={() => handleNewYearTypeClick(type, "ai_saju")}
                   style={styles.typeCard}
                 >
                   <div style={styles.typeIconWrapper}>
@@ -292,7 +309,7 @@ export default function HomePage() {
               {newYearTypes.map((type) => (
                 <button
                   key={type.id}
-                  onClick={() => handleNewYearTypeClick(type)}
+                  onClick={() => handleNewYearTypeClick(type, "new_year")}
                   style={styles.typeCard}
                 >
                   <div style={styles.typeIconWrapper}>
