@@ -109,7 +109,12 @@ export default function DeepReadingResult({ userData, onRestart }) {
         ? `${baseUrl}/deep-reading-match/chat`
         : `${baseUrl}/deep-reading/chat`;
 
-      const apiCall = fetch(endpoint, {
+      // 재시도 시 광고 스킵, 광고 시청 완료 후 API 호출
+      if (!skipAd) {
+        await showRewardedAd();
+      }
+
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "X-API-Key": apiKey,
@@ -120,12 +125,6 @@ export default function DeepReadingResult({ userData, onRestart }) {
           message: userMessage,
         }),
       });
-
-      // 재시도 시 광고 스킵
-      const [response] = await Promise.all([
-        apiCall,
-        skipAd ? Promise.resolve() : showRewardedAd(),
-      ]);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -311,7 +310,9 @@ export default function DeepReadingResult({ userData, onRestart }) {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: `repeat(${fortuneResult.summary.length}, 1fr)`,
+                  gridTemplateColumns: fortuneResult.summary.length >= 4
+                    ? "repeat(2, 1fr)"
+                    : `repeat(${fortuneResult.summary.length}, 1fr)`,
                   gap: "8px",
                 }}
               >
@@ -330,9 +331,8 @@ export default function DeepReadingResult({ userData, onRestart }) {
                     </div>
                     <div
                       style={{
-                        fontSize: "13px",
-                        fontWeight: "bold",
-                        color: "#191F28",
+                        fontSize: "11px",
+                        color: "#8B95A1",
                         marginBottom: "4px",
                       }}
                     >
@@ -350,8 +350,9 @@ export default function DeepReadingResult({ userData, onRestart }) {
                     </div>
                     <div
                       style={{
-                        fontSize: "11px",
-                        color: "#8B95A1",
+                        fontSize: "13px",
+                        fontWeight: "bold",
+                        color: "#191F28",
                         lineHeight: "1.4",
                       }}
                     >
