@@ -274,6 +274,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
         }}
       >
         <h1
+          className="result-fade-in"
           style={{
             fontSize: "22px",
             fontWeight: "bold",
@@ -298,6 +299,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
         {fortuneResult.headline && (
           <div style={{ marginBottom: "20px" }}>
             <p
+              className="result-fade-in-delay-1"
               style={{
                 fontSize: "18px",
                 fontWeight: "bold",
@@ -311,6 +313,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
             </p>
             {fortuneResult.summary?.length > 0 && (
               <div
+                className="result-fade-in-delay-2"
                 style={{
                   display: "grid",
                   gridTemplateColumns: fortuneResult.summary.length >= 4
@@ -372,7 +375,11 @@ export default function DeepReadingResult({ userData, onRestart }) {
           const isLastAssistant =
             message.role === "assistant" && index === messages.length - 1;
           return (
-            <div key={index} style={{ marginBottom: "16px" }}>
+            <div
+              key={index}
+              className={index === 0 ? "result-fade-in-delay-3" : undefined}
+              style={{ marginBottom: "16px" }}
+            >
               <div
                 style={{
                   display: "flex",

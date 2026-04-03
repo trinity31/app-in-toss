@@ -119,6 +119,7 @@ export default function Result({ userData, onRestart }) {
         }}
       >
         <h1
+          className="result-fade-in"
           style={{
             fontSize: "24px",
             fontWeight: "bold",
@@ -137,7 +138,7 @@ export default function Result({ userData, onRestart }) {
         </p> */}
 
         {fortuneResult?.image_base64 && (
-          <div style={{ marginBottom: "24px" }}>
+          <div className="result-fade-in-delay-1" style={{ marginBottom: "24px" }}>
             <img
               src={`data:image/png;base64,${fortuneResult.image_base64}`}
               alt="사주 이미지"
@@ -209,6 +210,7 @@ export default function Result({ userData, onRestart }) {
 
         {fortuneResult?.reading && (
           <div
+            className="result-fade-in-delay-2"
             style={{
               background: "var(--color-primary-light)",
               borderRadius: "12px",
