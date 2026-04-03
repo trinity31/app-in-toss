@@ -29,6 +29,61 @@ export default function HomePage() {
   const [amuletTypes, setAmuletTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({});
+
+  const toggleSection = (key) =>
+    setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const scrollToSection = (sectionId) => {
+    document.getElementById(`section-${sectionId}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const quickMenuItems = [
+    {
+      emoji: "🔮",
+      label: "사주분석",
+      onTap: () => {
+        logEvent("quick_menu_click", { menu: "사주분석" });
+        scrollToSection("ai_saju");
+      },
+    },
+    {
+      emoji: "🧧",
+      label: "신년운세",
+      onTap: () => {
+        logEvent("quick_menu_click", { menu: "신년운세" });
+        scrollToSection("new_year");
+      },
+    },
+    {
+      emoji: "💕",
+      label: "궁합풀이",
+      onTap: () => {
+        logEvent("quick_menu_click", { menu: "궁합풀이" });
+        navigate("/newyear", {
+          state: {
+            selectedType: {
+              fortuneType: "ai_saju_compatibility",
+              themeType: "ai_saju",
+              readingType: "ai_saju",
+              fortuneTypeTitle: "궁합풀이",
+            },
+          },
+        });
+      },
+    },
+    {
+      emoji: "🧿",
+      label: "부적아트",
+      onTap: () => {
+        logEvent("quick_menu_click", { menu: "부적아트" });
+        scrollToSection("amulet");
+      },
+    },
+  ];
 
   const fetchAllTypes = async () => {
     try {
@@ -140,6 +195,9 @@ export default function HomePage() {
     }
   };
 
+  const getDisplayItems = (items, sectionKey, limit = 3) =>
+    expandedSections[sectionKey] ? items : items.slice(0, limit);
+
   return (
     <div style={styles.container}>
       {/* 히어로 영역 */}
@@ -229,6 +287,22 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Quick Menu */}
+      <div style={styles.quickMenuContainer}>
+        {quickMenuItems.map((item) => (
+          <button
+            key={item.label}
+            onClick={item.onTap}
+            style={styles.quickMenuItem}
+          >
+            <div style={styles.quickMenuCircle}>
+              <span style={{ fontSize: "24px" }}>{item.emoji}</span>
+            </div>
+            <span style={styles.quickMenuLabel}>{item.label}</span>
+          </button>
+        ))}
+      </div>
+
       {isLoading ? (
         <div
           style={{
@@ -278,21 +352,31 @@ export default function HomePage() {
       ) : (
         <div style={styles.sectionsContainer}>
           {/* 섹션: AI 사주 분석 */}
-          <section>
-            <div style={styles.sectionHeader}>
-              <span style={styles.sectionIcon}>🔮</span>
-              <h2 style={styles.sectionTitle}>AI 사주 분석</h2>
-              <span
-                style={{ ...styles.badge, backgroundColor: colors.blue500 }}
-              >
-                NEW
-              </span>
+          <section id="section-ai_saju">
+            <div style={styles.sectionHeaderRow}>
+              <div style={styles.sectionHeaderLeft}>
+                <span style={styles.sectionIcon}>🔮</span>
+                <h2 style={styles.sectionTitle}>AI 사주 분석</h2>
+                <span
+                  style={{ ...styles.badge, backgroundColor: colors.blue500 }}
+                >
+                  NEW
+                </span>
+              </div>
+              {aiSajuTypes.length > 3 && (
+                <button
+                  onClick={() => toggleSection("ai_saju")}
+                  style={styles.moreButton}
+                >
+                  {expandedSections["ai_saju"] ? "접기" : "더보기"}
+                </button>
+              )}
             </div>
             <p style={styles.sectionDescription}>
               사주팔자로 깊이 있는 분석을 받아보세요
             </p>
             <div style={styles.typeGrid}>
-              {aiSajuTypes.map((type) => (
+              {getDisplayItems(aiSajuTypes, "ai_saju").map((type) => (
                 <button
                   key={type.id}
                   onClick={() => handleNewYearTypeClick(type, "ai_saju")}
@@ -312,20 +396,32 @@ export default function HomePage() {
 
           <div style={styles.divider} />
 
-          {/* 섹션 1: 신년운세 */}
-          <section>
-            <div style={styles.sectionHeader}>
-              <span style={styles.sectionIcon}>🧧</span>
-              <h2 style={styles.sectionTitle}>2026 신년운세</h2>
-              <span style={{ ...styles.badge, backgroundColor: colors.red500 }}>
-                NEW
-              </span>
+          {/* 섹션: 신년운세 */}
+          <section id="section-new_year">
+            <div style={styles.sectionHeaderRow}>
+              <div style={styles.sectionHeaderLeft}>
+                <span style={styles.sectionIcon}>🧧</span>
+                <h2 style={styles.sectionTitle}>2026 신년운세</h2>
+                <span
+                  style={{ ...styles.badge, backgroundColor: colors.red500 }}
+                >
+                  NEW
+                </span>
+              </div>
+              {newYearTypes.length > 3 && (
+                <button
+                  onClick={() => toggleSection("new_year")}
+                  style={styles.moreButton}
+                >
+                  {expandedSections["new_year"] ? "접기" : "더보기"}
+                </button>
+              )}
             </div>
             <p style={styles.sectionDescription}>
               운세 보고 질문도 무제한으로 하기
             </p>
             <div style={styles.typeGrid}>
-              {newYearTypes.map((type) => (
+              {getDisplayItems(newYearTypes, "new_year").map((type) => (
                 <button
                   key={type.id}
                   onClick={() => handleNewYearTypeClick(type, "new_year")}
@@ -345,16 +441,26 @@ export default function HomePage() {
 
           <div style={styles.divider} />
 
-          {/* 섹션 2: 이미지 사주 */}
-          <section>
-            <div style={styles.sectionHeader}>
-              <h2 style={styles.sectionTitle}>이미지 사주</h2>
+          {/* 섹션: 이미지 사주 */}
+          <section id="section-image_saju">
+            <div style={styles.sectionHeaderRow}>
+              <div style={styles.sectionHeaderLeft}>
+                <h2 style={styles.sectionTitle}>이미지 사주</h2>
+              </div>
+              {sajuTypes.length > 3 && (
+                <button
+                  onClick={() => toggleSection("image_saju")}
+                  style={styles.moreButton}
+                >
+                  {expandedSections["image_saju"] ? "접기" : "더보기"}
+                </button>
+              )}
             </div>
             <p style={styles.sectionDescription}>
               이미지와 함께 운세를 읽어드려요
             </p>
             <div style={styles.typeGrid}>
-              {sajuTypes.map((type) => (
+              {getDisplayItems(sajuTypes, "image_saju").map((type) => (
                 <button
                   key={type.id}
                   onClick={() => handleSajuTypeClick(type)}
@@ -376,36 +482,50 @@ export default function HomePage() {
 
           <div style={styles.divider} />
 
-          {/* 섹션 3: 부적 아트 이미지 */}
-          <section>
-            <div style={styles.sectionHeader}>
-              <span style={styles.sectionIcon}>🧿</span>
-              <h2 style={styles.sectionTitle}>부적 아트 이미지</h2>
-              <span
-                style={{ ...styles.badge, backgroundColor: colors.purple500 }}
-              >
-                NEW
-              </span>
+          {/* 섹션: 부적 아트 이미지 */}
+          <section id="section-amulet">
+            <div style={styles.sectionHeaderRow}>
+              <div style={styles.sectionHeaderLeft}>
+                <span style={styles.sectionIcon}>🧿</span>
+                <h2 style={styles.sectionTitle}>부적 아트 이미지</h2>
+                <span
+                  style={{ ...styles.badge, backgroundColor: colors.purple500 }}
+                >
+                  NEW
+                </span>
+              </div>
+              {amuletTypes.length > 4 && (
+                <button
+                  onClick={() => toggleSection("amulet")}
+                  style={styles.moreButton}
+                >
+                  {expandedSections["amulet"] ? "접기" : "전체보기"}
+                </button>
+              )}
             </div>
             <p style={styles.sectionDescription}>
               나만을 위한 특별한 부적 이미지
             </p>
-            <div style={styles.typeGrid}>
-              {amuletTypes.map((type) => (
+            <div style={styles.amuletGrid}>
+              {getDisplayItems(amuletTypes, "amulet", 4).map((type) => (
                 <button
                   key={type.id}
                   onClick={() => handleAmuletTypeClick(type)}
-                  style={styles.typeCard}
+                  style={styles.amuletCard}
                 >
-                  <img
-                    src={getAmuletStyleImageUrl(type.code)}
-                    alt={type.title_ko}
-                    style={styles.typeImage}
-                  />
-                  <div style={styles.typeCardContent}>
-                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
-                    <div style={styles.typeCardDesc}>{type.description_ko}</div>
+                  <div style={styles.amuletImageWrapper}>
+                    <img
+                      src={getAmuletStyleImageUrl(type.code)}
+                      alt={type.title_ko}
+                      style={styles.amuletImage}
+                    />
                   </div>
+                  <div style={styles.amuletCardTitle}>{type.title_ko}</div>
+                  {type.description_ko && (
+                    <div style={styles.amuletCardDesc}>
+                      {type.description_ko}
+                    </div>
+                  )}
                 </button>
               ))}
             </div>
@@ -427,17 +547,51 @@ const styles = {
     backgroundColor: "#fff",
     boxSizing: "border-box",
   },
+  quickMenuContainer: {
+    display: "flex",
+    justifyContent: "space-around",
+    padding: "20px 0 8px",
+  },
+  quickMenuItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "8px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    padding: 0,
+  },
+  quickMenuCircle: {
+    width: "56px",
+    height: "56px",
+    borderRadius: "50%",
+    backgroundColor: "var(--color-primary-light)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  quickMenuLabel: {
+    fontSize: "13px",
+    fontWeight: "500",
+    color: "#191F28",
+  },
   sectionsContainer: {
     width: "100%",
     maxWidth: "400px",
     alignSelf: "center",
     marginTop: "24px",
   },
-  sectionHeader: {
+  sectionHeaderRow: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: "4px",
+  },
+  sectionHeaderLeft: {
     display: "flex",
     alignItems: "center",
     gap: "8px",
-    marginBottom: "4px",
   },
   sectionIcon: {
     fontSize: "24px",
@@ -454,6 +608,17 @@ const styles = {
     color: "#fff",
     padding: "2px 6px",
     borderRadius: "4px",
+  },
+  moreButton: {
+    padding: "6px 14px",
+    fontSize: "13px",
+    fontWeight: "600",
+    color: "#fff",
+    backgroundColor: "var(--color-primary)",
+    border: "none",
+    borderRadius: "16px",
+    cursor: "pointer",
+    flexShrink: 0,
   },
   sectionDescription: {
     fontSize: "14px",
@@ -516,5 +681,52 @@ const styles = {
     height: "1px",
     backgroundColor: "#E5E8EB",
     margin: "28px 0",
+  },
+  amuletGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "12px",
+  },
+  amuletCard: {
+    display: "flex",
+    flexDirection: "column",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    textAlign: "left",
+    padding: 0,
+    width: "100%",
+    minWidth: 0,
+    boxSizing: "border-box",
+  },
+  amuletImageWrapper: {
+    width: "100%",
+    position: "relative",
+    paddingTop: "133%",
+    borderRadius: "16px",
+    overflow: "hidden",
+    backgroundColor: "#F9FAFB",
+  },
+  amuletImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+  amuletCardTitle: {
+    fontSize: "14px",
+    fontWeight: "600",
+    color: "#191F28",
+    marginTop: "8px",
+  },
+  amuletCardDesc: {
+    fontSize: "12px",
+    color: "#6B7684",
+    lineHeight: "1.4",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
 };
