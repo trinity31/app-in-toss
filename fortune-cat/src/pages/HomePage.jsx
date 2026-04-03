@@ -476,6 +476,7 @@ export default function HomePage() {
                   <img
                     src={getMenuImageUrl(type.image_url)}
                     alt={type.title_ko}
+                    loading="lazy"
                     style={styles.typeImage}
                   />
                   <div style={styles.typeCardContent}>
@@ -526,6 +527,7 @@ export default function HomePage() {
                     <img
                       src={getAmuletStyleImageUrl(type.code)}
                       alt={type.title_ko}
+                      loading="lazy"
                       style={styles.amuletImage}
                     />
                   </div>

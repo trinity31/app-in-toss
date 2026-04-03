@@ -18,5 +18,12 @@ export default defineConfig({
     commonjsOptions: {
       ignore: ['react-native', '@granite-js/react-native']
     },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
 })
