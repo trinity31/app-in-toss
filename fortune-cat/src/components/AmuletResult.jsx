@@ -1,8 +1,11 @@
+import { useToast } from "../hooks/useToast";
+
 export default function AmuletResult({
   userData,
   onRestart,
 }) {
   const { name, birthdate, amuletTypeTitle, email, phone } = userData;
+  const { openToast } = useToast();
 
   return (
     <div
@@ -77,51 +80,27 @@ export default function AmuletResult({
           </p>
           <div
             style={{
-              background: "var(--color-white)",
-              borderRadius: "12px",
-              padding: "16px",
-              border: "1px solid var(--color-gray-200)",
+              borderTop: "1px solid var(--color-gray-200)",
+              paddingTop: "16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              textAlign: "left",
             }}
           >
-            <div style={{ marginBottom: "12px" }}>
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: "var(--color-gray-400)",
-                  marginBottom: "4px",
-                }}
-              >
+            <div>
+              <p style={{ fontSize: "13px", color: "var(--color-gray-400)", marginBottom: "2px" }}>
                 발송 예정 이메일
               </p>
-              <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "var(--color-gray-700)",
-                  margin: 0,
-                }}
-              >
+              <p style={{ fontSize: "15px", fontWeight: "600", color: "var(--color-gray-700)", margin: 0 }}>
                 {email}
               </p>
             </div>
             <div>
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: "var(--color-gray-400)",
-                  marginBottom: "4px",
-                }}
-              >
+              <p style={{ fontSize: "13px", color: "var(--color-gray-400)", marginBottom: "2px" }}>
                 휴대폰 번호
               </p>
-              <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "var(--color-gray-700)",
-                  margin: 0,
-                }}
-              >
+              <p style={{ fontSize: "15px", fontWeight: "600", color: "var(--color-gray-700)", margin: 0 }}>
                 {phone}
               </p>
             </div>
@@ -193,7 +172,7 @@ export default function AmuletResult({
           <button
             onClick={() => {
               navigator.clipboard.writeText("admin@davinci-apps.online");
-              alert("이메일 주소가 복사되었습니다");
+              openToast({ message: "이메일 주소가 복사되었습니다" });
             }}
             style={{
               background: "none",
