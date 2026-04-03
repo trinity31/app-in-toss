@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 import ReactMarkdown from "react-markdown";
 import * as Sentry from "@sentry/react";
@@ -61,6 +61,14 @@ export default function DeepReadingResult({ userData, onRestart }) {
   const [inputMessage, setInputMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [lastFailedMessage, setLastFailedMessage] = useState(null);
+  const [bottomBarHeight, setBottomBarHeight] = useState(88);
+  const bottomBarRef = useRef(null);
+
+  useEffect(() => {
+    if (bottomBarRef.current) {
+      setBottomBarHeight(bottomBarRef.current.offsetHeight);
+    }
+  }, []);
 
   // callback ref: 로딩 표시가 DOM에 마운트되면 스크롤
   // setTimeout으로 사용자 메시지 버블의 레이아웃 완료를 기다린 후 스크롤
@@ -196,7 +204,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
         style={{
           flex: 1,
           padding: "20px",
-          paddingBottom: "180px",
+          paddingBottom: `${bottomBarHeight + 100}px`,
           overflowY: "auto",
         }}
       >
@@ -462,7 +470,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
       <div
         style={{
           position: "fixed",
-          bottom: "88px",
+          bottom: `${bottomBarHeight}px`,
           left: 0,
           right: 0,
           background: "var(--color-white)",
@@ -522,6 +530,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
 
       {/* 하단 버튼 */}
       <div
+        ref={bottomBarRef}
         style={{
           position: "fixed",
           bottom: 0,
