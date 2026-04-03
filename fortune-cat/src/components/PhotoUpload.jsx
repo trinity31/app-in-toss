@@ -104,10 +104,10 @@ export default function PhotoUpload({ onNext, onBack }) {
   return (
     <>
       <div style={{ padding: '20px 20px 0', marginBottom: '120px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 8px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 8px 0' }}>
           얼굴 사진을 선택해 주세요 (선택)
         </h1>
-        <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 24px 0' }}>사진을 선택하면 얼굴을 반영해서 만들어 드려요</p>
+        <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', margin: '0 0 24px 0' }}>사진을 선택하면 얼굴을 반영해서 만들어 드려요</p>
 
         {isLoading ? (
           <div style={{
@@ -118,11 +118,11 @@ export default function PhotoUpload({ onNext, onBack }) {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '16px',
-            background: '#F2F4F6',
+            background: 'var(--color-gray-100)',
             borderRadius: '12px'
           }}>
             <Loader />
-            <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>사진을 불러오는 중...</p>
+            <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', margin: 0 }}>사진을 불러오는 중...</p>
           </div>
         ) : selectedPhoto ? (
           <div style={{ marginBottom: '24px' }}>
@@ -144,8 +144,8 @@ export default function PhotoUpload({ onNext, onBack }) {
                 padding: '12px',
                 fontSize: '14px',
                 fontWeight: 'normal',
-                color: '#8B95A1',
-                background: '#F2F4F6',
+                color: 'var(--color-gray-400)',
+                background: 'var(--color-gray-100)',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer'
@@ -165,9 +165,9 @@ export default function PhotoUpload({ onNext, onBack }) {
               padding: '60px 20px',
               fontSize: '16px',
               fontWeight: 'normal',
-              color: '#8B95A1',
-              background: '#F2F4F6',
-              border: '2px dashed #E5E8EB',
+              color: 'var(--color-gray-400)',
+              background: 'var(--color-gray-100)',
+              border: '2px dashed var(--color-gray-200)',
               borderRadius: '12px',
               cursor: 'pointer',
               textAlign: 'center'
@@ -184,7 +184,7 @@ export default function PhotoUpload({ onNext, onBack }) {
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -197,8 +197,8 @@ export default function PhotoUpload({ onNext, onBack }) {
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer'
@@ -245,14 +245,14 @@ export default function PhotoUpload({ onNext, onBack }) {
               bottom: 0,
               left: 0,
               right: 0,
-              background: '#fff',
+              background: 'var(--color-white)',
               borderTopLeftRadius: '24px',
               borderTopRightRadius: '24px',
               padding: '28px 20px calc(28px + env(safe-area-inset-bottom))',
               zIndex: 2001
             }}
           >
-            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#191F28', margin: '0 0 20px 0', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 20px 0', textAlign: 'center' }}>
               사진 선택
             </h3>
 
@@ -266,9 +266,9 @@ export default function PhotoUpload({ onNext, onBack }) {
                 padding: '16px',
                 fontSize: '16px',
                 fontWeight: '600',
-                color: '#191F28',
-                background: '#fff',
-                border: '1px solid #E5E8EB',
+                color: 'var(--color-gray-700)',
+                background: 'var(--color-white)',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '12px',
                 cursor: 'pointer',
                 textAlign: 'left',
@@ -292,9 +292,9 @@ export default function PhotoUpload({ onNext, onBack }) {
                 padding: '16px',
                 fontSize: '16px',
                 fontWeight: '600',
-                color: '#191F28',
-                background: '#fff',
-                border: '1px solid #E5E8EB',
+                color: 'var(--color-gray-700)',
+                background: 'var(--color-white)',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '12px',
                 cursor: 'pointer',
                 textAlign: 'left',
@@ -315,8 +315,8 @@ export default function PhotoUpload({ onNext, onBack }) {
                 padding: '16px',
                 fontSize: '16px',
                 fontWeight: '600',
-                color: '#191F28',
-                background: '#F2F4F6',
+                color: 'var(--color-gray-700)',
+                background: 'var(--color-gray-100)',
                 border: 'none',
                 borderRadius: '12px',
                 cursor: 'pointer'

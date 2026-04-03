@@ -57,7 +57,7 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
             fontSize: "22px",
             lineHeight: "1.4",
             fontWeight: "bold",
-            color: "#191F28",
+            color: "var(--color-gray-700)",
             margin: "0 0 12px 0",
           }}
         >
@@ -76,7 +76,7 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
             }}
           >
             <Loader />
-            <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
+            <p style={{ fontSize: "14px", color: "var(--color-gray-500)", margin: 0 }}>
               부적 스타일을 불러오는 중...
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
             <p
               style={{
                 fontSize: "16px",
-                color: "#F04452",
+                color: "var(--color-error)",
                 marginBottom: "16px",
               }}
             >
@@ -121,11 +121,11 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
                 style={{
                   width: "100%",
                   padding: "16px",
-                  background: selectedType === type.id ? "#F7F8FA" : "#fff",
+                  background: selectedType === type.id ? "#F7F8FA" : "var(--color-white)",
                   border:
                     selectedType === type.id
                       ? "2px solid var(--color-primary)"
-                      : "1px solid #E5E8EB",
+                      : "1px solid var(--color-gray-200)",
                   borderRadius: "12px",
                   cursor: "pointer",
                   textAlign: "left",
@@ -141,7 +141,7 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
                     style={{
                       fontSize: "16px",
                       fontWeight: "600",
-                      color: "#191F28",
+                      color: "var(--color-gray-700)",
                       marginBottom: "4px",
                       transition: "color 0.2s ease",
                     }}
@@ -151,7 +151,7 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
                   <div
                     style={{
                       fontSize: "14px",
-                      color: selectedType === type.id ? "#4E5968" : "#8B95A1",
+                      color: selectedType === type.id ? "var(--color-gray-600)" : "var(--color-gray-400)",
                       transition: "color 0.2s ease",
                     }}
                   >
@@ -186,7 +186,7 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
           left: 0,
           right: 0,
           padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
-          background: "#fff",
+          background: "var(--color-white)",
           display: "flex",
           gap: "12px",
           zIndex: 1000,
@@ -200,8 +200,8 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
             padding: "16px",
             fontSize: "16px",
             fontWeight: "bold",
-            color: "#191F28",
-            background: "#F2F4F6",
+            color: "var(--color-gray-700)",
+            background: "var(--color-gray-100)",
             border: "none",
             borderRadius: "8px",
             cursor: "pointer",

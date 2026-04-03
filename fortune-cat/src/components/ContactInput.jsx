@@ -58,15 +58,15 @@ export default function ContactInput({ onNext, onBack, userData }) {
   return (
     <>
       <div style={{ padding: '20px 20px 0', marginBottom: '120px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 8px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 8px 0' }}>
           부적 이미지를 받을<br />연락처를 입력해 주세요
         </h1>
-        <p style={{ fontSize: '14px', color: '#6B7684', lineHeight: '1.6', margin: '0 0 32px 0' }}>
+        <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', lineHeight: '1.6', margin: '0 0 32px 0' }}>
           24시간 내 이메일과 문자로 발송됩니다
         </p>
 
         <div style={{ marginBottom: '24px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#4E5968', marginBottom: '8px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'var(--color-gray-600)', marginBottom: '8px' }}>
             이메일
           </label>
           <input
@@ -80,7 +80,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
               width: '100%',
               padding: '16px',
               fontSize: '16px',
-              border: '1px solid #E5E8EB',
+              border: '1px solid var(--color-gray-200)',
               borderRadius: '8px',
               outline: 'none',
               boxSizing: 'border-box',
@@ -90,18 +90,18 @@ export default function ContactInput({ onNext, onBack, userData }) {
               e.target.style.borderColor = 'var(--color-primary)'
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#E5E8EB'
+              e.target.style.borderColor = 'var(--color-gray-200)'
             }}
           />
           {email && !isValidEmail && (
-            <p style={{ fontSize: '12px', color: '#F04452', marginTop: '4px' }}>
+            <p style={{ fontSize: '12px', color: 'var(--color-error)', marginTop: '4px' }}>
               올바른 이메일 형식을 입력해 주세요
             </p>
           )}
         </div>
 
         <div style={{ marginBottom: '24px' }}>
-          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#4E5968', marginBottom: '8px' }}>
+          <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: 'var(--color-gray-600)', marginBottom: '8px' }}>
             휴대폰 번호
           </label>
           <input
@@ -114,7 +114,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
               width: '100%',
               padding: '16px',
               fontSize: '16px',
-              border: '1px solid #E5E8EB',
+              border: '1px solid var(--color-gray-200)',
               borderRadius: '8px',
               outline: 'none',
               boxSizing: 'border-box',
@@ -124,11 +124,11 @@ export default function ContactInput({ onNext, onBack, userData }) {
               e.target.style.borderColor = 'var(--color-primary)'
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#E5E8EB'
+              e.target.style.borderColor = 'var(--color-gray-200)'
             }}
           />
           {phone && !isValidPhone && (
-            <p style={{ fontSize: '12px', color: '#F04452', marginTop: '4px' }}>
+            <p style={{ fontSize: '12px', color: 'var(--color-error)', marginTop: '4px' }}>
               올바른 휴대폰 번호를 입력해 주세요
             </p>
           )}
@@ -139,7 +139,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
           borderRadius: '12px',
           padding: '16px'
         }}>
-          <p style={{ fontSize: '13px', color: '#6B7684', margin: 0, lineHeight: '1.6' }}>
+          <p style={{ fontSize: '13px', color: 'var(--color-gray-500)', margin: 0, lineHeight: '1.6' }}>
             입력하신 연락처로 부적 이미지가 발송됩니다.<br />
             정확한 정보를 입력해 주세요.
           </p>
@@ -152,7 +152,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -166,8 +166,8 @@ export default function ContactInput({ onNext, onBack, userData }) {
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer'

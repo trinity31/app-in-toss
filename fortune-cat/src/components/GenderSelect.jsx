@@ -29,7 +29,7 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
   return (
     <>
       <div style={{ padding: '20px 20px 0' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 24px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 24px 0' }}>
           성별을 선택해 주세요
         </h1>
 
@@ -80,7 +80,7 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -93,8 +93,8 @@ export default function GenderSelect({ onNext, onBack, initialGender = null }) {
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer'

@@ -40,7 +40,7 @@ export default function NameInput({ onNext, initialValue = '' }) {
   return (
     <>
       <div style={{ padding: '20px 20px 0' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 32px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 32px 0' }}>
           이름을 입력해주세요
         </h1>
       </div>
@@ -56,9 +56,9 @@ export default function NameInput({ onNext, initialValue = '' }) {
             padding: '20px 0',
             fontSize: '24px',
             border: 'none',
-            borderBottom: '2px solid #E5E8EB',
+            borderBottom: '2px solid var(--color-gray-200)',
             outline: 'none',
-            color: '#191F28'
+            color: 'var(--color-gray-700)'
           }}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
@@ -74,7 +74,7 @@ export default function NameInput({ onNext, initialValue = '' }) {
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         zIndex: 1000,
         boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.08)',
         transition: 'bottom 0.2s ease-out'

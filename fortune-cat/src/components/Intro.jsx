@@ -136,7 +136,7 @@ export default function Intro({
             fontSize: "22px",
             lineHeight: "1.4",
             fontWeight: "bold",
-            color: "#191F28",
+            color: "var(--color-gray-700)",
             margin: "0 0 8px 0",
           }}
         >
@@ -146,7 +146,7 @@ export default function Intro({
           style={{
             fontSize: "15px",
             lineHeight: "1.5",
-            color: "#4E5968",
+            color: "var(--color-gray-600)",
             fontWeight: "500",
             margin: 0,
           }}
@@ -362,7 +362,7 @@ export default function Intro({
           left: 0,
           right: 0,
           padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
-          background: "#fff",
+          background: "var(--color-white)",
         }}
       >
         <button

@@ -231,7 +231,7 @@ export default function AmuletPage() {
         }}
       >
         <Loader />
-        <p style={{ fontSize: "16px", color: "#8B95A1", margin: 0 }}>
+        <p style={{ fontSize: "16px", color: "var(--color-gray-400)", margin: 0 }}>
           로딩 중...
         </p>
       </div>
@@ -297,7 +297,7 @@ export default function AmuletPage() {
     currentPage === "userInfo"
   ) {
     return (
-      <div style={{ minHeight: "100vh", background: "#fff" }}>
+      <div style={{ minHeight: "100vh", background: "var(--color-white)" }}>
         <div
           style={{
             background: "#FFF8E6",
@@ -354,7 +354,7 @@ export default function AmuletPage() {
                 fontSize: "14px",
                 fontWeight: "600",
                 color: "#8B7355",
-                background: "#fff",
+                background: "var(--color-white)",
                 border: "1px solid #E5D9C3",
                 borderRadius: "8px",
                 cursor: isRestoringOrder ? "not-allowed" : "pointer",

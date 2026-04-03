@@ -86,7 +86,7 @@ export default function SajuPage() {
         justifyContent: 'center',
         height: '100vh',
         fontSize: '16px',
-        color: '#8B95A1'
+        color: 'var(--color-gray-400)'
       }}>
         로딩 중...
       </div>

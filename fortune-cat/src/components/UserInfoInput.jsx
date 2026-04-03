@@ -182,17 +182,17 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             borderRadius: '12px'
           }}>
             <span style={{ fontSize: '20px' }}>{inputStep === 1 ? '👤' : '💕'}</span>
-            <span style={{ fontSize: '16px', fontWeight: '600', color: '#191F28' }}>
+            <span style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-gray-700)' }}>
               {inputStep === 1 ? '나의 정보 입력' : '상대방 정보 입력'}
             </span>
-            <span style={{ fontSize: '13px', color: '#6B7684', marginLeft: 'auto' }}>
+            <span style={{ fontSize: '13px', color: 'var(--color-gray-500)', marginLeft: 'auto' }}>
               {inputStep} / 2
             </span>
           </div>
         )}
 
         {/* 이름 입력 */}
-        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
+        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 12px 0' }}>
           이름을 입력해주세요
         </h2>
         <input
@@ -206,15 +206,15 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             padding: '16px 0',
             fontSize: '20px',
             border: 'none',
-            borderBottom: '2px solid #E5E8EB',
+            borderBottom: '2px solid var(--color-gray-200)',
             outline: 'none',
-            color: '#191F28',
+            color: 'var(--color-gray-700)',
             boxSizing: 'border-box'
           }}
         />
 
         {/* 생년월일 입력 */}
-        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '32px 0 12px 0' }}>
+        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '32px 0 12px 0' }}>
           생년월일을 입력해 주세요
         </h2>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '16px' }}>
@@ -230,16 +230,16 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
               width: '40%',
               padding: '14px',
               fontSize: '20px',
-              border: '1px solid #E5E8EB',
+              border: '1px solid var(--color-gray-200)',
               borderRadius: '8px',
               outline: 'none',
               textAlign: 'center',
               boxSizing: 'border-box'
             }}
             onFocus={(e) => { e.target.style.borderColor = 'var(--color-primary)' }}
-            onBlur={(e) => { e.target.style.borderColor = '#E5E8EB' }}
+            onBlur={(e) => { e.target.style.borderColor = 'var(--color-gray-200)' }}
           />
-          <span style={{ color: '#8B95A1', fontSize: '20px' }}>.</span>
+          <span style={{ color: 'var(--color-gray-400)', fontSize: '20px' }}>.</span>
           <input
             ref={monthRef}
             type="text"
@@ -252,16 +252,16 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
               width: '25%',
               padding: '14px',
               fontSize: '20px',
-              border: '1px solid #E5E8EB',
+              border: '1px solid var(--color-gray-200)',
               borderRadius: '8px',
               outline: 'none',
               textAlign: 'center',
               boxSizing: 'border-box'
             }}
             onFocus={(e) => { e.target.style.borderColor = 'var(--color-primary)' }}
-            onBlur={(e) => { e.target.style.borderColor = '#E5E8EB' }}
+            onBlur={(e) => { e.target.style.borderColor = 'var(--color-gray-200)' }}
           />
-          <span style={{ color: '#8B95A1', fontSize: '20px' }}>.</span>
+          <span style={{ color: 'var(--color-gray-400)', fontSize: '20px' }}>.</span>
           <input
             ref={dayRef}
             type="text"
@@ -274,14 +274,14 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
               width: '25%',
               padding: '14px',
               fontSize: '20px',
-              border: '1px solid #E5E8EB',
+              border: '1px solid var(--color-gray-200)',
               borderRadius: '8px',
               outline: 'none',
               textAlign: 'center',
               boxSizing: 'border-box'
             }}
             onFocus={(e) => { e.target.style.borderColor = 'var(--color-primary)' }}
-            onBlur={(e) => { e.target.style.borderColor = '#E5E8EB' }}
+            onBlur={(e) => { e.target.style.borderColor = 'var(--color-gray-200)' }}
           />
         </div>
 
@@ -326,10 +326,10 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
         </div>
 
         {/* 태어난 시간 */}
-        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 8px 0' }}>
+        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 8px 0' }}>
           태어난 시간을 선택해 주세요
         </h2>
-        <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 12px 0' }}>모르면 비워두세요</p>
+        <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', margin: '0 0 12px 0' }}>모르면 비워두세요</p>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '32px' }}>
           <div style={{ flex: '1 1 0' }}>
             <button
@@ -338,10 +338,10 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
                 width: '100%',
                 padding: '16px 12px',
                 fontSize: '16px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
-                color: period ? '#191F28' : '#8B95A1',
-                background: '#fff',
+                color: period ? 'var(--color-gray-700)' : 'var(--color-gray-400)',
+                background: 'var(--color-white)',
                 cursor: 'pointer',
                 textAlign: 'center',
                 display: 'flex',
@@ -355,7 +355,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             >
               {period === 'AM' ? '오전' : period === 'PM' ? '오후' : '시간대'}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+                <path d="M8 11L3 6h10L8 11z" fill="var(--color-gray-400)"/>
               </svg>
             </button>
           </div>
@@ -366,10 +366,10 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
                 width: '100%',
                 padding: '16px 12px',
                 fontSize: '16px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
-                color: hour12 ? '#191F28' : '#8B95A1',
-                background: '#fff',
+                color: hour12 ? 'var(--color-gray-700)' : 'var(--color-gray-400)',
+                background: 'var(--color-white)',
                 cursor: 'pointer',
                 textAlign: 'center',
                 display: 'flex',
@@ -383,7 +383,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             >
               {hour12 ? `${hour12}시` : '시'}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+                <path d="M8 11L3 6h10L8 11z" fill="var(--color-gray-400)"/>
               </svg>
             </button>
           </div>
@@ -394,10 +394,10 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
                 width: '100%',
                 padding: '16px 12px',
                 fontSize: '16px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
-                color: minuteRange ? '#191F28' : '#8B95A1',
-                background: '#fff',
+                color: minuteRange ? 'var(--color-gray-700)' : 'var(--color-gray-400)',
+                background: 'var(--color-white)',
                 cursor: 'pointer',
                 textAlign: 'center',
                 display: 'flex',
@@ -411,14 +411,14 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             >
               {minuteRange === '0-29' ? '0~29분' : minuteRange === '30-59' ? '30~59분' : '분'}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+                <path d="M8 11L3 6h10L8 11z" fill="var(--color-gray-400)"/>
               </svg>
             </button>
           </div>
         </div>
 
         {/* 성별 선택 */}
-        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
+        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 12px 0' }}>
           성별을 선택해 주세요
         </h2>
         <div style={{ display: 'flex', gap: '12px' }}>
@@ -482,14 +482,14 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
               bottom: 0,
               left: 0,
               right: 0,
-              background: '#fff',
+              background: 'var(--color-white)',
               borderTopLeftRadius: '24px',
               borderTopRightRadius: '24px',
               padding: '28px 20px calc(28px + env(safe-area-inset-bottom))',
               zIndex: 2001
             }}
           >
-            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#191F28', margin: '0 0 20px 0', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 20px 0', textAlign: 'center' }}>
               {activeMenu === 'period' && '시간대 선택'}
               {activeMenu === 'hour' && '시간 선택'}
               {activeMenu === 'minute' && '분 선택'}
@@ -550,8 +550,8 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
                 padding: '16px',
                 fontSize: '16px',
                 fontWeight: '600',
-                color: '#191F28',
-                background: '#F2F4F6',
+                color: 'var(--color-gray-700)',
+                background: 'var(--color-gray-100)',
                 border: 'none',
                 borderRadius: '12px',
                 cursor: 'pointer'
@@ -570,7 +570,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -602,8 +602,8 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer'
@@ -619,7 +619,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#fff',
+            color: 'var(--color-white)',
             background: isValid ? 'var(--color-primary)' : 'var(--color-disabled)',
             border: 'none',
             borderRadius: '8px',
@@ -638,9 +638,9 @@ const modalButtonStyle = {
   padding: '16px',
   fontSize: '16px',
   fontWeight: '600',
-  color: '#191F28',
-  background: '#fff',
-  border: '1px solid #E5E8EB',
+  color: 'var(--color-gray-700)',
+  background: 'var(--color-white)',
+  border: '1px solid var(--color-gray-200)',
   borderRadius: '12px',
   cursor: 'pointer',
   textAlign: 'center'

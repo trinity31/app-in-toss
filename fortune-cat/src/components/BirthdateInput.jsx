@@ -144,7 +144,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
   return (
     <>
       <div style={{ padding: '20px 20px 0', marginBottom: '80px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 24px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 24px 0' }}>
           생년월일을 입력해 주세요
         </h1>
 
@@ -164,7 +164,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 width: '40%',
                 padding: '16px',
                 fontSize: '24px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
                 outline: 'none',
                 transition: 'border-color 0.2s',
@@ -174,10 +174,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 e.target.style.borderColor = 'var(--color-primary)'
               }}
               onBlur={(e) => {
-                e.target.style.borderColor = '#E5E8EB'
+                e.target.style.borderColor = 'var(--color-gray-200)'
               }}
             />
-            <span style={{ color: '#8B95A1', fontSize: '24px' }}>.</span>
+            <span style={{ color: 'var(--color-gray-400)', fontSize: '24px' }}>.</span>
             <input
               ref={monthRef}
               type="text"
@@ -189,7 +189,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 width: '25%',
                 padding: '16px',
                 fontSize: '24px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
                 outline: 'none',
                 transition: 'border-color 0.2s',
@@ -199,10 +199,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 e.target.style.borderColor = 'var(--color-primary)'
               }}
               onBlur={(e) => {
-                e.target.style.borderColor = '#E5E8EB'
+                e.target.style.borderColor = 'var(--color-gray-200)'
               }}
             />
-            <span style={{ color: '#8B95A1', fontSize: '24px' }}>.</span>
+            <span style={{ color: 'var(--color-gray-400)', fontSize: '24px' }}>.</span>
             <input
               ref={dayRef}
               type="text"
@@ -214,7 +214,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 width: '25%',
                 padding: '16px',
                 fontSize: '24px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
                 outline: 'none',
                 transition: 'border-color 0.2s',
@@ -224,7 +224,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 e.target.style.borderColor = 'var(--color-primary)'
               }}
               onBlur={(e) => {
-                e.target.style.borderColor = '#E5E8EB'
+                e.target.style.borderColor = 'var(--color-gray-200)'
               }}
             />
           </div>
@@ -240,9 +240,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 padding: '14px',
                 fontSize: '15px',
                 fontWeight: '600',
-                color: birthdayType === 'solar' ? '#fff' : '#191F28',
+                color: birthdayType === 'solar' ? '#fff' : 'var(--color-gray-700)',
                 background: birthdayType === 'solar' ? 'var(--color-primary)' : '#F7F8FA',
-                border: birthdayType === 'solar' ? 'none' : '1px solid #E5E8EB',
+                border: birthdayType === 'solar' ? 'none' : '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
@@ -257,9 +257,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 padding: '14px',
                 fontSize: '15px',
                 fontWeight: '600',
-                color: birthdayType === 'lunar' ? '#fff' : '#191F28',
+                color: birthdayType === 'lunar' ? '#fff' : 'var(--color-gray-700)',
                 background: birthdayType === 'lunar' ? 'var(--color-primary)' : '#F7F8FA',
-                border: birthdayType === 'lunar' ? 'none' : '1px solid #E5E8EB',
+                border: birthdayType === 'lunar' ? 'none' : '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
@@ -270,10 +270,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
           </div>
         </div>
 
-        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '40px 0 8px 0' }}>
+        <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '40px 0 8px 0' }}>
           태어난 시간을 선택해 주세요
         </h2>
-        <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 16px 0' }}>모르면 비워두세요</p>
+        <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', margin: '0 0 16px 0' }}>모르면 비워두세요</p>
 
         <div style={{ margin: '0 -20px' }}>
           <div style={{ padding: '0 20px' }}>
@@ -285,10 +285,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 width: '100%',
                 padding: '20px 12px',
                 fontSize: '16px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
-                color: period ? '#191F28' : '#8B95A1',
-                background: '#fff',
+                color: period ? 'var(--color-gray-700)' : 'var(--color-gray-400)',
+                background: 'var(--color-white)',
                 cursor: 'pointer',
                 textAlign: 'center',
                 display: 'flex',
@@ -302,7 +302,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
             >
               {period === 'AM' ? '오전' : period === 'PM' ? '오후' : '시간대'}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+                <path d="M8 11L3 6h10L8 11z" fill="var(--color-gray-400)"/>
               </svg>
             </button>
           </div>
@@ -314,10 +314,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 width: '100%',
                 padding: '20px 12px',
                 fontSize: '16px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
-                color: hour12 ? '#191F28' : '#8B95A1',
-                background: '#fff',
+                color: hour12 ? 'var(--color-gray-700)' : 'var(--color-gray-400)',
+                background: 'var(--color-white)',
                 cursor: 'pointer',
                 textAlign: 'center',
                 display: 'flex',
@@ -331,7 +331,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
             >
               {hour12 ? `${hour12}시` : '시'}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+                <path d="M8 11L3 6h10L8 11z" fill="var(--color-gray-400)"/>
               </svg>
             </button>
           </div>
@@ -343,10 +343,10 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 width: '100%',
                 padding: '20px 12px',
                 fontSize: '16px',
-                border: '1px solid #E5E8EB',
+                border: '1px solid var(--color-gray-200)',
                 borderRadius: '8px',
-                color: minuteRange ? '#191F28' : '#8B95A1',
-                background: '#fff',
+                color: minuteRange ? 'var(--color-gray-700)' : 'var(--color-gray-400)',
+                background: 'var(--color-white)',
                 cursor: 'pointer',
                 textAlign: 'center',
                 display: 'flex',
@@ -360,7 +360,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
             >
               {minuteRange === '0-29' ? '0~29분' : minuteRange === '30-59' ? '30~59분' : '분'}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 11L3 6h10L8 11z" fill="#8B95A1"/>
+                <path d="M8 11L3 6h10L8 11z" fill="var(--color-gray-400)"/>
               </svg>
             </button>
           </div>
@@ -390,14 +390,14 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
               bottom: 0,
               left: 0,
               right: 0,
-              background: '#fff',
+              background: 'var(--color-white)',
               borderTopLeftRadius: '24px',
               borderTopRightRadius: '24px',
               padding: '28px 20px calc(28px + env(safe-area-inset-bottom))',
               zIndex: 2001
             }}
           >
-            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#191F28', margin: '0 0 20px 0', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 20px 0', textAlign: 'center' }}>
               {activeMenu === 'period' && '시간대 선택'}
               {activeMenu === 'hour' && '시간 선택'}
               {activeMenu === 'minute' && '분 선택'}
@@ -416,9 +416,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                       padding: '16px',
                       fontSize: '16px',
                       fontWeight: '600',
-                      color: '#191F28',
-                      background: '#fff',
-                      border: '1px solid #E5E8EB',
+                      color: 'var(--color-gray-700)',
+                      background: 'var(--color-white)',
+                      border: '1px solid var(--color-gray-200)',
                       borderRadius: '12px',
                       cursor: 'pointer',
                       textAlign: 'center'
@@ -436,9 +436,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                       padding: '16px',
                       fontSize: '16px',
                       fontWeight: '600',
-                      color: '#191F28',
-                      background: '#fff',
-                      border: '1px solid #E5E8EB',
+                      color: 'var(--color-gray-700)',
+                      background: 'var(--color-white)',
+                      border: '1px solid var(--color-gray-200)',
                       borderRadius: '12px',
                       cursor: 'pointer',
                       textAlign: 'center'
@@ -462,9 +462,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                       padding: '16px',
                       fontSize: '16px',
                       fontWeight: '600',
-                      color: '#191F28',
-                      background: '#fff',
-                      border: '1px solid #E5E8EB',
+                      color: 'var(--color-gray-700)',
+                      background: 'var(--color-white)',
+                      border: '1px solid var(--color-gray-200)',
                       borderRadius: '12px',
                       cursor: 'pointer',
                       textAlign: 'center'
@@ -486,9 +486,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                       padding: '16px',
                       fontSize: '16px',
                       fontWeight: '600',
-                      color: '#191F28',
-                      background: '#fff',
-                      border: '1px solid #E5E8EB',
+                      color: 'var(--color-gray-700)',
+                      background: 'var(--color-white)',
+                      border: '1px solid var(--color-gray-200)',
                       borderRadius: '12px',
                       cursor: 'pointer',
                       textAlign: 'center'
@@ -506,9 +506,9 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                       padding: '16px',
                       fontSize: '16px',
                       fontWeight: '600',
-                      color: '#191F28',
-                      background: '#fff',
-                      border: '1px solid #E5E8EB',
+                      color: 'var(--color-gray-700)',
+                      background: 'var(--color-white)',
+                      border: '1px solid var(--color-gray-200)',
                       borderRadius: '12px',
                       cursor: 'pointer',
                       textAlign: 'center'
@@ -528,8 +528,8 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
                 padding: '16px',
                 fontSize: '16px',
                 fontWeight: '600',
-                color: '#191F28',
-                background: '#F2F4F6',
+                color: 'var(--color-gray-700)',
+                background: 'var(--color-gray-100)',
                 border: 'none',
                 borderRadius: '12px',
                 cursor: 'pointer'
@@ -547,7 +547,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -561,8 +561,8 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer'

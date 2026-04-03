@@ -214,7 +214,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             fontSize: "22px",
             lineHeight: "1.4",
             fontWeight: "bold",
-            color: "#191F28",
+            color: "var(--color-gray-700)",
             margin: "0 0 12px 0",
           }}
         >
@@ -237,7 +237,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             <p
               style={{
                 fontSize: "13px",
-                color: "#8B95A1",
+                color: "var(--color-gray-400)",
                 marginBottom: "4px",
               }}
             >
@@ -247,7 +247,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
               style={{
                 fontSize: "16px",
                 fontWeight: "600",
-                color: "#191F28",
+                color: "var(--color-gray-700)",
                 margin: 0,
               }}
             >
@@ -258,7 +258,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             <p
               style={{
                 fontSize: "13px",
-                color: "#8B95A1",
+                color: "var(--color-gray-400)",
                 marginBottom: "4px",
               }}
             >
@@ -268,7 +268,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
               style={{
                 fontSize: "16px",
                 fontWeight: "600",
-                color: "#191F28",
+                color: "var(--color-gray-700)",
                 margin: 0,
               }}
             >
@@ -279,7 +279,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             <p
               style={{
                 fontSize: "13px",
-                color: "#8B95A1",
+                color: "var(--color-gray-400)",
                 marginBottom: "4px",
               }}
             >
@@ -289,7 +289,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
               style={{
                 fontSize: "16px",
                 fontWeight: "600",
-                color: "#191F28",
+                color: "var(--color-gray-700)",
                 margin: 0,
               }}
             >
@@ -300,7 +300,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             <p
               style={{
                 fontSize: "13px",
-                color: "#8B95A1",
+                color: "var(--color-gray-400)",
                 marginBottom: "4px",
               }}
             >
@@ -310,7 +310,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
               style={{
                 fontSize: "16px",
                 fontWeight: "600",
-                color: "#191F28",
+                color: "var(--color-gray-700)",
                 margin: 0,
               }}
             >
@@ -331,7 +331,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             }}
           >
             <Loader />
-            <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
+            <p style={{ fontSize: "14px", color: "var(--color-gray-500)", margin: 0 }}>
               상품 정보를 불러오는 중...
             </p>
           </div>
@@ -353,7 +353,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
                   <p
                     style={{
                       fontSize: "13px",
-                      color: "#6B7684",
+                      color: "var(--color-gray-500)",
                       marginBottom: "4px",
                     }}
                   >
@@ -438,7 +438,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             }}
           >
             <Loader />
-            <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
+            <p style={{ fontSize: "14px", color: "var(--color-gray-500)", margin: 0 }}>
               결제 진행 중...
             </p>
           </div>
@@ -456,7 +456,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             <p
               style={{
                 fontSize: "14px",
-                color: "#F04452",
+                color: "var(--color-error)",
                 margin: 0,
                 fontWeight: "600",
               }}
@@ -474,7 +474,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
           left: 0,
           right: 0,
           padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
-          background: "#fff",
+          background: "var(--color-white)",
           display: "flex",
           gap: "12px",
           zIndex: 1000,
@@ -489,8 +489,8 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             padding: "16px",
             fontSize: "16px",
             fontWeight: "bold",
-            color: "#191F28",
-            background: "#F2F4F6",
+            color: "var(--color-gray-700)",
+            background: "var(--color-gray-100)",
             border: "none",
             borderRadius: "8px",
             cursor: isPurchasing ? "not-allowed" : "pointer",

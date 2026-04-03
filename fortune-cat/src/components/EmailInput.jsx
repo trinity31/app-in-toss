@@ -47,10 +47,10 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
   return (
     <>
       <div style={{ padding: '20px 20px 120px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 12px 0' }}>
           부적 이미지를 받을<br />이메일을 입력해 주세요
         </h1>
-        <p style={{ fontSize: '14px', color: '#6B7684', margin: '0 0 32px 0' }}>
+        <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', margin: '0 0 32px 0' }}>
           24시간 이내에 입력하신 이메일로 부적 이미지를 보내드립니다
         </p>
       </div>
@@ -67,9 +67,9 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
             padding: '20px 0',
             fontSize: '20px',
             border: 'none',
-            borderBottom: `2px solid ${email && !isValid ? '#F04452' : '#E5E8EB'}`,
+            borderBottom: `2px solid ${email && !isValid ? 'var(--color-error)' : 'var(--color-gray-200)'}`,
             outline: 'none',
-            color: '#191F28'
+            color: 'var(--color-gray-700)'
           }}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
@@ -78,7 +78,7 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
           }}
         />
         {email && !isValid && (
-          <p style={{ fontSize: '13px', color: '#F04452', margin: '8px 0 0 0' }}>
+          <p style={{ fontSize: '13px', color: 'var(--color-error)', margin: '8px 0 0 0' }}>
             올바른 이메일 형식을 입력해 주세요
           </p>
         )}
@@ -90,7 +90,7 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -104,8 +104,8 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer'

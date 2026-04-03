@@ -59,10 +59,10 @@ export default function TossLogin({ onNext, onBack, userData }) {
   return (
     <>
       <div style={{ padding: '20px 20px 140px' }}>
-        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: '#191F28', margin: '0 0 12px 0' }}>
+        <h1 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 12px 0' }}>
           토스 로그인이 필요해요
         </h1>
-        <p style={{ fontSize: '14px', color: '#6B7684', lineHeight: '1.6', margin: '0 0 32px 0' }}>
+        <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', lineHeight: '1.6', margin: '0 0 32px 0' }}>
           부적 이미지 신청을 위해<br />
           토스 계정 인증이 필요합니다
         </p>
@@ -74,14 +74,14 @@ export default function TossLogin({ onNext, onBack, userData }) {
           marginBottom: '24px'
         }}>
           <div style={{ marginBottom: '16px' }}>
-            <p style={{ fontSize: '13px', color: '#8B95A1', marginBottom: '4px' }}>선택한 부적 스타일</p>
-            <p style={{ fontSize: '16px', fontWeight: '600', color: '#191F28', margin: 0 }}>
+            <p style={{ fontSize: '13px', color: 'var(--color-gray-400)', marginBottom: '4px' }}>선택한 부적 스타일</p>
+            <p style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-gray-700)', margin: 0 }}>
               {userData.amuletTypeTitle}
             </p>
           </div>
           <div>
-            <p style={{ fontSize: '13px', color: '#8B95A1', marginBottom: '4px' }}>신청자</p>
-            <p style={{ fontSize: '16px', fontWeight: '600', color: '#191F28', margin: 0 }}>
+            <p style={{ fontSize: '13px', color: 'var(--color-gray-400)', marginBottom: '4px' }}>신청자</p>
+            <p style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-gray-700)', margin: 0 }}>
               {userData.name}님
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function TossLogin({ onNext, onBack, userData }) {
             gap: '16px'
           }}>
             <Loader />
-            <p style={{ fontSize: '14px', color: '#6B7684', margin: 0 }}>로그인 중...</p>
+            <p style={{ fontSize: '14px', color: 'var(--color-gray-500)', margin: 0 }}>로그인 중...</p>
           </div>
         )}
 
@@ -108,7 +108,7 @@ export default function TossLogin({ onNext, onBack, userData }) {
             padding: '16px',
             marginBottom: '16px'
           }}>
-            <p style={{ fontSize: '14px', color: '#F04452', margin: 0 }}>{error}</p>
+            <p style={{ fontSize: '14px', color: 'var(--color-error)', margin: 0 }}>{error}</p>
           </div>
         )}
       </div>
@@ -119,7 +119,7 @@ export default function TossLogin({ onNext, onBack, userData }) {
         left: 0,
         right: 0,
         padding: '16px 20px calc(24px + env(safe-area-inset-bottom))',
-        background: '#fff',
+        background: 'var(--color-white)',
         display: 'flex',
         gap: '12px',
         zIndex: 1000,
@@ -133,8 +133,8 @@ export default function TossLogin({ onNext, onBack, userData }) {
             padding: '16px',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#191F28',
-            background: '#F2F4F6',
+            color: 'var(--color-gray-700)',
+            background: 'var(--color-gray-100)',
             border: 'none',
             borderRadius: '8px',
             cursor: isLoading ? 'not-allowed' : 'pointer',

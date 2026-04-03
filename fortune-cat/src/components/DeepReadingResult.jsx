@@ -162,7 +162,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
     <div
       style={{
         minHeight: "100vh",
-        background: "#fff",
+        background: "var(--color-white)",
         display: "flex",
         flexDirection: "column",
       }}
@@ -172,8 +172,8 @@ export default function DeepReadingResult({ userData, onRestart }) {
         style={{
           position: "sticky",
           top: 0,
-          background: "#fff",
-          borderBottom: "1px solid #E5E8EB",
+          background: "var(--color-white)",
+          borderBottom: "1px solid var(--color-gray-200)",
           padding: "20px 24px",
           zIndex: 100,
         }}
@@ -183,7 +183,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
           style={{
             fontSize: "22px",
             fontWeight: "bold",
-            color: "#191F28",
+            color: "var(--color-gray-700)",
             marginBottom: "0",
           }}
         >
@@ -208,7 +208,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
               style={{
                 fontSize: "18px",
                 fontWeight: "bold",
-                color: "#191F28",
+                color: "var(--color-gray-700)",
                 textAlign: "center",
                 lineHeight: "1.6",
                 margin: "0 0 16px 0",
@@ -243,7 +243,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                     <div
                       style={{
                         fontSize: "11px",
-                        color: "#8B95A1",
+                        color: "var(--color-gray-400)",
                         marginBottom: "4px",
                       }}
                     >
@@ -263,7 +263,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                       style={{
                         fontSize: "13px",
                         fontWeight: "bold",
-                        color: "#191F28",
+                        color: "var(--color-gray-700)",
                         lineHeight: "1.4",
                       }}
                     >
@@ -305,7 +305,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                         : message.role === "error"
                           ? "#FEF2F2"
                           : "var(--color-primary-light)",
-                    color: message.role === "user" ? "#fff" : "#4E5968",
+                    color: message.role === "user" ? "var(--color-white)" : "var(--color-gray-600)",
                   }}
                 >
                   {message.role === "assistant" ? (
@@ -329,7 +329,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                           lineHeight: "1.6",
                           margin: 0,
                           whiteSpace: "pre-wrap",
-                          color: message.role === "error" ? "#F04452" : undefined,
+                          color: message.role === "error" ? "var(--color-error)" : undefined,
                         }}
                       >
                         {message.content}
@@ -346,9 +346,9 @@ export default function DeepReadingResult({ userData, onRestart }) {
                             padding: "10px 14px",
                             fontSize: "13px",
                             fontWeight: "600",
-                            color: "#F04452",
+                            color: "var(--color-error)",
                             background: "transparent",
-                            border: "1px solid #F04452",
+                            border: "1px solid var(--color-error)",
                             borderRadius: "16px",
                             cursor: "pointer",
                             minHeight: "44px",
@@ -382,7 +382,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                           padding: "10px 14px",
                           fontSize: "13px",
                           color: "var(--color-primary)",
-                          background: "#fff",
+                          background: "var(--color-white)",
                           border: "1px solid var(--color-primary)",
                           borderRadius: "20px",
                           cursor: "pointer",
@@ -397,7 +397,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                     <p
                       style={{
                         fontSize: "12px",
-                        color: "#8B95A1",
+                        color: "var(--color-gray-400)",
                         margin: "4px 0 0 0",
                       }}
                     >
@@ -424,7 +424,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                 padding: "16px 20px",
                 borderRadius: "12px",
                 background: "var(--color-primary-light)",
-                color: "#8B95A1",
+                color: "var(--color-gray-400)",
                 fontSize: "14px",
                 display: "flex",
                 alignItems: "center",
@@ -465,8 +465,8 @@ export default function DeepReadingResult({ userData, onRestart }) {
           bottom: "88px",
           left: 0,
           right: 0,
-          background: "#fff",
-          // borderTop: '1px solid #E5E8EB',
+          background: "var(--color-white)",
+          // borderTop: '1px solid var(--color-gray-200)',
           padding: "12px 20px",
           zIndex: 100,
         }}
@@ -493,7 +493,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
               border: "1px solid var(--color-primary)",
               borderRadius: "8px",
               outline: "none",
-              background: "#fff",
+              background: "var(--color-white)",
             }}
           />
           <button
@@ -503,10 +503,10 @@ export default function DeepReadingResult({ userData, onRestart }) {
               padding: "12px 20px",
               fontSize: "15px",
               fontWeight: "bold",
-              color: "#fff",
+              color: "var(--color-white)",
               background:
                 !inputMessage.trim() || isSending
-                  ? "#E5E8EB"
+                  ? "var(--color-gray-200)"
                   : "var(--color-primary)",
               border: "none",
               borderRadius: "8px",
@@ -528,7 +528,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
           left: 0,
           right: 0,
           padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
-          background: "#fff",
+          background: "var(--color-white)",
           display: "flex",
           gap: "12px",
           zIndex: 1000,
@@ -542,7 +542,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
             padding: "14px",
             fontSize: "14px",
             fontWeight: "bold",
-            color: "#fff",
+            color: "var(--color-white)",
             background: "var(--color-primary)",
             border: "none",
             borderRadius: "8px",

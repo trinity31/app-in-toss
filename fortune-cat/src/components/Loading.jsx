@@ -319,7 +319,7 @@ export default function Loading({ userData, onNext }) {
           justifyContent: "center",
           height: "100vh",
           padding: "20px",
-          background: "#ffffff",
+          background: "var(--color-white)",
         }}
       >
         <div
@@ -350,7 +350,7 @@ export default function Loading({ userData, onNext }) {
             padding: "16px 32px",
             fontSize: "16px",
             fontWeight: "bold",
-            color: "#fff",
+            color: "var(--color-white)",
             background: "var(--color-primary)",
             border: "none",
             borderRadius: "8px",
@@ -388,7 +388,7 @@ export default function Loading({ userData, onNext }) {
         justifyContent: "center",
         height: "100vh",
         padding: "20px",
-        background: "#ffffff",
+        background: "var(--color-white)",
       }}
     >
       <img

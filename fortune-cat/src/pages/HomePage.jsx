@@ -316,7 +316,7 @@ export default function HomePage() {
           }}
         >
           <Loader />
-          <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
+          <p style={{ fontSize: "14px", color: "var(--color-gray-500)", margin: 0 }}>
             메뉴를 불러오는 중...
           </p>
         </div>
@@ -331,7 +331,7 @@ export default function HomePage() {
             gap: "16px",
           }}
         >
-          <p style={{ fontSize: "15px", color: "#6B7684", margin: 0 }}>
+          <p style={{ fontSize: "15px", color: "var(--color-gray-500)", margin: 0 }}>
             메뉴를 불러오지 못했습니다
           </p>
           <button
@@ -340,7 +340,7 @@ export default function HomePage() {
               padding: "12px 24px",
               fontSize: "15px",
               fontWeight: "600",
-              color: "#fff",
+              color: "var(--color-white)",
               background: "var(--color-primary)",
               border: "none",
               borderRadius: "8px",
@@ -553,7 +553,7 @@ const styles = {
     flexDirection: "column",
     minHeight: "100vh",
     padding: "0 20px 20px",
-    backgroundColor: "#fff",
+    backgroundColor: "var(--color-white)",
     boxSizing: "border-box",
   },
   quickMenuContainer: {
@@ -583,7 +583,7 @@ const styles = {
   quickMenuLabel: {
     fontSize: "13px",
     fontWeight: "500",
-    color: "#191F28",
+    color: "var(--color-gray-700)",
   },
   sectionsContainer: {
     width: "100%",
@@ -608,13 +608,13 @@ const styles = {
   sectionTitle: {
     fontSize: "20px",
     fontWeight: "700",
-    color: "#191F28",
+    color: "var(--color-gray-700)",
     margin: 0,
   },
   badge: {
     fontSize: "10px",
     fontWeight: "700",
-    color: "#fff",
+    color: "var(--color-white)",
     padding: "2px 6px",
     borderRadius: "4px",
   },
@@ -622,7 +622,7 @@ const styles = {
     padding: "8px 14px",
     fontSize: "13px",
     fontWeight: "600",
-    color: "#fff",
+    color: "var(--color-white)",
     backgroundColor: "var(--color-primary)",
     border: "none",
     borderRadius: "16px",
@@ -631,7 +631,7 @@ const styles = {
   },
   sectionDescription: {
     fontSize: "14px",
-    color: "#6B7684",
+    color: "var(--color-gray-500)",
     margin: "0 0 16px 0",
   },
   typeGrid: {
@@ -642,8 +642,8 @@ const styles = {
   typeCard: {
     width: "100%",
     padding: "16px",
-    background: "#F9FAFB",
-    border: "1px solid #E5E8EB",
+    background: "var(--color-gray-50)",
+    border: "1px solid var(--color-gray-200)",
     borderRadius: "16px",
     cursor: "pointer",
     textAlign: "left",
@@ -660,7 +660,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "var(--color-white)",
     boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
     flexShrink: 0,
   },
@@ -678,17 +678,17 @@ const styles = {
   typeCardTitle: {
     fontSize: "16px",
     fontWeight: "600",
-    color: "#191F28",
+    color: "var(--color-gray-700)",
     marginBottom: "2px",
   },
   typeCardDesc: {
     fontSize: "13px",
-    color: "#6B7684",
+    color: "var(--color-gray-500)",
     lineHeight: "1.4",
   },
   divider: {
     height: "1px",
-    backgroundColor: "#E5E8EB",
+    backgroundColor: "var(--color-gray-200)",
     margin: "28px 0",
   },
   amuletGrid: {
@@ -714,7 +714,7 @@ const styles = {
     paddingTop: "133%",
     borderRadius: "16px",
     overflow: "hidden",
-    backgroundColor: "#F9FAFB",
+    backgroundColor: "var(--color-gray-50)",
   },
   amuletImage: {
     position: "absolute",
@@ -727,12 +727,12 @@ const styles = {
   amuletCardTitle: {
     fontSize: "14px",
     fontWeight: "600",
-    color: "#191F28",
+    color: "var(--color-gray-700)",
     marginTop: "8px",
   },
   amuletCardDesc: {
     fontSize: "12px",
-    color: "#6B7684",
+    color: "var(--color-gray-500)",
     lineHeight: "1.4",
     overflow: "hidden",
     textOverflow: "ellipsis",

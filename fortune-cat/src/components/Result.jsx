@@ -96,11 +96,11 @@ export default function Result({ userData, onRestart }) {
 
   return (
     <div
-      style={{ minHeight: "100vh", background: "#fff", paddingBottom: "100px" }}
+      style={{ minHeight: "100vh", background: "var(--color-white)", paddingBottom: "100px" }}
     >
       <div
         style={{
-          background: "#fff",
+          background: "var(--color-white)",
           borderRadius: "16px",
           padding: "24px",
           marginBottom: "16px",
@@ -111,7 +111,7 @@ export default function Result({ userData, onRestart }) {
           style={{
             fontSize: "24px",
             fontWeight: "bold",
-            color: "#191F28",
+            color: "var(--color-gray-700)",
             marginBottom: "8px",
           }}
         >
@@ -147,7 +147,7 @@ export default function Result({ userData, onRestart }) {
                   marginTop: "12px",
                   padding: "16px",
                   backgroundColor: isSavingImage
-                    ? "#E5E8EB"
+                    ? "var(--color-gray-200)"
                     : "var(--color-primary)",
                   color: "white",
                   border: "none",
@@ -180,8 +180,8 @@ export default function Result({ userData, onRestart }) {
                       fontSize: "14px",
                       fontWeight: "600",
                       lineHeight: "1.5",
-                      color: "#4E5968",
-                      background: "#F2F4F6",
+                      color: "var(--color-gray-600)",
+                      background: "var(--color-gray-100)",
                       borderRadius: "12px",
                       wordBreak: "break-word",
                       overflowWrap: "break-word",
@@ -210,7 +210,7 @@ export default function Result({ userData, onRestart }) {
                 style={{
                   fontSize: "16px",
                   lineHeight: "1.8",
-                  color: "#4E5968",
+                  color: "var(--color-gray-600)",
                   fontFamily: "'Do Hyeon', sans-serif",
                   fontWeight: 400,
                 }}
@@ -224,7 +224,7 @@ export default function Result({ userData, onRestart }) {
                 style={{
                   fontSize: "15px",
                   lineHeight: "1.8",
-                  color: "#4E5968",
+                  color: "var(--color-gray-600)",
                   whiteSpace: "pre-wrap",
                   fontFamily: "'Do Hyeon', sans-serif",
                   fontWeight: 400,
@@ -244,7 +244,7 @@ export default function Result({ userData, onRestart }) {
           left: 0,
           right: 0,
           padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
-          background: "#fff",
+          background: "var(--color-white)",
           display: "flex",
           gap: "12px",
           zIndex: 1000,
@@ -258,7 +258,7 @@ export default function Result({ userData, onRestart }) {
             padding: "16px",
             fontSize: "16px",
             fontWeight: "bold",
-            color: "#fff",
+            color: "var(--color-white)",
             background: "var(--color-primary)",
             border: "none",
             borderRadius: "8px",

@@ -6,11 +6,11 @@ export default function AmuletResult({
 
   return (
     <div
-      style={{ minHeight: "100vh", background: "#fff", paddingBottom: "140px" }}
+      style={{ minHeight: "100vh", background: "var(--color-white)", paddingBottom: "140px" }}
     >
       <div
         style={{
-          background: "#fff",
+          background: "var(--color-white)",
           padding: "24px",
           marginBottom: "16px",
         }}
@@ -19,7 +19,7 @@ export default function AmuletResult({
           style={{
             fontSize: "24px",
             fontWeight: "bold",
-            color: "#191F28",
+            color: "var(--color-gray-700)",
             marginBottom: "8px",
           }}
         >
@@ -28,7 +28,7 @@ export default function AmuletResult({
         <p
           style={{
             fontSize: "14px",
-            color: "#8B95A1",
+            color: "var(--color-gray-400)",
             marginBottom: "32px",
           }}
         >
@@ -56,7 +56,7 @@ export default function AmuletResult({
             style={{
               fontSize: "20px",
               fontWeight: "bold",
-              color: "#191F28",
+              color: "var(--color-gray-700)",
               marginBottom: "12px",
             }}
           >
@@ -65,29 +65,29 @@ export default function AmuletResult({
           <p
             style={{
               fontSize: "15px",
-              color: "#6B7684",
+              color: "var(--color-gray-500)",
               lineHeight: "1.6",
               marginBottom: "20px",
             }}
           >
             정성을 담아 {name}님만을 위한
             <br />
-            <strong style={{ color: "#191F28" }}>{amuletTypeTitle}</strong>{" "}
+            <strong style={{ color: "var(--color-gray-700)" }}>{amuletTypeTitle}</strong>{" "}
             부적을 제작해 드려요.
           </p>
           <div
             style={{
-              background: "#fff",
+              background: "var(--color-white)",
               borderRadius: "12px",
               padding: "16px",
-              border: "1px solid #E5E8EB",
+              border: "1px solid var(--color-gray-200)",
             }}
           >
             <div style={{ marginBottom: "12px" }}>
               <p
                 style={{
                   fontSize: "13px",
-                  color: "#8B95A1",
+                  color: "var(--color-gray-400)",
                   marginBottom: "4px",
                 }}
               >
@@ -97,7 +97,7 @@ export default function AmuletResult({
                 style={{
                   fontSize: "16px",
                   fontWeight: "600",
-                  color: "#191F28",
+                  color: "var(--color-gray-700)",
                   margin: 0,
                 }}
               >
@@ -108,7 +108,7 @@ export default function AmuletResult({
               <p
                 style={{
                   fontSize: "13px",
-                  color: "#8B95A1",
+                  color: "var(--color-gray-400)",
                   marginBottom: "4px",
                 }}
               >
@@ -118,7 +118,7 @@ export default function AmuletResult({
                 style={{
                   fontSize: "16px",
                   fontWeight: "600",
-                  color: "#191F28",
+                  color: "var(--color-gray-700)",
                   margin: 0,
                 }}
               >
@@ -139,7 +139,7 @@ export default function AmuletResult({
             style={{
               fontSize: "15px",
               fontWeight: "bold",
-              color: "#191F28",
+              color: "var(--color-gray-700)",
               marginBottom: "12px",
             }}
           >
@@ -148,7 +148,7 @@ export default function AmuletResult({
           <ul
             style={{
               fontSize: "14px",
-              color: "#4E5968",
+              color: "var(--color-gray-600)",
               lineHeight: "1.8",
               paddingLeft: "20px",
               margin: 0,
@@ -174,7 +174,7 @@ export default function AmuletResult({
           <span
             style={{
               fontSize: "14px",
-              color: "#6B7684",
+              color: "var(--color-gray-500)",
             }}
           >
             문의:
@@ -219,12 +219,12 @@ export default function AmuletResult({
                 width="9"
                 height="9"
                 rx="1.5"
-                stroke="#6B7684"
+                stroke="var(--color-gray-500)"
                 strokeWidth="1.5"
               />
               <path
                 d="M3 10.5V3.5C3 2.67157 3.67157 2 4.5 2H10.5"
-                stroke="#6B7684"
+                stroke="var(--color-gray-500)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />
@@ -240,7 +240,7 @@ export default function AmuletResult({
           left: 0,
           right: 0,
           padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
-          background: "#fff",
+          background: "var(--color-white)",
           display: "flex",
           gap: "12px",
           zIndex: 1000,

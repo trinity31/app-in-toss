@@ -350,7 +350,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
           justifyContent: "center",
           height: "100vh",
           padding: "20px",
-          background: "#ffffff",
+          background: "var(--color-white)",
         }}
       >
         <div style={{ fontSize: "48px", marginBottom: "24px" }}>😢</div>
@@ -374,7 +374,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
             padding: "16px 32px",
             fontSize: "16px",
             fontWeight: "bold",
-            color: "#fff",
+            color: "var(--color-white)",
             background: "var(--color-primary)",
             border: "none",
             borderRadius: "8px",
@@ -412,7 +412,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
         justifyContent: "center",
         height: "100vh",
         padding: "20px",
-        background: "#ffffff",
+        background: "var(--color-white)",
       }}
     >
       <img

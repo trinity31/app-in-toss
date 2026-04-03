@@ -30,7 +30,7 @@ export const markdownComponents = {
       style={{
         fontSize: "16px",
         fontWeight: "600",
-        color: "#191F28",
+        color: "var(--color-gray-700)",
         marginTop: "16px",
         marginBottom: "8px",
         lineHeight: "1.4",
@@ -78,7 +78,7 @@ export const markdownComponents = {
     <strong
       style={{
         fontWeight: "700",
-        color: "#191F28",
+        color: "var(--color-gray-700)",
       }}
       {...props}
     />
