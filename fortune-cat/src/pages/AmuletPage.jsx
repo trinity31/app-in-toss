@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "../hooks/useToast";
 import UserInfoInput from "../components/UserInfoInput";
 import TossLogin from "../components/TossLogin";
 import ContactInput from "../components/ContactInput";
@@ -17,6 +18,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export default function AmuletPage() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { openToast } = useToast();
   const selectedType = location.state?.selectedType;
 
   const [currentPage, setCurrentPage] = useState("userInfo");
@@ -165,10 +167,10 @@ export default function AmuletPage() {
         }
       }
 
-      alert("주문 복원에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+      openToast({ message: "주문 복원에 실패했습니다. 잠시 후 다시 시도해 주세요" });
     } catch (err) {
       console.error("[AmuletPage] 주문 복원 실패:", err);
-      alert("주문 복원 중 오류가 발생했습니다.");
+      openToast({ message: "주문 복원 중 오류가 발생했습니다" });
     }
 
     setIsRestoringOrder(false);

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Loader } from '@toss/tds-mobile'
+import { useToast } from '../hooks/useToast'
 
 export default function PhotoUpload({ onNext, onBack }) {
+  const { openToast } = useToast()
   const [selectedPhoto, setSelectedPhoto] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,7 +24,7 @@ export default function PhotoUpload({ onNext, onBack }) {
       if (permission !== 'allowed') {
         const requestedPermission = await fetchAlbumPhotos.openPermissionDialog()
         if (requestedPermission !== 'allowed') {
-          alert('앨범 접근 권한이 필요합니다.')
+          openToast({ message: '앨범 접근 권한이 필요합니다' })
           return
         }
       }
@@ -34,7 +36,7 @@ export default function PhotoUpload({ onNext, onBack }) {
 
       if (!photos || photos.length === 0) {
         console.log('[PhotoUpload] 사진이 선택되지 않음 (취소 또는 빈 배열)')
-        alert('사진을 선택하지 않았거나, 선택한 사진을 불러올 수 없습니다. 다른 사진을 선택해주세요.')
+        openToast({ message: '사진을 불러올 수 없습니다. 다른 사진을 선택해 주세요' })
         return
       }
 
@@ -57,7 +59,7 @@ export default function PhotoUpload({ onNext, onBack }) {
       }
     } catch (error) {
       console.error('사진 선택 실패:', error)
-      alert('사진을 가져오는 데 실패했습니다.')
+      openToast({ message: '사진을 가져오는 데 실패했습니다' })
     } finally {
       setIsLoading(false)
     }
@@ -94,7 +96,7 @@ export default function PhotoUpload({ onNext, onBack }) {
       }
     } catch (error) {
       console.error('카메라 촬영 실패:', error)
-      alert('사진을 촬영하는 데 실패했습니다.')
+      openToast({ message: '사진을 촬영하는 데 실패했습니다' })
     } finally {
       setIsLoading(false)
     }

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useToast } from "../hooks/useToast";
 import { ListHeader, StepperRow } from "@toss/tds-mobile";
 import { adaptive } from "@toss/tds-colors";
 import animalFortune from "../assets/images/animal-fortune.png";
@@ -116,6 +117,7 @@ export default function Intro({
   useHorizontalScroll = false,
   remainingCount = null,
 }) {
+  const { openToast } = useToast();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -368,7 +370,7 @@ export default function Intro({
         <button
           onClick={() => {
             if (remainingCount !== null && remainingCount <= 0) {
-              alert("오늘 주문이 마감되었습니다. 내일 다시 방문해 주세요.");
+              openToast({ message: "오늘 주문이 마감되었습니다. 내일 다시 방문해 주세요" });
               return;
             }
             onNext({});

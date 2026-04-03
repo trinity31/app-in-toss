@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Loader } from "@toss/tds-mobile";
+import { useToast } from "../hooks/useToast";
 import { usePendingOrderStorage } from "../hooks/usePendingOrderStorage";
 import {
   getTodayOrderCount,
@@ -11,6 +12,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const AMULET_PRODUCT_SKU = import.meta.env.VITE_AMULET_PRODUCT_SKU;
 
 export default function AmuletPayment({ onNext, onBack, userData }) {
+  const { openToast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isPurchasing, setIsPurchasing] = useState(false);
   const [error, setError] = useState(null);
@@ -181,7 +183,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
             if (result) {
               clearPendingOrderData();
             } else {
-              alert("주문 접수에 실패했습니다. 앱을 다시 시작하면 자동으로 복구됩니다.");
+              openToast({ message: "주문 접수에 실패했습니다. 앱을 다시 시작하면 자동으로 복구됩니다" });
             }
           });
         }
