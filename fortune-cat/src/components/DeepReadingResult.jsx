@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 
 import ReactMarkdown from "react-markdown";
 import * as Sentry from "@sentry/react";
+import { useToast } from "../hooks/useToast";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
 
@@ -61,6 +62,7 @@ const normalizeMarkdown = (text) => {
 
 export default function DeepReadingResult({ userData, onRestart }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
+  const { openToast } = useToast();
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -158,6 +160,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
           content: "메시지 전송에 실패했습니다.",
         },
       ]);
+      openToast({ message: "잠시 연결이 불안정합니다. 다시 시도해 주세요" });
     } finally {
       setIsSending(false);
     }

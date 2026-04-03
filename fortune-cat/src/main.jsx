@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@toss/tds-mobile'
 import * as Sentry from '@sentry/react'
 import './index.css'
+import { ToastProvider } from './hooks/useToast.jsx'
 import App from './App.jsx'
 
 // Sentry 초기화
@@ -25,7 +26,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <ToastProvider>
+          <App />
+        </ToastProvider>
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode>,

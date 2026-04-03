@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { saveBase64Data, Analytics } from "@apps-in-toss/web-framework";
+import { useToast } from "../hooks/useToast";
 import ReactMarkdown from "react-markdown";
 
 // CommonMark에서 **text** 뒤에 바로 한글이 오면 bold 파싱 실패
@@ -18,6 +19,7 @@ const normalizeMarkdown = (text) => {
 export default function Result({ userData, onRestart }) {
   const { name, birthdate, fortuneResult, readingType, fortuneTypeTitle } =
     userData;
+  const { openToast } = useToast();
   const [isSavingImage, setIsSavingImage] = useState(false);
 
   // 신년운세 타입들인지 확인
@@ -50,7 +52,7 @@ export default function Result({ userData, onRestart }) {
       setIsSavingImage(true);
 
       if (!fortuneResult?.image_base64) {
-        alert("저장할 이미지가 없습니다.");
+        openToast({ message: "저장할 이미지가 없습니다" });
         return;
       }
 
@@ -66,7 +68,7 @@ export default function Result({ userData, onRestart }) {
     } catch (err) {
       // 사용자 취소는 조용히 처리
       if (err.message && !err.message.toLowerCase().includes("cancel")) {
-        alert(`이미지 저장 중 오류가 발생했습니다: ${err.message}`);
+        openToast({ message: "이미지 저장에 실패했습니다. 다시 시도해 주세요" });
       }
     } finally {
       setIsSavingImage(false);

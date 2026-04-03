@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { colors } from "@toss/tds-colors";
 import { Loader } from "@toss/tds-mobile";
+import { useToast } from "../hooks/useToast";
 import {
   getTossShareLink,
   share,
@@ -21,66 +22,54 @@ const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const { openToast } = useToast();
   const [aiSajuTypes, setAiSajuTypes] = useState([]);
   const [newYearTypes, setNewYearTypes] = useState([]);
   const [sajuTypes, setSajuTypes] = useState([]);
   const [amuletTypes, setAmuletTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    const handleError = (event) => {
-      alert(
-        `에러 발생: ${event.message || event.reason?.message || "알 수 없는 오류"}`,
-      );
-      console.error("[HomePage] 에러:", event);
-    };
+  const fetchAllTypes = async () => {
+    try {
+      setIsLoading(true);
+      setHasError(false);
+      const [aiSajuRes, newYearRes, sajuRes, amuletRes] = await Promise.all([
+        supabase
+          .from("ai_saju_types")
+          .select("*")
+          // .eq("is_active", true) // TODO: 테스트 후 복원
+          .order("display_order", { ascending: true }),
+        supabase
+          .from("new_year_fortune_types")
+          .select("*")
+          .eq("is_active", true)
+          .order("display_order", { ascending: true }),
+        supabase
+          .from("saju_reading_types")
+          .select("*")
+          .order("id", { ascending: true }),
+        supabase
+          .from("amulet_types")
+          .select("*")
+          .eq("is_active", true)
+          .order("display_order", { ascending: true }),
+      ]);
 
-    window.addEventListener("error", handleError);
-    window.addEventListener("unhandledrejection", handleError);
-
-    return () => {
-      window.removeEventListener("error", handleError);
-      window.removeEventListener("unhandledrejection", handleError);
-    };
-  }, []);
-
-  useEffect(() => {
-    async function fetchAllTypes() {
-      try {
-        setIsLoading(true);
-        const [aiSajuRes, newYearRes, sajuRes, amuletRes] = await Promise.all([
-          supabase
-            .from("ai_saju_types")
-            .select("*")
-            .eq("is_active", true)
-            .order("display_order", { ascending: true }),
-          supabase
-            .from("new_year_fortune_types")
-            .select("*")
-            .eq("is_active", true)
-            .order("display_order", { ascending: true }),
-          supabase
-            .from("saju_reading_types")
-            .select("*")
-            .order("id", { ascending: true }),
-          supabase
-            .from("amulet_types")
-            .select("*")
-            .eq("is_active", true)
-            .order("display_order", { ascending: true }),
-        ]);
-
-        if (aiSajuRes.data) setAiSajuTypes(aiSajuRes.data);
-        if (newYearRes.data) setNewYearTypes(newYearRes.data);
-        if (sajuRes.data) setSajuTypes(sajuRes.data);
-        if (amuletRes.data) setAmuletTypes(amuletRes.data);
-      } catch (err) {
-        console.error("[HomePage] 데이터 로드 실패:", err);
-      } finally {
-        setIsLoading(false);
-      }
+      if (aiSajuRes.data) setAiSajuTypes(aiSajuRes.data);
+      if (newYearRes.data) setNewYearTypes(newYearRes.data);
+      if (sajuRes.data) setSajuTypes(sajuRes.data);
+      if (amuletRes.data) setAmuletTypes(amuletRes.data);
+    } catch (err) {
+      console.error("[HomePage] 데이터 로드 실패:", err);
+      setHasError(true);
+      openToast({ message: "메뉴를 불러오지 못했습니다" });
+    } finally {
+      setIsLoading(false);
     }
+  };
 
+  useEffect(() => {
     fetchAllTypes();
   }, []);
 
@@ -255,6 +244,36 @@ export default function HomePage() {
           <p style={{ fontSize: "14px", color: "#6B7684", margin: 0 }}>
             메뉴를 불러오는 중...
           </p>
+        </div>
+      ) : hasError ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "60px 20px",
+            gap: "16px",
+          }}
+        >
+          <p style={{ fontSize: "15px", color: "#6B7684", margin: 0 }}>
+            메뉴를 불러오지 못했습니다
+          </p>
+          <button
+            onClick={fetchAllTypes}
+            style={{
+              padding: "12px 24px",
+              fontSize: "15px",
+              fontWeight: "600",
+              color: "#fff",
+              background: "var(--color-primary)",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+          >
+            다시 불러오기
+          </button>
         </div>
       ) : (
         <div style={styles.sectionsContainer}>
