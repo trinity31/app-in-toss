@@ -293,6 +293,7 @@ export default function HomePage() {
           <button
             key={item.label}
             onClick={item.onTap}
+            className="tap-circle"
             style={styles.quickMenuItem}
           >
             <div style={styles.quickMenuCircle}>
@@ -366,6 +367,7 @@ export default function HomePage() {
               {aiSajuTypes.length > 3 && (
                 <button
                   onClick={() => toggleSection("ai_saju")}
+                  className="tap-pill"
                   style={styles.moreButton}
                 >
                   {expandedSections["ai_saju"] ? "접기" : "더보기"}
@@ -380,6 +382,7 @@ export default function HomePage() {
                 <button
                   key={type.id}
                   onClick={() => handleNewYearTypeClick(type, "ai_saju")}
+                  className="tap-card"
                   style={styles.typeCard}
                 >
                   <div style={styles.typeIconWrapper}>
@@ -411,6 +414,7 @@ export default function HomePage() {
               {newYearTypes.length > 3 && (
                 <button
                   onClick={() => toggleSection("new_year")}
+                  className="tap-pill"
                   style={styles.moreButton}
                 >
                   {expandedSections["new_year"] ? "접기" : "더보기"}
@@ -425,6 +429,7 @@ export default function HomePage() {
                 <button
                   key={type.id}
                   onClick={() => handleNewYearTypeClick(type, "new_year")}
+                  className="tap-card"
                   style={styles.typeCard}
                 >
                   <div style={styles.typeIconWrapper}>
@@ -450,6 +455,7 @@ export default function HomePage() {
               {sajuTypes.length > 3 && (
                 <button
                   onClick={() => toggleSection("image_saju")}
+                  className="tap-pill"
                   style={styles.moreButton}
                 >
                   {expandedSections["image_saju"] ? "접기" : "더보기"}
@@ -464,6 +470,7 @@ export default function HomePage() {
                 <button
                   key={type.id}
                   onClick={() => handleSajuTypeClick(type)}
+                  className="tap-card"
                   style={styles.typeCard}
                 >
                   <img
@@ -497,6 +504,7 @@ export default function HomePage() {
               {amuletTypes.length > 4 && (
                 <button
                   onClick={() => toggleSection("amulet")}
+                  className="tap-pill"
                   style={styles.moreButton}
                 >
                   {expandedSections["amulet"] ? "접기" : "전체보기"}
@@ -511,6 +519,7 @@ export default function HomePage() {
                 <button
                   key={type.id}
                   onClick={() => handleAmuletTypeClick(type)}
+                  className="tap-card"
                   style={styles.amuletCard}
                 >
                   <div style={styles.amuletImageWrapper}>

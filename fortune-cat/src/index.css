@@ -40,3 +40,31 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* 탭/클릭 피드백 */
+.tap-card {
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.tap-card:active {
+  transform: scale(0.97);
+  background-color: #F2F4F6 !important;
+}
+
+.tap-circle {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.tap-circle:active {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
+
+.tap-pill {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.tap-pill:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
