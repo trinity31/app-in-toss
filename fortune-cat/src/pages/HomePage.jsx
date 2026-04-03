@@ -619,7 +619,7 @@ const styles = {
     borderRadius: "4px",
   },
   moreButton: {
-    padding: "6px 14px",
+    padding: "8px 14px",
     fontSize: "13px",
     fontWeight: "600",
     color: "#fff",

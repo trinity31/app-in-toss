@@ -29,6 +29,8 @@ export function ToastProvider({ children }) {
       {children}
       {visible && toast && (
         <div
+          role="status"
+          aria-live="polite"
           style={{
             position: "fixed",
             bottom: "100px",

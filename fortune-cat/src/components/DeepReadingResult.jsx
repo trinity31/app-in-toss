@@ -343,7 +343,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                           }}
                           style={{
                             marginTop: "8px",
-                            padding: "6px 14px",
+                            padding: "10px 14px",
                             fontSize: "13px",
                             fontWeight: "600",
                             color: "#F04452",
@@ -351,6 +351,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                             border: "1px solid #F04452",
                             borderRadius: "16px",
                             cursor: "pointer",
+                            minHeight: "44px",
                           }}
                         >
                           다시 시도하기
@@ -378,7 +379,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                         key={qIndex}
                         onClick={() => handleFollowUpClick(question)}
                         style={{
-                          padding: "8px 14px",
+                          padding: "10px 14px",
                           fontSize: "13px",
                           color: "var(--color-primary)",
                           background: "#fff",
@@ -387,6 +388,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
                           cursor: "pointer",
                           lineHeight: "1.4",
                           textAlign: "left",
+                          minHeight: "44px",
                         }}
                       >
                         {question}
@@ -482,6 +484,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
             placeholder="더 알고 싶은 점이 있으신가요?"
+            aria-label="추가 질문 입력"
             disabled={isSending}
             style={{
               flex: 1,

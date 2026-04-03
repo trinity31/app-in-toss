@@ -200,6 +200,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="이름 또는 닉네임"
+          aria-label="이름"
           style={{
             width: '100%',
             padding: '16px 0',
@@ -224,6 +225,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             placeholder="1995"
             value={year}
             onChange={handleYearChange}
+            aria-label="출생 연도"
             style={{
               width: '40%',
               padding: '14px',
@@ -245,6 +247,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             placeholder="09"
             value={month}
             onChange={handleMonthChange}
+            aria-label="출생 월"
             style={{
               width: '25%',
               padding: '14px',
@@ -266,6 +269,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             placeholder="12"
             value={day}
             onChange={handleDayChange}
+            aria-label="출생 일"
             style={{
               width: '25%',
               padding: '14px',
@@ -285,6 +289,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
         <div style={{ display: 'flex', gap: '12px', marginBottom: '32px' }}>
           <button
             onClick={() => setBirthdayType('solar')}
+            aria-pressed={birthdayType === 'solar'}
             style={{
               flex: 1,
               padding: '16px',
@@ -302,6 +307,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
           </button>
           <button
             onClick={() => setBirthdayType('lunar')}
+            aria-pressed={birthdayType === 'lunar'}
             style={{
               flex: 1,
               padding: '16px',
@@ -418,6 +424,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
         <div style={{ display: 'flex', gap: '12px' }}>
           <button
             onClick={() => setSelectedGender('female')}
+            aria-pressed={selectedGender === 'female'}
             style={{
               flex: 1,
               padding: '16px',
@@ -435,6 +442,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
           </button>
           <button
             onClick={() => setSelectedGender('male')}
+            aria-pressed={selectedGender === 'male'}
             style={{
               flex: 1,
               padding: '16px',

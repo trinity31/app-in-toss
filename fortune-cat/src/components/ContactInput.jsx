@@ -73,6 +73,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
             ref={emailRef}
             type="email"
             placeholder="example@email.com"
+            aria-label="이메일"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{
@@ -106,6 +107,7 @@ export default function ContactInput({ onNext, onBack, userData }) {
           <input
             type="tel"
             placeholder="010-1234-5678"
+            aria-label="휴대폰 번호"
             value={phone}
             onChange={handlePhoneChange}
             style={{

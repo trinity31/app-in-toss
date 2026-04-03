@@ -61,6 +61,7 @@ export default function EmailInput({ onNext, onBack, initialEmail = '' }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="example@email.com"
+          aria-label="이메일"
           style={{
             width: '100%',
             padding: '20px 0',
