@@ -11,10 +11,11 @@ import { theme, primaryButton, secondaryButton } from '../styles/theme';
  * props.onShare:    (imageId) => void — 개별 공유
  * props.onRetry:    () => void — 처음으로
  */
-export default function Result({ images = [], typeName, onSave, onSaveAll, onShare, onRetry }) {
+export default function Result({ images = [], typeName, onSave, onSaveAll, onRetry }) {
   const [revealedCount, setRevealedCount] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [viewingImage, setViewingImage] = useState(null);
 
   const handleSave = async (imageId) => {
     setSaving(true);
@@ -24,11 +25,6 @@ export default function Result({ images = [], typeName, onSave, onSaveAll, onSha
   const handleSaveAll = async () => {
     setSaving(true);
     try { await onSaveAll(); } finally { setSaving(false); }
-  };
-
-  const handleShare = async (imageId) => {
-    setSaving(true);
-    try { await onShare(imageId); } finally { setSaving(false); }
   };
 
   // 순차적 공개 애니메이션
@@ -67,7 +63,15 @@ export default function Result({ images = [], typeName, onSave, onSaveAll, onSha
               }}
               onClick={() => setSelectedId(isSelected ? null : img.id)}
             >
-              <div style={styles.imageWrap}>
+              <div
+                style={styles.imageWrap}
+                onClick={(e) => {
+                  if (isRevealed) {
+                    e.stopPropagation();
+                    setViewingImage(img);
+                  }
+                }}
+              >
                 <img
                   src={img.imageUrl}
                   alt={img.label}
@@ -89,19 +93,34 @@ export default function Result({ images = [], typeName, onSave, onSaveAll, onSha
                   >
                     저장
                   </button>
-                  <button
-                    style={{...styles.cardActionBtn, opacity: saving ? 0.5 : 1}}
-                    disabled={saving}
-                    onClick={(e) => { e.stopPropagation(); handleShare(img.id); }}
-                  >
-                    공유
-                  </button>
                 </div>
               )}
             </button>
           );
         })}
       </div>
+
+      {/* 풀스크린 이미지 뷰어 */}
+      {viewingImage && (
+        <div style={styles.overlay} onClick={() => setViewingImage(null)}>
+          <img
+            src={viewingImage.imageUrl}
+            alt={viewingImage.label}
+            style={styles.overlayImage}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button style={styles.closeButton} onClick={() => setViewingImage(null)}>✕</button>
+          <div style={styles.overlayActions}>
+            <button
+              style={{...styles.overlayActionBtn, opacity: saving ? 0.5 : 1}}
+              disabled={saving}
+              onClick={(e) => { e.stopPropagation(); handleSave(viewingImage.id); }}
+            >
+              저장
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* 하단 액션 */}
       {allRevealed && (
@@ -239,5 +258,58 @@ const styles = {
     backgroundColor: 'transparent',
     color: theme.color.textTertiary,
     fontSize: theme.font.size.caption,
+  },
+
+  /* ── 풀스크린 뷰어 ── */
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.92)',
+    zIndex: 1000,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    animation: 'fadeIn 200ms ease both',
+  },
+  overlayImage: {
+    maxWidth: '90vw',
+    maxHeight: '75vh',
+    objectFit: 'contain',
+    borderRadius: theme.radius.md,
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 'max(16px, env(safe-area-inset-top))',
+    right: '16px',
+    width: '36px',
+    height: '36px',
+    borderRadius: '50%',
+    border: 'none',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    color: '#fff',
+    fontSize: '18px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  overlayActions: {
+    display: 'flex',
+    gap: '12px',
+    marginTop: '20px',
+  },
+  overlayActionBtn: {
+    padding: '12px 32px',
+    fontSize: theme.font.size.body,
+    fontWeight: theme.font.weight.semibold,
+    color: '#fff',
+    backgroundColor: theme.color.primary,
+    border: 'none',
+    borderRadius: theme.radius.full,
+    cursor: 'pointer',
   },
 };

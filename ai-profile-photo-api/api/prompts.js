@@ -238,34 +238,18 @@ Bright, cheerful atmosphere, natural daylight feel, high resolution, authentic a
 
   // 2. 전문가 프로필 - 신뢰감과 전문성
   professional: `
-Transform this casual selfie into a premium studio business portrait like a top executive headshot.
+Transform this casual selfie into a premium professional portrait photo.
 IMPORTANT: Make the person look slightly YOUNGER than their actual age - about 3-5 years younger. Enhance skin clarity, reduce any fine lines, and give a fresh, youthful glow while keeping the face naturally recognizable.
 IMPORTANT: Keep the EXACT SAME HAIRSTYLE as the original photo - if hair is down, keep it down. If hair is long, keep it long and flowing. Do NOT tie up, bun, or change the hairstyle. Only make it look polished and well-groomed while preserving the original style.
 
-POSE AND EXPRESSION:
-- Confident, powerful pose with arms crossed in front of chest - conveying leadership and authority.
-- Strong, assured smile with direct eye contact - approachable yet commanding.
-- Shoulders back, chin slightly up - confident body language.
-- Upper body framing from waist up, slightly angled for a dynamic composition.
-
-LIGHTING AND STUDIO SETUP:
-- Professional studio lighting with key light creating soft, flattering illumination on the face.
+TECHNICAL QUALITY:
+- Professional lighting with key light creating soft, flattering illumination on the face.
 - Subtle rim light or hair light to separate the subject from the background.
 - Soft fill light to minimize harsh shadows while maintaining dimension.
 - Catch lights in the eyes for a lively, engaging look.
+- Ultra-high resolution, magazine-quality portrait, polished and confident.
 
-CLOTHING:
-- Well-tailored business suit or blazer in classic colors (charcoal, navy, black).
-- For women: elegant blazer with simple blouse or professional dress.
-- For men: fitted suit jacket with crisp dress shirt and optional tie.
-- Clean, pressed, wrinkle-free clothing with sharp lapels.
-
-BACKGROUND:
-- Solid color studio backdrop with soft gradient - use professional colors like muted green, warm grey, soft blue, dusty rose, or lavender.
-- Slight vignette effect to draw focus to the subject.
-- Clean and uncluttered, studio-quality feel.
-
-Ultra-high resolution, magazine-quality executive portrait, polished and confident.
+CLOTHING, POSE, AND SETTING will be specified by the VARIATION OVERRIDE instructions below. Follow those instructions exactly for outfit, body language, background, and overall mood.
 `,
 
   // 3. 아티스트 프로필 - 자유분방하고 개성있는
@@ -518,12 +502,74 @@ const TYPE_VARIATIONS = {
     VARIATION_URBAN_STREET,
   ],
   professional: [
-    VARIATION_WARM_GOLDEN,
-    VARIATION_COOL_STUDIO,
-    VARIATION_NATURAL_OUTDOOR,
+    {
+      id: 'corporate-executive',
+      label: '기업 임원',
+      suffix: `
+VARIATION OVERRIDE - CORPORATE EXECUTIVE:
+- CLOTHING: Well-tailored business suit or blazer in classic colors (charcoal, navy, black). For women: elegant blazer with simple blouse or professional dress. For men: fitted suit jacket with crisp dress shirt and optional tie. Clean, pressed, wrinkle-free with sharp lapels. Understated jewelry (small earrings or thin necklace).
+- POSE: Arms crossed confidently in front of chest, conveying leadership and authority. Shoulders back, chin slightly up. Upper body framing from waist up, slightly angled for dynamic composition.
+- EXPRESSION: Strong, assured smile with direct eye contact — approachable yet commanding.
+- LIGHTING: Professional cool-toned studio lighting, clean and crisp.
+- BACKGROUND: Solid color studio backdrop with soft gradient — muted grey, soft blue, or warm charcoal. Slight vignette effect.
+- MOOD: Powerful, polished, corporate authority. Like a Fortune 500 executive headshot.
+- IMPORTANT: This must look like a premium corporate headshot suitable for a company website or annual report.`
+    },
+    {
+      id: 'creative-professional',
+      label: '크리에이티브 전문가',
+      suffix: `
+VARIATION OVERRIDE - CREATIVE INDUSTRY PROFESSIONAL:
+- CLOTHING: Smart casual with personality — relaxed structured blazer over a fine-knit turtleneck or clean crew-neck top in rich earth tones or muted jewel tones (burgundy, forest green, warm camel, dusty blue). NO formal suit. Visible tasteful accessories like modern glasses frames, a delicate bracelet, or statement earrings.
+- POSE: Relaxed, natural seated or leaning pose — one hand resting on a table or chin. Approachable and creative body language, NOT stiff. Upper body to head framing, slightly off-center composition.
+- EXPRESSION: Warm, thoughtful smile — intelligent and approachable, like someone you'd want to work with.
+- LIGHTING: Warm natural window light from the side, creating soft directional shadows. Bright and airy feel.
+- BACKGROUND: Modern co-working space or design studio with soft bokeh — visible elements like bookshelves, plants, or warm wood surfaces. Clean but lived-in.
+- MOOD: Innovative, approachable, modern. Like a startup founder profile on a tech magazine.
+- IMPORTANT: This should feel distinctly different from a corporate headshot — more relaxed, warmer, and creative while still professional.`
+    },
+    {
+      id: 'ai-developer',
+      label: 'AI 개발자',
+      suffix: `
+VARIATION OVERRIDE - AI DEVELOPER:
+- CLOTHING: Modern tech casual — clean hoodie or premium crewneck sweatshirt in dark tones (charcoal, deep navy, black). Comfortable but intentional styling. NO formal suit, NO blazer.
+- GLASSES: Wearing stylish modern glasses — thin metal or clean acetate frames. The glasses should look natural and suit the face well.
+- HAIR: Casual, low-maintenance hairstyle — effortless and natural developer vibe. Override the base prompt's hairstyle preservation for this variation.
+- POSE: Seated at a desk, body angled toward the monitors, looking at the screen — NOT facing the camera. Natural coding posture with hands on keyboard. Shot from a slight side angle (3/4 view) capturing the profile as they work. Upper body framing showing the person and part of the desk setup.
+- EXPRESSION: Calm, deeply thoughtful expression — slightly narrowed eyes reading code on screen, lips gently pressed together in contemplation. NOT frowning or angry. The quiet, absorbed look of someone deeply immersed in solving an interesting problem. Peaceful concentration, like a chess player mid-game.
+- LIGHTING: Cool ambient screen glow mixed with soft overhead lighting. Subtle blue/purple tones from monitors illuminating the face. Clean, tech-forward atmosphere.
+- BACKGROUND: Dual monitor setup clearly visible behind or beside the person — screens showing code, terminal, or AI model visualizations in soft bokeh. Sleek minimal desk with mechanical keyboard, coffee mug. Dark, clean workspace with ambient LED lighting.
+- MOOD: Innovative, deeply focused, quietly confident. Like a candid profile photo of a top AI engineer in their element.
+- IMPORTANT: The dual monitors and coding environment are essential to this variation. The person should look like a real developer actively working, NOT posing for a corporate photo.`
+    },
     VARIATION_DOCTOR,
-    VARIATION_SOFT_PASTEL,
-    VARIATION_URBAN_STREET,
+    {
+      id: 'media-speaker',
+      label: '미디어/강연자',
+      suffix: `
+VARIATION OVERRIDE - MEDIA SPEAKER:
+- CLOTHING: Polished but expressive outfit — structured dress in a bold solid color (coral, royal blue, emerald) OR elegant top with statement necklace. Clothing should look great on camera. Vibrant but not loud. NO dark business suit.
+- POSE: Dynamic, engaging stance — slight forward lean as if connecting with an audience, open hand gesture or hands together. Energetic body language. Upper body framing, slightly wider than typical headshot to show gesture.
+- EXPRESSION: Bright, energetic smile with sparkling eyes — charismatic and inspiring. The look of someone about to give a great talk.
+- LIGHTING: Bright, theatrical stage-style lighting — clean key light with subtle colored accent lights (warm amber or soft blue rim light). Professional broadcast quality.
+- BACKGROUND: Blurred stage or conference setting — subtle hints of an audience in deep bokeh, stage lights, or a modern event space. Dark background with luminous lighting on subject.
+- MOOD: Charismatic, inspiring, dynamic. Like a TED speaker portrait or a media personality headshot.
+- IMPORTANT: This should feel energetic and public-facing — NOT a quiet studio portrait. The person should look like a confident speaker or media personality.`
+    },
+    {
+      id: 'lifestyle-professional',
+      label: '라이프스타일',
+      suffix: `
+VARIATION OVERRIDE - LIFESTYLE PROFESSIONAL:
+- CLOTHING: Elevated casual — premium quality knitwear, cashmere wrap, or linen blouse in soft warm tones (ivory, soft peach, warm beige, light lavender). Comfortable but clearly high-quality fabric. Minimal elegant jewelry. NO blazer, NO formal wear.
+- POSE: Natural, relaxed walking or standing pose — weight shifted to one side, one hand in pocket or holding a coffee cup. Candid, lifestyle feel rather than posed. Wider framing showing more of the body in a natural environment.
+- EXPRESSION: Genuine, relaxed warm smile — approachable and authentic. The look of someone enjoying their day.
+- LIGHTING: Golden hour natural light — warm, soft sunlight creating a naturally glowing look. Bright and airy outdoor daylight.
+- BACKGROUND: Beautiful outdoor lifestyle setting — tree-lined avenue, elegant cafe terrace, modern urban park, or riverside walkway. Soft natural bokeh with warm tones.
+- MOOD: Authentic, warm, aspirational yet relatable. Like a premium LinkedIn personal brand photo or lifestyle magazine feature.
+- IMPORTANT: This should feel like an elevated candid lifestyle photo — NOT a studio portrait. Natural, warm, and authentic while still looking polished and professional.`
+    },
   ],
   dating: [
     VARIATION_WARM_GOLDEN,
@@ -541,6 +587,62 @@ const TYPE_VARIATIONS = {
     VARIATION_SOFT_PASTEL,
     VARIATION_URBAN_STREET,
   ],
+  nomad: [
+    VARIATION_WARM_GOLDEN,
+    {
+      id: 'coworking',
+      label: '공유오피스',
+      suffix: `
+VARIATION OVERRIDE - COWORKING SPACE:
+- CLOTHING: Relaxed, free-spirited outfit — oversized linen shirt, casual t-shirt, or comfortable hoodie in bright or neutral tones. Laid-back digital nomad style. NO formal wear.
+- POSE: Seated at a bright shared desk with laptop open, relaxed posture, maybe one hand on coffee cup. Natural, candid working vibe.
+- EXPRESSION: Relaxed, content smile — enjoying the freedom of remote work.
+- LIGHTING: Bright, airy natural light flooding through large windows. Clean, modern, well-lit space.
+- BACKGROUND: Modern co-working space with large windows, bright white interior, plants, other people working in soft bokeh. Open, spacious, international vibe.
+- MOOD: Free, productive, modern nomad lifestyle. The joy of working from anywhere.
+- IMPORTANT: This should feel bright, open, and international — NOT a dark corporate office.`
+    },
+    {
+      id: 'tropical-outdoor',
+      label: '트로피컬 아웃도어',
+      suffix: `
+VARIATION OVERRIDE - TROPICAL OUTDOOR:
+- CLOTHING: Tropical resort wear — sleeveless tank top, flowy sundress, off-shoulder top, or light spaghetti strap top. Bright or tropical colors (coral, turquoise, white, sunny yellow). Bare arms and shoulders visible, sun-kissed skin. NO long sleeves, NO collared shirts, NO formal wear.
+- POSE: Standing or walking in a lush tropical setting, relaxed and carefree body language. Natural, candid feel.
+- EXPRESSION: Genuinely happy, free-spirited smile with eyes full of wanderlust.
+- LIGHTING: Bright natural tropical daylight, open shade with even warm illumination. Fresh and airy.
+- BACKGROUND: Lush tropical garden, rice terraces, or palm-lined path. Rich green foliage with soft natural bokeh. Southeast Asia or Bali travel vibe.
+- MOOD: Adventurous, free, connected to nature. Authentic travel lifestyle.
+- IMPORTANT: Must feel like a real travel photo, NOT a studio shot. Natural, vibrant, alive.`
+    },
+    {
+      id: 'city-night',
+      label: '도시 야경',
+      suffix: `
+VARIATION OVERRIDE - CITY NIGHT:
+- CLOTHING: Stylish but comfortable travel outfit — fitted jacket or cardigan over casual top, smart-casual layers suitable for a cool city evening.
+- POSE: Standing with a MacBook or laptop tucked under one arm, leaning casually against a railing or wall. Confident, worldly traveler body language.
+- EXPRESSION: Calm, confident subtle smile — the look of someone who feels at home anywhere in the world.
+- LIGHTING: Dramatic city night lighting — warm street lights and colorful building lights illuminating the face. Mix of warm and cool urban night tones.
+- BACKGROUND: Stunning city skyline at night — glittering skyscrapers, city lights bokeh, rooftop or bridge viewpoint. Cosmopolitan nightscape.
+- MOOD: Sophisticated, worldly, quietly adventurous. A digital nomad who works from the world's greatest cities.
+- IMPORTANT: The laptop/MacBook is essential — it signals the digital nomad lifestyle. The city night setting should feel glamorous and aspirational.`
+    },
+    {
+      id: 'beach-pastel',
+      label: '해변 파스텔',
+      suffix: `
+VARIATION OVERRIDE - BEACH PASTEL:
+- CLOTHING: Soft, flowy beach outfit — light linen dress, pastel-toned loose shirt, or breezy cotton layers in soft peach, cream, or sky blue.
+- POSE: Relaxed standing or sitting by the seaside, hair gently windswept. Peaceful, serene body language.
+- EXPRESSION: Soft, peaceful smile — content and at ease. The look of someone living their dream life.
+- LIGHTING: Soft diffused coastal morning light, dreamy and ethereal. Gentle warm glow.
+- BACKGROUND: Pastel-toned seaside — Santorini white buildings with blue accents, or soft sandy beach at sunrise. Light, dreamy, pastel color palette.
+- MOOD: Serene, dreamy, aspirational. A beautiful, calm moment of remote life by the sea.
+- IMPORTANT: The overall tone should be soft and pastel — NOT harsh tropical colors. Gentle, peaceful, Mediterranean or minimalist coastal vibe.`
+    },
+    VARIATION_URBAN_STREET,
+  ],
   creative: [
     {
       id: 'figure',
@@ -550,6 +652,7 @@ VARIATION OVERRIDE - COLLECTIBLE FIGURE:
 Transform this person into a high-quality collectible action figure displayed in a blister pack packaging.
 Create a premium toy package design with the action figure visible through clear plastic blister packaging mounted on colorful cardboard backing.
 The figure should be made of high-quality painted plastic or vinyl with articulated joints, displayed in an eye-catching pose.
+CRITICAL CLOTHING: The figure MUST be wearing a COMPLETE outfit covering the entire body — top AND bottom. Full outfit examples: jeans and jacket, dress, uniform with pants, skirt and top. The figure must NEVER appear without pants, skirt, or lower body clothing. ALL limbs must be fully clothed or naturally covered by the outfit.
 The figure must have the person's recognizable facial features but BEAUTIFIED like a premium designer doll — flawless smooth plastic skin, perfectly symmetrical features, large sparkling doll-like eyes, cute button nose, small pretty lips. Think Barbie/designer vinyl toy level of idealized beauty while still resembling the original person.
 Design an attractive cardboard backing with bold graphics, product name, character artwork, decorative patterns, and brand-style elements in vibrant colors.
 Include multiple accessories displayed around the main figure: interchangeable hands, effect parts, character-specific items, badges or emblems, miniature props.
