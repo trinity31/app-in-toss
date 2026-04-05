@@ -63,6 +63,15 @@ export const MODEL_CONFIGS = {
     }
   },
 
+  // Gemini 3.1 Flash Image Preview - Gemini SDK 직접 사용
+  'gemini-3.1-flash': {
+    name: 'Gemini 3.1 Flash Image Preview',
+    model: 'gemini-3.1-flash-image-preview',
+    params: {
+      // Gemini SDK 직접 사용하므로 params 불필요
+    }
+  },
+
   // Qwen Image Edit Plus
   'qwen': {
     name: 'Qwen Image Edit Plus',

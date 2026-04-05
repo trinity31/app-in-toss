@@ -1,694 +1,257 @@
-import { useState, useEffect, useRef } from 'react'
-import { fetchAlbumPhotos, saveBase64Data, openCamera, GoogleAdMob } from '@apps-in-toss/web-framework'
-import ConfirmModal from '../components/ConfirmModal'
-import Intro from '../components/Intro'
-import Selection from '../components/Selection'
-import Loading from '../components/Loading'
+import { useState, useRef } from 'react'
+import { fetchAlbumPhotos, saveBase64Data, openCamera } from '@apps-in-toss/web-framework'
+import Landing from '../components/Landing'
+import TypeSelection from '../components/TypeSelection'
+import StyleGrid from '../components/StyleGrid'
+import GeneratingProgress from '../components/GeneratingProgress'
 import Result from '../components/Result'
-import { API_ENDPOINTS, AD_GROUP_ID } from '../config/api'
+import { API_ENDPOINTS, PROFILE_PRODUCT_SKU } from '../config/api'
+import { getSamplesForType } from '../config/styleSamples'
 
-
-
-// 광고 로드 대기 시간 (10초)
-const AD_WAIT_TIMEOUT_MS = 10000
+/**
+ * 최종 플로우: landing → typeSelect → styleShowcase → generating → result
+ *
+ * 1. 사진 업로드
+ * 2. 프로필 타입 선택 (전문가, SNS 등)
+ * 3. 샘플 이미지 쇼케이스 (정적, API 비용 0) → 세트 구매
+ * 4. 결제 후 6장 고화질 생성 (API 6회)
+ * 5. 결과 갤러리 → 저장/공유
+ */
 
 export default function ProfilePage() {
-  const [currentPage, setCurrentPage] = useState('intro')
+  const [page, setPage] = useState('landing')
   const [selectedImage, setSelectedImage] = useState(null)
-  const [selectedProfileType, setSelectedProfileType] = useState('professional')
-  const [generatedImageUrl, setGeneratedImageUrl] = useState(null)
-  const [error, setError] = useState(null)
+  const [selectedProfileType, setSelectedProfileType] = useState(null)
+  const [generatedImages, setGeneratedImages] = useState([])
 
-  // 광고 관련 상태
-  const [adLoaded, setAdLoaded] = useState(false)
-  const [waitingForAd, setWaitingForAd] = useState(false)
-  const [adLoadError, setAdLoadError] = useState(false) // 광고 로드 에러 상태
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false) // 광고 시청 확인 다이얼로그 상태
-  const [loadingMessage, setLoadingMessage] = useState(null) // 로딩 메시지 상태
+  const selectedImageRef = useRef(null)
 
-  // Refs
-  const cleanupRef = useRef(undefined)
-  const adWaitTimeoutRef = useRef(undefined)
-  const rewardEarnedRef = useRef(false)
-  const adPlayCountRef = useRef(0) // 광고 시청 횟수 추적
-  const selectedProfileTypeRef = useRef('professional') // 선택한 프로필 타입 저장
-  const preloadedImageUrlRef = useRef(null) // 미리 로드된 이미지 URL 저장
+  // ── 사진 업로드 ──
 
-  const handleAlbumSelect = async () => {
+  const processPhoto = async (dataUri) => {
+    const normalizedDataUri = dataUri.startsWith('data:')
+      ? dataUri
+      : `data:image/jpeg;base64,${dataUri}`
+
+    const response = await fetch(normalizedDataUri)
+    if (!response.ok) throw new Error('이미지 로드 실패')
+    return response.blob()
+  }
+
+  const handleUpload = async (type) => {
     try {
-      setError(null)
+      let photoData = null
 
-      // fetchAlbumPhotos 지원 여부 확인
-      if (typeof fetchAlbumPhotos !== 'function') {
-        // 브라우저 환경 - 파일 선택기 사용
-        setError('브라우저에서는 파일 선택 기능을 사용해주세요.')
-        return
+      if (type === 'camera') {
+        if (typeof openCamera !== 'function') return
+        const photo = await openCamera({ maxWidth: 384, base64: true })
+        if (!photo?.dataUri) return
+        photoData = photo.dataUri
+      } else {
+        if (typeof fetchAlbumPhotos !== 'function') return
+        const photos = await fetchAlbumPhotos({ maxCount: 1, maxWidth: 384, base64: true })
+        if (!photos?.length) return
+        photoData = photos[0].dataUri
       }
 
-      console.log('갤러리 열기 시작...')
+      const blob = await processPhoto(photoData)
+      setSelectedImage(blob)
+      selectedImageRef.current = blob
+      setPage('typeSelect')
+    } catch (err) {
+      console.error('사진 업로드 오류:', err)
+      setPage('landing')
+    }
+  }
 
-      // 갤러리 열기 전 로딩 표시
-      setLoadingMessage({
-        title: '사진을 불러오고 있어요',
-        description: '잠시만 기다려주세요'
+  // ── 프로필 타입 선택 → 샘플 쇼케이스 ──
+
+  const handleTypeSelect = (profileTypeId) => {
+    setSelectedProfileType(profileTypeId)
+    setPage('styleShowcase')
+  }
+
+  // ── 세트 구매 → 생성 시작 ──
+
+  const handlePurchase = async () => {
+    try {
+      // TODO: 인앱결제 연동
+      // const { purchaseInAppProduct } = await import('@apps-in-toss/web-framework')
+      // const receipt = await purchaseInAppProduct({ sku: PROFILE_PRODUCT_SKU })
+      // const purchaseToken = receipt.token
+
+      // 임시: 결제 시뮬레이션
+      const purchaseToken = `test-token-${Date.now()}`
+
+      // 결제 성공 → 생성 시작
+      setPage('generating')
+      await generateSet(purchaseToken)
+    } catch (err) {
+      console.error('결제 실패:', err)
+    }
+  }
+
+  // ── 6장 세트 생성 (서버 세트 API 사용) ──
+
+  const generateSet = async (purchaseToken) => {
+    try {
+      const base64 = await blobToBase64(selectedImageRef.current)
+
+      const response = await fetch(API_ENDPOINTS.GENERATE_SET, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          imageBase64: base64,
+          mimeType: selectedImageRef.current.type || 'image/jpeg',
+          profileType: selectedProfileType,
+          count: 6,
+          purchaseToken,
+        }),
       })
-      setCurrentPage('loading')
-
-      // 갤러리에서 사진 선택
-      let photos;
-      try {
-        photos = await fetchAlbumPhotos({
-          maxCount: 1,
-          maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
-          base64: true    // Base64 형식으로
-        })
-      } catch (apiError) {
-        console.error('fetchAlbumPhotos 에러:', apiError)
-        // API 호출 실패 시 Intro로 복귀
-        setLoadingMessage(null)
-        setCurrentPage('intro')
-        return
-      }
-
-      console.log('선택된 사진:', photos)
-
-      if (!photos || photos.length === 0) {
-        console.log('사진이 선택되지 않음')
-        // 취소 시 Intro로 복귀
-        setLoadingMessage(null)
-        setCurrentPage('intro')
-        return
-      }
-
-      // 사진 처리 중 로딩 메시지 변경
-      setLoadingMessage({
-        title: '사진을 처리하고 있어요',
-        description: '잠시만 기다려주세요'
-      })
-
-      const photo = photos[0]
-      console.log('사진 정보:', photo)
-      console.log('dataUri 존재 여부:', !!photo.dataUri)
-      console.log('dataUri 길이:', photo.dataUri?.length)
-      console.log('dataUri 시작 부분:', photo.dataUri?.substring(0, 100))
-
-      // dataUri 정규화 (data: 접두사 확인)
-      const normalizedDataUri = photo.dataUri.startsWith('data:')
-        ? photo.dataUri
-        : `data:image/jpeg;base64,${photo.dataUri}`
-
-      console.log('dataUri를 Blob으로 변환 중...')
-
-      // dataUri를 Blob으로 변환
-      const response = await fetch(normalizedDataUri)
-      console.log('fetch 응답 상태:', response.status, response.statusText)
-      console.log('fetch 응답 ok:', response.ok)
 
       if (!response.ok) {
-        throw new Error(`이미지 로드 실패: ${response.statusText}`)
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.error || `생성 실패 (${response.status})`)
       }
 
-      const imageBlob = await response.blob()
-      console.log('Blob 변환 완료:', imageBlob)
-      console.log('Blob 크기:', imageBlob.size)
-      console.log('Blob 타입:', imageBlob.type)
+      const data = await response.json()
 
-      setSelectedImage(imageBlob)
-      // 갤러리 선택 후 용도 선택 페이지로 이동
-      setLoadingMessage(null) // 로딩 메시지 초기화
-      setCurrentPage('selection')
+      if (!data.success || !data.images?.length) {
+        throw new Error('이미지 생성에 실패했습니다')
+      }
 
+      // 서버 응답을 프론트 포맷으로 변환
+      const images = data.images.map(img => ({
+        id: img.id,
+        label: img.label,
+        imageUrl: `data:${img.mimeType};base64,${img.data}`,
+      }))
+
+      setGeneratedImages(images)
+      setPage('result')
     } catch (err) {
-      console.error('이미지 선택 오류 상세:', err)
-      console.error('오류 이름:', err.name)
-      console.error('오류 메시지:', err.message)
-      console.error('오류 스택:', err.stack)
-      setError(`이미지를 선택하는 중 오류가 발생했습니다: ${err.message}`)
-      setLoadingMessage(null)
-      setCurrentPage('intro')
+      console.error('세트 생성 실패:', err)
+      setPage('styleShowcase')
     }
   }
 
-  const handleCameraSelect = async () => {
+  // ── 개별 저장 ──
+
+  const handleSave = async (imageId) => {
     try {
-      setError(null)
+      const img = generatedImages.find(i => i.id === imageId)
+      if (!img || typeof saveBase64Data !== 'function') return
 
-      // openCamera API 지원 여부 확인
-      if (typeof openCamera !== 'function') {
-        setError('카메라 기능을 사용할 수 없습니다.')
-        return
-      }
-
-      console.log('카메라 열기 시작...')
-
-      // 카메라 열기 전 로딩 표시
-      setLoadingMessage({
-        title: '카메라를 불러오고 있어요',
-        description: '잠시만 기다려주세요'
-      })
-      setCurrentPage('loading')
-
-      // 카메라로 사진 촬영
-      let photo;
-      try {
-        photo = await openCamera({
-          maxWidth: 384,  // 413 에러 방지를 위해 더 작게 리사이징
-          base64: true    // Base64 형식으로
-        })
-      } catch (apiError) {
-        console.error('openCamera 에러:', apiError)
-        // API 호출 실패 시 Intro로 복귀
-        setLoadingMessage(null)
-        setCurrentPage('intro')
-        return
-      }
-
-      console.log('촬영된 사진:', photo)
-
-      if (!photo || !photo.dataUri) {
-        console.log('사진이 촬영되지 않음')
-        // 취소 시 Intro로 복귀
-        setLoadingMessage(null)
-        setCurrentPage('intro')
-        return
-      }
-
-      // 사진 처리 중 로딩 메시지 변경
-      setLoadingMessage({
-        title: '사진을 처리하고 있어요',
-        description: '잠시만 기다려주세요'
-      })
-
-      // dataUri 정규화 (data: 접두사 확인)
-      const normalizedDataUri = photo.dataUri.startsWith('data:')
-        ? photo.dataUri
-        : `data:image/jpeg;base64,${photo.dataUri}`
-
-      console.log('dataUri를 Blob으로 변환 중...')
-
-      // dataUri를 Blob으로 변환
-      const response = await fetch(normalizedDataUri)
-      const imageBlob = await response.blob()
-      console.log('Blob 변환 완료:', imageBlob)
-
-      setSelectedImage(imageBlob)
-      // 카메라 촬영 후 용도 선택 페이지로 이동
-      setLoadingMessage(null) // 로딩 메시지 초기화
-      setCurrentPage('selection')
-
-    } catch (err) {
-      console.error('카메라 촬영 오류 상세:', err)
-      console.error('오류 이름:', err.name)
-      console.error('오류 메시지:', err.message)
-      setError(`카메라 촬영 중 오류가 발생했습니다: ${err.message}`)
-      setLoadingMessage(null)
-      setCurrentPage('intro')
-    }
-  }
-
-  const uploadAndGenerateProfile = async (imageFile, profileType) => {
-    console.log('API 호출 시작...')
-    console.log('이미지 파일:', imageFile)
-    console.log('프로필 타입:', profileType)
-
-    // Blob을 Base64로 변환
-    const reader = new FileReader()
-    const base64 = await new Promise((resolve, reject) => {
-      reader.onloadend = () => {
-        const dataUrl = reader.result
-        const base64Data = dataUrl.split(',')[1]
-        resolve(base64Data)
-      }
-      reader.onerror = reject
-      reader.readAsDataURL(imageFile)
-    })
-
-    console.log('Base64 변환 완료, 길이:', base64.length)
-
-    // API 요청 바디 (모델은 서버에서 타입별로 자동 선택됨)
-    const requestBody = {
-      imageBase64: base64,
-      mimeType: imageFile.type || 'image/jpeg',
-      profileType: profileType
-    }
-
-    console.log('요청 데이터:', {
-      mimeType: requestBody.mimeType,
-      base64Length: requestBody.imageBase64.length,
-      profileType: requestBody.profileType
-    })
-
-    console.log('API URL:', API_ENDPOINTS.GENERATE_PROFILE)
-    console.log('🔥 API 요청 본문:', JSON.stringify({
-      profileType: requestBody.profileType,
-      mimeType: requestBody.mimeType,
-      hasModel: 'model' in requestBody ? '있음' : '없음 (서버 자동 선택)'
-    }))
-
-    const response = await fetch(API_ENDPOINTS.GENERATE_PROFILE, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody)
-    })
-
-    console.log('응답 상태:', response.status, response.statusText)
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error('API 에러 응답:', errorText)
-      throw new Error(`API 호출 실패 (${response.status}): ${errorText}`)
-    }
-
-    const data = await response.json()
-    console.log('API 응답 데이터:', data)
-
-    if (data.success && data.image && data.image.data) {
-      // Base64 이미지를 Data URI로 변환하여 반환
-      const imageDataUri = `data:${data.image.mimeType};base64,${data.image.data}`
-      return imageDataUri
-    } else {
-      throw new Error(data.error || '이미지를 생성하지 못했습니다.')
-    }
-  }
-
-  // 광고 로드 함수 (컴포넌트 마운트 시 실행)
-  const loadAd = () => {
-    try {
-      console.log('\n📥 광고 로드 시도')
-
-      // 광고 기능 지원 여부 확인
-      const isSupported = GoogleAdMob?.loadAppsInTossAdMob?.isSupported?.()
-      console.log('🔍 loadAppsInTossAdMob.isSupported():', isSupported)
-
-      if (isSupported !== true) {
-        console.warn('❌ 광고 기능 미지원. isSupported:', isSupported)
-        return
-      }
-
-      // 기존 cleanup 함수 실행
-      cleanupRef.current?.()
-      cleanupRef.current = undefined
-
-      setAdLoaded(false)
-      setAdLoadError(false) // 에러 상태 초기화
-      console.log('🔄 광고 로드 시작...')
-
-      // 광고 로드
-      const cleanup = GoogleAdMob.loadAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
-        onEvent: (event) => {
-          if (event.type === 'loaded') {
-            console.log('✅ 광고 로드 완료:', event.data)
-            setAdLoaded(true)
-          }
-        },
-        onError: (loadError) => {
-          console.error('❌ 광고 로드 실패:', loadError)
-          console.error('❌ 광고 로드 실패:', loadError)
-          setAdLoaded(false)
-          setAdLoadError(true) // 에러 상태 설정
-        }
-      })
-
-      cleanupRef.current = cleanup
-    } catch (loadError) {
-      console.error('⚠️ 광고 로드 예외:', loadError)
-      console.error('⚠️ 광고 로드 예외:', loadError)
-      setAdLoaded(false)
-      setAdLoadError(true) // 에러 상태 설정
-    }
-  }
-
-  // 광고 표시 함수
-  const showAd = () => {
-    try {
-      console.log('✅ 광고 표시 시작')
-      rewardEarnedRef.current = false
-
-      GoogleAdMob.showAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
-        onEvent: (event) => {
-          console.log('광고 이벤트:', event.type)
-
-          switch (event.type) {
-            case 'requested':
-              console.log('✅ 광고 표시 요청 완료')
-              break
-
-            case 'show':
-              console.log('✅ 광고 컨텐츠 표시 시작')
-              break
-
-            case 'impression':
-              console.log('✅ 광고 노출 완료')
-              break
-
-            case 'clicked':
-              console.log('✅ 광고 클릭됨')
-              break
-
-            case 'userEarnedReward':
-              console.log('🎁 보상 획득!', event.data)
-              rewardEarnedRef.current = true
-              break
-
-            case 'dismissed':
-              console.log('광고 닫힘')
-
-              // 보상 획득 여부 확인
-              if (rewardEarnedRef.current) {
-                // 광고 시청 횟수 증가
-                adPlayCountRef.current += 1
-                console.log(`✅ 보상형 광고 완료 (${adPlayCountRef.current}/2)`)
-
-                if (adPlayCountRef.current >= 2) {
-                  console.log('🎉 2회 시청 완료 - 프로필 생성 진행')
-                  setCurrentPage('loading')
-
-                  // 미리 로드된 이미지가 있으면 사용, 없으면 새로 생성
-                  if (preloadedImageUrlRef.current) {
-                    console.log('✅ 미리 로드된 이미지 사용')
-                    setGeneratedImageUrl(preloadedImageUrlRef.current)
-                    setCurrentPage('result')
-                    preloadedImageUrlRef.current = null // 사용 후 초기화
-                  } else {
-                    console.log('⏳ 이미지 생성 대기 중')
-                    generateProfile()
-                  }
-
-                  // 다음 생성을 위해 미리 로드
-                  loadAd()
-                } else {
-                  console.log('⏳ 1회 시청 완료 - 한 번 더 시청 필요')
-                  setIsConfirmDialogOpen(true)
-                  // 여기서는 loadAd()를 호출하지 않음 (다이얼로그 확인 시 호출)
-                }
-              } else {
-                console.warn('⚠️ 보상형 광고 중도 종료 - 프로필 생성하지 않음')
-                setCurrentPage('intro')
-                setError('광고를 끝까지 시청해주세요')
-                // 중도 종료 시에는 다음 광고 로드
-                loadAd()
-              }
-              break
-
-            case 'failedToShow':
-              console.warn('⚠️ 광고 표시 실패 - 광고 없이 진행:', event.data)
-              setCurrentPage('loading')
-              generateProfile()
-              loadAd()
-              break
-          }
-        },
-        onError: (showError) => {
-          console.error('❌ 광고 표시 에러:', showError)
-          console.warn('⚠️ 광고 표시 에러 발생 - 광고 없이 진행')
-          setCurrentPage('loading')
-          generateProfile()
-          loadAd()
-        }
-      })
-    } catch (error) {
-      console.error('❌ 광고 표시 중 예외 발생:', error)
-      setCurrentPage('loading')
-      generateProfile()
-      loadAd()
-    }
-  }
-
-  // 프로필 생성 함수
-  const generateProfile = async () => {
-    if (!selectedImage) {
-      setError('사진을 다시 선택해주세요')
-      setCurrentPage('error')
-      return
-    }
-
-    try {
-      // ref에 저장된 profileType 사용 (state 업데이트 타이밍 문제 방지)
-      const imageDataUri = await uploadAndGenerateProfile(selectedImage, selectedProfileTypeRef.current)
-      setGeneratedImageUrl(imageDataUri)
-      setCurrentPage('result')
-    } catch (err) {
-      console.error('프로필 생성 실패', err)
-      setError(`프로필 사진 생성 중 오류가 발생했습니다: ${err.message}`)
-      setCurrentPage('intro')
-    }
-  }
-
-  // 컴포넌트 마운트 시 광고 로드 및 언마운트 시 정리
-  useEffect(() => {
-    loadAd()
-
-    return () => {
-      // cleanup 함수 호출
-      cleanupRef.current?.()
-      cleanupRef.current = undefined
-
-      // 타이머 정리
-      if (adWaitTimeoutRef.current) {
-        clearTimeout(adWaitTimeoutRef.current)
-        adWaitTimeoutRef.current = undefined
-      }
-    }
-  }, [])
-
-  // 광고 로드 완료 시 대기 중이었다면 광고 표시
-  useEffect(() => {
-    if (waitingForAd && adLoaded) {
-      console.log('✅ 광고 로드 완료 - 광고 표시')
-      setWaitingForAd(false)
-
-      // 타이머 정리
-      if (adWaitTimeoutRef.current) {
-        clearTimeout(adWaitTimeoutRef.current)
-        adWaitTimeoutRef.current = undefined
-      }
-
-      showAd()
-    }
-  }, [adLoaded, waitingForAd])
-
-  const handleReset = () => {
-    setCurrentPage('intro')
-    setSelectedImage(null)
-    setSelectedProfileType('professional')
-    setSelectedProfileType('professional')
-    selectedProfileTypeRef.current = 'professional' // ref도 초기화
-    adPlayCountRef.current = 0 // 광고 시청 횟수 초기화
-    preloadedImageUrlRef.current = null // 미리 로드된 이미지 초기화
-    setGeneratedImageUrl(null)
-    setError(null)
-
-    // 다음 생성을 위해 광고 로드
-    loadAd()
-  }
-
-  const handleProfileTypeSelect = async (profileType) => {
-    setSelectedProfileType(profileType)
-    selectedProfileTypeRef.current = profileType // ref에도 저장
-    adPlayCountRef.current = 0 // 타입 변경 시 광고 시청 횟수 초기화
-
-    try {
-      const isSupported = GoogleAdMob?.showAppsInTossAdMob?.isSupported?.()
-      console.log('🔍 showAppsInTossAdMob.isSupported():', isSupported)
-      console.log('📊 adLoaded 상태:', adLoaded)
-      console.log('📝 선택된 프로필 타입:', profileType)
-
-      if (isSupported !== true) {
-        console.warn('광고 표시 기능 미지원. isSupported:', isSupported)
-        setCurrentPage('loading')
-        generateProfile()
-        return
-      }
-
-      // 광고 로드 중이라면 로딩 화면 표시하고 대기
-      if (adLoaded === false) {
-        console.log('⏳ 광고 로드 대기 중 - 로딩 화면 표시')
-        setCurrentPage('loading')
-        setWaitingForAd(true)
-
-        // 최대 대기 시간 후 광고 없이 진행
-        adWaitTimeoutRef.current = setTimeout(() => {
-          console.warn(`⚠️ 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
-          setWaitingForAd(false)
-          generateProfile()
-        }, AD_WAIT_TIMEOUT_MS)
-
-        return
-      }
-
-      // 광고가 이미 로드된 경우 바로 표시
-      showAd()
-    } catch (error) {
-      console.error('❌ 광고 표시 중 예외 발생:', error)
-      setCurrentPage('loading')
-      generateProfile()
-    }
-  }
-
-  const handleBackToIntro = () => {
-    setSelectedImage(null)
-    setSelectedProfileType('professional')
-    selectedProfileTypeRef.current = 'professional' // ref도 초기화
-    adPlayCountRef.current = 0 // 광고 시청 횟수 초기화
-    setCurrentPage('intro')
-  }
-
-  const handleSave = async () => {
-    try {
-      if (!generatedImageUrl) {
-        alert('저장할 이미지가 없습니다.')
-        return
-      }
-
-      // saveBase64Data API 지원 여부 확인
-      if (typeof saveBase64Data !== 'function') {
-        alert('이미지 저장 기능을 사용할 수 없습니다.')
-        return
-      }
-
-      console.log('이미지 저장 시작...')
-
-      // Data URI에서 Base64 부분만 추출 (data:image/png;base64, 제거)
-      const base64Data = generatedImageUrl.split(',')[1]
-
-      // saveBase64Data API 호출
+      const base64Data = img.imageUrl.split(',')[1]
       await saveBase64Data({
         data: base64Data,
-        fileName: `profile_${Date.now()}.png`,
-        mimeType: 'image/png'
+        fileName: `profile_${imageId}_${Date.now()}.png`,
+        mimeType: 'image/png',
       })
-
-      console.log('이미지 저장 완료')
-
     } catch (err) {
-      console.error('이미지 저장 오류:', err)
-      // 사용자가 취소한 경우는 에러 메시지 표시하지 않음
-      if (err.message && !err.message.toLowerCase().includes('cancel')) {
-        alert(`이미지 저장 중 오류가 발생했습니다: ${err.message}`)
+      if (!err.message?.toLowerCase().includes('cancel')) {
+        console.error('저장 오류:', err)
       }
     }
   }
 
-  const handleConfirmDialogConfirm = async () => {
-    setIsConfirmDialogOpen(false)
+  // ── 전체 저장 ──
 
-    // 다음 광고 로드 및 표시 준비
-    setWaitingForAd(true)
-
-    // 로딩 화면 표시 (Loader가 포함된 Loading 컴포넌트)
-    setCurrentPage('loading')
-
-    // 광고 로드 (이미 로드되어 있을 수도 있지만 확실히 하기 위해 호출)
-    loadAd()
-
-    // 최대 대기 시간 후 광고 없이 진행
-    adWaitTimeoutRef.current = setTimeout(() => {
-      console.warn(`⚠️ 2번째 광고 로드 타임아웃 (${AD_WAIT_TIMEOUT_MS / 1000}초) - 광고 없이 진행`)
-      setWaitingForAd(false)
-
-      // 미리 로드된 이미지가 있으면 즉시 표시, 없으면 생성
-      if (preloadedImageUrlRef.current) {
-        console.log('✅ 미리 로드된 이미지 사용')
-        setGeneratedImageUrl(preloadedImageUrlRef.current)
-        setCurrentPage('result')
-        preloadedImageUrlRef.current = null
-      } else {
-        console.log('⏳ 이미지 생성 대기 중')
-        generateProfile()
-      }
-    }, AD_WAIT_TIMEOUT_MS)
-
-    // 동시에 API 호출 시작 (백그라운드에서 실행)
-    console.log('🚀 두 번째 광고 로딩과 동시에 API 호출 시작')
-    try {
-      const imageDataUri = await uploadAndGenerateProfile(selectedImage, selectedProfileTypeRef.current)
-      preloadedImageUrlRef.current = imageDataUri
-      console.log('✅ API 응답 완료 - 이미지 미리 로드됨')
-    } catch (err) {
-      console.error('❌ 미리 로드 실패:', err)
-      // 실패한 경우 preloadedImageUrlRef는 null로 유지되어 나중에 다시 시도함
+  const handleSaveAll = async () => {
+    for (const img of generatedImages) {
+      await handleSave(img.id)
     }
   }
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'intro':
-        return (
-          <Intro
-            onNext={(type) => {
-              if (type === 'album') {
-                handleAlbumSelect()
-              } else if (type === 'camera') {
-                handleCameraSelect()
-              }
-            }}
-            error={error}
-          />
-        )
-      case 'selection':
-        return (
-          <Selection
-            selectedImage={selectedImage}
-            onSelect={handleProfileTypeSelect}
-            onBack={handleBackToIntro}
-          />
-        )
-      case 'loading':
-        return (
-          <Loading
-            error={adLoadError}
-            onRetry={loadAd}
-            title={loadingMessage?.title}
-            description={loadingMessage?.description}
-          />
-        )
-      case 'result':
-        return (
-          <Result
-            imageUrl={generatedImageUrl}
-            onClose={handleReset}
-            onSave={handleSave}
-          />
-        )
-      default:
-        return (
-          <Intro
-            onNext={(type) => {
-              if (type === 'album') {
-                handleAlbumSelect()
-              } else if (type === 'camera') {
-                handleCameraSelect()
-              }
-            }}
-            error={error}
-          />
-        )
-    }
+  // ── 개별 공유 ──
+
+  const handleShare = async (imageId) => {
+    // TODO: 공유 API 연동
+    await handleSave(imageId)
   }
 
+  // ── 네비게이션 ──
 
+  const handleRetry = () => {
+    setPage('typeSelect')
+    setSelectedProfileType(null)
+    setGeneratedImages([])
+  }
 
-  return (
-    <>
-      {renderPage()}
-      <ConfirmModal
-        open={isConfirmDialogOpen}
-        onClose={() => setIsConfirmDialogOpen(false)}
-        title="광고를 한 번 더 시청해주세요"
-        description={'광고를 시청하는 동안\n프로필 사진을 생성할게요.'}
-        confirmButton={{
-          text: '시청하기',
-          onClick: handleConfirmDialogConfirm
-        }}
-        cancelButton={{
-          text: '취소',
-          onClick: () => setIsConfirmDialogOpen(false)
-        }}
-      />
-    </>
-  )
+  const handleBackToTypeSelect = () => {
+    setSelectedProfileType(null)
+    setPage('typeSelect')
+  }
+
+  const handleBackToLanding = () => {
+    setSelectedImage(null)
+    selectedImageRef.current = null
+    setSelectedProfileType(null)
+    setPage('landing')
+  }
+
+  // ── 유틸 ──
+
+  const blobToBase64 = (blob) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => resolve(reader.result.split(',')[1])
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
+
+  // ── 렌더링 ──
+
+  const currentSamples = selectedProfileType
+    ? getSamplesForType(selectedProfileType)
+    : []
+
+  // 타입 이름 (표시용)
+  const typeNameMap = {
+    sns: 'SNS 프로필', professional: '전문가 프로필', artist: '아티스트 프로필',
+    dating: '소개팅 프로필', nomad: '디지털 노마드', creative: '크리에이티브',
+  }
+  const typeName = typeNameMap[selectedProfileType] || selectedProfileType
+
+  switch (page) {
+    case 'landing':
+      return <Landing onUpload={handleUpload} />
+
+    case 'typeSelect':
+      return (
+        <TypeSelection
+          selectedImage={selectedImage}
+          onSelect={handleTypeSelect}
+          onBack={handleBackToLanding}
+        />
+      )
+
+    case 'styleShowcase':
+      return (
+        <StyleGrid
+          samples={currentSamples}
+          typeName={typeName}
+          onPurchase={handlePurchase}
+          onBack={handleBackToTypeSelect}
+        />
+      )
+
+    case 'generating':
+      return <GeneratingProgress />
+
+    case 'result':
+      return (
+        <Result
+          images={generatedImages}
+          typeName={typeName}
+          onSave={handleSave}
+          onSaveAll={handleSaveAll}
+          onShare={handleShare}
+          onRetry={handleRetry}
+        />
+      )
+
+    default:
+      return <Landing onUpload={handleUpload} />
+  }
 }

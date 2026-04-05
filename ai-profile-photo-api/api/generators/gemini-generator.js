@@ -6,7 +6,7 @@ import { BaseImageGenerator } from './base-generator.js';
  * Google Gemini 2.5 Flash를 사용한 이미지 생성
  */
 export class GeminiGenerator extends BaseImageGenerator {
-  constructor() {
+  constructor(modelName) {
     super();
 
     if (!process.env.GEMINI_API_KEY) {
@@ -16,6 +16,7 @@ export class GeminiGenerator extends BaseImageGenerator {
     this.ai = new GoogleGenAI({
       apiKey: process.env.GEMINI_API_KEY
     });
+    this.modelName = modelName || 'gemini-3-pro-image-preview';
   }
 
   async generate({ imageBase64, images, mimeType, prompt }) {
@@ -52,9 +53,10 @@ export class GeminiGenerator extends BaseImageGenerator {
         });
       }
 
-      // 이미지 생성 - gemini-3-pro-image-preview 사용
+      // 이미지 생성
+      console.log('Gemini 모델:', this.modelName);
       const response = await this.ai.models.generateContent({
-        model: 'gemini-3-pro-image-preview',
+        model: this.modelName,
         contents: contents,
         config: {
           responseModalities: ['TEXT', 'IMAGE'],

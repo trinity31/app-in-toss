@@ -11,8 +11,9 @@ export function createGenerator(model = DEFAULT_MODEL) {
   console.log('Generator 생성:', model);
 
   // Gemini SDK 직접 사용
-  if (model === 'gemini-sdk' || model === 'google/nano-banana' || model === 'google/nano-banana-pro') {
-    return new GeminiGenerator();
+  if (model === 'gemini-sdk' || model === 'google/nano-banana' || model === 'google/nano-banana-pro' || model === 'gemini-3.1-flash') {
+    const modelConfig = MODEL_CONFIGS[model];
+    return new GeminiGenerator(modelConfig?.model);
   }
 
   // Replicate 기반 모델
