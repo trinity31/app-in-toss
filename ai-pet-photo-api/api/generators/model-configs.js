@@ -56,6 +56,16 @@ export const MODEL_CONFIGS = {
     }
   },
 
+  // Gemini 3.1 Flash Image Preview - Gemini SDK 직접 사용
+  'gemini-3.1-flash': {
+    name: 'Gemini 3.1 Flash Image Preview',
+    model: 'gemini-3.1-flash-image-preview',
+    params: {
+      aspect_ratio: '2:3',
+      resolution: '1K',
+    }
+  },
+
   // Google Nano Banana Pro - Gemini SDK 직접 사용
   'google/nano-banana-pro': {
     name: 'Gemini 3 Pro Image',

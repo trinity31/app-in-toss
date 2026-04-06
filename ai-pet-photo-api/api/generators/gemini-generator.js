@@ -77,7 +77,7 @@ export class GeminiGenerator extends BaseImageGenerator {
       let generatedImage = null;
 
       if (response.candidates && response.candidates[0] && response.candidates[0].content) {
-        const parts = response.candidates[0].content.parts;
+        const parts = response.candidates[0].content.parts || [];
 
         for (const part of parts) {
           if (part.inlineData) {

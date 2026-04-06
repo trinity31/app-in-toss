@@ -5,7 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const BUCKET_NAME = 'pet-newyear-images';
+const DEFAULT_BUCKET = 'pet-newyear-images';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -20,7 +20,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { userId, filePath } = req.query;
+  const { userId, filePath, bucket } = req.query;
+  const BUCKET_NAME = bucket || DEFAULT_BUCKET;
 
   if (!userId || !filePath) {
     return res.status(400).json({ error: 'userId와 filePath는 필수입니다' });

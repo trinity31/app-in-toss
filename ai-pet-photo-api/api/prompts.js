@@ -275,19 +275,18 @@ IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - 
 
   // 8. 피규어 - 블리스터 팩 액션 피규어 스타일
   'figure': `
-Transform this pet into a high-quality collectible action figure displayed in a blister pack packaging.
-Create a premium toy package design with the action figure visible through clear plastic blister packaging mounted on colorful cardboard backing.
-The figure should be made of high-quality painted plastic or vinyl with articulated joints, displayed in an eye-catching pose.
+Transform this pet into a high-quality collectible vinyl figure displayed in premium blister pack packaging.
+Create a toy package design with the figure visible through clear plastic blister packaging mounted on colorful cardboard backing.
+The figure should be a single solid sculpted piece - NOT articulated, NO visible joints, NO separated limbs. The body must look like one seamless, continuous sculpt with a natural standing or sitting pose. The figure's surface should have realistic, finely sculpted fur texture with visible individual hair strands and natural fur direction, painted with detailed color gradients that faithfully reproduce the pet's original coat pattern and markings.
 Design an attractive cardboard backing with bold graphics, product name, character artwork, decorative patterns, and brand-style elements in vibrant colors.
-Include multiple accessories displayed around the main figure: interchangeable hands or paws, weapons or tools, effect parts (energy blasts, speed lines), character-specific items, badges or emblems, miniature props that tell a story.
-The accessories should be neatly arranged in molded plastic compartments within the blister pack, creating an organized and premium presentation.
-Use dynamic and creative poses for the figure - randomly choose from: heroic standing pose, action stance, playful pose, signature character pose, or battle-ready position that looks great through the packaging.
-Apply professional toy photography lighting with clean, bright illumination that showcases the figure and accessories clearly through the transparent blister.
+Include a few small accessories displayed beside the figure: a miniature food bowl, a tiny toy, a name tag, or a themed prop. Keep accessories minimal and cute, arranged neatly in the blister pack.
+The figure's pose should be cute and natural - choose from: sitting upright, standing with head tilted, playful pounce, or a relaxed lounging pose. The pose should feel like a designer toy or collectible figurine, not an action figure.
+Apply professional toy photography lighting with clean, bright illumination that showcases the figure clearly through the transparent blister.
 Add authentic packaging details: warning labels, age recommendations, barcodes, product information text, company logos positioned naturally on the card backing.
 Create that new-in-box collectible aesthetic - pristine condition, museum-quality presentation, shelf-ready display packaging.
-Choose random creative cardboard backing themes: space adventure with stars and planets, fantasy realm with magical elements, urban hero with city graphics, cute pastel design with hearts and flowers, traditional cultural patterns, futuristic tech design with circuits and neon, or seasonal themes.
-Show fine details: realistic plastic texture on figure, glossy finish on blister pack, printing quality on cardboard, professional product photography composition.
-Premium blister pack toy quality, authentic collectible packaging aesthetic, detailed craftsmanship, ultra-high resolution, retail-ready presentation.
+Choose random creative cardboard backing themes: space adventure with stars and planets, fantasy realm with magical elements, cute pastel design with hearts and flowers, futuristic tech design with circuits and neon, or seasonal themes.
+Show fine details: realistic sculpted fur texture with visible hair detail on the figure, glossy finish on blister pack, printing quality on cardboard, professional product photography composition.
+Premium collectible figure quality with lifelike fur rendering, authentic packaging aesthetic, detailed craftsmanship, ultra-high resolution, retail-ready presentation.
 
 IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
 `,
@@ -312,43 +311,44 @@ Premium plush quality with realistic fur texture, ultra-soft and cuddly aestheti
 IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
 `,
 
-  // 10. 루니툰 스타일 - 클래식 카툰 애니메이션
+  // 10. 카툰 일러스트 - 귀여운 현대적 카툰 스타일
   'looney-tunes': `
-Transform this pet into a classic Looney Tunes style cartoon character with vintage animation charm.
-Apply 1940s-1950s golden age cartoon aesthetic with bold outlines, exaggerated features, and dynamic expression.
-Use vibrant, slightly retro color palette typical of classic Warner Bros. cartoons - bright primaries with cel-shading.
-Exaggerate the pet's features in a playful, comedic way - big expressive eyes, dynamic fur, animated personality.
-Add classic cartoon motion lines, impact effects, or comedic visual elements around the character.
-Create a simple, classic cartoon background with bold colors and minimal detail, focusing on the character.
-Capture an energetic, mischievous, or comically expressive face full of personality and charm.
-Include vintage cartoon styling - hand-drawn feel, cel animation aesthetic, timeless comedy appeal.
-Classic golden-age animation style, bold vibrant colors, comedic expression, high resolution, nostalgic cartoon charm.
+Transform this pet into an adorable modern cartoon illustration style character.
+Create a cute, polished cartoon portrait that looks like it belongs in a premium children's picture book or modern animated series.
 
-ORIENTATION AND COMPOSITION:
-- Classic frontal cartoon view for maximum character appeal
-- The character must be facing forward and properly oriented
-- No rotation, tilting, or upside-down positioning (unless comedic and intentional)
-- Maintain level cartoon staging
-- Center the character in the frame with proper vertical alignment
-- The head should be at the top, body in the middle, following classic cartoon composition
+STYLE:
+- Clean, smooth digital illustration with soft rounded lines — NOT rough sketchy vintage style.
+- Modern cartoon aesthetic like Studio Ghibli, modern Pixar concept art, or high-end children's book illustration.
+- Soft, gentle color palette with warm pastels and harmonious tones — NOT harsh primary colors.
+- Slightly stylized proportions: bigger sparkling eyes, rounder head, softer features — cute and appealing.
 
-QUALITY REQUIREMENTS:
-- Professional vintage animation quality with bold lines and clear details
-- Proper cartoon proportions - exaggerated but appealing
-- Clean, polished cel animation rendering with smooth colors
-- Vibrant but balanced retro colors without oversaturation
-- High resolution output suitable for animation cels
+CHARACTER:
+- Preserve the pet's recognizable features (fur color, markings, breed) but make everything cuter and more polished.
+- Big, bright, sparkling eyes with detailed reflections — the focal point of cuteness.
+- Soft, fluffy fur rendered with smooth gradients and gentle highlights.
+- Sweet, happy expression — gentle smile, warm and lovable personality shining through.
+
+BACKGROUND:
+- Soft, dreamy pastel background with gentle gradient or simple bokeh elements.
+- Can include subtle decorative elements: tiny stars, hearts, flower petals, or soft sparkles.
+- Clean and minimal — the pet character is the star.
+
+COMPOSITION:
+- Centered portrait, facing forward with slight head tilt for maximum cuteness.
+- Head and upper body framing, filling most of the frame.
+- Proper vertical alignment, no rotation or tilting.
+
+QUALITY:
+- Professional digital illustration quality with clean lines and smooth rendering.
+- High resolution, print-ready quality.
+- Polished and refined — looks like professional character art, not amateur doodle.
 
 NATURAL ENHANCEMENT:
-- Gently enhance the pet's appearance while maintaining their recognizable features and personality
-- Naturally clean up minor imperfections in cartoon style
-- Keep the overall look and unique characteristics of the pet intact in cartoon form
-- Make improvements subtle - the pet should still be recognizable in classic cartoon style
-- Enhance cartoon features to be expressive and comedic
-- Brighten and enlarge the eyes naturally for classic cartoon appeal
-- Remove any distracting elements while preserving distinctive pet characteristics
+- Gently enhance the pet's appearance while maintaining their recognizable features.
+- Clean up any imperfections — the cartoon version should be the pet at their absolute cutest.
+- Brighten and enlarge the eyes naturally for maximum charm.
 
-IMPORTANT: DO NOT include any Korean text, characters, or Hangul in the image - use only English.
+DO NOT include any logos, brand names, watermarks, text, or Korean characters in the image.
 `,
 
   // 11. 스티커 - SNS용 스티커 디자인

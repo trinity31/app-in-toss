@@ -16,6 +16,12 @@ export function createGenerator(model = DEFAULT_MODEL) {
     return new GeminiGenerator('gemini-2.5-flash-image', config);
   }
 
+  // Gemini 3.1 Flash
+  if (model === 'gemini-3.1-flash') {
+    const config = MODEL_CONFIGS[model];
+    return new GeminiGenerator(config.model, config);
+  }
+
   // Gemini Pro 모델
   if (model === 'google/nano-banana-pro') {
     const config = MODEL_CONFIGS[model];
