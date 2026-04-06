@@ -15,7 +15,11 @@ export default function Result({ images = [], typeName, onSave, onSaveAll, onRet
   const [revealedCount, setRevealedCount] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
   const [saving, setSaving] = useState(false);
-  const [viewingImage, setViewingImage] = useState(null);
+  const [viewingIndex, setViewingIndex] = useState(-1);
+  const viewingImage = viewingIndex >= 0 ? images[viewingIndex] : null;
+
+  const showPrev = () => setViewingIndex(i => (i > 0 ? i - 1 : images.length - 1));
+  const showNext = () => setViewingIndex(i => (i < images.length - 1 ? i + 1 : 0));
 
   const handleSave = async (imageId) => {
     setSaving(true);
@@ -68,7 +72,7 @@ export default function Result({ images = [], typeName, onSave, onSaveAll, onRet
                 onClick={(e) => {
                   if (isRevealed) {
                     e.stopPropagation();
-                    setViewingImage(img);
+                    setViewingIndex(i);
                   }
                 }}
               >
@@ -102,14 +106,20 @@ export default function Result({ images = [], typeName, onSave, onSaveAll, onRet
 
       {/* 풀스크린 이미지 뷰어 */}
       {viewingImage && (
-        <div style={styles.overlay} onClick={() => setViewingImage(null)}>
+        <div style={styles.overlay} onClick={() => setViewingIndex(-1)}>
+          <button style={styles.navButton} onClick={(e) => { e.stopPropagation(); showPrev(); }}>
+            <span style={styles.navArrow}>&#8249;</span>
+          </button>
           <img
             src={viewingImage.imageUrl}
             alt={viewingImage.label}
             style={styles.overlayImage}
             onClick={(e) => e.stopPropagation()}
           />
-          <button style={styles.closeButton} onClick={() => setViewingImage(null)}>✕</button>
+          <button style={{...styles.navButton, left: 'auto', right: '8px'}} onClick={(e) => { e.stopPropagation(); showNext(); }}>
+            <span style={styles.navArrow}>&#8250;</span>
+          </button>
+          <button style={styles.closeButton} onClick={() => setViewingIndex(-1)}>✕</button>
           <div style={styles.overlayActions}>
             <button
               style={{...styles.overlayActionBtn, opacity: saving ? 0.5 : 1}}
@@ -296,6 +306,28 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  navButton: {
+    position: 'absolute',
+    left: '8px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: '44px',
+    height: '44px',
+    borderRadius: '50%',
+    border: 'none',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    color: '#fff',
+    fontSize: '28px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1001,
+  },
+  navArrow: {
+    lineHeight: 1,
+    marginTop: '-2px',
   },
   overlayActions: {
     display: 'flex',
