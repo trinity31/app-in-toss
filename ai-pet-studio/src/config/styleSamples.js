@@ -1,10 +1,10 @@
 /**
  * 펫 스타일 샘플 이미지
- * intro 폴더 안의 모든 이미지를 자동으로 가져와서 랜덤 순서로 표시
+ * samples 폴더 안의 9가지 스타일 샘플을 자동으로 가져와서 랜덤 순서로 표시
  */
 
 const allSamples = import.meta.glob(
-  '../assets/images/intro/*.{jpg,jpeg,png,webp}',
+  '../assets/images/samples/*.{jpg,jpeg,png,webp}',
   { eager: true, import: 'default' }
 );
 
