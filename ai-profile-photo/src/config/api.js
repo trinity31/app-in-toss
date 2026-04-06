@@ -12,7 +12,17 @@ export const API_ENDPOINTS = {
   GENERATE_SET: `${API_BASE_URL}/generate-profile-set`,
   // 기존 단건 생성 (하위 호환)
   GENERATE_PROFILE: `${API_BASE_URL}/generate-profile-photo`,
+  // 토스 로그인
+  TOSS_LOGIN: `${API_BASE_URL}/toss-login`,
 };
+
+// Supabase 이미지 저장
+export const IMAGE_ENDPOINTS = {
+  UPLOAD: `${API_BASE_URL}/images/upload`,
+  LIST: `${API_BASE_URL}/images/list`,
+  DELETE: `${API_BASE_URL}/images/delete`,
+};
+export const IMAGE_BUCKET = 'profile-photo-images';
 
 // 인앱결제 상품 SKU
 export const PROFILE_PRODUCT_SKU = 'ait.profile.hires.single';

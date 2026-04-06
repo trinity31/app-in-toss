@@ -16,7 +16,7 @@ for (let i = shuffled.length - 1; i > 0; i--) {
 }
 const galleryImages = shuffled.slice(0, 9);
 
-export default function Landing({ onUpload }) {
+export default function Landing({ onUpload, error, onDismissError }) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleCamera = () => {
@@ -71,6 +71,13 @@ export default function Landing({ onUpload }) {
         <div style={styles.infoDot} />
         <p style={styles.infoText}>얼굴이 잘 보이는 사진일수록 결과가 좋아요</p>
       </div>
+
+      {error && (
+        <div style={styles.errorToast}>
+          <p style={styles.errorText}>{error}</p>
+          <button style={styles.errorClose} onClick={onDismissError}>✕</button>
+        </div>
+      )}
 
       {/* CTA */}
       <div style={styles.ctaArea}>
@@ -255,6 +262,25 @@ const styles = {
     fontSize: theme.font.size.small,
     color: theme.color.textTertiary,
     margin: "8px 0 0 0",
+  },
+
+  /* ── 에러 토스트 ── */
+  errorToast: {
+    position: "fixed", bottom: "140px", left: "20px", right: "20px",
+    display: "flex", alignItems: "center", justifyContent: "space-between",
+    maxWidth: "400px", margin: "0 auto",
+    padding: "14px 16px", borderRadius: theme.radius.md,
+    backgroundColor: "#FFEBEE", border: "1px solid #FFCDD2",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    zIndex: 999,
+    animation: "fadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) both",
+  },
+  errorText: {
+    fontSize: theme.font.size.caption, color: "#C62828", margin: 0, flex: 1,
+  },
+  errorClose: {
+    background: "none", border: "none", color: "#C62828", fontSize: "16px",
+    cursor: "pointer", padding: "4px", marginLeft: "8px", flexShrink: 0,
   },
 
   /* ── 바텀 시트 ── */

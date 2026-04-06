@@ -140,8 +140,11 @@ export default async function handler(req, res) {
       if (result.status === "fulfilled") {
         images.push(result.value);
       } else {
+        const variation = STYLE_VARIATIONS[i];
         errors.push({
           index: i,
+          variation: variation?.id,
+          label: variation?.label,
           error: result.reason?.message || "Unknown error",
         });
         console.error(`[${i + 1}] 실패:`, result.reason?.message);
