@@ -3,14 +3,14 @@ import { Asset, ListRow } from '@toss/tds-mobile';
 import { theme, primaryButton, secondaryButton } from '../styles/theme';
 import { PET_STYLE_SAMPLES } from '../config/styleSamples';
 
-export default function Landing({ onUpload }) {
+export default function Landing({ onUpload, onHistory, error, onDismissError }) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleCamera = () => { setIsSheetOpen(false); onUpload('camera'); };
   const handleAlbum = () => { setIsSheetOpen(false); onUpload('album'); };
 
-  // 갤러리용 첫 4장
-  const galleryImages = PET_STYLE_SAMPLES.slice(0, 4);
+  // 갤러리용 9장
+  const galleryImages = PET_STYLE_SAMPLES.slice(0, 9);
 
   return (
     <div style={styles.container}>
@@ -38,11 +38,22 @@ export default function Landing({ onUpload }) {
         <p style={styles.infoText}>얼굴이 잘 보이는 사진일수록 결과가 좋아요</p>
       </div>
 
+      {error && (
+        <div style={styles.errorToast}>
+          <p style={styles.errorText}>{error}</p>
+          <button style={styles.errorClose} onClick={onDismissError}>✕</button>
+        </div>
+      )}
+
       <div style={styles.ctaArea}>
         <button style={styles.ctaButton} onClick={() => setIsSheetOpen(true)}>
           사진 올리기
         </button>
-        <p style={styles.ctaCaption}>우리 아이 사진을 올려주세요</p>
+        {onHistory && (
+          <button style={styles.historyButton} onClick={onHistory}>
+            만든 사진 보기
+          </button>
+        )}
       </div>
 
       {isSheetOpen && (
@@ -103,7 +114,7 @@ const styles = {
     margin: '12px 0 0 0',
   },
   gallery: {
-    display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px',
+    display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px',
     width: '100%', maxWidth: '360px', marginTop: '32px',
   },
   galleryItem: {
@@ -123,12 +134,33 @@ const styles = {
     backgroundColor: 'rgba(255, 251, 248, 0.9)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
     display: 'flex', flexDirection: 'column', alignItems: 'center',
   },
+  errorToast: {
+    position: 'fixed', bottom: '140px', left: '20px', right: '20px',
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    maxWidth: '400px', margin: '0 auto',
+    padding: '14px 16px', borderRadius: theme.radius.md,
+    backgroundColor: '#FFEBEE', border: '1px solid #FFCDD2',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    zIndex: 999,
+    animation: 'fadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) both',
+  },
+  errorText: {
+    fontSize: theme.font.size.caption, color: '#C62828', margin: 0, flex: 1,
+  },
+  errorClose: {
+    background: 'none', border: 'none', color: '#C62828', fontSize: '16px',
+    cursor: 'pointer', padding: '4px', marginLeft: '8px', flexShrink: 0,
+  },
   ctaButton: { ...primaryButton, width: '100%', maxWidth: '400px', padding: '16px', fontSize: theme.font.size.body, borderRadius: theme.radius.md },
-  ctaCaption: { fontSize: theme.font.size.small, color: theme.color.textTertiary, margin: '8px 0 0 0' },
+  historyButton: {
+    ...secondaryButton, width: '100%', maxWidth: '400px', padding: '12px',
+    backgroundColor: 'transparent', color: theme.color.textTertiary,
+    fontSize: theme.font.size.caption, marginTop: '4px',
+  },
   overlay: { position: 'fixed', inset: 0, backgroundColor: theme.color.overlay, zIndex: 1000 },
   sheet: {
-    position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)',
-    width: '100%', maxWidth: '480px', backgroundColor: theme.color.surface,
+    position: 'fixed', bottom: 0, left: 0, right: 0,
+    margin: '0 auto', width: '100%', maxWidth: '480px', backgroundColor: theme.color.surface,
     borderRadius: `${theme.radius.xl} ${theme.radius.xl} 0 0`,
     padding: '12px 20px', paddingBottom: 'max(32px, env(safe-area-inset-bottom))',
     zIndex: 1001, animation: 'fadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) both',
