@@ -8,9 +8,16 @@ import { theme, primaryButton, secondaryButton } from '../styles/theme';
  * props.onPurchase: () => void
  * props.onBack:     () => void
  */
-export default function StyleGrid({ samples = [], typeName, onPurchase, onBack }) {
+export default function StyleGrid({ samples = [], typeName, onPurchase, onBack, error, onDismissError }) {
   return (
     <div style={styles.container}>
+      {error && (
+        <div style={styles.errorToast}>
+          <p style={styles.errorText}>{error}</p>
+          <button style={styles.errorClose} onClick={onDismissError}>✕</button>
+        </div>
+      )}
+
       {/* 헤더 */}
       <div style={styles.header}>
         <p style={styles.typeTag}>{typeName}</p>
@@ -154,6 +161,25 @@ const styles = {
     color: theme.color.accent,
     margin: 0,
     lineHeight: theme.font.lineHeight.normal,
+  },
+
+  /* ── 에러 토스트 ── */
+  errorToast: {
+    position: 'fixed', bottom: '140px', left: '20px', right: '20px',
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    maxWidth: '400px', margin: '0 auto',
+    padding: '14px 16px', borderRadius: theme.radius.md,
+    backgroundColor: '#FFEBEE', border: '1px solid #FFCDD2',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    zIndex: 999,
+    animation: 'fadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) both',
+  },
+  errorText: {
+    fontSize: theme.font.size.caption, color: '#C62828', margin: 0, flex: 1,
+  },
+  errorClose: {
+    background: 'none', border: 'none', color: '#C62828', fontSize: '16px',
+    cursor: 'pointer', padding: '4px', marginLeft: '8px', flexShrink: 0,
   },
 
   /* ── 하단 ── */

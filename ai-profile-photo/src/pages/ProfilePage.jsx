@@ -6,6 +6,7 @@ import StyleGrid from '../components/StyleGrid'
 import GeneratingProgress from '../components/GeneratingProgress'
 import Result from '../components/Result'
 import TossLogin from '../components/TossLogin'
+import History from '../components/History'
 import { API_ENDPOINTS, PROFILE_PRODUCT_SKU, IMAGE_ENDPOINTS, IMAGE_BUCKET } from '../config/api'
 import { getSamplesForType } from '../config/styleSamples'
 
@@ -293,6 +294,60 @@ export default function ProfilePage() {
     }
   }
 
+  // ── 실패한 변형 재생성 (히스토리에서 호출) ──
+
+  const handleRetryFailed = async () => {
+    const savedImage = localStorage.getItem('profile_photo_pending_image')
+    const storedFailed = JSON.parse(localStorage.getItem('profile_photo_failed_styles') || '[]')
+
+    if (!savedImage || storedFailed.length === 0) return
+
+    setPage('generating')
+
+    try {
+      const profileType = localStorage.getItem('profile_photo_pending_type') || 'professional'
+      const body = {
+        imageBase64: savedImage,
+        mimeType: 'image/jpeg',
+        profileType,
+        purchaseToken: 'retry-' + Date.now(),
+      }
+      if (storedFailed[0] !== 'all') {
+        body.variations = storedFailed
+      }
+      body.count = storedFailed[0] === 'all' ? 6 : storedFailed.length
+
+      const response = await fetch(API_ENDPOINTS.GENERATE_SET, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+
+      if (!response.ok) throw new Error('재생성 실패')
+      const data = await response.json()
+
+      if (!data.success || !data.images?.length) throw new Error('재생성 실패')
+
+      for (const img of data.images) {
+        uploadToSupabase(img.data, userIdRef.current, img.id).catch(() => {})
+      }
+
+      if (!data.errors?.length) {
+        localStorage.removeItem('profile_photo_pending_image')
+        localStorage.removeItem('profile_photo_failed_styles')
+        localStorage.removeItem('profile_photo_pending_type')
+      } else {
+        const stillFailed = data.errors.map(e => e.variation || e.style)
+        localStorage.setItem('profile_photo_failed_styles', JSON.stringify(stillFailed))
+      }
+
+      setPage('history')
+    } catch (err) {
+      console.error('재생성 실패:', err)
+      setPage('history')
+    }
+  }
+
   // ── 실패한 변형 재생성 (결과 화면에서 호출) ──
 
   const handleRetryFailedFromResult = async () => {
@@ -390,6 +445,8 @@ export default function ProfilePage() {
     setSelectedProfileType(null)
     setGeneratedImages([])
     setFailedStyles([])
+    setHasPendingOrder(false)
+    setError(null)
   }
 
   const handleBackToTypeSelect = () => {
@@ -450,6 +507,7 @@ export default function ProfilePage() {
       return (
         <Landing
           onUpload={handleUpload}
+          onHistory={() => setPage(userIdRef.current ? 'history' : 'historyLogin')}
           error={error}
           onDismissError={() => setError(null)}
         />
@@ -472,6 +530,22 @@ export default function ProfilePage() {
         />
       )
 
+    case 'historyLogin':
+      return (
+        <TossLogin
+          onNext={({ userKey }) => {
+            const uid = String(userKey)
+            userIdRef.current = uid
+            localStorage.setItem('profile_photo_user_key', uid)
+            setPage('history')
+          }}
+          onBack={() => setPage('landing')}
+        />
+      )
+
+    case 'history':
+      return <History userId={userIdRef.current} onBack={() => setPage('landing')} onRetryFailed={handleRetryFailed} />
+
     case 'styleShowcase':
       return (
         <StyleGrid
@@ -479,6 +553,8 @@ export default function ProfilePage() {
           typeName={typeName}
           onPurchase={handlePurchase}
           onBack={handleBackToTypeSelect}
+          error={error}
+          onDismissError={() => setError(null)}
         />
       )
 

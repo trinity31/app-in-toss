@@ -16,7 +16,7 @@ for (let i = shuffled.length - 1; i > 0; i--) {
 }
 const galleryImages = shuffled.slice(0, 9);
 
-export default function Landing({ onUpload, error, onDismissError }) {
+export default function Landing({ onUpload, onHistory, error, onDismissError }) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleCamera = () => {
@@ -84,7 +84,11 @@ export default function Landing({ onUpload, error, onDismissError }) {
         <button style={styles.ctaButton} onClick={() => setIsSheetOpen(true)}>
           사진 올리기
         </button>
-        <p style={styles.ctaCaption}>첫 체험은 무료</p>
+        {onHistory && (
+          <button style={styles.historyButton} onClick={onHistory}>
+            만든 사진 보기
+          </button>
+        )}
       </div>
 
       {/* 바텀 시트 — 사진 선택 */}
@@ -258,10 +262,15 @@ const styles = {
     fontSize: theme.font.size.body,
     borderRadius: theme.radius.md,
   },
-  ctaCaption: {
-    fontSize: theme.font.size.small,
+  historyButton: {
+    ...secondaryButton,
+    width: "100%",
+    maxWidth: "400px",
+    padding: "12px",
+    backgroundColor: "transparent",
     color: theme.color.textTertiary,
-    margin: "8px 0 0 0",
+    fontSize: theme.font.size.caption,
+    marginTop: "4px",
   },
 
   /* ── 에러 토스트 ── */

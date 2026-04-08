@@ -718,13 +718,14 @@ IMPORTANT: The final image must be UNMISTAKABLY a fashion magazine cover — wit
 VARIATION OVERRIDE - HANBOK PORTRAIT:
 - FRAMING: Full body portrait. The person should fill about two-thirds of the frame height. Face clearly visible.
 - STYLE: Beautiful, bright Korean hanbok (한복) portrait.
-- Dress in a pretty, colorful traditional hanbok. Bright cheerful colors (soft pink, light blue, coral, pastel yellow, lavender).
-- FACE: MUST look youthful and fresh — smooth flawless skin like a 20-year-old, bright clear eyes, rosy healthy cheeks, NO wrinkles or fine lines whatsoever. Dewy, glowing complexion. Even if the input person looks older, the output MUST have young, fresh, beautiful skin.
-- HAIR: Natural, neat, pretty hairstyle with healthy shine.
+- GENDER-APPROPRIATE HANBOK: Detect the person's gender from the input photo and dress accordingly. For MALES: traditional dopo (도포) or durumagi (두루마기) with baji (바지) and joggi (조끼), dignified colors like navy, deep blue, jade green, charcoal, or muted earth tones. For FEMALES: elegant jeogori (저고리) and chima (치마), bright cheerful colors like soft pink, light blue, coral, pastel yellow, or lavender.
+- REMOVE ALL ACCESSORIES from the original photo: hats, caps, beanies, sunglasses, headbands, earphones — the person must appear WITHOUT any head accessories. Show their natural hair instead.
+- FACE: MUST look youthful and fresh — smooth flawless skin, bright clear eyes, rosy healthy cheeks, NO wrinkles or fine lines whatsoever. Dewy, glowing complexion.
+- HAIR: Natural, neat hairstyle with healthy shine. NO hats or head coverings.
 - LIGHTING: Bright, warm, cheerful natural daylight. Soft flattering light on face.
 - BACKGROUND: Softly blurred hanok village with cherry blossoms and flowers. Shallow depth of field, soft bokeh.
 - MOOD: Pretty, bright, cheerful, youthful.
-- IMPORTANT: The person MUST look young and beautiful. This is the most important requirement after identity preservation.`
+- IMPORTANT: The person MUST look young and beautiful. Gender-appropriate hanbok is critical — do NOT put male subjects in female hanbok (chima) or vice versa.`
     },
     {
       id: 'clay',

@@ -422,8 +422,10 @@ export default function PetPage() {
   const handleRetry = () => {
     setPage('landing')
     selectedImageRef.current = null
-    selectedImageRef.current = null
     setGeneratedImages([])
+    setFailedStyles([])
+    setHasPendingOrder(false)
+    setError(null)
   }
 
   // ── Supabase 업로드 ──
