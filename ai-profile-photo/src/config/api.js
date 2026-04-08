@@ -25,4 +25,4 @@ export const IMAGE_ENDPOINTS = {
 export const IMAGE_BUCKET = 'profile-photo-images';
 
 // 인앱결제 상품 SKU
-export const PROFILE_PRODUCT_SKU = 'ait.profile.hires.single';
+export const PROFILE_PRODUCT_SKU = 'ait.0000014499.b3ae9a6b.a6994cf55d.5618166837';
