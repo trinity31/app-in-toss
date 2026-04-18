@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import * as Sentry from "@sentry/react";
 import { formatBirthdate } from "../utils/dataTransform";
+import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+import { resolveAdGroupId } from "../config/ads";
 import loadingGif from "../assets/images/cat_greeting.gif";
-
-const AD_GROUP_ID =
-  import.meta.env.VITE_AD_GROUP_ID || "ait-ad-test-rewarded-id";
 
 const ANALYSIS_STEPS = [
   "사주 명식을 계산하고 있어요",
@@ -18,6 +17,7 @@ const ANALYSIS_STEPS = [
 ];
 
 export default function DeepReadingLoading({ userData, onNext }) {
+  const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
   const [loadingMessage, setLoadingMessage] =
     useState("광고를 준비하고 있습니다...");
   const [adLoaded, setAdLoaded] = useState(false);
@@ -41,8 +41,13 @@ export default function DeepReadingLoading({ userData, onNext }) {
     return () => clearInterval(interval);
   }, [adRewarded, apiCompleted, apiError]);
 
-  // 광고 로드
+  // 광고 로드 (anonymousKey 해석 이후 실행)
   useEffect(() => {
+    if (anonymousKeyLoading) return;
+
+    const adGroupId = resolveAdGroupId(anonymousKey);
+    console.log("[DeepReadingLoading] adGroupId:", adGroupId);
+
     const loadAd = async () => {
       try {
         const { GoogleAdMob } = await import("@apps-in-toss/web-framework");
@@ -64,7 +69,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
 
         const cleanup = GoogleAdMob.loadAppsInTossAdMob({
           options: {
-            adGroupId: AD_GROUP_ID,
+            adGroupId,
           },
           onEvent: (event) => {
             if (event.type === "loaded") {
@@ -97,7 +102,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
     return () => {
       cleanupRef.current?.();
     };
-  }, []);
+  }, [anonymousKeyLoading, anonymousKey]);
 
   // 광고가 로드되면 자동 재생
   useEffect(() => {
@@ -123,7 +128,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
 
       GoogleAdMob.showAppsInTossAdMob({
         options: {
-          adGroupId: AD_GROUP_ID,
+          adGroupId: resolveAdGroupId(anonymousKey),
         },
         onEvent: (event) => {
           switch (event.type) {
@@ -231,6 +236,10 @@ export default function DeepReadingLoading({ userData, onNext }) {
           body.concerns = userData.fortuneTypeTitle;
         }
 
+        if (anonymousKey) {
+          body.user_anonymous_id = anonymousKey;
+        }
+
         fetchOptions = {
           method: "POST",
           headers: {
@@ -272,6 +281,10 @@ export default function DeepReadingLoading({ userData, onNext }) {
           formData.append("concerns", userData.fortuneTypeTitle);
         }
         formData.append("language", "ko");
+
+        if (anonymousKey) {
+          formData.append("user_anonymous_id", anonymousKey);
+        }
 
         fetchOptions = {
           method: "POST",

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@toss/tds-mobile'
 import * as Sentry from '@sentry/react'
 import './index.css'
 import { ToastProvider } from './hooks/useToast.jsx'
+import { AnonymousKeyProvider } from './hooks/useAnonymousKey.jsx'
 import App from './App.jsx'
 
 // Sentry 초기화
@@ -27,7 +28,9 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ThemeProvider>
         <ToastProvider>
-          <App />
+          <AnonymousKeyProvider>
+            <App />
+          </AnonymousKeyProvider>
         </ToastProvider>
       </ThemeProvider>
     </BrowserRouter>

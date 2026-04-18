@@ -7,6 +7,7 @@ import ContactInput from "../components/ContactInput";
 import AmuletPayment from "../components/AmuletPayment";
 import AmuletResult from "../components/AmuletResult";
 import { useUserInfoStorage } from "../hooks/useUserInfoStorage";
+import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import {
   usePendingOrderStorage,
   shouldSkipAutoRestore,
@@ -28,6 +29,7 @@ export default function AmuletPage() {
   const [pendingOrders, setPendingOrders] = useState([]);
 
   const { loading, storedUserInfo, saveUserInfo } = useUserInfoStorage();
+  const { anonymousKey } = useAnonymousKey();
   const {
     loading: pendingLoading,
     pendingOrderData,
@@ -58,6 +60,7 @@ export default function AmuletPage() {
     const requestBody = {
       orderId,
       userKey: orderData.tossUserInfo?.userKey,
+      user_anonymous_id: anonymousKey,
       tossName: orderData.tossUserInfo?.name,
       phone: orderData.phone,
       email: orderData.email,

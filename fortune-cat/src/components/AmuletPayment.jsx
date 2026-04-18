@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader } from "@toss/tds-mobile";
 import { useToast } from "../hooks/useToast";
+import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { usePendingOrderStorage } from "../hooks/usePendingOrderStorage";
 import {
   getTodayOrderCount,
@@ -13,6 +14,7 @@ const AMULET_PRODUCT_SKU = import.meta.env.VITE_AMULET_PRODUCT_SKU;
 
 export default function AmuletPayment({ onNext, onBack, userData }) {
   const { openToast } = useToast();
+  const { anonymousKey } = useAnonymousKey();
   const [isLoading, setIsLoading] = useState(false);
   const [isPurchasing, setIsPurchasing] = useState(false);
   const [error, setError] = useState(null);
@@ -37,6 +39,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
     const requestBody = {
       orderId,
       userKey: userData.tossUserInfo?.userKey,
+      user_anonymous_id: anonymousKey,
       tossName: userData.tossUserInfo?.name,
       phone: userData.phone,
       email: userData.email,

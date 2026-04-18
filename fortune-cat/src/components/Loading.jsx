@@ -5,10 +5,9 @@ import {
   formatGender,
   base64ToBlob,
 } from "../utils/dataTransform";
+import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+import { resolveAdGroupId } from "../config/ads";
 import loadingGif from "../assets/images/cat_greeting.gif";
-
-const AD_GROUP_ID =
-  import.meta.env.VITE_AD_GROUP_ID || "ait-ad-test-rewarded-id";
 
 const ANALYSIS_STEPS = [
   "사주 명식을 계산하고 있어요",
@@ -19,6 +18,7 @@ const ANALYSIS_STEPS = [
 ];
 
 export default function Loading({ userData, onNext }) {
+  const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
   const [loadingMessage, setLoadingMessage] =
     useState("광고를 준비하고 있습니다...");
   const [adLoaded, setAdLoaded] = useState(false);
@@ -42,8 +42,13 @@ export default function Loading({ userData, onNext }) {
     return () => clearInterval(interval);
   }, [adRewarded, apiCompleted, apiError]);
 
-  // 광고 로드
+  // 광고 로드 (anonymousKey 해석 이후 실행)
   useEffect(() => {
+    if (anonymousKeyLoading) return;
+
+    const adGroupId = resolveAdGroupId(anonymousKey);
+    console.log("[Loading] adGroupId:", adGroupId);
+
     const loadAd = async () => {
       try {
         const { GoogleAdMob } = await import("@apps-in-toss/web-framework");
@@ -66,7 +71,7 @@ export default function Loading({ userData, onNext }) {
 
         const cleanup = GoogleAdMob.loadAppsInTossAdMob({
           options: {
-            adGroupId: AD_GROUP_ID,
+            adGroupId,
           },
           onEvent: (event) => {
             if (event.type === "loaded") {
@@ -101,7 +106,7 @@ export default function Loading({ userData, onNext }) {
     return () => {
       cleanupRef.current?.();
     };
-  }, []);
+  }, [anonymousKeyLoading, anonymousKey]);
 
   // 광고가 로드되면 자동 재생
   useEffect(() => {
@@ -127,7 +132,7 @@ export default function Loading({ userData, onNext }) {
 
       GoogleAdMob.showAppsInTossAdMob({
         options: {
-          adGroupId: AD_GROUP_ID,
+          adGroupId: resolveAdGroupId(anonymousKey),
         },
         onEvent: (event) => {
           switch (event.type) {
@@ -242,6 +247,11 @@ export default function Loading({ userData, onNext }) {
         if (imageBlob) {
           formData.append("image", imageBlob, "photo.jpg");
         }
+      }
+
+      // 10. user_anonymous_id (토스 익명 식별키)
+      if (anonymousKey) {
+        formData.append("user_anonymous_id", anonymousKey);
       }
 
       // API 호출

@@ -3,15 +3,14 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import * as Sentry from "@sentry/react";
 import { useToast } from "../hooks/useToast";
+import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+import { resolveAdGroupId } from "../config/ads";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
 
-const AD_GROUP_ID =
-  import.meta.env.VITE_AD_GROUP_ID || "ait-ad-test-rewarded-id";
-
 // 광고 로드 → 표시 → 완료까지 Promise로 래핑
-const showRewardedAd = () => {
+const showRewardedAd = (adGroupId) => {
   return new Promise(async (resolve) => {
     try {
       const { GoogleAdMob } = await import("@apps-in-toss/web-framework");
@@ -22,11 +21,11 @@ const showRewardedAd = () => {
       }
 
       GoogleAdMob.loadAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
+        options: { adGroupId },
         onEvent: (event) => {
           if (event.type === "loaded") {
             GoogleAdMob.showAppsInTossAdMob({
-              options: { adGroupId: AD_GROUP_ID },
+              options: { adGroupId },
               onEvent: (event) => {
                 if (
                   ["userEarnedReward", "dismissed", "failedToShow"].includes(
@@ -51,6 +50,7 @@ const showRewardedAd = () => {
 export default function DeepReadingResult({ userData, onRestart }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const { openToast } = useToast();
+  const { anonymousKey } = useAnonymousKey();
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -109,7 +109,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
 
       // 재시도 시 광고 스킵, 광고 시청 완료 후 API 호출
       if (!skipAd) {
-        await showRewardedAd();
+        await showRewardedAd(resolveAdGroupId(anonymousKey));
       }
 
       const response = await fetch(endpoint, {
