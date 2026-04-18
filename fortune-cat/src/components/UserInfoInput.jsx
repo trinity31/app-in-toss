@@ -6,6 +6,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
   const [month, setMonth] = useState(initialUserInfo?.birthdate?.month || '')
   const [day, setDay] = useState(initialUserInfo?.birthdate?.day || '')
   const [birthdayType, setBirthdayType] = useState(initialUserInfo?.birthdate?.birthdayType || 'solar')
+  const [isLeapMonth, setIsLeapMonth] = useState(Boolean(initialUserInfo?.birthdate?.isLeapMonth))
   const [period, setPeriod] = useState('')
   const [hour12, setHour12] = useState('')
   const [minuteRange, setMinuteRange] = useState('')
@@ -28,6 +29,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
     if (initialUserInfo?.birthdate?.month) setMonth(initialUserInfo.birthdate.month)
     if (initialUserInfo?.birthdate?.day) setDay(initialUserInfo.birthdate.day)
     if (initialUserInfo?.birthdate?.birthdayType) setBirthdayType(initialUserInfo.birthdate.birthdayType)
+    if (initialUserInfo?.birthdate?.isLeapMonth !== undefined) setIsLeapMonth(Boolean(initialUserInfo.birthdate.isLeapMonth))
     if (initialUserInfo?.gender) setSelectedGender(initialUserInfo.gender)
 
     if (initialUserInfo?.birthdate?.hour !== undefined && initialUserInfo?.birthdate?.hour !== null && initialUserInfo?.birthdate?.hour !== '') {
@@ -108,6 +110,7 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
         month,
         day,
         birthdayType,
+        isLeapMonth: birthdayType === 'lunar' ? isLeapMonth : false,
         hour: hour24,
         minute: minute,
         period: period ? period.toLowerCase() : 'unknown',
@@ -324,6 +327,48 @@ export default function UserInfoInput({ onNext, onBack, initialUserInfo = {}, is
             음력
           </button>
         </div>
+
+        {/* 평달/윤달 선택 (음력일 때만) */}
+        {birthdayType === 'lunar' && (
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '32px', marginTop: '-20px' }}>
+            <button
+              onClick={() => setIsLeapMonth(false)}
+              aria-pressed={!isLeapMonth}
+              style={{
+                flex: 1,
+                padding: '14px',
+                fontSize: '15px',
+                fontWeight: !isLeapMonth ? 'bold' : 'normal',
+                color: !isLeapMonth ? 'var(--color-primary)' : 'var(--color-gray-700)',
+                background: !isLeapMonth ? 'var(--color-primary-light)' : 'var(--color-white)',
+                border: `2px solid ${!isLeapMonth ? 'var(--color-primary)' : 'var(--color-gray-200)'}`,
+                borderRadius: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              평달
+            </button>
+            <button
+              onClick={() => setIsLeapMonth(true)}
+              aria-pressed={isLeapMonth}
+              style={{
+                flex: 1,
+                padding: '14px',
+                fontSize: '15px',
+                fontWeight: isLeapMonth ? 'bold' : 'normal',
+                color: isLeapMonth ? 'var(--color-primary)' : 'var(--color-gray-700)',
+                background: isLeapMonth ? 'var(--color-primary-light)' : 'var(--color-white)',
+                border: `2px solid ${isLeapMonth ? 'var(--color-primary)' : 'var(--color-gray-200)'}`,
+                borderRadius: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              윤달
+            </button>
+          </div>
+        )}
 
         {/* 태어난 시간 */}
         <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '0 0 8px 0' }}>

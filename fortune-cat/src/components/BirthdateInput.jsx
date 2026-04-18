@@ -5,6 +5,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
   const [month, setMonth] = useState(initialBirthdate?.month || '')
   const [day, setDay] = useState(initialBirthdate?.day || '')
   const [birthdayType, setBirthdayType] = useState(initialBirthdate?.birthdayType || 'solar')
+  const [isLeapMonth, setIsLeapMonth] = useState(Boolean(initialBirthdate?.isLeapMonth))
   const [period, setPeriod] = useState('')
   const [hour12, setHour12] = useState('')
   const [minuteRange, setMinuteRange] = useState('')
@@ -23,6 +24,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
     if (initialBirthdate?.month) setMonth(initialBirthdate.month)
     if (initialBirthdate?.day) setDay(initialBirthdate.day)
     if (initialBirthdate?.birthdayType) setBirthdayType(initialBirthdate.birthdayType)
+    if (initialBirthdate?.isLeapMonth !== undefined) setIsLeapMonth(Boolean(initialBirthdate.isLeapMonth))
 
     // 24시간 형식에서 12시간 형식으로 변환
     if (initialBirthdate?.hour !== undefined && initialBirthdate?.hour !== null && initialBirthdate?.hour !== '') {
@@ -110,6 +112,7 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
           month,
           day,
           birthdayType,
+          isLeapMonth: birthdayType === 'lunar' ? isLeapMonth : false,
           hour: hour24,
           minute: minute,
           period: period ? period.toLowerCase() : 'unknown',
@@ -268,6 +271,47 @@ export default function BirthdateInput({ name, onNext, onBack, initialBirthdate 
               음력
             </button>
           </div>
+
+          {birthdayType === 'lunar' && (
+            <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+              <button
+                onClick={() => setIsLeapMonth(false)}
+                aria-pressed={!isLeapMonth}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: !isLeapMonth ? '#fff' : 'var(--color-gray-700)',
+                  background: !isLeapMonth ? 'var(--color-primary)' : '#F7F8FA',
+                  border: !isLeapMonth ? 'none' : '1px solid var(--color-gray-200)',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                평달
+              </button>
+              <button
+                onClick={() => setIsLeapMonth(true)}
+                aria-pressed={isLeapMonth}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: isLeapMonth ? '#fff' : 'var(--color-gray-700)',
+                  background: isLeapMonth ? 'var(--color-primary)' : '#F7F8FA',
+                  border: isLeapMonth ? 'none' : '1px solid var(--color-gray-200)',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                윤달
+              </button>
+            </div>
+          )}
         </div>
 
         <h2 style={{ fontSize: '22px', lineHeight: '1.4', fontWeight: 'bold', color: 'var(--color-gray-700)', margin: '40px 0 8px 0' }}>

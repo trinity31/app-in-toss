@@ -67,6 +67,7 @@ export default function AmuletPage() {
       name: orderData.name,
       birthdate: formattedBirthdate,
       birthday_type: birthdayType,
+      is_leap_month: Boolean(bd?.isLeapMonth),
       gender: orderData.gender,
       amuletType: orderData.amuletType,
       amuletTypeTitle: orderData.amuletTypeTitle,

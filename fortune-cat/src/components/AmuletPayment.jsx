@@ -46,6 +46,7 @@ export default function AmuletPayment({ onNext, onBack, userData }) {
       name: userData.name,
       birthdate: formattedBirthdate,
       birthday_type: birthdayType,
+      is_leap_month: Boolean(bd?.isLeapMonth),
       gender: userData.gender,
       amuletType: userData.amuletType,
       amuletTypeTitle: userData.amuletTypeTitle,

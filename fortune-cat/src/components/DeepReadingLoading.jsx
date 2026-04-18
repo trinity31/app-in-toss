@@ -216,12 +216,14 @@ export default function DeepReadingLoading({ userData, onNext }) {
             gender: userData.gender,
             birthday: formatBirthdate(userData.birthdate),
             birthday_type: userData.birthdate?.birthdayType || "solar",
+            is_leap_month: Boolean(userData.birthdate?.isLeapMonth),
           },
           person2: {
             name: userData.partnerName,
             gender: userData.partnerGender,
             birthday: formatBirthdate(userData.partnerBirthdate),
             birthday_type: userData.partnerBirthdate?.birthdayType || "solar",
+            is_leap_month: Boolean(userData.partnerBirthdate?.isLeapMonth),
           },
           language: "ko",
         };
@@ -273,6 +275,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
         }
 
         formData.append("birthday_type", userData.birthdate?.birthdayType || "solar");
+        formData.append("is_leap_month", String(Boolean(userData.birthdate?.isLeapMonth)));
 
         if (userData.readingType) {
           formData.append("reading_type", userData.readingType);
