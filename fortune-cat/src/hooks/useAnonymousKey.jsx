@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { getAnonymousKey, Storage } from '@apps-in-toss/web-framework'
+import { setUserId, setUserProperties } from '../lib/firebase'
 
 const ANONYMOUS_KEY_STORAGE_KEY = 'FORTUNE_CAT_ANONYMOUS_KEY'
 
@@ -12,11 +13,19 @@ export function AnonymousKeyProvider({ children }) {
   useEffect(() => {
     let cancelled = false
 
+    const applyToAnalytics = (hash) => {
+      setUserId(hash)
+      setUserProperties({ anonymous_key: hash })
+    }
+
     async function resolveKey() {
       try {
         const cached = await Storage.getItem(ANONYMOUS_KEY_STORAGE_KEY)
         if (typeof cached === 'string' && cached && cached !== '[object Object]') {
-          if (!cancelled) setAnonymousKey(cached)
+          if (!cancelled) {
+            setAnonymousKey(cached)
+            applyToAnalytics(cached)
+          }
           return
         }
         if (cached) {
@@ -44,7 +53,10 @@ export function AnonymousKeyProvider({ children }) {
 
         const hash = result.hash
         console.log('[AnonymousKey] 발급:', hash)
-        if (!cancelled) setAnonymousKey(hash)
+        if (!cancelled) {
+          setAnonymousKey(hash)
+          applyToAnalytics(hash)
+        }
         try {
           await Storage.setItem(ANONYMOUS_KEY_STORAGE_KEY, hash)
         } catch (e) {

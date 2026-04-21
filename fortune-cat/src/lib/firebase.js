@@ -1,5 +1,10 @@
 import { initializeApp, getApps } from 'firebase/app'
-import { getAnalytics, logEvent as firebaseLogEvent } from 'firebase/analytics'
+import {
+  getAnalytics,
+  logEvent as firebaseLogEvent,
+  setUserId as firebaseSetUserId,
+  setUserProperties as firebaseSetUserProperties,
+} from 'firebase/analytics'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -26,6 +31,24 @@ export function logEvent(eventName, eventParams = {}) {
   if (analytics) {
     firebaseLogEvent(analytics, eventName, eventParams)
     console.log(`[Firebase] Event logged: ${eventName}`, eventParams)
+  }
+}
+
+export function setUserId(userId) {
+  if (!analytics) return
+  try {
+    firebaseSetUserId(analytics, userId)
+  } catch (err) {
+    console.warn('[Firebase] setUserId 실패:', err)
+  }
+}
+
+export function setUserProperties(props) {
+  if (!analytics) return
+  try {
+    firebaseSetUserProperties(analytics, props)
+  } catch (err) {
+    console.warn('[Firebase] setUserProperties 실패:', err)
   }
 }
 

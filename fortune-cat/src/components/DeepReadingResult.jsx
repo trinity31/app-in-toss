@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import * as Sentry from "@sentry/react";
 import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+import { useSession } from "../hooks/useSession.jsx";
 import { resolveAdGroupId } from "../config/ads";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
@@ -51,6 +52,9 @@ export default function DeepReadingResult({ userData, onRestart }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const { openToast } = useToast();
   const { anonymousKey } = useAnonymousKey();
+  const { sessionId } = useSession();
+  const sessionStartRef = useRef(Date.now());
+  const lastQuestionAtRef = useRef(Date.now());
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -87,11 +91,19 @@ export default function DeepReadingResult({ userData, onRestart }) {
     setInputMessage("");
 
     const questionIndex = messages.filter((m) => m.role === "user").length + 1;
+    const now = Date.now();
+    const elapsedSinceStartMs = now - sessionStartRef.current;
+    const elapsedSincePrevMs = now - lastQuestionAtRef.current;
+    lastQuestionAtRef.current = now;
+
     logEvent("follow_up_question", {
       fortune_type: userData.selectedType?.fortuneType || "",
       fortune_title: fortuneTypeTitle || "",
       question_index: questionIndex,
       input_type: inputType,
+      session_id: sessionId,
+      elapsed_since_start_ms: elapsedSinceStartMs,
+      elapsed_since_prev_ms: elapsedSincePrevMs,
     });
     Analytics.click({ button_name: "deep_reading_chat" });
 
@@ -112,16 +124,20 @@ export default function DeepReadingResult({ userData, onRestart }) {
         await showRewardedAd(resolveAdGroupId(anonymousKey));
       }
 
+      const chatBody = {
+        thread_id: fortuneResult.thread_id,
+        message: userMessage,
+      };
+      if (anonymousKey) chatBody.user_anonymous_id = anonymousKey;
+      if (sessionId) chatBody.session_id = sessionId;
+
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "X-API-Key": apiKey,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          thread_id: fortuneResult.thread_id,
-          message: userMessage,
-        }),
+        body: JSON.stringify(chatBody),
       });
 
       if (!response.ok) {

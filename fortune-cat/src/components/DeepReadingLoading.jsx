@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import * as Sentry from "@sentry/react";
 import { formatBirthdate } from "../utils/dataTransform";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+import { useSession } from "../hooks/useSession.jsx";
 import { resolveAdGroupId } from "../config/ads";
 import loadingGif from "../assets/images/cat_greeting.gif";
 
@@ -18,6 +19,7 @@ const ANALYSIS_STEPS = [
 
 export default function DeepReadingLoading({ userData, onNext }) {
   const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
+  const { startNewSession } = useSession();
   const [loadingMessage, setLoadingMessage] =
     useState("광고를 준비하고 있습니다...");
   const [adLoaded, setAdLoaded] = useState(false);
@@ -195,6 +197,9 @@ export default function DeepReadingLoading({ userData, onNext }) {
       const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
+      // 새 리딩 세션 시작 (이후 /chat 요청은 이 session_id 를 유지)
+      const newSessionId = startNewSession();
+
       const buildBirthTime = (birthdate) => {
         if (birthdate?.period && birthdate.period !== "unknown" && birthdate?.hour) {
           const h = String(birthdate.hour).padStart(2, "0");
@@ -240,6 +245,9 @@ export default function DeepReadingLoading({ userData, onNext }) {
 
         if (anonymousKey) {
           body.user_anonymous_id = anonymousKey;
+        }
+        if (newSessionId) {
+          body.session_id = newSessionId;
         }
 
         fetchOptions = {
@@ -287,6 +295,9 @@ export default function DeepReadingLoading({ userData, onNext }) {
 
         if (anonymousKey) {
           formData.append("user_anonymous_id", anonymousKey);
+        }
+        if (newSessionId) {
+          formData.append("session_id", newSessionId);
         }
 
         fetchOptions = {

@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/react'
 import './index.css'
 import { ToastProvider } from './hooks/useToast.jsx'
 import { AnonymousKeyProvider } from './hooks/useAnonymousKey.jsx'
+import { SessionProvider } from './hooks/useSession.jsx'
 import App from './App.jsx'
 
 // Sentry 초기화
@@ -29,7 +30,9 @@ createRoot(document.getElementById('root')).render(
       <ThemeProvider>
         <ToastProvider>
           <AnonymousKeyProvider>
-            <App />
+            <SessionProvider>
+              <App />
+            </SessionProvider>
           </AnonymousKeyProvider>
         </ToastProvider>
       </ThemeProvider>
