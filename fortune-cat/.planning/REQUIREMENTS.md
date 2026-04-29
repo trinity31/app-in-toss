@@ -73,30 +73,32 @@
 
 ## Traceability
 
-요구사항이 어느 페이즈에 매핑되는지 — 로드맵 작성 시 채워집니다.
+요구사항이 어느 페이즈에 매핑되는지 기록합니다 — ROADMAP.md `Phase Details` 섹션과 동기화되어야 합니다.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NAV-01 | — | Pending |
-| NAV-02 | — | Pending |
-| NAV-03 | — | Pending |
-| TAROT-01 | — | Pending |
-| TAROT-02 | — | Pending |
-| TAROT-03 | — | Pending |
-| ADS-01 | — | Pending |
-| ADS-02 | — | Pending |
-| ADS-03 | — | Pending |
-| SHARE-01 | — | Pending |
-| ANL-01 | — | Pending |
-| ANL-02 | — | Pending |
-| ANL-03 | — | Pending |
-| ANL-04 | — | Pending |
+| NAV-01 | Phase 2 | Pending |
+| NAV-02 | Phase 2 | Pending |
+| NAV-03 | Phase 2 | Pending |
+| TAROT-01 | Phase 3 | Pending |
+| TAROT-02 | Phase 3 | Pending |
+| TAROT-03 | Phase 3 | Pending |
+| ADS-01 | Phase 4 | Pending |
+| ADS-02 | Phase 4 | Pending |
+| ADS-03 | Phase 4 | Pending |
+| SHARE-01 | Phase 5 | Pending |
+| ANL-01 | Phase 5 | Pending |
+| ANL-02 | Phase 5 | Pending |
+| ANL-03 | Phase 5 | Pending |
+| ANL-04 | Phase 5 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 14 total
-- Mapped to phases: 0 (로드맵 작성 시 갱신)
-- Unmapped: 14 ⚠️ (예상 — 다음 단계에서 매핑)
+- Mapped to phases: 14 (100%)
+- Unmapped: 0
+
+**Phase 1 (타로 프로토타입 발굴 및 포팅 평가):** 요구사항 직접 매핑 없음 — 후속 페이즈를 가능케 하는 준비 페이즈로 ROADMAP.md에 기록됨.
 
 ---
 *Requirements defined: 2026-04-29*
-*Last updated: 2026-04-29 after initial definition*
+*Last updated: 2026-04-29 after roadmap traceability mapping*
