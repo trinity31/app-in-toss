@@ -25,7 +25,9 @@
   2. 사용자가 포팅 대상(데일리 원카드 흐름)과 v1.1에서 제외할 항목(주제별/스프레드/유료)을 명시적으로 구분한 결과를 검토할 수 있다
   3. 사용자가 fortune-cat의 디자인 시스템(TDS Mobile/AIT)·의존성·라우팅과 충돌하는 항목 목록을 확인할 수 있다
   4. 사용자가 카드 이미지·해석 텍스트의 보관 위치(Supabase Storage vs `public/images` vs 정적 임포트)를 결정한 산출물을 확인할 수 있다
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [x] 01-01-PLAN.md — boknyang-tarot 자산 인벤토리(01-INVENTORY.md) + 포팅 갭 매트릭스(01-GAPS.md) 작성
 
 ### Phase 2: 하단 탭바 네비게이션 셸
 **Goal**: 사주/타로 두 탭을 한 번의 탭으로 전환할 수 있는 하단 탭바 셸을 도입하면서, 기존 사주 흐름(`/`, `/saju`, `/new-year`, `/amulet`)을 동일하게 유지한다
@@ -79,7 +81,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 타로 프로토타입 발굴 및 포팅 평가 | 0/0 | Not started | - |
+| 1. 타로 프로토타입 발굴 및 포팅 평가 | 0/1 | Planned | - |
 | 2. 하단 탭바 네비게이션 셸 | 0/0 | Not started | - |
 | 3. 데일리 원카드 코어 화면 | 0/0 | Not started | - |
 | 4. 광고 게이팅 + 무제한 다시 뽑기 | 0/0 | Not started | - |
@@ -106,4 +108,4 @@
 
 ---
 *Roadmap created: 2026-04-29*
-*Last updated: 2026-04-29 after initial creation*
+*Last updated: 2026-04-30 — Phase 1 plan finalized (1 plan)*
