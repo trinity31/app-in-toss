@@ -1,6 +1,6 @@
 # STATE: 복냥사주 v1.1
 
-**Last Updated:** 2026-04-29
+**Last Updated:** 2026-04-30
 
 ## Project Reference
 
@@ -11,9 +11,9 @@
 
 ## Current Focus
 
-**Active Phase:** None (roadmap 작성 직후 — Phase 1 시작 전)
-**Active Plan:** None
-**Status:** Roadmap created, awaiting `/gsd-plan-phase 1`
+**Active Phase:** Phase 1 — 타로 프로토타입 발굴 및 포팅 평가 (context gathered)
+**Active Plan:** None (planning not yet started)
+**Status:** Phase 1 CONTEXT.md captured, awaiting `/gsd-plan-phase 1`
 
 ## Current Position
 
@@ -21,7 +21,7 @@
 Milestone v1.1 진행률
 [░░░░░] 0/5 phases complete
 
-Phase 1: 타로 프로토타입 발굴 및 포팅 평가          [ ] Not started
+Phase 1: 타로 프로토타입 발굴 및 포팅 평가          [~] Context gathered
 Phase 2: 하단 탭바 네비게이션 셸                     [ ] Not started
 Phase 3: 데일리 원카드 코어 화면                     [ ] Not started
 Phase 4: 광고 게이팅 + 무제한 다시 뽑기              [ ] Not started
@@ -51,8 +51,8 @@ Phase 5: 공유 + Analytics 마무리                     [ ] Not started
 
 ### Open Todos
 
-- [ ] 타로 프로토타입 레포 경로 사용자에게 확인 요청 (Phase 1 진입 시점)
-- [ ] 카드 이미지·해석 텍스트 보관 위치 결정 (Phase 1)
+- [x] 타로 프로토타입 레포 경로 사용자에게 확인 요청 — Phase 1 CONTEXT D-01 (boknyang-tarot 확정)
+- [x] 카드 이미지·해석 텍스트 보관 위치 결정 — Phase 1 CONTEXT D-06/D-07 (이미지=정적 임포트, 텍스트=Supabase tarot_cards)
 - [ ] `pnpm-lock.yaml` + `package-lock.json` 일원화 (우선순위 낮음, 마일스톤 내 옵션)
 - [ ] `.DS_Store` `.gitignore` 보강 (우선순위 낮음, 마일스톤 내 옵션)
 
@@ -69,14 +69,16 @@ Phase 5: 공유 + Analytics 마무리                     [ ] Not started
 
 ## Session Continuity
 
-**Last session ended:** 2026-04-29 — Roadmap 작성 완료
+**Last session ended:** 2026-04-30 — Phase 1 context gathered
 **Next session starts:** Phase 1 plan 작성 (`/gsd-plan-phase 1`)
-**Files in flight:** None (roadmap files committed to disk)
+**Files in flight:** None (CONTEXT/DISCUSSION-LOG committed)
+**Resume from:** `.planning/phases/01-tarot-prototype-evaluation/01-CONTEXT.md`
 
 ### Recent Activity
 
 - 2026-04-29: PROJECT.md, REQUIREMENTS.md, codebase 매핑 완료 (commit `1fa2675`)
 - 2026-04-29: ROADMAP.md, STATE.md 작성 — 5 phases, 14/14 coverage
+- 2026-04-30: Phase 1 CONTEXT.md + DISCUSSION-LOG.md 작성 — boknyang-tarot 정본 확정, 자산 보관 위치/포팅 전략/라우팅 통합 방식 결정
 
 ---
 *State initialized: 2026-04-29*
