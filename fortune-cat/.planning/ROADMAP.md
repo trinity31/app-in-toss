@@ -38,7 +38,9 @@ Plans:
   2. 사용자가 현재 어느 탭에 있는지 아이콘·컬러로 명확히 인지할 수 있다 (4050 여성 사용자 hit area·대비 기준 충족)
   3. 사용자가 기존 홈/사주/신년운세/부적 흐름을 v1.0과 동일한 진입 경로·결과 화면으로 이용할 수 있다 (회귀 없음)
   4. 사용자가 탭바가 부적 결제·딥리딩 등 풀스크린 흐름을 가리지 않는 시점에만 노출되는 것을 확인할 수 있다
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 02-01-PLAN.md — 하단 탭바(TabBar.jsx) + /tarot 라우트 + TarotPage 빈 컨테이너 + App.jsx 통합
 **UI hint**: yes
 
 ### Phase 3: 데일리 원카드 코어 화면
@@ -82,7 +84,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. 타로 프로토타입 발굴 및 포팅 평가 | 0/1 | Planned | - |
-| 2. 하단 탭바 네비게이션 셸 | 0/0 | Not started | - |
+| 2. 하단 탭바 네비게이션 셸 | 0/1 | Planned | - |
 | 3. 데일리 원카드 코어 화면 | 0/0 | Not started | - |
 | 4. 광고 게이팅 + 무제한 다시 뽑기 | 0/0 | Not started | - |
 | 5. 공유 + Analytics 마무리 | 0/0 | Not started | - |
@@ -108,4 +110,4 @@ Plans:
 
 ---
 *Roadmap created: 2026-04-29*
-*Last updated: 2026-04-30 — Phase 1 plan finalized (1 plan)*
+*Last updated: 2026-04-30 — Phase 2 plan finalized (1 plan)*
