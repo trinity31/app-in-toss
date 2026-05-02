@@ -157,9 +157,9 @@ const buttonBaseStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   gap: 4,
-  // 4050 사용자 hit area 충족
-  minHeight: 56,
-  padding: '8px 12px',
+  // 4050 사용자 hit area 충족 — 64px로 약간 높임
+  minHeight: 64,
+  padding: '10px 12px',
   background: 'transparent',
   border: 0,
   cursor: 'pointer',
