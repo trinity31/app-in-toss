@@ -15,7 +15,7 @@ import * as Sentry from '@sentry/react';
 import { fetchTarotCards } from '../lib/supabase';
 // eslint-disable-next-line no-unused-vars -- getCardImageUrl는 plan acceptance criteria에 명시된 import (TarotShuffle/TarotResult가 직접 사용; Wave 3 import 시그니처 잠금).
 import { getCardImageUrl, prefetchAllCardImages } from '../assets/images/cards';
-import TarotCardArt from '../components/TarotCardArt';
+import Boknyang from '../components/Boknyang';
 import TarotShuffle from '../components/TarotShuffle';
 import TarotResult from '../components/TarotResult';
 
@@ -180,53 +180,87 @@ export default function TarotPage() {
   );
 }
 
-// intro 단계 — TarotPage 내부 인라인 컴포넌트 (단일 책임 + 별도 파일 분리 비용 회피).
-// UI-SPEC Layout intro: 카드 뒷면 lg preview + 32px gap + 헤드라인 + 16px gap + 부제 + 32px gap + CTA.
-// UI-SPEC Copywriting: "오늘의 한 장을 만나보세요" / "카드를 한 장 뒤집어 오늘의 메시지를 받아보세요" / "오늘의 한 장 뽑기".
+// intro 단계 — boknyang-tarot 프로토타입 디자인에 맞춤 (사용자 요청 2026-05-02).
+// 레이아웃: ✨ 복냥타로 ✨ 로고 + 마스코트 200px + "복냥이가 뽑아주는 / 오늘의 운세" + 부제 + CTA + 자정 안내.
 function TarotIntro({ onStart }) {
   return (
     <div
       style={{
         minHeight: '100vh',
-        background: '#FFFFFF',
+        background: '#FFF7FB',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '24px 16px calc(96px + env(safe-area-inset-bottom))',
-        gap: 0,
+        padding: '24px 24px calc(32px + env(safe-area-inset-bottom))',
       }}
     >
-      <TarotCardArt faceUp={false} size="lg" framed={false} />
-
-      <h1 style={{ marginTop: 32, fontSize: 24, fontWeight: 700, lineHeight: 1.3, color: '#191F28', margin: 0, textAlign: 'center' }}>
-        오늘의 한 장을<br />만나보세요
-      </h1>
-
-      <p style={{ marginTop: 16, fontSize: 16, fontWeight: 400, lineHeight: 1.6, color: '#6B7684', margin: 0, textAlign: 'center' }}>
-        카드를 한 장 뒤집어<br />오늘의 메시지를 받아보세요
-      </p>
-
-      <button
-        type="button"
-        onClick={onStart}
-        className="tap-card"
+      <div
         style={{
-          marginTop: 32,
-          width: '100%',
-          maxWidth: 320,
-          height: 56,
-          fontSize: 16,
-          fontWeight: 700,
-          color: '#FFFFFF',
-          background: '#64119F',
-          border: 0,
-          borderRadius: 12,
-          cursor: 'pointer',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        오늘의 한 장 뽑기
-      </button>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 12,
+          }}
+        >
+          <span style={{ fontSize: 22, lineHeight: 1, color: '#C8B6FF' }} aria-hidden="true">✦</span>
+          <h1 style={{ fontSize: 28, fontWeight: 700, lineHeight: 1.2, color: '#3F3754', margin: 0, letterSpacing: '-0.02em' }}>
+            복냥타로
+          </h1>
+          <span style={{ fontSize: 22, lineHeight: 1, color: '#C8B6FF' }} aria-hidden="true">✦</span>
+        </div>
+
+        <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center' }}>
+          <Boknyang size={200} />
+        </div>
+
+        <div style={{ marginTop: 24, textAlign: 'center' }}>
+          <p style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.7, color: '#3F3754', margin: 0 }}>
+            복냥이가 뽑아주는<br />
+            <span style={{ color: '#A78BFA' }}>오늘의 운세</span>
+          </p>
+          <p style={{ marginTop: 16, fontSize: 14, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0 }}>
+            하루 한 번, 메이저 아르카나 한 장으로 마음을 톡 두드려요 🐾
+          </p>
+        </div>
+      </div>
+
+      <div style={{ paddingTop: 16 }}>
+        <button
+          type="button"
+          onClick={onStart}
+          className="tap-card"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
+            width: '100%',
+            minHeight: 56,
+            padding: '16px 24px',
+            fontSize: 16,
+            fontWeight: 700,
+            color: '#FFFFFF',
+            backgroundImage: 'linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%)',
+            border: 0,
+            borderRadius: 24,
+            boxShadow: '0 6px 18px rgba(124, 58, 237, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+            cursor: 'pointer',
+          }}
+        >
+          오늘의 카드 뽑기 ✨
+        </button>
+        <p style={{ marginTop: 24, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0, textAlign: 'center' }}>
+          하루 한 번, 자정에 초기화돼요 🌙
+        </p>
+      </div>
     </div>
   );
 }
