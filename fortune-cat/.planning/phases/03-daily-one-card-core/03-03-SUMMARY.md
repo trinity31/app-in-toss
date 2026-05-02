@@ -251,6 +251,19 @@ npm run dev
 - plan acceptance criteria가 `npm run lint` 통과를 요구 → unused import는 fail
 - ESLint disable 주석이 가장 침습성 낮은 해결 (코드 동작 변화 없음)
 
+### User-directed scope change (2026-05-02)
+
+**2. intro 화면 디자인을 boknyang-tarot 프로토타입에 맞춤** — 사용자 명시 요청
+
+- **Trigger:** Task 3.2 checkpoint 직후 사용자 스크린샷 첨부 + "기존의 복냥타로 앱과 동일하게" 지시
+- **Conflict with plan must_have:** D-09 "intro 단계 카드 뒷면 preview" — 카드 뒷면 lg preview 가 마스코트로 교체됨
+- **Conflict with UI-SPEC:** Color §Dominant "모든 단계 배경 #FFFFFF" — intro 만 `#FFF7FB` 베이비 핑크로 변경. CTA 솔리드 `#64119F` → 라벤더 그라디언트 `#A78BFA → #7C3AED`. shuffle/result/loading/error 배경은 유지.
+- **Files modified:**
+  - `src/components/Boknyang.jsx` (신규 — SVG 마스코트, framer-motion → CSS @keyframes)
+  - `src/pages/TarotPage.jsx` `TarotIntro` 함수 본체 + import (TarotCardArt → Boknyang)
+- **Commit:** `0f84331` `feat(03-03): TarotPage intro 화면을 boknyang-tarot 프로토타입 디자인에 맞춤`
+- **Carry-over:** UI-SPEC.md 의 §Color §Layout intro 섹션은 이번 사용자 결정으로 갱신 필요 (Phase 3 verification 시점에 일괄 반영 권장).
+
 ### 참고 사항 (acceptance criteria grep false-positive — 코드는 plan verbatim 정확)
 
 1. **`prefetchAllCardImages()` grep count = 2 (criteria `= 1` 명시)** — line 7 코멘트(`// RESEARCH Pitfall 2: ... prefetchAllCardImages() 1회`) + line 57 실호출. **코드는 plan 명시 verbatim과 정확 일치**. 코멘트 line이 plan에서 그대로 carry-over 된 것.
