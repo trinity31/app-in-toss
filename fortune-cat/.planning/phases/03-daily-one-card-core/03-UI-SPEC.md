@@ -53,23 +53,31 @@ created: 2026-05-02
 
 ## Typography
 
-본 페이즈에서 선언하는 4 사이즈, 2 weight (4050 가독성 우선 — body 16-17px, line-height 1.5-1.6):
+본 페이즈에서 선언하는 4 사이즈 × **허용 weight 2종 (400 regular / 700 bold)** 매트릭스 (4050 가독성 우선 — body 16-17px, line-height 1.5-1.6):
 
 | Role | Size | Weight | Line Height | Usage |
 |------|------|--------|-------------|-------|
-| Display (카드 이름) | 24px | 700 (semibold) | 1.3 | 결과 화면 `이모지 한국어명 (영문명)` 헤더 한 줄 |
-| Heading (intro 헤드라인) | 20px | 700 (semibold) | 1.3 | intro `오늘의 한 장을 만나보세요` / shuffle 안내 문구 / 에러 헤드라인 |
+| Display (카드 이름) | 24px | 700 (bold) | 1.3 | 결과 화면 `이모지 한국어명 (영문명)` 헤더 한 줄 |
+| Heading (intro 헤드라인) | 20px | 700 (bold) | 1.3 | intro `오늘의 한 장을 만나보세요` / shuffle 안내 문구 / 에러 헤드라인 |
 | Body (카드 메시지·일반 본문) | 16px | 400 (regular) | 1.6 | 결과 카드 메시지 ~300자, intro 부제 본문 |
-| Label (chip·버튼·메타) | 14px | 600 (semibold) | 1.4 | 키워드 chip 텍스트, 다시 뽑기 버튼 라벨, 로딩 상태 캡션 |
+| Body Strong (CTA 라벨) | 16px | 700 (bold) | 1.3 | intro `오늘의 한 장 뽑기` 버튼 라벨, result `다시 뽑기` 버튼 라벨, 에러 `다시 시도하기` 버튼 라벨 |
+| Label (chip·메타) | 14px | 700 (bold) | 1.4 | 키워드 chip 텍스트, 로딩/에러 보조 캡션, result 카드 메타("오늘의 한 장") |
+
+**허용 weight 매트릭스 (강제):**
+- **400 (regular):** Body 본문(16px / 1.6)에만 사용 — 긴 본문 가독성 확보.
+- **700 (bold):** Display, Heading, Body Strong, Label 전부에 사용 — 헤더·CTA·chip·메타 모두 통일.
+- **600 semibold·500 medium·기타 weight 일체 금지.** 본 페이즈 어떤 element도 400/700 외 weight 사용 금지 (chip, label, button, meta, caption 포함).
 
 **근거:**
 - 본 페이즈 specifics "메시지 본문 16-17px, 줄간격 1.5-1.6" → body 16px / 1.6 채택 (4050 가독성).
 - `Result.jsx` 기존 패턴: 본문 `fontSize: 16px, lineHeight: 1.8` / 헤드 `fontSize: 24px, fontWeight: bold`. 본 페이즈는 카드 메시지 길이가 ~300자로 짧으므로 line-height 1.6으로 살짝 좁힘(스크롤 없이 한 페이지 들어가기 위함).
 - 영문명(`The Star` 등)은 한국어명과 동일 사이즈로, 대신 색상으로 약화(아래 Color 참조).
+- **Label·CTA를 700으로 통일 — fortune-cat 기존 CTA·헤더 weight 일관성(`Result.jsx`·`HomePage.jsx`·`TabBar.jsx`가 활성 라벨/CTA에 700 사용) + 4050 가독성 향상(작은 14px chip·meta가 600보다 700에서 명확히 인지됨). 결과적으로 본 페이즈 전체가 400/700 두 weight만으로 위계를 표현.**
 
 **금지:**
-- 위 4종 외 신규 사이즈 도입 금지 (예: 12px 보조 텍스트, 28px display 등). 변형이 필요하면 4종 안에서 색상·여백으로 위계 표현.
+- 위 5종 외 신규 사이즈 도입 금지 (예: 12px 보조 텍스트, 28px display 등). 변형이 필요하면 5종 안에서 색상·여백으로 위계 표현.
 - `font-style: italic` 미사용 (Korean fonts에서 약함).
+- `font-weight: 500 / 600 / 800 / 900` 일체 금지 (400 / 700만 허용).
 
 ---
 
@@ -132,7 +140,7 @@ fortune-cat 기존 토큰 60/30/10 분배 (보라색 계열 브랜드 + 그레�
 │         (32px gap)               │
 │   ┌────────────────────────┐     │
 │   │   오늘의 한 장 뽑기     │     │  ← Primary CTA, 폭 100%, 높이 56px
-│   └────────────────────────┘     │     배경 --color-primary, 텍스트 16px/700/white, radius 12px
+│   └────────────────────────┘     │     배경 --color-primary, 텍스트 Body Strong (16px / 700 / white), radius 12px
 │                                  │
 │  (bottom: 탭바 + safe-area)      │
 └──────────────────────────────────┘
@@ -182,7 +190,7 @@ fortune-cat 기존 토큰 60/30/10 분배 (보라색 계열 브랜드 + 그레�
 │                                  │     이모지 + 한국어명 = gray-700
 │                                  │     영문명(괄호) = primary, 동일 24px
 │         (16px gap)               │
-│  [#희망] [#치유] [#영감]         │  ← chip: 14px/600, primary text on primary-light bg
+│  [#희망] [#치유] [#영감]         │  ← chip: Label 14px / 700, primary text on primary-light bg
 │                                  │     gap 8px, 가운데 정렬, 1줄 wrap 허용
 │         (24px gap)               │
 │   ┌─────────────────────────┐    │
@@ -227,7 +235,7 @@ fortune-cat 기존 토큰 60/30/10 분배 (보라색 계열 브랜드 + 그레�
 **다시 뽑기 버튼 (fixed):**
 - Position: `fixed; bottom: calc(72px + env(safe-area-inset-bottom) + 8px); left: 16px; right: 16px;`
 - Size: 폭 = 100% - 32px (좌우 16px gap), 높이 56px (4050 hit area), `border-radius: 12px`
-- Style: `background: var(--color-primary); color: var(--color-white); font-size: 16px; font-weight: 700`
+- Style: `background: var(--color-primary); color: var(--color-white); font-size: 16px; font-weight: 700` (Body Strong)
 - Tap feedback: 기존 `.tap-card` 또는 `transform: scale(0.97)` (CSS `:active`)
 - Z-index: 15 (탭바 z-index 20 아래, 카드 zoomed overlay 아래)
 - Hairline 분리: 버튼 직접 위에 1px border 또는 wrapper에 `box-shadow: 0 -2px 8px rgba(0,0,0,0.04)` 옅게 적용 — 탭바와 시각 분리
@@ -266,7 +274,7 @@ CONTEXT D-02 기반 — CSS만 사용, framer-motion 없음.
 │                                  │
 │           ⊙ Loader               │  ← TDS Mobile <Loader />
 │         (16px gap)               │
-│   카드를 준비하고 있어요         │  ← Label 14px / 400, gray-500
+│   카드를 준비하고 있어요         │  ← Label 14px / 700, gray-500
 │                                  │
 └──────────────────────────────────┘
 ```
@@ -289,14 +297,14 @@ CONTEXT D-02 기반 — CSS만 사용, framer-motion 없음.
 │   잠시 후 다시 시도해주세요      │  ← Body 16px / 400, gray-500
 │         (24px gap)               │
 │   ┌─────────────────────────┐    │
-│   │     다시 시도하기        │    │  ← Primary CTA, 폭 auto, padding 12px 24px
-│   └─────────────────────────┘    │     배경 --color-primary, 텍스트 15px/600/white
+│   │     다시 시도하기        │    │  ← Primary CTA, 폭 auto, padding 14px 24px
+│   └─────────────────────────┘    │     배경 --color-primary, 텍스트 Body Strong (16px / 700 / white)
 │                                  │
 └──────────────────────────────────┘
 ```
 
 - 에러 토스트도 동시에 `useToast.openToast({ message: '카드 데이터를 불러오지 못했어요' })` (HomePage 패턴 일관).
-- 재시도 버튼: 기존 `Result.jsx`/`HomePage.jsx`의 `padding: 12px 24px; fontSize: 15px; fontWeight: 600` 패턴 일치.
+- 재시도 버튼: 본 페이즈는 weight 700 통일 정책에 따라 `padding: 14px 24px; fontSize: 16px; fontWeight: 700` (Body Strong)로 통일 — 기존 `Result.jsx`/`HomePage.jsx`의 600 semibold 패턴은 본 페이즈에 미적용 (4050 가독성 + weight 통일 위해 700 채택).
 - Sentry: `Sentry.captureException(err, { extra: { phase: 'tarot_intro_fetch' } })` (Loading.jsx 패턴 참고).
 
 ---
@@ -314,7 +322,7 @@ CONTEXT D-02 기반 — CSS만 사용, framer-motion 없음.
 | intro 에러 CTA | `다시 시도하기` | `Loading.jsx` 라인 370과 동일. |
 | shuffle 헤드라인 | `세 장 중 한 장을 골라보세요` | 평어체. 프로토타입의 "톡! 골라보라냥" 마스코트 톤은 메시지 본문에만 한정 (헤드라인은 명료성 우선). |
 | shuffle 보조 | `탭하면 그 자리에서 뒤집혀요` | 인터랙션 가이드. |
-| result 카드 메타 | `오늘의 한 장` | 결과 카드 위 작은 캡션 (Label 14px / gray-500). |
+| result 카드 메타 | `오늘의 한 장` | 결과 카드 위 작은 캡션 (Label 14px / 700 / gray-500). |
 | result 카드 헤더 | `{emoji} {name_ko} ({name_en})` | 예: `✨ 별 (The Star)`. emoji는 카드별, name은 supabase. |
 | result 키워드 chip | `#{keyword}` | 예: `#희망`, `#치유`. 2-4개. tarot_cards.keywords 그대로. |
 | result 메시지 본문 | (cards.ts 그대로 포팅, "~다냥" 톤 유지) | 카드별 ~300자. CONTEXT specifics "메시지 톤 유지" 명시. |
@@ -343,7 +351,7 @@ CONTEXT specifics "4050 사용자 hit area·대비 기준" + 본 페이즈 추�
 | shuffle 카드 3장 | 각 120×180px | 카드 자체가 tap target. WCAG AA 초과 ✓ |
 | result 카드 (탭 시 zoomed 표시 — Phase 5 책임) | 200×300px | 본 페이즈는 zoomed 인터랙션 미구현 (Phase 5 deferred). 단순 표시. |
 | 다시 뽑기 버튼 | 폭 100%-32px × 높이 56px | 4050 hit area 충분 ✓ |
-| 에러 재시도 버튼 | 패딩 12×24px (실측 ≥44px) | WCAG AA 만족 ✓ |
+| 에러 재시도 버튼 | 패딩 14×24px (실측 ≥48px) | WCAG AA 만족 ✓ |
 
 **Aria/semantic:**
 - 카드 3장: `<button aria-label="카드 1번 선택">` (1, 2, 3). 카드 자체는 `<button>` 또는 `<div role="button" tabIndex={0}>`.
@@ -396,6 +404,7 @@ CONTEXT specifics "4050 사용자 hit area·대비 기준" + 본 페이즈 추�
 - 색상 토큰: `--color-primary` (#64119F 보라) + `--color-gray-*` 그대로 — HomePage·SajuPage·AmuletPage·Result.jsx와 100% 일치.
 - 결과 메시지 카드 패턴: `--color-primary-light` 배경 + `borderRadius: 16px` + `padding: 20px` — `Result.jsx` 라인 203 패턴 동일.
 - 에러 처리 UX: `Loading.jsx` 라인 322-389 (이모지 + 헤드라인 + 재시도 버튼) 또는 `HomePage.jsx` 라인 323-352 (캡션 + 재시도 버튼) 중 후자 채택 (intro 단계는 카드 일러스트 자리 활용 가능 vs HomePage는 단순). **본 페이즈는 HomePage 패턴 채택** — intro 단계 자체가 시각적으로 가벼우므로.
+- **Weight 정책 차이:** v1.0 페이지(`Result.jsx`·`HomePage.jsx`)는 보조 라벨에 600 semibold를 혼용하지만, 본 페이즈는 weight 통일 정책에 따라 400 / 700만 사용. 신규 컴포넌트 작성 시에만 적용되며, v1.0 기존 코드는 수정하지 않음.
 
 ### Phase 4 광고 게이팅 준비
 - 다시 뽑기 버튼의 `onClick` 핸들러는 본 페이즈에서 `setCurrentPage('shuffle')` + `setSelectedCardId(null)` + `setCardsData(reshuffle...)` 직접 호출. Phase 4가 이 핸들러 안쪽에 광고 호출을 wrap.
@@ -412,7 +421,7 @@ CONTEXT specifics "4050 사용자 hit area·대비 기준" + 본 페이즈 추�
 - [ ] Dimension 1 Copywriting: PASS — 11개 UI string 정의 (CTA·empty/loading/error·destructive 미해당)
 - [ ] Dimension 2 Visuals: PASS — 단계별 layout + 카드 dimensions + animation timing 명세
 - [ ] Dimension 3 Color: PASS — 60/30/10 분배 명시 + accent reserved-for 5개 elements + WCAG AA contrast 검증
-- [ ] Dimension 4 Typography: PASS — 4 sizes (24/20/16/14) + 2 weights (400/700) + line-heights
+- [ ] Dimension 4 Typography: PASS — 4 sizes (24/20/16/14) + **2 weights (400/700) 통일** + Body Strong(16/700) CTA 라벨 분리 + Label·chip·meta 모두 700 + line-heights 명세
 - [ ] Dimension 5 Spacing: PASS — 8-point scale (4/8/16/24/32/48/64) + exceptions 3건 명시
 - [ ] Dimension 6 Registry Safety: PASS — shadcn 미사용, 3rd-party 0건 (D-02 신규 의존성 금지 carry-forward)
 
@@ -422,4 +431,5 @@ CONTEXT specifics "4050 사용자 hit area·대비 기준" + 본 페이즈 추�
 
 *Phase: 03-daily-one-card-core*
 *UI-SPEC drafted: 2026-05-02*
+*UI-SPEC revised: 2026-05-02 (Typography weight 통일 — 600 → 700, Dimension 4 BLOCK 해소)*
 *Pre-populated from: REQUIREMENTS.md (TAROT-01/02/03), CONTEXT.md (D-01~D-11), Phase 1 INVENTORY.md (22장 카드 메타), Phase 2 CONTEXT.md (탭바 높이·visibility), HomePage.jsx/Result.jsx/Loading.jsx/TabBar.jsx (시각 일관성)*
