@@ -19,23 +19,29 @@ const VISIBLE_PATHS = new Set(['/', '/tarot'])
 const ACTIVE_COLOR = colors.blue500
 const INACTIVE_COLOR = colors.grey500
 
-// 타로 첫 발견 유도용 NEW 배지 — 한 번이라도 누른 적 있으면 숨김
-const TAROT_VISITED_KEY = 'fortunecat.tarot_visited'
+// 타로 첫 발견 유도용 NEW 배지 — 첫 진입 시각을 기록하고 이후 3일간 노출
+const TAROT_FIRST_SEEN_KEY = 'fortunecat.tarot_first_seen_at'
+const NEW_BADGE_DURATION_MS = 3 * 24 * 60 * 60 * 1000 // 3일
 
-function readTarotVisited() {
+function getOrCreateFirstSeenAt() {
   try {
-    return window.localStorage.getItem(TAROT_VISITED_KEY) === '1'
+    const existing = window.localStorage.getItem(TAROT_FIRST_SEEN_KEY)
+    if (existing) {
+      const ts = Number.parseInt(existing, 10)
+      if (Number.isFinite(ts) && ts > 0) return ts
+    }
+    const now = Date.now()
+    window.localStorage.setItem(TAROT_FIRST_SEEN_KEY, String(now))
+    return now
   } catch {
-    return false
+    // localStorage 실패 시 null — 배지 영구 노출 (정보 손실만, 동작은 정상)
+    return null
   }
 }
 
-function writeTarotVisited() {
-  try {
-    window.localStorage.setItem(TAROT_VISITED_KEY, '1')
-  } catch {
-    // 무시 — 배지가 계속 보여도 critical 이슈 아님
-  }
+function isWithinNewWindow(firstSeenAt) {
+  if (firstSeenAt === null) return true
+  return Date.now() - firstSeenAt < NEW_BADGE_DURATION_MS
 }
 
 // 아이콘 SVG path: 사주(별 계열) + 타로(카드 계열) — TDS에 적합한 export 없어 자체 정의 (D-08 폴백).
@@ -169,10 +175,11 @@ export default function TabBar() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // 타로 첫 발견 유도 — localStorage에 방문 기록 남기면 NEW 배지 숨김
-  const [tarotVisited, setTarotVisited] = useState(true)
+  // 타로 첫 발견 유도 — 첫 진입 시각으로부터 3일간 NEW 배지 노출 (탭 클릭 무관)
+  const [tarotIsNew, setTarotIsNew] = useState(false)
   useEffect(() => {
-    setTarotVisited(readTarotVisited())
+    const firstSeenAt = getOrCreateFirstSeenAt()
+    setTarotIsNew(isWithinNewWindow(firstSeenAt))
   }, [])
 
   // D-05: 라우트별 숨김 — /saju, /newyear, /amulet에서는 null 반환
@@ -185,10 +192,6 @@ export default function TabBar() {
 
   // D-03: 탭 클릭 시 각 탭의 처음 화면으로 이동 (사주=/, 타로=/tarot)
   const handleTabClick = (to) => {
-    if (to === '/tarot' && !tarotVisited) {
-      writeTarotVisited()
-      setTarotVisited(true)
-    }
     navigate(to)
   }
 
@@ -197,7 +200,7 @@ export default function TabBar() {
       <ul style={listStyle}>
         {TABS.map(({ to, label }) => {
           const active = isActive(to)
-          const showNewBadge = to === '/tarot' && !tarotVisited
+          const showNewBadge = to === '/tarot' && tarotIsNew
           return (
             <li key={to} style={itemStyle}>
               <button
