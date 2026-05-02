@@ -32,8 +32,9 @@ decisions:
 metrics:
   duration: "~25분"
   completed: "2026-05-02"
-  tasks_completed: 3
+  tasks_completed: 4
   tasks_total: 4
+  task_1_2_applied_at: "2026-05-02"
   files_created: 25
   files_modified: 1
 ---
@@ -47,7 +48,7 @@ Wave 2/3 UI가 즉시 소비할 수 있는 타로 데이터 레이어 — Supaba
 | Task | Name | Commit | Files |
 |------|------|--------|-------|
 | 1.1 | tarot_cards 마이그레이션 SQL 작성 | b7d17af | scripts/20260502_create_tarot_cards.sql |
-| 1.2 | 마이그레이션 운영 Supabase 수동 적용 | — (checkpoint) | — |
+| 1.2 | 마이그레이션 운영 Supabase 수동 적용 | ✓ 사용자 확인 (2026-05-02 "통과") | — |
 | 1.3 | 22장 webp 복사 + getCardImageUrl 헬퍼 | 72e8642 | src/assets/images/cards/ (23 files) |
 | 1.4 | supabase.js에 fetchTarotCards() 추가 | da855dd | src/lib/supabase.js |
 
