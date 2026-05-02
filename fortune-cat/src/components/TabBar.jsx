@@ -23,6 +23,9 @@ const INACTIVE_COLOR = colors.grey500
 const TAROT_FIRST_SEEN_KEY = 'fortunecat.tarot_first_seen_at'
 const NEW_BADGE_DURATION_MS = 3 * 24 * 60 * 60 * 1000 // 3일
 
+// 코치마크 툴팁: 사용자가 탭/풍선을 누른 적 있으면 영구 숨김
+const COACHMARK_DISMISSED_KEY = 'fortunecat.tarot_coachmark_dismissed'
+
 function getOrCreateFirstSeenAt() {
   try {
     const existing = window.localStorage.getItem(TAROT_FIRST_SEEN_KEY)
@@ -42,6 +45,22 @@ function getOrCreateFirstSeenAt() {
 function isWithinNewWindow(firstSeenAt) {
   if (firstSeenAt === null) return true
   return Date.now() - firstSeenAt < NEW_BADGE_DURATION_MS
+}
+
+function readCoachmarkDismissed() {
+  try {
+    return window.localStorage.getItem(COACHMARK_DISMISSED_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function writeCoachmarkDismissed() {
+  try {
+    window.localStorage.setItem(COACHMARK_DISMISSED_KEY, '1')
+  } catch {
+    // 무시
+  }
 }
 
 // 아이콘 SVG path: 사주(별 계열) + 타로(카드 계열) — TDS에 적합한 export 없어 자체 정의 (D-08 폴백).
@@ -171,15 +190,58 @@ const newBadgeStyle = {
   pointerEvents: 'none',
 }
 
+// 코치마크 툴팁: 타로 탭 위에 떠있는 안내 풍선 + 아래쪽 화살표
+// 2개 균등 탭 가정 — 타로 탭 중심 = 좌측에서 75% 지점
+const COACHMARK_BG = '#191F28'
+
+const coachmarkContainerStyle = {
+  position: 'absolute',
+  bottom: '100%',
+  left: '75%',
+  transform: 'translateX(-50%)',
+  marginBottom: 12,
+  zIndex: 21,
+}
+
+const coachmarkBubbleStyle = {
+  background: COACHMARK_BG,
+  color: '#ffffff',
+  fontSize: 13,
+  fontWeight: 600,
+  padding: '10px 14px',
+  borderRadius: 12,
+  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.18)',
+  whiteSpace: 'nowrap',
+  cursor: 'pointer',
+  border: 0,
+  letterSpacing: -0.2,
+  fontFamily: 'inherit',
+}
+
+const coachmarkArrowStyle = {
+  position: 'absolute',
+  bottom: -5,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: 0,
+  height: 0,
+  borderLeft: '6px solid transparent',
+  borderRight: '6px solid transparent',
+  borderTop: `6px solid ${COACHMARK_BG}`,
+  pointerEvents: 'none',
+}
+
 export default function TabBar() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // 타로 첫 발견 유도 — 첫 진입 시각으로부터 3일간 NEW 배지 노출 (탭 클릭 무관)
+  // 타로 첫 발견 유도 — 첫 진입 시각으로부터 3일간 NEW 배지 + 코치마크 노출
   const [tarotIsNew, setTarotIsNew] = useState(false)
+  const [coachmarkDismissed, setCoachmarkDismissed] = useState(true)
   useEffect(() => {
     const firstSeenAt = getOrCreateFirstSeenAt()
     setTarotIsNew(isWithinNewWindow(firstSeenAt))
+    setCoachmarkDismissed(readCoachmarkDismissed())
   }, [])
 
   // D-05: 라우트별 숨김 — /saju, /newyear, /amulet에서는 null 반환
@@ -190,13 +252,38 @@ export default function TabBar() {
   // D-09: active 판정. /(HomePage)와 /tarot이 분리되어 있어 단순 매칭 충분.
   const isActive = (to) => location.pathname === to
 
+  const dismissCoachmark = () => {
+    writeCoachmarkDismissed()
+    setCoachmarkDismissed(true)
+  }
+
   // D-03: 탭 클릭 시 각 탭의 처음 화면으로 이동 (사주=/, 타로=/tarot)
   const handleTabClick = (to) => {
+    if (to === '/tarot' && !coachmarkDismissed) {
+      dismissCoachmark()
+    }
     navigate(to)
   }
 
+  // 코치마크는 사주 탭(/)에 머물 때 + NEW 윈도우 안 + 미해제 상태일 때만 노출
+  const showCoachmark =
+    tarotIsNew && !coachmarkDismissed && location.pathname === '/'
+
   return (
     <nav style={navStyle} aria-label="주요 메뉴">
+      {showCoachmark && (
+        <div style={coachmarkContainerStyle}>
+          <button
+            type="button"
+            onClick={dismissCoachmark}
+            style={coachmarkBubbleStyle}
+            aria-label="새로 추가된 타로 안내 닫기"
+          >
+            ✨ 새로 추가된 타로!
+          </button>
+          <div style={coachmarkArrowStyle} />
+        </div>
+      )}
       <ul style={listStyle}>
         {TABS.map(({ to, label }) => {
           const active = isActive(to)
