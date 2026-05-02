@@ -106,7 +106,9 @@ const navStyle = {
   borderTop: `1px solid ${colors.grey300}`,
   boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.06)',
   // D-06: TDS 기본 패턴 + safe-area 한 줄 (Mobile-AIT SafeAreaInsets 보강)
-  paddingBottom: 'env(safe-area-inset-bottom)',
+  // safe-area 위에 baseline 8px 추가 — 홈 인디케이터/화면 끝과 레이블 사이 숨통
+  paddingBottom: 'calc(env(safe-area-inset-bottom) + 8px)',
+  paddingTop: 4,
 }
 
 const listStyle = {
