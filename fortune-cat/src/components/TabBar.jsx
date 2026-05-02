@@ -3,6 +3,7 @@
 // D-08 신규 의존성 금지: 아이콘 라이브러리·CSS-in-JS 헬퍼·애니메이션 라이브러리 추가 금지. 아이콘은 SVG path 자체 정의.
 // D-09 active 강조: TDS 컬러 토큰 + 아이콘 fill(active) vs stroke-only(inactive). 레이블 굵기 동일 유지.
 // D-10 즉시 전환: CSS 전환 효과 미사용, 애니메이션 라이브러리 미사용.
+import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { colors } from '@toss/tds-colors'
 
@@ -17,6 +18,25 @@ const VISIBLE_PATHS = new Set(['/', '/tarot'])
 // D-09 active = 컬러 + fill, inactive = grey + stroke
 const ACTIVE_COLOR = colors.blue500
 const INACTIVE_COLOR = colors.grey500
+
+// 타로 첫 발견 유도용 NEW 배지 — 한 번이라도 누른 적 있으면 숨김
+const TAROT_VISITED_KEY = 'fortunecat.tarot_visited'
+
+function readTarotVisited() {
+  try {
+    return window.localStorage.getItem(TAROT_VISITED_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function writeTarotVisited() {
+  try {
+    window.localStorage.setItem(TAROT_VISITED_KEY, '1')
+  } catch {
+    // 무시 — 배지가 계속 보여도 critical 이슈 아님
+  }
+}
 
 // 아이콘 SVG path: 사주(별 계열) + 타로(카드 계열) — TDS에 적합한 export 없어 자체 정의 (D-08 폴백).
 function SajuIcon({ active }) {
@@ -82,7 +102,9 @@ const navStyle = {
   right: 0,
   zIndex: 20,
   background: '#ffffff',
-  borderTop: `1px solid ${colors.grey200}`,
+  // 발견성 강화: 더 진한 분리선 + 부드러운 elevation
+  borderTop: `1px solid ${colors.grey300}`,
+  boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.06)',
   // D-06: TDS 기본 패턴 + safe-area 한 줄 (Mobile-AIT SafeAreaInsets 보강)
   paddingBottom: 'env(safe-area-inset-bottom)',
 }
@@ -116,12 +138,40 @@ const buttonBaseStyle = {
   cursor: 'pointer',
   fontSize: 12,
   fontWeight: 500,
+  // NEW 배지를 아이콘 우상단에 절대 배치하기 위한 컨테이너
+  position: 'relative',
   // D-10: CSS transition 의도적으로 두지 않음
+}
+
+const iconWrapperStyle = {
+  position: 'relative',
+  display: 'inline-flex',
+}
+
+const newBadgeStyle = {
+  position: 'absolute',
+  top: -4,
+  right: -10,
+  background: colors.red500,
+  color: '#ffffff',
+  fontSize: 9,
+  fontWeight: 700,
+  letterSpacing: 0.2,
+  borderRadius: 8,
+  padding: '1px 5px',
+  lineHeight: 1.3,
+  pointerEvents: 'none',
 }
 
 export default function TabBar() {
   const location = useLocation()
   const navigate = useNavigate()
+
+  // 타로 첫 발견 유도 — localStorage에 방문 기록 남기면 NEW 배지 숨김
+  const [tarotVisited, setTarotVisited] = useState(true)
+  useEffect(() => {
+    setTarotVisited(readTarotVisited())
+  }, [])
 
   // D-05: 라우트별 숨김 — /saju, /newyear, /amulet에서는 null 반환
   if (!VISIBLE_PATHS.has(location.pathname)) {
@@ -133,6 +183,10 @@ export default function TabBar() {
 
   // D-03: 탭 클릭 시 각 탭의 처음 화면으로 이동 (사주=/, 타로=/tarot)
   const handleTabClick = (to) => {
+    if (to === '/tarot' && !tarotVisited) {
+      writeTarotVisited()
+      setTarotVisited(true)
+    }
     navigate(to)
   }
 
@@ -141,6 +195,7 @@ export default function TabBar() {
       <ul style={listStyle}>
         {TABS.map(({ to, label }) => {
           const active = isActive(to)
+          const showNewBadge = to === '/tarot' && !tarotVisited
           return (
             <li key={to} style={itemStyle}>
               <button
@@ -151,9 +206,12 @@ export default function TabBar() {
                   color: active ? ACTIVE_COLOR : INACTIVE_COLOR,
                 }}
                 aria-current={active ? 'page' : undefined}
-                aria-label={label}
+                aria-label={showNewBadge ? `${label} (새 기능)` : label}
               >
-                {getIcon(to, active)}
+                <span style={iconWrapperStyle}>
+                  {getIcon(to, active)}
+                  {showNewBadge && <span style={newBadgeStyle}>NEW</span>}
+                </span>
                 <span>{label}</span>
               </button>
             </li>
