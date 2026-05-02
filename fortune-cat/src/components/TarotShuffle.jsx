@@ -1,153 +1,143 @@
-// shuffle 단계 — 부채꼴 3장 + 1장 탭 시 그 자리에서 CSS 3D rotateY 뒤집기 → onSelect(id) 호출.
-// CONTEXT D-01: 부채꼴 3장 중 1장 선택 (confirm 단계 없음).
-// CONTEXT D-02: CSS keyframes/transition만 사용. motion library 금지.
-// UI-SPEC Animation: 카드 뒤집기 0.5s ease-out spec(line 120), 부채꼴 stagger 0.08s.
-// UI-SPEC Layout: 좌 -15° / 중앙 0° / 우 +15°, translateX -64/0/+64.
-// RESEARCH Pitfall 1: -webkit-backface-visibility vendor prefix 필수 (iOS Safari < 16).
+// shuffle 단계 — boknyang-tarot 프로토타입 모델로 재구성 (사용자 요청 2026-05-02).
+// 흐름: 탭으로 카드 1장 선택(하이라이트) → 확정 버튼으로 commit → onSelect(id) 호출.
+// CONTEXT D-02: CSS transition 만 사용. motion 라이브러리 금지.
+// UI-SPEC Layout 재정의: 좌 -16° / 중앙 0° / 우 +16°, translateX -78/0/+78 (프로토타입 spread).
+// 선택 시: translateY +60px + scale 1.35 + brightness/saturation 필터 + 미선택은 opacity 0.3.
 
 import { useState } from 'react';
 import TarotCardArt from './TarotCardArt';
-import { getCardImageUrl } from '../assets/images/cards';
 
 const POSITIONS = [
-  { x: -64, rot: -15 },
+  { x: -78, rot: -16 },
   { x: 0,   rot: 0   },
-  { x: 64,  rot: 15  },
+  { x: 78,  rot: 16  },
 ];
 
 export default function TarotShuffle({ cards, onSelect }) {
   const [selectedSlot, setSelectedSlot] = useState(null);
-  const [flipping, setFlipping] = useState(false);
 
   if (!Array.isArray(cards) || cards.length < 3) return null;
 
   const handleTap = (slotIdx) => {
-    if (selectedSlot !== null) return;
+    if (selectedSlot === slotIdx) return;
     setSelectedSlot(slotIdx);
-    setFlipping(true);
-    // UI-SPEC Animation: 0.5s flip + 0.2s scale → 약 0.7s 뒤 result로 진입
-    setTimeout(() => onSelect(cards[slotIdx].id), 700);
   };
+
+  const handleConfirm = () => {
+    if (selectedSlot === null) return;
+    onSelect(cards[selectedSlot].id);
+  };
+
+  const isReady = selectedSlot !== null;
 
   return (
     <div
       style={{
         minHeight: '100vh',
-        background: '#FFFFFF',
+        background: '#FFF7FB',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        paddingTop: 48,
-        paddingLeft: 16,
-        paddingRight: 16,
+        paddingTop: 'calc(env(safe-area-inset-top) + 8px)',
+        paddingLeft: 24,
+        paddingRight: 24,
         paddingBottom: 'calc(96px + env(safe-area-inset-bottom))',
       }}
     >
-      <h2 style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.3, color: '#191F28', margin: 0, textAlign: 'center' }}>
-        세 장 중 한 장을 골라보세요
-      </h2>
-      <p style={{ marginTop: 16, fontSize: 16, fontWeight: 400, lineHeight: 1.6, color: '#6B7684', textAlign: 'center' }}>
-        탭하면 그 자리에서 뒤집혀요
+      <p style={{ marginTop: 4, fontSize: 14, fontWeight: 500, color: '#888194', margin: 0 }}>
+        마음에 드는 카드를 톡! 골라보라냥
       </p>
 
       <div
         style={{
-          marginTop: 48,
-          position: 'relative',
-          width: '100%',
-          height: 240,
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 32,
+          paddingBottom: 8,
         }}
       >
-        {cards.slice(0, 3).map((card, i) => {
-          const isSel = selectedSlot === i;
-          const isOther = selectedSlot !== null && !isSel;
-          const pos = POSITIONS[i];
-          return (
-            <button
-              key={card.id}
-              type="button"
-              onClick={() => handleTap(i)}
-              aria-label={`카드 ${i + 1}번 선택`}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: '50%',
-                marginLeft: -60,
-                transform: `translateX(${isSel ? 0 : pos.x}px) rotate(${isSel ? 0 : pos.rot}deg) scale(${isSel ? 1.15 : 1})`,
-                opacity: isOther ? 0.3 : 1,
-                transition: 'transform 0.4s ease-out, opacity 0.3s ease-out',
-                transitionDelay: selectedSlot === null ? `${i * 0.08}s` : '0s',
-                border: 0,
-                background: 'transparent',
-                cursor: 'pointer',
-                padding: 0,
-                touchAction: 'manipulation',
-                WebkitTapHighlightColor: 'transparent',
-              }}
-            >
-              {isSel && flipping ? (
-                <FlipCard card={card} />
-              ) : (
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: 320,
+          }}
+        >
+          {cards.slice(0, 3).map((card, i) => {
+            const isSel = selectedSlot === i;
+            const isOther = selectedSlot !== null && !isSel;
+            const pos = POSITIONS[i];
+            return (
+              <button
+                key={card.id}
+                type="button"
+                onClick={() => handleTap(i)}
+                aria-label={`카드 ${i + 1}번 선택`}
+                aria-pressed={isSel}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '50%',
+                  marginLeft: -60,
+                  transform: `translate(${isSel ? 0 : pos.x}px, ${isSel ? 60 : 0}px) rotate(${isSel ? 0 : pos.rot}deg) scale(${isSel ? 1.35 : 1})`,
+                  opacity: isOther ? 0.3 : 1,
+                  filter: isSel ? 'brightness(0.92) saturate(1.15)' : 'none',
+                  transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease-out, filter 0.3s ease-out',
+                  transitionDelay: selectedSlot === null ? `${i * 0.08}s` : '0s',
+                  border: 0,
+                  background: 'transparent',
+                  cursor: 'pointer',
+                  padding: 0,
+                  touchAction: 'manipulation',
+                  WebkitTapHighlightColor: 'transparent',
+                  outline: 'none',
+                }}
+              >
                 <TarotCardArt faceUp={false} size="md" />
-              )}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+              </button>
+            );
+          })}
+        </div>
 
-// 선택된 카드 1장만 그 자리에서 0.5s rotateY 뒤집기. 진입 직후 flipped=true로 트랜지션 시작.
-function FlipCard({ card }) {
-  const [flipped, setFlipped] = useState(false);
+        <div style={{ textAlign: 'center' }}>
+          <p style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.5, color: '#3F3754', margin: 0 }}>
+            {isReady ? '이 카드로 결정할까냥?' : '세 장의 카드 중 한 장을 골라달라냥 🐾'}
+          </p>
+          <p style={{ marginTop: 8, fontSize: 14, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0 }}>
+            한 번 선택하면 오늘 자정까지 같은 카드가 보여져요
+          </p>
+        </div>
 
-  // mount 직후 다음 프레임에 flipped=true → CSS transition 0 → 180deg 시작
-  if (!flipped) {
-    requestAnimationFrame(() => setFlipped(true));
-  }
-
-  return (
-    <div style={{ perspective: 1200 }}>
-      <div
-        style={{
-          position: 'relative',
-          width: 120,
-          height: 180,
-          transformStyle: 'preserve-3d',
-          WebkitTransformStyle: 'preserve-3d',
-          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-          transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
-          willChange: 'transform',
-        }}
-      >
-        <div
+        <button
+          type="button"
+          disabled={!isReady}
+          onClick={handleConfirm}
+          className="tap-card"
           style={{
-            position: 'absolute',
-            top: 0, right: 0, bottom: 0, left: 0,
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
+            width: '100%',
+            minHeight: 56,
+            padding: '16px 24px',
+            fontSize: 16,
+            fontWeight: 700,
+            color: '#FFFFFF',
+            backgroundImage: 'linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%)',
+            border: 0,
+            borderRadius: 24,
+            boxShadow: '0 6px 18px rgba(124, 58, 237, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+            opacity: isReady ? 1 : 0.4,
+            cursor: isReady ? 'pointer' : 'not-allowed',
+            pointerEvents: isReady ? 'auto' : 'none',
+            transition: 'opacity 0.2s ease-out',
           }}
         >
-          <TarotCardArt faceUp={false} size="md" />
-        </div>
-        <div
-          style={{
-            position: 'absolute',
-            top: 0, right: 0, bottom: 0, left: 0,
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-          }}
-        >
-          <TarotCardArt
-            faceUp
-            size="md"
-            image={getCardImageUrl(card.id)}
-            emoji={card.emoji}
-            nameEn={card.name_en}
-          />
-        </div>
+          이 카드로 결정할래요 ✨
+        </button>
       </div>
     </div>
   );
