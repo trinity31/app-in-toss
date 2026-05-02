@@ -33,7 +33,7 @@ export default function TarotResult({ card, onRedraw }) {
         paddingTop: 'calc(env(safe-area-inset-top) + 24px)',
         paddingLeft: 24,
         paddingRight: 24,
-        paddingBottom: 'calc(96px + env(safe-area-inset-bottom))',
+        paddingBottom: 'calc(196px + env(safe-area-inset-bottom))',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
