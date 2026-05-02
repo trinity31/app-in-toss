@@ -83,6 +83,28 @@ export async function getAmuletConfig() {
   }
 }
 
+/**
+ * tarot_cards 테이블에서 22장 메이저 아르카나 카드 데이터를 id 오름차순으로 select.
+ *
+ * Phase 3 D-08: 7컬럼 (id/name_ko/name_en/emoji/image_path/keywords/message) 스키마.
+ * Phase 3 D-09: TarotPage intro 단계 진입 시 1회 호출 → cardsData state에 캐시 → shuffle/result 0 latency.
+ *
+ * @returns {Promise<Array<{id: number, name_ko: string, name_en: string, emoji: string, image_path: string, keywords: string[], message: string}>>}
+ *   22장 카드 객체 배열 (id 오름차순). 0행이면 빈 배열 반환 (RLS 정책 누락 시 — Pitfall 3 회피용 호출 측 검증 필요).
+ * @throws {Error} Supabase 네트워크/권한 에러. 호출 측에서 try/catch + Sentry.captureException 처리.
+ */
+export async function fetchTarotCards() {
+  const { data, error } = await supabase
+    .from('tarot_cards')
+    .select('id, name_ko, name_en, emoji, image_path, keywords, message')
+    .order('id', { ascending: true });
+  if (error) {
+    console.error('[supabase] fetchTarotCards 실패:', error);
+    throw error;
+  }
+  return data || [];
+}
+
 export async function getTodayOrderCount() {
   // 한국 시간 기준 오늘 00:00:00 (UTC로 변환)
   const now = new Date();
