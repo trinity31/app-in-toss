@@ -40,7 +40,7 @@ Plans:
   4. 사용자가 탭바가 부적 결제·딥리딩 등 풀스크린 흐름을 가리지 않는 시점에만 노출되는 것을 확인할 수 있다
 **Plans:** 1 plan
 Plans:
-- [ ] 02-01-PLAN.md — 하단 탭바(TabBar.jsx) + /tarot 라우트 + TarotPage 빈 컨테이너 + App.jsx 통합
+- [x] 02-01-PLAN.md — 하단 탭바(TabBar.jsx) + /tarot 라우트 + TarotPage 빈 컨테이너 + App.jsx 통합
 **UI hint**: yes
 
 ### Phase 3: 데일리 원카드 코어 화면
