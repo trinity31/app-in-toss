@@ -74,16 +74,24 @@ function CardImage({ src, alt }) {
 }
 
 function CardBack({ s }) {
+  // boknyang-tarot 프로토타입 매칭: 라벤더→크림 라디얼 + 골드 별 점 + 이중 골드 프레임 + 중앙 골드 원형 디스크 + 코너 ✦.
   return (
     <div
       style={{
         position: 'relative',
         height: '100%',
         width: '100%',
-        background: 'linear-gradient(135deg, #64119F, #4A0A78)',
+        background: [
+          'radial-gradient(circle at 22% 22%, oklch(0.78 0.14 85 / 0.55) 0 1.5px, transparent 2.5px)',
+          'radial-gradient(circle at 72% 28%, oklch(0.78 0.14 85 / 0.5) 0 1.2px, transparent 2px)',
+          'radial-gradient(circle at 35% 72%, oklch(0.78 0.14 85 / 0.5) 0 1.4px, transparent 2.2px)',
+          'radial-gradient(circle at 80% 78%, oklch(0.78 0.14 85 / 0.5) 0 1.2px, transparent 2px)',
+          'radial-gradient(circle at 50% 50%, oklch(0.95 0.04 85) 0%, oklch(0.9 0.07 320) 55%, oklch(0.82 0.1 295) 100%)',
+        ].join(', '),
       }}
       aria-hidden="true"
     >
+      {/* 외곽 골드 프레임 (2px solid + inset 1px) */}
       <div
         style={{
           position: 'absolute',
@@ -92,22 +100,61 @@ function CardBack({ s }) {
           bottom: s.pad,
           left: s.pad,
           borderRadius: s.radius,
-          border: '1.5px solid #D4A537',
+          border: '2px solid oklch(0.82 0.13 85)',
+          boxShadow: 'inset 0 0 0 1px oklch(0.65 0.12 75 / 0.6)',
           pointerEvents: 'none',
         }}
       />
+      {/* 내부 얇은 골드 라인 */}
+      <div
+        style={{
+          position: 'absolute',
+          top: s.pad + 4,
+          right: s.pad + 4,
+          bottom: s.pad + 4,
+          left: s.pad + 4,
+          borderRadius: Math.max(s.radius - 4, 4),
+          border: '1px solid oklch(0.82 0.13 85 / 0.5)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* 중앙 골드 원형 디스크 + 🌙 */}
       <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span style={{ fontSize: Math.max(36, s.w * 0.36), lineHeight: 1 }}>🌙</span>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: s.w * 0.36,
+            height: s.w * 0.36,
+            borderRadius: '9999px',
+            background: 'radial-gradient(circle, oklch(0.92 0.1 85) 0%, oklch(0.78 0.13 75) 70%, oklch(0.62 0.13 65) 100%)',
+            boxShadow: '0 0 12px oklch(0.82 0.13 85 / 0.5), inset 0 0 0 1.5px oklch(0.45 0.1 60 / 0.6)',
+          }}
+        >
+          <span style={{ fontSize: s.w * 0.18, lineHeight: 1 }}>🌙</span>
+        </div>
       </div>
+
+      {/* 코너 ✦ */}
       {[
-        { top: s.pad + 4, left: s.pad + 4 },
-        { top: s.pad + 4, right: s.pad + 4 },
-        { bottom: s.pad + 4, left: s.pad + 4 },
-        { bottom: s.pad + 4, right: s.pad + 4 },
+        { top: s.pad + 6, left: s.pad + 6 },
+        { top: s.pad + 6, right: s.pad + 6 },
+        { bottom: s.pad + 6, left: s.pad + 6 },
+        { bottom: s.pad + 6, right: s.pad + 6 },
       ].map((pos, i) => (
         <span
           key={i}
-          style={{ position: 'absolute', ...pos, color: '#D4A537', fontSize: s.w * 0.07, pointerEvents: 'none' }}
+          style={{
+            position: 'absolute',
+            ...pos,
+            color: 'oklch(0.82 0.13 85)',
+            fontSize: s.w * 0.07,
+            opacity: 0.85,
+            pointerEvents: 'none',
+            lineHeight: 1,
+          }}
         >
           ✦
         </span>
