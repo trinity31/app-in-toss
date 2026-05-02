@@ -190,7 +190,7 @@ function TarotIntro({ onStart }) {
         background: '#FFF7FB',
         display: 'flex',
         flexDirection: 'column',
-        padding: '24px 24px calc(32px + env(safe-area-inset-bottom))',
+        padding: '24px 24px calc(96px + env(safe-area-inset-bottom))',
       }}
     >
       <div
