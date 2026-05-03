@@ -18,6 +18,8 @@ import { getCardImageUrl, prefetchAllCardImages } from '../assets/images/cards';
 import Boknyang from '../components/Boknyang';
 import TarotShuffle from '../components/TarotShuffle';
 import TarotResult from '../components/TarotResult';
+import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
+import { todayKST } from '../utils/dateKST';
 
 // Fisher-Yates 셔플 + 상위 3장 (RESEARCH Pattern 4).
 // 22장 중복 없는 랜덤 3장. 원본 cardsData 변경 금지 (slice() shallow copy).
@@ -39,6 +41,9 @@ export default function TarotPage() {
   const [isLoading, setIsLoading] = useState(true);            // intro fetch 진행 상태
   const [errorState, setErrorState] = useState(null);          // 'fetch_failed' | null
   const [retryNonce, setRetryNonce] = useState(0);             // 재시도 트리거 (deps에 포함)
+
+  // Phase 4 (CONTEXT D-04): todayDraw 영속 저장 훅. mount 시 자동 load + KST 자정 비교 분기는 별도 useEffect.
+  const { loading: storageLoading, todayDraw, saveTodayDraw, clearTodayDraw } = useTodayDrawStorage();
 
   // intro fetch — D-09 1회 호출. retryNonce 변경 시 재시도. cleanup cancelled flag (Pitfall 7).
   useEffect(() => {
@@ -69,6 +74,36 @@ export default function TarotPage() {
     return () => { cancelled = true; };
   }, [retryNonce]);
 
+  // Phase 4 (CONTEXT D-10): storage 로드 완료 + cardsData 준비 → todayDraw 와 KST 자정 비교 후 분기.
+  // - todayDraw 존재 + date 일치 → result 직진 (intro/shuffle 건너뜀)
+  // - todayDraw 존재 + date 불일치 (자정 지남) → clearTodayDraw + intro 유지
+  // - todayDraw 없음 → intro 유지 (기본)
+  // 의존: storageLoading 종료 + cardsData 준비. cardsData 길이 검증은 fetch effect 가 errorState 로 처리.
+  useEffect(() => {
+    if (storageLoading) return;          // storage 로드 진행 중
+    if (errorState) return;              // fetch 에러 화면 표시 중
+    if (!cardsData || cardsData.length === 0) return; // fetch 미완료
+    if (!todayDraw) return;              // 저장된 카드 없음 → 기본 intro
+
+    const today = todayKST();
+    if (todayDraw.date === today) {
+      // D-10 케이스 1: 같은 날 재진입 → result 직진
+      const card = cardsData.find((c) => c.id === todayDraw.card_id);
+      if (card) {
+        setSelectedCardId(todayDraw.card_id);
+        setCurrentPage('result');
+      } else {
+        // 저장된 card_id 가 22장 안에 없음 (시드 변경 또는 손상) → 정리 후 intro
+        console.warn('[TarotPage] todayDraw.card_id 가 cardsData 에 없음, 정리:', todayDraw.card_id);
+        clearTodayDraw();
+      }
+    } else {
+      // D-10 케이스 2: 자정 지남 → clear 후 intro
+      console.log('[TarotPage] KST 자정 지남, todayDraw 정리:', todayDraw.date, '->', today);
+      clearTodayDraw();
+    }
+  }, [storageLoading, errorState, cardsData, todayDraw, clearTodayDraw]);
+
   const startShuffle = () => {
     // Pitfall 6 회피: 매번 새 pickThreeRandom 호출
     setShuffledThree(pickThreeRandom(cardsData));
@@ -78,6 +113,9 @@ export default function TarotPage() {
 
   const handleSelectCard = (id) => {
     setSelectedCardId(id);
+    // CONTEXT D-11: shuffle 확정 시 todayDraw 영속 저장 (fire-and-forget — await 하지 않음).
+    // 저장 실패해도 result 화면은 메모리 기반으로 표시됨 (D-16 graceful).
+    saveTodayDraw({ date: todayKST(), card_id: id });
     setCurrentPage('result');
   };
 
@@ -103,7 +141,8 @@ export default function TarotPage() {
     : null;
 
   // 로딩 상태 (UI-SPEC Loading & Error States)
-  if (isLoading) {
+  // storage 로드 + cardsData fetch 둘 다 완료해야 분기 가능 — 둘 중 하나라도 진행 중이면 Loader 노출.
+  if (isLoading || storageLoading) {
     return (
       <div
         role="status"
@@ -176,7 +215,18 @@ export default function TarotPage() {
   return (
     <div data-current-page={currentPage}>
       {currentPage === 'intro' && (
-        <TarotIntro onStart={startShuffle} />
+        <TarotIntro
+          hasTodayDraw={Boolean(todayDraw && todayDraw.date === todayKST())}
+          onStart={startShuffle}
+          onResume={() => {
+            // CONTEXT D-14: todayDraw 존재 시 result 진입. selectedCardId 는 lock useEffect 가 이미 세팅했지만
+            // 사용자가 result 에서 처음으로(handleHome) 누른 뒤 다시 intro 진입한 케이스를 위해 명시적으로 보강.
+            if (todayDraw) {
+              setSelectedCardId(todayDraw.card_id);
+              setCurrentPage('result');
+            }
+          }}
+        />
       )}
       {currentPage === 'shuffle' && (
         <TarotShuffle cards={shuffledThree} onSelect={handleSelectCard} />
@@ -190,7 +240,7 @@ export default function TarotPage() {
 
 // intro 단계 — boknyang-tarot 프로토타입 디자인에 맞춤 (사용자 요청 2026-05-02).
 // 레이아웃: ✨ 복냥타로 ✨ 로고 + 마스코트 200px + "복냥이가 뽑아주는 / 오늘의 운세" + 부제 + CTA + 자정 안내.
-function TarotIntro({ onStart }) {
+function TarotIntro({ hasTodayDraw, onStart, onResume }) {
   return (
     <div
       style={{
@@ -243,7 +293,7 @@ function TarotIntro({ onStart }) {
       <div style={{ paddingTop: 16 }}>
         <button
           type="button"
-          onClick={onStart}
+          onClick={hasTodayDraw ? onResume : onStart}
           className="tap-card"
           style={{
             display: 'flex',
@@ -263,7 +313,7 @@ function TarotIntro({ onStart }) {
             cursor: 'pointer',
           }}
         >
-          오늘의 카드 뽑기 ✨
+          {hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}
         </button>
         <p style={{ marginTop: 24, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0, textAlign: 'center' }}>
           하루 한 번, 자정에 초기화돼요 🌙
