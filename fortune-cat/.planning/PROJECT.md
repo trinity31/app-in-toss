@@ -29,17 +29,21 @@
 
 - [ ] 사용자가 앱 하단 탭바에서 "사주"와 "타로"를 전환할 수 있다
 - [ ] 사용자가 타로 탭에서 "오늘의 한 장(데일리 원카드)"을 뽑을 수 있다
-- [ ] 사용자가 광고를 시청한 뒤 데일리 원카드를 횟수 제한 없이 다시 뽑을 수 있다
+- [ ] 같은 날 다시 진입하면 그날 뽑은 카드의 결과 화면이 다시 표시되고, KST 자정에 lock 이 해제된다
+- [ ] 사용자가 결과 화면에서 처음으로(intro 복귀) 또는 공유하기로 진행할 수 있다
 - [ ] 사용자가 데일리 원카드 결과(카드/해석)를 토스 공유 시트로 공유할 수 있다
-- [ ] Firebase Analytics에 타로 탭 진입·카드 뽑기·광고 시청·공유 이벤트가 기록된다
+- [ ] Firebase Analytics에 타로 탭 진입·카드 뽑기·공유 이벤트가 기록된다
 
 ### Out of Scope
 
 <!-- 이번 마일스톤 의도적으로 제외 — 추후 별도 마일스톤 후보 -->
 
+- 광고 기반 수익화 (AdMob 보상형 등) — v1.1 daily-one-card 는 한계 비용 0, 광고 도입 정당성 없음. LLM 기능 도입 시점(v1.2+)에 재검토.
+- 22장 컬렉션 메타게임 (기록 탭, 진행률, 보상) — v1.2 retention 후크 후보 (`.planning/seeds/22-card-collection-meta-game.md`)
+- LLM 기반 고민상담 / 3-card 스프레드 — LLM 비용 발생 → 수익화 모델과 함께 v1.2+ 도입 (`.planning/seeds/llm-features-and-monetization.md`)
 - 주제별 타로 리딩 (연애/금전/취업) — 데일리 원카드 통합 후 별도 마일스톤에서 검토
 - 스프레드(3장/5장 등 다수 카드) 리딩 — 동일, 다음 마일스톤 후보
-- 타로 유료 상품(타로 부적/굿즈, 딥리딩 결제) — v1.1에서는 광고 기반 무제한 모델 우선 검증
+- 타로 유료 상품(타로 부적/굿즈, 딥리딩 결제) — daily 정착 후 cross-sell 기획
 - 사주 ↔ 타로 데이터 통합(예: 사주 입력값으로 타로 해석 보정) — 별도 통합 단계에서 검토
 - 회원 시스템/계정 관리 — 토스 익명키 + 토스 로그인(부적 결제용) 외에 자체 회원 도입 안 함
 
@@ -74,7 +78,7 @@
 - **Platform**: Apps-in-Toss WebView — 일반 브라우저에서는 광고/IAP/GetAnonymousKey가 동작하지 않음, dev에서는 graceful degradation 필요
 - **Auth**: 자체 회원 시스템 없음 — 익명키(Toss `getAnonymousKey`) + 결제 시 토스 로그인(`@apps-in-toss/web-framework`)만 사용
 - **Data**: 단일 Supabase 프로젝트(현 saju.trinity-apps.net 백엔드와 동일) — 타로 메뉴/카드도 같은 프로젝트에 추가
-- **Monetization (v1.1)**: 타로는 **광고 시청 후 무제한** — 별도 결제 상품 추가 금지(이번 마일스톤 한정)
+- **Monetization (v1.1)**: 타로는 **데일리 무료 (광고 0, 결제 0)** — 한계 비용 0인 정적 콘텐츠. 수익화는 LLM 기능 도입 시점(v1.2+)에 재검토.
 - **Build**: AIT 빌드 산출물(`fortune-cat.ait`) 호환 유지 — `granite.config.ts` 권한 변경 시 토스 심사 영향 검토
 - **Repository layout**: `app-in-toss/` 멀티앱 모노레포 — git는 부모 디렉토리에서 관리, `fortune-cat/` 작업 시 형제 앱(예: `ai-pet-studio`)에 영향 주지 않도록 주의
 
@@ -83,7 +87,7 @@
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | 타로를 **하단 탭바 + `/tarot` 라우트**로 통합 | 4050 여성 사용자에게 단일 진입점·전환을 직관적으로 제공. Phase 2 진입 시 URL 명확성·딥링크 확장성을 위해 `/tarot` 라우트를 신규 추가하기로 재결정 (Phase 2 D-01) — 단, 라우트 안에서는 `currentPage` 상태 머신으로 단계 전환 (Phase 1 D-10 carry-forward) | Validated in Phase 2 (탭바 셸 + `/tarot` 라우트 도입 완료) |
-| v1.1 타로 수익 모델은 **광고 기반 무제한** | 사용자 정착이 우선이고, 타로 유료화는 데이터를 본 뒤 결정 | — Pending |
+| v1.1 타로 수익 모델 = **데일리 lock 무료 (광고 0, 결제 0)** | 한계 비용 0 + 4050 사용자에게 광고 피로 회피 + 자정 리셋이 매일 재방문 후크. 수익화는 LLM 기능(고민상담·3-card) 도입 시점에 재검토. (2026-05-03 광고 무제한 → daily-lock 무료로 전환) | — Pending |
 | 타로 v1.1 콘텐츠를 **데일리 원카드 1종**으로 한정 | 작게 출시·검증 → 주제별 리딩/스프레드는 다음 마일스톤 분기 | — Pending |
 | 다른 레포의 **프로토타입을 포팅**하여 통합 | 기획·디자인이 이미 검증되어 있어 0→1 비용을 회피 | — Pending |
 | Supabase·Firebase·Sentry·AdMob **기존 인프라 재사용** | 추가 운영 비용·심사 부담을 최소화 | — Pending |
@@ -94,8 +98,9 @@
 
 **Target features:**
 - 하단 탭바 네비게이션 (사주 / 타로)
-- 데일리 원카드 (광고 시청 후 무제한)
-- 광고/공유/Analytics 이벤트 통합
+- 데일리 원카드 (자정 lock + 영속 저장 + 자정 리셋)
+- 결과 화면 액션 (처음으로 + 공유하기)
+- 공유/Analytics 이벤트 통합 (광고 이벤트 제외)
 
 ## Evolution
 
@@ -115,4 +120,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-02 after Phase 2 (하단 탭바 네비게이션 셸) 완료*
+*Last updated: 2026-05-03 — v1.1 수익 모델 전환 (광고 무제한 → daily-lock 무료). 22장 컬렉션·LLM 기능은 v1.2 seed 로 등록.*

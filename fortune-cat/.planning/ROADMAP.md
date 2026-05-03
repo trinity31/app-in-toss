@@ -11,7 +11,7 @@
 - [ ] **Phase 1: 타로 프로토타입 발굴 및 포팅 평가** — 외부 레포의 타로 프로토타입을 식별·평가해 통합 가능한 자산과 갭을 명확히 한다
 - [ ] **Phase 2: 하단 탭바 네비게이션 셸** — 사주/타로 두 탭 전환 가능한 셸을 도입하면서 기존 사주 흐름을 깨뜨리지 않는다
 - [ ] **Phase 3: 데일리 원카드 코어 화면** — 사용자가 타로 탭에서 카드를 뒤집어 오늘의 한 장을 받고 다시 뽑기를 시작할 수 있다
-- [ ] **Phase 4: 광고 게이팅 + 무제한 다시 뽑기** — 광고 시청을 거쳐 데일리 원카드를 횟수 제한 없이 다시 뽑을 수 있고, 광고 실패 시에도 차단되지 않는다
+- [ ] **Phase 4: 데일리 lock + 영속 저장 + 자정 리셋** — 그날 뽑은 카드가 자정까지 lock 되어 같은 날 재진입 시 동일 결과가 표시되고, 자정에 자동 리셋된다 (앱 재시작·새로고침에도 유지)
 - [ ] **Phase 5: 공유 + Analytics 마무리** — 결과 공유와 핵심 사용자 행동 이벤트가 모두 기록되어 v1.1 출시 준비가 완료된다
 
 ## Phase Details
@@ -52,30 +52,35 @@ Plans:
   2. 사용자가 결과 화면에서 카드 이미지·카드 이름·해석 텍스트를 한 화면에서 함께 볼 수 있다
   3. 사용자가 결과 화면에서 "다시 뽑기" 액션을 명확히 식별하고 시작할 수 있다 (Phase 4에서 광고로 게이팅됨)
   4. 사용자가 4050 여성 기준으로 텍스트 사이즈·여백·콘트라스트가 편안한 상태로 결과를 읽을 수 있다
-**Plans**: TBD
+**Plans:** 3 plans (3 waves)
+Plans:
+- [x] 03-01-PLAN.md — 데이터 레이어 (tarot_cards 마이그레이션 + 22장 webp 정적 import + fetchTarotCards/getCardImageUrl 헬퍼) [Wave 1]
+- [x] 03-02-PLAN.md — UI 컴포넌트 (TarotCardArt 포팅 + TarotShuffle 부채꼴+CSS 3D 뒤집기 + TarotResult fixed 다시뽑기) [Wave 2, depends_on: 01]
+- [ ] 03-03-PLAN.md — TarotPage 통합 + UI-SPEC Checker Sign-Off + 수동 디바이스 검증 [Wave 3, depends_on: 01, 02]
 **UI hint**: yes
 
-### Phase 4: 광고 게이팅 + 무제한 다시 뽑기
-**Goal**: 데일리 원카드 시도가 광고 시청을 통해 게이팅되며, 광고 시청 완료 시 횟수 제한 없이 다시 뽑을 수 있고, 광고 로드 실패·미지원 환경에서도 카드 뽑기는 차단되지 않는다 (v1.0 풀이 정책과 동일)
+### Phase 4: 데일리 lock + 영속 저장 + 자정 리셋
+**Goal**: 사용자가 카드를 뽑으면 그날 카드가 KST 자정까지 lock 되어 같은 날 재진입 시 같은 결과 화면이 표시되고, 자정에 lock 이 해제되어 새 카드를 뽑을 수 있다. 저장은 앱 재시작·새로고침에도 유지된다.
 **Depends on**: Phase 3
-**Requirements**: ADS-01, ADS-02, ADS-03
+**Requirements**: DAILY-01, DAILY-02, DAILY-03
 **Success Criteria** (what must be TRUE):
-  1. 사용자가 데일리 원카드를 뽑을 때 광고가 먼저 재생된 뒤 결과 화면으로 진입한다
-  2. 사용자가 광고 시청을 끝까지 완료하면 횟수 제한 없이 카드를 다시 뽑을 수 있다 (재시도 시에도 동일한 광고 게이팅 흐름)
-  3. 사용자가 광고 로드 실패·미지원 환경(브라우저, 일시적 네트워크 이슈)에서도 카드 뽑기 흐름이 막히지 않고 결과를 받을 수 있다
-  4. 사용자가 v1.0 사주/딥리딩과 동일한 광고 UX 패턴(`Loading.jsx`/`DeepReadingLoading.jsx` 기반)으로 일관된 경험을 받는다
+  1. 사용자가 카드를 뽑은 후 같은 날(KST 자정 전) 타로 탭에 다시 진입하면 그날 뽑은 카드의 결과 화면이 표시된다 (intro/shuffle 단계 건너뜀)
+  2. 사용자가 KST 자정(00:00) 이후 진입하면 새 카드를 뽑을 수 있는 intro 단계가 다시 표시된다
+  3. 사용자가 앱을 재시작하거나 페이지를 새로고침해도 그날 뽑은 카드가 유지된다 (Toss Storage / localStorage 영속성)
+  4. 저장된 카드 데이터가 손상·미존재 케이스에서도 graceful degradation (intro 로 fallback)
 **Plans**: TBD
+**Replaces**: 광고 게이팅 + 무제한 다시 뽑기 (2026-05-03 v1.1 수익 모델 전환으로 폐기. 광고 도입은 LLM 기능 출시 시점 v1.2+ 에서 재검토.)
 
 ### Phase 5: 공유 + Analytics 마무리
-**Goal**: 사용자가 데일리 원카드 결과를 토스 공유 시트로 외부에 공유할 수 있고, 타로 탭 진입·카드 뽑기·광고 시청 완료·공유 4종 이벤트가 Firebase Analytics에 기록되어 v1.1 출시 준비가 완료된다
+**Goal**: 사용자가 데일리 원카드 결과를 토스 공유 시트로 외부에 공유할 수 있고, 타로 탭 진입·카드 뽑기·공유 3종 이벤트가 Firebase Analytics에 기록되어 v1.1 출시 준비가 완료된다
 **Depends on**: Phase 4
-**Requirements**: SHARE-01, ANL-01, ANL-02, ANL-03, ANL-04
+**Requirements**: SHARE-01, ANL-01, ANL-02, ANL-03
 **Success Criteria** (what must be TRUE):
   1. 사용자가 데일리 원카드 결과 화면에서 토스 공유 시트로 카드/해석을 외부에 공유할 수 있다 (v1.0 결과 공유 패턴 재사용)
-  2. 사용자가 타로 탭에 진입하면 Firebase Analytics에 진입 이벤트가 기록된다
+  2. 사용자가 타로 탭에 진입하면 Firebase Analytics에 진입 이벤트가 기록된다 (`already_drawn` 플래그 포함 — daily lock retention 측정)
   3. 사용자가 카드를 뽑으면 카드 식별자를 포함한 카드 뽑기 이벤트가 Firebase Analytics에 기록된다
-  4. 사용자가 광고를 끝까지 시청하면 광고 시청 완료 이벤트가, 결과를 공유하면 공유 이벤트가 Firebase Analytics에 기록된다
-  5. 사용자가 v1.1 출시 후 4종 이벤트(타로 진입·카드 뽑기·광고 완료·공유)를 Firebase 콘솔에서 모두 확인할 수 있다
+  4. 사용자가 결과를 공유하면 공유 이벤트가 Firebase Analytics에 기록된다
+  5. 사용자가 v1.1 출시 후 3종 이벤트(타로 진입·카드 뽑기·공유)를 Firebase 콘솔에서 모두 확인할 수 있다
 **Plans**: TBD
 **UI hint**: yes
 
@@ -85,29 +90,31 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. 타로 프로토타입 발굴 및 포팅 평가 | 0/1 | Planned | - |
 | 2. 하단 탭바 네비게이션 셸 | 0/1 | Planned | - |
-| 3. 데일리 원카드 코어 화면 | 0/0 | Not started | - |
-| 4. 광고 게이팅 + 무제한 다시 뽑기 | 0/0 | Not started | - |
+| 3. 데일리 원카드 코어 화면 | 0/3 | Planned | - |
+| 4. 데일리 lock + 영속 저장 + 자정 리셋 | 0/0 | Not started | - |
 | 5. 공유 + Analytics 마무리 | 0/0 | Not started | - |
 
 ## Coverage Summary
 
-- **Total v1.1 requirements:** 14
-- **Mapped:** 14 (100%)
+- **Total v1.1 requirements:** 13
+- **Mapped:** 13 (100%)
 - **Orphaned:** 0
 - **Phase 1 (preparation):** 0 requirements (포팅 평가 — 후속 페이즈를 가능케 하는 준비 페이즈)
 - **Phase 2 (NAV):** NAV-01, NAV-02, NAV-03 (3)
 - **Phase 3 (TAROT):** TAROT-01, TAROT-02, TAROT-03 (3)
-- **Phase 4 (ADS):** ADS-01, ADS-02, ADS-03 (3)
-- **Phase 5 (SHARE+ANL):** SHARE-01, ANL-01, ANL-02, ANL-03, ANL-04 (5)
+- **Phase 4 (DAILY):** DAILY-01, DAILY-02, DAILY-03 (3)
+- **Phase 5 (SHARE+ANL):** SHARE-01, ANL-01, ANL-02, ANL-03 (4)
+
+**Retired (2026-05-03 v1.1 수익 모델 전환):** ADS-01, ADS-02, ADS-03, ANL-03(광고 시청 완료) — 광고 도입은 LLM 기능 출시 시점(v1.2+) 에 재검토 (`.planning/seeds/llm-features-and-monetization.md`).
 
 ## Notes
 
 - **브라운필드 컨텍스트:** v1.0(사주·딥리딩·부적·광고·공유·Anonymous Key)은 이미 검증되어 운영 중. v1.1은 이 자산 위에 타로 탭만 얹는 통합 작업이다.
 - **포팅 우선 전략:** 데일리 원카드 UI/인터랙션은 다른 로컬 레포의 완성 프로토타입에서 포팅한다. Phase 1은 발굴/평가 단계이며, 이후 페이즈가 실제 포팅·통합 작업을 진행한다.
-- **재사용 자산:** `Loading.jsx`(광고 시청), 토스 공유 시트, Firebase `logEvent`, `useAnonymousKey`는 v1.0 패턴을 그대로 사용한다 — 신규 인프라 추가 없음.
+- **재사용 자산:** 토스 공유 시트, Firebase `logEvent`, `useAnonymousKey`, Toss Storage 는 v1.0 패턴을 그대로 사용한다 — 신규 인프라 추가 없음. (광고 인프라는 본 마일스톤에서 사용 안 함.)
 - **단일 라우트 유지:** v1.1에서는 별도 `/tarot` 라우트를 추가하지 않는다 (PROJECT.md Out of Scope). 탭바 전환은 `App.jsx`의 라우트 구조와 별개의 UI 셸로 구현한다.
-- **수익 모델:** 광고 기반 무제한 — 결제 상품 추가 금지(이번 마일스톤 한정).
+- **수익 모델:** **데일리 무료 (광고 0, 결제 0)** — 한계 비용 0. 수익화는 LLM 기능 도입 시점(v1.2+)에 재검토.
 
 ---
 *Roadmap created: 2026-04-29*
-*Last updated: 2026-04-30 — Phase 2 plan finalized (1 plan)*
+*Last updated: 2026-05-03 — Phase 4 redefined: 광고 게이팅 → 데일리 lock + 영속 저장 + 자정 리셋. ADS 요구사항 폐기, DAILY 요구사항 신규.*
