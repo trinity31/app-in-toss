@@ -12,13 +12,20 @@
 import { useEffect, useState } from 'react';
 import { Loader } from '@toss/tds-mobile';
 import * as Sentry from '@sentry/react';
-import { fetchTarotCards } from '../lib/supabase';
+import {
+  getTossShareLink,
+  share,
+  getOperationalEnvironment,
+  env,
+} from '@apps-in-toss/web-framework';
+import { fetchTarotCards, getOgImageUrl } from '../lib/supabase';
 // eslint-disable-next-line no-unused-vars -- getCardImageUrl는 plan acceptance criteria에 명시된 import (TarotShuffle/TarotResult가 직접 사용; Wave 3 import 시그니처 잠금).
 import { getCardImageUrl, prefetchAllCardImages } from '../assets/images/cards';
 import TarotShuffle from '../components/TarotShuffle';
 import TarotResult from '../components/TarotResult';
 import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
 import { todayKST } from '../utils/dateKST';
+import { logEvent } from '../lib/firebase';
 import tarotCatImage from '../assets/images/tarot_cat.png';
 
 // Fisher-Yates 셔플 + 상위 3장 (RESEARCH Pattern 4).
@@ -104,6 +111,25 @@ export default function TarotPage() {
     }
   }, [storageLoading, errorState, cardsData, todayDraw, clearTodayDraw]);
 
+  // CONTEXT D-06 (ANL-01): tarot_view 이벤트 — storage + cardsData 준비 완료 후 1회 발화.
+  // already_drawn = Boolean(todayDraw && todayDraw.date === todayKST())
+  // Phase 4 의 hasTodayDraw 계산식 그대로 재사용 (04-02-SUMMARY "hasTodayDraw 계산식 잠금").
+  // RESEARCH Pitfall 7: cleanup cancelled flag 안에서 호출 (unmount 후 logEvent 차단).
+  useEffect(() => {
+    if (storageLoading) return;
+    if (errorState) return;
+    if (!cardsData || cardsData.length === 0) return;
+
+    let cancelled = false;
+    // 마이크로태스크로 미루어 unmount 직후 케이스에 cancelled flag 가 작동하도록 보강
+    Promise.resolve().then(() => {
+      if (cancelled) return;
+      const alreadyDrawn = Boolean(todayDraw && todayDraw.date === todayKST());
+      logEvent('tarot_view', { already_drawn: alreadyDrawn });
+    });
+    return () => { cancelled = true; };
+  }, [storageLoading, errorState, cardsData, todayDraw]);
+
   const startShuffle = () => {
     // Pitfall 6 회피: 매번 새 pickThreeRandom 호출
     setShuffledThree(pickThreeRandom(cardsData));
@@ -111,11 +137,13 @@ export default function TarotPage() {
     setCurrentPage('shuffle');
   };
 
-  const handleSelectCard = (id) => {
+  const handleSelectCard = (id, slot) => {
     setSelectedCardId(id);
     // CONTEXT D-11: shuffle 확정 시 todayDraw 영속 저장 (fire-and-forget — await 하지 않음).
     // 저장 실패해도 result 화면은 메모리 기반으로 표시됨 (D-16 graceful).
     saveTodayDraw({ date: todayKST(), card_id: id });
+    // CONTEXT D-07 (ANL-02): card_drawn 이벤트 — saveTodayDraw 와 동일 라인에 발화 (둘 다 fire-and-forget OK).
+    logEvent('card_drawn', { card_id: id, slot });
     setCurrentPage('result');
   };
 
@@ -127,9 +155,48 @@ export default function TarotPage() {
     setCurrentPage('intro');
   };
 
-  // 공유하기 = Phase 5 (SHARE-01) 가 토스 공유 시트 연결. Phase 3 stub.
-  const handleShare = () => {
-    console.log('[TarotPage] share stub — Phase 5 SHARE-01 implements toss share sheet');
+  // CONTEXT D-01/D-02/D-08/D-09 (SHARE-01 + ANL-03): handleShare 실구현.
+  // - D-01: 메시지 = 헤드라인 + 80자 트림 + 토스 링크
+  // - D-02: deeplink = sandbox/production 분기
+  // - D-08: card_shared 이벤트 = share() 성공 후 1회
+  // - D-09: 실패 silent (try/catch + console.error 만, 사용자 알림 없음, HomePage 패턴 동일)
+  const handleShare = async () => {
+    if (!selectedCard) return; // result 단계 외 호출 방지 (defensive)
+
+    // D-01 헤드라인 + 본문(80자 트림)
+    const headline = `[복냥타로] 오늘의 카드 — ${selectedCard.name_ko} · ${selectedCard.name_en}`;
+    const snippet = selectedCard.message.length > 80
+      ? selectedCard.message.slice(0, 80) + '…'
+      : selectedCard.message;
+
+    // D-02 deeplink + getTossShareLink — 실패 시 link = undefined 로 두고 메시지만 공유
+    let link;
+    try {
+      const isSandbox = getOperationalEnvironment() === 'sandbox';
+      const deepLink = isSandbox
+        ? `intoss-private://appsintoss?_deploymentId=${env.getDeploymentId()}`
+        : 'intoss://fortune-cat/tarot';
+      link = await getTossShareLink(deepLink, getOgImageUrl());
+    } catch (error) {
+      console.error('[TarotPage] getTossShareLink 실패:', error);
+      // link = undefined — D-09: 헤드라인 + 본문만 공유 시도
+    }
+
+    const message = link
+      ? `${headline}\n${snippet}\n${link}`
+      : `${headline}\n${snippet}`;
+
+    try {
+      await share({ message });
+      // D-08 (ANL-03): share() 성공 후에만 발화. 사용자 취소·실패 catch 에서는 발화 X.
+      logEvent('card_shared', {
+        card_id: selectedCard.id,
+        with_link: Boolean(link),
+      });
+    } catch (error) {
+      // D-09: silent — 사용자 알림 없음, HomePage 패턴
+      console.error('[TarotPage] 공유 실패:', error);
+    }
   };
 
   const handleRetry = () => {

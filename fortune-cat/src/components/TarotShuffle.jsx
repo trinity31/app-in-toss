@@ -25,7 +25,8 @@ export default function TarotShuffle({ cards, onSelect }) {
 
   const handleConfirm = () => {
     if (selectedSlot === null) return;
-    onSelect(cards[selectedSlot].id);
+    // CONTEXT D-07: card_drawn 이벤트의 slot 파라미터(0/1/2) 를 TarotPage 로 전달.
+    onSelect(cards[selectedSlot].id, selectedSlot);
   };
 
   const isReady = selectedSlot !== null;
