@@ -84,7 +84,9 @@ Plans:
   3. 사용자가 카드를 뽑으면 카드 식별자를 포함한 카드 뽑기 이벤트가 Firebase Analytics에 기록된다
   4. 사용자가 결과를 공유하면 공유 이벤트가 Firebase Analytics에 기록된다
   5. 사용자가 v1.1 출시 후 3종 이벤트(타로 진입·카드 뽑기·공유)를 Firebase 콘솔에서 모두 확인할 수 있다
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 05-01-PLAN.md — TarotPage handleShare 실구현 + 3종 logEvent (tarot_view/card_drawn/card_shared) + TarotShuffle slot 시그니처 + granite displayName '복냥사주 & 타로'
 **UI hint**: yes
 
 ## Progress
