@@ -68,7 +68,10 @@ Plans:
   2. 사용자가 KST 자정(00:00) 이후 진입하면 새 카드를 뽑을 수 있는 intro 단계가 다시 표시된다
   3. 사용자가 앱을 재시작하거나 페이지를 새로고침해도 그날 뽑은 카드가 유지된다 (Toss Storage / localStorage 영속성)
   4. 저장된 카드 데이터가 손상·미존재 케이스에서도 graceful degradation (intro 로 fallback)
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 04-01-PLAN.md — useTodayDrawStorage 훅 + todayKST 헬퍼 (Toss Storage 영속 저장 + KST 자정 비교 데이터 레이어) [Wave 1]
+- [ ] 04-02-PLAN.md — TarotPage 통합 (useEffect lock 분기 + handleSelectCard 저장 호출 + intro CTA 분기) [Wave 2, depends_on: 01]
 **Replaces**: 광고 게이팅 + 무제한 다시 뽑기 (2026-05-03 v1.1 수익 모델 전환으로 폐기. 광고 도입은 LLM 기능 출시 시점 v1.2+ 에서 재검토.)
 
 ### Phase 5: 공유 + Analytics 마무리
@@ -91,7 +94,7 @@ Plans:
 | 1. 타로 프로토타입 발굴 및 포팅 평가 | 0/1 | Planned | - |
 | 2. 하단 탭바 네비게이션 셸 | 0/1 | Planned | - |
 | 3. 데일리 원카드 코어 화면 | 0/3 | Planned | - |
-| 4. 데일리 lock + 영속 저장 + 자정 리셋 | 0/0 | Not started | - |
+| 4. 데일리 lock + 영속 저장 + 자정 리셋 | 0/2 | Planned | - |
 | 5. 공유 + Analytics 마무리 | 0/0 | Not started | - |
 
 ## Coverage Summary
