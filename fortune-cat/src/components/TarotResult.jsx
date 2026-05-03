@@ -3,7 +3,7 @@
 // CONTEXT D-02: motion 라이브러리 미사용. CSS transition 만 사용.
 // CONTEXT D-05: 수직 흐름 (카드 → 헤드라인 → chip → 메시지 → fixed CTA).
 // CONTEXT D-06: nameKo · nameEn (이모지 제거, 라벤더 nameEn).
-// CONTEXT D-07: fixed CTA = 탭바 + safe-area + 8px 위.
+// CONTEXT D-07: fixed 액션 영역 = 탭바 + safe-area + 8px 위. 두 버튼 가로 배치(처음으로 + 공유하기).
 // RESEARCH Pitfall 1: -webkit-backface-visibility vendor prefix 필수 (iOS Safari < 16).
 
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ import { getCardImageUrl } from '../assets/images/cards';
 const FRAMED_LG_W = 220; // lg(200) + matPad(10) * 2
 const FRAMED_LG_H = 320; // lg(300) + matPad(10) * 2
 
-export default function TarotResult({ card, onRedraw }) {
+export default function TarotResult({ card, onHome, onShare }) {
   const [flipped, setFlipped] = useState(false);
 
   useEffect(() => {
@@ -182,31 +182,58 @@ export default function TarotResult({ card, onRedraw }) {
           left: 24,
           right: 24,
           zIndex: 15,
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 8,
         }}
       >
         <button
           type="button"
-          onClick={onRedraw}
+          onClick={onHome}
           className="tap-card"
           style={{
+            flex: 1,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 8,
-            width: '100%',
+            gap: 6,
             minHeight: 56,
-            padding: '16px 24px',
-            fontSize: 16,
+            padding: '12px 16px',
+            fontSize: 15,
+            fontWeight: 700,
+            color: '#3F3754',
+            background: 'oklch(0.94 0.04 350)',
+            border: 0,
+            borderRadius: 20,
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+            cursor: 'pointer',
+          }}
+        >
+          처음으로
+        </button>
+        <button
+          type="button"
+          onClick={onShare}
+          className="tap-card"
+          style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 6,
+            minHeight: 56,
+            padding: '12px 16px',
+            fontSize: 15,
             fontWeight: 700,
             color: '#FFFFFF',
             backgroundImage: 'linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%)',
             border: 0,
-            borderRadius: 24,
+            borderRadius: 20,
             boxShadow: '0 6px 18px rgba(124, 58, 237, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
             cursor: 'pointer',
           }}
         >
-          다시 뽑기 ✨
+          공유하기 ✨
         </button>
       </div>
     </div>

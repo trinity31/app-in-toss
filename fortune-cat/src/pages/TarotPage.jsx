@@ -81,9 +81,17 @@ export default function TarotPage() {
     setCurrentPage('result');
   };
 
-  // D-04: 다시 뽑기 = intro 건너뛰고 즉시 새 셔플. Phase 4가 본 핸들러 안쪽에 광고 wrap.
-  const handleRedraw = () => {
-    startShuffle();
+  // 처음으로 = intro 단계로 복귀. v1.1 수익 모델 전환(2026-05-03)으로 '다시 뽑기'에서 변경됨.
+  // Phase 4가 daily lock 추가 시: cardsData 캐시는 유지, 자정 전이면 todayDraw 보고 result 로 직진.
+  const handleHome = () => {
+    setSelectedCardId(null);
+    setShuffledThree([]);
+    setCurrentPage('intro');
+  };
+
+  // 공유하기 = Phase 5 (SHARE-01) 가 토스 공유 시트 연결. Phase 3 stub.
+  const handleShare = () => {
+    console.log('[TarotPage] share stub — Phase 5 SHARE-01 implements toss share sheet');
   };
 
   const handleRetry = () => {
@@ -174,7 +182,7 @@ export default function TarotPage() {
         <TarotShuffle cards={shuffledThree} onSelect={handleSelectCard} />
       )}
       {currentPage === 'result' && selectedCard && (
-        <TarotResult card={selectedCard} onRedraw={handleRedraw} />
+        <TarotResult card={selectedCard} onHome={handleHome} onShare={handleShare} />
       )}
     </div>
   );
