@@ -15,11 +15,11 @@ import * as Sentry from '@sentry/react';
 import { fetchTarotCards } from '../lib/supabase';
 // eslint-disable-next-line no-unused-vars -- getCardImageUrl는 plan acceptance criteria에 명시된 import (TarotShuffle/TarotResult가 직접 사용; Wave 3 import 시그니처 잠금).
 import { getCardImageUrl, prefetchAllCardImages } from '../assets/images/cards';
-import Boknyang from '../components/Boknyang';
 import TarotShuffle from '../components/TarotShuffle';
 import TarotResult from '../components/TarotResult';
 import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
 import { todayKST } from '../utils/dateKST';
+import tarotCatImage from '../assets/images/tarot_cat.png';
 
 // Fisher-Yates 셔플 + 상위 3장 (RESEARCH Pattern 4).
 // 22장 중복 없는 랜덤 3장. 원본 cardsData 변경 금지 (slice() shallow copy).
@@ -276,7 +276,14 @@ function TarotIntro({ hasTodayDraw, onStart, onResume }) {
         </div>
 
         <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center' }}>
-          <Boknyang size={200} />
+          <img
+            src={tarotCatImage}
+            alt="복냥타로 마스코트"
+            width={200}
+            height={200}
+            draggable={false}
+            style={{ display: 'block', userSelect: 'none' }}
+          />
         </div>
 
         <div style={{ marginTop: 24, textAlign: 'center' }}>
