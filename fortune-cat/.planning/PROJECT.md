@@ -25,14 +25,18 @@
 
 ### Active
 
-<!-- v1.1 마일스톤 — 복냥타로 통합 (별도 탭) -->
+<!-- v1.1 마일스톤 — 복냥타로 통합 (별도 탭). Phase 5 잔여 -->
 
-- [ ] 사용자가 앱 하단 탭바에서 "사주"와 "타로"를 전환할 수 있다
-- [ ] 사용자가 타로 탭에서 "오늘의 한 장(데일리 원카드)"을 뽑을 수 있다
-- [ ] 같은 날 다시 진입하면 그날 뽑은 카드의 결과 화면이 다시 표시되고, KST 자정에 lock 이 해제된다
-- [ ] 사용자가 결과 화면에서 처음으로(intro 복귀) 또는 공유하기로 진행할 수 있다
-- [ ] 사용자가 데일리 원카드 결과(카드/해석)를 토스 공유 시트로 공유할 수 있다
-- [ ] Firebase Analytics에 타로 탭 진입·카드 뽑기·공유 이벤트가 기록된다
+- [ ] 사용자가 데일리 원카드 결과(카드/해석)를 토스 공유 시트로 공유할 수 있다 — Phase 5 SHARE-01
+- [ ] Firebase Analytics에 타로 탭 진입·카드 뽑기·공유 이벤트가 기록된다 — Phase 5 ANL-01/02/03
+
+### Validated (v1.1 진행 중)
+
+<!-- 자동 검증 통과 + 인간 UAT 일부 보류 (HUMAN-UAT 파일에 추적). 정식 validate 는 마일스톤 완료 시. -->
+
+- ✓ 사용자가 앱 하단 탭바에서 "사주"와 "타로"를 전환할 수 있다 — Validated in Phase 2 (NAV-01/02/03)
+- ✓ 사용자가 타로 탭에서 "오늘의 한 장(데일리 원카드)"을 뽑을 수 있다 — Validated in Phase 3 (TAROT-01/02/03, intro→shuffle→result + 처음으로/공유하기 stub)
+- ✓ 같은 날 다시 진입하면 그날 뽑은 카드의 결과 화면이 다시 표시되고, KST 자정에 lock 이 해제된다 — Validated in Phase 4 (DAILY-01/02/03, code-level + auto verification PASS, HUMAN-UAT 8건 보류 중 — `04-HUMAN-UAT.md`)
 
 ### Out of Scope
 
@@ -120,4 +124,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-03 — v1.1 수익 모델 전환 (광고 무제한 → daily-lock 무료). 22장 컬렉션·LLM 기능은 v1.2 seed 로 등록.*
+*Last updated: 2026-05-03 — Phase 4 (데일리 lock + 영속 저장 + 자정 리셋) 완료. v1.1 잔여: Phase 5 (공유 + Analytics).*
