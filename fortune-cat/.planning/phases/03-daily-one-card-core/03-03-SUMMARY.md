@@ -264,6 +264,45 @@ npm run dev
 - **Commit:** `0f84331` `feat(03-03): TarotPage intro 화면을 boknyang-tarot 프로토타입 디자인에 맞춤`
 - **Carry-over:** UI-SPEC.md 의 §Color §Layout intro 섹션은 이번 사용자 결정으로 갱신 필요 (Phase 3 verification 시점에 일괄 반영 권장).
 
+**3. shuffle/result 화면도 프로토타입과 동일하게 + 카드 뒷면 디자인 일치** — 사용자 명시 요청 (2026-05-02)
+
+- **Trigger:** "셔플화면도 기존 앱과 동일하게" → "결과화면도 동일하게" 연속 요청
+- **Conflict with UI-SPEC §Layout shuffle:** 좌 -15° / 중 0° / 우 +15° (translateX -64/0/+64) → 좌 -16° / 중 0° / 우 +16° (translateX -78/0/+78)
+- **Conflict with UI-SPEC §Animation:** in-place 0.5s rotateY 뒤집기 → 제거 (프로토타입은 직접 result 페이지 전환). result 진입 시 0.9s rotateY 자동 플립으로 대체.
+- **Conflict with UI-SPEC §Color result:** 메시지 카드 라벤더 박스(#F4E6FF) → 흰 카드 + soft shadow. chip 라벤더 텍스트 → bubble + dark 텍스트.
+- **Conflict with plan must_have:** shuffle 단계 1단계 인터랙션(탭 → 즉시 뒤집기) → 2단계 (탭 선택 → 확정 버튼). "이 카드로 결정할래요 ✨" 버튼 추가.
+- **Files modified:**
+  - `src/components/TarotShuffle.jsx` 전체 재구성 (FlipCard 함수 + getCardImageUrl import 제거)
+  - `src/components/TarotCardArt.jsx` `CardBack` 만 교체 (단색 보라 → 라벤더+크림 라디얼 + 골드 별 점 + 이중 프레임 + 중앙 골드 디스크)
+  - `src/components/TarotResult.jsx` 전체 재구성 (배경 핑크, 0.9s 자동 플립, 흰 메시지 카드, 라벤더 nameEn)
+- **Commits:**
+  - `626f482` TarotShuffle 프로토타입 모델 재구성
+  - `171cf9d` CardBack 라벤더+골드+달 디자인 매칭
+  - `09da49f` TarotResult 프로토타입 매칭
+  - `aeca01f` TarotResult paddingBottom 96 → 196 (스크롤 가림 수정)
+
+### v1.1 수익 모델 전환 (2026-05-03 사용자 결정)
+
+**4. 광고 무제한 → 데일리 lock 무료** — 마일스톤 단위 결정
+
+- **Trigger:** 사용자 질문 "결과를 따로 저장하지 않나요?" + 후속 토론 "daily one card 는 비용이 zero / 추후 LLM 기능 추가 시 수익화"
+- **Conflict with PROJECT.md / REQUIREMENTS / ROADMAP / 03-CONTEXT SC3:** v1.1 광고 게이팅 무제한 모델이 데일리 lock 무료 모델로 전환됨. ADS-01/02/03 + ANL-03(광고 시청 완료) 폐기, DAILY-01/02/03 신규 매핑.
+- **Conflict with plan must_have:** TAROT-03 의 "다시 뽑기" 액션 → "처음으로 + 공유하기" 액션. "다시 뽑기 ✨" 버튼은 이름·인터페이스 모두 교체됨.
+- **Files modified:**
+  - `.planning/PROJECT.md` (Active/Out of Scope/Constraints/Key Decisions/Target features 갱신)
+  - `.planning/REQUIREMENTS.md` (DAILY-01/02/03 신규, ADS/ANL-03 Retired 섹션으로 이동, 22장 컬렉션 + LLM 기능을 Future Requirements 신규 섹션에 등록)
+  - `.planning/ROADMAP.md` (Phase 4 재정의: 광고 게이팅 → 데일리 lock + 영속 저장 + 자정 리셋. Phase 5 ANL-03 매핑 제거)
+  - `.planning/seeds/22-card-collection-meta-game.md` (신규 — v1.2 retention 후크 후보)
+  - `.planning/seeds/llm-features-and-monetization.md` (신규 — v1.2 수익화 진입점)
+  - `src/components/TarotResult.jsx` (props onRedraw → onHome + onShare. 단일 CTA → 가로 두 버튼)
+  - `src/pages/TarotPage.jsx` (handleRedraw → handleHome, handleShare stub 추가)
+- **Commits:**
+  - `9d4c5fa` seeds 2종 기록
+  - `37d4ece` PROJECT/REQUIREMENTS/ROADMAP v1.1 수익 모델 전환
+  - `5ec50d6` TarotResult 액션 처음으로 + 공유하기 교체
+- **Carry-over to Phase 4:** "광고 게이팅 + 무제한 다시 뽑기" plan(TBD) 폐기. 신규 Phase 4 plan 은 DAILY-01/02/03 (Toss Storage `todayDraw` 저장 + KST 자정 리셋 + 재진입 시 result 직진) 으로 작성 필요. `/gsd-plan-phase 4` 시점에 새 방향으로 재계획.
+- **Carry-over to Phase 5:** ANL-03(광고 시청 완료) 매핑 제거. 4 events → 3 events (타로 진입 + 카드 뽑기 + 공유). ANL-01 은 `already_drawn` 플래그 포함하여 daily lock retention 측정 보조.
+
 ### 참고 사항 (acceptance criteria grep false-positive — 코드는 plan verbatim 정확)
 
 1. **`prefetchAllCardImages()` grep count = 2 (criteria `= 1` 명시)** — line 7 코멘트(`// RESEARCH Pitfall 2: ... prefetchAllCardImages() 1회`) + line 57 실호출. **코드는 plan 명시 verbatim과 정확 일치**. 코멘트 line이 plan에서 그대로 carry-over 된 것.
