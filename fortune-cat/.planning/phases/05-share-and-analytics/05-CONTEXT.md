@@ -6,14 +6,14 @@
 <domain>
 ## Phase Boundary
 
-타로 결과 화면에서 토스 공유 시트로 카드/해석을 외부에 공유할 수 있고, 타로 탭 진입·카드 뽑기·공유 3종 이벤트가 Firebase Analytics 에 기록된다. 추가로 v1.1 출시 일관성을 위해 앱 이름과 OG 이미지를 '복냥사주 & 타로' 통합 브랜딩으로 갱신한다.
+타로 결과 화면에서 토스 공유 시트로 카드/해석을 외부에 공유할 수 있고, 타로 탭 진입·카드 뽑기·공유 3종 이벤트가 Firebase Analytics 에 기록된다. 추가로 v1.1 출시 일관성을 위해 앱 이름과 OG 이미지를 '복냥사주&타로' 통합 브랜딩으로 갱신한다.
 
 **책임:**
 - TarotResult 의 `handleShare` stub → `getTossShareLink + share` 실구현 (SHARE-01)
 - TarotPage useEffect 진입 이벤트 `tarot_view` (already_drawn 플래그) (ANL-01)
 - handleSelectCard 카드 뽑기 이벤트 `card_drawn` (card_id) (ANL-02)
 - handleShare 성공 후 공유 이벤트 `card_shared` (card_id, with_link) (ANL-03)
-- 앱 이름 및 OG 이미지 '복냥사주 & 타로' 통합 브랜딩 갱신
+- 앱 이름 및 OG 이미지 '복냥사주&타로' 통합 브랜딩 갱신
 
 **책임 외 (다른 작업):**
 - Toss 미니앱 콘솔 등록명/아이콘 변경 — 사용자가 콘솔에서 직접 (코드 변경 외)
@@ -41,11 +41,11 @@
 
 ### OG 이미지 + 앱 브랜딩 갱신
 
-- **D-03: OG 이미지 = 정적 1장 (이미 구현, Supabase Storage `menu_images/og_image.png`)** — 단 v1.1 출시에 맞춰 '복냥사주 & 타로' 통합 브랜딩 이미지로 교체
+- **D-03: OG 이미지 = 정적 1장 (이미 구현, Supabase Storage `menu_images/og_image.png`)** — 단 v1.1 출시에 맞춰 '복냥사주&타로' 통합 브랜딩 이미지로 교체
   - 교체 위치: Supabase Storage `menu_images/og_image.png` (사용자가 디자인 + 업로드 직접)
   - 코드 변경 없음 — 같은 URL 재사용 (`getOgImageUrl()` 헬퍼 그대로)
   - 카드별 22종 다른 이미지 미도입 (호스팅/동기화 부담)
-- **D-04: 앱 displayName 변경 = '복냥사주' → '복냥사주 & 타로'**
+- **D-04: 앱 displayName 변경 = '복냥사주' → '복냥사주&타로'**
   - 위치: `granite.config.ts` `brand.displayName`
   - Toss 콘솔 등록명 변경은 사용자가 직접 (코드 외)
   - app icon URL 변경 여부도 사용자 디자인 자산 준비 시 별도 결정
@@ -104,7 +104,7 @@
 ### Toss SDK 시그니처
 
 - `@apps-in-toss/web-framework` — `getTossShareLink(deepLink: string, ogImageUrl?: string) → Promise<string>`, `share({ message: string }) → Promise<void>`. AIT WebView 안에서만 작동.
-- `@apps-in-toss/web-framework/config` — `defineConfig({ brand: { displayName, ... } })`. v1.1 출시 시 `'복냥사주' → '복냥사주 & 타로'`.
+- `@apps-in-toss/web-framework/config` — `defineConfig({ brand: { displayName, ... } })`. v1.1 출시 시 `'복냥사주' → '복냥사주&타로'`.
 
 ### Phase Carry-forward
 
@@ -150,7 +150,7 @@
 
 ### 사용자 명시 추가 사항 (D-03/D-04 발생 배경)
 
-- 사용자 의견: "OG 이미지가 이미 구현되어 있으나 '복냥사주' 이미지로 되어 있어서, 앱 이름과 이미지를 '복냥사주 & 타로'로 변경 필요"
+- 사용자 의견: "OG 이미지가 이미 구현되어 있으나 '복냥사주' 이미지로 되어 있어서, 앱 이름과 이미지를 '복냥사주&타로'로 변경 필요"
 - 구현 영향: granite.config.ts 1줄 변경 + Supabase Storage 의 `og_image.png` 사용자 직접 교체
 
 ### 프로토타입 result.tsx 의 share 코드 (참고)

@@ -44,7 +44,7 @@
 | (C) 이미지 없음 | 텍스트만 | |
 
 **User's choice:** A (with addendum)
-**Notes:** 사용자 추가 — "이미 A 타입으로 구현되어 있으나 '복냥사주' 이미지로 되어 있어서, 앱 이름과 이미지를 '복냥사주 & 타로'로 변경 필요". 따라서 코드 변경 없음 (`getOgImageUrl()` 헬퍼 그대로) + Supabase Storage 의 `menu_images/og_image.png` 를 사용자가 직접 교체 + `granite.config.ts` 의 `brand.displayName` `'복냥사주' → '복냥사주 & 타로'` 변경 필요.
+**Notes:** 사용자 추가 — "이미 A 타입으로 구현되어 있으나 '복냥사주' 이미지로 되어 있어서, 앱 이름과 이미지를 '복냥사주&타로'로 변경 필요". 따라서 코드 변경 없음 (`getOgImageUrl()` 헬퍼 그대로) + Supabase Storage 의 `menu_images/og_image.png` 를 사용자가 직접 교체 + `granite.config.ts` 의 `brand.displayName` `'복냥사주' → '복냥사주&타로'` 변경 필요.
 
 ---
 
