@@ -9,7 +9,7 @@
 // RESEARCH Pitfall 7: useEffect cleanup cancelled 플래그 — unmount 후 setState 차단.
 // RESEARCH Pitfall 5: 본 페이즈는 useState 4종 유지. Phase 4·5 진입 시점에 Context 승격 결정.
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Loader } from '@toss/tds-mobile';
 import * as Sentry from '@sentry/react';
 import {
@@ -111,23 +111,20 @@ export default function TarotPage() {
     }
   }, [storageLoading, errorState, cardsData, todayDraw, clearTodayDraw]);
 
-  // CONTEXT D-06 (ANL-01): tarot_view 이벤트 — storage + cardsData 준비 완료 후 1회 발화.
+  // CONTEXT D-06 (ANL-01): tarot_view 이벤트 — storage + cardsData 준비 완료 후 마운트당 1회 발화.
   // already_drawn = Boolean(todayDraw && todayDraw.date === todayKST())
   // Phase 4 의 hasTodayDraw 계산식 그대로 재사용 (04-02-SUMMARY "hasTodayDraw 계산식 잠금").
-  // RESEARCH Pitfall 7: cleanup cancelled flag 안에서 호출 (unmount 후 logEvent 차단).
+  // tarotViewLoggedRef: 같은 마운트 내 saveTodayDraw 후 todayDraw reference 변경으로 인한 중복 발화 차단 (REVIEW WR-01).
+  const tarotViewLoggedRef = useRef(false);
   useEffect(() => {
+    if (tarotViewLoggedRef.current) return;
     if (storageLoading) return;
     if (errorState) return;
     if (!cardsData || cardsData.length === 0) return;
 
-    let cancelled = false;
-    // 마이크로태스크로 미루어 unmount 직후 케이스에 cancelled flag 가 작동하도록 보강
-    Promise.resolve().then(() => {
-      if (cancelled) return;
-      const alreadyDrawn = Boolean(todayDraw && todayDraw.date === todayKST());
-      logEvent('tarot_view', { already_drawn: alreadyDrawn });
-    });
-    return () => { cancelled = true; };
+    tarotViewLoggedRef.current = true;
+    const alreadyDrawn = Boolean(todayDraw && todayDraw.date === todayKST());
+    logEvent('tarot_view', { already_drawn: alreadyDrawn });
   }, [storageLoading, errorState, cardsData, todayDraw]);
 
   const startShuffle = () => {
