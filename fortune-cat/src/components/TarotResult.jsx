@@ -6,7 +6,7 @@
 // CONTEXT D-07: fixed 액션 영역 = 탭바 + safe-area + 8px 위. 두 버튼 가로 배치(처음으로 + 공유하기).
 // RESEARCH Pitfall 1: -webkit-backface-visibility vendor prefix 필수 (iOS Safari < 16).
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TarotCardArt from './TarotCardArt';
 import { getCardImageUrl } from '../assets/images/cards';
 
@@ -15,11 +15,29 @@ const FRAMED_LG_H = 320; // lg(300) + matPad(10) * 2
 
 export default function TarotResult({ card, onHome, onShare }) {
   const [flipped, setFlipped] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const closeButtonRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setFlipped(true), 350);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    if (!isZoomed) return;
+    const onKey = (e) => {
+      if (e.key === 'Escape') setIsZoomed(false);
+    };
+    window.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const t = setTimeout(() => closeButtonRef.current?.focus(), 0);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+      clearTimeout(t);
+    };
+  }, [isZoomed]);
 
   if (!card) return null;
   const keywords = (card.keywords || []).slice(0, 4);
@@ -50,7 +68,19 @@ export default function TarotResult({ card, onHome, onShare }) {
         오늘의 한 장
       </span>
 
-      <div style={{ marginTop: 16, perspective: 1200 }}>
+      <div
+        role="button"
+        tabIndex={0}
+        aria-label="카드 확대 보기"
+        onClick={() => setIsZoomed(true)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsZoomed(true);
+          }
+        }}
+        style={{ marginTop: 16, perspective: 1200, cursor: 'pointer' }}
+      >
         <div
           style={{
             position: 'relative',
@@ -236,6 +266,87 @@ export default function TarotResult({ card, onHome, onShare }) {
           공유하기 ✨
         </button>
       </div>
+
+      {isZoomed && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="tarot-zoom-title"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsZoomed(false);
+          }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 100,
+            background: 'rgba(0, 0, 0, 0.72)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 24,
+          }}
+        >
+          <h2
+            id="tarot-zoom-title"
+            style={{
+              position: 'absolute',
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: 'hidden',
+              clip: 'rect(0,0,0,0)',
+              whiteSpace: 'nowrap',
+              border: 0,
+            }}
+          >
+            {card.name_ko} 카드 확대 보기
+          </h2>
+          <button
+            ref={closeButtonRef}
+            type="button"
+            onClick={() => setIsZoomed(false)}
+            aria-label="닫기"
+            style={{
+              position: 'absolute',
+              top: 'calc(env(safe-area-inset-top) + 12px)',
+              right: 16,
+              width: 44,
+              height: 44,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(255, 255, 255, 0.15)',
+              border: 0,
+              borderRadius: 22,
+              color: '#FFFFFF',
+              fontSize: 22,
+              fontWeight: 400,
+              lineHeight: 1,
+              cursor: 'pointer',
+            }}
+          >
+            ✕
+          </button>
+          <div
+            style={{
+              width: '90vw',
+              maxWidth: 480,
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <TarotCardArt
+              faceUp
+              size="lg"
+              framed
+              image={getCardImageUrl(card.id)}
+              emoji={card.emoji}
+              nameEn={card.name_en}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
