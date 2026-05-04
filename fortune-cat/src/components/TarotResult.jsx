@@ -331,14 +331,14 @@ export default function TarotResult({ card, onHome, onShare }) {
           <div
             style={{
               width: '90vw',
-              maxWidth: 480,
+              maxWidth: 360,
               display: 'flex',
               justifyContent: 'center',
             }}
           >
             <TarotCardArt
               faceUp
-              size="lg"
+              size="xl"
               framed
               image={getCardImageUrl(card.id)}
               emoji={card.emoji}

@@ -4,9 +4,10 @@
 // CONTEXT D-11: 앞면 이미지는 webp 정적 import URL을 image prop으로 받음.
 
 const SIZES = {
-  sm: { w: 64,  h: 96,  fs: 28, label: 7,  pad: 4,  radius: 10 },
-  md: { w: 120, h: 180, fs: 56, label: 10, pad: 6,  radius: 14 },
-  lg: { w: 200, h: 300, fs: 96, label: 14, pad: 10, radius: 18 },
+  sm: { w: 64,  h: 96,  fs: 28,  label: 7,  pad: 4,  radius: 10 },
+  md: { w: 120, h: 180, fs: 56,  label: 10, pad: 6,  radius: 14 },
+  lg: { w: 200, h: 300, fs: 96,  label: 14, pad: 10, radius: 18 },
+  xl: { w: 320, h: 480, fs: 152, label: 22, pad: 14, radius: 24 },
 };
 
 export default function TarotCardArt({
@@ -39,7 +40,7 @@ export default function TarotCardArt({
 
   if (!framed) return card;
 
-  const matPad = size === 'lg' ? 10 : size === 'md' ? 8 : 5;
+  const matPad = size === 'xl' ? 14 : size === 'lg' ? 10 : size === 'md' ? 8 : 5;
   return (
     <div
       style={{
