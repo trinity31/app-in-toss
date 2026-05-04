@@ -178,7 +178,7 @@ export default function TarotResult({ card, onHome, onShare }) {
       <div
         style={{
           position: 'fixed',
-          bottom: 'calc(72px + env(safe-area-inset-bottom) + 8px)',
+          bottom: 'calc(72px + env(safe-area-inset-bottom) + 20px)',
           left: 24,
           right: 24,
           zIndex: 15,
