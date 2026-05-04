@@ -82,6 +82,7 @@ Phase 5: 공유 + Analytics 마무리                     [ ] Not started
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260504-f2q | HomePage 헤더 '복냥사주' → '복냥사주&타로' 변경 | 2026-05-04 | bbe5bc4 | [260504-f2q-homepage](./quick/260504-f2q-homepage/) |
+| 260504-gbj | TarotResult — 하단 버튼 여백 확대 + 카드 이미지 확대 모달 추가 | 2026-05-04 | 515c746 / bf0d645 | [260504-gbj-tarotresult](./quick/260504-gbj-tarotresult/) |
 
 ### Notes
 
@@ -103,6 +104,7 @@ Phase 5: 공유 + Analytics 마무리                     [ ] Not started
 - 2026-04-29: ROADMAP.md, STATE.md 작성 — 5 phases, 14/14 coverage
 - 2026-04-30: Phase 1 CONTEXT.md + DISCUSSION-LOG.md 작성 — boknyang-tarot 정본 확정, 자산 보관 위치/포팅 전략/라우팅 통합 방식 결정
 - 2026-05-04: Quick task 260504-f2q — HomePage H1 헤더 '복냥사주' → '복냥사주&타로' 변경 (commit `bbe5bc4`)
+- 2026-05-04: Quick task 260504-gbj — TarotResult 하단 버튼 여백 확대 (`515c746`) + 카드 이미지 확대 모달 추가 (`bf0d645`). UAT 진행 중 발견 이슈 fix.
 
 ---
 *State initialized: 2026-04-29*
