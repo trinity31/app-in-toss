@@ -77,6 +77,12 @@ Phase 5: 공유 + Analytics 마무리                     [ ] Not started
 
 (none)
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260504-f2q | HomePage 헤더 '복냥사주' → '복냥사주&타로' 변경 | 2026-05-04 | bbe5bc4 | [260504-f2q-homepage](./quick/260504-f2q-homepage/) |
+
 ### Notes
 
 - 브라운필드 — v1.0(사주·딥리딩·부적)은 운영 중이며, 회귀 방지가 NAV-03의 핵심 제약
@@ -96,6 +102,7 @@ Phase 5: 공유 + Analytics 마무리                     [ ] Not started
 - 2026-04-29: PROJECT.md, REQUIREMENTS.md, codebase 매핑 완료 (commit `1fa2675`)
 - 2026-04-29: ROADMAP.md, STATE.md 작성 — 5 phases, 14/14 coverage
 - 2026-04-30: Phase 1 CONTEXT.md + DISCUSSION-LOG.md 작성 — boknyang-tarot 정본 확정, 자산 보관 위치/포팅 전략/라우팅 통합 방식 결정
+- 2026-05-04: Quick task 260504-f2q — HomePage H1 헤더 '복냥사주' → '복냥사주&타로' 변경 (commit `bbe5bc4`)
 
 ---
 *State initialized: 2026-04-29*
