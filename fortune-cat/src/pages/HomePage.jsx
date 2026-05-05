@@ -230,7 +230,7 @@ export default function HomePage() {
             textShadow: "0 1px 4px rgba(0,0,0,0.3)",
           }}
         >
-          복냥사주&타로
+          복냥사주·타로
         </h1>
         <div
           style={{
