@@ -16,7 +16,8 @@ const TABS = [
 const VISIBLE_PATHS = new Set(['/', '/tarot'])
 
 // D-09 active = 컬러 + fill, inactive = grey + stroke
-const ACTIVE_COLOR = colors.blue500
+// active는 앱 primary 컬러(보라 #64119F, index.css --color-primary와 동일)와 일치
+const ACTIVE_COLOR = '#64119F'
 const INACTIVE_COLOR = colors.grey500
 
 // 타로 첫 발견 유도용 NEW 배지 — 첫 진입 시각을 기록하고 이후 3일간 노출
@@ -131,9 +132,9 @@ const navStyle = {
   borderTop: `1px solid ${colors.grey300}`,
   boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.06)',
   // D-06: TDS 기본 패턴 + safe-area 한 줄 (Mobile-AIT SafeAreaInsets 보강)
-  // safe-area 위에 baseline 8px 추가 — 홈 인디케이터/화면 끝과 레이블 사이 숨통
-  paddingBottom: 'calc(env(safe-area-inset-bottom) + 8px)',
-  paddingTop: 4,
+  // safe-area 위에 baseline 12px — 홈 인디케이터/화면 끝과 레이블 사이 숨통(약간 여유 ↑)
+  paddingBottom: 'calc(env(safe-area-inset-bottom) + 12px)',
+  paddingTop: 8,
 }
 
 const listStyle = {
@@ -157,9 +158,9 @@ const buttonBaseStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   gap: 4,
-  // 4050 사용자 hit area 충족 — 64px로 약간 높임
-  minHeight: 64,
-  padding: '10px 12px',
+  // 4050 사용자 hit area 충족 — 70px로 약간 더 높임
+  minHeight: 70,
+  padding: '12px 12px',
   background: 'transparent',
   border: 0,
   cursor: 'pointer',

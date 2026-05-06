@@ -209,7 +209,7 @@ export default function HomePage() {
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "48px 20px 32px",
+          padding: "36px 20px 24px",
         }}
       >
         <div
