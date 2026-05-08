@@ -320,10 +320,10 @@ function TarotIntro({ hasTodayDraw, onStart, onResume }) {
     <div
       style={{
         minHeight: '100vh',
-        background: '#FFF7FB',
+        background: '#FFFFFF',
         display: 'flex',
         flexDirection: 'column',
-        padding: '24px 24px calc(96px + env(safe-area-inset-bottom))',
+        padding: '24px 24px calc(110px + env(safe-area-inset-bottom))',
       }}
     >
       <div
@@ -397,7 +397,7 @@ function TarotIntro({ hasTodayDraw, onStart, onResume }) {
         >
           {hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}
         </button>
-        <p style={{ marginTop: 24, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0, textAlign: 'center' }}>
+        <p style={{ marginTop: 28, marginBottom: 8, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: '#888194', textAlign: 'center' }}>
           하루 한 번, 자정에 초기화돼요 🌙
         </p>
       </div>

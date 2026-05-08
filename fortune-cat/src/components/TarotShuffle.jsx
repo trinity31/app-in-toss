@@ -38,13 +38,13 @@ export default function TarotShuffle({ cards, onSelect }) {
         background: '#FFF7FB',
         display: 'flex',
         flexDirection: 'column',
-        paddingTop: 'calc(env(safe-area-inset-top) + 8px)',
+        paddingTop: 'calc(env(safe-area-inset-top) + 24px)',
         paddingLeft: 24,
         paddingRight: 24,
         paddingBottom: 'calc(96px + env(safe-area-inset-bottom))',
       }}
     >
-      <p style={{ marginTop: 4, fontSize: 14, fontWeight: 500, color: '#888194', margin: 0 }}>
+      <p style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.4, color: '#3F3754', margin: 0, textAlign: 'center' }}>
         마음에 드는 카드를 톡! 골라보라냥
       </p>
 
