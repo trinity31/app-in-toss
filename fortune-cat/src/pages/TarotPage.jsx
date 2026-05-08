@@ -26,6 +26,7 @@ import TarotResult from '../components/TarotResult';
 import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
 import { todayKST } from '../utils/dateKST';
 import { logEvent } from '../lib/firebase';
+import { trackClick } from '../lib/analytics';
 import tarotCatImage from '../assets/images/tarot_cat.png';
 
 // Fisher-Yates 셔플 + 상위 3장 (RESEARCH Pattern 4).
@@ -140,7 +141,8 @@ export default function TarotPage() {
     // 저장 실패해도 result 화면은 메모리 기반으로 표시됨 (D-16 graceful).
     saveTodayDraw({ date: todayKST(), card_id: id });
     // CONTEXT D-07 (ANL-02): card_drawn 이벤트 — saveTodayDraw 와 동일 라인에 발화 (둘 다 fire-and-forget OK).
-    logEvent('card_drawn', { card_id: id, slot });
+    // 토스 콘솔용 button_name = `tarot_card_${slot}` (slot 0/1/2 별 클릭 분포 추적).
+    trackClick('card_drawn', { card_id: id, slot }, `tarot_card_${slot}`);
     setCurrentPage('result');
   };
 
@@ -159,6 +161,14 @@ export default function TarotPage() {
   // - D-09: 실패 silent (try/catch + console.error 만, 사용자 알림 없음, HomePage 패턴 동일)
   const handleShare = async () => {
     if (!selectedCard) return; // result 단계 외 호출 방지 (defensive)
+
+    // 공유 버튼 클릭 자체 추적 — share() 성공/실패와 무관하게 시도 1회당 1회 발화.
+    // 토스 콘솔의 /tarot::click 카운트는 이 이벤트로 잡힌다 (card_shared 는 성공만이라 클릭 누락분 발생).
+    trackClick(
+      'tarot_share_click',
+      { card_id: selectedCard.id },
+      'tarot_share',
+    );
 
     // D-01 헤드라인 + 본문(80자 트림)
     const headline = `[복냥타로] 오늘의 카드 — ${selectedCard.name_ko} · ${selectedCard.name_en}`;
@@ -186,6 +196,7 @@ export default function TarotPage() {
     try {
       await share({ message });
       // D-08 (ANL-03): share() 성공 후에만 발화. 사용자 취소·실패 catch 에서는 발화 X.
+      // 결과 이벤트 — 토스 클릭 중복 카운트 회피 위해 Firebase 만 발화 (클릭은 위 tarot_share_click 가 담당).
       logEvent('card_shared', {
         card_id: selectedCard.id,
         with_link: Boolean(link),

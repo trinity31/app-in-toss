@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader } from "@toss/tds-mobile";
 import { supabase, getAmuletStyleImageUrl } from "../lib/supabase";
-import { logEvent } from "../lib/firebase";
+import { trackClick } from "../lib/analytics";
 
 export default function AmuletTypeSelect({ onNext, onBack }) {
   const [selectedType, setSelectedType] = useState(null);
@@ -38,10 +38,14 @@ export default function AmuletTypeSelect({ onNext, onBack }) {
   const handleNext = () => {
     const selectedTypeData = amuletTypes.find((t) => t.id === selectedType);
     if (selectedTypeData) {
-      logEvent("amulet_style_selected", {
-        amulet_type: selectedTypeData.code,
-        amulet_title: selectedTypeData.title_ko,
-      });
+      trackClick(
+        "amulet_style_selected",
+        {
+          amulet_type: selectedTypeData.code,
+          amulet_title: selectedTypeData.title_ko,
+        },
+        selectedTypeData.title_ko,
+      );
       onNext({
         amuletType: selectedTypeData.code,
         amuletTypeTitle: selectedTypeData.title_ko,

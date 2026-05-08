@@ -16,7 +16,7 @@ import {
   getOgImageUrl,
 } from "../lib/supabase";
 import heroBackground from "../assets/images/hero.png";
-import { logEvent } from "../lib/firebase";
+import { trackClick } from "../lib/analytics";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -46,7 +46,7 @@ export default function HomePage() {
       emoji: "🔮",
       label: "사주분석",
       onTap: () => {
-        logEvent("quick_menu_click", { menu: "사주분석" });
+        trackClick("quick_menu_click", { menu: "사주분석" }, "사주분석");
         scrollToSection("ai_saju");
       },
     },
@@ -54,7 +54,7 @@ export default function HomePage() {
       emoji: "🧧",
       label: "신년운세",
       onTap: () => {
-        logEvent("quick_menu_click", { menu: "신년운세" });
+        trackClick("quick_menu_click", { menu: "신년운세" }, "신년운세");
         scrollToSection("new_year");
       },
     },
@@ -62,7 +62,7 @@ export default function HomePage() {
       emoji: "💕",
       label: "궁합풀이",
       onTap: () => {
-        logEvent("quick_menu_click", { menu: "궁합풀이" });
+        trackClick("quick_menu_click", { menu: "궁합풀이" }, "궁합풀이");
         navigate("/newyear", {
           state: {
             selectedType: {
@@ -79,7 +79,7 @@ export default function HomePage() {
       emoji: "🧿",
       label: "부적아트",
       onTap: () => {
-        logEvent("quick_menu_click", { menu: "부적아트" });
+        trackClick("quick_menu_click", { menu: "부적아트" }, "부적아트");
         scrollToSection("amulet");
       },
     },
@@ -129,11 +129,15 @@ export default function HomePage() {
   }, []);
 
   const handleNewYearTypeClick = (type, section) => {
-    logEvent("menu_click", {
-      section,
-      menu_code: type.code,
-      menu_title: type.title_ko,
-    });
+    trackClick(
+      "menu_click",
+      {
+        section,
+        menu_code: type.code,
+        menu_title: type.title_ko,
+      },
+      type.title_ko,
+    );
     navigate("/newyear", {
       state: {
         selectedType: {
@@ -147,11 +151,15 @@ export default function HomePage() {
   };
 
   const handleSajuTypeClick = (type) => {
-    logEvent("menu_click", {
-      section: "image_saju",
-      menu_code: type.code,
-      menu_title: type.title_ko,
-    });
+    trackClick(
+      "menu_click",
+      {
+        section: "image_saju",
+        menu_code: type.code,
+        menu_title: type.title_ko,
+      },
+      type.title_ko,
+    );
     navigate("/saju", {
       state: {
         selectedType: {
@@ -165,11 +173,15 @@ export default function HomePage() {
   };
 
   const handleAmuletTypeClick = (type) => {
-    logEvent("menu_click", {
-      section: "amulet",
-      menu_code: type.code,
-      menu_title: type.title_ko,
-    });
+    trackClick(
+      "menu_click",
+      {
+        section: "amulet",
+        menu_code: type.code,
+        menu_title: type.title_ko,
+      },
+      type.title_ko,
+    );
     navigate("/amulet", {
       state: {
         selectedType: {
@@ -181,7 +193,7 @@ export default function HomePage() {
   };
 
   const handleShare = async () => {
-    logEvent("share_click");
+    trackClick("share_click", {}, "home_share");
     try {
       const isSandbox = getOperationalEnvironment() === "sandbox";
       const deepLink = isSandbox
