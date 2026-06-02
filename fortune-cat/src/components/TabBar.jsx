@@ -134,9 +134,9 @@ const navStyle = {
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.12)',
   // 알약(pill) 형태
   borderRadius: 24,
-  // pill 내부 상하 패딩 — safe-area는 bottom offset이 흡수하므로 중복 적용 없음
-  paddingTop: 8,
-  paddingBottom: 8,
+  // pill 내부 상하 패딩 — 가이드 대비 컴팩트하게(safe-area는 bottom offset이 흡수)
+  paddingTop: 4,
+  paddingBottom: 4,
 }
 
 const listStyle = {
@@ -159,10 +159,10 @@ const buttonBaseStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: 4,
-  // 4050 사용자 hit area 충족 — 70px로 약간 더 높임
-  minHeight: 70,
-  padding: '12px 12px',
+  gap: 3,
+  // 4050 사용자 hit area 충족 + 플로팅 알약 컴팩트화 — 48px(HIG 최소 탭타깃)
+  minHeight: 48,
+  padding: '4px 12px',
   background: 'transparent',
   border: 0,
   cursor: 'pointer',
