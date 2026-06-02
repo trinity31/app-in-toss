@@ -123,18 +123,22 @@ function getIcon(to, active) {
 
 const navStyle = {
   position: 'fixed',
-  bottom: 0,
-  left: 0,
-  right: 0,
+  // 플로팅 알약 형태: 좌우 inset 여백으로 엣지-투-엣지 제거, 바닥에서 띄움
+  // safe-area는 pill 내부가 아닌 bottom offset에서 흡수 (D-06 변형)
+  // base 24px — 앱 하단 고정 CTA 컨벤션과 일치, pill을 바닥에서 충분히 띄움
+  bottom: 'calc(env(safe-area-inset-bottom) + 24px)',
+  left: 16,
+  right: 16,
   zIndex: 20,
+  // 흰 pill — 파스텔 body(--color-bg-soft) 위에서 떠 보이도록 순백 유지
   background: '#ffffff',
-  // 발견성 강화: 더 진한 분리선 + 부드러운 elevation
-  borderTop: `1px solid ${colors.grey300}`,
-  boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.06)',
-  // D-06: TDS 기본 패턴 + safe-area 한 줄 (Mobile-AIT SafeAreaInsets 보강)
-  // safe-area 위에 baseline 12px — 홈 인디케이터/화면 끝과 레이블 사이 숨통(약간 여유 ↑)
-  paddingBottom: 'calc(env(safe-area-inset-bottom) + 12px)',
-  paddingTop: 8,
+  // 사방 elevation — 상단 분리선 제거 후 그림자로 분리
+  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.12)',
+  // 알약(pill) 형태
+  borderRadius: 24,
+  // pill 내부 상하 패딩 — 너무 작지 않게 숨통 확보(safe-area는 bottom offset이 흡수)
+  paddingTop: 6,
+  paddingBottom: 6,
 }
 
 const listStyle = {
@@ -157,13 +161,15 @@ const buttonBaseStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: 4,
-  // 4050 사용자 hit area 충족 — 70px로 약간 더 높임
-  minHeight: 70,
-  padding: '12px 12px',
+  gap: 3,
+  // 4050 사용자 hit area 충족 + 플로팅 알약 — 상하 숨통 확보한 중간 높이
+  minHeight: 52,
+  padding: '8px 12px',
   background: 'transparent',
   border: 0,
   cursor: 'pointer',
+  // 클릭 시 webview 기본 회색 탭 하이라이트 제거 (다른 .tap-* 요소와 동일 처리)
+  WebkitTapHighlightColor: 'transparent',
   fontSize: 12,
   fontWeight: 500,
   // NEW 배지를 아이콘 우상단에 절대 배치하기 위한 컨테이너

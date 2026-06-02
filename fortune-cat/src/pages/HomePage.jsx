@@ -566,8 +566,8 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-    padding: "0 20px 20px",
-    backgroundColor: "var(--color-white)",
+    padding: "0 20px calc(96px + env(safe-area-inset-bottom))",
+    backgroundColor: "var(--color-bg-soft)",
     boxSizing: "border-box",
   },
   quickMenuContainer: {
@@ -589,7 +589,8 @@ const styles = {
     width: "56px",
     height: "56px",
     borderRadius: "50%",
-    backgroundColor: "var(--color-primary-light)",
+    // 파스텔 body(#F7F0FE) 위에서 구분되도록 primary-light보다 한 톤 진하게
+    backgroundColor: "#EBDCFA",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
