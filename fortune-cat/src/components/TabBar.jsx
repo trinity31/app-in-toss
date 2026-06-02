@@ -168,6 +168,8 @@ const buttonBaseStyle = {
   background: 'transparent',
   border: 0,
   cursor: 'pointer',
+  // 클릭 시 webview 기본 회색 탭 하이라이트 제거 (다른 .tap-* 요소와 동일 처리)
+  WebkitTapHighlightColor: 'transparent',
   fontSize: 12,
   fontWeight: 500,
   // NEW 배지를 아이콘 우상단에 절대 배치하기 위한 컨테이너
