@@ -566,7 +566,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-    padding: "0 20px 20px",
+    padding: "0 20px calc(96px + env(safe-area-inset-bottom))",
     backgroundColor: "var(--color-white)",
     boxSizing: "border-box",
   },
