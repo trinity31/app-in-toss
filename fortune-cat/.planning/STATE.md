@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: milestone
 status: completed
-last_updated: "2026-05-05T01:15:13.507Z"
+last_updated: "2026-06-02T07:30:00.000Z"
 progress:
   total_phases: 5
   completed_phases: 5
@@ -81,6 +81,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 |---|-------------|------|--------|-----------|
 | 260504-f2q | HomePage 헤더 '복냥사주' → '복냥사주&타로' 변경 | 2026-05-04 | bbe5bc4 | [260504-f2q-homepage](./quick/260504-f2q-homepage/) |
 | 260504-gbj | TarotResult — 하단 버튼 여백 확대 + 카드 이미지 확대 모달 추가 | 2026-05-04 | 515c746 / bf0d645 | [260504-gbj-tarotresult](./quick/260504-gbj-tarotresult/) |
+| 260602-mou | 탭바를 토스 브랜딩 가이드 플로팅 형태로 전환 + 탭 화면 body 라벤더(#F7F0FE) + 퀵메뉴 칩/탭 하이라이트 정리 | 2026-06-02 | 4f4a7a6 (merge) | [260602-mou-tabbar-jsx](./quick/260602-mou-tabbar-jsx/) |
 
 ### Notes
 
@@ -103,6 +104,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 - 2026-04-30: Phase 1 CONTEXT.md + DISCUSSION-LOG.md 작성 — boknyang-tarot 정본 확정, 자산 보관 위치/포팅 전략/라우팅 통합 방식 결정
 - 2026-05-04: Quick task 260504-f2q — HomePage H1 헤더 '복냥사주' → '복냥사주&타로' 변경 (commit `bbe5bc4`)
 - 2026-05-04: Quick task 260504-gbj — TarotResult 하단 버튼 여백 확대 (`515c746`) + 카드 이미지 확대 모달 추가 (`bf0d645`). UAT 진행 중 발견 이슈 fix.
+- 2026-06-02: Quick task 260602-mou — 탭바 플로팅 알약 전환(토스 브랜딩 가이드 §3 준수) + 탭 화면 body 라벤더(`--color-bg-soft`) + 퀵메뉴 칩 #EBDCFA + 탭 클릭 회색 하이라이트 제거. worktree 9커밋 → main 병합(`4f4a7a6`). 실기기 UAT 승인.
 - 2026-05-05: v1.1 milestone archived — 13/13 REQ satisfied, UAT 21/22, audit gaps_found 알려진 갭 명시 후 archive. ROADMAP / REQUIREMENTS / AUDIT → milestones/. PROJECT.md evolution.
 
 ---
