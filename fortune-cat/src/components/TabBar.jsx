@@ -125,7 +125,8 @@ const navStyle = {
   position: 'fixed',
   // 플로팅 알약 형태: 좌우 inset 여백으로 엣지-투-엣지 제거, 바닥에서 띄움
   // safe-area는 pill 내부가 아닌 bottom offset에서 흡수 (D-06 변형)
-  bottom: 'calc(env(safe-area-inset-bottom) + 12px)',
+  // base 24px — 앱 하단 고정 CTA 컨벤션과 일치, pill을 바닥에서 충분히 띄움
+  bottom: 'calc(env(safe-area-inset-bottom) + 24px)',
   left: 16,
   right: 16,
   zIndex: 20,
