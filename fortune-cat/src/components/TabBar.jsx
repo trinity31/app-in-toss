@@ -123,18 +123,20 @@ function getIcon(to, active) {
 
 const navStyle = {
   position: 'fixed',
-  bottom: 0,
-  left: 0,
-  right: 0,
+  // 플로팅 알약 형태: 좌우 inset 여백으로 엣지-투-엣지 제거, 바닥에서 띄움
+  // safe-area는 pill 내부가 아닌 bottom offset에서 흡수 (D-06 변형)
+  bottom: 'calc(env(safe-area-inset-bottom) + 12px)',
+  left: 16,
+  right: 16,
   zIndex: 20,
   background: '#ffffff',
-  // 발견성 강화: 더 진한 분리선 + 부드러운 elevation
-  borderTop: `1px solid ${colors.grey300}`,
-  boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.06)',
-  // D-06: TDS 기본 패턴 + safe-area 한 줄 (Mobile-AIT SafeAreaInsets 보강)
-  // safe-area 위에 baseline 12px — 홈 인디케이터/화면 끝과 레이블 사이 숨통(약간 여유 ↑)
-  paddingBottom: 'calc(env(safe-area-inset-bottom) + 12px)',
+  // 사방 elevation — 상단 분리선 제거 후 그림자로 분리
+  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.12)',
+  // 알약(pill) 형태
+  borderRadius: 24,
+  // pill 내부 상하 패딩 — safe-area는 bottom offset이 흡수하므로 중복 적용 없음
   paddingTop: 8,
+  paddingBottom: 8,
 }
 
 const listStyle = {
