@@ -320,7 +320,7 @@ function TarotIntro({ hasTodayDraw, onStart, onResume }) {
     <div
       style={{
         minHeight: '100vh',
-        background: '#FFFFFF',
+        background: 'var(--color-bg-soft)',
         display: 'flex',
         flexDirection: 'column',
         padding: '24px 24px calc(110px + env(safe-area-inset-bottom))',

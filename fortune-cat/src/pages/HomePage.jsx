@@ -567,7 +567,7 @@ const styles = {
     flexDirection: "column",
     minHeight: "100vh",
     padding: "0 20px calc(96px + env(safe-area-inset-bottom))",
-    backgroundColor: "var(--color-white)",
+    backgroundColor: "var(--color-bg-soft)",
     boxSizing: "border-box",
   },
   quickMenuContainer: {

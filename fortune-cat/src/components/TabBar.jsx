@@ -130,8 +130,8 @@ const navStyle = {
   left: 16,
   right: 16,
   zIndex: 20,
-  // 흰 body와 분리되도록 브랜드 라벤더(--color-primary-light #F4E6FF) 사용
-  background: 'var(--color-primary-light)',
+  // 흰 pill — 파스텔 body(--color-bg-soft) 위에서 떠 보이도록 순백 유지
+  background: '#ffffff',
   // 사방 elevation — 상단 분리선 제거 후 그림자로 분리
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.12)',
   // 알약(pill) 형태
