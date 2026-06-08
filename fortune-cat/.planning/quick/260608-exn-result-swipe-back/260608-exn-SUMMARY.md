@@ -60,16 +60,18 @@ status: complete
 - 결과적으로 "스와이프만 다이얼로그, 백버튼은 무음 이탈"은 기술적으로 불가능. 최선의 근사:
   iOS=스와이프 차단+백버튼 정상, Android=모든 뒤로가기에 확인 다이얼로그(백버튼 동작 유지).
 
-## 추가 이슈: 결과 화면 하단 과다 여백 (Android)
-- **증상**: Android 결과 화면 하단 고정 버튼바 아래에 불필요한 빈 공간.
-- **원인**: 앱이 `viewport-fit=cover`를 쓰지 않아 CSS `env(safe-area-inset-*)`가 신뢰 불가.
-  토스 WebView가 시스템 내비 영역만큼 값을 반영하면서 `calc(24px + env(safe-area-inset-bottom))`
-  하단 패딩이 과해졌다(홈 플로팅 탭바가 바닥에서 떠 보이는 것과 동일 원인).
-- **수정**: Apps-in-Toss 공식 API `SafeAreaInsets.get()/subscribe()`로 정확한 픽셀 인셋을 읽는
-  `useSafeAreaInsets` 훅(신규) 추가. 결과 화면 4곳의 `env(safe-area-inset-*)`를 모두 인셋 값으로 교체
-  (Result/DeepReadingResult/AmuletResult 하단 버튼바, TarotResult 상/하단·고정 CTA·확대모달 닫기).
-  미지원 환경은 0으로 degradation. → 커밋 `2bc98ae`. **Android 실기기 재확인 필요.**
-- 참고: 탭바/홈 등 결과 화면 외 `env()` 사용처는 이번 범위에서 제외(보고된 결과 화면만).
+## 추가 이슈: 하단 여백/탭바 위치 (Android) — 근본 원인 확정
+- **증상**: Android에서 하단 고정 요소(결과 버튼바, 홈 플로팅 탭바)가 과하게 떠 있음.
+- **근본 원인 (실기기 디버그 오버레이로 확정)**: 이 토스 Android WebView에서
+  **CSS `env(safe-area-inset-bottom)`가 부정확한 큰 값**을 반환한다. 반면 프레임워크
+  `SafeAreaInsets.get()`은 정확(이 기기: `{top:30.5, bottom:0}`). 측정값: `innerH=780`,
+  결과 버튼바 `gapBelowBar=0`(전환 후 정상), `insets.bottom=0`.
+  → 앱은 `viewport-fit=cover`도 없어 CSS env()에 의존하면 안 됨.
+- **수정**: `useSafeAreaInsets` 훅(`SafeAreaInsets.get()/subscribe()`)으로 정확한 px 인셋 사용.
+  - 결과 화면 4곳: `env()` → 인셋 (커밋 `2bc98ae`, 실기기 정상 확인).
+  - 홈 탭바(TabBar nav bottom) + HomePage 하단 패딩: `env()` → 인셋 (커밋 `f560b8c`).
+- **남은 동일 이슈(미수정)**: 입력/선택/결제/타로 셔플 등 다른 화면의 고정 CTA들도 같은
+  CSS `env()`를 써서 이 Android에서 동일하게 과한 여백이 생긴다. 일괄 전환 필요 시 후속 진행.
 
 ## 범위 메모
 - 1차로 사주 결과 화면(Result.jsx)에 적용 후, 사용자 요청으로 모든 결과 화면
