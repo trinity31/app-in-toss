@@ -1,5 +1,6 @@
 import { useToast } from "../hooks/useToast";
 import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
+import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 
 export default function AmuletResult({
   userData,
@@ -10,6 +11,7 @@ export default function AmuletResult({
 
   // 결과 화면에서 뒤로가기로 신청 결과가 유실되는 것을 방지 (Android는 확인 다이얼로그)
   useBlockSwipeBack(onRestart);
+  const insets = useSafeAreaInsets();
 
   return (
     <div
@@ -222,7 +224,7 @@ export default function AmuletResult({
           bottom: 0,
           left: 0,
           right: 0,
-          padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
+          padding: `16px 20px ${24 + insets.bottom}px`,
           background: "var(--color-white)",
           display: "flex",
           gap: "12px",

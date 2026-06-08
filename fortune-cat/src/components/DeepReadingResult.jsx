@@ -6,6 +6,7 @@ import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSession } from "../hooks/useSession.jsx";
 import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
+import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { resolveAdGroupId } from "../config/ads";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
@@ -57,6 +58,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
 
   // 결과 화면에서 뒤로가기로 풀이가 유실되는 것을 방지 (Android는 확인 다이얼로그)
   useBlockSwipeBack(onRestart);
+  const insets = useSafeAreaInsets();
 
   const sessionStartRef = useRef(Date.now());
   const lastQuestionAtRef = useRef(Date.now());
@@ -557,7 +559,7 @@ export default function DeepReadingResult({ userData, onRestart }) {
           bottom: 0,
           left: 0,
           right: 0,
-          padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
+          padding: `16px 20px ${24 + insets.bottom}px`,
           background: "var(--color-white)",
           display: "flex",
           gap: "12px",

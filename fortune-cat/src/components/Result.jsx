@@ -2,6 +2,7 @@ import { useState } from "react";
 import { saveBase64Data, Analytics } from "@apps-in-toss/web-framework";
 import { useToast } from "../hooks/useToast";
 import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
+import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import ReactMarkdown from "react-markdown";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
 
@@ -13,6 +14,7 @@ export default function Result({ userData, onRestart }) {
 
   // 결과 화면에서 뒤로가기로 풀이가 유실되는 것을 방지 (Android는 확인 다이얼로그)
   useBlockSwipeBack(onRestart);
+  const insets = useSafeAreaInsets();
 
   // 신년운세 타입들인지 확인
   const isNewYearType = readingType?.startsWith("new_year_");
@@ -247,7 +249,7 @@ export default function Result({ userData, onRestart }) {
           bottom: 0,
           left: 0,
           right: 0,
-          padding: "16px 20px calc(24px + env(safe-area-inset-bottom))",
+          padding: `16px 20px ${24 + insets.bottom}px`,
           background: "var(--color-white)",
           display: "flex",
           gap: "12px",

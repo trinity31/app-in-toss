@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 import TarotCardArt from './TarotCardArt';
 import { getCardImageUrl } from '../assets/images/cards';
 import { useBlockSwipeBack } from '../hooks/useBlockSwipeBack';
+import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets';
 
 const FRAMED_LG_W = 220; // lg(200) + matPad(10) * 2
 const FRAMED_LG_H = 320; // lg(300) + matPad(10) * 2
@@ -21,6 +22,7 @@ export default function TarotResult({ card, onHome, onShare }) {
 
   // 결과 화면에서 뒤로가기로 카드 결과가 유실되는 것을 방지 (Android는 확인 다이얼로그)
   useBlockSwipeBack(onHome);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     const t = setTimeout(() => setFlipped(true), 350);
@@ -52,10 +54,10 @@ export default function TarotResult({ card, onHome, onShare }) {
         minHeight: '100vh',
         background: '#FFF7FB',
         position: 'relative',
-        paddingTop: 'calc(env(safe-area-inset-top) + 24px)',
+        paddingTop: `${insets.top + 24}px`,
         paddingLeft: 24,
         paddingRight: 24,
-        paddingBottom: 'calc(196px + env(safe-area-inset-bottom))',
+        paddingBottom: `${196 + insets.bottom}px`,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -212,7 +214,7 @@ export default function TarotResult({ card, onHome, onShare }) {
       <div
         style={{
           position: 'fixed',
-          bottom: 'calc(90px + env(safe-area-inset-bottom) + 20px)',
+          bottom: `${90 + insets.bottom + 20}px`,
           left: 24,
           right: 24,
           zIndex: 15,
@@ -313,7 +315,7 @@ export default function TarotResult({ card, onHome, onShare }) {
             aria-label="닫기"
             style={{
               position: 'absolute',
-              top: 'calc(env(safe-area-inset-top) + 12px)',
+              top: `${insets.top + 12}px`,
               right: 16,
               width: 44,
               height: 44,
