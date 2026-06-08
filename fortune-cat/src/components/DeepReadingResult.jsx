@@ -81,6 +81,34 @@ export default function DeepReadingResult({ userData, onRestart }) {
     }
   }, []);
 
+  // ===== TEMP DEBUG (진단용 — 제거 예정) =====
+  const [dbg, setDbg] = useState("measuring...");
+  useEffect(() => {
+    const measure = () => {
+      const de = document.documentElement;
+      const r = bottomBarRef.current?.getBoundingClientRect();
+      setDbg(
+        [
+          `innerH=${window.innerHeight} vvH=${Math.round(window.visualViewport?.height || 0)}`,
+          `docScroll=${de.scrollHeight} docClient=${de.clientHeight}`,
+          `bodyScroll=${document.body.scrollHeight} bodyClient=${document.body.clientHeight}`,
+          `bar.top=${r ? Math.round(r.top) : "?"} bar.bottom=${r ? Math.round(r.bottom) : "?"} bar.h=${r ? Math.round(r.height) : "?"}`,
+          `gapBelowBar=${r ? Math.round(window.innerHeight - r.bottom) : "?"}`,
+          `insets=${JSON.stringify(insets)}`,
+        ].join("\n")
+      );
+    };
+    const t = setTimeout(measure, 400);
+    window.addEventListener("resize", measure);
+    window.visualViewport?.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+      window.visualViewport?.removeEventListener("resize", measure);
+    };
+  }, [insets]);
+  // ===== /TEMP DEBUG =====
+
   // callback ref: 로딩 표시가 DOM에 마운트되면 스크롤
   // setTimeout으로 사용자 메시지 버블의 레이아웃 완료를 기다린 후 스크롤
   const loadingIndicatorRef = useCallback((node) => {
@@ -198,6 +226,29 @@ export default function DeepReadingResult({ userData, onRestart }) {
         flexDirection: "column",
       }}
     >
+      {/* ===== TEMP DEBUG 오버레이 (진단용 — 제거 예정) ===== */}
+      <div
+        style={{
+          position: "fixed",
+          top: 70,
+          left: 8,
+          zIndex: 99999,
+          background: "rgba(0,0,0,0.82)",
+          color: "#0f0",
+          fontSize: 11,
+          lineHeight: 1.4,
+          padding: 8,
+          borderRadius: 6,
+          fontFamily: "monospace",
+          whiteSpace: "pre-wrap",
+          maxWidth: "92%",
+          pointerEvents: "none",
+        }}
+      >
+        {dbg}
+      </div>
+      {/* ===== /TEMP DEBUG ===== */}
+
       {/* 헤더 */}
       <div
         style={{
