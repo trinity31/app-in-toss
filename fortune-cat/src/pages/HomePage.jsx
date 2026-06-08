@@ -17,6 +17,7 @@ import {
 } from "../lib/supabase";
 import heroBackground from "../assets/images/hero.png";
 import { trackClick } from "../lib/analytics";
+import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -30,6 +31,9 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [expandedSections, setExpandedSections] = useState({});
+
+  // CSS env(safe-area-inset-bottom)는 이 WebView에서 부정확(과대) → 프레임워크 인셋 사용
+  const insets = useSafeAreaInsets();
 
   const toggleSection = (key) =>
     setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -211,7 +215,7 @@ export default function HomePage() {
     expandedSections[sectionKey] ? items : items.slice(0, limit);
 
   return (
-    <div style={styles.container}>
+    <div style={{ ...styles.container, paddingBottom: `${96 + insets.bottom}px` }}>
       {/* 히어로 영역 */}
       <div
         style={{

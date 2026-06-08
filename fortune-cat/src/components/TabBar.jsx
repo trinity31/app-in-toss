@@ -6,6 +6,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { colors } from '@toss/tds-colors'
+import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets'
 
 const TABS = [
   { to: '/', label: '사주' },
@@ -251,6 +252,9 @@ export default function TabBar() {
     setCoachmarkDismissed(readCoachmarkDismissed())
   }, [])
 
+  // CSS env(safe-area-inset-bottom)는 이 WebView에서 부정확(과대) → 프레임워크 인셋 사용
+  const insets = useSafeAreaInsets()
+
   // D-05: 라우트별 숨김 — /saju, /newyear, /amulet에서는 null 반환
   if (!VISIBLE_PATHS.has(location.pathname)) {
     return null
@@ -277,7 +281,7 @@ export default function TabBar() {
     tarotIsNew && !coachmarkDismissed && location.pathname === '/'
 
   return (
-    <nav style={navStyle} aria-label="주요 메뉴">
+    <nav style={{ ...navStyle, bottom: insets.bottom + 24 }} aria-label="주요 메뉴">
       {showCoachmark && (
         <div style={coachmarkContainerStyle}>
           <button
