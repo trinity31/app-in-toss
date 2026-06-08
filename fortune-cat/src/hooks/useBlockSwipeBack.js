@@ -1,12 +1,28 @@
 import { useEffect } from 'react'
+import { setIosSwipeGestureEnabled } from '@apps-in-toss/web-framework'
 
 /**
- * 결과 화면 등에서 좌측 엣지 스와이프(또는 뒤로가기 제스처)로 화면이 이탈되는 것을 막는다.
+ * 토스 WebView에서 화면 스와이프 뒤로가기(iOS 좌측 엣지 제스처)를 토글한다.
+ * 미지원 환경(일반 브라우저/개발)에서는 조용히 무시한다 (graceful degradation).
+ */
+function setSwipeGesture(isEnabled) {
+  if (setIosSwipeGestureEnabled.isSupported?.() === false) return
+  try {
+    const result = setIosSwipeGestureEnabled({ isEnabled })
+    if (result && typeof result.catch === 'function') result.catch(() => {})
+  } catch {
+    // 미지원 환경 — 무시
+  }
+}
+
+/**
+ * 결과 화면 등에서 스와이프 뒤로가기로 화면이 이탈되는 것을 막는다.
  *
  * 결과 단계는 라우트가 아니라 페이지 내부 state(currentPage)로 관리되는데, 토스 WebView의
- * 좌측 엣지 스와이프는 브라우저 popstate(history back)를 발생시켜 라우트 자체를 빠져나가
- * 풀이가 유실된다. 이 훅은 마운트 시 더미 history 엔트리를 쌓고 popstate가 발생할 때마다
- * 같은 엔트리를 다시 push 하여, 스와이프 뒤로가기를 무력화하고 현재 화면에 머무르게 한다.
+ * 스와이프 뒤로가기는 브라우저 history가 아닌 네이티브 제스처라 history 조작으로는 막을 수
+ * 없다. web-framework의 setIosSwipeGestureEnabled 브리지로만 제어된다. 마운트 시 제스처를
+ * 끄고 언마운트 시 다시 켜서, 결과 화면에서만 차단하고 다른 화면의 스와이프 뒤로가기는
+ * 보존한다.
  *
  * @param {boolean} [enabled=true] 활성화 여부 (예: 결과 단계에서만 true)
  */
@@ -14,15 +30,7 @@ export function useBlockSwipeBack(enabled = true) {
   useEffect(() => {
     if (!enabled) return
 
-    // 현재 화면에 더미 history 엔트리를 쌓아 뒤로가기 시 되돌릴 수 있게 함
-    window.history.pushState(null, '', window.location.href)
-
-    const handlePopState = () => {
-      // 스와이프/뒤로가기로 한 칸 빠져나가면 즉시 같은 화면을 다시 push 해 복구
-      window.history.pushState(null, '', window.location.href)
-    }
-
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
+    setSwipeGesture(false)
+    return () => setSwipeGesture(true)
   }, [enabled])
 }
