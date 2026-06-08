@@ -19,8 +19,8 @@ export default function TarotResult({ card, onHome, onShare }) {
   const [isZoomed, setIsZoomed] = useState(false);
   const closeButtonRef = useRef(null);
 
-  // 결과 화면에서 좌측 엣지 스와이프 뒤로가기로 카드 결과가 유실되는 것을 방지
-  useBlockSwipeBack();
+  // 결과 화면에서 뒤로가기로 카드 결과가 유실되는 것을 방지 (Android는 확인 다이얼로그)
+  useBlockSwipeBack(onHome);
 
   useEffect(() => {
     const t = setTimeout(() => setFlipped(true), 350);

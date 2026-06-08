@@ -55,8 +55,8 @@ export default function DeepReadingResult({ userData, onRestart }) {
   const { anonymousKey } = useAnonymousKey();
   const { sessionId } = useSession();
 
-  // 결과 화면에서 좌측 엣지 스와이프 뒤로가기로 풀이가 유실되는 것을 방지
-  useBlockSwipeBack();
+  // 결과 화면에서 뒤로가기로 풀이가 유실되는 것을 방지 (Android는 확인 다이얼로그)
+  useBlockSwipeBack(onRestart);
 
   const sessionStartRef = useRef(Date.now());
   const lastQuestionAtRef = useRef(Date.now());
