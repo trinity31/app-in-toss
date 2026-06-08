@@ -27,10 +27,13 @@ status: complete
   - **iOS**: `setIosSwipeGestureEnabled({ isEnabled: false })` — 좌측 엣지 스와이프만 비활성,
     TDS 백버튼은 동작 보존(승인된 동작 유지). backEvent 미등록.
   - **Android**: `graniteEvent.addEventListener('backEvent', { onEvent })` — 리스너 등록 시
-    기본 뒤로가기가 차단되고 onEvent(무동작)가 대신 호출(공식 문서 확인). 시스템 제스처/버튼
-    모두 차단되며 이탈은 인앱 "처음부터 다시하기" 버튼으로만.
-  - (1차 popstate 방식 → 네이티브 브리지로 교체)
-- **모든 결과 화면에 `useBlockSwipeBack()` 적용** (각 컴포넌트는 `currentPage === 'result'`
+    기본 뒤로가기가 차단되고 onEvent가 대신 호출(공식 문서 확인). onEvent에서
+    `window.confirm('뒤로가기 시 결과를 다시 생성해야 해요. 나가시겠어요?')`를 띄워 확인 시
+    onLeave(이탈) 실행, 취소 시 화면 유지. → 백버튼이 죽지 않고 동작하며 스와이프 시 안내 문구.
+  - (popstate → 네이티브 브리지 → Android 무동작 차단 → 확인 다이얼로그로 단계적 정정)
+- **모든 결과 화면에 `useBlockSwipeBack(onLeave)` 적용** — 각 화면의 이탈 핸들러 전달
+  (Result/DeepReadingResult/AmuletResult=onRestart, TarotResult=onHome). 최신 onLeave는
+  ref로 유지해 리렌더 재등록 방지. (각 컴포넌트는 `currentPage === 'result'`
   단계에서만 마운트되므로 결과 화면에서만 자연히 활성화됨):
   - `src/components/Result.jsx` (사주풀이)
   - `src/components/DeepReadingResult.jsx` (신년운세/호환성 딥리딩 — 내부 채팅 state 관리, history 미사용이라 충돌 없음)
@@ -48,10 +51,14 @@ status: complete
 - **네이티브 동작이라 실기기 확인 필요** — iOS 확인 완료(사용자). Android는 backEvent
   적용 후 실기기 확인 대기. 개발 브라우저에서는 미지원이라 graceful degradation으로 무동작.
 
-## 참고
-- Android는 시스템 제스처와 TDS 백버튼이 동일하게 backEvent로 처리되어, 스와이프를 막으면
-  백버튼도 함께 차단된다(둘을 분리하는 API 없음). 따라서 Android 결과 화면의 이탈 경로는
-  인앱 "처음부터 다시하기" 버튼이 유일하다. iOS는 스와이프만 막고 백버튼은 유지된다.
+## 플랫폼 제약 (중요)
+- **iOS 엣지 스와이프는 `backEvent`로 가로챌 수 없다** — 전용 API `setIosSwipeGestureEnabled`가
+  별도로 존재하며 on/off만 가능(콜백 없음). 따라서 iOS 스와이프에는 확인 다이얼로그를 띄울 수
+  없고, 비활성화만 가능하다. iOS 백버튼은 유지(정상 이탈).
+- **Android는 시스템 제스처와 백버튼이 동일한 `backEvent`** — 둘을 구분하는 API가 없다.
+  그래서 확인 다이얼로그가 제스처·백버튼 모두에 동일하게 뜬다(백버튼만 무음 처리는 불가).
+- 결과적으로 "스와이프만 다이얼로그, 백버튼은 무음 이탈"은 기술적으로 불가능. 최선의 근사:
+  iOS=스와이프 차단+백버튼 정상, Android=모든 뒤로가기에 확인 다이얼로그(백버튼 동작 유지).
 
 ## 범위 메모
 - 1차로 사주 결과 화면(Result.jsx)에 적용 후, 사용자 요청으로 모든 결과 화면
@@ -65,3 +72,5 @@ status: complete
 - `8325131` fix(quick-260608-exn): 스와이프 차단을 네이티브 브리지로 교체 (popstate 가설 정정)
 - `cfd1eb2` docs(quick-260608-exn): 근본원인 정정(네이티브 제스처) SUMMARY 갱신
 - `fb6bc50` fix(quick-260608-exn): Android 뒤로가기도 차단 (backEvent)
+- `4cc1237` docs(quick-260608-exn): Android backEvent 적용 SUMMARY/STATE 갱신
+- `548c1af` fix(quick-260608-exn): Android 뒤로가기 시 확인 다이얼로그로 전환
