@@ -281,7 +281,7 @@ export default function TabBar() {
     tarotIsNew && !coachmarkDismissed && location.pathname === '/'
 
   return (
-    <nav style={{ ...navStyle, bottom: insets.bottom + 24 }} aria-label="주요 메뉴">
+    <nav style={{ ...navStyle, bottom: insets.bottom + 16 }} aria-label="주요 메뉴">
       {showCoachmark && (
         <div style={coachmarkContainerStyle}>
           <button
