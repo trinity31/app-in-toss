@@ -21,8 +21,12 @@ status: complete
 - **`src/hooks/useBlockSwipeBack.js` (신규)**: 마운트 시 더미 history 엔트리를 push 하고,
   `popstate`가 발생할 때마다 같은 화면을 다시 push 해 스와이프 뒤로가기를 무력화하는
   재사용 훅. `enabled` 인자로 활성 제어, 언마운트 시 리스너 정리.
-- **`src/components/Result.jsx`**: `useBlockSwipeBack()` 호출 추가. Result는
-  `currentPage === 'result'`일 때만 마운트되므로 결과 화면에서만 자연히 활성화됨.
+- **모든 결과 화면에 `useBlockSwipeBack()` 적용** (각 컴포넌트는 `currentPage === 'result'`
+  단계에서만 마운트되므로 결과 화면에서만 자연히 활성화됨):
+  - `src/components/Result.jsx` (사주풀이)
+  - `src/components/DeepReadingResult.jsx` (신년운세/호환성 딥리딩 — 내부 채팅 state 관리, history 미사용이라 충돌 없음)
+  - `src/components/AmuletResult.jsx` (부적 신청)
+  - `src/components/TarotResult.jsx` (타로 원카드)
 
 ## 동작
 - 결과 화면에서 스와이프/뒤로가기 → 즉시 같은 화면이 다시 push 되어 풀이가 유지됨.
@@ -34,9 +38,10 @@ status: complete
   (`birthdate`/catch `e` 미사용)는 이번 변경과 무관한 기존 코드라 미수정.
 
 ## 범위 메모
-- 명시 요청대로 사주 결과 화면(Result.jsx)에 한정 적용.
-- DeepReadingResult/AmuletResult 등 다른 결과 화면도 동일 잠재 이슈가 있으며,
-  `useBlockSwipeBack` 훅을 동일하게 호출하면 즉시 적용 가능(후속 가능 항목).
+- 1차로 사주 결과 화면(Result.jsx)에 적용 후, 사용자 요청으로 모든 결과 화면
+  (신년운세·부적·타로)에 동일 훅을 확대 적용.
 
 ## 커밋
 - `8dae058` fix(quick-260608-exn): 사주 결과 화면 스와이프 뒤로가기 차단
+- `e3e938a` docs(quick-260608-exn): PLAN/SUMMARY + STATE 기록
+- `871f5ae` fix(quick-260608-exn): 신년·부적·타로 결과 화면에도 스와이프 뒤로가기 차단
