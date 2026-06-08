@@ -20,10 +20,16 @@ status: complete
   제공한다 (`@apps-in-toss/web-bridge` → `@apps-in-toss/web-framework` re-export).
 
 ## 변경 내용
-- **`src/hooks/useBlockSwipeBack.js` (신규)**: 마운트 시 `setIosSwipeGestureEnabled({ isEnabled: false })`로
-  네이티브 스와이프 제스처를 끄고, 언마운트 시 다시 켜는 재사용 훅. 결과 화면에서만 차단하고
-  다른 화면의 스와이프 뒤로가기는 보존. `fn.isSupported?.()` + try/catch로 개발 브라우저 등
-  미지원 환경 graceful degradation. (1차 popstate 방식 → 네이티브 브리지로 교체)
+- **`src/hooks/useBlockSwipeBack.js` (신규)**: 마운트 시 네이티브 뒤로가기를 차단하고
+  언마운트 시 해제하는 재사용 훅. 결과 화면에서만 차단하고 다른 화면은 보존.
+  `isSupported?.()`/try/catch로 개발 브라우저 등 미지원 환경 graceful degradation.
+  플랫폼별 분기:
+  - **iOS**: `setIosSwipeGestureEnabled({ isEnabled: false })` — 좌측 엣지 스와이프만 비활성,
+    TDS 백버튼은 동작 보존(승인된 동작 유지). backEvent 미등록.
+  - **Android**: `graniteEvent.addEventListener('backEvent', { onEvent })` — 리스너 등록 시
+    기본 뒤로가기가 차단되고 onEvent(무동작)가 대신 호출(공식 문서 확인). 시스템 제스처/버튼
+    모두 차단되며 이탈은 인앱 "처음부터 다시하기" 버튼으로만.
+  - (1차 popstate 방식 → 네이티브 브리지로 교체)
 - **모든 결과 화면에 `useBlockSwipeBack()` 적용** (각 컴포넌트는 `currentPage === 'result'`
   단계에서만 마운트되므로 결과 화면에서만 자연히 활성화됨):
   - `src/components/Result.jsx` (사주풀이)
@@ -39,13 +45,13 @@ status: complete
 - `npx vite build` 통과 — Rollup이 `setIosSwipeGestureEnabled` named import 누락 에러를
   내지 않아 실제 export임이 확인됨. 신규 의존성 0.
 - 변경 파일 lint 통과.
-- **네이티브 제스처라 실기기(iOS 토스 인앱) 확인 필요** — 개발 브라우저에서는 미지원이라
-  graceful degradation으로 무동작.
+- **네이티브 동작이라 실기기 확인 필요** — iOS 확인 완료(사용자). Android는 backEvent
+  적용 후 실기기 확인 대기. 개발 브라우저에서는 미지원이라 graceful degradation으로 무동작.
 
-## 한계 / 후속
-- `setIosSwipeGestureEnabled`는 **iOS 전용** API. Android의 시스템 뒤로가기 제스처는
-  web-framework가 토글 API를 제공하지 않아 이 방식으로는 차단 불가(향후 backEvent 기반
-  대응 검토 가능).
+## 참고
+- Android는 시스템 제스처와 TDS 백버튼이 동일하게 backEvent로 처리되어, 스와이프를 막으면
+  백버튼도 함께 차단된다(둘을 분리하는 API 없음). 따라서 Android 결과 화면의 이탈 경로는
+  인앱 "처음부터 다시하기" 버튼이 유일하다. iOS는 스와이프만 막고 백버튼은 유지된다.
 
 ## 범위 메모
 - 1차로 사주 결과 화면(Result.jsx)에 적용 후, 사용자 요청으로 모든 결과 화면
@@ -57,3 +63,5 @@ status: complete
 - `871f5ae` fix(quick-260608-exn): 신년·부적·타로 결과 화면에도 스와이프 뒤로가기 차단
 - `f247826` docs(quick-260608-exn): 모든 결과 화면 확대 적용 SUMMARY/STATE 갱신
 - `8325131` fix(quick-260608-exn): 스와이프 차단을 네이티브 브리지로 교체 (popstate 가설 정정)
+- `cfd1eb2` docs(quick-260608-exn): 근본원인 정정(네이티브 제스처) SUMMARY 갱신
+- `fb6bc50` fix(quick-260608-exn): Android 뒤로가기도 차단 (backEvent)
