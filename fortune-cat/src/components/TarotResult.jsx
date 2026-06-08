@@ -9,6 +9,7 @@
 import { useEffect, useRef, useState } from 'react';
 import TarotCardArt from './TarotCardArt';
 import { getCardImageUrl } from '../assets/images/cards';
+import { useBlockSwipeBack } from '../hooks/useBlockSwipeBack';
 
 const FRAMED_LG_W = 220; // lg(200) + matPad(10) * 2
 const FRAMED_LG_H = 320; // lg(300) + matPad(10) * 2
@@ -17,6 +18,9 @@ export default function TarotResult({ card, onHome, onShare }) {
   const [flipped, setFlipped] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const closeButtonRef = useRef(null);
+
+  // 결과 화면에서 좌측 엣지 스와이프 뒤로가기로 카드 결과가 유실되는 것을 방지
+  useBlockSwipeBack();
 
   useEffect(() => {
     const t = setTimeout(() => setFlipped(true), 350);

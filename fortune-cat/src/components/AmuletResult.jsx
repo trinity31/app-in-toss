@@ -1,4 +1,5 @@
 import { useToast } from "../hooks/useToast";
+import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
 
 export default function AmuletResult({
   userData,
@@ -6,6 +7,9 @@ export default function AmuletResult({
 }) {
   const { name, birthdate, amuletTypeTitle, email, phone } = userData;
   const { openToast } = useToast();
+
+  // 결과 화면에서 좌측 엣지 스와이프 뒤로가기로 신청 결과가 유실되는 것을 방지
+  useBlockSwipeBack();
 
   return (
     <div

@@ -5,6 +5,7 @@ import * as Sentry from "@sentry/react";
 import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSession } from "../hooks/useSession.jsx";
+import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
 import { resolveAdGroupId } from "../config/ads";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
@@ -53,6 +54,10 @@ export default function DeepReadingResult({ userData, onRestart }) {
   const { openToast } = useToast();
   const { anonymousKey } = useAnonymousKey();
   const { sessionId } = useSession();
+
+  // 결과 화면에서 좌측 엣지 스와이프 뒤로가기로 풀이가 유실되는 것을 방지
+  useBlockSwipeBack();
+
   const sessionStartRef = useRef(Date.now());
   const lastQuestionAtRef = useRef(Date.now());
   const [messages, setMessages] = useState([
