@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { saveBase64Data, Analytics } from "@apps-in-toss/web-framework";
 import { useToast } from "../hooks/useToast";
+import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
 import ReactMarkdown from "react-markdown";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
 
@@ -9,6 +10,9 @@ export default function Result({ userData, onRestart }) {
     userData;
   const { openToast } = useToast();
   const [isSavingImage, setIsSavingImage] = useState(false);
+
+  // 결과 화면에서 좌측 엣지 스와이프 뒤로가기로 풀이가 유실되는 것을 방지
+  useBlockSwipeBack();
 
   // 신년운세 타입들인지 확인
   const isNewYearType = readingType?.startsWith("new_year_");
