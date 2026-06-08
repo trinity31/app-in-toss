@@ -82,6 +82,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260504-f2q | HomePage 헤더 '복냥사주' → '복냥사주&타로' 변경 | 2026-05-04 | bbe5bc4 | [260504-f2q-homepage](./quick/260504-f2q-homepage/) |
 | 260504-gbj | TarotResult — 하단 버튼 여백 확대 + 카드 이미지 확대 모달 추가 | 2026-05-04 | 515c746 / bf0d645 | [260504-gbj-tarotresult](./quick/260504-gbj-tarotresult/) |
 | 260602-mou | 탭바를 토스 브랜딩 가이드 플로팅 형태로 전환 + 탭 화면 body 라벤더(#F7F0FE) + 퀵메뉴 칩/탭 하이라이트 정리 | 2026-06-02 | 4f4a7a6 (merge) | [260602-mou-tabbar-jsx](./quick/260602-mou-tabbar-jsx/) |
+| 260608-exn | 사주 결과 화면 스와이프 뒤로가기 차단 (useBlockSwipeBack 훅) | 2026-06-08 | 8dae058 | [260608-exn-result-swipe-back](./quick/260608-exn-result-swipe-back/) |
 
 ### Notes
 
