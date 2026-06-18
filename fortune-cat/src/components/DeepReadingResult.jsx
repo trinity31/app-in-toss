@@ -50,8 +50,9 @@ const showRewardedAd = (adGroupId) => {
   });
 };
 
-export default function DeepReadingResult({ userData, onRestart }) {
+export default function DeepReadingResult({ userData, onRestart, onCrossReading }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
+  const crossCtas = fortuneResult.cross_reading_ctas || [];
   const { openToast } = useToast();
   const { anonymousKey } = useAnonymousKey();
   const { sessionId } = useSession();
@@ -81,6 +82,27 @@ export default function DeepReadingResult({ userData, onRestart }) {
     }
   }, []);
 
+  // 크로스 추천 CTA 노출 1회 트래킹 (오늘의 운세 결과에만 채워짐)
+  useEffect(() => {
+    if (crossCtas.length === 0) return;
+    logEvent("cross_cta_shown", {
+      from_reading_type: userData.readingType || "",
+      suggested_types: crossCtas.map((c) => c.reading_type).join(","),
+      session_id: sessionId,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleCrossCtaClick = (cta, position) => {
+    logEvent("cross_cta_clicked", {
+      from_reading_type: userData.readingType || "",
+      to_reading_type: cta.reading_type,
+      position,
+      session_id: sessionId,
+    });
+    Analytics.click({ button_name: "cross_cta" });
+    onCrossReading?.(cta);
+  };
 
   // callback ref: 로딩 표시가 DOM에 마운트되면 스크롤
   // setTimeout으로 사용자 메시지 버블의 레이아웃 완료를 기다린 후 스크롤
@@ -437,6 +459,84 @@ export default function DeepReadingResult({ userData, onRestart }) {
                     </p>
                   </div>
                 )}
+
+              {/* 크로스 추천 CTA — 오늘의 운세 본문(첫 메시지) 바로 아래에 고정 */}
+              {index === 0 && crossCtas.length > 0 && (
+                <div style={{ marginTop: "24px" }}>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      color: "var(--color-gray-700)",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    이 분야도 한번 들여다보세요
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    {crossCtas.map((cta, ctaIndex) => (
+                      <button
+                        key={cta.reading_type}
+                        onClick={() => handleCrossCtaClick(cta, ctaIndex)}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          width: "100%",
+                          padding: "14px 16px",
+                          background: "var(--color-primary-light)",
+                          border: "1px solid var(--color-primary)",
+                          borderRadius: "12px",
+                          cursor: "pointer",
+                          textAlign: "left",
+                          minHeight: "44px",
+                        }}
+                      >
+                        <span style={{ fontSize: "26px", lineHeight: 1 }}>
+                          {cta.emoji}
+                        </span>
+                        <span style={{ flex: 1, minWidth: 0 }}>
+                          <span
+                            style={{
+                              display: "block",
+                              fontSize: "15px",
+                              fontWeight: "bold",
+                              color: "var(--color-gray-700)",
+                            }}
+                          >
+                            {cta.title}
+                          </span>
+                          <span
+                            style={{
+                              display: "block",
+                              fontSize: "13px",
+                              color: "var(--color-gray-400)",
+                              marginTop: "2px",
+                            }}
+                          >
+                            {cta.subtitle}
+                          </span>
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "18px",
+                            color: "var(--color-primary)",
+                            flexShrink: 0,
+                          }}
+                        >
+                          ›
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}

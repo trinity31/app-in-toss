@@ -72,6 +72,21 @@ export default function NewYearPage() {
     navigate('/')
   }
 
+  // 오늘의 운세 결과 하단 크로스 CTA → 생년월일은 그대로 두고 풀이 타입만 바꿔 재풀이
+  // (이전 풀이 결과·궁합 정보는 버리고 본인 정보만 재사용 — 새 reading_type은 단독 풀이)
+  const handleCrossReading = (cta) => {
+    setUserData((prev) => ({
+      name: prev.name,
+      birthdate: prev.birthdate,
+      gender: prev.gender,
+      fortuneType: cta.reading_type,
+      themeType: 'ai_saju',
+      readingType: cta.reading_type,
+      fortuneTypeTitle: cta.title,
+    }))
+    setCurrentPage('loading')
+  }
+
   if (!selectedType) return null
 
   if (isInitializing) {
@@ -95,7 +110,7 @@ export default function NewYearPage() {
     case 'loading':
       return <DeepReadingLoading userData={userData} onNext={handleNext} />
     case 'result':
-      return <DeepReadingResult userData={userData} onRestart={handleRestart} />
+      return <DeepReadingResult userData={userData} onRestart={handleRestart} onCrossReading={handleCrossReading} />
     default:
       return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} isCompatibility={selectedType?.fortuneType === 'ai_saju_compatibility'} />
   }

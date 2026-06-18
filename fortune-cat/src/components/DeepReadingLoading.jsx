@@ -333,6 +333,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
           follow_up_questions: result.follow_up_questions,
           headline: result.headline,
           summary: result.summary,
+          cross_reading_ctas: result.cross_reading_ctas || [],
         },
       });
     } catch (error) {
