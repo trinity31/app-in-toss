@@ -21,6 +21,10 @@ import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
+// 수요가 적어 우선 메뉴에서 숨김 (재노출 시 true로 변경)
+const SHOW_IMAGE_SAJU = false;
+const SHOW_AMULET = false;
+
 export default function HomePage() {
   const navigate = useNavigate();
   const { openToast } = useToast();
@@ -30,7 +34,11 @@ export default function HomePage() {
   const [amuletTypes, setAmuletTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const [expandedSections, setExpandedSections] = useState({});
+  // AI 사주 분석·2026 신년운세는 기본적으로 펼친 상태로 노출
+  const [expandedSections, setExpandedSections] = useState({
+    ai_saju: true,
+    new_year: true,
+  });
 
   // CSS env(safe-area-inset-bottom)는 이 WebView에서 부정확(과대) → 프레임워크 인셋 사용
   const insets = useSafeAreaInsets();
@@ -79,7 +87,7 @@ export default function HomePage() {
         });
       },
     },
-    {
+    SHOW_AMULET && {
       emoji: "🧿",
       label: "부적아트",
       onTap: () => {
@@ -87,7 +95,7 @@ export default function HomePage() {
         scrollToSection("amulet");
       },
     },
-  ];
+  ].filter(Boolean);
 
   const fetchAllTypes = async () => {
     try {
@@ -460,6 +468,8 @@ export default function HomePage() {
             </div>
           </section>
 
+          {SHOW_IMAGE_SAJU && (
+            <>
           <div style={styles.divider} />
 
           {/* 섹션: 이미지 사주 */}
@@ -503,7 +513,11 @@ export default function HomePage() {
               ))}
             </div>
           </section>
+            </>
+          )}
 
+          {SHOW_AMULET && (
+            <>
           <div style={styles.divider} />
 
           {/* 섹션: 부적 아트 이미지 */}
@@ -557,6 +571,8 @@ export default function HomePage() {
               ))}
             </div>
           </section>
+            </>
+          )}
 
           <Spacing size={40} />
         </div>
