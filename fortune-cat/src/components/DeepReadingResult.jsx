@@ -275,56 +275,113 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                 className="result-fade-in-delay-2"
                 style={{
                   display: "grid",
-                  gridTemplateColumns: fortuneResult.summary.length >= 4
-                    ? "repeat(2, 1fr)"
-                    : `repeat(${fortuneResult.summary.length}, 1fr)`,
+                  gridTemplateColumns: "repeat(2, 1fr)",
                   gap: "8px",
                 }}
               >
-                {fortuneResult.summary.map((item, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: "var(--color-primary-light)",
-                      borderRadius: "12px",
-                      padding: "14px 8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontSize: "24px", marginBottom: "6px" }}>
-                      {item.icon}
-                    </div>
+                {fortuneResult.summary.map((item, i) => {
+                  const gradeStr = (item.grade || "").trim();
+                  const desc = item.description || "";
+                  // display_type가 "info"이거나, grade가 실제 등급(상/중/하)이 아니면 정보형으로 간주
+                  // (LLM이 grade를 비우고 키워드를 description에 넣어도 안전하게 배지로 렌더)
+                  const isInfo =
+                    item.display_type === "info" ||
+                    !["상", "중", "하"].includes(gradeStr);
+                  // 배지 키워드: grade에 있으면 그것, 없으면 description을 사용 (최대 2개)
+                  const keywords = (isInfo ? gradeStr || desc : "")
+                    .split(",")
+                    .map((kw) => kw.trim())
+                    .filter(Boolean)
+                    .slice(0, 2);
+                  // 설명 줄: 등급형은 항상, 정보형은 grade를 배지로 쓴 경우만(설명 중복 방지)
+                  const descLine = isInfo ? (gradeStr ? desc : "") : desc;
+                  // 카드 개수가 홀수면 마지막 카드는 한 줄 전체로 길게 표시
+                  const total = fortuneResult.summary.length;
+                  const isLastOdd = total % 2 === 1 && i === total - 1;
+
+                  return (
                     <div
+                      key={i}
                       style={{
-                        fontSize: "11px",
-                        color: "var(--color-gray-400)",
-                        marginBottom: "4px",
+                        background: "var(--color-primary-light)",
+                        borderRadius: "12px",
+                        padding: "14px 8px",
+                        textAlign: "center",
+                        minHeight: "118px",
+                        boxSizing: "border-box",
+                        gridColumn: isLastOdd ? "1 / -1" : undefined,
                       }}
                     >
-                      {item.label}
+                      <div style={{ fontSize: "24px", marginBottom: "6px" }}>
+                        {item.icon}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          color: "var(--color-gray-400)",
+                          marginBottom: "4px",
+                        }}
+                      >
+                        {item.label}
+                      </div>
+                      {/* 정보형 → 키워드 배지, 등급형 → 상/중/하 텍스트 */}
+                      {isInfo ? (
+                        <div
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "center",
+                            gap: "4px",
+                            marginBottom: "4px",
+                            minHeight: "22px",
+                          }}
+                        >
+                          {keywords.map((kw, ki) => (
+                            <span
+                              key={ki}
+                              style={{
+                                fontSize: "11px",
+                                fontWeight: "bold",
+                                color: "var(--color-primary)",
+                                background: "var(--color-white)",
+                                border: "1px solid var(--color-primary)",
+                                borderRadius: "10px",
+                                padding: "2px 8px",
+                                lineHeight: "1.3",
+                              }}
+                            >
+                              {kw}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <div
+                          style={{
+                            fontSize: "15px",
+                            fontWeight: "bold",
+                            color: "var(--color-primary)",
+                            marginBottom: "4px",
+                            minHeight: "22px",
+                          }}
+                        >
+                          {item.grade}
+                        </div>
+                      )}
+                      {descLine && (
+                        <div
+                          style={{
+                            fontSize: "13px",
+                            fontWeight: "bold",
+                            color: "var(--color-gray-700)",
+                            lineHeight: "1.4",
+                          }}
+                        >
+                          {descLine}
+                        </div>
+                      )}
                     </div>
-                    <div
-                      style={{
-                        fontSize: "15px",
-                        fontWeight: "bold",
-                        color: "var(--color-primary)",
-                        marginBottom: "4px",
-                      }}
-                    >
-                      {item.grade}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "bold",
-                        color: "var(--color-gray-700)",
-                        lineHeight: "1.4",
-                      }}
-                    >
-                      {item.description}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
