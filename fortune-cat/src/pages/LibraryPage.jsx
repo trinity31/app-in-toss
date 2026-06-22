@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { useUserInfoStorage } from "../hooks/useUserInfoStorage";
@@ -25,10 +26,14 @@ export default function LibraryPage() {
   const insets = useSafeAreaInsets();
   const { storedUserInfo } = useUserInfoStorage();
 
+  const { openToast } = useToast();
+
   const [items, setItems] = useState([]);
   const [typeMap, setTypeMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null); // 상세(대화) 데이터
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
 
   // reading_type → 제목 매핑 로드
   useEffect(() => {
@@ -74,6 +79,23 @@ export default function LibraryPage() {
     if (rt.startsWith("deep_reading_daily")) return "오늘의 운세";
     if (rt.startsWith("match")) return "궁합 풀이";
     return typeMap[rt] || "사주 풀이";
+  };
+
+  const handleDelete = async (item) => {
+    setDeletingId(item.thread_id);
+    try {
+      const r = await fetch(
+        `${API_BASE_URL}/deep-reading/history/${encodeURIComponent(item.thread_id)}?user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
+        { method: "DELETE", headers: { "X-API-Key": API_KEY } },
+      );
+      if (!r.ok) throw new Error(String(r.status));
+      setItems((prev) => prev.filter((i) => i.thread_id !== item.thread_id));
+    } catch {
+      openToast({ message: "삭제에 실패했어요. 잠시 후 다시 시도해 주세요" });
+    } finally {
+      setDeletingId(null);
+      setConfirmDeleteId(null);
+    }
   };
 
   const openDetail = async (item) => {
@@ -245,50 +267,149 @@ export default function LibraryPage() {
           <div
             style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
-            {items.map((item) => (
-              <button
-                key={item.thread_id}
-                onClick={() => openDetail(item)}
-                className="tap-card"
-                style={{
-                  width: "100%",
-                  textAlign: "left",
-                  background: "var(--color-white)",
-                  border: "1px solid var(--color-gray-200)",
-                  borderRadius: "16px",
-                  padding: "16px",
-                  cursor: "pointer",
-                }}
-              >
+            {items.map((item) => {
+              const confirming = confirmDeleteId === item.thread_id;
+              return (
                 <div
+                  key={item.thread_id}
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "600",
-                    color: "var(--color-gray-700)",
-                    marginBottom: "4px",
+                    background: "var(--color-white)",
+                    border: "1px solid var(--color-gray-200)",
+                    borderRadius: "16px",
+                    padding: "16px",
                   }}
                 >
-                  {titleFor(item.reading_type)}
-                </div>
-                {item.headline && (
                   <div
+                    onClick={() => openDetail(item)}
+                    className="tap-card"
                     style={{
-                      fontSize: "13px",
-                      color: "var(--color-gray-500)",
-                      marginBottom: "6px",
-                      lineHeight: 1.4,
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                      cursor: "pointer",
                     }}
                   >
-                    {item.headline}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: "600",
+                          color: "var(--color-gray-700)",
+                          marginBottom: "4px",
+                        }}
+                      >
+                        {titleFor(item.reading_type)}
+                      </div>
+                      {item.headline && (
+                        <div
+                          style={{
+                            fontSize: "13px",
+                            color: "var(--color-gray-500)",
+                            marginBottom: "6px",
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {item.headline}
+                        </div>
+                      )}
+                      <div
+                        style={{
+                          fontSize: "12px",
+                          color: "var(--color-gray-400)",
+                        }}
+                      >
+                        {fmtDate(item.created_at)}
+                      </div>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setConfirmDeleteId(item.thread_id);
+                      }}
+                      aria-label="삭제"
+                      style={{
+                        background: "none",
+                        border: "none",
+                        padding: "4px",
+                        cursor: "pointer",
+                        color: "var(--color-gray-400)",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="3 6 5 6 21 6" />
+                        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                        <path d="M10 11v6M14 11v6" />
+                        <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                      </svg>
+                    </button>
                   </div>
-                )}
-                <div
-                  style={{ fontSize: "12px", color: "var(--color-gray-400)" }}
-                >
-                  {fmtDate(item.created_at)}
+
+                  {confirming && (
+                    <div
+                      style={{
+                        marginTop: "12px",
+                        paddingTop: "12px",
+                        borderTop: "1px solid var(--color-gray-200)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          flex: 1,
+                          fontSize: "13px",
+                          color: "var(--color-gray-600)",
+                        }}
+                      >
+                        삭제하면 대화도 함께 사라져요.
+                      </span>
+                      <button
+                        onClick={() => setConfirmDeleteId(null)}
+                        style={{
+                          padding: "8px 14px",
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "var(--color-gray-600)",
+                          background: "var(--color-gray-100)",
+                          border: "none",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        취소
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item)}
+                        disabled={deletingId === item.thread_id}
+                        style={{
+                          padding: "8px 14px",
+                          fontSize: "13px",
+                          fontWeight: "bold",
+                          color: "var(--color-white)",
+                          background: "var(--color-error)",
+                          border: "none",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {deletingId === item.thread_id ? "삭제 중" : "삭제"}
+                      </button>
+                    </div>
+                  )}
                 </div>
-              </button>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
