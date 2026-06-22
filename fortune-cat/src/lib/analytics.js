@@ -21,3 +21,31 @@ export function trackClick(eventName, params = {}, buttonName) {
     console.warn('[Toss Analytics] click 실패:', err)
   }
 }
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY
+
+/**
+ * 서버(Supabase user_events)로 이벤트 기록 — 결제 funnel SQL 분석용. fire-and-forget.
+ * @param {string} eventName
+ * @param {object} [eventParams]
+ * @param {string} [anonymousKey]
+ * @param {string} [sessionId]
+ */
+export function trackServerEvent(eventName, eventParams = {}, anonymousKey, sessionId) {
+  try {
+    fetch(`${API_BASE_URL}/track`, {
+      method: 'POST',
+      headers: { 'X-API-Key': API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event_name: eventName,
+        event_params: eventParams,
+        user_anonymous_id: anonymousKey,
+        session_id: sessionId,
+      }),
+      keepalive: true,
+    }).catch(() => {})
+  } catch {
+    /* ignore */
+  }
+}

@@ -9,6 +9,7 @@ import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
+import { trackServerEvent } from "../lib/analytics";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
 import {
   purchaseDeepReading,
@@ -80,6 +81,12 @@ export default function DeepReadingResult({
   const headline = revealed?.headline ?? fortuneResult.headline;
   const summary = revealed?.summary ?? fortuneResult.summary;
 
+  // 결제 funnel 이벤트: Firebase + Supabase(user_events) 양쪽으로 발화
+  const firePaywall = (name, params = {}) => {
+    logEvent(name, { ...params, session_id: sessionId });
+    trackServerEvent(name, params, anonymousKey, sessionId);
+  };
+
   useEffect(() => {
     if (bottomBarRef.current) {
       setBottomBarHeight(bottomBarRef.current.offsetHeight);
@@ -111,7 +118,7 @@ export default function DeepReadingResult({
   // 미리보기(첫 풀이 결제) 노출 1회 트래킹
   useEffect(() => {
     if (!isPreview) return;
-    logEvent("paywall_shown", {
+    firePaywall("paywall_shown", {
       trigger: "reading_start",
       reading_type: readingType,
       session_id: sessionId,
@@ -171,7 +178,7 @@ export default function DeepReadingResult({
         setFollowupRemaining(res.followup_remaining ?? 10);
         setFollowupPaywall(false);
         clearDeepReadingPending();
-        logEvent("paywall_purchase_completed", {
+        firePaywall("paywall_purchase_completed", {
           reading_type: readingType,
           trigger: "recovery",
           order_id: orderId,
@@ -197,7 +204,7 @@ export default function DeepReadingResult({
     if (isPurchasing) return;
     setIsPurchasing(true);
     saveDeepReadingPending({ thread_id: fortuneResult.thread_id });
-    logEvent("paywall_purchase_started", {
+    firePaywall("paywall_purchase_started", {
       reading_type: readingType,
       trigger: "reading_start",
       session_id: sessionId,
@@ -205,7 +212,7 @@ export default function DeepReadingResult({
     try {
       const { orderId } = await purchaseDeepReading();
       const grantRes = await grantDeepReading(orderId, anonymousKey);
-      logEvent("paywall_purchase_completed", {
+      firePaywall("paywall_purchase_completed", {
         reading_type: readingType,
         trigger: "reading_start",
         order_id: orderId,
@@ -224,7 +231,7 @@ export default function DeepReadingResult({
       setFollowupRemaining(grantRes?.followup_remaining ?? 10);
       clearDeepReadingPending();
     } catch (err) {
-      logEvent("paywall_purchase_failed", {
+      firePaywall("paywall_purchase_failed", {
         reading_type: readingType,
         trigger: "reading_start",
         reason: err?.message || "cancelled",
@@ -245,7 +252,7 @@ export default function DeepReadingResult({
     if (isPurchasing) return;
     setIsPurchasing(true);
     saveDeepReadingPending({ thread_id: fortuneResult.thread_id });
-    logEvent("paywall_purchase_started", {
+    firePaywall("paywall_purchase_started", {
       reading_type: readingType,
       trigger: "followup",
       session_id: sessionId,
@@ -253,7 +260,7 @@ export default function DeepReadingResult({
     try {
       const { orderId } = await purchaseDeepReading();
       const grantRes = await grantDeepReading(orderId, anonymousKey);
-      logEvent("paywall_purchase_completed", {
+      firePaywall("paywall_purchase_completed", {
         reading_type: readingType,
         trigger: "followup",
         order_id: orderId,
@@ -264,7 +271,7 @@ export default function DeepReadingResult({
       clearDeepReadingPending();
       openToast({ message: "결제 완료! 후속질문 10회가 충전되었어요. 다시 전송해 주세요." });
     } catch (err) {
-      logEvent("paywall_purchase_failed", {
+      firePaywall("paywall_purchase_failed", {
         reading_type: readingType,
         trigger: "followup",
         reason: err?.message || "cancelled",
@@ -355,7 +362,7 @@ export default function DeepReadingResult({
         setInputMessage(userMessage);
         setFollowupPaywall(true);
         setFollowupRemaining(0);
-        logEvent("paywall_shown", {
+        firePaywall("paywall_shown", {
           trigger: "followup",
           reading_type: readingType,
           session_id: sessionId,
