@@ -157,20 +157,24 @@ export default function DeepReadingResult({
         const res = await grantDeepReading(orderId, anonymousKey);
         if (!res?.success) continue;
         await completeDeepReadingGrant(orderId);
-        // 같은 풀이를 미리보기 중이면 전체 공개 (다른 화면이면 quota만 복구)
-        const threadId = pending.thread_id;
-        if (previewActive && threadId && threadId === fortuneResult.thread_id) {
+        // 미리보기 중이면 현재 보고 있는 풀이를 전체 공개 (quota는 위 grant로 복구됨)
+        if (previewActive) {
           try {
-            const full = await revealDeepReading(threadId, anonymousKey);
-            setRevealed(full);
-            setMessages([
-              {
-                role: "assistant",
-                content: full.reading,
-                followUpQuestions: full.follow_up_questions,
-              },
-            ]);
-            setPreviewActive(false);
+            const full = await revealDeepReading(
+              fortuneResult.thread_id,
+              anonymousKey,
+            );
+            if (!full.is_preview) {
+              setRevealed(full);
+              setMessages([
+                {
+                  role: "assistant",
+                  content: full.reading,
+                  followUpQuestions: full.follow_up_questions,
+                },
+              ]);
+              setPreviewActive(false);
+            }
           } catch {
             /* reveal 실패해도 quota는 복구됨 */
           }
