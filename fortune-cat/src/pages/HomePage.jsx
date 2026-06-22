@@ -277,6 +277,7 @@ export default function HomePage() {
           </p>
           <button
             onClick={handleShare}
+            aria-label="공유"
             style={{
               background: "rgba(255,255,255,0.8)",
               border: "none",

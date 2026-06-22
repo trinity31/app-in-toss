@@ -4,6 +4,7 @@ import SajuPage from './pages/SajuPage'
 import NewYearPage from './pages/NewYearPage'
 import AmuletPage from './pages/AmuletPage'
 import TarotPage from './pages/TarotPage'
+import LibraryPage from './pages/LibraryPage'
 import TabBar from './components/TabBar'
 import './App.css'
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/newyear" element={<NewYearPage />} />
         <Route path="/amulet" element={<AmuletPage />} />
         <Route path="/tarot" element={<TarotPage />} />
+        <Route path="/library" element={<LibraryPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
       <TabBar />

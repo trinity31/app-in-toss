@@ -11,10 +11,11 @@ import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets'
 const TABS = [
   { to: '/', label: '사주' },
   { to: '/tarot', label: '타로' },
+  { to: '/library', label: '보관함' },
 ]
 
-// D-05: 탭바는 /, /tarot에서만 렌더. /saju·/newyear·/amulet에서는 null 반환.
-const VISIBLE_PATHS = new Set(['/', '/tarot'])
+// D-05: 탭바는 /, /tarot, /library에서만 렌더. /saju·/newyear·/amulet에서는 null 반환.
+const VISIBLE_PATHS = new Set(['/', '/tarot', '/library'])
 
 // D-09 active = 컬러 + fill, inactive = grey + stroke
 // active는 앱 primary 컬러(보라 #64119F, index.css --color-primary와 동일)와 일치
@@ -116,9 +117,30 @@ function TarotIcon({ active }) {
   )
 }
 
+function LibraryIcon({ active }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M6 3h12v18l-6-4-6 4V3z"
+        fill={active ? ACTIVE_COLOR : 'none'}
+        stroke={active ? ACTIVE_COLOR : INACTIVE_COLOR}
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 function getIcon(to, active) {
   if (to === '/') return <SajuIcon active={active} />
   if (to === '/tarot') return <TarotIcon active={active} />
+  if (to === '/library') return <LibraryIcon active={active} />
   return null
 }
 
@@ -199,13 +221,13 @@ const newBadgeStyle = {
 }
 
 // 코치마크 툴팁: 타로 탭 위에 떠있는 안내 풍선 + 아래쪽 화살표
-// 2개 균등 탭 가정 — 타로 탭 중심 = 좌측에서 75% 지점
+// 3개 균등 탭 — 타로(가운데) 탭 중심 = 좌측에서 50% 지점
 const COACHMARK_BG = '#191F28'
 
 const coachmarkContainerStyle = {
   position: 'absolute',
   bottom: '100%',
-  left: '75%',
+  left: '50%',
   transform: 'translateX(-50%)',
   marginBottom: 12,
   zIndex: 21,
