@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { useUserInfoStorage } from "../hooks/useUserInfoStorage";
@@ -22,7 +21,6 @@ const fmtDate = (s) => {
 };
 
 export default function LibraryPage() {
-  const navigate = useNavigate();
   const { anonymousKey, loading: keyLoading } = useAnonymousKey();
   const insets = useSafeAreaInsets();
   const { storedUserInfo } = useUserInfoStorage();
@@ -38,7 +36,9 @@ export default function LibraryPage() {
       try {
         const [ai, ny] = await Promise.all([
           supabase.from("ai_saju_types").select("reading_type, title_ko"),
-          supabase.from("new_year_fortune_types").select("reading_type, title_ko"),
+          supabase
+            .from("new_year_fortune_types")
+            .select("reading_type, title_ko"),
         ]);
         const m = {};
         [...(ai.data || []), ...(ny.data || [])].forEach((t) => {
@@ -71,6 +71,7 @@ export default function LibraryPage() {
 
   const titleFor = (rt) => {
     if (!rt) return "사주 풀이";
+    if (rt.startsWith("deep_reading_daily")) return "오늘의 운세";
     if (rt.startsWith("match")) return "궁합 풀이";
     return typeMap[rt] || "사주 풀이";
   };
@@ -115,7 +116,16 @@ export default function LibraryPage() {
         alignItems: "center",
       }}
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-gray-700)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="var(--color-gray-700)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polyline points="15 18 9 12 15 6" />
       </svg>
     </button>
@@ -125,14 +135,34 @@ export default function LibraryPage() {
   if (selected) {
     if (selected._loading || selected._error) {
       return (
-        <div style={{ minHeight: "100vh", background: "var(--color-white)", display: "flex", flexDirection: "column" }}>
+        <div
+          style={{
+            minHeight: "100vh",
+            background: "var(--color-white)",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <div style={headerStyle}>
             {backBtn(() => setSelected(null))}
-            <h1 style={{ fontSize: "18px", fontWeight: "bold", color: "var(--color-gray-700)", margin: 0 }}>
+            <h1
+              style={{
+                fontSize: "18px",
+                fontWeight: "bold",
+                color: "var(--color-gray-700)",
+                margin: 0,
+              }}
+            >
               {titleFor(selected.reading_type)}
             </h1>
           </div>
-          <p style={{ textAlign: "center", color: "var(--color-gray-400)", marginTop: "60px" }}>
+          <p
+            style={{
+              textAlign: "center",
+              color: "var(--color-gray-400)",
+              marginTop: "60px",
+            }}
+          >
             {selected._error ? "풀이를 불러오지 못했어요." : "불러오는 중..."}
           </p>
         </div>
@@ -165,23 +195,56 @@ export default function LibraryPage() {
 
   // ===== 목록 화면 =====
   return (
-    <div style={{ minHeight: "100vh", background: "var(--color-bg-soft)", display: "flex", flexDirection: "column" }}>
-      <div style={headerStyle}>
-        {backBtn(() => navigate("/"))}
-        <h1 style={{ fontSize: "18px", fontWeight: "bold", color: "var(--color-gray-700)", margin: 0 }}>보관함</h1>
-      </div>
-
-      <div style={{ flex: 1, padding: "16px", paddingBottom: `${96 + insets.bottom}px` }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "var(--color-bg-soft)",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{
+          flex: 1,
+          padding: `16px 16px ${96 + insets.bottom}px`,
+        }}
+      >
         {loading ? (
-          <p style={{ textAlign: "center", color: "var(--color-gray-400)", marginTop: "60px" }}>불러오는 중...</p>
+          <p
+            style={{
+              textAlign: "center",
+              color: "var(--color-gray-400)",
+              marginTop: "60px",
+            }}
+          >
+            불러오는 중...
+          </p>
         ) : items.length === 0 ? (
           <div style={{ textAlign: "center", marginTop: "80px" }}>
             <div style={{ fontSize: "40px", marginBottom: "12px" }}>📖</div>
-            <p style={{ fontSize: "15px", color: "var(--color-gray-500)", margin: "0 0 4px" }}>아직 결제한 풀이가 없어요</p>
-            <p style={{ fontSize: "13px", color: "var(--color-gray-400)", margin: 0 }}>풀이를 결제하면 여기에서 다시 볼 수 있어요</p>
+            <p
+              style={{
+                fontSize: "15px",
+                color: "var(--color-gray-500)",
+                margin: "0 0 4px",
+              }}
+            >
+              아직 본 풀이가 없어요
+            </p>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "var(--color-gray-400)",
+                margin: 0,
+              }}
+            >
+              풀이를 보면 여기에서 다시 볼 수 있어요
+            </p>
           </div>
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
             {items.map((item) => (
               <button
                 key={item.thread_id}
@@ -197,15 +260,33 @@ export default function LibraryPage() {
                   cursor: "pointer",
                 }}
               >
-                <div style={{ fontSize: "16px", fontWeight: "600", color: "var(--color-gray-700)", marginBottom: "4px" }}>
+                <div
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "var(--color-gray-700)",
+                    marginBottom: "4px",
+                  }}
+                >
                   {titleFor(item.reading_type)}
                 </div>
                 {item.headline && (
-                  <div style={{ fontSize: "13px", color: "var(--color-gray-500)", marginBottom: "6px", lineHeight: 1.4 }}>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      color: "var(--color-gray-500)",
+                      marginBottom: "6px",
+                      lineHeight: 1.4,
+                    }}
+                  >
                     {item.headline}
                   </div>
                 )}
-                <div style={{ fontSize: "12px", color: "var(--color-gray-400)" }}>{fmtDate(item.created_at)}</div>
+                <div
+                  style={{ fontSize: "12px", color: "var(--color-gray-400)" }}
+                >
+                  {fmtDate(item.created_at)}
+                </div>
               </button>
             ))}
           </div>
