@@ -7,50 +7,27 @@ import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSession } from "../hooks/useSession.jsx";
 import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
-import { resolveAdGroupId } from "../config/ads";
 import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
+import {
+  purchaseDeepReading,
+  grantDeepReading,
+  revealDeepReading,
+  getQuota,
+  saveDeepReadingPending,
+  getDeepReadingPending,
+  clearDeepReadingPending,
+  getPendingDeepReadingOrders,
+  completeDeepReadingGrant,
+} from "../lib/deepReadingPurchase";
 
-// 광고 로드 → 표시 → 완료까지 Promise로 래핑
-const showRewardedAd = (adGroupId) => {
-  return new Promise(async (resolve) => {
-    try {
-      const { GoogleAdMob } = await import("@apps-in-toss/web-framework");
-
-      if (GoogleAdMob.loadAppsInTossAdMob.isSupported?.() === false) {
-        resolve();
-        return;
-      }
-
-      GoogleAdMob.loadAppsInTossAdMob({
-        options: { adGroupId },
-        onEvent: (event) => {
-          if (event.type === "loaded") {
-            GoogleAdMob.showAppsInTossAdMob({
-              options: { adGroupId },
-              onEvent: (event) => {
-                if (
-                  ["userEarnedReward", "dismissed", "failedToShow"].includes(
-                    event.type,
-                  )
-                ) {
-                  resolve();
-                }
-              },
-              onError: () => resolve(),
-            });
-          }
-        },
-        onError: () => resolve(),
-      });
-    } catch {
-      resolve();
-    }
-  });
-};
-
-export default function DeepReadingResult({ userData, onRestart, onCrossReading }) {
+export default function DeepReadingResult({
+  userData,
+  onRestart,
+  onCrossReading,
+  restartLabel = "처음부터 다시하기",
+}) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const crossCtas = fortuneResult.cross_reading_ctas || [];
   const { openToast } = useToast();
@@ -63,18 +40,45 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
 
   const sessionStartRef = useRef(Date.now());
   const lastQuestionAtRef = useRef(Date.now());
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: fortuneResult.reading,
-      followUpQuestions: fortuneResult.follow_up_questions,
-    },
-  ]);
+  const [messages, setMessages] = useState(() => {
+    const initial = [
+      {
+        role: "assistant",
+        content: fortuneResult.reading,
+        followUpQuestions: fortuneResult.follow_up_questions,
+      },
+    ];
+    // 보관함 진입 시: 저장된 이전 후속 대화를 이어붙임
+    (fortuneResult.messages || []).forEach((m) => {
+      initial.push(
+        m.role === "assistant"
+          ? {
+              role: "assistant",
+              content: m.content,
+              followUpQuestions: m.follow_up_questions || [],
+            }
+          : { role: m.role, content: m.content },
+      );
+    });
+    return initial;
+  });
   const [inputMessage, setInputMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [lastFailedMessage, setLastFailedMessage] = useState(null);
   const [bottomBarHeight, setBottomBarHeight] = useState(88);
   const bottomBarRef = useRef(null);
+
+  // ── 990원 Paywall ──
+  const readingType = userData.readingType || "";
+  const isPreview = Boolean(fortuneResult.is_preview);
+  const [previewActive, setPreviewActive] = useState(isPreview);
+  const [revealed, setRevealed] = useState(null);
+  const [followupPaywall, setFollowupPaywall] = useState(false);
+  const [isPurchasing, setIsPurchasing] = useState(false);
+  const [followupRemaining, setFollowupRemaining] = useState(null);
+  // 결제 후 reveal로 받은 전체 풀이가 있으면 그것을, 없으면 기존 값을 표시
+  const headline = revealed?.headline ?? fortuneResult.headline;
+  const summary = revealed?.summary ?? fortuneResult.summary;
 
   useEffect(() => {
     if (bottomBarRef.current) {
@@ -104,6 +108,177 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
     onCrossReading?.(cta);
   };
 
+  // 미리보기(첫 풀이 결제) 노출 1회 트래킹
+  useEffect(() => {
+    if (!isPreview) return;
+    logEvent("paywall_shown", {
+      trigger: "reading_start",
+      reading_type: readingType,
+      session_id: sessionId,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 결제 사용자: 남은 후속질문 횟수 조회 (미리보기 상태가 아니면)
+  useEffect(() => {
+    if (!anonymousKey || isPreview) return;
+    getQuota(anonymousKey)
+      .then((q) => setFollowupRemaining(q.followup_remaining))
+      .catch(() => {});
+  }, [anonymousKey, isPreview]);
+
+  // 결제 성공 후 서버 지급 실패 시 복구 (토스 getPendingOrders 기반, 부적아트와 동일 패턴)
+  const recoverPendingPurchase = async () => {
+    if (!anonymousKey) return false;
+    const pending = getDeepReadingPending();
+    if (!pending) return false;
+
+    let orders = [];
+    try {
+      orders = await getPendingDeepReadingOrders();
+    } catch {
+      return false; // SDK 없음/일시 오류 — 다음 기회에 재시도
+    }
+    if (!orders.length) {
+      clearDeepReadingPending();
+      return false;
+    }
+
+    for (const o of orders) {
+      const orderId = o.orderId || o.id || o;
+      try {
+        const res = await grantDeepReading(orderId, anonymousKey);
+        if (!res?.success) continue;
+        await completeDeepReadingGrant(orderId);
+        // 같은 풀이를 미리보기 중이면 전체 공개 (다른 화면이면 quota만 복구)
+        const threadId = pending.thread_id;
+        if (previewActive && threadId && threadId === fortuneResult.thread_id) {
+          try {
+            const full = await revealDeepReading(threadId, anonymousKey);
+            setRevealed(full);
+            setMessages([
+              {
+                role: "assistant",
+                content: full.reading,
+                followUpQuestions: full.follow_up_questions,
+              },
+            ]);
+            setPreviewActive(false);
+          } catch {
+            /* reveal 실패해도 quota는 복구됨 */
+          }
+        }
+        setFollowupRemaining(res.followup_remaining ?? 10);
+        setFollowupPaywall(false);
+        clearDeepReadingPending();
+        logEvent("paywall_purchase_completed", {
+          reading_type: readingType,
+          trigger: "recovery",
+          order_id: orderId,
+          session_id: sessionId,
+        });
+        openToast({ message: "결제가 복구되었어요. 전체 풀이를 확인하세요." });
+        return true;
+      } catch {
+        /* 다음 주문 시도 */
+      }
+    }
+    return false;
+  };
+
+  // 마운트/익명키 준비 시 미완료 결제 자동 복구
+  useEffect(() => {
+    recoverPendingPurchase();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [anonymousKey]);
+
+  // 첫 풀이 결제 → grant → reveal → 전체 풀이 공개
+  const handleReadingPurchase = async () => {
+    if (isPurchasing) return;
+    setIsPurchasing(true);
+    saveDeepReadingPending({ thread_id: fortuneResult.thread_id });
+    logEvent("paywall_purchase_started", {
+      reading_type: readingType,
+      trigger: "reading_start",
+      session_id: sessionId,
+    });
+    try {
+      const { orderId } = await purchaseDeepReading();
+      const grantRes = await grantDeepReading(orderId, anonymousKey);
+      logEvent("paywall_purchase_completed", {
+        reading_type: readingType,
+        trigger: "reading_start",
+        order_id: orderId,
+        session_id: sessionId,
+      });
+      const full = await revealDeepReading(fortuneResult.thread_id, anonymousKey);
+      setRevealed(full);
+      setMessages([
+        {
+          role: "assistant",
+          content: full.reading,
+          followUpQuestions: full.follow_up_questions,
+        },
+      ]);
+      setPreviewActive(false);
+      setFollowupRemaining(grantRes?.followup_remaining ?? 10);
+      clearDeepReadingPending();
+    } catch (err) {
+      logEvent("paywall_purchase_failed", {
+        reading_type: readingType,
+        trigger: "reading_start",
+        reason: err?.message || "cancelled",
+        session_id: sessionId,
+      });
+      // 결제는 됐는데 서버 지급이 실패했을 수 있음 → 복구 시도
+      const recovered = await recoverPendingPurchase();
+      if (!recovered) {
+        openToast({ message: "결제가 취소되었거나 완료되지 않았습니다." });
+      }
+    } finally {
+      setIsPurchasing(false);
+    }
+  };
+
+  // 후속질문 결제 → grant (후속 10회 충전)
+  const handleFollowupPurchase = async () => {
+    if (isPurchasing) return;
+    setIsPurchasing(true);
+    saveDeepReadingPending({ thread_id: fortuneResult.thread_id });
+    logEvent("paywall_purchase_started", {
+      reading_type: readingType,
+      trigger: "followup",
+      session_id: sessionId,
+    });
+    try {
+      const { orderId } = await purchaseDeepReading();
+      const grantRes = await grantDeepReading(orderId, anonymousKey);
+      logEvent("paywall_purchase_completed", {
+        reading_type: readingType,
+        trigger: "followup",
+        order_id: orderId,
+        session_id: sessionId,
+      });
+      setFollowupPaywall(false);
+      setFollowupRemaining(grantRes?.followup_remaining ?? 10);
+      clearDeepReadingPending();
+      openToast({ message: "결제 완료! 후속질문 10회가 충전되었어요. 다시 전송해 주세요." });
+    } catch (err) {
+      logEvent("paywall_purchase_failed", {
+        reading_type: readingType,
+        trigger: "followup",
+        reason: err?.message || "cancelled",
+        session_id: sessionId,
+      });
+      const recovered = await recoverPendingPurchase();
+      if (!recovered) {
+        openToast({ message: "결제가 취소되었거나 완료되지 않았습니다." });
+      }
+    } finally {
+      setIsPurchasing(false);
+    }
+  };
+
   // callback ref: 로딩 표시가 DOM에 마운트되면 스크롤
   // setTimeout으로 사용자 메시지 버블의 레이아웃 완료를 기다린 후 스크롤
   const loadingIndicatorRef = useCallback((node) => {
@@ -114,7 +289,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
     }
   }, []);
 
-  const sendMessage = async (messageText, { skipAd = false, inputType = "free_text" } = {}) => {
+  const sendMessage = async (messageText, { inputType = "free_text" } = {}) => {
     if (!messageText.trim() || isSending) return;
 
     const userMessage = messageText.trim();
@@ -144,15 +319,10 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
     try {
       const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      const isCompatibility = !!userData.partnerName;
+      const isCompatibility = userData.isCompatibility ?? !!userData.partnerName;
       const endpoint = isCompatibility
         ? `${baseUrl}/deep-reading-match/chat`
         : `${baseUrl}/deep-reading/chat`;
-
-      // 재시도 시 광고 스킵, 광고 시청 완료 후 API 호출
-      if (!skipAd) {
-        await showRewardedAd(resolveAdGroupId(anonymousKey));
-      }
 
       const chatBody = {
         thread_id: fortuneResult.thread_id,
@@ -177,6 +347,22 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
 
       const result = await response.json();
 
+      // 후속질문 quota 소진 → 결제 유도 (낙관적 사용자 메시지 롤백 + 입력 복원)
+      if (result.paywall_required) {
+        setMessages((prev) =>
+          prev[prev.length - 1]?.role === "user" ? prev.slice(0, -1) : prev,
+        );
+        setInputMessage(userMessage);
+        setFollowupPaywall(true);
+        setFollowupRemaining(0);
+        logEvent("paywall_shown", {
+          trigger: "followup",
+          reading_type: readingType,
+          session_id: sessionId,
+        });
+        return;
+      }
+
       setMessages((prev) => [
         ...prev,
         {
@@ -185,6 +371,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
           followUpQuestions: result.follow_up_questions,
         },
       ]);
+      setFollowupRemaining((n) => (typeof n === "number" ? Math.max(0, n - 1) : n));
     } catch (error) {
       console.error("채팅 메시지 전송 오류:", error);
       Sentry.captureException(error, {
@@ -241,7 +428,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
             marginBottom: "0",
           }}
         >
-          {name}님의 {fortuneTypeTitle || "2026 신년 운세"}
+          {name ? `${name}님의 ` : ""}{fortuneTypeTitle || "2026 신년 운세"}
         </h1>
       </div>
 
@@ -255,7 +442,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
         }}
       >
         {/* 요약 섹션 */}
-        {fortuneResult.headline && (
+        {headline && (
           <div style={{ marginBottom: "20px" }}>
             <p
               className="result-fade-in-delay-1"
@@ -268,9 +455,9 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                 margin: "0 0 16px 0",
               }}
             >
-              {fortuneResult.headline}
+              {headline}
             </p>
-            {fortuneResult.summary?.length > 0 && (
+            {summary?.length > 0 && (
               <div
                 className="result-fade-in-delay-2"
                 style={{
@@ -279,7 +466,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                   gap: "8px",
                 }}
               >
-                {fortuneResult.summary.map((item, i) => {
+                {summary.map((item, i) => {
                   const gradeStr = (item.grade || "").trim();
                   const desc = item.description || "";
                   // display_type가 "info"이거나, grade가 실제 등급(상/중/하)이 아니면 정보형으로 간주
@@ -296,7 +483,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                   // 설명 줄: 등급형은 항상, 정보형은 grade를 배지로 쓴 경우만(설명 중복 방지)
                   const descLine = isInfo ? (gradeStr ? desc : "") : desc;
                   // 카드 개수가 홀수면 마지막 카드는 한 줄 전체로 길게 표시
-                  const total = fortuneResult.summary.length;
+                  const total = summary.length;
                   const isLastOdd = total % 2 === 1 && i === total - 1;
 
                   return (
@@ -390,6 +577,9 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
         {messages.map((message, index) => {
           const isLastAssistant =
             message.role === "assistant" && index === messages.length - 1;
+          // 미리보기(미결제) 첫 메시지는 하단을 그라데이션으로 페이드
+          const isPreviewMsg =
+            previewActive && index === 0 && message.role === "assistant";
           return (
             <div
               key={index}
@@ -417,21 +607,39 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                           ? "#FEF2F2"
                           : "var(--color-primary-light)",
                     color: message.role === "user" ? "var(--color-white)" : "var(--color-gray-600)",
+                    position: "relative",
                   }}
                 >
                   {message.role === "assistant" ? (
-                    <div
-                      style={{
-                        fontSize: "16px",
-                        lineHeight: "1.8",
-                        fontFamily: "'Do Hyeon', sans-serif",
-                        fontWeight: 400,
-                      }}
-                    >
-                      <ReactMarkdown components={markdownComponents}>
-                        {normalizeMarkdown(message.content)}
-                      </ReactMarkdown>
-                    </div>
+                    <>
+                      <div
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: "1.8",
+                          fontFamily: "'Do Hyeon', sans-serif",
+                          fontWeight: 400,
+                        }}
+                      >
+                        <ReactMarkdown components={markdownComponents}>
+                          {normalizeMarkdown(message.content)}
+                        </ReactMarkdown>
+                      </div>
+                      {isPreviewMsg && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            height: "84px",
+                            background:
+                              "linear-gradient(to bottom, transparent, var(--color-primary-light))",
+                            borderRadius: "0 0 12px 12px",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      )}
+                    </>
                   ) : (
                     <div>
                       <p
@@ -450,7 +658,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                           onClick={() => {
                             // 에러 메시지 제거 후 광고 없이 재시도
                             setMessages((prev) => prev.filter((m) => m !== message));
-                            sendMessage(lastFailedMessage, { skipAd: true });
+                            sendMessage(lastFailedMessage);
                           }}
                           style={{
                             marginTop: "8px",
@@ -512,7 +720,8 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
                         margin: "4px 0 0 0",
                       }}
                     >
-                      추가 질문 시 광고가 표시됩니다
+                      이 풀이는 보관함에 저장돼요. 언제든 다시 보고 남은
+                      횟수만큼 후속 질문을 이어서 할 수 있어요.
                     </p>
                   </div>
                 )}
@@ -645,9 +854,57 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
             </div>
           </div>
         )}
+
+        {/* 미리보기 결제 CTA — 첫 풀이 잠금 해제 */}
+        {previewActive && (
+          <div style={{ marginTop: "8px" }}>
+            <div
+              style={{
+                background: "var(--color-primary-light)",
+                borderRadius: "16px",
+                padding: "20px",
+                textAlign: "center",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "var(--color-gray-600)",
+                  margin: "0 0 16px",
+                  lineHeight: 1.5,
+                }}
+              >
+                결제하면 전체 풀이를 볼 수 있고, 추가 질문 횟수도 10회
+                추가됩니다. 나중에 보관함에서도 다시 보기 가능하며, 질문도
+                언제든지 가능합니다
+              </p>
+              <button
+                onClick={handleReadingPurchase}
+                disabled={isPurchasing}
+                style={{
+                  width: "100%",
+                  padding: "14px",
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "var(--color-white)",
+                  background: isPurchasing
+                    ? "var(--color-gray-200)"
+                    : "var(--color-primary)",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: isPurchasing ? "not-allowed" : "pointer",
+                  minHeight: "44px",
+                }}
+              >
+                {isPurchasing ? "결제 진행 중..." : "990원으로 전체보기 + 후속 10회 받기"}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* 채팅 입력창 */}
+      {/* 채팅 입력창 / 후속질문 결제 (미리보기 중에는 숨김) */}
+      {!previewActive && (
       <div
         style={{
           position: "fixed",
@@ -660,54 +917,111 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
           zIndex: 100,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            gap: "8px",
-            alignItems: "center",
-          }}
-        >
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-            placeholder="더 알고 싶은 점이 있으신가요?"
-            aria-label="추가 질문 입력"
-            disabled={isSending}
+        {followupPaywall ? (
+          <div
             style={{
-              flex: 1,
-              padding: "12px 16px",
-              fontSize: "15px",
-              border: "1px solid var(--color-primary)",
-              borderRadius: "8px",
-              outline: "none",
-              background: "var(--color-white)",
-            }}
-          />
-          <button
-            onClick={handleSendMessage}
-            disabled={!inputMessage.trim() || isSending}
-            style={{
-              padding: "12px 20px",
-              fontSize: "15px",
-              fontWeight: "bold",
-              color: "var(--color-white)",
-              background:
-                !inputMessage.trim() || isSending
-                  ? "var(--color-gray-200)"
-                  : "var(--color-primary)",
-              border: "none",
-              borderRadius: "8px",
-              cursor:
-                !inputMessage.trim() || isSending ? "not-allowed" : "pointer",
-              whiteSpace: "nowrap",
+              background: "var(--color-primary-light)",
+              borderRadius: "12px",
+              padding: "14px 16px",
+              textAlign: "center",
             }}
           >
-            {isSending ? "전송 중..." : "전송"}
-          </button>
-        </div>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "var(--color-gray-600)",
+                margin: "0 0 10px",
+                lineHeight: 1.5,
+              }}
+            >
+              후속질문 잔여가 없어요. 990원으로 1풀이 + 후속 10회를 받으세요.
+            </p>
+            <button
+              onClick={handleFollowupPurchase}
+              disabled={isPurchasing}
+              style={{
+                width: "100%",
+                padding: "12px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                color: "var(--color-white)",
+                background: isPurchasing
+                  ? "var(--color-gray-200)"
+                  : "var(--color-primary)",
+                border: "none",
+                borderRadius: "8px",
+                cursor: isPurchasing ? "not-allowed" : "pointer",
+                minHeight: "44px",
+              }}
+            >
+              {isPurchasing ? "결제 진행 중..." : "990원으로 후속 10회 받기"}
+            </button>
+          </div>
+        ) : (
+          <>
+            {typeof followupRemaining === "number" && followupRemaining > 0 && (
+              <p
+                style={{
+                  fontSize: "12px",
+                  color: "var(--color-gray-400)",
+                  margin: "0 0 8px",
+                  textAlign: "right",
+                }}
+              >
+                남은 질문 {followupRemaining}회
+              </p>
+            )}
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                alignItems: "center",
+              }}
+            >
+            <input
+              type="text"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+              placeholder="더 알고 싶은 점이 있으신가요?"
+              aria-label="추가 질문 입력"
+              disabled={isSending}
+              style={{
+                flex: 1,
+                padding: "12px 16px",
+                fontSize: "15px",
+                border: "1px solid var(--color-primary)",
+                borderRadius: "8px",
+                outline: "none",
+                background: "var(--color-white)",
+              }}
+            />
+            <button
+              onClick={handleSendMessage}
+              disabled={!inputMessage.trim() || isSending}
+              style={{
+                padding: "12px 20px",
+                fontSize: "15px",
+                fontWeight: "bold",
+                color: "var(--color-white)",
+                background:
+                  !inputMessage.trim() || isSending
+                    ? "var(--color-gray-200)"
+                    : "var(--color-primary)",
+                border: "none",
+                borderRadius: "8px",
+                cursor:
+                  !inputMessage.trim() || isSending ? "not-allowed" : "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {isSending ? "전송 중..." : "전송"}
+            </button>
+            </div>
+          </>
+        )}
       </div>
+      )}
 
       {/* 하단 버튼 */}
       <div
@@ -739,7 +1053,7 @@ export default function DeepReadingResult({ userData, onRestart, onCrossReading 
             cursor: "pointer",
           }}
         >
-          처음부터 다시하기
+          {restartLabel}
         </button>
       </div>
     </div>

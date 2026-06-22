@@ -334,6 +334,8 @@ export default function DeepReadingLoading({ userData, onNext }) {
           headline: result.headline,
           summary: result.summary,
           cross_reading_ctas: result.cross_reading_ctas || [],
+          is_preview: result.is_preview || false,
+          paywall_required: result.paywall_required || null,
         },
       });
     } catch (error) {
@@ -349,7 +351,9 @@ export default function DeepReadingLoading({ userData, onNext }) {
       if (error.name === "AbortError") {
         setApiError("요청 시간이 초과되었습니다. 다시 시도해 주세요.");
       } else {
-        setApiError("신년운세를 생성하는데 실패했습니다. 다시 시도해 주세요.");
+        setApiError(
+          `${userData?.fortuneTypeTitle || "풀이"}를 생성하는데 실패했습니다. 다시 시도해 주세요.`,
+        );
       }
     }
   };
