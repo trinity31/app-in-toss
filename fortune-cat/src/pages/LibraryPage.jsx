@@ -81,6 +81,14 @@ export default function LibraryPage() {
     return typeMap[rt] || "사주 풀이";
   };
 
+  // 무료 풀이(오늘의 운세·행운의 숫자/컬러)는 삭제해도 재진입 시 무료 재생성.
+  // 그 외(유료 심화풀이·궁합)는 삭제하면 다시 보기 위해 재결제 필요.
+  const isFreeReading = (rt) =>
+    !rt ||
+    rt.startsWith("deep_reading_daily") ||
+    rt === "lucky_number" ||
+    rt === "lucky_color";
+
   const handleDelete = async (item) => {
     setDeletingId(item.thread_id);
     try {
@@ -369,10 +377,14 @@ export default function LibraryPage() {
                         style={{
                           flex: 1,
                           fontSize: "13px",
-                          color: "var(--color-gray-600)",
+                          color: isFreeReading(item.reading_type)
+                            ? "var(--color-gray-600)"
+                            : "var(--color-error)",
                         }}
                       >
-                        삭제하면 대화도 함께 사라져요.
+                        {isFreeReading(item.reading_type)
+                          ? "삭제하면 대화도 함께 사라져요."
+                          : "이 풀이는 삭제 후 다시 보려면 재결제가 필요합니다."}
                       </span>
                       <button
                         onClick={() => setConfirmDeleteId(null)}
