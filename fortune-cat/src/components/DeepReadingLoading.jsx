@@ -3,7 +3,6 @@ import * as Sentry from "@sentry/react";
 import { formatBirthdate } from "../utils/dataTransform";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSession } from "../hooks/useSession.jsx";
-import { resolveAdGroupId } from "../config/ads";
 import loadingGif from "../assets/images/cat_greeting.gif";
 
 const ANALYSIS_STEPS = [
@@ -21,27 +20,16 @@ export default function DeepReadingLoading({ userData, onNext }) {
   const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
   const { startNewSession } = useSession();
 
-  // 유료 풀이(심화·궁합)는 광고 없이 바로 생성. 무료 풀이(오늘의 운세·행운의 숫자/컬러)만 광고.
-  const FREE_READING_TYPES = ["deep_reading_daily", "lucky_number", "lucky_color"];
-  const isPaidReading =
-    !!userData.partnerName ||
-    !FREE_READING_TYPES.includes(userData.readingType || "");
-
-  const [loadingMessage, setLoadingMessage] = useState(
-    isPaidReading ? "운세를 풀이하고 있어요..." : "광고를 준비하고 있습니다...",
-  );
-  const [adLoaded, setAdLoaded] = useState(false);
-  const [adRewarded, setAdRewarded] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("운세를 풀이하고 있어요...");
   const [apiCompleted, setApiCompleted] = useState(false);
   const [apiError, setApiError] = useState(null);
   const [currentStep, setCurrentStep] = useState(-1);
-  const cleanupRef = useRef(null);
   const abortControllerRef = useRef(null);
   const apiCalledRef = useRef(false);
 
   // 단계별 진행 표시
   useEffect(() => {
-    if (!adRewarded || apiCompleted || apiError) return;
+    if (apiCompleted || apiError) return;
     setCurrentStep(0);
     const interval = setInterval(() => {
       setCurrentStep((prev) =>
@@ -49,145 +37,14 @@ export default function DeepReadingLoading({ userData, onNext }) {
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [adRewarded, apiCompleted, apiError]);
+  }, [apiCompleted, apiError]);
 
-  // 광고 로드 (anonymousKey 해석 이후 실행)
+  // anonymousKey 해석 후 바로 풀이 생성 (광고 제거 — 유료는 결제, 무료는 무광고)
   useEffect(() => {
     if (anonymousKeyLoading) return;
-
-    // 유료 풀이는 광고를 건너뛰고 바로 생성 (결제로 수익화 → 광고 미노출)
-    if (isPaidReading) {
-      setAdRewarded(true);
-      callDeepReadingApi();
-      return;
-    }
-
-    const adGroupId = resolveAdGroupId(anonymousKey);
-    console.log("[DeepReadingLoading] adGroupId:", adGroupId);
-
-    const loadAd = async () => {
-      try {
-        const { GoogleAdMob } = await import("@apps-in-toss/web-framework");
-
-        const isAdUnsupported =
-          GoogleAdMob.loadAppsInTossAdMob.isSupported?.() === false;
-
-        if (isAdUnsupported) {
-          console.warn("광고가 지원되지 않습니다.");
-          setAdLoaded(true);
-          setAdRewarded(true);
-          setLoadingMessage("신년운세를 풀이하고 있습니다...");
-          callDeepReadingApi();
-          return;
-        }
-
-        cleanupRef.current?.();
-        cleanupRef.current = null;
-
-        const cleanup = GoogleAdMob.loadAppsInTossAdMob({
-          options: {
-            adGroupId,
-          },
-          onEvent: (event) => {
-            if (event.type === "loaded") {
-              console.log("광고 로드 완료");
-              setAdLoaded(true);
-              setLoadingMessage("광고를 재생합니다");
-            }
-          },
-          onError: (error) => {
-            console.error("광고 로드 실패", error);
-            setAdLoaded(true);
-            setAdRewarded(true);
-            setLoadingMessage("신년운세를 풀이하고 있습니다...");
-            callDeepReadingApi();
-          },
-        });
-
-        cleanupRef.current = cleanup;
-      } catch (error) {
-        console.error("광고 모듈 로드 실패:", error);
-        setAdLoaded(true);
-        setAdRewarded(true);
-        setLoadingMessage("신년운세를 풀이하고 있습니다...");
-        callDeepReadingApi();
-      }
-    };
-
-    loadAd();
-
-    return () => {
-      cleanupRef.current?.();
-    };
+    callDeepReadingApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [anonymousKeyLoading, anonymousKey]);
-
-  // 광고가 로드되면 자동 재생
-  useEffect(() => {
-    if (adLoaded && !adRewarded) {
-      showAd();
-    }
-  }, [adLoaded, adRewarded]);
-
-  const showAd = async () => {
-    try {
-      const { GoogleAdMob } = await import("@apps-in-toss/web-framework");
-
-      const isAdUnsupported =
-        GoogleAdMob.showAppsInTossAdMob.isSupported?.() === false;
-
-      if (isAdUnsupported) {
-        console.warn("광고 재생이 지원되지 않습니다.");
-        setAdRewarded(true);
-        setLoadingMessage("신년운세를 풀이하고 있습니다...");
-        callDeepReadingApi();
-        return;
-      }
-
-      GoogleAdMob.showAppsInTossAdMob({
-        options: {
-          adGroupId: resolveAdGroupId(anonymousKey),
-        },
-        onEvent: (event) => {
-          switch (event.type) {
-            case "show":
-              console.log("광고 재생 시작");
-              callDeepReadingApi();
-              break;
-
-            case "userEarnedReward":
-              console.log("광고 시청 보상 획득");
-              setAdRewarded(true);
-              setLoadingMessage("신년운세를 풀이하고 있습니다...");
-              break;
-
-            case "dismissed":
-              console.log("광고 종료");
-              if (!adRewarded) {
-                setAdRewarded(true);
-                setLoadingMessage("신년운세를 풀이하고 있습니다...");
-              }
-              break;
-
-            case "failedToShow":
-              console.log("광고 재생 실패");
-              setAdRewarded(true);
-              setLoadingMessage("신년운세를 풀이하고 있습니다...");
-              break;
-          }
-        },
-        onError: (error) => {
-          console.error("광고 재생 실패", error);
-          setAdRewarded(true);
-          setLoadingMessage("신년운세를 풀이하고 있습니다...");
-        },
-      });
-    } catch (error) {
-      console.error("광고 재생 중 오류:", error);
-      setAdRewarded(true);
-      setLoadingMessage("신년운세를 풀이하고 있습니다...");
-      callDeepReadingApi();
-    }
-  };
 
   // Deep Reading API 호출
   const callDeepReadingApi = async () => {
@@ -569,7 +426,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
               lineHeight: "1.6",
             }}
           >
-            광고를 시청하면서 결과를 기다려 주세요.
+            잠시만 기다려 주세요. 정성껏 풀이하고 있어요.
           </p>
         </>
       )}
