@@ -126,6 +126,50 @@ export default function DeepReadingResult({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 메뉴에서 이미 본 풀이로 재진입(is_revisit)한 경우: 저장된 과거 후속 대화 복원.
+  // (보관함 진입은 fortuneResult.messages로 이미 들어오므로 제외)
+  useEffect(() => {
+    if (!fortuneResult.is_revisit) return;
+    if ((fortuneResult.messages || []).length > 0) return;
+    if (!anonymousKey || !fortuneResult.thread_id) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const r = await fetch(
+          `${baseUrl}/deep-reading/conversation?thread_id=${encodeURIComponent(
+            fortuneResult.thread_id,
+          )}&user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
+          { headers: { "X-API-Key": import.meta.env.VITE_SAJU_AI_API_KEY } },
+        );
+        if (!r.ok || cancelled) return;
+        const data = await r.json();
+        const past = data.messages || [];
+        if (cancelled || past.length === 0) return;
+        setMessages((prev) => {
+          // 이미 새 후속질문을 보냈다면(>1) 덮어쓰지 않음. prev[0]=초기 풀이 뒤에 과거 대화 복원.
+          if (prev.length > 1) return prev;
+          const restored = past.map((m) =>
+            m.role === "assistant"
+              ? {
+                  role: "assistant",
+                  content: m.content,
+                  followUpQuestions: m.follow_up_questions || [],
+                }
+              : { role: m.role, content: m.content },
+          );
+          return [...prev.slice(0, 1), ...restored];
+        });
+      } catch {
+        /* 복원 실패해도 현재 풀이는 정상 표시 */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [anonymousKey]);
+
   // 결제 사용자: 남은 후속질문 횟수 조회 (미리보기 상태가 아니면)
   useEffect(() => {
     if (!anonymousKey || isPreview) return;

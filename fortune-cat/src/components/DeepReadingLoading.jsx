@@ -336,6 +336,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
           cross_reading_ctas: result.cross_reading_ctas || [],
           is_preview: result.is_preview || false,
           paywall_required: result.paywall_required || null,
+          is_revisit: result.is_revisit || false,
         },
       });
     } catch (error) {
