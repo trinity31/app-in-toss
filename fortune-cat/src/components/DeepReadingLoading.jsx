@@ -20,8 +20,16 @@ const ANALYSIS_STEPS = [
 export default function DeepReadingLoading({ userData, onNext }) {
   const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
   const { startNewSession } = useSession();
-  const [loadingMessage, setLoadingMessage] =
-    useState("광고를 준비하고 있습니다...");
+
+  // 유료 풀이(심화·궁합)는 광고 없이 바로 생성. 무료 풀이(오늘의 운세·행운의 숫자/컬러)만 광고.
+  const FREE_READING_TYPES = ["deep_reading_daily", "lucky_number", "lucky_color"];
+  const isPaidReading =
+    !!userData.partnerName ||
+    !FREE_READING_TYPES.includes(userData.readingType || "");
+
+  const [loadingMessage, setLoadingMessage] = useState(
+    isPaidReading ? "운세를 풀이하고 있어요..." : "광고를 준비하고 있습니다...",
+  );
   const [adLoaded, setAdLoaded] = useState(false);
   const [adRewarded, setAdRewarded] = useState(false);
   const [apiCompleted, setApiCompleted] = useState(false);
@@ -46,6 +54,13 @@ export default function DeepReadingLoading({ userData, onNext }) {
   // 광고 로드 (anonymousKey 해석 이후 실행)
   useEffect(() => {
     if (anonymousKeyLoading) return;
+
+    // 유료 풀이는 광고를 건너뛰고 바로 생성 (결제로 수익화 → 광고 미노출)
+    if (isPaidReading) {
+      setAdRewarded(true);
+      callDeepReadingApi();
+      return;
+    }
 
     const adGroupId = resolveAdGroupId(anonymousKey);
     console.log("[DeepReadingLoading] adGroupId:", adGroupId);
