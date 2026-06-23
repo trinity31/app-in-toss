@@ -989,7 +989,9 @@ export default function DeepReadingResult({
                 lineHeight: 1.5,
               }}
             >
-              후속질문 잔여가 없어요. 990원으로 1풀이 + 후속 10회를 받으세요.
+              더 궁금한 점이 있으신가요? 😊 지금은 이어서 여쭤볼 수 있는
+              후속 질문 횟수가 없어요. 990원이면 후속 질문 10회와 심화 풀이
+              1회를 받아, 마음껏 더 깊은 이야기를 나눌 수 있어요.
             </p>
             <button
               onClick={handleFollowupPurchase}
