@@ -222,6 +222,10 @@ export default function HomePage() {
   const getDisplayItems = (items, sectionKey, limit = 3) =>
     expandedSections[sectionKey] ? items : items.slice(0, limit);
 
+  // 무료 풀이(오늘의 운세·행운의 숫자/컬러) — 메뉴에 '무료' 배지 표시
+  const isFreeReading = (rt) =>
+    rt === "deep_reading_daily" || rt === "lucky_number" || rt === "lucky_color";
+
   return (
     <div style={{ ...styles.container, paddingBottom: `${96 + insets.bottom}px` }}>
       {/* 히어로 영역 */}
@@ -414,7 +418,21 @@ export default function HomePage() {
                     <span style={{ fontSize: "32px" }}>{type.icon}</span>
                   </div>
                   <div style={styles.typeCardContent}>
-                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardTitle}>
+                      {type.title_ko}
+                      {isFreeReading(type.reading_type) && (
+                        <span
+                          style={{
+                            ...styles.badge,
+                            backgroundColor: colors.green500,
+                            marginLeft: "6px",
+                            verticalAlign: "middle",
+                          }}
+                        >
+                          무료
+                        </span>
+                      )}
+                    </div>
                     <div style={styles.typeCardDesc}>{type.description_ko}</div>
                   </div>
                 </button>
@@ -461,7 +479,21 @@ export default function HomePage() {
                     <span style={{ fontSize: "32px" }}>{type.icon}</span>
                   </div>
                   <div style={styles.typeCardContent}>
-                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardTitle}>
+                      {type.title_ko}
+                      {isFreeReading(type.reading_type) && (
+                        <span
+                          style={{
+                            ...styles.badge,
+                            backgroundColor: colors.green500,
+                            marginLeft: "6px",
+                            verticalAlign: "middle",
+                          }}
+                        >
+                          무료
+                        </span>
+                      )}
+                    </div>
                     <div style={styles.typeCardDesc}>{type.description_ko}</div>
                   </div>
                 </button>
@@ -507,7 +539,21 @@ export default function HomePage() {
                     style={styles.typeImage}
                   />
                   <div style={styles.typeCardContent}>
-                    <div style={styles.typeCardTitle}>{type.title_ko}</div>
+                    <div style={styles.typeCardTitle}>
+                      {type.title_ko}
+                      {isFreeReading(type.reading_type) && (
+                        <span
+                          style={{
+                            ...styles.badge,
+                            backgroundColor: colors.green500,
+                            marginLeft: "6px",
+                            verticalAlign: "middle",
+                          }}
+                        >
+                          무료
+                        </span>
+                      )}
+                    </div>
                     <div style={styles.typeCardDesc}>{type.description_ko}</div>
                   </div>
                 </button>
