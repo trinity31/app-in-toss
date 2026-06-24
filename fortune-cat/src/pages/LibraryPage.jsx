@@ -218,6 +218,7 @@ export default function LibraryPage() {
         userData={userData}
         onRestart={() => setSelected(null)}
         restartLabel="보관함으로 돌아가기"
+        isLibrary
       />
     );
   }

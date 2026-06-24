@@ -28,6 +28,7 @@ export default function DeepReadingResult({
   onRestart,
   onCrossReading,
   restartLabel = "처음부터 다시하기",
+  isLibrary = false,
 }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const crossCtas = fortuneResult.cross_reading_ctas || [];
@@ -35,8 +36,13 @@ export default function DeepReadingResult({
   const { anonymousKey } = useAnonymousKey();
   const { sessionId } = useSession();
 
-  // 결과 화면에서 뒤로가기로 풀이가 유실되는 것을 방지 (Android는 확인 다이얼로그)
-  useBlockSwipeBack(onRestart);
+  // 보관함 상세: 백버튼(iOS·Android 모두)을 가로채 리스트로 복귀(확인창 없음 — 이미 저장됨).
+  // 일반 결과화면: 기존대로 풀이 유실 방지(iOS 스와이프 차단, Android 확인 다이얼로그).
+  useBlockSwipeBack(
+    onRestart,
+    undefined,
+    isLibrary ? { confirm: false, interceptIOS: true } : {},
+  );
   const insets = useSafeAreaInsets();
 
   const sessionStartRef = useRef(Date.now());

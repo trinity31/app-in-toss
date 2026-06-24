@@ -46,7 +46,11 @@ function setIosSwipeGesture(isEnabled) {
  * @param {() => void} [onLeave] 사용자가 확인 다이얼로그에서 '나가기'를 선택했을 때 실행할 이탈 동작
  * @param {string} [message] 확인 다이얼로그 문구 (기본값 제공)
  */
-export function useBlockSwipeBack(onLeave, message = DEFAULT_CONFIRM_MESSAGE) {
+export function useBlockSwipeBack(onLeave, message = DEFAULT_CONFIRM_MESSAGE, options = {}) {
+  // confirm=false면 확인창 없이 즉시 onLeave (보관함 리스트↔상세처럼 유실 없는 내비게이션용)
+  // interceptIOS=true면 iOS에서도 백버튼을 가로채 onLeave 호출 (기본은 iOS 백버튼 보존)
+  const { confirm = true, interceptIOS = false } = options
+
   // 최신 onLeave/message를 ref로 유지해, 리렌더마다 backEvent를 재등록하지 않는다.
   const onLeaveRef = useRef(onLeave)
   onLeaveRef.current = onLeave
@@ -59,16 +63,20 @@ export function useBlockSwipeBack(onLeave, message = DEFAULT_CONFIRM_MESSAGE) {
     // iOS 좌측 엣지 스와이프 비활성화 (Android에서는 미지원이라 자동 무시)
     setIosSwipeGesture(false)
 
-    // iOS는 백버튼 동작을 보존하기 위해 backEvent를 등록하지 않는다.
-    // Android(및 플랫폼 판별 불가 시)에만 등록해 시스템 뒤로가기에 확인 다이얼로그를 띄운다.
+    // 기본: iOS는 백버튼을 보존(미등록), Android만 등록해 확인 다이얼로그.
+    // interceptIOS=true면 iOS 백버튼도 가로채 onLeave 실행(보관함 상세 → 리스트).
     let unsubscribe
-    if (platform !== 'ios') {
+    if (platform !== 'ios' || interceptIOS) {
       try {
         unsubscribe = graniteEvent.addEventListener('backEvent', {
           onEvent: () => {
-            // backEvent 등록 시 기본 뒤로가기는 차단됨 → 확인 후에만 이탈
-            const shouldLeave = window.confirm(messageRef.current)
-            if (shouldLeave) onLeaveRef.current?.()
+            // backEvent 등록 시 기본 뒤로가기는 차단됨
+            if (confirm) {
+              const shouldLeave = window.confirm(messageRef.current)
+              if (shouldLeave) onLeaveRef.current?.()
+            } else {
+              onLeaveRef.current?.()
+            }
           },
           onError: () => {},
         })
@@ -81,5 +89,5 @@ export function useBlockSwipeBack(onLeave, message = DEFAULT_CONFIRM_MESSAGE) {
       setIosSwipeGesture(true)
       if (typeof unsubscribe === 'function') unsubscribe()
     }
-  }, [])
+  }, [confirm, interceptIOS])
 }
