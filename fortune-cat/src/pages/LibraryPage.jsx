@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
-import { useUserInfoStorage } from "../hooks/useUserInfoStorage";
 import { supabase } from "../lib/supabase";
 import DeepReadingResult from "../components/DeepReadingResult";
 
@@ -24,7 +23,6 @@ const fmtDate = (s) => {
 export default function LibraryPage() {
   const { anonymousKey, loading: keyLoading } = useAnonymousKey();
   const insets = useSafeAreaInsets();
-  const { storedUserInfo } = useUserInfoStorage();
 
   const { openToast } = useToast();
 
@@ -199,7 +197,8 @@ export default function LibraryPage() {
       );
     }
     const userData = {
-      name: storedUserInfo?.name || "",
+      // 풀이 당사자 이름(캐시에 저장된 subject_name) 우선 — 없으면(구버전 캐시) 접두사 생략
+      name: selected.subject_name || "",
       fortuneTypeTitle: titleFor(selected.reading_type),
       readingType: selected.reading_type,
       isCompatibility: (selected.reading_type || "").startsWith("match"),
