@@ -74,6 +74,7 @@ export default function DeepReadingResult({
   const [lastFailedMessage, setLastFailedMessage] = useState(null);
   const [bottomBarHeight, setBottomBarHeight] = useState(88);
   const bottomBarRef = useRef(null);
+  const bottomAnchorRef = useRef(null);
 
   // ── 990원 Paywall ──
   const readingType = userData.readingType || "";
@@ -97,6 +98,16 @@ export default function DeepReadingResult({
     if (bottomBarRef.current) {
       setBottomBarHeight(bottomBarRef.current.offsetHeight);
     }
+  }, []);
+
+  // 보관함 진입 시: 대화가 길면 마지막 줄로 자동 스크롤
+  useEffect(() => {
+    if (!isLibrary) return;
+    const t = setTimeout(() => {
+      bottomAnchorRef.current?.scrollIntoView({ block: "end" });
+    }, 150);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 크로스 추천 CTA 노출 1회 트래킹 (오늘의 운세 결과에만 채워짐)
@@ -962,6 +973,9 @@ export default function DeepReadingResult({
             </div>
           </div>
         )}
+
+        {/* 스크롤 하단 앵커 (보관함 진입 시 마지막 줄로 스크롤) */}
+        <div ref={bottomAnchorRef} />
       </div>
 
       {/* 채팅 입력창 / 후속질문 결제 (미리보기 중에는 숨김) */}
