@@ -1,9 +1,45 @@
-// 990원 심화풀이 결제 — 토스 IAP 단건 구매 + 백엔드 quota 적립(grant).
+// 심화풀이 결제 — 토스 IAP 단건 구매 + 백엔드 quota 적립(grant).
+// 가격은 앱인토스 콘솔 등록값(getProductItemList의 displayAmount)이 단일 출처.
 // 부적 결제(AmuletPayment.jsx)와 동일한 IAP 패턴 재사용.
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY;
 const DEEP_READING_SKU = import.meta.env.VITE_DEEP_READING_PRODUCT_SKU;
+
+// IAP 상품 조회 실패(개발 브라우저·구버전 토스앱) 시 grant에 보낼 폴백 금액
+const FALLBACK_AMOUNT = 990;
+
+/**
+ * 콘솔에 등록된 심화풀이 상품 정보를 조회한다. 가격 표기(displayAmount)의 단일 출처.
+ * IAP 미지원 환경(개발 브라우저·구버전 토스앱)이나 조회 실패 시 null — throw 하지 않는다.
+ * @returns {Promise<{sku: string, displayAmount: string, displayName: string} | null>}
+ */
+export async function getDeepReadingProduct() {
+  if (!DEEP_READING_SKU) {
+    console.warn("[deepReadingPurchase] VITE_DEEP_READING_PRODUCT_SKU 미설정");
+    return null;
+  }
+  try {
+    const { IAP } = await import("@apps-in-toss/web-framework");
+    const response = await IAP.getProductItemList();
+    const products = response?.products ?? [];
+    return products.find((p) => p.sku === DEEP_READING_SKU) || null;
+  } catch (e) {
+    console.warn("[deepReadingPurchase] 상품 정보 조회 실패:", e);
+    return null;
+  }
+}
+
+/**
+ * displayAmount("1,200원")에서 숫자 금액만 추출한다. SDK가 숫자 필드를 주지 않아 파싱이 필요.
+ * @returns {number|null} 파싱 실패 시 null
+ */
+export function parseDisplayAmount(displayAmount) {
+  const digits = String(displayAmount ?? "").replace(/[^0-9]/g, "");
+  if (!digits) return null;
+  const amount = Number(digits);
+  return Number.isFinite(amount) && amount > 0 ? amount : null;
+}
 
 // 결제 성공 후 서버 지급 실패 시 복구용 — 보류 주문 컨텍스트(thread_id 등) 로컬 저장
 const PENDING_KEY = "deep_reading_pending_order";
@@ -93,17 +129,18 @@ export async function purchaseDeepReading() {
 }
 
 /**
- * 결제 완료 후 백엔드에 quota 적립(990원 = 풀이 1 + 후속 10). orderId 멱등.
+ * 결제 완료 후 백엔드에 quota 적립(1회 결제 = 풀이 1 + 후속 10). orderId 멱등.
+ * @param {number} [amount] 실제 결제 금액(콘솔 displayAmount 파싱값). 없으면 FALLBACK_AMOUNT.
  * @returns {Promise<{success: boolean, reading_remaining?: number, followup_remaining?: number}>}
  */
-export async function grantDeepReading(orderId, anonymousKey) {
+export async function grantDeepReading(orderId, anonymousKey, amount) {
   const response = await fetch(`${API_BASE_URL}/payment/deep-reading/grant`, {
     method: "POST",
     headers: { "X-API-Key": API_KEY, "Content-Type": "application/json" },
     body: JSON.stringify({
       orderId,
       user_anonymous_id: anonymousKey,
-      amount: 990,
+      amount: Number.isFinite(amount) && amount > 0 ? amount : FALLBACK_AMOUNT,
     }),
   });
   if (!response.ok) {
