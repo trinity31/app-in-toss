@@ -1122,13 +1122,16 @@ export default function DeepReadingResult({
             <p
               style={{
                 fontSize: "13px",
-                color: "var(--color-gray-600)",
+                color: "var(--color-gray-700)",
                 margin: "0 0 10px",
                 lineHeight: 1.5,
               }}
             >
               더 궁금한 점이 있으신가요? 😊 지금은 이어서 여쭤볼 수 있는
-              후속 질문 횟수가 없어요. {priceLabel ? `${priceLabel}이면` : "결제하면"}{" "}
+              후속 질문 횟수가 없어요.{" "}
+              <strong style={{ fontWeight: "bold", color: "var(--color-primary)" }}>
+                {priceLabel ? `${priceLabel}이면` : "결제하면"}
+              </strong>{" "}
               후속 질문 10회와 유료 풀이 1회를 받아, 마음껏 더 깊은 이야기를 나눌 수 있어요.
             </p>
             <button
@@ -1152,8 +1155,8 @@ export default function DeepReadingResult({
               {isPurchasing
                 ? "결제 진행 중..."
                 : priceLabel
-                  ? `${priceLabel}으로 후속 10회 받기`
-                  : "후속 10회 받기"}
+                  ? `${priceLabel}으로 질문 10회 + 풀이 1회 받기`
+                  : "질문 10회 + 풀이 1회 받기"}
             </button>
           </div>
         ) : (
