@@ -7,7 +7,7 @@ const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY;
 const DEEP_READING_SKU = import.meta.env.VITE_DEEP_READING_PRODUCT_SKU;
 
 // IAP 상품 조회 실패(개발 브라우저·구버전 토스앱) 시 grant에 보낼 폴백 금액
-const FALLBACK_AMOUNT = 990;
+const FALLBACK_AMOUNT = 4900;
 
 /**
  * 콘솔에 등록된 심화풀이 상품 정보를 조회한다. 가격 표기(displayAmount)의 단일 출처.
