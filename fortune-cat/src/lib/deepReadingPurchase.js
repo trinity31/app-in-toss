@@ -150,7 +150,40 @@ export async function grantDeepReading(orderId, anonymousKey, amount) {
 }
 
 /**
- * 잔여 quota 조회. { reading_remaining, followup_remaining, total_purchased }
+ * 심화풀이 무료 1회 공개 (백엔드 Phase C). 결제 없이 전체 풀이만 열고,
+ * reading/followup 크레딧은 지급되지 않는다(후속채팅은 유료 유지).
+ * 계정(=user_anonymous_id)당 1회로 백엔드가 원자적으로 제한한다.
+ * @throws {Error & {code?: string}} 무료 1회 소진 시 code === "free_trial_used"
+ * @returns {Promise<object>} DeepReadingStartResponse 형태(전체 reading/summary/follow_up_questions).
+ */
+export async function freeRevealDeepReading(threadId, anonymousKey) {
+  const response = await fetch(`${API_BASE_URL}/deep-reading/free-reveal`, {
+    method: "POST",
+    headers: { "X-API-Key": API_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      thread_id: threadId,
+      user_anonymous_id: anonymousKey,
+    }),
+  });
+  if (response.status === 403) {
+    // 403은 무료 소진(detail: "free_trial_used") 외에 API 키/Origin 미들웨어도 반환한다.
+    // detail로 구분해야 인증 오류를 "이미 사용함"으로 오인하지 않는다.
+    const body = await response.json().catch(() => ({}));
+    if (body?.detail === "free_trial_used") {
+      const err = new Error("free_trial_used");
+      err.code = "free_trial_used";
+      throw err;
+    }
+    throw new Error(`무료 공개 거부됨: ${body?.detail || "forbidden"}`);
+  }
+  if (!response.ok) {
+    throw new Error(`무료 공개 실패: ${response.status}`);
+  }
+  return response.json();
+}
+
+/**
+ * 잔여 quota 조회. { reading_remaining, followup_remaining, total_purchased, free_reveals_used }
  */
 export async function getQuota(anonymousKey) {
   const response = await fetch(
