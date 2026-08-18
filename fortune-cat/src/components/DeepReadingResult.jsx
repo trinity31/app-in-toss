@@ -1237,10 +1237,24 @@ export default function DeepReadingResult({
             >
               더 궁금한 점이 있으신가요? 😊 지금은 이어서 여쭤볼 수 있는
               후속 질문 횟수가 없어요.{" "}
-              <strong style={{ fontWeight: "bold", color: "var(--color-primary)" }}>
-                {priceLabel ? `${priceLabel}이면` : "결제하면"}
+              <strong
+                style={{ fontWeight: "bold", color: "var(--color-primary)" }}
+              >
+                {priceLabel ? `${priceLabel} 한 번이면` : "한 번 결제하면"}
               </strong>{" "}
-              후속 질문 10회와 유료 풀이 1회를 받아, 마음껏 더 깊은 이야기를 나눌 수 있어요.
+              이 풀이에 후속 질문을{" "}
+              <strong
+                style={{ fontWeight: "bold", color: "var(--color-primary)" }}
+              >
+                10회
+              </strong>{" "}
+              더 할 수 있고,{" "}
+              <strong
+                style={{ fontWeight: "bold", color: "var(--color-primary)" }}
+              >
+                다른 유료 풀이 1회
+              </strong>
+              도 추가 결제 없이 볼 수 있어요.
             </p>
             <button
               onClick={handleFollowupPurchase}
