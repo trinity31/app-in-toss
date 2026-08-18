@@ -21,6 +21,8 @@ import {
   clearDeepReadingPending,
   getPendingDeepReadingOrders,
   completeDeepReadingGrant,
+  getDeepReadingProduct,
+  parseDisplayAmount,
 } from "../lib/deepReadingPurchase";
 
 export default function DeepReadingResult({
@@ -76,7 +78,7 @@ export default function DeepReadingResult({
   const bottomBarRef = useRef(null);
   const bottomAnchorRef = useRef(null);
 
-  // ── 990원 Paywall ──
+  // ── Paywall (가격은 앱인토스 콘솔 등록값 displayAmount가 단일 출처) ──
   const readingType = userData.readingType || "";
   const isPreview = Boolean(fortuneResult.is_preview);
   const [previewActive, setPreviewActive] = useState(isPreview);
@@ -87,6 +89,31 @@ export default function DeepReadingResult({
   // 결제 후 reveal로 받은 전체 풀이가 있으면 그것을, 없으면 기존 값을 표시
   const headline = revealed?.headline ?? fortuneResult.headline;
   const summary = revealed?.summary ?? fortuneResult.summary;
+
+  // 콘솔 등록 상품 정보(가격 문구용). 미지원 환경에서는 null → 가격 없는 문구로 표시.
+  const [product, setProduct] = useState(null);
+  const productRef = useRef(null);
+  const priceLabel = product?.displayAmount || null;
+
+  useEffect(() => {
+    getDeepReadingProduct().then((p) => {
+      if (!p) return;
+      productRef.current = p;
+      setProduct(p);
+    });
+  }, []);
+
+  // grant에 보낼 실제 결제 금액. 상품 조회 전에 결제/복구가 시작되면 그 자리에서 1회 조회.
+  const resolveAmount = async () => {
+    if (!productRef.current) {
+      const p = await getDeepReadingProduct();
+      if (p) {
+        productRef.current = p;
+        setProduct(p);
+      }
+    }
+    return parseDisplayAmount(productRef.current?.displayAmount);
+  };
 
   // 결제 funnel 이벤트: Firebase + Supabase(user_events) 양쪽으로 발화
   const firePaywall = (name, params = {}) => {
@@ -212,10 +239,11 @@ export default function DeepReadingResult({
       return false;
     }
 
+    const amount = await resolveAmount();
     for (const o of orders) {
       const orderId = o.orderId || o.id || o;
       try {
-        const res = await grantDeepReading(orderId, anonymousKey);
+        const res = await grantDeepReading(orderId, anonymousKey, amount);
         if (!res?.success) continue;
         await completeDeepReadingGrant(orderId);
         // 미리보기 중이면 현재 보고 있는 풀이를 전체 공개 (quota는 위 grant로 복구됨)
@@ -276,7 +304,7 @@ export default function DeepReadingResult({
     });
     try {
       const { orderId } = await purchaseDeepReading();
-      const grantRes = await grantDeepReading(orderId, anonymousKey);
+      const grantRes = await grantDeepReading(orderId, anonymousKey, await resolveAmount());
       firePaywall("paywall_purchase_completed", {
         reading_type: readingType,
         trigger: "reading_start",
@@ -324,7 +352,7 @@ export default function DeepReadingResult({
     });
     try {
       const { orderId } = await purchaseDeepReading();
-      const grantRes = await grantDeepReading(orderId, anonymousKey);
+      const grantRes = await grantDeepReading(orderId, anonymousKey, await resolveAmount());
       firePaywall("paywall_purchase_completed", {
         reading_type: readingType,
         trigger: "followup",
@@ -968,7 +996,11 @@ export default function DeepReadingResult({
                   minHeight: "44px",
                 }}
               >
-                {isPurchasing ? "결제 진행 중..." : "990원으로 전체보기 + 후속 10회 받기"}
+                {isPurchasing
+                  ? "결제 진행 중..."
+                  : priceLabel
+                    ? `${priceLabel}으로 전체보기 + 후속 10회 받기`
+                    : "전체보기 + 후속 10회 받기"}
               </button>
             </div>
           </div>
@@ -1010,8 +1042,8 @@ export default function DeepReadingResult({
               }}
             >
               더 궁금한 점이 있으신가요? 😊 지금은 이어서 여쭤볼 수 있는
-              후속 질문 횟수가 없어요. 990원이면 후속 질문 10회와 유료 풀이
-              1회를 받아, 마음껏 더 깊은 이야기를 나눌 수 있어요.
+              후속 질문 횟수가 없어요. {priceLabel ? `${priceLabel}이면` : "결제하면"}{" "}
+              후속 질문 10회와 유료 풀이 1회를 받아, 마음껏 더 깊은 이야기를 나눌 수 있어요.
             </p>
             <button
               onClick={handleFollowupPurchase}
@@ -1031,7 +1063,11 @@ export default function DeepReadingResult({
                 minHeight: "44px",
               }}
             >
-              {isPurchasing ? "결제 진행 중..." : "990원으로 후속 10회 받기"}
+              {isPurchasing
+                ? "결제 진행 중..."
+                : priceLabel
+                  ? `${priceLabel}으로 후속 10회 받기`
+                  : "후속 10회 받기"}
             </button>
           </div>
         ) : (
