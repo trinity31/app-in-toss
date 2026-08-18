@@ -56,7 +56,7 @@
 - React 18 + Vite 5 SPA, React Router DOM 7로 라우트 분기 (`/`, `/saju`, `/new-year`, `/amulet`)
 - Toss TDS Mobile (`@toss/tds-mobile`, `@toss/tds-mobile-ait`) + Emotion 디자인 시스템
 - 데이터: Supabase 2.86 (메뉴 테이블 `ai_saju_types`, `new_year_fortune_types`, `saju_reading_types`, `amulet_types`, 결제 `amulet_orders`)
-- 외부 AI: 사주/딥리딩 API (`saju.trinity-apps.net`, dev: `192.168.0.28:8000`)
+- 외부 AI: 사주/딥리딩 API (`saju.trinity-apps.net`, dev: `192.168.35.153:8000`)
 - 관측: Firebase Analytics, Sentry (production)
 - 빌드 산출물: `fortune-cat.ait` (Apps-in-Toss 패키지)
 

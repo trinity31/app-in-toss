@@ -65,7 +65,7 @@
 - Vite environment variables with `VITE_` prefix (required by Vite to expose to client)
 - Separate `.env.development` and `.env.production` files
 - Environment-specific API base URLs:
-  - Development: `http://192.168.0.28:8000`
+  - Development: `http://192.168.35.40:8000`
   - Production: `https://saju.trinity-apps.net`
 
 **Required Environment Variables:**
