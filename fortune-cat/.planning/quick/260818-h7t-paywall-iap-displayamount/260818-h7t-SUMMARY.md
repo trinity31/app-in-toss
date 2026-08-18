@@ -51,3 +51,35 @@ status: complete
 ## 주의
 - `FALLBACK_AMOUNT`는 IAP 조회 실패 시에만 grant에 보낼 금액이다(정상 환경에서는 쓰이지 않음).
   신규 가격에 맞춰 **4900**으로 갱신했다. 콘솔 가격을 다시 바꿀 때 이 값도 함께 맞춰야 한다.
+
+---
+
+## 후속 작업 — 무료 1회 공개(Phase C) 연동 (커밋 acc23c3)
+
+### 배경
+백엔드에는 무료 1회가 이미 배포돼 있었으나(`FREE_REVEAL_LIMIT=1`, `claim_free_reveal` RPC,
+`POST /deep-reading/free-reveal`), **명시적 호출이 있어야만 동작**한다. `/deep-reading/start`는
+`reading_remaining <= 0`이면 `is_preview=true`를 내려줄 뿐 무료를 자동 적용하지 않는다.
+토스 미니앱은 이 엔드포인트 호출부가 없어 무료 1회가 적용되지 않고 있었다.
+
+"토스 미니앱은 웹 코드를 웹뷰로 감싼 것이라 자동 적용됨"이라는 판단은 이 저장소에 맞지 않다.
+이 앱은 React+Vite+TDS/AIT로 자체 번들을 빌드하는 **별도 프론트엔드**이고, 백엔드만 공유한다.
+
+### 식별자
+`user_paid_quotas.user_anonymous_id` 기준이라 토스 익명키를 그대로 받는다 → **백엔드 수정 불필요**.
+다만 값의 출처가 웹(uid)과 달라 **카운터는 채널별로 분리**된다(같은 사람이 웹 1회 + 토스 1회).
+
+### 변경 내용
+- `deepReadingPurchase.js` — `freeRevealDeepReading(threadId, anonymousKey)` 추가.
+  403은 무료 소진 외에 API 키/Origin 미들웨어도 반환하므로 `detail === "free_trial_used"`로 구분.
+- `DeepReadingResult.jsx`
+  - quota 조회를 미리보기 상태에서도 수행 → `free_reveals_used === 0`이면 `freeAvailable`
+  - 미리보기 paywall에 결제 버튼 **아래 보조 버튼**으로 "무료로 전체 풀이 1회 열어보기"
+    (웹앱 `saju-session.tsx:402` 배치와 동일)
+  - 성공 시 전체 풀이 공개 + `followupRemaining = 0` (무료는 후속채팅 미지급 → 첫 질문에서 결제 유도)
+  - 소진(403) 시 버튼 숨김 + "이미 무료 체험을 사용했어요" 토스트
+  - 계측: `free_reading_started` / `free_reading_used` / `free_reading_failed`
+
+### 검증
+- eslint 0 errors, `npm run build` AIT 빌드 성공.
+- 실기기 확인 필요: 무료 버튼 노출 → 전체 풀이 공개 → 재진입 시 버튼 미노출 → 후속 질문 시 결제 유도.
