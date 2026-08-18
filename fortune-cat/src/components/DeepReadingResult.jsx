@@ -90,6 +90,9 @@ export default function DeepReadingResult({
   // 무료 1회 공개 사용 가능 여부 (백엔드 quota.free_reveals_used === 0)
   const [freeAvailable, setFreeAvailable] = useState(false);
   const [isFreeRevealing, setIsFreeRevealing] = useState(false);
+  // 보유한 유료 풀이 크레딧. 후속질문 결제(질문 10회 + 풀이 1회)로 남을 수 있다.
+  const [readingRemaining, setReadingRemaining] = useState(0);
+  const [isUsingCredit, setIsUsingCredit] = useState(false);
   // 결제 후 reveal로 받은 전체 풀이가 있으면 그것을, 없으면 기존 값을 표시
   const headline = revealed?.headline ?? fortuneResult.headline;
   const summary = revealed?.summary ?? fortuneResult.summary;
@@ -218,14 +221,26 @@ export default function DeepReadingResult({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [anonymousKey]);
 
-  // quota 조회 — 후속질문 잔여(결제 사용자)와 무료 1회 사용 가능 여부(미리보기)
+  // quota 조회 — 후속질문 잔여, 보유 풀이 크레딧, 무료 1회 사용 가능 여부
+  const applyQuota = (q, { withFollowup } = {}) => {
+    if (withFollowup) setFollowupRemaining(q.followup_remaining);
+    setReadingRemaining(q.reading_remaining ?? 0);
+    setFreeAvailable((q.free_reveals_used ?? 0) === 0);
+  };
+
+  const refreshQuota = async (opts) => {
+    if (!anonymousKey) return;
+    try {
+      applyQuota(await getQuota(anonymousKey), opts);
+    } catch {
+      /* 조회 실패는 화면 동작을 막지 않는다 */
+    }
+  };
+
   useEffect(() => {
     if (!anonymousKey) return;
     getQuota(anonymousKey)
-      .then((q) => {
-        if (!isPreview) setFollowupRemaining(q.followup_remaining);
-        setFreeAvailable((q.free_reveals_used ?? 0) === 0);
-      })
+      .then((q) => applyQuota(q, { withFollowup: !isPreview }))
       .catch(() => {});
   }, [anonymousKey, isPreview]);
 
@@ -298,6 +313,48 @@ export default function DeepReadingResult({
     recoverPendingPurchase();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [anonymousKey]);
+
+  // 보유한 유료 풀이 크레딧 1회로 전체 풀이 열기 (재결제 없이 /reveal이 원자적으로 차감)
+  const handleUseReadingCredit = async () => {
+    if (isUsingCredit || isPurchasing || isFreeRevealing) return;
+    setIsUsingCredit(true);
+    try {
+      const full = await revealDeepReading(
+        fortuneResult.thread_id,
+        anonymousKey,
+      );
+      // quota가 실제로는 부족하면 백엔드가 미리보기를 그대로 돌려준다 → 결제 유도로 폴백
+      if (full?.is_preview) {
+        await refreshQuota();
+        openToast({ message: "보유한 풀이 횟수가 없어요." });
+        return;
+      }
+      setRevealed(full);
+      setMessages([
+        {
+          role: "assistant",
+          content: full.reading,
+          followUpQuestions: full.follow_up_questions,
+        },
+      ]);
+      setPreviewActive(false);
+      await refreshQuota({ withFollowup: true });
+      firePaywall("reading_credit_used", {
+        reading_type: readingType,
+        thread_id: fortuneResult.thread_id,
+        session_id: sessionId,
+      });
+    } catch (err) {
+      openToast({ message: "풀이를 여는 데 실패했어요. 다시 시도해 주세요." });
+      firePaywall("reading_credit_failed", {
+        reading_type: readingType,
+        reason: err?.message || "unknown",
+        session_id: sessionId,
+      });
+    } finally {
+      setIsUsingCredit(false);
+    }
+  };
 
   // 무료 1회 공개 → 전체 풀이만 열림 (후속채팅 크레딧은 지급되지 않음)
   const handleFreeReveal = async () => {
@@ -418,6 +475,8 @@ export default function DeepReadingResult({
       });
       setFollowupPaywall(false);
       setFollowupRemaining(grantRes?.followup_remaining ?? 10);
+      // 결제 1건은 후속 10회 + 풀이 1회 → 다음 풀이에서 쓸 크레딧이 남는다
+      setReadingRemaining(grantRes?.reading_remaining ?? 1);
       clearDeepReadingPending();
       openToast({ message: "결제 완료! 후속질문 10회가 충전되었어요. 다시 전송해 주세요." });
     } catch (err) {
@@ -1023,70 +1082,119 @@ export default function DeepReadingResult({
                 textAlign: "center",
               }}
             >
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "var(--color-gray-600)",
-                  margin: "0 0 16px",
-                  lineHeight: 1.5,
-                }}
-              >
-                결제하면 전체 풀이를 볼 수 있고, 추가 질문 횟수도 10회
-                추가됩니다. 나중에 보관함에서도 다시 보기 가능하며, 질문도
-                언제든지 가능합니다{freeAvailable
-                  ? " (무료 1회 공개는 전체 풀이만 열리고, 후속 질문은 포함되지 않아요)"
-                  : ""}
-              </p>
-              <button
-                onClick={handleReadingPurchase}
-                disabled={isPurchasing}
-                style={{
-                  width: "100%",
-                  padding: "14px",
-                  fontSize: "15px",
-                  fontWeight: "bold",
-                  color: "var(--color-white)",
-                  background: isPurchasing
-                    ? "var(--color-gray-200)"
-                    : "var(--color-primary)",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: isPurchasing ? "not-allowed" : "pointer",
-                  minHeight: "44px",
-                }}
-              >
-                {isPurchasing
-                  ? "결제 진행 중..."
-                  : priceLabel
-                    ? `${priceLabel}으로 전체보기 + 후속 10회 받기`
-                    : "전체보기 + 후속 10회 받기"}
-              </button>
-              {freeAvailable && (
-                <button
-                  onClick={handleFreeReveal}
-                  disabled={isFreeRevealing || isPurchasing}
-                  style={{
-                    width: "100%",
-                    marginTop: "8px",
-                    padding: "14px",
-                    fontSize: "15px",
-                    fontWeight: "bold",
-                    color: "var(--color-primary)",
-                    background: "var(--color-white)",
-                    border: "1px solid var(--color-primary)",
-                    borderRadius: "8px",
-                    cursor:
-                      isFreeRevealing || isPurchasing
-                        ? "not-allowed"
-                        : "pointer",
-                    opacity: isFreeRevealing || isPurchasing ? 0.5 : 1,
-                    minHeight: "44px",
-                  }}
-                >
-                  {isFreeRevealing
-                    ? "여는 중..."
-                    : "무료로 전체 풀이 1회 열어보기"}
-                </button>
+              {readingRemaining > 0 ? (
+                <>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--color-gray-700)",
+                      margin: "0 0 16px",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    이전 결제로 받은{" "}
+                    <strong
+                      style={{
+                        fontWeight: "bold",
+                        color: "var(--color-primary)",
+                      }}
+                    >
+                      풀이 {readingRemaining}회
+                    </strong>
+                    가 남아 있어요. 추가 결제 없이 전체 풀이를 열 수 있습니다.
+                  </p>
+                  <button
+                    onClick={handleUseReadingCredit}
+                    disabled={isUsingCredit}
+                    style={{
+                      width: "100%",
+                      padding: "14px",
+                      fontSize: "15px",
+                      fontWeight: "bold",
+                      color: "var(--color-white)",
+                      background: isUsingCredit
+                        ? "var(--color-gray-200)"
+                        : "var(--color-primary)",
+                      border: "none",
+                      borderRadius: "8px",
+                      cursor: isUsingCredit ? "not-allowed" : "pointer",
+                      minHeight: "44px",
+                    }}
+                  >
+                    {isUsingCredit
+                      ? "여는 중..."
+                      : "보유한 풀이 1회로 전체보기"}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--color-gray-600)",
+                      margin: "0 0 16px",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    결제하면 전체 풀이를 볼 수 있고, 추가 질문 횟수도 10회
+                    추가됩니다. 나중에 보관함에서도 다시 보기 가능하며, 질문도
+                    언제든지 가능합니다
+                    {freeAvailable
+                      ? " (무료 1회 공개는 전체 풀이만 열리고, 후속 질문은 포함되지 않아요)"
+                      : ""}
+                  </p>
+                  <button
+                    onClick={handleReadingPurchase}
+                    disabled={isPurchasing}
+                    style={{
+                      width: "100%",
+                      padding: "14px",
+                      fontSize: "15px",
+                      fontWeight: "bold",
+                      color: "var(--color-white)",
+                      background: isPurchasing
+                        ? "var(--color-gray-200)"
+                        : "var(--color-primary)",
+                      border: "none",
+                      borderRadius: "8px",
+                      cursor: isPurchasing ? "not-allowed" : "pointer",
+                      minHeight: "44px",
+                    }}
+                  >
+                    {isPurchasing
+                      ? "결제 진행 중..."
+                      : priceLabel
+                        ? `${priceLabel}으로 전체보기 + 후속 10회 받기`
+                        : "전체보기 + 후속 10회 받기"}
+                  </button>
+                  {freeAvailable && (
+                    <button
+                      onClick={handleFreeReveal}
+                      disabled={isFreeRevealing || isPurchasing}
+                      style={{
+                        width: "100%",
+                        marginTop: "8px",
+                        padding: "14px",
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        color: "var(--color-primary)",
+                        background: "var(--color-white)",
+                        border: "1px solid var(--color-primary)",
+                        borderRadius: "8px",
+                        cursor:
+                          isFreeRevealing || isPurchasing
+                            ? "not-allowed"
+                            : "pointer",
+                        opacity: isFreeRevealing || isPurchasing ? 0.5 : 1,
+                        minHeight: "44px",
+                      }}
+                    >
+                      {isFreeRevealing
+                        ? "여는 중..."
+                        : "무료로 전체 풀이 1회 열어보기"}
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>
