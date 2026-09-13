@@ -84,6 +84,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260602-mou | 탭바를 토스 브랜딩 가이드 플로팅 형태로 전환 + 탭 화면 body 라벤더(#F7F0FE) + 퀵메뉴 칩/탭 하이라이트 정리 | 2026-06-02 | 4f4a7a6 (merge) | [260602-mou-tabbar-jsx](./quick/260602-mou-tabbar-jsx/) |
 | 260608-exn | 모든 결과 화면(사주·신년·부적·타로) 뒤로가기 처리 — iOS 스와이프 비활성(setIosSwipeGestureEnabled), Android backEvent 확인 다이얼로그 (useBlockSwipeBack 훅) | 2026-06-08 | 8325131 / 548c1af | [260608-exn-result-swipe-back](./quick/260608-exn-result-swipe-back/) |
 | 260818-h7t | 심화풀이 paywall 가격을 IAP displayAmount(콘솔 등록값)에서 조회 + 무료 1회 공개(free-reveal) 연동 | 2026-08-18 | 090c9d8 / 6d495cf / 72a0ea4 / acc23c3 | [260818-h7t-paywall-iap-displayamount](./quick/260818-h7t-paywall-iap-displayamount/) |
+| 260913-nez | 궁합·애정운 연애상담 모드 무료 질문 1회 안내 문구·배너 (백엔드 기배포, 프런트 안내만) | 2026-09-13 | 2e96b98 | [260913-nez-love-free-followup](./quick/260913-nez-love-free-followup/) |
 
 ### Notes
 
