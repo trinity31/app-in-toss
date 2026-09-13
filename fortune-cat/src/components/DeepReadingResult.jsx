@@ -1371,7 +1371,7 @@ export default function DeepReadingResult({
                     lineHeight: 1.5,
                   }}
                 >
-                  사주 풀이가 아니라 지금 상황을 듣고 답해드려요. 궁금한 걸 하나
+                  사주 풀이와 함께 지금 상황을 듣고 답해드려요. 궁금한 걸 하나
                   물어보세요.
                 </p>
               </div>
