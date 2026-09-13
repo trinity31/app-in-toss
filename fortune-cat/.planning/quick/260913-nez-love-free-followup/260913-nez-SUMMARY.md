@@ -51,3 +51,25 @@ status: complete
 ## 남은 작업 (코드 아님)
 - 홈 카드 카피는 Supabase `new_year_fortune_types`/`ai_saju_types`의 `description_ko` 데이터 변경.
   예: "연애상담 모드 첫 질문 무료". Trinity 확정 후 반영.
+
+---
+
+## 후속 작업 — 개발 빌드 전용 quota 오버라이드 (QA 지원)
+
+### 배경
+개발자 계정은 이미 결제 이력이 있어(`total_purchased=4`, `free_reveals_used=1`,
+`followup_remaining=8`) 새 UI가 **하나도 노출되지 않는다** — 정상 동작이지만 문구 확인이 불가능했다.
+`user_paid_quotas`는 RLS로 막혀 앱 anon 키로는 조회·수정도 안 된다(200 + 빈 배열).
+
+### 변경 내용 (`src/lib/deepReadingPurchase.js`)
+- `applyDebugQuota()` — `getQuota()` 응답에 `.env.development`의 `VITE_DEBUG_QUOTA`(JSON)를 병합.
+  일부 필드만 덮어쓰고 나머지는 서버 값 유지.
+- `import.meta.env.DEV` 가드 → 프로덕션 빌드에서 제거됨.
+  검증: `npm run build` 후 `grep -rl VITE_DEBUG_QUOTA dist/` → 0건.
+- `.env.development`(gitignore 대상, 커밋되지 않음)에 시나리오 4종 프리셋을 주석으로 추가.
+
+### 한계 (문서화 필수)
+화면 표시만 바꾼다. 백엔드는 실제 계정 상태로 동작하므로 무료 공개는 403,
+무료 질문은 유료 처리될 수 있다. **백엔드 실동작까지 확인하려면 Supabase SQL Editor에서
+`user_paid_quotas` 행을 직접 리셋**해야 한다(복원용 현재값: reading 0 / followup 8 /
+purchased 4 / free_reveals 1 / free_followups 0).

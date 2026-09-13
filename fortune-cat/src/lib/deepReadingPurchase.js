@@ -183,6 +183,31 @@ export async function freeRevealDeepReading(threadId, anonymousKey) {
 }
 
 /**
+ * 개발 빌드 전용 quota 오버라이드 — 결제 상태별 화면(무료 공개 버튼, 보유 크레딧,
+ * 연애상담 무료 질문 배너, 후속 paywall)을 실제 결제·DB 수정 없이 확인하기 위한 장치.
+ *
+ * `.env.development`에 아래처럼 넣는다(일부 필드만 써도 된다, 나머지는 서버 값 유지):
+ *   VITE_DEBUG_QUOTA={"total_purchased":0,"free_reveals_used":0,"free_followups_used":0}
+ *
+ * `import.meta.env.DEV` 가드 안에 있어 프로덕션 빌드에서는 제거된다.
+ * ⚠️ 화면 표시만 바꾼다 — 백엔드는 실제 계정 상태로 동작하므로 무료 공개는 403,
+ * 무료 질문은 유료 처리될 수 있다. 문구·레이아웃 확인용이다.
+ */
+function applyDebugQuota(quota) {
+  if (!import.meta.env.DEV) return quota;
+  const raw = import.meta.env.VITE_DEBUG_QUOTA;
+  if (!raw) return quota;
+  try {
+    const merged = { ...quota, ...JSON.parse(raw) };
+    console.warn("[deepReadingPurchase] VITE_DEBUG_QUOTA 적용:", merged);
+    return merged;
+  } catch (e) {
+    console.warn("[deepReadingPurchase] VITE_DEBUG_QUOTA 파싱 실패:", e);
+    return quota;
+  }
+}
+
+/**
  * 잔여 quota 조회. { reading_remaining, followup_remaining, total_purchased, free_reveals_used }
  */
 export async function getQuota(anonymousKey) {
@@ -193,7 +218,7 @@ export async function getQuota(anonymousKey) {
   if (!response.ok) {
     throw new Error(`quota 조회 실패: ${response.status}`);
   }
-  return response.json();
+  return applyDebugQuota(await response.json());
 }
 
 /**
