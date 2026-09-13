@@ -71,5 +71,6 @@ status: complete
 ### 한계 (문서화 필수)
 화면 표시만 바꾼다. 백엔드는 실제 계정 상태로 동작하므로 무료 공개는 403,
 무료 질문은 유료 처리될 수 있다. **백엔드 실동작까지 확인하려면 Supabase SQL Editor에서
-`user_paid_quotas` 행을 직접 리셋**해야 한다(복원용 현재값: reading 0 / followup 8 /
-purchased 4 / free_reveals 1 / free_followups 0).
+`user_paid_quotas` 행을 직접 리셋**해야 한다 → `qa-quota-reset.sql`(같은 디렉토리)에
+시나리오 5종 + 복원 SQL을 정리해 뒀다. 복원용 현재값: reading 0 / followup 8 /
+purchased 4 / free_reveals 1 / free_followups 0 (2026-09-13 기준).
