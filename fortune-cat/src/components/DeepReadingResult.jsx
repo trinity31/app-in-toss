@@ -26,6 +26,13 @@ import {
   freeRevealDeepReading,
 } from "../lib/deepReadingPurchase";
 
+// 연애상담 모드(후속채팅 무료 1회) 대상 메뉴 — Supabase 메뉴 테이블의 reading_type 값.
+// 애정운=new_year_fortune_types, 궁합=ai_saju_types. 다른 메뉴는 어떤 안내도 띄우지 않는다.
+const LOVE_COUNSELING_TYPES = new Set([
+  "new_year_2026_love",
+  "new_year_compatibility",
+]);
+
 export default function DeepReadingResult({
   userData,
   onRestart,
@@ -81,6 +88,13 @@ export default function DeepReadingResult({
 
   // ── Paywall (가격은 앱인토스 콘솔 등록값 displayAmount가 단일 출처) ──
   const readingType = userData.readingType || "";
+  // 궁합·애정운만 연애상담 모드 + 후속질문 무료 1회 대상. 백엔드 판정
+  // (constants.py LOVE_COUNSELING_READING_TYPES / MATCH_READING_TYPE_PREFIX)과 같은 기준.
+  // 보관함 재진입 시 궁합은 reading_type이 "match:" 접두사로 오므로 둘 다 본다.
+  const isLoveCounseling =
+    LOVE_COUNSELING_TYPES.has(readingType) ||
+    readingType.startsWith("match") ||
+    (userData.isCompatibility ?? !!userData.partnerName);
   const isPreview = Boolean(fortuneResult.is_preview);
   const [previewActive, setPreviewActive] = useState(isPreview);
   const [revealed, setRevealed] = useState(null);
@@ -93,6 +107,11 @@ export default function DeepReadingResult({
   // 보유한 유료 풀이 크레딧. 후속질문 결제(질문 10회 + 풀이 1회)로 남을 수 있다.
   const [readingRemaining, setReadingRemaining] = useState(0);
   const [isUsingCredit, setIsUsingCredit] = useState(false);
+  // 연애상담 무료 질문 1회 안내 노출 여부. 판정·차감은 전부 백엔드가 하고
+  // 프런트는 /quota와 chat 응답 플래그만 신뢰한다(로컬 카운트 금지).
+  const [freeFollowupAvailable, setFreeFollowupAvailable] = useState(false);
+  const [freeFollowupJustUsed, setFreeFollowupJustUsed] = useState(false);
+  const freeFollowupShownRef = useRef(false);
   // 결제 후 reveal로 받은 전체 풀이가 있으면 그것을, 없으면 기존 값을 표시
   const headline = revealed?.headline ?? fortuneResult.headline;
   const summary = revealed?.summary ?? fortuneResult.summary;
@@ -226,6 +245,12 @@ export default function DeepReadingResult({
     if (withFollowup) setFollowupRemaining(q.followup_remaining);
     setReadingRemaining(q.reading_remaining ?? 0);
     setFreeAvailable((q.free_reveals_used ?? 0) === 0);
+    // 백엔드 should_use_free_followup과 같은 조건 — 미결제 계정의 미사용 무료분 1회
+    setFreeFollowupAvailable(
+      isLoveCounseling &&
+        (q.total_purchased ?? 0) === 0 &&
+        (q.free_followups_used ?? 0) === 0,
+    );
   };
 
   const refreshQuota = async (opts) => {
@@ -242,7 +267,23 @@ export default function DeepReadingResult({
     getQuota(anonymousKey)
       .then((q) => applyQuota(q, { withFollowup: !isPreview }))
       .catch(() => {});
+    // applyQuota는 매 렌더 새로 만들어지지만 내부가 setState + 순수 판정뿐이라
+    // 의존성에 넣으면 무의미한 재조회만 늘어난다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [anonymousKey, isPreview]);
+
+  // 무료 질문 배너 최초 노출 1회만 계측 (리렌더로 중복 발화하지 않게 ref 가드)
+  useEffect(() => {
+    if (previewActive || !freeFollowupAvailable || freeFollowupShownRef.current) {
+      return;
+    }
+    freeFollowupShownRef.current = true;
+    firePaywall("free_followup_banner_shown", {
+      reading_type: readingType,
+      session_id: sessionId,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previewActive, freeFollowupAvailable]);
 
   // 결제 성공 후 서버 지급 실패 시 복구 (토스 getPendingOrders 기반, 부적아트와 동일 패턴)
   const recoverPendingPurchase = async () => {
@@ -379,7 +420,8 @@ export default function DeepReadingResult({
       ]);
       setPreviewActive(false);
       setFreeAvailable(false);
-      // 무료 공개는 후속채팅을 지급하지 않는다 → 첫 질문에서 결제 유도
+      // 무료 공개는 후속채팅 크레딧을 지급하지 않는다. 다만 궁합·애정운은
+      // 첫 질문 1회가 무료다(백엔드 판단 — 프런트는 잔여를 흉내 내지 않는다).
       setFollowupRemaining(0);
       firePaywall("free_reading_used", {
         reading_type: readingType,
@@ -436,6 +478,8 @@ export default function DeepReadingResult({
       ]);
       setPreviewActive(false);
       setFollowupRemaining(grantRes?.followup_remaining ?? 10);
+      // 결제 이력이 생기면 무료 질문 대상에서 빠진다(백엔드 total_purchased 조건)
+      setFreeFollowupAvailable(false);
       clearDeepReadingPending();
     } catch (err) {
       firePaywall("paywall_purchase_failed", {
@@ -477,6 +521,7 @@ export default function DeepReadingResult({
       setFollowupRemaining(grantRes?.followup_remaining ?? 10);
       // 결제 1건은 후속 10회 + 풀이 1회 → 다음 풀이에서 쓸 크레딧이 남는다
       setReadingRemaining(grantRes?.reading_remaining ?? 1);
+      setFreeFollowupAvailable(false);
       clearDeepReadingPending();
       openToast({ message: "결제 완료! 후속질문 10회가 충전되었어요. 다시 전송해 주세요." });
     } catch (err) {
@@ -587,6 +632,16 @@ export default function DeepReadingResult({
           followUpQuestions: result.follow_up_questions,
         },
       ]);
+      // 이번 답변이 연애상담 무료 1회로 처리됐으면 배너를 내리고 사용 사실을 고지한다
+      if (result.free_followup_used) {
+        setFreeFollowupAvailable(false);
+        setFreeFollowupJustUsed(true);
+        firePaywall("free_followup_used", {
+          reading_type: readingType,
+          thread_id: fortuneResult.thread_id,
+          session_id: sessionId,
+        });
+      }
       setFollowupRemaining((n) => (typeof n === "number" ? Math.max(0, n - 1) : n));
     } catch (error) {
       console.error("채팅 메시지 전송 오류:", error);
@@ -1140,7 +1195,10 @@ export default function DeepReadingResult({
                     추가됩니다. 나중에 보관함에서도 다시 보기 가능하며, 질문도
                     언제든지 가능합니다
                     {freeAvailable
-                      ? " (무료 1회 공개는 전체 풀이만 열리고, 후속 질문은 포함되지 않아요)"
+                      ? isLoveCounseling && freeFollowupAvailable
+                        ? // 궁합·애정운은 무료 공개 뒤 연애상담 첫 질문 1회도 무료다
+                          " (무료 1회 공개 + 연애상담 모드 첫 질문 1회 무료)"
+                        : " (무료 1회 공개는 전체 풀이만 열리고, 후속 질문은 포함되지 않아요)"
                       : ""}
                   </p>
                   <button
@@ -1191,7 +1249,9 @@ export default function DeepReadingResult({
                     >
                       {isFreeRevealing
                         ? "여는 중..."
-                        : "무료로 전체 풀이 1회 열어보기"}
+                        : isLoveCounseling && freeFollowupAvailable
+                          ? "무료로 보기 + 연애상담 질문 1회"
+                          : "무료로 전체 풀이 1회 열어보기"}
                     </button>
                   )}
                 </>
@@ -1283,6 +1343,51 @@ export default function DeepReadingResult({
           </div>
         ) : (
           <>
+            {freeFollowupAvailable && (
+              <div
+                style={{
+                  background: "var(--color-primary-light)",
+                  border: "1px solid var(--color-primary)",
+                  borderRadius: "12px",
+                  padding: "10px 12px",
+                  margin: "0 0 8px",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: "bold",
+                    color: "var(--color-primary)",
+                    margin: "0 0 4px",
+                  }}
+                >
+                  💜 연애상담 모드 · 첫 질문 1회 무료
+                </p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "var(--color-gray-700)",
+                    margin: 0,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  사주 풀이가 아니라 지금 상황을 듣고 답해드려요. 궁금한 걸 하나
+                  물어보세요.
+                </p>
+              </div>
+            )}
+            {freeFollowupJustUsed && (
+              <p
+                style={{
+                  fontSize: "12px",
+                  color: "var(--color-gray-600)",
+                  margin: "0 0 8px",
+                  lineHeight: 1.5,
+                }}
+              >
+                무료 질문을 사용했어요. 이어서 질문하려면 결제가 필요해요 (10회)
+              </p>
+            )}
             {typeof followupRemaining === "number" && followupRemaining > 0 && (
               <p
                 style={{
