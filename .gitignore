@@ -1,2 +1,3 @@
 *.ait
 .DS_Store
+.gstack/
