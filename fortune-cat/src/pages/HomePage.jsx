@@ -421,7 +421,7 @@ export default function HomePage() {
               )}
             </div>
             <p style={styles.sectionDescription}>
-              운세 보고 질문도 무제한으로 하기
+              다가오는 한 해의 흐름을 미리 살펴보세요
             </p>
             <div style={styles.typeGrid}>
               {getDisplayItems(newYearTypes, "new_year").map((type) => (
