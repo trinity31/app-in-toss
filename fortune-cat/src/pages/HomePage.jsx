@@ -15,15 +15,53 @@ import {
   getAmuletStyleImageUrl,
   getOgImageUrl,
 } from "../lib/supabase";
-import heroBackground from "../assets/images/hero.png";
 import { trackClick } from "../lib/analytics";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
+import HomeHeroCarousel from "../components/HomeHeroCarousel";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
 // 수요가 적어 우선 메뉴에서 숨김 (재노출 시 true로 변경)
 const SHOW_IMAGE_SAJU = false;
 const SHOW_AMULET = false;
+
+// 궁합풀이 selectedType — 퀵메뉴·Hero 배너가 동일 값을 공유 (DRY)
+const COMPATIBILITY_SELECTED_TYPE = {
+  fortuneType: "ai_saju_compatibility",
+  themeType: "ai_saju",
+  readingType: "ai_saju",
+  fortuneTypeTitle: "궁합풀이",
+};
+
+// 애정운 selectedType — Supabase new_year_fortune_types 검증값
+const LOVE_SELECTED_TYPE = {
+  fortuneType: "new_year_2026_love",
+  themeType: "new_year_2026_love",
+  readingType: "new_year_2026_love",
+  fortuneTypeTitle: "2026년 애정운",
+};
+
+// 연애상담 모드(후속채팅)가 붙는 풀이 — 애정운·궁합 바로가기 배너
+const HERO_SLIDES = [
+  {
+    key: "new_year_2026_love",
+    icon: "❤️",
+    eyebrow: "2026 애정운",
+    title: "올해 내 연애운은?",
+    description: "풀이를 보고 나면 복냥이와 연애상담까지 이어져요",
+    bg: "linear-gradient(135deg, #fde4ec 0%, #f7b6cd 100%)",
+    selectedType: LOVE_SELECTED_TYPE,
+  },
+  {
+    key: "ai_saju_compatibility",
+    icon: "💕",
+    eyebrow: "궁합 풀이",
+    title: "우리, 찰떡일까 상극일까?",
+    description: "두 사람 궁합을 보고 실제 고민을 연애상담으로 물어보세요",
+    bg: "linear-gradient(135deg, #ece3f8 0%, #c4ade8 100%)",
+    selectedType: COMPATIBILITY_SELECTED_TYPE,
+  },
+];
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -53,6 +91,9 @@ export default function HomePage() {
     });
   };
 
+  const goToNewYear = (selectedType) =>
+    navigate("/newyear", { state: { selectedType } });
+
   const quickMenuItems = [
     {
       emoji: "🔮",
@@ -75,16 +116,7 @@ export default function HomePage() {
       label: "궁합풀이",
       onTap: () => {
         trackClick("quick_menu_click", { menu: "궁합풀이" }, "궁합풀이");
-        navigate("/newyear", {
-          state: {
-            selectedType: {
-              fortuneType: "ai_saju_compatibility",
-              themeType: "ai_saju",
-              readingType: "ai_saju",
-              fortuneTypeTitle: "궁합풀이",
-            },
-          },
-        });
+        goToNewYear(COMPATIBILITY_SELECTED_TYPE);
       },
     },
     SHOW_AMULET && {
@@ -150,15 +182,11 @@ export default function HomePage() {
       },
       type.title_ko,
     );
-    navigate("/newyear", {
-      state: {
-        selectedType: {
-          fortuneType: type.code,
-          themeType: type.theme_type,
-          readingType: type.reading_type,
-          fortuneTypeTitle: type.title_ko,
-        },
-      },
+    goToNewYear({
+      fortuneType: type.code,
+      themeType: type.theme_type,
+      readingType: type.reading_type,
+      fortuneTypeTitle: type.title_ko,
     });
   };
 
@@ -204,6 +232,15 @@ export default function HomePage() {
     });
   };
 
+  const handleHeroSlideClick = (slide) => {
+    trackClick(
+      "hero_banner_click",
+      { menu: slide.selectedType.fortuneType },
+      slide.eyebrow,
+    );
+    goToNewYear(slide.selectedType);
+  };
+
   const handleShare = async () => {
     trackClick("share_click", {}, "home_share");
     try {
@@ -228,93 +265,12 @@ export default function HomePage() {
 
   return (
     <div style={{ ...styles.container, paddingBottom: `${96 + insets.bottom}px` }}>
-      {/* 히어로 영역 */}
-      <div
-        style={{
-          position: "relative",
-          width: "calc(100% + 40px)",
-          margin: "0 -20px",
-          backgroundImage: `url(${heroBackground})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          padding: "36px 20px 24px",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2))",
-          }}
-        />
-        <h1
-          style={{
-            position: "relative",
-            fontSize: "36px",
-            fontWeight: "800",
-            color: "#fff",
-            margin: "0 0 0px 0",
-            textShadow: "0 1px 4px rgba(0,0,0,0.3)",
-          }}
-        >
-          복냥사주·타로
-        </h1>
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "24px",
-              color: "#fff",
-              margin: 0,
-              textShadow:
-                "-1px -1px 0 rgba(0,0,0,0.5), 1px -1px 0 rgba(0,0,0,0.5), -1px 1px 0 rgba(0,0,0,0.5), 1px 1px 0 rgba(0,0,0,0.5)",
-            }}
-          >
-            AI가 알려주는 당신의 운명
-          </p>
-          <button
-            onClick={handleShare}
-            aria-label="공유"
-            style={{
-              background: "rgba(255,255,255,0.8)",
-              border: "none",
-              borderRadius: "50%",
-              width: "44px",
-              height: "44px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              flexShrink: 0,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#191F28"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="18" cy="5" r="3" />
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="19" r="3" />
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-            </svg>
-          </button>
-        </div>
-      </div>
+      {/* 히어로: 애정운·궁합 연애상담 바로가기 배너 */}
+      <HomeHeroCarousel
+        slides={HERO_SLIDES}
+        onSlideClick={handleHeroSlideClick}
+        onShare={handleShare}
+      />
 
       {/* Quick Menu */}
       <div style={styles.quickMenuContainer}>
