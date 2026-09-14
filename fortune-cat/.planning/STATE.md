@@ -85,6 +85,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260608-exn | 모든 결과 화면(사주·신년·부적·타로) 뒤로가기 처리 — iOS 스와이프 비활성(setIosSwipeGestureEnabled), Android backEvent 확인 다이얼로그 (useBlockSwipeBack 훅) | 2026-06-08 | 8325131 / 548c1af | [260608-exn-result-swipe-back](./quick/260608-exn-result-swipe-back/) |
 | 260818-h7t | 심화풀이 paywall 가격을 IAP displayAmount(콘솔 등록값)에서 조회 + 무료 1회 공개(free-reveal) 연동 | 2026-08-18 | 090c9d8 / 6d495cf / 72a0ea4 / acc23c3 | [260818-h7t-paywall-iap-displayamount](./quick/260818-h7t-paywall-iap-displayamount/) |
 | 260913-nez | 궁합·애정운 연애상담 모드 무료 질문 1회 안내 문구·배너 (백엔드 기배포, 프런트 안내만) | 2026-09-13 | 2e96b98 | [260913-nez-love-free-followup](./quick/260913-nez-love-free-followup/) |
+| 260914-hb2 | HomePage Hero 배너를 애정운·궁합 바로가기 슬라이딩 배너 2개로 교체 (웹 fortunecat과 동일 기능) | 2026-09-14 | 199f00e | [260914-hb2-homepage-hero-2](./quick/260914-hb2-homepage-hero-2/) |
 
 ### Notes
 
@@ -109,6 +110,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 - 2026-05-04: Quick task 260504-gbj — TarotResult 하단 버튼 여백 확대 (`515c746`) + 카드 이미지 확대 모달 추가 (`bf0d645`). UAT 진행 중 발견 이슈 fix.
 - 2026-06-02: Quick task 260602-mou — 탭바 플로팅 알약 전환(토스 브랜딩 가이드 §3 준수) + 탭 화면 body 라벤더(`--color-bg-soft`) + 퀵메뉴 칩 #EBDCFA + 탭 클릭 회색 하이라이트 제거. worktree 9커밋 → main 병합(`4f4a7a6`). 실기기 UAT 승인.
 - 2026-05-05: v1.1 milestone archived — 13/13 REQ satisfied, UAT 21/22, audit gaps_found 알려진 갭 명시 후 archive. ROADMAP / REQUIREMENTS / AUDIT → milestones/. PROJECT.md evolution.
+- 2026-09-14: Quick task 260914-hb2 — HomePage Hero 배너를 애정운·궁합 연애상담 바로가기 슬라이드 배너 2개로 교체 (`HomeHeroCarousel.jsx` 신규, commit `199f00e`)
 
 ---
 *State initialized: 2026-04-29*
