@@ -86,6 +86,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260818-h7t | 심화풀이 paywall 가격을 IAP displayAmount(콘솔 등록값)에서 조회 + 무료 1회 공개(free-reveal) 연동 | 2026-08-18 | 090c9d8 / 6d495cf / 72a0ea4 / acc23c3 | [260818-h7t-paywall-iap-displayamount](./quick/260818-h7t-paywall-iap-displayamount/) |
 | 260913-nez | 궁합·애정운 연애상담 모드 무료 질문 1회 안내 문구·배너 (백엔드 기배포, 프런트 안내만) | 2026-09-13 | 2e96b98 | [260913-nez-love-free-followup](./quick/260913-nez-love-free-followup/) |
 | 260914-hb2 | HomePage Hero 배너를 애정운·궁합 바로가기 슬라이딩 배너 2개로 교체 (웹 fortunecat과 동일 기능) | 2026-09-14 | 199f00e | [260914-hb2-homepage-hero-2](./quick/260914-hb2-homepage-hero-2/) |
+| fast | HomePage 신년운세 섹션 설명 '무제한' 표현 제거 → 웹과 동일 "다가오는 한 해의 흐름을 미리 살펴보세요" | 2026-09-14 | 965c1bb | — |
 
 ### Notes
 
