@@ -24,6 +24,7 @@ import {
   getDeepReadingProduct,
   parseDisplayAmount,
   freeRevealDeepReading,
+  PRODUCTS,
 } from "../lib/deepReadingPurchase";
 
 // 연애상담 모드(후속채팅 무료 1회) 대상 메뉴 — Supabase 메뉴 테이블의 reading_type 값.
@@ -117,28 +118,45 @@ export default function DeepReadingResult({
   const summary = revealed?.summary ?? fortuneResult.summary;
 
   // 콘솔 등록 상품 정보(가격 문구용). 미지원 환경에서는 null → 가격 없는 문구로 표시.
-  const [product, setProduct] = useState(null);
-  const productRef = useRef(null);
-  const priceLabel = product?.displayAmount || null;
+  const [products, setProducts] = useState({});
+  const productsRef = useRef({});
+  const priceLabel = products.deep_reading?.displayAmount || null;
+  const followupPackPriceLabel = products.followup_pack?.displayAmount || null;
+  // 결제 진행 중인 상품 — 후속질문 결제 카드에서 누른 버튼에만 진행 문구 표시
+  const [purchasingProduct, setPurchasingProduct] = useState(null);
+  // 후속질문 결제 카드 버튼 — primary: 채움(후속질문 전용), secondary: 외곽선(풀이 포함 상품)
+  const followupPaywallButtonStyle = (primary) => ({
+    width: "100%",
+    padding: "12px",
+    fontSize: "14px",
+    fontWeight: "bold",
+    color: primary || isPurchasing ? "var(--color-white)" : "var(--color-primary)",
+    background: isPurchasing
+      ? "var(--color-gray-200)"
+      : primary
+        ? "var(--color-primary)"
+        : "var(--color-white)",
+    border: primary || isPurchasing ? "none" : "1px solid var(--color-primary)",
+    borderRadius: "8px",
+    cursor: isPurchasing ? "not-allowed" : "pointer",
+    minHeight: "44px",
+  });
+
+  const loadProduct = async (key) => {
+    const p = await getDeepReadingProduct(key);
+    if (!p) return;
+    productsRef.current = { ...productsRef.current, [key]: p };
+    setProducts((prev) => ({ ...prev, [key]: p }));
+  };
 
   useEffect(() => {
-    getDeepReadingProduct().then((p) => {
-      if (!p) return;
-      productRef.current = p;
-      setProduct(p);
-    });
+    Object.keys(PRODUCTS).forEach((key) => loadProduct(key));
   }, []);
 
   // grant에 보낼 실제 결제 금액. 상품 조회 전에 결제/복구가 시작되면 그 자리에서 1회 조회.
-  const resolveAmount = async () => {
-    if (!productRef.current) {
-      const p = await getDeepReadingProduct();
-      if (p) {
-        productRef.current = p;
-        setProduct(p);
-      }
-    }
-    return parseDisplayAmount(productRef.current?.displayAmount);
+  const resolveAmount = async (key = "deep_reading") => {
+    if (!productsRef.current[key]) await loadProduct(key);
+    return parseDisplayAmount(productsRef.current[key]?.displayAmount);
   };
 
   // 결제 funnel 이벤트: Firebase + Supabase(user_events) 양쪽으로 발화
@@ -302,15 +320,22 @@ export default function DeepReadingResult({
       return false;
     }
 
-    const amount = await resolveAmount();
-    for (const o of orders) {
+    for (const { order: o, product: orderProduct } of orders) {
       const orderId = o.orderId || o.id || o;
+      // SKU로 판정 못 한 주문은 결제 직전 저장한 상품으로 (구버전 pending은 기존 상품)
+      const product = orderProduct || pending.product || "deep_reading";
       try {
-        const res = await grantDeepReading(orderId, anonymousKey, amount);
+        const res = await grantDeepReading(
+          orderId,
+          anonymousKey,
+          await resolveAmount(product),
+          product,
+        );
         if (!res?.success) continue;
         await completeDeepReadingGrant(orderId);
         // 미리보기 중이면 현재 보고 있는 풀이를 전체 공개 (quota는 위 grant로 복구됨)
-        if (previewActive) {
+        // 후속질문 전용 상품은 풀이 크레딧이 없으므로 reveal 금지 — 이전에 받아 둔 크레딧이 소진됨
+        if (previewActive && product === "deep_reading") {
           try {
             const full = await revealDeepReading(
               fortuneResult.thread_id,
@@ -337,10 +362,16 @@ export default function DeepReadingResult({
         firePaywall("paywall_purchase_completed", {
           reading_type: readingType,
           trigger: "recovery",
+          product,
           order_id: orderId,
           session_id: sessionId,
         });
-        openToast({ message: "결제가 복구되었어요. 전체 풀이를 확인하세요." });
+        openToast({
+          message:
+            product === "followup_pack"
+              ? "결제가 복구되었어요. 후속질문 10회가 충전되었어요."
+              : "결제가 복구되었어요. 전체 풀이를 확인하세요.",
+        });
         return true;
       } catch {
         /* 다음 주문 시도 */
@@ -452,18 +483,25 @@ export default function DeepReadingResult({
   const handleReadingPurchase = async () => {
     if (isPurchasing) return;
     setIsPurchasing(true);
-    saveDeepReadingPending({ thread_id: fortuneResult.thread_id });
+    saveDeepReadingPending({ thread_id: fortuneResult.thread_id, product: "deep_reading" });
     firePaywall("paywall_purchase_started", {
       reading_type: readingType,
       trigger: "reading_start",
+      product: "deep_reading",
       session_id: sessionId,
     });
     try {
-      const { orderId } = await purchaseDeepReading();
-      const grantRes = await grantDeepReading(orderId, anonymousKey, await resolveAmount());
+      const { orderId } = await purchaseDeepReading("deep_reading");
+      const grantRes = await grantDeepReading(
+        orderId,
+        anonymousKey,
+        await resolveAmount("deep_reading"),
+        "deep_reading",
+      );
       firePaywall("paywall_purchase_completed", {
         reading_type: readingType,
         trigger: "reading_start",
+        product: "deep_reading",
         order_id: orderId,
         session_id: sessionId,
       });
@@ -485,6 +523,7 @@ export default function DeepReadingResult({
       firePaywall("paywall_purchase_failed", {
         reading_type: readingType,
         trigger: "reading_start",
+        product: "deep_reading",
         reason: err?.message || "cancelled",
         session_id: sessionId,
       });
@@ -499,28 +538,37 @@ export default function DeepReadingResult({
   };
 
   // 후속질문 결제 → grant (후속 10회 충전)
-  const handleFollowupPurchase = async () => {
+  // product: "followup_pack"(질문 10회) | "deep_reading"(질문 10회 + 풀이 1회)
+  const handleFollowupPurchase = async (product) => {
     if (isPurchasing) return;
     setIsPurchasing(true);
-    saveDeepReadingPending({ thread_id: fortuneResult.thread_id });
+    setPurchasingProduct(product);
+    saveDeepReadingPending({ thread_id: fortuneResult.thread_id, product });
     firePaywall("paywall_purchase_started", {
       reading_type: readingType,
       trigger: "followup",
+      product,
       session_id: sessionId,
     });
     try {
-      const { orderId } = await purchaseDeepReading();
-      const grantRes = await grantDeepReading(orderId, anonymousKey, await resolveAmount());
+      const { orderId } = await purchaseDeepReading(product);
+      const grantRes = await grantDeepReading(
+        orderId,
+        anonymousKey,
+        await resolveAmount(product),
+        product,
+      );
       firePaywall("paywall_purchase_completed", {
         reading_type: readingType,
         trigger: "followup",
+        product,
         order_id: orderId,
         session_id: sessionId,
       });
       setFollowupPaywall(false);
       setFollowupRemaining(grantRes?.followup_remaining ?? 10);
-      // 결제 1건은 후속 10회 + 풀이 1회 → 다음 풀이에서 쓸 크레딧이 남는다
-      setReadingRemaining(grantRes?.reading_remaining ?? 1);
+      // deep_reading은 풀이 1회가 함께 적립 → 다음 풀이에서 쓸 크레딧이 남는다
+      setReadingRemaining((prev) => grantRes?.reading_remaining ?? prev);
       setFreeFollowupAvailable(false);
       clearDeepReadingPending();
       openToast({ message: "결제 완료! 후속질문 10회가 충전되었어요. 다시 전송해 주세요." });
@@ -528,6 +576,7 @@ export default function DeepReadingResult({
       firePaywall("paywall_purchase_failed", {
         reading_type: readingType,
         trigger: "followup",
+        product,
         reason: err?.message || "cancelled",
         session_id: sessionId,
       });
@@ -537,6 +586,7 @@ export default function DeepReadingResult({
       }
     } finally {
       setIsPurchasing(false);
+      setPurchasingProduct(null);
     }
   };
 
@@ -1296,45 +1346,37 @@ export default function DeepReadingResult({
               }}
             >
               더 궁금한 점이 있으신가요? 😊 지금은 이어서 여쭤볼 수 있는
-              후속 질문 횟수가 없어요.{" "}
-              <strong
-                style={{ fontWeight: "bold", color: "var(--color-primary)" }}
-              >
-                {priceLabel ? `${priceLabel} 한 번이면` : "한 번 결제하면"}
-              </strong>{" "}
-              이 풀이에 후속 질문을{" "}
+              후속 질문 횟수가 없어요. 이 풀이에 후속 질문을{" "}
               <strong
                 style={{ fontWeight: "bold", color: "var(--color-primary)" }}
               >
                 10회
               </strong>{" "}
-              더 할 수 있고,{" "}
+              더 하거나,{" "}
               <strong
                 style={{ fontWeight: "bold", color: "var(--color-primary)" }}
               >
                 다른 유료 풀이 1회
               </strong>
-              도 추가 결제 없이 볼 수 있어요.
+              까지 함께 받을 수 있어요.
             </p>
             <button
-              onClick={handleFollowupPurchase}
+              onClick={() => handleFollowupPurchase("followup_pack")}
               disabled={isPurchasing}
-              style={{
-                width: "100%",
-                padding: "12px",
-                fontSize: "14px",
-                fontWeight: "bold",
-                color: "var(--color-white)",
-                background: isPurchasing
-                  ? "var(--color-gray-200)"
-                  : "var(--color-primary)",
-                border: "none",
-                borderRadius: "8px",
-                cursor: isPurchasing ? "not-allowed" : "pointer",
-                minHeight: "44px",
-              }}
+              style={followupPaywallButtonStyle(true)}
             >
-              {isPurchasing
+              {purchasingProduct === "followup_pack"
+                ? "결제 진행 중..."
+                : followupPackPriceLabel
+                  ? `${followupPackPriceLabel}으로 질문 10회 받기`
+                  : "질문 10회 받기"}
+            </button>
+            <button
+              onClick={() => handleFollowupPurchase("deep_reading")}
+              disabled={isPurchasing}
+              style={{ ...followupPaywallButtonStyle(false), marginTop: "8px" }}
+            >
+              {purchasingProduct === "deep_reading"
                 ? "결제 진행 중..."
                 : priceLabel
                   ? `${priceLabel}으로 질문 10회 + 풀이 1회 받기`

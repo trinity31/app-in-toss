@@ -4,26 +4,45 @@
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY;
-const DEEP_READING_SKU = import.meta.env.VITE_DEEP_READING_PRODUCT_SKU;
+// 결제 상품. 키는 백엔드 grant의 product 코드(quota_service.PURCHASE_PRODUCTS)와 일치해야 한다.
+// fallbackAmount: IAP 상품 조회 실패(개발 브라우저·구버전 토스앱) 시 grant에 보낼 금액.
+export const PRODUCTS = {
+  deep_reading: {
+    sku: import.meta.env.VITE_DEEP_READING_PRODUCT_SKU,
+    envName: "VITE_DEEP_READING_PRODUCT_SKU",
+    fallbackAmount: 4900,
+  }, // 풀이 1 + 후속질문 10
+  followup_pack: {
+    sku: import.meta.env.VITE_FOLLOWUP_PACK_PRODUCT_SKU,
+    envName: "VITE_FOLLOWUP_PACK_PRODUCT_SKU",
+    fallbackAmount: 1980,
+  }, // 후속질문 10 전용
+};
 
-// IAP 상품 조회 실패(개발 브라우저·구버전 토스앱) 시 grant에 보낼 폴백 금액
-const FALLBACK_AMOUNT = 4900;
+const DEFAULT_PRODUCT = "deep_reading";
+
+/** SKU → 상품 코드. 모르는 SKU면 null. */
+function productBySku(sku) {
+  return Object.keys(PRODUCTS).find((key) => PRODUCTS[key].sku && PRODUCTS[key].sku === sku) || null;
+}
 
 /**
- * 콘솔에 등록된 심화풀이 상품 정보를 조회한다. 가격 표기(displayAmount)의 단일 출처.
+ * 콘솔에 등록된 결제 상품 정보를 조회한다. 가격 표기(displayAmount)의 단일 출처.
  * IAP 미지원 환경(개발 브라우저·구버전 토스앱)이나 조회 실패 시 null — throw 하지 않는다.
+ * @param {keyof PRODUCTS} [product]
  * @returns {Promise<{sku: string, displayAmount: string, displayName: string} | null>}
  */
-export async function getDeepReadingProduct() {
-  if (!DEEP_READING_SKU) {
-    console.warn("[deepReadingPurchase] VITE_DEEP_READING_PRODUCT_SKU 미설정");
+export async function getDeepReadingProduct(product = DEFAULT_PRODUCT) {
+  const { sku, envName } = PRODUCTS[product];
+  if (!sku) {
+    console.warn(`[deepReadingPurchase] ${envName} 미설정`);
     return null;
   }
   try {
     const { IAP } = await import("@apps-in-toss/web-framework");
     const response = await IAP.getProductItemList();
     const products = response?.products ?? [];
-    return products.find((p) => p.sku === DEEP_READING_SKU) || null;
+    return products.find((p) => p.sku === sku) || null;
   } catch (e) {
     console.warn("[deepReadingPurchase] 상품 정보 조회 실패:", e);
     return null;
@@ -69,7 +88,11 @@ export function clearDeepReadingPending() {
   }
 }
 
-/** 결제됐지만 미완료(서버 지급 실패)된 심화풀이 주문 목록. */
+/**
+ * 결제됐지만 미완료(서버 지급 실패)된 결제 주문 목록.
+ * @returns {Promise<Array<{order: object, product: keyof PRODUCTS | null}>>}
+ *   product가 null이면 SKU로 상품을 판정하지 못한 주문 — 호출측이 결제 직전 저장한 pending의 product로 판정한다.
+ */
 export async function getPendingDeepReadingOrders() {
   const { IAP } = await import("@apps-in-toss/web-framework");
   const response = await IAP.getPendingOrders();
@@ -77,12 +100,15 @@ export async function getPendingDeepReadingOrders() {
     ? response
     : response?.orders || response?.pendingOrders || [];
   console.log("[deepReadingPurchase] pending orders:", JSON.stringify(orders));
-  const matched = orders.filter((o) => {
-    const sku = o?.sku || o?.productId || o?.productSku || o?.product?.sku || o?.productCode;
-    return sku === DEEP_READING_SKU; // 심화풀이 SKU 매칭
-  });
+  const withProduct = orders.map((o) => ({
+    order: o,
+    product: productBySku(
+      o?.sku || o?.productId || o?.productSku || o?.product?.sku || o?.productCode,
+    ),
+  }));
+  const matched = withProduct.filter((x) => x.product);
   // SKU 필드명이 예상과 달라 매칭 0건이면 전체로 폴백(복구 우선)
-  return matched.length ? matched : orders;
+  return matched.length ? matched : withProduct;
 }
 
 /** 복구 지급 완료를 토스에 통지 (보류 주문 정리). */
@@ -97,12 +123,13 @@ export async function completeDeepReadingGrant(orderId) {
 
 /**
  * 토스 IAP 단건 결제를 실행한다.
+ * @param {keyof PRODUCTS} [product]
  * @returns {Promise<{orderId: string}>} 결제 성공 시 orderId. 취소/실패 시 reject.
  */
-export async function purchaseDeepReading() {
-  const sku = DEEP_READING_SKU;
+export async function purchaseDeepReading(product = DEFAULT_PRODUCT) {
+  const { sku, envName } = PRODUCTS[product];
   if (!sku) {
-    throw new Error("VITE_DEEP_READING_PRODUCT_SKU 미설정");
+    throw new Error(`${envName} 미설정`);
   }
   const { IAP } = await import("@apps-in-toss/web-framework");
 
@@ -129,18 +156,20 @@ export async function purchaseDeepReading() {
 }
 
 /**
- * 결제 완료 후 백엔드에 quota 적립(1회 결제 = 풀이 1 + 후속 10). orderId 멱등.
- * @param {number} [amount] 실제 결제 금액(콘솔 displayAmount 파싱값). 없으면 FALLBACK_AMOUNT.
+ * 결제 완료 후 백엔드에 quota 적립. 적립량은 서버 상품표가 결정(deep_reading: 풀이 1 + 후속 10 / followup_pack: 후속 10). orderId 멱등.
+ * @param {number} [amount] 실제 결제 금액(콘솔 displayAmount 파싱값). 없으면 상품별 fallbackAmount.
+ * @param {keyof PRODUCTS} [product]
  * @returns {Promise<{success: boolean, reading_remaining?: number, followup_remaining?: number}>}
  */
-export async function grantDeepReading(orderId, anonymousKey, amount) {
+export async function grantDeepReading(orderId, anonymousKey, amount, product = DEFAULT_PRODUCT) {
   const response = await fetch(`${API_BASE_URL}/payment/deep-reading/grant`, {
     method: "POST",
     headers: { "X-API-Key": API_KEY, "Content-Type": "application/json" },
     body: JSON.stringify({
       orderId,
       user_anonymous_id: anonymousKey,
-      amount: Number.isFinite(amount) && amount > 0 ? amount : FALLBACK_AMOUNT,
+      amount: Number.isFinite(amount) && amount > 0 ? amount : PRODUCTS[product].fallbackAmount,
+      product,
     }),
   });
   if (!response.ok) {
