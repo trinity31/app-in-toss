@@ -57,7 +57,7 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
         margin: "0 -20px",
       }}
       aria-roledescription="carousel"
-      aria-label="연애상담 풀이 바로가기"
+      aria-label="추천 풀이 바로가기"
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
@@ -155,7 +155,7 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
                   color: "#fff",
                 }}
               >
-                연애상담 모드 · 바로 보기 →
+                {slide.cta || "바로 보기"} →
               </span>
             </div>
             <span

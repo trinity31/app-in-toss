@@ -41,8 +41,26 @@ const LOVE_SELECTED_TYPE = {
   fortuneTypeTitle: "2026년 애정운",
 };
 
-// 연애상담 모드(후속채팅)가 붙는 풀이 — 애정운·궁합 바로가기 배너
+// 4분기 운세 selectedType — Supabase new_year_fortune_types 검증값 (scripts/add_q4_menu.py)
+const Q4_SELECTED_TYPE = {
+  fortuneType: "new_year_2026_q4",
+  themeType: "new_year_2026_q4",
+  readingType: "new_year_2026_q4",
+  fortuneTypeTitle: "2026년 4분기 운세",
+};
+
+// 홈 상단 슬라이딩 배너 — 1번: 4분기 운세(시즌), 2·3번: 연애상담 모드가 붙는 애정운·궁합
 const HERO_SLIDES = [
+  {
+    key: "new_year_2026_q4",
+    icon: "🍂",
+    eyebrow: "2026 4분기 운세",
+    title: "남은 3개월 운세는?",
+    description: "올해도 3개월 밖에 안 남았어요. 어떻게 하면 알차게 마무리 할 수 있을까요?",
+    bg: "linear-gradient(135deg, #fdeedd 0%, #f2c48d 100%)",
+    cta: "4분기 운세 · 바로 보기",
+    selectedType: Q4_SELECTED_TYPE,
+  },
   {
     key: "new_year_2026_love",
     icon: "❤️",
@@ -50,6 +68,7 @@ const HERO_SLIDES = [
     title: "올해 내 연애운은?",
     description: "풀이를 보고 나면 복냥이와 연애상담까지 이어져요",
     bg: "linear-gradient(135deg, #fde4ec 0%, #f7b6cd 100%)",
+    cta: "연애상담 모드 · 바로 보기",
     selectedType: LOVE_SELECTED_TYPE,
   },
   {
@@ -59,6 +78,7 @@ const HERO_SLIDES = [
     title: "우리, 찰떡일까 상극일까?",
     description: "두 사람 궁합을 보고 실제 고민을 연애상담으로 물어보세요",
     bg: "linear-gradient(135deg, #ece3f8 0%, #c4ade8 100%)",
+    cta: "연애상담 모드 · 바로 보기",
     selectedType: COMPATIBILITY_SELECTED_TYPE,
   },
 ];
