@@ -87,6 +87,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260913-nez | 궁합·애정운 연애상담 모드 무료 질문 1회 안내 문구·배너 (백엔드 기배포, 프런트 안내만) | 2026-09-13 | 2e96b98 | [260913-nez-love-free-followup](./quick/260913-nez-love-free-followup/) |
 | 260914-hb2 | HomePage Hero 배너를 애정운·궁합 바로가기 슬라이딩 배너 2개로 교체 (웹 fortunecat과 동일 기능) | 2026-09-14 | 199f00e | [260914-hb2-homepage-hero-2](./quick/260914-hb2-homepage-hero-2/) |
 | fast | HomePage 신년운세 섹션 설명 '무제한' 표현 제거 → 웹과 동일 "다가오는 한 해의 흐름을 미리 살펴보세요" | 2026-09-14 | 965c1bb | — |
+| 260922-htq | 대화형 심화 타로: 질문 정리·추가 질문·배열 안내·카드 뽑기·종합 풀이·확인 카드·상담 복구 | 2026-09-22 | c9faaf6 / 9d48f14 / 6bf7fde / 8b4172a / 625ecc6 | [260922-htq-ui](./quick/260922-htq-ui/) |
 
 ### Notes
 
@@ -104,6 +105,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 ### Recent Activity
 
+- 2026-09-22: Quick task 260922-htq — 토스 심화 타로 구현 완료. 복구/API 테스트 13개 및 변경 파일 ESLint·AIT 빌드 통과. 390×844 실제 화면에서 입력부터 확인 카드와 새로고침 유지까지 검증. 기존 전체 lint 오류 13개/경고 11개는 별도 기록. 네이티브 Toss Storage 실기기 검증과 백엔드 배포/마이그레이션은 출시 전 필요.
 - 2026-04-29: PROJECT.md, REQUIREMENTS.md, codebase 매핑 완료 (commit `1fa2675`)
 - 2026-04-29: ROADMAP.md, STATE.md 작성 — 5 phases, 14/14 coverage
 - 2026-04-30: Phase 1 CONTEXT.md + DISCUSSION-LOG.md 작성 — boknyang-tarot 정본 확정, 자산 보관 위치/포팅 전략/라우팅 통합 방식 결정
