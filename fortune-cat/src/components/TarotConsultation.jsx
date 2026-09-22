@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TarotCardArt from './TarotCardArt'
 import { getCardImageUrl } from '../assets/images/cards'
 import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets'
@@ -61,6 +61,10 @@ export default function TarotConsultation({ onBack }) {
   const clarifier = session?.clarifier
   const retryAction = continuation(session)
   const failure = error || session?.error
+
+  useEffect(() => {
+    if (!clarifier) window.scrollTo({ top: 0 })
+  }, [session?.status, session?.pending_question?.question, clarifier])
 
   const revise = async question => {
     await client.command('revise', { question })
@@ -139,6 +143,7 @@ export default function TarotConsultation({ onBack }) {
 
             <section style={sectionStyle}>
               <h2 style={headingStyle}>{clarifier ? '확인 카드가 보충하는 이야기' : '조금 더 살펴보고 싶은 부분이 있나요?'}</h2>
+              {busy && <p role="status" style={{ marginBottom: 12, fontSize: 14, color: '#64119F' }}>카드의 의미를 살펴보고 있어요…</p>}
               {clarifier ? <>
                 <p style={{ marginBottom: 18, color: '#71617F', fontSize: 14 }}>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18 }}><TarotCardArt size="sm" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
