@@ -7,7 +7,7 @@ commit: 83c924b
 
 # Limited-time purchase discount display
 
-Implemented console campaign presentation at all three purchase surfaces: initial deep-reading unlock, followup pack, and followup bundle. Shared `PurchasePromotion` shows a prominent 50% badge, October 21 end date, struck original price, bold conditional discounted price, one-redemption restriction, regular pricing after a prior discount redemption, and final Toss checkout confirmation.
+Implemented console campaign presentation at all three purchase surfaces: initial deep-reading unlock, followup pack, and followup bundle. After user screenshot feedback, shared `PurchasePromotion` shows only the struck original price, bold discounted price, and short “할인 적용 시” qualifier. The badge, end-date label and long eligibility/checkout paragraph were removed as requested.
 
 - Followup pack: 1,980원 → 990원, policy 855.
 - Deep reading: 4,950원 → 2,475원, policy 857.
@@ -36,3 +36,10 @@ Checkout product records, SDK `displayAmount`, amount resolution, grant code, fr
 ## Deviations
 
 Added a small shared presentational component beyond the plan's initial three source paths to avoid repeated promotional markup and let the independent browser harness render the actual component. No other scope expansion.
+
+## Screenshot feedback revision
+
+- Removed the 50% badge, end-date label, and eligibility/checkout paragraph from the shared component, affecting all three purchase surfaces.
+- Removed the now-unnecessary top spacing on the price row.
+- Kept conditional price wording, CTA behavior and automatic expiry.
+- Source diff reviewed; targeted ESLint and diff whitespace check passed. No deployment.
