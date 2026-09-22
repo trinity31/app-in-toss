@@ -1276,7 +1276,7 @@ export default function DeepReadingResult({
                     {isPurchasing
                       ? "결제 진행 중..."
                       : promotions.deep_reading
-                        ? `할인 적용 시 ${promotions.deep_reading.discountedAmount.toLocaleString("ko-KR")}원 · 전체보기 + 후속 10회`
+                        ? `${promotions.deep_reading.discountedAmount}원으로 전체보기 + 후속 10회 받기`
                         : priceLabel
                         ? `${priceLabel}으로 전체보기 + 후속 10회 받기`
                         : "전체보기 + 후속 10회 받기"}
@@ -1380,7 +1380,7 @@ export default function DeepReadingResult({
               {purchasingProduct === "followup_pack"
                 ? "결제 진행 중..."
                 : promotions.followup_pack
-                  ? `할인 적용 시 ${promotions.followup_pack.discountedAmount.toLocaleString("ko-KR")}원 · 질문 10회 받기`
+                  ? `${promotions.followup_pack.discountedAmount}원으로 질문 10회 받기`
                   : followupPackPriceLabel
                   ? `${followupPackPriceLabel}으로 질문 10회 받기`
                   : "질문 10회 받기"}
@@ -1394,7 +1394,7 @@ export default function DeepReadingResult({
               {purchasingProduct === "deep_reading"
                 ? "결제 진행 중..."
                 : promotions.deep_reading
-                  ? `할인 적용 시 ${promotions.deep_reading.discountedAmount.toLocaleString("ko-KR")}원 · 질문 10회 + 풀이 1회`
+                  ? `${promotions.deep_reading.discountedAmount}원으로 질문 10회 + 풀이 1회`
                   : priceLabel
                   ? `${priceLabel}으로 질문 10회 + 풀이 1회 받기`
                   : "질문 10회 + 풀이 1회 받기"}

@@ -6,7 +6,7 @@ export default function PurchasePromotion({ promotion, compact = false }) {
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', flexWrap: 'wrap', gap: '4px 8px' }}>
         <del style={{ fontSize: '15px', color: 'var(--color-gray-600)' }}>{promotion.originalAmount.toLocaleString('ko-KR')}원</del>
         <strong style={{ fontSize: compact ? '24px' : '28px', color: 'var(--color-primary)' }}>{promotion.discountedAmount.toLocaleString('ko-KR')}원</strong>
-        <span style={{ fontSize: '13px', color: 'var(--color-gray-700)' }}>할인 적용 시</span>
+        <span style={{ fontSize: '13px', color: 'var(--color-gray-700)' }}>기간 한정 할인</span>
       </div>
     </div>
   )
