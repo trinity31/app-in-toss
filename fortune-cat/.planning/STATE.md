@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: milestone
 status: completed
-last_updated: "2026-06-02T07:30:00.000Z"
+last_updated: "2026-09-22T01:56:31.932036+00:00"
 progress:
   total_phases: 5
   completed_phases: 5
@@ -14,7 +14,7 @@ progress:
 
 # STATE: 복냥사주 v1.1
 
-**Last Updated:** 2026-05-05
+**Last Updated:** 2026-09-22
 
 ## Project Reference
 
@@ -88,6 +88,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260914-hb2 | HomePage Hero 배너를 애정운·궁합 바로가기 슬라이딩 배너 2개로 교체 (웹 fortunecat과 동일 기능) | 2026-09-14 | 199f00e | [260914-hb2-homepage-hero-2](./quick/260914-hb2-homepage-hero-2/) |
 | fast | HomePage 신년운세 섹션 설명 '무제한' 표현 제거 → 웹과 동일 "다가오는 한 해의 흐름을 미리 살펴보세요" | 2026-09-14 | 965c1bb | — |
 
+| 260922-f2m | 결제 화면 3곳에 기간 한정 50% 할인·정가/할인가·1회 조건 표시, 기간 종료 자동 복귀 | 2026-09-22 | 83c924b | [260922-f2m-discount](./quick/260922-f2m-show-limited-time-50-percent-discount-pr/) |
+
 ### Notes
 
 - 브라운필드 — v1.0(사주·딥리딩·부적)은 운영 중이며, 회귀 방지가 NAV-03의 핵심 제약
@@ -112,6 +114,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 - 2026-06-02: Quick task 260602-mou — 탭바 플로팅 알약 전환(토스 브랜딩 가이드 §3 준수) + 탭 화면 body 라벤더(`--color-bg-soft`) + 퀵메뉴 칩 #EBDCFA + 탭 클릭 회색 하이라이트 제거. worktree 9커밋 → main 병합(`4f4a7a6`). 실기기 UAT 승인.
 - 2026-05-05: v1.1 milestone archived — 13/13 REQ satisfied, UAT 21/22, audit gaps_found 알려진 갭 명시 후 archive. ROADMAP / REQUIREMENTS / AUDIT → milestones/. PROJECT.md evolution.
 - 2026-09-14: Quick task 260914-hb2 — HomePage Hero 배너를 애정운·궁합 연애상담 바로가기 슬라이드 배너 2개로 교체 (`HomeHeroCarousel.jsx` 신규, commit `199f00e`)
+
+- 2026-09-22: Quick task 260922-f2m — 할인 표시 구현 (`83c924b`). ESLint·Vite 빌드·기간 경계 검사·320/390px 컴포넌트 미리보기 확인. 토스 실기기 검증 및 배포 전.
 
 ---
 *State initialized: 2026-04-29*
