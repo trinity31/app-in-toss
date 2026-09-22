@@ -10,6 +10,7 @@
 // RESEARCH Pitfall 5: 본 페이즈는 useState 4종 유지. Phase 4·5 진입 시점에 Context 승격 결정.
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Loader } from '@toss/tds-mobile';
 import * as Sentry from '@sentry/react';
 import {
@@ -23,6 +24,7 @@ import { fetchTarotCards, getOgImageUrl } from '../lib/supabase';
 import { getCardImageUrl, prefetchAllCardImages } from '../assets/images/cards';
 import TarotShuffle from '../components/TarotShuffle';
 import TarotResult from '../components/TarotResult';
+import TarotConsultation from '../components/TarotConsultation';
 import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
 import { todayKST } from '../utils/dateKST';
 import { logEvent } from '../lib/firebase';
@@ -42,6 +44,9 @@ function pickThreeRandom(cards) {
 }
 
 export default function TarotPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isConsultation = searchParams.get('mode') === 'deep';
+  const openConsultation = () => setSearchParams({ mode: 'deep' });
   const [currentPage, setCurrentPage] = useState('intro');     // 'intro' | 'shuffle' | 'result'
   const [cardsData, setCardsData] = useState([]);              // 22장 전체 (intro fetch 결과)
   const [shuffledThree, setShuffledThree] = useState([]);      // 매 shuffle 진입 시 3장
@@ -215,6 +220,11 @@ export default function TarotPage() {
     ? cardsData.find((c) => c.id === selectedCardId)
     : null;
 
+  // Consultation state is independent of the daily card restore and fetch lifecycle.
+  if (isConsultation) {
+    return <TarotConsultation onBack={() => setSearchParams({})} />;
+  }
+
   // 로딩 상태 (UI-SPEC Loading & Error States)
   // storage 로드 + cardsData fetch 둘 다 완료해야 분기 가능 — 둘 중 하나라도 진행 중이면 Loader 노출.
   if (isLoading || storageLoading) {
@@ -291,6 +301,7 @@ export default function TarotPage() {
     <div data-current-page={currentPage}>
       {currentPage === 'intro' && (
         <TarotIntro
+          onConsultation={openConsultation}
           hasTodayDraw={Boolean(todayDraw && todayDraw.date === todayKST())}
           onStart={startShuffle}
           onResume={() => {
@@ -307,7 +318,7 @@ export default function TarotPage() {
         <TarotShuffle cards={shuffledThree} onSelect={handleSelectCard} />
       )}
       {currentPage === 'result' && selectedCard && (
-        <TarotResult card={selectedCard} onHome={handleHome} onShare={handleShare} />
+        <TarotResult card={selectedCard} onHome={handleHome} onShare={handleShare} onConsultation={openConsultation} />
       )}
     </div>
   );
@@ -315,7 +326,7 @@ export default function TarotPage() {
 
 // intro 단계 — boknyang-tarot 프로토타입 디자인에 맞춤 (사용자 요청 2026-05-02).
 // 레이아웃: ✨ 복냥타로 ✨ 로고 + 마스코트 200px + "복냥이가 뽑아주는 / 오늘의 운세" + 부제 + CTA + 자정 안내.
-function TarotIntro({ hasTodayDraw, onStart, onResume }) {
+function TarotIntro({ hasTodayDraw, onStart, onResume, onConsultation }) {
   return (
     <div
       style={{
@@ -396,6 +407,9 @@ function TarotIntro({ hasTodayDraw, onStart, onResume }) {
           }}
         >
           {hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}
+        </button>
+        <button type="button" onClick={onConsultation} className="tap-card" style={{ width: '100%', minHeight: 56, marginTop: 12, padding: '14px 20px', fontSize: 16, fontWeight: 700, color: '#64119F', background: '#FFFFFF', border: '1px solid #D8C8E4', borderRadius: 24 }}>
+          고민을 나누는 심화 타로 상담
         </button>
         <p style={{ marginTop: 28, marginBottom: 8, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: '#888194', textAlign: 'center' }}>
           하루 한 번, 자정에 초기화돼요 🌙

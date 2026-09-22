@@ -115,3 +115,45 @@ test('corrupt credentials are not silently deleted', async () => {
   assert.equal(f.saved().token, 'invalid')
   assert.equal(f.calls.length, 0)
 })
+
+test('a storage read failure cannot overwrite a potentially existing consultation', async () => {
+  const f = fixture([])
+  f.storage.getItem = async () => { throw new Error('temporarily unavailable') }
+  await f.client.restore()
+  await f.client.start('다른 고민')
+  assert.equal(f.calls.length, 0)
+  assert.equal(f.client.getSnapshot().restoreFailed, true)
+})
+
+test('answer is saved before replanning, with each returned version used', async () => {
+  const question = { ...draft, version: 1, status: 'question', pending_question: { question: '어떤 고민인가요?', options: [] } }
+  const answered = { ...draft, version: 2, answers: [{ question: '어떤 고민인가요?', answer: '이직 준비를 시작할지 고민이에요' }] }
+  const f = fixture([reply(question), reply(answered), reply({ ...ready, version: 3 })], { id, token, question: draft.question, created: true })
+  await f.client.restore()
+  await f.client.command('answer', { answer: answered.answers[0].answer })
+  assert.deepEqual(f.calls[1].data, { version: 1, answer: answered.answers[0].answer })
+  assert.deepEqual(f.calls[2].data, { version: 2 })
+  assert.ok(f.calls[2].url.endsWith('/plan'))
+})
+
+test('clarifier draw is followed by its interpretation and preserves original reading', async () => {
+  const clarified = { ...complete, version: 4, status: 'clarifier_drawn', clarifier: { target_index: 1, card: { id: 15 }, reading: null } }
+  const finished = { ...clarified, version: 5, status: 'complete', clarifier: { ...clarified.clarifier, reading: { meaning: '보충' } } }
+  const f = fixture([reply(complete), reply(clarified), reply(finished)], { id, token, question: draft.question, created: true })
+  await f.client.restore()
+  await Promise.all([f.client.command('clarify', { target_index: 1 }), f.client.command('clarify', { target_index: 1 })])
+  assert.deepEqual(f.calls[1].data, { version: 3, target_index: 1 })
+  assert.ok(f.calls[2].url.endsWith('/interpret-clarifier'))
+  assert.deepEqual(f.client.getSnapshot().session.reading, complete.reading)
+  assert.deepEqual(f.client.getSnapshot().session.cards, complete.cards)
+})
+
+test('an answer lost before reaching the server is resent only at the same version', async () => {
+  const question = { ...draft, version: 1, status: 'question', pending_question: { question: '무엇이 궁금한가요?', options: [] } }
+  const f = fixture([reply(question), new Error('offline'), reply(question), reply({ ...draft, version: 2 }), reply({ ...ready, version: 3 })], { id, token, question: draft.question, created: true })
+  await f.client.restore()
+  await f.client.command('answer', { answer: '현재 마음' })
+  await f.client.retry()
+  assert.deepEqual(f.calls[3].data, { version: 1, answer: '현재 마음' })
+  assert.equal(f.client.getSnapshot().session.status, 'ready')
+})

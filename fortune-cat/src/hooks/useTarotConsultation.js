@@ -4,7 +4,10 @@ import { createTarotConsultation } from '../lib/tarotConsultation'
 
 const storage = {
   async getItem(key) {
-    try { return await Storage.getItem(key) }
+    try {
+      const value = await Storage.getItem(key)
+      return value ?? (import.meta.env.DEV ? window.localStorage.getItem(key) : null)
+    }
     catch (error) {
       if (import.meta.env.DEV) return window.localStorage.getItem(key)
       throw error

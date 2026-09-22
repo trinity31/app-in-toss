@@ -30,7 +30,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
   let credentials = null
   let active = null
   let pending = null
-  let snapshot = { session: null, busy: false, error: null, initialized: false, hasSaved: false }
+  let snapshot = { session: null, busy: false, error: null, initialized: false, hasSaved: false, restoreFailed: false, invalidSaved: false }
   const listeners = new Set()
   const update = values => {
     snapshot = { ...snapshot, ...values }
@@ -117,18 +117,24 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener) },
     restore() {
       return run(async () => {
+        update({ restoreFailed: true })
         const raw = await storage.getItem(SESSION_KEY)
+        update({ restoreFailed: false })
         if (!raw) return
         update({ hasSaved: true })
-        const parsed = JSON.parse(raw)
-        if (!validCredentials(parsed)) throw new Error('Invalid saved consultation')
+        let parsed
+        try { parsed = JSON.parse(raw) } catch { /* Invalid data remains until the user starts over. */ }
+        if (!validCredentials(parsed)) {
+          update({ invalidSaved: true })
+          throw new Error('Invalid saved consultation')
+        }
         credentials = parsed
         await refresh()
       })
     },
     start(question) {
       return run(async () => {
-        if (credentials || snapshot.hasSaved) return
+        if (credentials || snapshot.hasSaved || snapshot.restoreFailed) return
         const trimmed = question.trim()
         if (!trimmed || trimmed.length > 3000) return
         const next = makeCredentials(trimmed)
@@ -164,7 +170,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         await storage.removeItem(SESSION_KEY)
         credentials = null
         pending = null
-        update({ session: null, hasSaved: false })
+        update({ session: null, hasSaved: false, restoreFailed: false, invalidSaved: false })
       })
     },
   }
