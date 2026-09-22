@@ -1,15 +1,38 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import TarotCardArt from './TarotCardArt'
 import { getCardImageUrl } from '../assets/images/cards'
 import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets'
 import { useTarotConsultation } from '../hooks/useTarotConsultation'
 import { continuation } from '../lib/tarotConsultation'
 import tarotCatImage from '../assets/images/tarot_cat.png'
+import './TarotConsultation.css'
 
 const textStyle = { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', lineHeight: 1.8 }
 const headingStyle = { fontSize: 19, lineHeight: 1.5, marginBottom: 12, color: '#3F3754' }
 const sectionStyle = { marginTop: 28, paddingTop: 24, borderTop: '1px solid #E6DCEC' }
 const inputStyle = { width: '100%', padding: 16, font: 'inherit', fontSize: 16, lineHeight: 1.7, color: '#3F3754', background: '#FFFFFF', border: '1px solid #BBAAC9', borderRadius: 16, resize: 'vertical', minHeight: 130, boxSizing: 'border-box' }
+
+function BusyIndicator() {
+  const dialogRef = useRef(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    const previousOverflow = document.body.style.overflow
+    dialog.showModal()
+    document.body.style.overflow = 'hidden'
+    return () => {
+      dialog.close()
+      document.body.style.overflow = previousOverflow
+    }
+  }, [])
+
+  return <dialog ref={dialogRef} className="tarot-consultation-busy" aria-labelledby="tarot-busy-label" onCancel={event => event.preventDefault()}>
+    <div role="status" aria-live="polite" aria-atomic="true">
+      <span className="tarot-consultation-busy__spinner" aria-hidden="true" />
+      <p id="tarot-busy-label">잠시만 기다려 주세요</p>
+    </div>
+  </dialog>
+}
 
 function Action({ children, secondary = false, disabled, style, ...props }) {
   return <button type="button" {...props} disabled={disabled} className="tap-card" style={{ width: '100%', minHeight: 52, border: secondary ? '1px solid #D8C8E4' : 0, borderRadius: 16, padding: '13px 16px', font: 'inherit', fontWeight: 700, fontSize: 16, background: secondary ? '#FFFFFF' : 'var(--color-primary)', color: secondary ? '#64119F' : '#FFFFFF', cursor: disabled ? 'default' : 'pointer', opacity: disabled ? 0.55 : 1, ...style }}>{children}</button>
@@ -72,14 +95,14 @@ export default function TarotConsultation({ onBack }) {
     if (!next.error && next.session?.question === question) setEditing(false)
   }
 
-  return <main style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `${insets.top + 20}px 22px ${insets.bottom + 140}px`, color: '#3F3754', overflowWrap: 'anywhere' }}>
+  return <>
+    {(!initialized || busy) && <BusyIndicator />}
+    <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `${insets.top + 20}px 22px ${insets.bottom + 140}px`, color: '#3F3754', overflowWrap: 'anywhere' }}>
     <div style={{ maxWidth: 520, margin: '0 auto' }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 30 }}>
         <button type="button" onClick={onBack} style={{ minHeight: 44, padding: '8px 0', background: 'none', border: 0, font: 'inherit', color: '#64119F', fontWeight: 700 }}>‹ 타로</button>
         <span style={{ fontSize: 14, color: '#71617F' }}>복냥이와 깊이 나누는 고민</span>
       </header>
-
-      {(!initialized || busy) && <p role="status" aria-live="polite" style={{ marginBottom: 20, fontSize: 15, color: '#64119F' }}>{!initialized ? '저장된 상담을 확인하고 있어요…' : session?.cards.length ? '뽑은 카드의 이야기를 살펴보고 있어요…' : '고민을 차근차근 살펴보고 있어요…'}</p>}
 
       {failure && <div role="alert" style={{ padding: 16, background: '#FFF5EF', borderRadius: 16, color: '#7C3A21', marginBottom: 24 }}>
         <p style={{ ...textStyle, marginBottom: 12 }}>{failure}</p>
@@ -143,7 +166,6 @@ export default function TarotConsultation({ onBack }) {
 
             <section style={sectionStyle}>
               <h2 style={headingStyle}>{clarifier ? '확인 카드가 보충하는 이야기' : '조금 더 살펴보고 싶은 부분이 있나요?'}</h2>
-              {busy && <p role="status" style={{ marginBottom: 12, fontSize: 14, color: '#64119F' }}>카드의 의미를 살펴보고 있어요…</p>}
               {clarifier ? <>
                 <p style={{ marginBottom: 18, color: '#71617F', fontSize: 14 }}>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18 }}><TarotCardArt size="sm" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
@@ -168,4 +190,5 @@ export default function TarotConsultation({ onBack }) {
       <p style={{ ...textStyle, fontSize: 12, color: '#71617F', marginTop: 30 }}>{session?.notice || '타로는 자기 성찰과 선택을 돕는 참고예요. 상대의 마음이나 미래를 확정하지 않으며, 중요한 의료·법률·재정 판단은 사실 확인과 전문가 상담을 함께해 주세요.'}</p>
     </div>
   </main>
+  </>
 }
