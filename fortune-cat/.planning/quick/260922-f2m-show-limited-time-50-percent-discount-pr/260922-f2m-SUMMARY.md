@@ -7,7 +7,7 @@ commit: 83c924b
 
 # Limited-time purchase discount display
 
-Implemented console campaign presentation at all three purchase surfaces: initial deep-reading unlock, followup pack, and followup bundle. After user screenshot feedback, shared `PurchasePromotion` shows only the struck original price, bold discounted price, and short “할인 적용 시” qualifier. The badge, end-date label and long eligibility/checkout paragraph were removed as requested.
+Implemented console campaign presentation at all three purchase surfaces: initial deep-reading unlock, followup pack, and followup bundle. After user screenshot feedback, shared `PurchasePromotion` shows only the struck original price, bold discounted price, and short “기간 한정 할인” label. The badge, end-date label and long eligibility/checkout paragraph were removed as requested.
 
 - Followup pack: 1,980원 → 990원, policy 855.
 - Deep reading: 4,950원 → 2,475원, policy 857.
@@ -43,3 +43,10 @@ Added a small shared presentational component beyond the plan's initial three so
 - Removed the now-unnecessary top spacing on the price row.
 - Kept conditional price wording, CTA behavior and automatic expiry.
 - Source diff reviewed; targeted ESLint and diff whitespace check passed. No deployment.
+
+## Final copy revision
+
+- Replaced the price-side label with “기간 한정 할인”.
+- Followup buttons: “990원으로 질문 10회 받기” and “2475원으로 질문 10회 + 풀이 1회”; active CTA amounts omit thousands separators.
+- Initial deep-reading CTA also omits the old qualifier and preserves its full-reading description.
+- Loading, checkout and expiry behavior unchanged. No deployment.
