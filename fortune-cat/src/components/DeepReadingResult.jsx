@@ -1,6 +1,8 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 
 import ReactMarkdown from "react-markdown";
+import PurchasePromotion from "./PurchasePromotion";
+import { usePurchasePromotion } from "../hooks/usePurchasePromotion";
 import * as Sentry from "@sentry/react";
 import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
@@ -117,9 +119,10 @@ export default function DeepReadingResult({
   const headline = revealed?.headline ?? fortuneResult.headline;
   const summary = revealed?.summary ?? fortuneResult.summary;
 
-  // 콘솔 등록 상품 정보(가격 문구용). 미지원 환경에서는 null → 가격 없는 문구로 표시.
+  // SDK 상품 정가는 유지하고, 할인 안내는 별도 표시 정보로만 사용한다.
   const [products, setProducts] = useState({});
   const productsRef = useRef({});
+  const promotions = usePurchasePromotion();
   const priceLabel = products.deep_reading?.displayAmount || null;
   const followupPackPriceLabel = products.followup_pack?.displayAmount || null;
   // 결제 진행 중인 상품 — 후속질문 결제 카드에서 누른 버튼에만 진행 문구 표시
@@ -1251,6 +1254,7 @@ export default function DeepReadingResult({
                         : " (무료 1회 공개는 전체 풀이만 열리고, 후속 질문은 포함되지 않아요)"
                       : ""}
                   </p>
+                  <PurchasePromotion promotion={promotions.deep_reading} />
                   <button
                     onClick={handleReadingPurchase}
                     disabled={isPurchasing}
@@ -1271,7 +1275,9 @@ export default function DeepReadingResult({
                   >
                     {isPurchasing
                       ? "결제 진행 중..."
-                      : priceLabel
+                      : promotions.deep_reading
+                        ? `할인 적용 시 ${promotions.deep_reading.discountedAmount.toLocaleString("ko-KR")}원 · 전체보기 + 후속 10회`
+                        : priceLabel
                         ? `${priceLabel}으로 전체보기 + 후속 10회 받기`
                         : "전체보기 + 후속 10회 받기"}
                   </button>
@@ -1326,6 +1332,11 @@ export default function DeepReadingResult({
           // borderTop: '1px solid var(--color-gray-200)',
           padding: "12px 20px",
           zIndex: 100,
+          ...(followupPaywall ? {
+            maxHeight: `calc(100dvh - ${bottomBarHeight + insets.top + 24}px)`,
+            overflowY: "auto",
+            boxSizing: "border-box",
+          } : {}),
         }}
       >
         {followupPaywall ? (
@@ -1360,6 +1371,7 @@ export default function DeepReadingResult({
               </strong>
               까지 함께 받을 수 있어요.
             </p>
+            <PurchasePromotion promotion={promotions.followup_pack} compact />
             <button
               onClick={() => handleFollowupPurchase("followup_pack")}
               disabled={isPurchasing}
@@ -1367,10 +1379,13 @@ export default function DeepReadingResult({
             >
               {purchasingProduct === "followup_pack"
                 ? "결제 진행 중..."
-                : followupPackPriceLabel
+                : promotions.followup_pack
+                  ? `할인 적용 시 ${promotions.followup_pack.discountedAmount.toLocaleString("ko-KR")}원 · 질문 10회 받기`
+                  : followupPackPriceLabel
                   ? `${followupPackPriceLabel}으로 질문 10회 받기`
                   : "질문 10회 받기"}
             </button>
+            <PurchasePromotion promotion={promotions.deep_reading} compact />
             <button
               onClick={() => handleFollowupPurchase("deep_reading")}
               disabled={isPurchasing}
@@ -1378,7 +1393,9 @@ export default function DeepReadingResult({
             >
               {purchasingProduct === "deep_reading"
                 ? "결제 진행 중..."
-                : priceLabel
+                : promotions.deep_reading
+                  ? `할인 적용 시 ${promotions.deep_reading.discountedAmount.toLocaleString("ko-KR")}원 · 질문 10회 + 풀이 1회`
+                  : priceLabel
                   ? `${priceLabel}으로 질문 10회 + 풀이 1회 받기`
                   : "질문 10회 + 풀이 1회 받기"}
             </button>
