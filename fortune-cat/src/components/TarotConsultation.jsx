@@ -33,7 +33,7 @@ function ConcernForm({ title, initialValue = '', options = [], busy, submitLabel
   </form>
 }
 
-function Card({ card, position, interpretation }) {
+function Card({ card, position, interpretation, comparison }) {
   return <details style={{ padding: '18px 0', borderBottom: '1px solid #E6DCEC' }}>
     <summary style={{ cursor: 'pointer', color: '#3F3754' }}>
       <span style={{ display: 'inline-flex', gap: 14, alignItems: 'center', verticalAlign: 'middle', width: 'calc(100% - 22px)' }}>
@@ -42,6 +42,9 @@ function Card({ card, position, interpretation }) {
       </span>
     </summary>
     <p style={{ ...textStyle, marginTop: 18 }}>{interpretation}</p>
+    {comparison && <dl style={{ marginTop: 16 }}>
+      {[['가능성', comparison.possibility], ['주의점', comparison.caution], ['확인할 조건', comparison.condition]].map(([label, value]) => <div key={label} style={{ marginTop: 12 }}><dt style={{ fontSize: 14, fontWeight: 700, color: '#64119F' }}>{label}</dt><dd style={textStyle}>{value}</dd></div>)}
+    </dl>}
   </details>
 }
 
@@ -128,7 +131,7 @@ export default function TarotConsultation({ onBack }) {
             </section>
             <section style={sectionStyle}>
               <h2 style={headingStyle}>각 카드가 들려주는 이야기</h2>
-              {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} />)}
+              {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} comparison={position.comparison} />)}
             </section>
             <section style={sectionStyle}><h2 style={headingStyle}>카드를 함께 보면</h2><p style={textStyle}>{reading.relationships}</p></section>
             <section style={sectionStyle}><h2 style={headingStyle}>현실에서 확인해 볼 것</h2><Items values={reading.reality_checks} /></section>
