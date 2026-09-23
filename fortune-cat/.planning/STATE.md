@@ -87,6 +87,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 | 260913-nez | 궁합·애정운 연애상담 모드 무료 질문 1회 안내 문구·배너 (백엔드 기배포, 프런트 안내만) | 2026-09-13 | 2e96b98 | [260913-nez-love-free-followup](./quick/260913-nez-love-free-followup/) |
 | 260914-hb2 | HomePage Hero 배너를 애정운·궁합 바로가기 슬라이딩 배너 2개로 교체 (웹 fortunecat과 동일 기능) | 2026-09-14 | 199f00e | [260914-hb2-homepage-hero-2](./quick/260914-hb2-homepage-hero-2/) |
 | fast | HomePage 신년운세 섹션 설명 '무제한' 표현 제거 → 웹과 동일 "다가오는 한 해의 흐름을 미리 살펴보세요" | 2026-09-14 | 965c1bb | — |
+| 260922-htq | 대화형 심화 타로: 질문 정리·추가 질문·배열 안내·카드 뽑기·종합 풀이·확인 카드·상담 복구 | 2026-09-22 | c9faaf6 / 9d48f14 / 6bf7fde / 8b4172a / 625ecc6 | [260922-htq-ui](./quick/260922-htq-ui/) |
+| 260922-lcx | 타로 요청 중 중앙 스피너·대기 문구와 오늘의 운세/심화 타로상담 1:2 랜딩 카드 | 2026-09-22 | 469f101 / 851ee0f | [260922-lcx](./quick/260922-lcx-toss-tarot-visible-loading-and-1-to-2-la/) |
 
 | 260922-f2m | 결제 화면 3곳에 기간 한정 50% 할인·정가/할인가·1회 조건 표시, 기간 종료 자동 복귀 | 2026-09-22 | 83c924b | [260922-f2m-discount](./quick/260922-f2m-show-limited-time-50-percent-discount-pr/) |
 
@@ -106,6 +108,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 ### Recent Activity
 
+- 2026-09-22: Quick task 260922-lcx — 모든 심화 상담 요청 중 화면 중앙에 “잠시만 기다려 주세요” 스피너 표시. 랜딩의 오늘의 운세/심화 타로상담 카드 너비 1:2. 390/320px 브라우저 실측·지연 응답 로딩 검증·13개 테스트·AIT 빌드 통과.
+- 2026-09-22: Quick task 260922-htq — 토스 심화 타로 구현 완료. 복구/API 테스트 13개 및 변경 파일 ESLint·AIT 빌드 통과. 390×844 실제 화면에서 입력부터 확인 카드와 새로고침 유지까지 검증. 기존 전체 lint 오류 13개/경고 11개는 별도 기록. 네이티브 Toss Storage 실기기 검증과 백엔드 배포/마이그레이션은 출시 전 필요.
 - 2026-04-29: PROJECT.md, REQUIREMENTS.md, codebase 매핑 완료 (commit `1fa2675`)
 - 2026-04-29: ROADMAP.md, STATE.md 작성 — 5 phases, 14/14 coverage
 - 2026-04-30: Phase 1 CONTEXT.md + DISCUSSION-LOG.md 작성 — boknyang-tarot 정본 확정, 자산 보관 위치/포팅 전략/라우팅 통합 방식 결정

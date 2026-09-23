@@ -10,6 +10,7 @@
 // RESEARCH Pitfall 5: 본 페이즈는 useState 4종 유지. Phase 4·5 진입 시점에 Context 승격 결정.
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Loader } from '@toss/tds-mobile';
 import * as Sentry from '@sentry/react';
 import {
@@ -23,11 +24,13 @@ import { fetchTarotCards, getOgImageUrl } from '../lib/supabase';
 import { getCardImageUrl, prefetchAllCardImages } from '../assets/images/cards';
 import TarotShuffle from '../components/TarotShuffle';
 import TarotResult from '../components/TarotResult';
+import TarotConsultation from '../components/TarotConsultation';
 import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
 import { todayKST } from '../utils/dateKST';
 import { logEvent } from '../lib/firebase';
 import { trackClick } from '../lib/analytics';
 import tarotCatImage from '../assets/images/tarot_cat.png';
+import './TarotPage.css';
 
 // Fisher-Yates 셔플 + 상위 3장 (RESEARCH Pattern 4).
 // 22장 중복 없는 랜덤 3장. 원본 cardsData 변경 금지 (slice() shallow copy).
@@ -42,6 +45,9 @@ function pickThreeRandom(cards) {
 }
 
 export default function TarotPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isConsultation = searchParams.get('mode') === 'deep';
+  const openConsultation = () => setSearchParams({ mode: 'deep' });
   const [currentPage, setCurrentPage] = useState('intro');     // 'intro' | 'shuffle' | 'result'
   const [cardsData, setCardsData] = useState([]);              // 22장 전체 (intro fetch 결과)
   const [shuffledThree, setShuffledThree] = useState([]);      // 매 shuffle 진입 시 3장
@@ -215,6 +221,11 @@ export default function TarotPage() {
     ? cardsData.find((c) => c.id === selectedCardId)
     : null;
 
+  // Consultation state is independent of the daily card restore and fetch lifecycle.
+  if (isConsultation) {
+    return <TarotConsultation onBack={() => setSearchParams({})} />;
+  }
+
   // 로딩 상태 (UI-SPEC Loading & Error States)
   // storage 로드 + cardsData fetch 둘 다 완료해야 분기 가능 — 둘 중 하나라도 진행 중이면 Loader 노출.
   if (isLoading || storageLoading) {
@@ -291,6 +302,7 @@ export default function TarotPage() {
     <div data-current-page={currentPage}>
       {currentPage === 'intro' && (
         <TarotIntro
+          onConsultation={openConsultation}
           hasTodayDraw={Boolean(todayDraw && todayDraw.date === todayKST())}
           onStart={startShuffle}
           onResume={() => {
@@ -307,98 +319,44 @@ export default function TarotPage() {
         <TarotShuffle cards={shuffledThree} onSelect={handleSelectCard} />
       )}
       {currentPage === 'result' && selectedCard && (
-        <TarotResult card={selectedCard} onHome={handleHome} onShare={handleShare} />
+        <TarotResult card={selectedCard} onHome={handleHome} onShare={handleShare} onConsultation={openConsultation} />
       )}
     </div>
   );
 }
 
-// intro 단계 — boknyang-tarot 프로토타입 디자인에 맞춤 (사용자 요청 2026-05-02).
-// 레이아웃: ✨ 복냥타로 ✨ 로고 + 마스코트 200px + "복냥이가 뽑아주는 / 오늘의 운세" + 부제 + CTA + 자정 안내.
-function TarotIntro({ hasTodayDraw, onStart, onResume }) {
+function TarotIntro({ hasTodayDraw, onStart, onResume, onConsultation }) {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: 'var(--color-bg-soft)',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '24px 24px calc(110px + env(safe-area-inset-bottom))',
-      }}
-    >
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 12,
-          }}
-        >
-          <span style={{ fontSize: 22, lineHeight: 1, color: '#C8B6FF' }} aria-hidden="true">✦</span>
-          <h1 style={{ fontSize: 28, fontWeight: 700, lineHeight: 1.2, color: '#3F3754', margin: 0, letterSpacing: '-0.02em' }}>
-            복냥타로
-          </h1>
-          <span style={{ fontSize: 22, lineHeight: 1, color: '#C8B6FF' }} aria-hidden="true">✦</span>
-        </div>
-
-        <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center' }}>
-          <img
-            src={tarotCatImage}
-            alt="복냥타로 마스코트"
-            width={200}
-            height={200}
-            draggable={false}
-            style={{ display: 'block', userSelect: 'none' }}
-          />
-        </div>
-
-        <div style={{ marginTop: 24, textAlign: 'center' }}>
-          <p style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.7, color: '#3F3754', margin: 0 }}>
-            복냥이가 뽑아주는<br />
-            <span style={{ color: '#A78BFA' }}>오늘의 운세</span>
-          </p>
-          <p style={{ marginTop: 16, fontSize: 14, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0 }}>
-            하루 한 번, 메이저 아르카나 한 장으로 마음을 톡 두드려요 🐾
-          </p>
-        </div>
-      </div>
-
-      <div style={{ paddingTop: 16 }}>
+    <div className="tarot-landing">
+      <div className="tarot-landing-inner">
+        <header className="tarot-landing-header">
+          <img src={tarotCatImage} alt="복냥타로 마스코트" width={76} height={76} draggable={false} />
+          <div>
+            <h1>복냥타로</h1>
+            <p>오늘의 마음부터 깊은 고민까지</p>
+          </div>
+        </header>
+        <p className="tarot-landing-intro">복냥이와 함께<br /><strong>마음의 이야기를 살펴봐요.</strong></p>
+        <div className="tarot-entry-grid">
         <button
           type="button"
           onClick={hasTodayDraw ? onResume : onStart}
-          className="tap-card"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 8,
-            width: '100%',
-            minHeight: 56,
-            padding: '16px 24px',
-            fontSize: 16,
-            fontWeight: 700,
-            color: '#FFFFFF',
-            backgroundImage: 'linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%)',
-            border: 0,
-            borderRadius: 24,
-            boxShadow: '0 6px 18px rgba(124, 58, 237, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
-            cursor: 'pointer',
-          }}
+          className="tarot-entry-card tarot-entry-daily"
         >
-          {hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}
+          <span className="tarot-entry-symbol" aria-hidden="true">☀</span>
+          <strong className="tarot-entry-title">오늘의 운세</strong>
+          <span className="tarot-entry-description">가볍게 만나는<br />오늘의 한 장</span>
+          <span className="tarot-entry-action">{hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}</span>
         </button>
-        <p style={{ marginTop: 28, marginBottom: 8, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: '#888194', textAlign: 'center' }}>
-          하루 한 번, 자정에 초기화돼요 🌙
+        <button type="button" onClick={onConsultation} className="tarot-entry-card tarot-entry-deep">
+          <span className="tarot-entry-symbol" aria-hidden="true">✦</span>
+          <strong className="tarot-entry-title">심화 타로상담</strong>
+          <span className="tarot-entry-description">마음에 걸리는 고민 하나,<br />복냥이에게 들려주세요.</span>
+          <span className="tarot-entry-action">내 고민 이야기하기 <span aria-hidden="true">→</span></span>
+        </button>
+        </div>
+        <p className="tarot-landing-note">
+          오늘의 운세는 하루 한 번, 자정에 초기화돼요 🌙
         </p>
       </div>
     </div>
