@@ -9,7 +9,7 @@ const ready = { ...draft, version: 1, status: 'ready', plan: { summary: draft.qu
 const drawn = { ...ready, version: 2, status: 'drawn', cards: [{ id: 0 }, { id: 7 }] }
 const complete = { ...drawn, version: 3, status: 'complete', reading: { answer: '살펴보세요' } }
 const reply = (body, status = 200) => ({ ok: status < 400, status, json: async () => body })
-function fixture(responses, saved = null) {
+function fixture(responses, saved = null, purchase) {
   let value = saved && JSON.stringify(saved)
   const calls = []
   const storage = {
@@ -18,7 +18,7 @@ function fixture(responses, saved = null) {
     removeItem: async () => { value = null },
   }
   const client = createTarotConsultation({
-    baseUrl: 'https://example.test', storage,
+    baseUrl: 'https://example.test', storage, purchase,
     makeCredentials: question => ({ id, token, question, created: false }),
     fetcher: async (url, options) => {
       assert.ok(value, 'credentials must be persisted before a request')
@@ -41,6 +41,19 @@ test('persists credentials before create and plans with returned version', async
   assert.deepEqual(f.calls[1].data, { version: 0 })
   assert.equal(f.saved().created, true)
   assert.equal(f.client.getSnapshot().session.status, 'ready')
+})
+
+test('exhausted trial restores the account consultation after storage reset', async () => {
+  const previousId = '22345678-1234-4234-8234-123456789abc'
+  const previous = { ...complete, id: previousId, question: '이전 고민' }
+  const f = fixture([reply({}, 402), reply(previous)])
+  await f.client.start('새 고민')
+  assert.equal(f.calls[1].url, 'https://example.test/tarot/sessions/free')
+  assert.equal(f.saved().id, previousId)
+  assert.equal(f.saved().question, '이전 고민')
+  assert.equal(f.saved().created, true)
+  assert.equal(f.client.getSnapshot().session.id, previousId)
+  assert.match(f.client.getSnapshot().error, /이전 상담/)
 })
 
 test('uncertain creation retries the same id and secret after reload', async () => {
@@ -156,4 +169,41 @@ test('an answer lost before reaching the server is resent only at the same versi
   await f.client.retry()
   assert.deepEqual(f.calls[3].data, { version: 1, answer: '현재 마음' })
   assert.equal(f.client.getSnapshot().session.status, 'ready')
+})
+
+
+test('paid consultation grants before drawing and ignores double payment clicks', async () => {
+  const paywall = { ...ready, payment_required: true }
+  let purchases = 0
+  const f = fixture([reply(paywall), reply(paywall), reply({ ...ready, payment_required: false }), reply(ready), reply(drawn), reply(complete)],
+    { id, token, question: draft.question, created: true },
+    async grant => { purchases++; await grant('order') })
+  await f.client.restore()
+  await Promise.all([f.client.pay(), f.client.pay()])
+  assert.equal(purchases, 1)
+  assert.equal(f.calls[2].data.orderId, 'order')
+  assert.ok(f.calls[2].url.endsWith('/purchase'))
+  assert.equal(f.client.getSnapshot().session.status, 'complete')
+})
+
+test('already granted purchase resumes without paying again after reload', async () => {
+  let purchases = 0
+  const f = fixture([reply({ ...ready, payment_required: false }), reply(ready), reply(ready), reply(drawn), reply(complete)],
+    { id, token, question: draft.question, created: true }, async () => { purchases++ })
+  await f.client.restore()
+  await f.client.pay()
+  assert.equal(purchases, 0)
+  assert.equal(f.client.getSnapshot().session.status, 'complete')
+})
+
+test('canceled purchase preserves the concern and draws no cards', async () => {
+  const paywall = { ...ready, payment_required: true }
+  const f = fixture([reply(paywall), reply(paywall)],
+    { id, token, question: draft.question, created: true }, async () => { throw new Error('canceled') })
+  await f.client.restore()
+  await f.client.pay()
+  assert.equal(f.calls.length, 2)
+  assert.equal(f.client.getSnapshot().session.question, draft.question)
+  assert.deepEqual(f.client.getSnapshot().session.cards, [])
+  assert.match(f.client.getSnapshot().error, /결제/)
 })

@@ -112,7 +112,7 @@ export default function TarotConsultation({ onBack }) {
       {initialized && !session && !hasSaved && !restoreFailed && <>
         <img src={tarotCatImage} alt="" width="88" height="88" style={{ display: 'block', objectFit: 'contain', marginBottom: 20 }} />
         <ConcernForm title="어떤 고민이 있나요?" busy={busy} submitLabel="고민 이야기하기" onSubmit={question => client.start(question)} examples />
-        <p style={{ marginTop: 18, fontSize: 14, color: '#71617F' }}>필요한 내용만 두 번까지 여쭤볼게요. 고민에 맞는 카드와 관점을 함께 살펴봐요.</p>
+        <p style={{ marginTop: 18, fontSize: 14, color: '#71617F' }}>계정당 심화 상담 1회 무료이며, 이후 새 상담은 유료예요. 상담마다 확인 카드 1회도 포함돼요. 필요한 내용만 두 번까지 여쭤볼게요. 고민에 맞는 카드와 관점을 함께 살펴봐요.</p>
       </>}
 
       {initialized && !session && hasSaved && !busy && (invalidSaved ? <div>
@@ -134,7 +134,8 @@ export default function TarotConsultation({ onBack }) {
             {session.plan.conditions.length > 0 && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#71617F' }}>함께 생각할 조건: {session.plan.conditions.join(' · ')}</p>}
             {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#71617F' }}>{session.plan.limitations}</p>}
             <div aria-hidden="true" style={{ display: 'flex', justifyContent: 'center', gap: 14, margin: '28px 0' }}>{session.plan.positions.map(position => <TarotCardArt key={position} faceUp={false} size="sm" framed />)}</div>
-            <Action disabled={busy} onClick={() => client.command('draw')}>카드 뽑기</Action>
+            {session.payment_required && <p style={{ ...textStyle, fontSize: 14, marginBottom: 12 }}>무료 상담 1회를 모두 사용했어요. 이번 심화풀이 1회와 확인 카드가 포함되며, 결제창에서 금액을 확인할 수 있어요.</p>}
+            <Action disabled={busy} onClick={() => session.payment_required ? client.pay() : client.command('draw')}>{session.payment_required ? '결제하고 카드 뽑기 · 구매 복구' : '카드 뽑기'}</Action>
             <Action secondary disabled={busy} onClick={() => setEditing(true)} style={{ marginTop: 10 }}>고민 수정</Action>
           </section>}
 
@@ -151,14 +152,14 @@ export default function TarotConsultation({ onBack }) {
 
           {reading && <>
             <section>
+              <h2 style={headingStyle}>각 카드가 들려주는 이야기</h2>
+              {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} comparison={position.comparison} />)}
+            </section>
+            <section style={sectionStyle}>
               <p style={{ fontSize: 13, color: '#71617F', marginBottom: 10 }}>고민에 대한 복냥이의 이야기</p>
               <h1 style={{ ...headingStyle, fontSize: 24 }}>{session.plan.summary}</h1>
               <p style={{ ...textStyle, fontSize: 18 }}>{reading.answer}</p>
               {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#71617F' }}>{session.plan.limitations}</p>}
-            </section>
-            <section style={sectionStyle}>
-              <h2 style={headingStyle}>각 카드가 들려주는 이야기</h2>
-              {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} comparison={position.comparison} />)}
             </section>
             <section style={sectionStyle}><h2 style={headingStyle}>카드를 함께 보면</h2><p style={textStyle}>{reading.relationships}</p></section>
             <section style={sectionStyle}><h2 style={headingStyle}>현실에서 확인해 볼 것</h2><Items values={reading.reality_checks} /></section>
