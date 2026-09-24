@@ -3,6 +3,7 @@ import { Storage } from '@apps-in-toss/web-framework'
 import { purchaseTarot } from '../lib/tarotPurchase'
 import { createTarotConsultation } from '../lib/tarotConsultation'
 import { useTarotTrack } from './useTarotTrack'
+import { isSandbox } from '../lib/analytics'
 
 const storage = {
   async getItem(key) {
@@ -43,7 +44,8 @@ export function useTarotConsultation() {
       let paid = {}
       try {
         await purchaseTarot(async (orderId, amount) => {
-          await grant(orderId, amount)
+          // 샌드박스 테스트 결제는 금액을 보내지 않아 payment_histories(운영 매출)에 기록되지 않는다.
+          await grant(orderId, isSandbox() ? undefined : amount)
           paid = { order_id: orderId, revenue: amount }
         })
         trackRef.current('tarot_purchase_completed', paid)

@@ -5,7 +5,7 @@
 //   trackClick('quick_menu_click', { menu: '사주분석' }, '사주분석')
 //   trackClick('share_click')  // button_name = 'share_click' 로 자동 fallback
 
-import { Analytics } from '@apps-in-toss/web-framework'
+import { Analytics, getOperationalEnvironment } from '@apps-in-toss/web-framework'
 import { logEvent } from './firebase'
 
 /**
@@ -19,6 +19,15 @@ export function trackClick(eventName, params = {}, buttonName) {
     Analytics.click({ button_name: buttonName || eventName })
   } catch (err) {
     console.warn('[Toss Analytics] click 실패:', err)
+  }
+}
+
+/** 토스 샌드박스 앱 여부. 운영과 같은 Supabase 를 쓰므로 테스트 결제·이벤트를 운영 집계에서 빼는 데 쓴다. */
+export function isSandbox() {
+  try {
+    return getOperationalEnvironment() === 'sandbox'
+  } catch {
+    return false
   }
 }
 
