@@ -4,12 +4,12 @@ import { getCardImageUrl } from '../assets/images/cards'
 import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets'
 import { useTarotConsultation } from '../hooks/useTarotConsultation'
 import { continuation } from '../lib/tarotConsultation'
-import tarotCatImage from '../assets/images/tarot_cat.png'
 import './TarotConsultation.css'
 
 const textStyle = { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', lineHeight: 1.8 }
 const headingStyle = { fontSize: 19, lineHeight: 1.5, marginBottom: 12, color: '#3F3754' }
 const sectionStyle = { marginTop: 28, paddingTop: 24, borderTop: '1px solid #E6DCEC' }
+const chipStyle = selected => ({ border: selected ? '1px solid #64119F' : '1px solid #D8C8E4', borderRadius: 14, padding: '11px 14px', font: 'inherit', fontSize: 15, color: '#4A0A78', background: selected ? '#F4E6FF' : '#FFFFFF', textAlign: 'left', overflowWrap: 'anywhere' })
 const inputStyle = { width: '100%', padding: 16, font: 'inherit', fontSize: 16, lineHeight: 1.7, color: '#3F3754', background: '#FFFFFF', border: '1px solid #BBAAC9', borderRadius: 16, resize: 'vertical', minHeight: 130, boxSizing: 'border-box' }
 
 function BusyIndicator() {
@@ -43,13 +43,15 @@ function ConcernForm({ title, initialValue = '', options = [], busy, submitLabel
   return <form onSubmit={event => { event.preventDefault(); if (value.trim() && !busy) onSubmit(value.trim()) }}>
     <label htmlFor="tarot-concern" style={{ display: 'block', ...headingStyle, fontSize: 24, fontWeight: 700 }}>{title}</label>
     {options.length > 0 && <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '18px 0' }}>
-      {options.map(option => <button type="button" key={option} disabled={busy} aria-pressed={value === option} onClick={() => setValue(option)} style={{ border: value === option ? '1px solid #64119F' : '1px solid #D8C8E4', borderRadius: 14, padding: '11px 14px', font: 'inherit', fontSize: 15, color: '#4A0A78', background: value === option ? '#F4E6FF' : '#FFFFFF', textAlign: 'left', overflowWrap: 'anywhere' }}>{option}</button>)}
+      {options.map(option => <button type="button" key={option} disabled={busy} aria-pressed={value === option} onClick={() => setValue(option)} style={chipStyle(value === option)}>{option}</button>)}
     </div>}
     <textarea id="tarot-concern" value={value} onChange={event => setValue(event.target.value)} disabled={busy} maxLength={3000} rows={4} placeholder={options.length ? '선택하거나 편하게 직접 적어 주세요' : '지금 가장 마음에 걸리는 고민 하나를 적어 주세요'} style={inputStyle} required />
-    <p style={{ textAlign: 'right', fontSize: 12, color: '#71617F', margin: '4px 0 18px' }}>{value.length} / 3,000</p>
+    <p style={{ textAlign: 'right', fontSize: 12, color: '#71617F', margin: '4px 0 10px' }}>{value.length} / 3,000</p>
     {examples && <div style={{ marginBottom: 24 }}>
       <p style={{ fontSize: 13, color: '#71617F', marginBottom: 8 }}>이런 고민도 괜찮아요</p>
-      {['요즘 마음이 복잡한 이유를 이해하고 싶어요', '새로운 일을 시작하면 어떤 흐름이 될까요?'].map(example => <button type="button" key={example} disabled={busy} onClick={() => setValue(example)} style={{ display: 'block', textAlign: 'left', background: 'none', color: '#64119F', border: 0, font: 'inherit', fontSize: 14, padding: '8px 0', minHeight: 44 }}>{example}</button>)}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {['지금 만나는 사람과 계속 만날 수 있을까요?', '새로운 회사로 이직하는게 좋을까요?'].map(example => <button type="button" key={example} disabled={busy} aria-pressed={value === example} onClick={() => setValue(example)} style={chipStyle(value === example)}>{example}</button>)}
+      </div>
     </div>}
     <Action type="submit" disabled={busy || !value.trim()}>{submitLabel}</Action>
     {onCancel && <Action secondary disabled={busy} onClick={onCancel} style={{ marginTop: 10 }}>수정 취소</Action>}
@@ -75,10 +77,11 @@ function Items({ values }) {
   return <ul style={{ paddingLeft: 22 }}>{values.map((value, index) => <li key={index} style={{ ...textStyle, paddingLeft: 3, marginBottom: 10 }}>{value}</li>)}</ul>
 }
 
-export default function TarotConsultation({ onBack }) {
+export default function TarotConsultation() {
   const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client } = useTarotConsultation()
   const insets = useSafeAreaInsets()
   const [editing, setEditing] = useState(false)
+  const [introDone, setIntroDone] = useState(false)
   const [target, setTarget] = useState('')
   const reading = session?.reading
   const clarifier = session?.clarifier
@@ -97,22 +100,30 @@ export default function TarotConsultation({ onBack }) {
 
   return <>
     {(!initialized || busy) && <BusyIndicator />}
-    <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `${insets.top + 20}px 22px ${insets.bottom + 140}px`, color: '#3F3754', overflowWrap: 'anywhere' }}>
+    <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `20px 22px ${insets.bottom + 140}px`, color: '#3F3754', overflowWrap: 'anywhere' }}>
     <div style={{ maxWidth: 520, margin: '0 auto' }}>
-      <header style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 30 }}>
-        <button type="button" onClick={onBack} style={{ minHeight: 44, padding: '8px 0', background: 'none', border: 0, font: 'inherit', color: '#64119F', fontWeight: 700 }}>‹ 타로</button>
-        <span style={{ fontSize: 14, color: '#71617F' }}>복냥이와 깊이 나누는 고민</span>
-      </header>
-
       {failure && <div role="alert" style={{ padding: 16, background: '#FFF5EF', borderRadius: 16, color: '#7C3A21', marginBottom: 24 }}>
         <p style={{ ...textStyle, marginBottom: 12 }}>{failure}</p>
         <Action secondary disabled={busy} onClick={() => client.retry()}>저장된 상담으로 다시 시도</Action>
       </div>}
 
-      {initialized && !session && !hasSaved && !restoreFailed && <>
-        <img src={tarotCatImage} alt="" width="88" height="88" style={{ display: 'block', objectFit: 'contain', marginBottom: 20 }} />
+      {/* 심사 요구: 토스 로그인(고민 제출 시) 전에 서비스 소개를 먼저 보여준다. */}
+      {initialized && !session && !hasSaved && !restoreFailed && !introDone && <section>
+        <h1 style={{ ...headingStyle, fontSize: 24, fontWeight: 700 }}>복냥이의 심화 타로상담</h1>
+        <p style={{ ...textStyle, marginBottom: 20, color: '#71617F' }}>마음에 걸리는 고민 하나를 들려주시면, 복냥이가 고민에 맞는 카드를 뽑아 깊이 풀이해 드려요.</p>
+        <Items values={[
+          '고민을 적으면 복냥이가 필요한 내용을 두 번까지 여쭤봐요.',
+          '고민에 맞는 관점을 정해 카드를 뽑고, 카드마다 풀이해 드려요.',
+          '더 궁금한 카드는 상담마다 포함된 확인 카드 1회로 한 번 더 살펴볼 수 있어요.',
+          '계정당 첫 상담 1회는 무료이고, 이후 새 상담은 유료예요.',
+          '상담 내용을 저장하고 무료 이용 여부를 확인하기 위해 토스 로그인이 필요해요.',
+        ]} />
+        <Action onClick={() => setIntroDone(true)} style={{ marginTop: 12 }}>고민 이야기하러 가기</Action>
+      </section>}
+
+      {initialized && !session && !hasSaved && !restoreFailed && introDone && <>
         <ConcernForm title="어떤 고민이 있나요?" busy={busy} submitLabel="고민 이야기하기" onSubmit={question => client.start(question)} examples />
-        <p style={{ marginTop: 18, fontSize: 14, color: '#71617F' }}>계정당 심화 상담 1회 무료이며, 이후 새 상담은 유료예요. 상담마다 확인 카드 1회도 포함돼요. 필요한 내용만 두 번까지 여쭤볼게요. 고민에 맞는 카드와 관점을 함께 살펴봐요.</p>
+        <p style={{ marginTop: 14, padding: '12px 16px', borderRadius: 14, background: '#F4E6FF', color: '#64119F', fontSize: 15, fontWeight: 700, textAlign: 'center' }}>🎁 심화 상담 <strong style={{ fontWeight: 800 }}>1회 무료</strong>로 받아보세요</p>
       </>}
 
       {initialized && !session && hasSaved && !busy && (invalidSaved ? <div>

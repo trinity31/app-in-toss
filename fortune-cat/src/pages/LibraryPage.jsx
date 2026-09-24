@@ -131,34 +131,6 @@ export default function LibraryPage() {
     zIndex: 100,
   };
 
-  const backBtn = (onClick) => (
-    <button
-      onClick={onClick}
-      aria-label="뒤로"
-      style={{
-        background: "none",
-        border: "none",
-        padding: "4px",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="var(--color-gray-700)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="15 18 9 12 15 6" />
-      </svg>
-    </button>
-  );
-
   // ===== 상세(대화) 화면 — DeepReadingResult 재사용 (이어서 채팅 가능) =====
   if (selected) {
     if (selected._loading || selected._error) {
@@ -172,7 +144,6 @@ export default function LibraryPage() {
           }}
         >
           <div style={headerStyle}>
-            {backBtn(() => setSelected(null))}
             <h1
               style={{
                 fontSize: "18px",

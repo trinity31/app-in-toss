@@ -54,7 +54,7 @@ export default function TarotResult({ card, onHome, onShare, onConsultation }) {
         minHeight: '100vh',
         background: '#FFF7FB',
         position: 'relative',
-        paddingTop: `${insets.top + 24}px`,
+        paddingTop: 20,
         paddingLeft: 24,
         paddingRight: 24,
         paddingBottom: `${196 + insets.bottom}px`,

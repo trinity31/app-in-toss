@@ -10,7 +10,7 @@
 // RESEARCH Pitfall 5: 본 페이즈는 useState 4종 유지. Phase 4·5 진입 시점에 Context 승격 결정.
 
 import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Loader } from '@toss/tds-mobile';
 import * as Sentry from '@sentry/react';
 import {
@@ -46,8 +46,17 @@ function pickThreeRandom(cards) {
 
 export default function TarotPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const isConsultation = searchParams.get('mode') === 'deep';
-  const openConsultation = () => setSearchParams({ mode: 'deep' });
+  const location = useLocation();
+  const navigate = useNavigate();
+  const mode = searchParams.get('mode'); // 'daily' | 'deep' | null(랜딩)
+  // 토스 상단 뒤로가기는 WebView history 를 따르므로, 화면 전환마다 history 를 쌓아 두 동작을 일치시킨다.
+  // 결과 → 심화 상담은 replace: 상담에서 뒤로가면 결과가 아니라 랜딩으로 돌아가게.
+  const openConsultation = () => setSearchParams({ mode: 'deep' }, { replace: mode === 'daily' });
+  const openDaily = () => setSearchParams({ mode: 'daily' });
+  const backToLanding = () => {
+    if (location.key !== 'default') navigate(-1);
+    else setSearchParams({}, { replace: true }); // 딥링크로 바로 진입해 이전 history 가 없는 경우
+  };
   const [currentPage, setCurrentPage] = useState('intro');     // 'intro' | 'shuffle' | 'result'
   const [cardsData, setCardsData] = useState([]);              // 22장 전체 (intro fetch 결과)
   const [shuffledThree, setShuffledThree] = useState([]);      // 매 shuffle 진입 시 3장
@@ -158,6 +167,7 @@ export default function TarotPage() {
     setSelectedCardId(null);
     setShuffledThree([]);
     setCurrentPage('intro');
+    backToLanding();
   };
 
   // CONTEXT D-01/D-02/D-08/D-09 (SHARE-01 + ANL-03): handleShare 실구현.
@@ -222,8 +232,8 @@ export default function TarotPage() {
     : null;
 
   // Consultation state is independent of the daily card restore and fetch lifecycle.
-  if (isConsultation) {
-    return <TarotConsultation onBack={() => setSearchParams({})} />;
+  if (mode === 'deep') {
+    return <TarotConsultation />;
   }
 
   // 로딩 상태 (UI-SPEC Loading & Error States)
@@ -300,25 +310,29 @@ export default function TarotPage() {
   // 정상 흐름 — currentPage 라우팅
   return (
     <div data-current-page={currentPage}>
-      {currentPage === 'intro' && (
+      {(mode !== 'daily' || currentPage === 'intro') && (
         <TarotIntro
           onConsultation={openConsultation}
           hasTodayDraw={Boolean(todayDraw && todayDraw.date === todayKST())}
-          onStart={startShuffle}
+          onStart={() => {
+            startShuffle();
+            openDaily();
+          }}
           onResume={() => {
             // CONTEXT D-14: todayDraw 존재 시 result 진입. selectedCardId 는 lock useEffect 가 이미 세팅했지만
             // 사용자가 result 에서 처음으로(handleHome) 누른 뒤 다시 intro 진입한 케이스를 위해 명시적으로 보강.
             if (todayDraw) {
               setSelectedCardId(todayDraw.card_id);
               setCurrentPage('result');
+              openDaily();
             }
           }}
         />
       )}
-      {currentPage === 'shuffle' && (
+      {mode === 'daily' && currentPage === 'shuffle' && (
         <TarotShuffle cards={shuffledThree} onSelect={handleSelectCard} />
       )}
-      {currentPage === 'result' && selectedCard && (
+      {mode === 'daily' && currentPage === 'result' && selectedCard && (
         <TarotResult card={selectedCard} onHome={handleHome} onShare={handleShare} onConsultation={openConsultation} />
       )}
     </div>
@@ -336,28 +350,22 @@ function TarotIntro({ hasTodayDraw, onStart, onResume, onConsultation }) {
             <p>오늘의 마음부터 깊은 고민까지</p>
           </div>
         </header>
-        <p className="tarot-landing-intro">복냥이와 함께<br /><strong>마음의 이야기를 살펴봐요.</strong></p>
         <div className="tarot-entry-grid">
         <button
           type="button"
           onClick={hasTodayDraw ? onResume : onStart}
           className="tarot-entry-card tarot-entry-daily"
         >
-          <span className="tarot-entry-symbol" aria-hidden="true">☀</span>
-          <strong className="tarot-entry-title">오늘의 운세</strong>
-          <span className="tarot-entry-description">가볍게 만나는<br />오늘의 한 장</span>
+          <strong className="tarot-entry-title">오늘의 운세 <span className="tarot-entry-symbol" aria-hidden="true">☀</span></strong>
+          <span className="tarot-entry-description">가볍게 만나는 오늘의 카드</span>
           <span className="tarot-entry-action">{hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}</span>
         </button>
         <button type="button" onClick={onConsultation} className="tarot-entry-card tarot-entry-deep">
-          <span className="tarot-entry-symbol" aria-hidden="true">✦</span>
-          <strong className="tarot-entry-title">심화 타로상담</strong>
-          <span className="tarot-entry-description">마음에 걸리는 고민 하나,<br />복냥이에게 들려주세요.</span>
+          <strong className="tarot-entry-title">심화 타로상담 <span className="tarot-entry-symbol" aria-hidden="true">✦</span></strong>
+          <span className="tarot-entry-description">마음에 걸리는 고민 하나, 복냥이에게 물어보세요</span>
           <span className="tarot-entry-action">내 고민 이야기하기 <span aria-hidden="true">→</span></span>
         </button>
         </div>
-        <p className="tarot-landing-note">
-          오늘의 운세는 하루 한 번, 자정에 초기화돼요 🌙
-        </p>
       </div>
     </div>
   );

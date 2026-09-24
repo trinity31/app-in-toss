@@ -33,15 +33,9 @@
   color: #71617f;
 }
 
-.tarot-landing-intro {
-  margin: 30px 0 24px;
-  font-size: clamp(19px, 5.4vw, 24px);
-  line-height: 1.7;
-  letter-spacing: -0.035em;
-}
-
 .tarot-entry-grid {
   display: grid;
+  margin-top: 24px;
   grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   align-items: stretch;
@@ -52,8 +46,7 @@
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
-  min-height: 260px;
-  padding: 22px 14px 18px;
+  padding: 24px 20px 22px;
   border: 1px solid transparent;
   border-radius: 24px;
   font: inherit;
@@ -77,13 +70,11 @@
 .tarot-entry-deep {
   color: #fffaff;
   background: #64119f;
-  padding-inline: 22px;
 }
 
 .tarot-entry-symbol {
-  display: block;
-  margin-bottom: 22px;
-  font-size: 27px;
+  margin-left: 2px;
+  font-size: 0.9em;
   line-height: 1;
 }
 
@@ -91,19 +82,26 @@
 .tarot-entry-deep .tarot-entry-symbol { color: #dec5fa; }
 .tarot-entry-title { font-size: clamp(17px, 4.6vw, 21px); line-height: 1.45; letter-spacing: -0.04em; }
 .tarot-entry-deep .tarot-entry-title { font-size: clamp(21px, 5.6vw, 27px); }
-.tarot-entry-description { margin-top: 12px; font-size: 13px; line-height: 1.8; }
+.tarot-entry-description { margin-top: 6px; font-size: clamp(11px, 3.2vw, 13px); line-height: 1.8; white-space: nowrap; }
 .tarot-entry-daily .tarot-entry-description { color: #71617f; }
 .tarot-entry-deep .tarot-entry-description { color: #f0dfff; }
-.tarot-entry-action { display: block; margin-top: auto; padding-top: 28px; font-size: 12px; font-weight: 700; line-height: 1.7; }
-.tarot-entry-deep .tarot-entry-action { font-size: 14px; }
-.tarot-landing-note { margin-top: 22px; color: #71617f; font-size: 12px; line-height: 1.8; }
+.tarot-entry-action {
+  align-self: stretch;
+  margin-top: 14px;
+  padding: 11px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+.tarot-entry-daily .tarot-entry-action { color: #64119f; background: #f1e6fb; }
+.tarot-entry-deep .tarot-entry-action { color: #64119f; background: #fffaff; }
 
 @media (max-width: 360px) {
   .tarot-landing { padding-inline: 16px; }
   .tarot-entry-grid { gap: 10px; }
-  .tarot-entry-card { padding: 20px 10px 16px; border-radius: 20px; }
-  .tarot-entry-deep { padding-inline: 16px; }
-  .tarot-entry-description { font-size: 12px; }
+  .tarot-entry-card { padding: 20px 14px 18px; border-radius: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

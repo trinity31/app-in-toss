@@ -38,7 +38,7 @@ export default function TarotShuffle({ cards, onSelect }) {
         background: '#FFF7FB',
         display: 'flex',
         flexDirection: 'column',
-        paddingTop: 'calc(env(safe-area-inset-top) + 24px)',
+        paddingTop: 20,
         paddingLeft: 24,
         paddingRight: 24,
         paddingBottom: 'calc(96px + env(safe-area-inset-bottom))',

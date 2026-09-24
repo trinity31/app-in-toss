@@ -1,10 +1,18 @@
 export const SESSION_KEY = 'FORTUNE_CAT_TAROT_CONSULTATION'
 
+const randomHex = length => Array.from(crypto.getRandomValues(new Uint8Array(length)), byte => byte.toString(16).padStart(2, '0')).join('')
+
+// crypto.randomUUID 는 보안 컨텍스트(https)에서만 있어 http 개발 서버에서 실패하므로 getRandomValues 로 v4 UUID 를 만든다.
+function uuidV4() {
+  const hex = randomHex(16)
+  const variant = ((parseInt(hex[16], 16) & 0x3) | 0x8).toString(16)
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-4${hex.slice(13, 16)}-${variant}${hex.slice(17, 20)}-${hex.slice(20, 32)}`
+}
+
 function newCredentials(question) {
-  const bytes = crypto.getRandomValues(new Uint8Array(32))
   return {
-    id: crypto.randomUUID(),
-    token: Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join(''),
+    id: uuidV4(),
+    token: randomHex(32),
     question,
     created: false,
   }
