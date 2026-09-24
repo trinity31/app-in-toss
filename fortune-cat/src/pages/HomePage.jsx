@@ -18,6 +18,7 @@ import {
 import { trackClick } from "../lib/analytics";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
+import { useTarotTrack } from "../hooks/useTarotTrack";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -49,8 +50,19 @@ const Q4_SELECTED_TYPE = {
   fortuneTypeTitle: "2026년 4분기 운세",
 };
 
-// 홈 상단 슬라이딩 배너 — 1번: 4분기 운세(시즌), 2·3번: 연애상담 모드가 붙는 애정운·궁합
+// 홈 상단 슬라이딩 배너 — 1번: 심화 타로상담, 2번: 4분기 운세(시즌), 3·4번: 연애상담 모드가 붙는 애정운·궁합
+// to 가 있으면 해당 경로로, 없으면 selectedType 으로 신년운세 흐름에 진입한다.
 const HERO_SLIDES = [
+  {
+    key: "tarot_deep",
+    to: "/tarot?mode=deep",
+    icon: "🔮",
+    eyebrow: "심화 타로상담",
+    title: "마음에 걸리는 고민 있나요?",
+    description: "고민을 들려주면 복냥이가 카드를 뽑아 깊이 풀이해 드려요. 첫 상담은 무료예요",
+    bg: "linear-gradient(135deg, #efe4fb 0%, #c9a8ef 100%)",
+    cta: "심화 타로상담 · 무료로 시작",
+  },
   {
     key: "new_year_2026_q4",
     icon: "🍂",
@@ -85,6 +97,7 @@ const HERO_SLIDES = [
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const trackTarot = useTarotTrack();
   const { openToast } = useToast();
   const [aiSajuTypes, setAiSajuTypes] = useState([]);
   const [newYearTypes, setNewYearTypes] = useState([]);
@@ -253,11 +266,13 @@ export default function HomePage() {
   };
 
   const handleHeroSlideClick = (slide) => {
-    trackClick(
-      "hero_banner_click",
-      { menu: slide.selectedType.fortuneType },
-      slide.eyebrow,
-    );
+    trackClick("hero_banner_click", { menu: slide.key }, slide.eyebrow);
+    if (slide.to) {
+      // 타로 퍼널의 '심화 상담 진입'에 배너 유입도 포함되도록 같은 이벤트를 남긴다.
+      trackTarot("tarot_deep_entry_click", { from: "home_banner" });
+      navigate(slide.to);
+      return;
+    }
     goToNewYear(slide.selectedType);
   };
 
@@ -285,7 +300,7 @@ export default function HomePage() {
 
   return (
     <div style={{ ...styles.container, paddingBottom: `${96 + insets.bottom}px` }}>
-      {/* 히어로: 애정운·궁합 연애상담 바로가기 배너 */}
+      {/* 히어로: 심화 타로상담·4분기 운세·연애상담 바로가기 배너 */}
       <HomeHeroCarousel
         slides={HERO_SLIDES}
         onSlideClick={handleHeroSlideClick}
