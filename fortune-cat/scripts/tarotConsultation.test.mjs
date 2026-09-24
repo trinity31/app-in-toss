@@ -177,11 +177,12 @@ test('paid consultation grants before drawing and ignores double payment clicks'
   let purchases = 0
   const f = fixture([reply(paywall), reply(paywall), reply({ ...ready, payment_required: false }), reply(ready), reply(drawn), reply(complete)],
     { id, token, question: draft.question, created: true },
-    async grant => { purchases++; await grant('order') })
+    async grant => { purchases++; await grant('order', 2900) })
   await f.client.restore()
   await Promise.all([f.client.pay(), f.client.pay()])
   assert.equal(purchases, 1)
   assert.equal(f.calls[2].data.orderId, 'order')
+  assert.equal(f.calls[2].data.amount, 2900)
   assert.ok(f.calls[2].url.endsWith('/purchase'))
   assert.equal(f.client.getSnapshot().session.status, 'complete')
 })

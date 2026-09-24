@@ -1,7 +1,8 @@
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { Storage } from '@apps-in-toss/web-framework'
 import { purchaseTarot } from '../lib/tarotPurchase'
 import { createTarotConsultation } from '../lib/tarotConsultation'
+import { useTarotTrack } from './useTarotTrack'
 
 const storage = {
   async getItem(key) {
@@ -31,9 +32,27 @@ const storage = {
 }
 
 export function useTarotConsultation() {
+  const track = useTarotTrack()
+  const trackRef = useRef(track)
+  trackRef.current = track
   const [client] = useState(() => {
     let login = null
-    return createTarotConsultation({ baseUrl: import.meta.env.VITE_API_BASE_URL, storage, purchase: purchaseTarot,
+    // 결제 퍼널(시도 → 완료/실패). revenue 는 콘솔 등록가라 매출 확정값은 payment_histories 를 기준으로 본다.
+    const purchase = async grant => {
+      trackRef.current('tarot_purchase_started')
+      let paid = {}
+      try {
+        await purchaseTarot(async (orderId, amount) => {
+          await grant(orderId, amount)
+          paid = { order_id: orderId, revenue: amount }
+        })
+        trackRef.current('tarot_purchase_completed', paid)
+      } catch (error) {
+        trackRef.current('tarot_purchase_failed', { reason: error?.message || 'cancelled' })
+        throw error
+      }
+    }
+    return createTarotConsultation({ baseUrl: import.meta.env.VITE_API_BASE_URL, storage, purchase,
       accountHeaders: async () => {
         if (!login || login.expiresAt <= Date.now()) {
           const { appLogin } = await import('@apps-in-toss/web-framework')
@@ -52,5 +71,5 @@ export function useTarotConsultation() {
   })
   const state = useSyncExternalStore(client.subscribe, client.getSnapshot)
   useEffect(() => { client.restore() }, [client])
-  return { ...state, client }
+  return { ...state, client, track }
 }

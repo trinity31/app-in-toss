@@ -47,3 +47,10 @@ test('failed recovery does not start another payment or confirm delivery', async
   assert.deepEqual(sdk.completed, [])
   assert.equal(sdk.options, undefined)
 })
+
+test('passes the console price to grant for revenue tracking', async () => {
+  const sdk = { ...iap([{ orderId: 'tarot', sku: TAROT_PRODUCT_SKU }]), getProductItemList: async () => ({ products: [{ sku: TAROT_PRODUCT_SKU, displayAmount: '2,900원' }] }) }
+  const granted = []
+  await purchaseTarot(async (id, amount) => granted.push([id, amount]), sdk)
+  assert.deepEqual(granted, [['tarot', 2900]])
+})

@@ -78,7 +78,7 @@ function Items({ values }) {
 }
 
 export default function TarotConsultation() {
-  const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client } = useTarotConsultation()
+  const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client, track } = useTarotConsultation()
   const insets = useSafeAreaInsets()
   const [editing, setEditing] = useState(false)
   const [introDone, setIntroDone] = useState(false)
@@ -87,10 +87,34 @@ export default function TarotConsultation() {
   const clarifier = session?.clarifier
   const retryAction = continuation(session)
   const failure = error || session?.error
+  const isNewUser = initialized && !session && !hasSaved && !restoreFailed
+  const showIntro = isNewUser && !introDone
 
   useEffect(() => {
     if (!clarifier) window.scrollTo({ top: 0 })
   }, [session?.status, session?.pending_question?.question, clarifier])
+
+  // 성과 측정 퍼널: 소개 노출 → 고민 제출 → 결제창 노출 → 카드 뽑기 → 결과 보기.
+  // 저장된 상담을 다시 불러온 것만으로는 발화하지 않도록, 같은 상담에서 상태가 바뀐 순간만 기록한다.
+  const introTracked = useRef(false)
+  useEffect(() => {
+    if (!showIntro || introTracked.current) return
+    introTracked.current = true
+    track('tarot_deep_intro_shown')
+  }, [showIntro, track])
+
+  const seen = useRef({})
+  useEffect(() => {
+    if (!session) return
+    const now = { cards: session.cards.length > 0, reading: Boolean(session.reading), paywall: Boolean(session.payment_required) }
+    const prev = seen.current[session.id]
+    seen.current[session.id] = now
+    // 결제창은 복원 직후 바로 보이는 경우도 노출로 센다(카드를 뽑기 전일 때만).
+    if (now.paywall && !now.cards && !prev?.paywall) track('tarot_paywall_shown')
+    if (!prev) return
+    if (now.cards && !prev.cards) track('tarot_deep_cards_drawn', { card_count: session.cards.length })
+    if (now.reading && !prev.reading) track('tarot_deep_reading_shown')
+  }, [session, track])
 
   const revise = async question => {
     await client.command('revise', { question })
@@ -108,7 +132,7 @@ export default function TarotConsultation() {
       </div>}
 
       {/* 심사 요구: 토스 로그인(고민 제출 시) 전에 서비스 소개를 먼저 보여준다. */}
-      {initialized && !session && !hasSaved && !restoreFailed && !introDone && <section>
+      {showIntro && <section>
         <h1 style={{ ...headingStyle, fontSize: 24, fontWeight: 700 }}>복냥이의 심화 타로상담</h1>
         <p style={{ ...textStyle, marginBottom: 20, color: '#71617F' }}>마음에 걸리는 고민 하나를 들려주시면, 복냥이가 고민에 맞는 카드를 뽑아 깊이 풀이해 드려요.</p>
         <Items values={[
@@ -121,8 +145,8 @@ export default function TarotConsultation() {
         <Action onClick={() => setIntroDone(true)} style={{ marginTop: 12 }}>고민 이야기하러 가기</Action>
       </section>}
 
-      {initialized && !session && !hasSaved && !restoreFailed && introDone && <>
-        <ConcernForm title="어떤 고민이 있나요?" busy={busy} submitLabel="고민 이야기하기" onSubmit={question => client.start(question)} examples />
+      {isNewUser && introDone && <>
+        <ConcernForm title="어떤 고민이 있나요?" busy={busy} submitLabel="고민 이야기하기" onSubmit={question => { track('tarot_deep_question_submitted'); client.start(question) }} examples />
         <p style={{ marginTop: 14, padding: '12px 16px', borderRadius: 14, background: '#F4E6FF', color: '#64119F', fontSize: 15, fontWeight: 700, textAlign: 'center' }}>🎁 심화 상담 <strong style={{ fontWeight: 800 }}>1회 무료</strong>로 받아보세요</p>
       </>}
 

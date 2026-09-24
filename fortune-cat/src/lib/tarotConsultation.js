@@ -181,7 +181,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         await refresh()
         if (snapshot.session.payment_required) {
           try {
-            await purchase(orderId => request(`/${credentials.id}/purchase`, { orderId }))
+            await purchase((orderId, amount) => request(`/${credentials.id}/purchase`, { orderId, ...(amount ? { amount } : {}) }))
           } catch {
             update({ error: '결제를 완료하지 못했어요. 이미 결제했다면 같은 버튼으로 구매를 복구할 수 있어요.' })
             return

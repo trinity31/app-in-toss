@@ -49,16 +49,7 @@ export async function getDeepReadingProduct(product = DEFAULT_PRODUCT) {
   }
 }
 
-/**
- * displayAmount("1,200원")에서 숫자 금액만 추출한다. SDK가 숫자 필드를 주지 않아 파싱이 필요.
- * @returns {number|null} 파싱 실패 시 null
- */
-export function parseDisplayAmount(displayAmount) {
-  const digits = String(displayAmount ?? "").replace(/[^0-9]/g, "");
-  if (!digits) return null;
-  const amount = Number(digits);
-  return Number.isFinite(amount) && amount > 0 ? amount : null;
-}
+export { parseDisplayAmount } from "../utils/displayAmount.js";
 
 // 결제 성공 후 서버 지급 실패 시 복구용 — 보류 주문 컨텍스트(thread_id 등) 로컬 저장
 const PENDING_KEY = "deep_reading_pending_order";

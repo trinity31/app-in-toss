@@ -29,6 +29,7 @@ import { useTodayDrawStorage } from '../hooks/useTodayDrawStorage';
 import { todayKST } from '../utils/dateKST';
 import { logEvent } from '../lib/firebase';
 import { trackClick } from '../lib/analytics';
+import { useTarotTrack } from '../hooks/useTarotTrack';
 import tarotCatImage from '../assets/images/tarot_cat.png';
 import './TarotPage.css';
 
@@ -51,7 +52,11 @@ export default function TarotPage() {
   const mode = searchParams.get('mode'); // 'daily' | 'deep' | null(랜딩)
   // 토스 상단 뒤로가기는 WebView history 를 따르므로, 화면 전환마다 history 를 쌓아 두 동작을 일치시킨다.
   // 결과 → 심화 상담은 replace: 상담에서 뒤로가면 결과가 아니라 랜딩으로 돌아가게.
-  const openConsultation = () => setSearchParams({ mode: 'deep' }, { replace: mode === 'daily' });
+  const track = useTarotTrack();
+  const openConsultation = () => {
+    track('tarot_deep_entry_click', { from: mode === 'daily' ? 'daily_result' : 'landing' });
+    setSearchParams({ mode: 'deep' }, { replace: mode === 'daily' });
+  };
   const openDaily = () => setSearchParams({ mode: 'daily' });
   const backToLanding = () => {
     if (location.key !== 'default') navigate(-1);
@@ -140,8 +145,8 @@ export default function TarotPage() {
 
     tarotViewLoggedRef.current = true;
     const alreadyDrawn = Boolean(todayDraw && todayDraw.date === todayKST());
-    logEvent('tarot_view', { already_drawn: alreadyDrawn });
-  }, [storageLoading, errorState, cardsData, todayDraw]);
+    track('tarot_view', { already_drawn: alreadyDrawn });
+  }, [storageLoading, errorState, cardsData, todayDraw, track]);
 
   const startShuffle = () => {
     // Pitfall 6 회피: 매번 새 pickThreeRandom 호출
