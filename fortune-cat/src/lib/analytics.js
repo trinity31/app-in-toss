@@ -2,7 +2,7 @@
 // Firebase 는 풍부한 파라미터로 funnel/리텐션 분석, 토스 콘솔은 button_name 단위 클릭 카운트용.
 //
 // 사용 예:
-//   trackClick('quick_menu_click', { menu: '사주분석' }, '사주분석')
+//   trackClick('home_tab_view', { tab: 'new_year', trigger: 'tap' }, '2026 신년운세')
 //   trackClick('share_click')  // button_name = 'share_click' 로 자동 fallback
 
 import { Analytics, getOperationalEnvironment } from '@apps-in-toss/web-framework'
