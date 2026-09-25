@@ -16,6 +16,7 @@ import {
   getOgImageUrl,
 } from "../lib/supabase";
 import { trackClick } from "../lib/analytics";
+import { logEvent } from "../lib/firebase";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
 import { useTarotTrack } from "../hooks/useTarotTrack";
@@ -25,6 +26,12 @@ const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 // 수요가 적어 우선 메뉴에서 숨김 (재노출 시 true로 변경)
 const SHOW_IMAGE_SAJU = false;
 const SHOW_AMULET = false;
+
+// 상단 탭 — 라벨은 웹·앱과 통일 (이모지·배지 없음). 2027 전환 때 연도 교체.
+const HOME_TABS = [
+  { id: "ai_saju", label: "AI 사주분석" },
+  { id: "new_year", label: "2026 신년운세" },
+];
 
 // 궁합풀이 selectedType — 퀵메뉴·Hero 배너가 동일 값을 공유 (DRY)
 const COMPATIBILITY_SELECTED_TYPE = {
@@ -111,56 +118,17 @@ export default function HomePage() {
     new_year: true,
   });
 
+  // 상단 탭 — 새로고침(다시 불러오기)해도 유지된다
+  const [homeTab, setHomeTab] = useState("ai_saju");
+
   // CSS env(safe-area-inset-bottom)는 이 WebView에서 부정확(과대) → 프레임워크 인셋 사용
   const insets = useSafeAreaInsets();
 
   const toggleSection = (key) =>
     setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
 
-  const scrollToSection = (sectionId) => {
-    document.getElementById(`section-${sectionId}`)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   const goToNewYear = (selectedType) =>
     navigate("/newyear", { state: { selectedType } });
-
-  const quickMenuItems = [
-    {
-      emoji: "🔮",
-      label: "사주분석",
-      onTap: () => {
-        trackClick("quick_menu_click", { menu: "사주분석" }, "사주분석");
-        scrollToSection("ai_saju");
-      },
-    },
-    {
-      emoji: "🧧",
-      label: "신년운세",
-      onTap: () => {
-        trackClick("quick_menu_click", { menu: "신년운세" }, "신년운세");
-        scrollToSection("new_year");
-      },
-    },
-    {
-      emoji: "💕",
-      label: "궁합풀이",
-      onTap: () => {
-        trackClick("quick_menu_click", { menu: "궁합풀이" }, "궁합풀이");
-        goToNewYear(COMPATIBILITY_SELECTED_TYPE);
-      },
-    },
-    SHOW_AMULET && {
-      emoji: "🧿",
-      label: "부적아트",
-      onTap: () => {
-        trackClick("quick_menu_click", { menu: "부적아트" }, "부적아트");
-        scrollToSection("amulet");
-      },
-    },
-  ].filter(Boolean);
 
   const fetchAllTypes = async () => {
     try {
@@ -203,7 +171,22 @@ export default function HomePage() {
 
   useEffect(() => {
     fetchAllTypes();
+    // 홈 진입 시 기본 탭 1회. 클릭이 아니라 토스 콘솔 클릭 카운트에는 넣지 않는다.
+    logEvent("home_tab_view", { tab: "ai_saju", trigger: "initial" });
   }, []);
+
+  const selectHomeTab = (tab) => {
+    setHomeTab(tab);
+    trackClick(
+      "home_tab_view",
+      { tab, trigger: "tap" },
+      HOME_TABS.find((t) => t.id === tab).label,
+    );
+  };
+
+  // 신년운세가 비면 탭 바를 숨기고 AI 사주만 보여준다 (웹·앱과 같은 규칙)
+  const hasNewYear = newYearTypes.length > 0;
+  const shownTab = hasNewYear ? homeTab : "ai_saju";
 
   const handleNewYearTypeClick = (type, section) => {
     trackClick(
@@ -307,22 +290,27 @@ export default function HomePage() {
         onShare={handleShare}
       />
 
-      {/* Quick Menu */}
-      <div style={styles.quickMenuContainer}>
-        {quickMenuItems.map((item) => (
-          <button
-            key={item.label}
-            onClick={item.onTap}
-            className="tap-circle"
-            style={styles.quickMenuItem}
-          >
-            <div style={styles.quickMenuCircle}>
-              <span style={{ fontSize: "24px" }}>{item.emoji}</span>
-            </div>
-            <span style={styles.quickMenuLabel}>{item.label}</span>
-          </button>
-        ))}
-      </div>
+      {hasNewYear && (
+        <div role="tablist" aria-label="사주 메뉴" style={styles.tabBar}>
+          {HOME_TABS.map(({ id, label }) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              id={`home-tab-${id}`}
+              aria-selected={shownTab === id}
+              aria-controls={`section-${id}`}
+              onClick={() => selectHomeTab(id)}
+              style={{
+                ...styles.tabButton,
+                ...(shownTab === id ? styles.tabButtonActive : null),
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
 
       {isLoading ? (
         <div
@@ -373,7 +361,12 @@ export default function HomePage() {
       ) : (
         <div style={styles.sectionsContainer}>
           {/* 섹션: AI 사주 분석 */}
-          <section id="section-ai_saju">
+          {shownTab === "ai_saju" && (
+          <section
+            id="section-ai_saju"
+            role={hasNewYear ? "tabpanel" : undefined}
+            aria-labelledby={hasNewYear ? "home-tab-ai_saju" : undefined}
+          >
             <div style={styles.sectionHeaderRow}>
               <div style={styles.sectionHeaderLeft}>
                 <span style={styles.sectionIcon}>🔮</span>
@@ -430,11 +423,15 @@ export default function HomePage() {
               ))}
             </div>
           </section>
-
-          <div style={styles.divider} />
+          )}
 
           {/* 섹션: 신년운세 */}
-          <section id="section-new_year">
+          {shownTab === "new_year" && (
+          <section
+            id="section-new_year"
+            role="tabpanel"
+            aria-labelledby="home-tab-new_year"
+          >
             <div style={styles.sectionHeaderRow}>
               <div style={styles.sectionHeaderLeft}>
                 <span style={styles.sectionIcon}>🧧</span>
@@ -491,6 +488,7 @@ export default function HomePage() {
               ))}
             </div>
           </section>
+          )}
 
           {SHOW_IMAGE_SAJU && (
             <>
@@ -628,35 +626,30 @@ const styles = {
     backgroundColor: "var(--color-bg-soft)",
     boxSizing: "border-box",
   },
-  quickMenuContainer: {
+  tabBar: {
     display: "flex",
-    justifyContent: "space-around",
-    padding: "20px 0 8px",
+    width: "100%",
+    maxWidth: "400px",
+    alignSelf: "center",
+    marginTop: "20px",
+    borderBottom: `1px solid ${colors.grey200}`,
   },
-  quickMenuItem: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "8px",
+  tabButton: {
+    flex: 1,
+    padding: "12px 0",
+    marginBottom: "-1px",
     background: "none",
     border: "none",
+    borderBottom: "2px solid transparent",
+    fontSize: "15px",
+    fontWeight: "600",
+    color: colors.grey500,
     cursor: "pointer",
-    padding: 0,
   },
-  quickMenuCircle: {
-    width: "56px",
-    height: "56px",
-    borderRadius: "50%",
-    // 파스텔 body(#F7F0FE) 위에서 구분되도록 primary-light보다 한 톤 진하게
-    backgroundColor: "#EBDCFA",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  quickMenuLabel: {
-    fontSize: "13px",
-    fontWeight: "500",
-    color: "var(--color-gray-700)",
+  tabButtonActive: {
+    // 하단 탭바 active 색과 같은 primary 보라
+    color: "var(--color-primary)",
+    borderBottomColor: "var(--color-primary)",
   },
   sectionsContainer: {
     width: "100%",
