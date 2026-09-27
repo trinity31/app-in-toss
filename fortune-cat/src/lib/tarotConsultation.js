@@ -1,3 +1,5 @@
+import { EntryError } from './entryErrors.js'
+
 const isDeckError = error => ['TAROT_DECK_UNSUPPORTED', 'TAROT_DECK_INVALID'].includes(error.code)
 
 export const SESSION_KEY = 'FORTUNE_CAT_TAROT_CONSULTATION'
@@ -48,7 +50,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
   }
 
   async function request(path, body) {
-    if (!baseUrl) throw new Error('상담 연결 주소를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.')
+    if (!baseUrl) throw new EntryError('configuration')
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 110000)
     try {
@@ -135,7 +137,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
           // Retain the current cards if refresh also fails.
         }
       }
-      update({ error: (isDeckError(error) || [401, 402, 404].includes(error.status)) ? error.message : '연결이 원활하지 않아요. 입력과 뽑은 카드는 유지되니 다시 시도해 주세요.' })
+      update({ error: (error instanceof EntryError || isDeckError(error) || [401, 402, 404].includes(error.status)) ? error.message : '연결이 원활하지 않아요. 입력과 뽑은 카드는 유지되니 다시 시도해 주세요.' })
     }).finally(() => {
       active = null
       update({ busy: false, initialized: true })
@@ -149,7 +151,9 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     restore() {
       return run(async () => {
         update({ restoreFailed: true })
-        const raw = await storage.getItem(SESSION_KEY)
+        let raw
+        try { raw = await storage.getItem(SESSION_KEY) }
+        catch { throw new EntryError('storageRead') }
         update({ restoreFailed: false })
         if (!raw) return
         update({ hasSaved: true })
@@ -157,7 +161,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         try { parsed = JSON.parse(raw) } catch { /* Invalid data remains until the user starts over. */ }
         if (!validCredentials(parsed)) {
           update({ invalidSaved: true })
-          throw new Error('Invalid saved consultation')
+          throw new EntryError('invalidSaved')
         }
         credentials = parsed
         await refresh()

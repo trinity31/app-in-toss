@@ -243,3 +243,32 @@ test('minor originals and clarifier restore unchanged alongside legacy 22 respon
   assert.deepEqual(f.client.getSnapshot().session, minor)
   assert.equal(f.calls.length, 1)
 })
+
+test('saved consultation login failure is distinguishable and preserves credentials', async () => {
+  const { EntryError } = await import('../src/lib/entryErrors.js')
+  const saved = JSON.stringify({ id, token, question: draft.question, created: true })
+  let requests = 0
+  const client = createTarotConsultation({
+    baseUrl: 'https://example.test',
+    storage: { getItem: async () => saved, setItem: async () => assert.fail('must not rewrite'), removeItem: async () => assert.fail('must not delete') },
+    accountHeaders: async () => { throw new EntryError('login') },
+    fetcher: async () => { requests++; assert.fail('login failed before API request') },
+  })
+  await client.restore()
+  assert.match(client.getSnapshot().error, /토스 로그인/)
+  assert.equal(client.getSnapshot().hasSaved, true)
+  assert.equal(client.getSnapshot().busy, false)
+  assert.equal(requests, 0)
+})
+
+test('saved consultation storage failure remains distinct from login failure', async () => {
+  const client = createTarotConsultation({
+    baseUrl: 'https://example.test',
+    storage: { getItem: async () => { throw new Error('private storage payload') } },
+    accountHeaders: async () => assert.fail('must not log in'),
+  })
+  await client.restore()
+  assert.match(client.getSnapshot().error, /저장된 상담을 읽지 못/)
+  assert.equal(client.getSnapshot().restoreFailed, true)
+  assert.ok(!client.getSnapshot().error.includes('private'))
+})
