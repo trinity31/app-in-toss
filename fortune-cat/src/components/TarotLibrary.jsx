@@ -23,7 +23,7 @@ function SavedReading({ session }) {
     </header>
     {reading.positions.map((position, index) => <section key={position.card_id}>
       <h4>{position.position} · {session.cards[index].name_ko}</h4>
-      <div className="tarot-saved-art"><TarotCardArt size="lg" image={getCardImageUrl(position.card_id)} nameEn={session.cards[index].name_ko} /></div>
+      <div className="tarot-saved-art"><TarotCardArt zoomable size="lg" image={getCardImageUrl(position.card_id)} nameEn={session.cards[index].name_ko} /></div>
       <Prose text={position.interpretation} />
       {position.comparison && <dl>{[['possibility', '가능성'], ['caution', '주의점'], ['condition', '확인할 조건']].map(([key, label]) => <div key={key}><dt>{label}</dt><dd><Prose text={position.comparison[key]} /></dd></div>)}</dl>}
     </section>)}
@@ -35,7 +35,7 @@ function SavedReading({ session }) {
     <section><h4>지금 해볼 수 있는 일</h4><ul>{reading.actions.map((value, i) => <li key={i}>{value}</li>)}</ul></section>
     {clarifier && <section><h4>확인 카드 · {clarifier.card.name_ko}</h4>
       <p>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
-      <div className="tarot-saved-art"><TarotCardArt size="lg" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /></div>
+      <div className="tarot-saved-art"><TarotCardArt zoomable size="lg" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /></div>
       {clarifier.reading ? <><Prose text={clarifier.reading.meaning} /><h4>현실에서 확인할 것</h4><Prose text={clarifier.reading.reality_check} /><h4>해볼 수 있는 일</h4><Prose text={clarifier.reading.action} /></> : <p>확인 카드 풀이는 아직 완료되지 않았어요.</p>}
     </section>}
     <details><summary>나눈 고민 다시 보기</summary>{session.answers.map((answer, i) => <div className="tarot-saved-exchange" key={i}><p>{answer.question}</p><p>{answer.answer}</p></div>)}</details>

@@ -65,7 +65,7 @@ function Card({ card, position, interpretation, comparison }) {
       <h3>{card.name_ko}</h3>
     </header>
     <div className="tarot-reading-card__art">
-      <TarotCardArt size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
+      <TarotCardArt zoomable size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
     </div>
     <details className="tarot-reading-card__details">
       <summary><span className="tarot-reading-card__open">풀이 펼쳐 보기</span><span className="tarot-reading-card__close">풀이 접기</span></summary>
@@ -181,7 +181,7 @@ export default function TarotConsultation() {
           {!reading && session.cards.length > 0 && <section>
             <h1 style={{ ...headingStyle, fontSize: 24 }}>함께 살펴볼 카드예요</h1>
             {session.cards.map((card, index) => <div key={card.id} className="tarot-reading-card__preview">
-              <TarotCardArt size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
+              <TarotCardArt zoomable size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
               <div><p style={{ fontSize: 14, color: '#71617F' }}>{session.plan.positions[index]}</p><strong>{card.name_ko}</strong></div>
             </div>)}
             <p style={{ fontSize: 14, color: '#71617F', marginTop: 14 }}>풀이를 다시 불러와도 이 카드들은 바뀌지 않아요.</p>
@@ -208,7 +208,7 @@ export default function TarotConsultation() {
               <h2 style={headingStyle}>{clarifier ? '확인 카드가 보충하는 이야기' : '조금 더 살펴보고 싶은 부분이 있나요?'}</h2>
               {clarifier ? <>
                 <p style={{ marginBottom: 18, color: '#71617F', fontSize: 14 }}>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
-                <div className="tarot-reading-card__preview"><TarotCardArt size="lg" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
+                <div className="tarot-reading-card__preview"><TarotCardArt zoomable size="lg" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
                 {clarifier.reading && <><p style={textStyle}>{clarifier.reading.meaning}</p><p style={{ ...textStyle, marginTop: 16 }}><strong>현실에서 확인할 것</strong><br />{clarifier.reading.reality_check}</p><p style={{ ...textStyle, marginTop: 16 }}><strong>해볼 수 있는 일</strong><br />{clarifier.reading.action}</p></>}
                 <p style={{ fontSize: 13, color: '#71617F', marginTop: 16 }}>확인 카드는 한 상담에 한 번만 뽑아요. 처음 풀이와 함께 읽어 주세요.</p>
               </> : <>

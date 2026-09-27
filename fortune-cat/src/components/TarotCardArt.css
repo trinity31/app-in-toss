@@ -1,0 +1,9 @@
+.tarot-art-trigger { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.tarot-art-trigger:focus-visible { outline: 3px solid #64119f; outline-offset: -4px; border-radius: inherit; }
+.tarot-art-viewer { position: fixed; inset: 0; margin: auto; padding: 0; border: 0; overflow: visible; width: min(480px, calc(100vw - 32px), calc(66.666dvh - 106.667px)); max-width: none; max-height: none; background: transparent; color: #fffaff; }
+.tarot-art-viewer::backdrop { background: rgb(24 16 34 / 88%); }
+.tarot-art-viewer__toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; font-size: 17px; font-weight: 600; }
+.tarot-art-viewer__toolbar span { overflow-wrap: anywhere; }
+.tarot-art-viewer__toolbar button { flex-shrink: 0; width: 48px; height: 48px; border: 1px solid rgb(255 250 255 / 40%); border-radius: 50%; background: #3f3754; color: #fffaff; font: inherit; font-size: 32px; cursor: pointer; }
+.tarot-art-viewer__toolbar button:focus-visible { outline: 2px solid #fffaff; outline-offset: 3px; }
+.tarot-art-viewer__image { position: relative; width: 100%; aspect-ratio: 2 / 3; border-radius: 18px; overflow: hidden; }
