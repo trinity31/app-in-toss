@@ -272,3 +272,17 @@ test('saved consultation storage failure remains distinct from login failure', a
   assert.equal(client.getSnapshot().restoreFailed, true)
   assert.ok(!client.getSnapshot().error.includes('private'))
 })
+
+
+test('a completed payment with failed server grant explains no-charge recovery and never draws', async () => {
+  const paywall = { ...ready, payment_required: true }
+  const f = fixture([reply(paywall), reply(paywall)],
+    { id, token, question: draft.question, created: true },
+    async () => { throw Object.assign(new Error('offline'), { paymentCompleted: true }) })
+  await f.client.restore()
+  await f.client.pay()
+  assert.equal(f.calls.length, 2)
+  assert.deepEqual(f.client.getSnapshot().session.cards, [])
+  assert.match(f.client.getSnapshot().error, /결제는 완료/)
+  assert.match(f.client.getSnapshot().error, /추가 결제 없이/)
+})

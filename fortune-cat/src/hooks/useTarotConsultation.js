@@ -60,7 +60,7 @@ export function useTarotConsultation() {
             setPaymentDiagnostics(previous => previous.length ? previous : [diagnostic])
           }
           trackRef.current('tarot_payment_diagnostic', diagnostic)
-        })
+        }, { receiptKey: runtime.sandbox ? 'tarot_pending_purchase_sandbox_v1' : 'tarot_pending_purchase_v1' })
         trackRef.current('tarot_purchase_completed', paid)
       } catch (error) {
         trackRef.current('tarot_purchase_failed', { reason: 'payment_failed' })

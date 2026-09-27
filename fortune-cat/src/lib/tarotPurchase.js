@@ -17,19 +17,30 @@ async function productAmount(IAP) {
   }
 }
 
-// Persist the entitlement before acknowledging delivery to Toss.
-export async function purchaseTarot(grant, suppliedIAP, onDiagnostic) {
+// Keep a receipt before acknowledging; grant on SDK success after checkout closes.
+export async function purchaseTarot(grant, suppliedIAP, onDiagnostic, { storage = globalThis.localStorage, receiptKey = 'tarot_pending_purchase_v1' } = {}) {
   const report = createPaymentDiagnosticReporter(onDiagnostic)
   report('started')
   try {
-    return await runPurchase(grant, suppliedIAP, report)
+    return await runPurchase(grant, suppliedIAP, report, storage, receiptKey)
   } catch (error) {
     report('purchase_failed', error)
     throw error
   }
 }
 
-async function runPurchase(grant, suppliedIAP, report) {
+async function runPurchase(grant, suppliedIAP, report, storage, receiptKey) {
+  const rawReceipt = storage.getItem(receiptKey)
+  const saved = rawReceipt ? JSON.parse(rawReceipt) : null
+  const validOrder = id => typeof id === 'string' && id.length > 0 && id.length <= 200
+  if (saved && !validOrder(saved.orderId)) throw new Error('저장된 결제 정보를 확인하지 못했어요. 문의해 주세요.')
+  const saveReceipt = (orderId, amount) => {
+    if (!validOrder(orderId)) throw new Error('결제 주문 번호를 확인하지 못했어요.')
+    const value = JSON.stringify({ orderId, amount })
+    storage.setItem(receiptKey, value)
+    if (storage.getItem(receiptKey) !== value) throw new Error('구매 복구 정보를 저장하지 못했어요.')
+  }
+  const clearReceipt = () => storage.removeItem(receiptKey)
   const IAP = suppliedIAP || (await import('@apps-in-toss/web-framework')).IAP
   const grantOrder = async (orderId, amount) => {
     report('grant_started')
@@ -61,45 +72,67 @@ async function runPurchase(grant, suppliedIAP, report) {
   const { orders } = await IAP.getPendingOrders()
   report('pending_lookup_succeeded')
   const pending = orders.filter(order => TAROT_PURCHASE_SKUS.has(order.sku))
-  if (pending.length) {
-    for (const order of pending) {
-      await grantOrder(order.orderId, amount)
-      await completeGrant(order.orderId)
+  // A completed SDK order may no longer appear in getPendingOrders.
+  const recovery = saved
+    ? [{ orderId: saved.orderId, amount: saved.amount ?? amount }, ...pending.filter(order => order.orderId !== saved.orderId)]
+    : pending
+  if (recovery.length) {
+    for (const order of recovery) {
+      await grantOrder(order.orderId, order.amount ?? amount)
+      if (pending.some(item => item.orderId === order.orderId)) await completeGrant(order.orderId)
+      if (saved?.orderId === order.orderId) clearReceipt()
     }
     return
   }
   return new Promise((resolve, reject) => {
     let cleanup
-    let grantedOrderId
-    let recovering = false
+    let receiptOrderId
+    let finishing = false
     report('checkout_started')
     cleanup = IAP.createOneTimePurchaseOrder({
       options: {
         sku: TAROT_PRODUCT_SKU,
-        processProductGrant: async ({ orderId }) => {
+        processProductGrant: ({ orderId }) => {
           try {
-            await grantOrder(orderId, amount)
-            grantedOrderId = orderId
+            saveReceipt(orderId, amount)
+            receiptOrderId = orderId
             report('grant_callback_ready')
             return true
           } catch (error) {
+            cleanup?.()
             reject(error)
             return false
           }
         },
       },
-      onEvent: event => {
-        if (event.type === 'success') { report('sdk_succeeded'); cleanup?.(); resolve() }
+      onEvent: async event => {
+        if (event.type !== 'success' || finishing) return
+        finishing = true
+        report('sdk_succeeded')
+        cleanup?.()
+        try {
+          const orderId = event.data?.orderId || receiptOrderId
+          if (receiptOrderId && orderId !== receiptOrderId) throw new Error('결제 주문 정보가 일치하지 않아요.')
+          saveReceipt(orderId, amount)
+          await grantOrder(orderId, amount)
+          clearReceipt()
+          resolve()
+        } catch (error) {
+          error.paymentCompleted = true
+          reject(error)
+        }
       },
       onError: async error => {
-        if (recovering) return
-        recovering = true
+        if (finishing) return
+        finishing = true
         report('sdk_failed', error || new Error('Unknown SDK error'))
         cleanup?.()
-        // Recover only this checkout's server-confirmed grant; never start another charge.
-        if (grantedOrderId) {
+        // Only recover a delivery error after validating and persisting the server grant.
+        if (receiptOrderId && error?.code === 'PRODUCT_NOT_GRANTED_BY_PARTNER') {
           try {
-            await completeGrant(grantedOrderId)
+            await grantOrder(receiptOrderId, amount)
+            await completeGrant(receiptOrderId)
+            clearReceipt()
             resolve()
             return
           } catch (recoveryError) {
