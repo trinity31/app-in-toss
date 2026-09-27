@@ -48,6 +48,18 @@ test('failed recovery does not start another payment or confirm delivery', async
   assert.equal(sdk.options, undefined)
 })
 
+test('recovers the verified promotional tarot SKU without charging again', async () => {
+  const sdk = iap([
+    { orderId: 'discounted-tarot', sku: 'ait.0000014507.eaf72598.2a019a3e97.0134075568' },
+    { orderId: 'follow-up', sku: 'ait.0000014507.e3b46565.adb4de6495.9374700382' },
+  ])
+  const granted = []
+  await purchaseTarot(async id => granted.push(id), sdk)
+  assert.deepEqual(granted, ['discounted-tarot'])
+  assert.deepEqual(sdk.completed, ['discounted-tarot'])
+  assert.equal(sdk.options, undefined)
+})
+
 test('passes the console price to grant for revenue tracking', async () => {
   const sdk = { ...iap([{ orderId: 'tarot', sku: TAROT_PRODUCT_SKU }]), getProductItemList: async () => ({ products: [{ sku: TAROT_PRODUCT_SKU, displayAmount: '2,900원' }] }) }
   const granted = []
