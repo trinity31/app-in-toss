@@ -73,8 +73,9 @@ function Card({ card, position, interpretation, comparison }) {
   </details>
 }
 
-function Items({ values }) {
-  return <ul style={{ paddingLeft: 22 }}>{values.map((value, index) => <li key={index} style={{ ...textStyle, paddingLeft: 3, marginBottom: 10 }}>{value}</li>)}</ul>
+function Items({ values, ordered = false }) {
+  const List = ordered ? 'ol' : 'ul'
+  return <List style={{ paddingLeft: 22 }}>{values.map((value, index) => <li key={index} style={{ ...textStyle, paddingLeft: 3, marginBottom: 10 }}>{value}</li>)}</List>
 }
 
 export default function TarotConsultation() {
@@ -136,12 +137,10 @@ export default function TarotConsultation() {
       {showIntro && <section>
         <h1 style={{ ...headingStyle, fontSize: 24, fontWeight: 700 }}>복냥이의 심화 타로상담</h1>
         <p style={{ ...textStyle, marginBottom: 20, color: '#71617F' }}>마음에 걸리는 고민 하나를 들려주시면, 복냥이가 고민에 맞는 카드를 뽑아 깊이 풀이해 드려요.</p>
-        <Items values={[
-          '고민을 적으면 복냥이가 필요한 내용을 두 번까지 여쭤봐요.',
-          '고민에 맞는 관점을 정해 카드를 뽑고, 카드마다 풀이해 드려요.',
-          '더 궁금한 카드는 상담마다 포함된 확인 카드 1회로 한 번 더 살펴볼 수 있어요.',
-          '계정당 첫 상담 1회는 무료이고, 이후 새 상담은 유료예요.',
-          '상담 내용을 저장하고 무료 이용 여부를 확인하기 위해 토스 로그인이 필요해요.',
+        <Items ordered values={[
+          '고민을 적으면 필요한 내용을 자세히 물어볼게요.',
+          '고민에 맞는 기준으로 몇장의 카드를 뽑아서 풀이해 드려요.',
+          '더 궁금한 점이 있으면 확인 카드 1개를 더 뽑을 수 있어요.',
         ]} />
         <Action onClick={() => setIntroDone(true)} style={{ marginTop: 12 }}>고민 이야기하러 가기</Action>
       </section>}
