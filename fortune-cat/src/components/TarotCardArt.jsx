@@ -33,7 +33,13 @@ export default function TarotCardArt({
       }}
     >
       {faceUp
-        ? (image ? <CardImage src={image} alt={nameEn} /> : <CardFront s={s} emoji={emoji} nameEn={nameEn} />)
+        ? (image === null
+          ? <div
+              role="img"
+              aria-label="카드 이미지 사용 불가"
+              style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', fontSize: 12, background: '#F4E6FF' }}
+            >이미지 준비 중</div>
+          : image ? <CardImage src={image} alt={nameEn} /> : <CardFront s={s} emoji={emoji} nameEn={nameEn} />)
         : <CardBack s={s} />}
     </div>
   );

@@ -97,6 +97,8 @@ export async function fetchTarotCards() {
   const { data, error } = await supabase
     .from('tarot_cards')
     .select('id, name_ko, name_en, emoji, image_path, keywords, message')
+    .gte('id', 0)
+    .lte('id', 21)
     .order('id', { ascending: true });
   if (error) {
     console.error('[supabase] fetchTarotCards 실패:', error);

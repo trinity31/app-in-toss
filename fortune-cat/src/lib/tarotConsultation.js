@@ -1,3 +1,5 @@
+const isDeckError = error => ['TAROT_DECK_UNSUPPORTED', 'TAROT_DECK_INVALID'].includes(error.code)
+
 export const SESSION_KEY = 'FORTUNE_CAT_TAROT_CONSULTATION'
 
 const randomHex = length => Array.from(crypto.getRandomValues(new Uint8Array(length)), byte => byte.toString(16).padStart(2, '0')).join('')
@@ -52,19 +54,27 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     try {
       const response = await fetcher(`${baseUrl.replace(/\/$/, '')}/tarot/sessions${path}`, {
         method: body ? 'POST' : 'GET',
-        headers: { 'Content-Type': 'application/json', 'X-Tarot-Token': credentials.token, ...await accountHeaders() },
+        headers: { 'Content-Type': 'application/json', 'X-Tarot-Token': credentials.token, ...await accountHeaders(), 'X-Tarot-Deck': 'tarot78-v1' },
         ...(body ? { body: JSON.stringify(body) } : {}),
         signal: controller.signal,
       })
       if (!response.ok) {
-        const error = new Error(response.status === 402
+        const body = await response.json().catch(() => null)
+        const code = body?.detail?.code
+        const deckMessage = code === 'TAROT_DECK_UNSUPPORTED'
+          ? '이 상담은 78장 카드를 지원하는 최신 버전에서 확인해 주세요. 앱을 업데이트한 뒤 상담을 다시 열어 주세요.'
+          : code === 'TAROT_DECK_INVALID'
+          ? '상담 카드 데이터를 준비하지 못했어요. 잠시 후 이 상담을 다시 열어 주세요.'
+          : null
+        const error = new Error(deckMessage || (response.status === 402
           ? '무료 심화 타로 상담 1회를 모두 사용했어요. 결제 후 새 상담을 이어갈 수 있어요.'
           : response.status === 404
           ? '저장된 상담을 찾지 못했어요. 잠시 후 다시 불러와 주세요.'
-          : '상담을 연결하지 못했어요. 저장된 내용을 다시 불러와 이어갈 수 있어요.')
+          : '상담을 연결하지 못했어요. 저장된 내용을 다시 불러와 이어갈 수 있어요.'))
         if (response.status === 402 && snapshot.session) {
           update({ session: { ...snapshot.session, payment_required: true } })
         }
+        error.code = code
         error.status = response.status
         throw error
       }
@@ -116,7 +126,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     if (active) return active
     update({ busy: true, error: null })
     active = Promise.resolve().then(work).catch(async error => {
-      if (error.status === 409 && credentials) {
+      if (error.status === 409 && !isDeckError(error) && credentials) {
         try {
           await refresh()
           pending = null
@@ -125,7 +135,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
           // Retain the current cards if refresh also fails.
         }
       }
-      update({ error: [401, 402, 404].includes(error.status) ? error.message : '연결이 원활하지 않아요. 입력과 뽑은 카드는 유지되니 다시 시도해 주세요.' })
+      update({ error: (isDeckError(error) || [401, 402, 404].includes(error.status)) ? error.message : '연결이 원활하지 않아요. 입력과 뽑은 카드는 유지되니 다시 시도해 주세요.' })
     }).finally(() => {
       active = null
       update({ busy: false, initialized: true })
@@ -182,7 +192,8 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         if (snapshot.session.payment_required) {
           try {
             await purchase((orderId, amount) => request(`/${credentials.id}/purchase`, { orderId, ...(amount ? { amount } : {}) }))
-          } catch {
+          } catch (error) {
+            if (isDeckError(error)) throw error
             update({ error: '결제를 완료하지 못했어요. 이미 결제했다면 같은 버튼으로 구매를 복구할 수 있어요.' })
             return
           }

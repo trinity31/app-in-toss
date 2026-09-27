@@ -1,0 +1,1021 @@
+{
+  "deck": "tarot78-v1",
+  "contract_version": "2026-09-26.1",
+  "source_manifest_sha256": "40a7147cc7cf127af64f35dcfe1b96da5733f8f09425250210a36b3f6280c864",
+  "conversion": {
+    "tool": "Pillow",
+    "version": "12.2.0",
+    "format": "WebP",
+    "quality": 90
+  },
+  "majors": [
+    {
+      "card_id": 0,
+      "asset": "00.webp",
+      "asset_sha256": "4fbe0ea90a8e8e6b1bdd00468f7e691df7de14246079639a134febe01f4b28b7"
+    },
+    {
+      "card_id": 1,
+      "asset": "01.webp",
+      "asset_sha256": "4c1c0d5689e52ac889337f37c689fbcd52bc757e2340bea12262b4d066ead74d"
+    },
+    {
+      "card_id": 2,
+      "asset": "02.webp",
+      "asset_sha256": "e73d147167fa37a2f9cc0524a8058eff2736dee61b092ecc8120c70c2a182823"
+    },
+    {
+      "card_id": 3,
+      "asset": "03.webp",
+      "asset_sha256": "35241e4a3a76c9de6b36a59bc7d8a8bbb3ad9561e7c81310abd23546bc52f094"
+    },
+    {
+      "card_id": 4,
+      "asset": "04.webp",
+      "asset_sha256": "713aa5daaa3ddc4846e42e1628c64fa5b47e78dee7f6ff46b0898f07dcbc92cd"
+    },
+    {
+      "card_id": 5,
+      "asset": "05.webp",
+      "asset_sha256": "9c6ce6566b7d005b13c19e002d012ab504a6739560abeb6394f9ab529e01fc47"
+    },
+    {
+      "card_id": 6,
+      "asset": "06.webp",
+      "asset_sha256": "4d2108cefec7ceb51a2dc776c4eb046f69fc7352c663f0d7bc8dd87257be23fd"
+    },
+    {
+      "card_id": 7,
+      "asset": "07.webp",
+      "asset_sha256": "ccebf9d4ba6398c34d31658a7060284fe66cc28566b39d467a73c76e3934e234"
+    },
+    {
+      "card_id": 8,
+      "asset": "08.webp",
+      "asset_sha256": "ef24e54463390b5e9b39fa01c7a92f4fedf4515f52d816de24353ec8b7764332"
+    },
+    {
+      "card_id": 9,
+      "asset": "09.webp",
+      "asset_sha256": "cba4a369b1174a07494889701f89a1f740f9261f591beaaf8dd673452ceb87b3"
+    },
+    {
+      "card_id": 10,
+      "asset": "10.webp",
+      "asset_sha256": "596fd63800b9820604ce6434b0ee333f7c9f4cedd8fe3830185970b10f817468"
+    },
+    {
+      "card_id": 11,
+      "asset": "11.webp",
+      "asset_sha256": "82630214cc85bfe10fbccf32d0c7e950ef803908279a77fb8fc7edf688bfb164"
+    },
+    {
+      "card_id": 12,
+      "asset": "12.webp",
+      "asset_sha256": "3f2ad52b6063fea6720bd21aee6dfc642698869870c802ae644f0c9253b4e1fa"
+    },
+    {
+      "card_id": 13,
+      "asset": "13.webp",
+      "asset_sha256": "2641af7d31330cb84284e2605de66dd034eb9048a6a87fefed82c4b3177aa91a"
+    },
+    {
+      "card_id": 14,
+      "asset": "14.webp",
+      "asset_sha256": "c596a23330e734e2afa0aa47b2fc193571caae369a71efe04b7763238c1586ce"
+    },
+    {
+      "card_id": 15,
+      "asset": "15.webp",
+      "asset_sha256": "71d004c231eddcf65ad1b420b7b6fe90eabdfb1b7c55af60d674b2a0dde44a79"
+    },
+    {
+      "card_id": 16,
+      "asset": "16.webp",
+      "asset_sha256": "346021a618b58b02ea28141eabc88f319eb7025657e233612094332ef440105b"
+    },
+    {
+      "card_id": 17,
+      "asset": "17.webp",
+      "asset_sha256": "fe91c50b3bc346697b26932b1444d82e0cf4b0703be7893b1bf27ad0fb577a77"
+    },
+    {
+      "card_id": 18,
+      "asset": "18.webp",
+      "asset_sha256": "5fa1e3a12fe3bbab3bc30662e8014e2211ecf8290477ea5a5a7261e9376a7cc7"
+    },
+    {
+      "card_id": 19,
+      "asset": "19.webp",
+      "asset_sha256": "634b477674676bb89224a2317a6bc2acbb1b0eff2e5596b79cf5db090e054122"
+    },
+    {
+      "card_id": 20,
+      "asset": "20.webp",
+      "asset_sha256": "2bad6010bc0cc11ede89b264a1eac6c6e388f8f9c8ecbfa27aaaf17adf8bcf30"
+    },
+    {
+      "card_id": 21,
+      "asset": "21.webp",
+      "asset_sha256": "95770d725a4797e6bf088426d28e7e6c721c9c34a50efe71f5a5b88da28fbbc0"
+    }
+  ],
+  "minors": [
+    {
+      "card_id": 22,
+      "name_ko": "완드 에이스",
+      "name_en": "ACE OF WANDS",
+      "suit": "wands",
+      "rank": "ace",
+      "source_title": "막대기 에이스 (Ace of Wands)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/22-ace-of-wands.png",
+      "image_sha256": "1ea744f1de3f6fdce4f16debf97fbe0eea5ecdfee7f1d6c95a4f81d5885338b2",
+      "asset": "22.webp",
+      "asset_sha256": "29468a91861752e5a5c370791a4774b454c49ae0dfe19ca487f364871a71113f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 23,
+      "name_ko": "완드 2",
+      "name_en": "TWO OF WANDS",
+      "suit": "wands",
+      "rank": "two",
+      "source_title": "막대기 2 (Wands 2)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/23-two-of-wands.png",
+      "image_sha256": "c36925d7bc02efad58ea345cc7574da694a642c911a23c94fec1d8235db02a65",
+      "asset": "23.webp",
+      "asset_sha256": "c267914450485508df59eefb5317daa5d259d3c2ebd28449cd66fb713e24fb4d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 24,
+      "name_ko": "완드 3",
+      "name_en": "THREE OF WANDS",
+      "suit": "wands",
+      "rank": "three",
+      "source_title": "막대기 3 (Wands 3)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/24-three-of-wands.png",
+      "image_sha256": "a7c462eab656145db7c99c22d3274420b9379dc45f324607ffb1cb7973804fc0",
+      "asset": "24.webp",
+      "asset_sha256": "11e02712150ee80726f41df33d509ff3932a2f6ad9e5d54e5609d91298f8966a",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 25,
+      "name_ko": "완드 4",
+      "name_en": "FOUR OF WANDS",
+      "suit": "wands",
+      "rank": "four",
+      "source_title": "막대기 4 (Wands 4)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/25-four-of-wands.png",
+      "image_sha256": "2eead9db2ba6839697d99c1397201152f55d0a32f5139d38bf4d9f0ab1f644a5",
+      "asset": "25.webp",
+      "asset_sha256": "9588a1df89b1b8f5404f0982967cb46694a1edcb25f0dea52a77f20c629dff3a",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 26,
+      "name_ko": "완드 5",
+      "name_en": "FIVE OF WANDS",
+      "suit": "wands",
+      "rank": "five",
+      "source_title": "막대기 5 (Wands 5)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/26-five-of-wands.png",
+      "image_sha256": "c2018638f06702417a4550756571924ccdb8e813ac796c14db1d2ae3093aef95",
+      "asset": "26.webp",
+      "asset_sha256": "8de224a1a0fde9c49874eeda5de8978eae073fd51441ec7949d62a07891be179",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 27,
+      "name_ko": "완드 6",
+      "name_en": "SIX OF WANDS",
+      "suit": "wands",
+      "rank": "six",
+      "source_title": "막대기 6 (Wands 6)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/27-six-of-wands.png",
+      "image_sha256": "7f625efa9b9a39102fad7f1a08dad6d11656a213f773efbcff26326a2cbfba72",
+      "asset": "27.webp",
+      "asset_sha256": "1cdaef00d018c280e13b92b95b28a9a4fd8d14ff928aa3d757ce6d5dff68b3c2",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 28,
+      "name_ko": "완드 7",
+      "name_en": "SEVEN OF WANDS",
+      "suit": "wands",
+      "rank": "seven",
+      "source_title": "막대기 7 (Wands 7)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/28-seven-of-wands.png",
+      "image_sha256": "53717618ec7d5aec1ab203bce8d325edef1ed8343452a96b2d8efb0dee4dc0b1",
+      "asset": "28.webp",
+      "asset_sha256": "a43b79ecceaf9ed18f394cf2c7583ba84af387966a8d121dead945a25368b0fc",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 29,
+      "name_ko": "완드 8",
+      "name_en": "EIGHT OF WANDS",
+      "suit": "wands",
+      "rank": "eight",
+      "source_title": "막대기 8 (Wands 8)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/29-eight-of-wands.png",
+      "image_sha256": "fa02855a45cb73634d8d4cf3bb2fe38d3ef7107fd302a83feb83e07614fe5cf4",
+      "asset": "29.webp",
+      "asset_sha256": "a6d6be025db644d13bbcf8b65d0b5eb31db1d1d8e836ab358d9690e7e616c614",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 30,
+      "name_ko": "완드 9",
+      "name_en": "NINE OF WANDS",
+      "suit": "wands",
+      "rank": "nine",
+      "source_title": "막대기 9 (Wands 9)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/30-nine-of-wands.png",
+      "image_sha256": "d9989c6dd134cd29d66354b45d9c1335385b63b3e8cbdbddfc1711eb1857bda6",
+      "asset": "30.webp",
+      "asset_sha256": "1c5ee5d21f09ac86f43eba31980a2530346cbe6aa4a9be7e26d904572ae28480",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 31,
+      "name_ko": "완드 10",
+      "name_en": "TEN OF WANDS",
+      "suit": "wands",
+      "rank": "ten",
+      "source_title": "막대기 10 (Wands 10)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/31-ten-of-wands.png",
+      "image_sha256": "ea89fed47ee298caf62e5f19661acf8cc754b9e84c65e395fe11890460486945",
+      "asset": "31.webp",
+      "asset_sha256": "f5fe7972a92e28562873f52b77b256128ae9610dd57f2dd0984a7c1e6bb14d55",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 32,
+      "name_ko": "완드 페이지",
+      "name_en": "PAGE OF WANDS",
+      "suit": "wands",
+      "rank": "page",
+      "source_title": "막대기 시종 (Page of Wands)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/32-page-of-wands.png",
+      "image_sha256": "e8f327f6d68a8de12e6c6aa34d712d9aec642db40ac27bba2b2913f99c54a862",
+      "asset": "32.webp",
+      "asset_sha256": "972675e46751e4c4150bfa750492d30f1214ea67bc47bb79d47f84ed3ac314e6",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 33,
+      "name_ko": "완드 나이트",
+      "name_en": "KNIGHT OF WANDS",
+      "suit": "wands",
+      "rank": "knight",
+      "source_title": "막대기 기사 (Knight of Wands)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/33-knight-of-wands.png",
+      "image_sha256": "ddad1a68a838c0a8327fea5c58885fb95cf3adc35c35e3ae91b910780a79b2f6",
+      "asset": "33.webp",
+      "asset_sha256": "a2049deab1609c5f01cd589dd9a2c2eb194b61d2b0e4e95664fb151c32b57adb",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 34,
+      "name_ko": "완드 퀸",
+      "name_en": "QUEEN OF WANDS",
+      "suit": "wands",
+      "rank": "queen",
+      "source_title": "막대기 여왕 (Queen of Wands)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/34-queen-of-wands.png",
+      "image_sha256": "7e903b0e4afb3effebc52b5a8f0e7fbafb0249091bceb8ca992b41e101190c39",
+      "asset": "34.webp",
+      "asset_sha256": "3ac70936871810f80720c003cecc68794a9722d77a8f5991448cc58905205a5d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 35,
+      "name_ko": "완드 킹",
+      "name_en": "KING OF WANDS",
+      "suit": "wands",
+      "rank": "king",
+      "source_title": "막대기 왕 (King of Wands)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/35-king-of-wands.png",
+      "image_sha256": "33a4f2d79ea9074e9e35007679bc92a3fedb74c69ff3810c32501505e32b3409",
+      "asset": "35.webp",
+      "asset_sha256": "654a489251367635fa69557a40df722a313c8095888cabfb1a6f0a7b8577a17b",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 36,
+      "name_ko": "컵 에이스",
+      "name_en": "ACE OF CUPS",
+      "suit": "cups",
+      "rank": "ace",
+      "source_title": "컵 에이스 (Ace of Cups)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/36-ace-of-cups.png",
+      "image_sha256": "0cff5c5e83071ceb5e75b41c76146b09da641f651b4bf06ba65cd767aae98d80",
+      "asset": "36.webp",
+      "asset_sha256": "d2bece0ed75598cc3127bbf83e09cc6e276659de5110bdc208f548247d82b218",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 37,
+      "name_ko": "컵 2",
+      "name_en": "TWO OF CUPS",
+      "suit": "cups",
+      "rank": "two",
+      "source_title": "컵 2 (Cups 2)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/37-two-of-cups.png",
+      "image_sha256": "3194ed2ddc1e4d2ff019f98d5ff65110a3a87ed4fa645664977091fa1d3e594a",
+      "asset": "37.webp",
+      "asset_sha256": "c8305d1e823c9bf63692b9aaa2c590818b2cd0d45ce15d740b9db61d795fd6ac",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 38,
+      "name_ko": "컵 3",
+      "name_en": "THREE OF CUPS",
+      "suit": "cups",
+      "rank": "three",
+      "source_title": "컵 3 (Cups 3)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/38-three-of-cups.png",
+      "image_sha256": "e020f7727b6364a67cd96d7d164797fb4ff58528de9c4fab6f4180aaa4db9333",
+      "asset": "38.webp",
+      "asset_sha256": "4b22569cbd47138edd4a7756f0e87153f292d2fdd3ae492246c452295264356b",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 39,
+      "name_ko": "컵 4",
+      "name_en": "FOUR OF CUPS",
+      "suit": "cups",
+      "rank": "four",
+      "source_title": "컵 4 (Cups 4)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/39-four-of-cups.png",
+      "image_sha256": "50cce7bdd81799ef2654a58158a9016faaa9eed6f70cf301c9b84df2598372c5",
+      "asset": "39.webp",
+      "asset_sha256": "7b2bffb1d00771ba452b1aa1a9132c3d27cfb2abaa0b4c228c6038a8202cbe84",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 40,
+      "name_ko": "컵 5",
+      "name_en": "FIVE OF CUPS",
+      "suit": "cups",
+      "rank": "five",
+      "source_title": "컵 5 (Cups 5)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/40-five-of-cups.png",
+      "image_sha256": "a565d9862ae98231f49161bea6ca3bc453f7d388080612303c8476bc7846a5bd",
+      "asset": "40.webp",
+      "asset_sha256": "43a5f012657aa064d45358be7b25c18efa6b2a3297017540a72289ac8ed4cd2e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 41,
+      "name_ko": "컵 6",
+      "name_en": "SIX OF CUPS",
+      "suit": "cups",
+      "rank": "six",
+      "source_title": "컵 6 (Cups 6)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/41-six-of-cups.png",
+      "image_sha256": "f04e964a3cd31362de9c1ca7860eb9d7c8d6d2563afe447093488c663437c888",
+      "asset": "41.webp",
+      "asset_sha256": "a6ebf7d464403785fc1c6756d5b33d5a51131e1feb354046c13fb4771915a248",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 42,
+      "name_ko": "컵 7",
+      "name_en": "SEVEN OF CUPS",
+      "suit": "cups",
+      "rank": "seven",
+      "source_title": "컵 7 (Cups 7)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/42-seven-of-cups.png",
+      "image_sha256": "429b8b3c72d8940f730ad4852b1dfb4923e5f72ed3c5a7def5aefd50559327b4",
+      "asset": "42.webp",
+      "asset_sha256": "dcbef824c310947bb9153d183b950dec2f727dbf4ab3038a478978f9c86572f7",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 43,
+      "name_ko": "컵 8",
+      "name_en": "EIGHT OF CUPS",
+      "suit": "cups",
+      "rank": "eight",
+      "source_title": "컵 8 (Cups 8)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/43-eight-of-cups.png",
+      "image_sha256": "366a96f9db66118e5e460e2063456e648839ee7b739a61e9f45569e4d57f293e",
+      "asset": "43.webp",
+      "asset_sha256": "7041890a1f2e835a4bbc7e332eb321504b7eaf7f763ae405a47d4a3a75a2a109",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 44,
+      "name_ko": "컵 9",
+      "name_en": "NINE OF CUPS",
+      "suit": "cups",
+      "rank": "nine",
+      "source_title": "컵 9 (Cups 9)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/44-nine-of-cups.png",
+      "image_sha256": "30e1768aefa2b669d4021bc15a392ff3511ae3685fc874c1a0607b8f874ebaef",
+      "asset": "44.webp",
+      "asset_sha256": "04888fcbabf4e933a5aae288590e1a50453908eb18e97d72886fb8b0e5360a0e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 45,
+      "name_ko": "컵 10",
+      "name_en": "TEN OF CUPS",
+      "suit": "cups",
+      "rank": "ten",
+      "source_title": "컵 10 (Cups 10)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/45-ten-of-cups.png",
+      "image_sha256": "d5c9a6a5360a3f6f58918574874df9f67273322474e230a06dff5bc3fc7aeae7",
+      "asset": "45.webp",
+      "asset_sha256": "787071ef08a6bb1ee12c53c40d5f995df9a9772b9711ad15a43e4ab80d7035f2",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 46,
+      "name_ko": "컵 페이지",
+      "name_en": "PAGE OF CUPS",
+      "suit": "cups",
+      "rank": "page",
+      "source_title": "컵 시종 (Page of Cups)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/46-page-of-cups.png",
+      "image_sha256": "2ecfe14d78fa0f7b18a598174ff0dff7e8cebae7b7d61f9a1578e8778ea33c5d",
+      "asset": "46.webp",
+      "asset_sha256": "8db2bbb572ba8b29475645e26ec89b3cce444b292d90b9bf5693a67d1e5ef8e3",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 47,
+      "name_ko": "컵 나이트",
+      "name_en": "KNIGHT OF CUPS",
+      "suit": "cups",
+      "rank": "knight",
+      "source_title": "컵 기사 (Knight of Cups)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/47-knight-of-cups.png",
+      "image_sha256": "9b18d9de7f2017b420daa4bcfe39a43443322db3821882ab0790fb009a29725e",
+      "asset": "47.webp",
+      "asset_sha256": "a57b15722b46a54a1345466ceb08f1ca4ae6474192f998626aa042769561b65a",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 48,
+      "name_ko": "컵 퀸",
+      "name_en": "QUEEN OF CUPS",
+      "suit": "cups",
+      "rank": "queen",
+      "source_title": "컵 여왕 (Queen of Cups)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/48-queen-of-cups.png",
+      "image_sha256": "52817669d65972a7fe2a3e5b3337a6ed7b99df2fdcce68b43e36e9c308504597",
+      "asset": "48.webp",
+      "asset_sha256": "ac0656784b247a6ff0349137cb6e2e3043fc0442e490dbf8547b4aa669af37af",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 49,
+      "name_ko": "컵 킹",
+      "name_en": "KING OF CUPS",
+      "suit": "cups",
+      "rank": "king",
+      "source_title": "컵 왕 (King of Cups)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/49-king-of-cups.png",
+      "image_sha256": "eb1c7d5e7c4a2c1af7f29f4e6bde15be822c83fb8399bae74d59a980af7fe6ee",
+      "asset": "49.webp",
+      "asset_sha256": "77824a92f63a1dd0fbf578469f38b99e255f24443cc80dd8e2d616a9d161199e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 50,
+      "name_ko": "소드 에이스",
+      "name_en": "ACE OF SWORDS",
+      "suit": "swords",
+      "rank": "ace",
+      "source_title": "검 에이스 (검 Ace)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/50-ace-of-swords.png",
+      "image_sha256": "c9395afa944965f629c924e149901b7aa29991e02a61ebb615f3400a321fff8b",
+      "asset": "50.webp",
+      "asset_sha256": "5e5859895c8df79c0771da92bf9e9d51c3c4b06d7a91bb49fa5351b361340c39",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 51,
+      "name_ko": "소드 2",
+      "name_en": "TWO OF SWORDS",
+      "suit": "swords",
+      "rank": "two",
+      "source_title": "검 2 (Swords 2)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/51-two-of-swords.png",
+      "image_sha256": "6bedfc6e5b7405c091fb2cf0adc26e03bd8b6c37266dad84a0b93d44028e449b",
+      "asset": "51.webp",
+      "asset_sha256": "5e580caff518297b4933fda97e9a63f81087e4b3ae35446576a18ea6c0bd2b32",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 52,
+      "name_ko": "소드 3",
+      "name_en": "THREE OF SWORDS",
+      "suit": "swords",
+      "rank": "three",
+      "source_title": "검 3 (Swords 3)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/52-three-of-swords.png",
+      "image_sha256": "674ad49a65449cfa12cd8b498ab026146b436d8751f5dacd5229a861fd214b1e",
+      "asset": "52.webp",
+      "asset_sha256": "5a045e6bcf7eab75a45cd885c84ab7685d9c8c00ea8456dfd83171f7e0520bac",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 53,
+      "name_ko": "소드 4",
+      "name_en": "FOUR OF SWORDS",
+      "suit": "swords",
+      "rank": "four",
+      "source_title": "검 4 (Swords 4)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/53-four-of-swords.png",
+      "image_sha256": "87c3b37400787de58fab97cfcea98b8bd1eccfb2f4e14e4a706223f1213c0010",
+      "asset": "53.webp",
+      "asset_sha256": "aa4c3fed5cd0c5ce41c4ef1ccdd5378004d4d26ae553de8cd6950f366c70886d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 54,
+      "name_ko": "소드 5",
+      "name_en": "FIVE OF SWORDS",
+      "suit": "swords",
+      "rank": "five",
+      "source_title": "검 5 (Swords 5)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/54-five-of-swords.png",
+      "image_sha256": "1de8152e4bfb9c734c5da574a3d0e8428a134357493805607575ec41872d3018",
+      "asset": "54.webp",
+      "asset_sha256": "75802231a8aba273fa4c9759ff1b1e57a0975dbf57599ba08024e46ac6391e72",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 55,
+      "name_ko": "소드 6",
+      "name_en": "SIX OF SWORDS",
+      "suit": "swords",
+      "rank": "six",
+      "source_title": "검 6 (Swords 6)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/55-six-of-swords.png",
+      "image_sha256": "12a87dc0458eed8f8e8a3546d3ce0000773ced6686fd242865ca6497c2eef7d5",
+      "asset": "55.webp",
+      "asset_sha256": "3356c44434e06ab67551d4937b962ab3546dab8c1643ff88a43e3da475779325",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 56,
+      "name_ko": "소드 7",
+      "name_en": "SEVEN OF SWORDS",
+      "suit": "swords",
+      "rank": "seven",
+      "source_title": "검 7 (Swords 7)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/56-seven-of-swords.png",
+      "image_sha256": "9a5a951e5758c6160875a29636d1465fe742ba2487d306302e5c14212d125781",
+      "asset": "56.webp",
+      "asset_sha256": "cf7e06506db4cd99c3aeda8a13370a7c1367f3228fc7d26768670fac50c4a016",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 57,
+      "name_ko": "소드 8",
+      "name_en": "EIGHT OF SWORDS",
+      "suit": "swords",
+      "rank": "eight",
+      "source_title": "검 8 (Swords 8)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/57-eight-of-swords.png",
+      "image_sha256": "0c0f81626f1bdeca612b264e35975155796385d59cc968ed7edc17ef0a1074e3",
+      "asset": "57.webp",
+      "asset_sha256": "56b1f631408353adf389f90672e1a29ccd2e0d27937c6c117e82f8038c5d59b0",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 58,
+      "name_ko": "소드 9",
+      "name_en": "NINE OF SWORDS",
+      "suit": "swords",
+      "rank": "nine",
+      "source_title": "검 9 (Swords 9)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/58-nine-of-swords.png",
+      "image_sha256": "05a6ddcbcd438b497cbc55c7ab193a81026cf6aa2497ca081bc15ac4a66e4e68",
+      "asset": "58.webp",
+      "asset_sha256": "5986e781b0839d378912e5bc2b94db8d79acfe64df8d2545bc375096319b1702",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 59,
+      "name_ko": "소드 10",
+      "name_en": "TEN OF SWORDS",
+      "suit": "swords",
+      "rank": "ten",
+      "source_title": "검 10 (Swords 10)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/59-ten-of-swords.png",
+      "image_sha256": "0a8375f914121fd018b4331a3c8877e403058016de716b48e5517ee432dea472",
+      "asset": "59.webp",
+      "asset_sha256": "64b35599766c43d09a1bff1f1eedb9365a8e1b9410fce4f78c330a0af424de41",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 60,
+      "name_ko": "소드 페이지",
+      "name_en": "PAGE OF SWORDS",
+      "suit": "swords",
+      "rank": "page",
+      "source_title": "검 시종 (Page of Swords)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/60-page-of-swords.png",
+      "image_sha256": "647ea3e65a53be36d45cc7b2cae3e811e61fd0f9afb357e7a3c0a45974b4bf90",
+      "asset": "60.webp",
+      "asset_sha256": "e2f5aafc583eb4f64deae4a69b7ad360e59dd46d7233f6771b123fa60d9dad99",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 61,
+      "name_ko": "소드 나이트",
+      "name_en": "KNIGHT OF SWORDS",
+      "suit": "swords",
+      "rank": "knight",
+      "source_title": "검 기사 (Knight of Swords)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/61-knight-of-swords.png",
+      "image_sha256": "a5f6e5693bd95cec4c450f510572caaeca6ce6ba40d39fdb11c9904a65371ef0",
+      "asset": "61.webp",
+      "asset_sha256": "e7334fadbf54a4e32ef9b047eea97788d95f379f41562a3e982c9a7870460c5e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 62,
+      "name_ko": "소드 퀸",
+      "name_en": "QUEEN OF SWORDS",
+      "suit": "swords",
+      "rank": "queen",
+      "source_title": "검 여왕 (Queen of Swords)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/62-queen-of-swords.png",
+      "image_sha256": "ece9ff56d5e190debd6b8d530e9a59eff842fdf6577cf0965b0c2bdb99867e63",
+      "asset": "62.webp",
+      "asset_sha256": "2c3d095f79356aeb6037ed5a119f1d88b44823256103ffd427090000d7455d13",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 63,
+      "name_ko": "소드 킹",
+      "name_en": "KING OF SWORDS",
+      "suit": "swords",
+      "rank": "king",
+      "source_title": "검 왕 (King of Swords)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/63-king-of-swords.png",
+      "image_sha256": "f8def8bbbb235758f516d07e07d14a5a7efc03605f3aa2b9bbfddbcb22dbe8e4",
+      "asset": "63.webp",
+      "asset_sha256": "35c1a69c2e7796dbf300e7f05e1f5826b78528b2a3c46040a97e44854de23713",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 64,
+      "name_ko": "펜타클 에이스",
+      "name_en": "ACE OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "ace",
+      "source_title": "동전 Ace (Ace of Pentacles)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/64-ace-of-pentacles.png",
+      "image_sha256": "7798bf8032d58a679fb628608d6a0210d1c8c87429f6a0928f210dadfb0ba3f8",
+      "asset": "64.webp",
+      "asset_sha256": "10b13a29733ba6ef2213f4d81ab53884931e2cbf1030e10cf8578f36ee8a16fc",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 65,
+      "name_ko": "펜타클 2",
+      "name_en": "TWO OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "two",
+      "source_title": "동전 2 (Pentacles 2)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/65-two-of-pentacles.png",
+      "image_sha256": "f66fc77a4da9c3f2b766a8132b6fd7ba192c718bc5b1b7e33333c670da1dbc87",
+      "asset": "65.webp",
+      "asset_sha256": "6c1e804c4e00a379dd550de3c2bf08e49ed434efa91e8a1fe83023095889125d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 66,
+      "name_ko": "펜타클 3",
+      "name_en": "THREE OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "three",
+      "source_title": "동전 3 (Pentacles 3)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/66-three-of-pentacles.png",
+      "image_sha256": "7fa900e733b71790b6e85b5b9bf7736bc6c77d692bd8a2b8ec799acf4b764373",
+      "asset": "66.webp",
+      "asset_sha256": "4609521d369157fab53f1ed550fad15c45016113fa081556c1eb50b0a03a3c9e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 67,
+      "name_ko": "펜타클 4",
+      "name_en": "FOUR OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "four",
+      "source_title": "동전 4 (Pentacles 4)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/67-four-of-pentacles.png",
+      "image_sha256": "3fd37e29da96f94afa616ee5ceb10711e85fdd77779ad72e6e6e0b8535c0e2fc",
+      "asset": "67.webp",
+      "asset_sha256": "d332eb095d6384ba99fde4f19d72209a3031216f3593ea63cd3c55a13b7f1a7d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 68,
+      "name_ko": "펜타클 5",
+      "name_en": "FIVE OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "five",
+      "source_title": "동전 5 (Pentacles 5)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/68-five-of-pentacles.png",
+      "image_sha256": "899cffd3fe56fea30d75432310626bfb8870f2bb4371b791bd12df4c09e380f5",
+      "asset": "68.webp",
+      "asset_sha256": "26b85d687f5699eb196acfe283f0bfa398cdb0919639747856b3447db4211e73",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 69,
+      "name_ko": "펜타클 6",
+      "name_en": "SIX OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "six",
+      "source_title": "동전 6 (Pentacles 6)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/69-six-of-pentacles.png",
+      "image_sha256": "5d7e8b3aab0e91f383a54b49ceded967e16845063a5a9b10c6caa053e92690a1",
+      "asset": "69.webp",
+      "asset_sha256": "45044dcec35219880284c925012a2134c7f913931d1ae1c96fe8058eb9eba4f9",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 70,
+      "name_ko": "펜타클 7",
+      "name_en": "SEVEN OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "seven",
+      "source_title": "동전 7 (Pentacles 7)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/70-seven-of-pentacles.png",
+      "image_sha256": "dab94fa2bc40eb0b908feeff785f6676faad55d14ac444dd1026b0889fe09170",
+      "asset": "70.webp",
+      "asset_sha256": "4276d9003973807dbcdc8f75562fe7699e6b01de73f9bb3b3544307b03914531",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 71,
+      "name_ko": "펜타클 8",
+      "name_en": "EIGHT OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "eight",
+      "source_title": "동전 8 (Pentacles 8)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/71-eight-of-pentacles.png",
+      "image_sha256": "5bd6bc142cf573dd2f40da35329162e3b572eada028a5bec00e40d10e2be80d8",
+      "asset": "71.webp",
+      "asset_sha256": "eb9c672643d136218fef016ddd10da1c7ae72f966dd48d139a1d2c50e61ea576",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 72,
+      "name_ko": "펜타클 9",
+      "name_en": "NINE OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "nine",
+      "source_title": "동전 9 (Pentacles 9)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/72-nine-of-pentacles.png",
+      "image_sha256": "4c2e43cc99281a972ac064e1e2516b37520460f6cd814a876d116ee2f2fc6ff9",
+      "asset": "72.webp",
+      "asset_sha256": "3afe1a1286a2dfadb67aab9cc7c572aa599f3790d9658fa1ca05464ca4c88843",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 73,
+      "name_ko": "펜타클 10",
+      "name_en": "TEN OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "ten",
+      "source_title": "동전 10 (Pentacles 10)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/73-ten-of-pentacles.png",
+      "image_sha256": "81f1e0e62048ed455a6444457b3876009d69796a28c64c41243b48035c730c99",
+      "asset": "73.webp",
+      "asset_sha256": "8306224400bc2fc31f0343b2cda23d7718aeac359a98db1c45d4b4cadfe04686",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 74,
+      "name_ko": "펜타클 페이지",
+      "name_en": "PAGE OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "page",
+      "source_title": "동전 시종 (Page of Pentacles)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/74-page-of-pentacles.png",
+      "image_sha256": "0e9ff7d038b58e478563cb2e6cc2afa5c5faaa81f4511b6088a0b782aa9a6150",
+      "asset": "74.webp",
+      "asset_sha256": "f8d801682496af3f737468da934d03c29630c1e650e963487a79cbd44f2bd6c7",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 75,
+      "name_ko": "펜타클 나이트",
+      "name_en": "KNIGHT OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "knight",
+      "source_title": "동전 기사 (Knight of Pentacles)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/75-knight-of-pentacles.png",
+      "image_sha256": "60c8e6302e958d57cf39ebbb53d11a58502f27771a86d458ab1b8d2b16752f90",
+      "asset": "75.webp",
+      "asset_sha256": "6d17341bb70e5f51f5a1b6b1030181bb8d875bd6d70d63aa11e1763f4ad6424f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 76,
+      "name_ko": "펜타클 퀸",
+      "name_en": "QUEEN OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "queen",
+      "source_title": "동전 여왕 (Queen of Pentacles)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/76-queen-of-pentacles.png",
+      "image_sha256": "1087fd718a0ec55596f28587917e92782315f787b82eba3cc5b4a903ed495cfd",
+      "asset": "76.webp",
+      "asset_sha256": "54a7864b3b230988affd3ffd7739b46676d7772c91bcce580b19d074e03b1996",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "card_id": 77,
+      "name_ko": "펜타클 킹",
+      "name_en": "KING OF PENTACLES",
+      "suit": "pentacles",
+      "rank": "king",
+      "source_title": "동전 왕 (King of Pentacles)",
+      "image_file": "docs/tarot-minor-gpt-image-2/images/77-king-of-pentacles.png",
+      "image_sha256": "cf49aa2eb188aa36fb7a4a3eaec1ad19b560e0879daaec5ca8052c7813199573",
+      "asset": "77.webp",
+      "asset_sha256": "f25038ea1b8da703eb40ee8805902ec554b64b171fafb622de41d072892555f7",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ]
+}

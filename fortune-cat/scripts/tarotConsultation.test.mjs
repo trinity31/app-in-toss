@@ -23,6 +23,7 @@ function fixture(responses, saved = null, purchase) {
     fetcher: async (url, options) => {
       assert.ok(value, 'credentials must be persisted before a request')
       assert.equal(options.headers['X-Tarot-Token'], token)
+      assert.equal(options.headers['X-Tarot-Deck'], 'tarot78-v1')
       calls.push({ url, ...options, data: options.body ? JSON.parse(options.body) : null })
       const next = responses.shift()
       if (next instanceof Error) throw next
@@ -207,4 +208,38 @@ test('canceled purchase preserves the concern and draws no cards', async () => {
   assert.equal(f.client.getSnapshot().session.question, draft.question)
   assert.deepEqual(f.client.getSnapshot().session.cards, [])
   assert.match(f.client.getSnapshot().error, /결제/)
+})
+
+for (const [code, status, message] of [
+  ['TAROT_DECK_UNSUPPORTED', 409, /업데이트/],
+  ['TAROT_DECK_INVALID', 503, /카드 데이터/],
+]) {
+  test(`${code} is shown without CAS refresh or loss of saved consultation`, async () => {
+    const f = fixture([reply(complete), reply({ detail: { code } }, status)], { id, token, question: draft.question, created: true })
+    await f.client.restore()
+    await f.client.command('clarify', { target_index: 0 })
+    assert.equal(f.calls.length, 2)
+    assert.match(f.client.getSnapshot().error, message)
+    assert.deepEqual(f.client.getSnapshot().session, complete)
+    assert.equal(f.saved().id, id)
+  })
+
+  test(`${code} from purchase keeps deck guidance and never draws`, async () => {
+    const paywall = { ...ready, payment_required: true }
+    const f = fixture([reply(paywall), reply(paywall), reply({ detail: { code } }, status)],
+      { id, token, question: draft.question, created: true }, async grant => grant('order', 2900))
+    await f.client.restore()
+    await f.client.pay()
+    assert.equal(f.calls.length, 3)
+    assert.match(f.client.getSnapshot().error, message)
+    assert.ok(f.calls.at(-1).url.endsWith('/purchase'))
+  })
+}
+
+test('minor originals and clarifier restore unchanged alongside legacy 22 responses', async () => {
+  const minor = { ...complete, deck_version: 'tarot78-v1', cards: [{ id: 22 }, { id: 63 }, { id: 77 }], clarifier: { card: { id: 35 }, reading: { meaning: '보충' } } }
+  const f = fixture([reply(minor)], { id, token, question: draft.question, created: true })
+  await f.client.restore()
+  assert.deepEqual(f.client.getSnapshot().session, minor)
+  assert.equal(f.calls.length, 1)
 })
