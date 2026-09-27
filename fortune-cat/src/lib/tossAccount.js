@@ -1,15 +1,27 @@
 import { EntryError } from './entryErrors.js'
 
 // Cache only a validated exchange; failed attempts remain explicitly retryable.
-export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, now = Date.now }) {
+export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, now = Date.now, development = false }) {
   let login = null
+  const loginError = (reason, error) => {
+    const failure = new EntryError('login')
+    // Never expose native messages, payloads, or authorization codes.
+    if (development) {
+      const code = error?.code
+      const safeCode = Number.isSafeInteger(code) || (typeof code === 'string' && /^[A-Z][A-Z0-9_]{0,47}$/.test(code))
+        ? `; code=${code}` : ''
+      const name = ['Error', 'TypeError', 'ReferenceError', 'NetworkError'].includes(error?.name) ? `; ${error.name}` : ''
+      failure.message += ` [${reason}${name}${safeCode}]`
+    }
+    return failure
+  }
   return async () => {
     if (!login || login.expiresAt <= now()) {
       if (!baseUrl) throw new EntryError('configuration')
       let result
-      try { result = await appLogin() } catch { throw new EntryError('login') }
+      try { result = await appLogin() } catch (error) { throw loginError('SDK_REJECTED', error) }
       if (typeof result?.authorizationCode !== 'string' || !result.authorizationCode
-        || typeof result.referrer !== 'string' || !result.referrer) throw new EntryError('login')
+        || typeof result.referrer !== 'string' || !result.referrer) throw loginError('SDK_INVALID_RESULT')
       let response
       try {
         response = await fetcher(`${baseUrl.replace(/\/$/, '')}/toss-login`, {

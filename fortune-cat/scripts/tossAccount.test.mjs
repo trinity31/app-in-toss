@@ -61,3 +61,33 @@ test('exchange sends SDK credentials and cached login refreshes at the existing 
   await headers()
   assert.equal(attempts, 2)
 })
+
+for (const development of [false, true]) {
+  test(`SDK rejection diagnostic is sanitized and development-only (${development})`, async () => {
+    const headers = createTossAccountHeaders({ baseUrl: 'https://example.test', development,
+      appLogin: async () => { throw Object.assign(new Error('private-code-and-user'), { code: 'NOT_LOGGED_IN', authorizationCode: 'private-auth' }) },
+      fetcher: async () => assert.fail('must not exchange'),
+    })
+    await assert.rejects(headers(), error => {
+      assert.equal(error.message.includes('SDK_REJECTED'), development)
+      assert.equal(error.message.includes('NOT_LOGGED_IN'), development)
+      assert.ok(!error.message.includes('private'))
+      return true
+    })
+  })
+}
+
+test('malformed SDK return is distinct from native rejection without exposing result', async () => {
+  const headers = createTossAccountHeaders({ baseUrl: 'https://example.test', development: true,
+    appLogin: async () => ({ authorizationCode: 'private-auth' }),
+    fetcher: async () => assert.fail('must not exchange'),
+  })
+  await assert.rejects(headers(), error => /SDK_INVALID_RESULT/.test(error.message) && !error.message.includes('private'))
+})
+
+test('unstructured native error codes are omitted', async () => {
+  const headers = createTossAccountHeaders({ baseUrl: 'https://example.test', development: true,
+    appLogin: async () => { throw { code: 'private user payload', name: 'private user name' } },
+  })
+  await assert.rejects(headers(), error => /SDK_REJECTED/.test(error.message) && !error.message.includes('private'))
+})
