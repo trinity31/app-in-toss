@@ -96,3 +96,56 @@ test('a false delivery acknowledgement must not report recovery success', async 
   await assert.rejects(purchaseTarot(async () => {}, sdk), /구매 복구/)
   assert.equal(sdk.options, undefined)
 })
+
+test('diagnostics retain the native error even when recovery succeeds and exclude private payloads', async () => {
+  const sdk = iap()
+  const events = []
+  const buying = purchaseTarot(async () => {}, sdk, event => events.push(event))
+  await new Promise(resolve => setImmediate(resolve))
+  await sdk.options.options.processProductGrant({ orderId: 'private-order-id' })
+  await sdk.options.onError({ code: 'PRODUCT_NOT_GRANTED_BY_PARTNER', message: 'private-token', details: 'private-question' })
+  await buying
+  const stages = events.map(event => event.stage)
+  assert.ok(stages.indexOf('grant_started') < stages.indexOf('grant_succeeded'))
+  assert.ok(stages.indexOf('grant_succeeded') < stages.indexOf('grant_callback_ready'))
+  assert.ok(stages.indexOf('grant_callback_ready') < stages.indexOf('sdk_failed'))
+  assert.equal(stages.at(-1), 'recovery_succeeded')
+  assert.equal(events.find(event => event.stage === 'sdk_failed').error_code, 'PRODUCT_NOT_GRANTED_BY_PARTNER')
+  assert.equal(new Set(events.map(event => event.attempt_id)).size, 1)
+  assert.ok(events.every(event => Number.isFinite(Date.parse(event.occurred_at)) && event.elapsed_ms >= 0))
+  assert.ok(!JSON.stringify(events).includes('private-'))
+})
+
+test('unknown native codes are not copied into diagnostics', async () => {
+  const sdk = iap()
+  const events = []
+  const buying = purchaseTarot(async () => {}, sdk, event => events.push(event))
+  const rejected = assert.rejects(buying)
+  await new Promise(resolve => setImmediate(resolve))
+  await sdk.options.onError({ code: 'PRIVATE_AUTH_TOKEN', message: 'private-question' })
+  await rejected
+  assert.equal(events.find(event => event.stage === 'sdk_failed').error_code, 'UNKNOWN')
+  assert.ok(!JSON.stringify(events).includes('PRIVATE_AUTH_TOKEN'))
+  assert.ok(!JSON.stringify(events).includes('private-question'))
+})
+
+for (const report of [() => { throw new Error('analytics unavailable') }, async () => { throw new Error('analytics unavailable') }]) {
+  test('diagnostic delivery failure cannot change a successful purchase', async () => {
+    const sdk = iap()
+    const buying = purchaseTarot(async () => {}, sdk, report)
+    await new Promise(resolve => setImmediate(resolve))
+    assert.equal(await sdk.options.options.processProductGrant({ orderId: 'paid' }), true)
+    sdk.options.onEvent({ type: 'success' })
+    await buying
+  })
+}
+
+test('pending lookup failures produce a diagnostic without opening a purchase', async () => {
+  const sdk = iap()
+  sdk.getPendingOrders = async () => { throw { code: 'NETWORK_ERROR' } }
+  const events = []
+  await assert.rejects(purchaseTarot(async () => {}, sdk, event => events.push(event)))
+  assert.equal(events.at(-1).error_code, 'NETWORK_ERROR')
+  assert.equal(events.at(-1).stage, 'purchase_failed')
+  assert.equal(sdk.options, undefined)
+})

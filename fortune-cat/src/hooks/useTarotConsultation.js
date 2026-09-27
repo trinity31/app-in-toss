@@ -35,6 +35,7 @@ const storage = {
 }
 
 export function useTarotConsultation() {
+  const [paymentDiagnostics, setPaymentDiagnostics] = useState([])
   const [runtime] = useState(() => tarotRuntime({
     development: import.meta.env.DEV, sandbox: isSandbox(), baseUrl: import.meta.env.VITE_API_BASE_URL,
   }))
@@ -51,10 +52,18 @@ export function useTarotConsultation() {
           // 샌드박스 테스트 결제는 금액을 보내지 않아 payment_histories(운영 매출)에 기록되지 않는다.
           await grant(orderId, isSandbox() ? undefined : amount)
           paid = { order_id: orderId, revenue: amount }
+        }, undefined, diagnostic => {
+          if (diagnostic.stage === 'started') setPaymentDiagnostics([])
+          if (diagnostic.error_code && diagnostic.stage !== 'purchase_failed') {
+            setPaymentDiagnostics(previous => [...previous, diagnostic].slice(-3))
+          } else if (diagnostic.stage === 'purchase_failed') {
+            setPaymentDiagnostics(previous => previous.length ? previous : [diagnostic])
+          }
+          trackRef.current('tarot_payment_diagnostic', diagnostic)
         })
         trackRef.current('tarot_purchase_completed', paid)
       } catch (error) {
-        trackRef.current('tarot_purchase_failed', { reason: error?.message || 'cancelled' })
+        trackRef.current('tarot_purchase_failed', { reason: 'payment_failed' })
         throw error
       }
     }
@@ -71,5 +80,5 @@ export function useTarotConsultation() {
   })
   const state = useSyncExternalStore(client.subscribe, client.getSnapshot)
   useEffect(() => { client.restore() }, [client])
-  return { ...state, client, track, sandbox: runtime.sandbox }
+  return { ...state, client, track, sandbox: runtime.sandbox, paymentDiagnostics }
 }

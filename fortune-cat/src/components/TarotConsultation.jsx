@@ -83,7 +83,7 @@ function Items({ values, ordered = false }) {
 }
 
 export default function TarotConsultation() {
-  const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client, track, sandbox } = useTarotConsultation()
+  const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client, track, sandbox, paymentDiagnostics } = useTarotConsultation()
   const insets = useSafeAreaInsets()
   const [editing, setEditing] = useState(false)
   const [introDone, setIntroDone] = useState(false)
@@ -136,6 +136,15 @@ export default function TarotConsultation() {
         <p style={{ ...textStyle, marginBottom: 12 }}>{failure}</p>
         <Action secondary disabled={busy} onClick={() => client.retry()}>저장된 상담으로 다시 시도</Action>
       </div>}
+      {paymentDiagnostics.length > 0 && <details open style={{ padding: 16, background: '#FFF5EF', borderRadius: 16, marginBottom: 24, fontSize: 13, lineHeight: 1.7 }}>
+        <summary>결제 오류 확인 정보</summary>
+        <p>문의하실 때 아래 코드와 시각을 알려주세요.</p>
+        {paymentDiagnostics.map((item, index) => <div key={`${item.attempt_id}-${index}`} style={{ marginTop: 12, overflowWrap: 'anywhere' }}>
+          <div>오류 코드: <strong>{item.error_code}</strong>{item.http_status ? ` (HTTP ${item.http_status})` : ''}</div>
+          <div>발생 시각: {new Date(item.occurred_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', hour12: false })} (한국 시간)</div>
+          <div>확인 번호: {item.attempt_id}</div>
+        </div>)}
+      </details>}
 
       {/* 심사 요구: 토스 로그인(고민 제출 시) 전에 서비스 소개를 먼저 보여준다. */}
       {showIntro && <section>
