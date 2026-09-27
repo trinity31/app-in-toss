@@ -1,16 +1,19 @@
 import { Route, Routes } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import HomePage from './pages/HomePage'
-import SajuPage from './pages/SajuPage'
-import NewYearPage from './pages/NewYearPage'
-import AmuletPage from './pages/AmuletPage'
-import TarotPage from './pages/TarotPage'
-import LibraryPage from './pages/LibraryPage'
 import TabBar from './components/TabBar'
 import './App.css'
+
+const SajuPage = lazy(() => import('./pages/SajuPage'))
+const NewYearPage = lazy(() => import('./pages/NewYearPage'))
+const AmuletPage = lazy(() => import('./pages/AmuletPage'))
+const TarotPage = lazy(() => import('./pages/TarotPage'))
+const LibraryPage = lazy(() => import('./pages/LibraryPage'))
 
 function App() {
   return (
     <>
+      <Suspense fallback={<div role="status" style={{ padding: 24 }}>화면을 불러오고 있어요.</div>}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/saju" element={<SajuPage />} />
@@ -20,6 +23,7 @@ function App() {
         <Route path="/library" element={<LibraryPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
+      </Suspense>
       <TabBar />
     </>
   )
