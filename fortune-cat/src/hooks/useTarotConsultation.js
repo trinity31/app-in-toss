@@ -3,6 +3,7 @@ import { Storage } from '@apps-in-toss/web-framework'
 import { purchaseTarot } from '../lib/tarotPurchase'
 import { createTarotConsultation } from '../lib/tarotConsultation'
 import { useTarotTrack } from './useTarotTrack'
+import { createTossAccountHeaders } from '../lib/tossAccount'
 import { isSandbox } from '../lib/analytics'
 
 const storage = {
@@ -37,7 +38,6 @@ export function useTarotConsultation() {
   const trackRef = useRef(track)
   trackRef.current = track
   const [client] = useState(() => {
-    let login = null
     // 결제 퍼널(시도 → 완료/실패). revenue 는 콘솔 등록가라 매출 확정값은 payment_histories 를 기준으로 본다.
     const purchase = async grant => {
       trackRef.current('tarot_purchase_started')
@@ -55,20 +55,13 @@ export function useTarotConsultation() {
       }
     }
     return createTarotConsultation({ baseUrl: import.meta.env.VITE_API_BASE_URL, storage, purchase,
-      accountHeaders: async () => {
-        if (!login || login.expiresAt <= Date.now()) {
+      accountHeaders: createTossAccountHeaders({
+        baseUrl: import.meta.env.VITE_API_BASE_URL,
+        appLogin: async () => {
           const { appLogin } = await import('@apps-in-toss/web-framework')
-          const result = await appLogin()
-          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/toss-login`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ authorizationCode: result.authorizationCode, referrer: result.referrer }),
-          })
-          if (!response.ok) throw new Error('무료 상담을 이용하려면 토스에 로그인해 주세요.')
-          const data = await response.json()
-          login = { token: data.accessToken, expiresAt: Date.now() + Math.max(0, data.expiresIn - 60) * 1000 }
-        }
-        return { 'X-Toss-Access-Token': login.token }
-      },
+          return appLogin()
+        },
+      }),
     })
   })
   const state = useSyncExternalStore(client.subscribe, client.getSnapshot)

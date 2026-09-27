@@ -1,3 +1,5 @@
+import { EntryError } from './entryErrors.js'
+
 export const SESSION_KEY = 'FORTUNE_CAT_TAROT_CONSULTATION'
 
 const randomHex = length => Array.from(crypto.getRandomValues(new Uint8Array(length)), byte => byte.toString(16).padStart(2, '0')).join('')
@@ -46,7 +48,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
   }
 
   async function request(path, body) {
-    if (!baseUrl) throw new Error('상담 연결 주소를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.')
+    if (!baseUrl) throw new EntryError('configuration')
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 110000)
     try {
@@ -57,20 +59,20 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         signal: controller.signal,
       })
       if (!response.ok) {
-        const error = new Error(response.status === 402
-          ? '무료 심화 타로 상담 1회를 모두 사용했어요. 결제 후 새 상담을 이어갈 수 있어요.'
-          : response.status === 404
-          ? '저장된 상담을 찾지 못했어요. 잠시 후 다시 불러와 주세요.'
-          : '상담을 연결하지 못했어요. 저장된 내용을 다시 불러와 이어갈 수 있어요.')
+        const error = new EntryError(response.status >= 500 ? 'server'
+          : response.status === 402 ? 'quota'
+          : response.status === 404 ? 'missing' : 'request')
         if (response.status === 402 && snapshot.session) {
           update({ session: { ...snapshot.session, payment_required: true } })
         }
         error.status = response.status
         throw error
       }
-      const session = await response.json()
-      if ((path !== '/free' && session.id !== credentials.id) || !Number.isInteger(session.version) || !Array.isArray(session.cards)) {
-        throw new Error('상담 내용을 확인하지 못했어요. 다시 불러와 주세요.')
+      let session
+      try { session = await response.json() }
+      catch { throw new EntryError('response') }
+      if (!session || (path !== '/free' && session.id !== credentials.id) || !Number.isInteger(session.version) || !Array.isArray(session.cards)) {
+        throw new EntryError('response')
       }
       if (path === '/free') credentials = { ...credentials, id: session.id, question: session.question }
       update({ session, error: null })
@@ -78,6 +80,11 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     } finally {
       clearTimeout(timer)
     }
+  }
+
+  async function writeCredentials(value) {
+    try { await storage.setItem(SESSION_KEY, JSON.stringify(value)) }
+    catch { throw new EntryError('storageWrite') }
   }
 
   async function create() {
@@ -90,7 +97,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
       update({ error: '무료 상담 1회를 사용해 이전 상담을 불러왔어요. 이 상담의 결과와 확인 카드는 계속 이용할 수 있어요.' })
     }
     credentials = { ...credentials, created: true }
-    await storage.setItem(SESSION_KEY, JSON.stringify(credentials))
+    await writeCredentials(credentials)
     return session
   }
 
@@ -125,7 +132,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
           // Retain the current cards if refresh also fails.
         }
       }
-      update({ error: [401, 402, 404].includes(error.status) ? error.message : '연결이 원활하지 않아요. 입력과 뽑은 카드는 유지되니 다시 시도해 주세요.' })
+      update({ error: error instanceof EntryError ? error.message : '연결이 원활하지 않아요. 입력과 뽑은 카드는 유지되니 다시 시도해 주세요.' })
     }).finally(() => {
       active = null
       update({ busy: false, initialized: true })
@@ -139,7 +146,9 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     restore() {
       return run(async () => {
         update({ restoreFailed: true })
-        const raw = await storage.getItem(SESSION_KEY)
+        let raw
+        try { raw = await storage.getItem(SESSION_KEY) }
+        catch { throw new EntryError('storageRead') }
         update({ restoreFailed: false })
         if (!raw) return
         update({ hasSaved: true })
@@ -147,7 +156,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         try { parsed = JSON.parse(raw) } catch { /* Invalid data remains until the user starts over. */ }
         if (!validCredentials(parsed)) {
           update({ invalidSaved: true })
-          throw new Error('Invalid saved consultation')
+          throw new EntryError('invalidSaved')
         }
         credentials = parsed
         await refresh()
@@ -159,7 +168,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         const trimmed = question.trim()
         if (!trimmed || trimmed.length > 3000) return
         const next = makeCredentials(trimmed)
-        await storage.setItem(SESSION_KEY, JSON.stringify(next))
+        await writeCredentials(next)
         credentials = next
         update({ hasSaved: true })
         await create()
@@ -206,7 +215,8 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     },
     reset() {
       return run(async () => {
-        await storage.removeItem(SESSION_KEY)
+        try { await storage.removeItem(SESSION_KEY) }
+        catch { throw new EntryError('storageWrite') }
         credentials = null
         pending = null
         update({ session: null, hasSaved: false, restoreFailed: false, invalidSaved: false })

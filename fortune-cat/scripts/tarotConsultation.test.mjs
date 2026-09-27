@@ -1,5 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { createTossAccountHeaders } from '../src/lib/tossAccount.js'
+import { EntryError } from '../src/lib/entryErrors.js'
 import { createTarotConsultation, SESSION_KEY } from '../src/lib/tarotConsultation.js'
 
 const id = '12345678-1234-4234-8234-123456789abc'
@@ -207,4 +209,130 @@ test('canceled purchase preserves the concern and draws no cards', async () => {
   assert.equal(f.client.getSnapshot().session.question, draft.question)
   assert.deepEqual(f.client.getSnapshot().session.cards, [])
   assert.match(f.client.getSnapshot().error, /결제/)
+})
+
+test('entry read failure has a storage message and explicit retry restores identical cards', async () => {
+  const saved = { id, token, question: draft.question, created: true }
+  const f = fixture([reply(complete)], saved)
+  const read = f.storage.getItem
+  f.storage.getItem = async () => { throw new Error('secret SDK details') }
+  await f.client.restore()
+  assert.match(f.client.getSnapshot().error, /읽지 못/)
+  assert.doesNotMatch(f.client.getSnapshot().error, /secret|연결이 원활/)
+  assert.equal(f.calls.length, 0)
+  await f.client.start('새 고민')
+  assert.equal(f.calls.length, 0)
+  assert.deepEqual(f.saved(), saved)
+  f.storage.getItem = read
+  await f.client.retry()
+  assert.deepEqual(f.client.getSnapshot().session.cards, complete.cards)
+  assert.equal(f.client.getSnapshot().restoreFailed, false)
+})
+
+test('invalid saved JSON is preserved and never reaches auth or the API', async () => {
+  let calls = 0
+  const client = createTarotConsultation({ baseUrl: 'https://example.test',
+    storage: { getItem: async () => '{broken', removeItem: async () => { throw new Error('must not delete') } },
+    accountHeaders: async () => { calls++; return {} }, fetcher: async () => { calls++ },
+  })
+  await client.restore()
+  assert.match(client.getSnapshot().error, /올바르지/)
+  assert.equal(client.getSnapshot().invalidSaved, true)
+  await client.retry()
+  assert.equal(calls, 0)
+})
+
+test('initial write failure prevents login and HTTP with a storage message', async () => {
+  let calls = 0
+  const client = createTarotConsultation({ baseUrl: 'https://example.test',
+    storage: { setItem: async () => { throw new Error('private') } },
+    makeCredentials: question => ({ id, token, question, created: false }),
+    accountHeaders: async () => { calls++; return {} }, fetcher: async () => { calls++ },
+  })
+  await client.start(draft.question)
+  assert.match(client.getSnapshot().error, /저장하지 못/)
+  assert.equal(calls, 0)
+})
+
+test('post-create write failure keeps credentials and retry uses the same consultation', async () => {
+  const f = fixture([reply(drawn), reply(drawn), reply(complete)])
+  const write = f.storage.setItem
+  let writes = 0
+  f.storage.setItem = async (...args) => { if (++writes === 2) throw new Error('private'); return write(...args) }
+  await f.client.start(draft.question)
+  assert.match(f.client.getSnapshot().error, /저장하지 못/)
+  assert.equal(f.saved().id, id)
+  assert.equal(f.saved().token, token)
+  assert.deepEqual(f.client.getSnapshot().session.cards, drawn.cards)
+  await f.client.retry()
+  assert.ok(f.calls[1].url.endsWith(id))
+  assert.equal(f.calls[1].headers['X-Tarot-Token'], token)
+  assert.deepEqual(f.client.getSnapshot().session.cards, complete.cards)
+})
+
+test('typed account failure is shown safely and does not invoke the consultation API', async () => {
+  const saved = { id, token, question: draft.question, created: true }
+  let calls = 0
+  let failing = true
+  const client = createTarotConsultation({ baseUrl: 'https://example.test',
+    storage: { getItem: async () => JSON.stringify(saved) },
+    accountHeaders: async () => { if (failing) throw new EntryError('login'); return {} },
+    fetcher: async () => { calls++; return reply(complete) },
+  })
+  await client.restore()
+  assert.match(client.getSnapshot().error, /로그인/)
+  assert.equal(calls, 0)
+  failing = false
+  await client.retry()
+  assert.equal(calls, 1)
+  assert.deepEqual(client.getSnapshot().session.cards, complete.cards)
+})
+
+test('network and server failures remain distinct from storage and login failures', async () => {
+  const f = fixture([new Error('private network payload'), reply({}, 503), reply(complete)],
+    { id, token, question: draft.question, created: true })
+  await f.client.restore()
+  assert.match(f.client.getSnapshot().error, /연결이 원활/)
+  assert.doesNotMatch(f.client.getSnapshot().error, /private/)
+  await f.client.retry()
+  assert.match(f.client.getSnapshot().error, /상담 서버/)
+  assert.equal(f.saved().token, token)
+  await f.client.retry()
+  assert.deepEqual(f.client.getSnapshot().session.cards, complete.cards)
+})
+
+test('SDK-to-exchange entry failures retry with the original credentials and cards', async () => {
+  const saved = { id, token, question: draft.question, created: true }
+  let stage = 'sdk'
+  let exchanges = 0
+  let requests = 0
+  const accountHeaders = createTossAccountHeaders({ baseUrl: 'https://example.test',
+    appLogin: async () => {
+      if (stage === 'sdk') throw { code: 'unknown', message: 'private SDK payload' }
+      return { authorizationCode: 'test-code', referrer: 'SANDBOX' }
+    },
+    fetcher: async () => { exchanges++; return stage === 'exchange' ? reply({ error: 'private payload' }, 401) : reply({ accessToken: 'test-token', expiresIn: 120 }) },
+  })
+  const client = createTarotConsultation({ baseUrl: 'https://example.test', accountHeaders,
+    storage: { getItem: async () => JSON.stringify(saved) },
+    fetcher: async (url, options) => {
+      requests++
+      assert.equal(options.headers['X-Tarot-Token'], token)
+      assert.equal(options.headers['X-Toss-Access-Token'], 'test-token')
+      assert.ok(url.endsWith(id))
+      return reply(complete)
+    },
+  })
+  await client.restore()
+  assert.match(client.getSnapshot().error, /로그인이 취소/)
+  assert.equal(exchanges, 0)
+  assert.equal(requests, 0)
+  stage = 'exchange'
+  await client.retry()
+  assert.match(client.getSnapshot().error, /인증을 확인/)
+  assert.equal(requests, 0)
+  stage = 'success'
+  await client.retry()
+  assert.equal(requests, 1)
+  assert.deepEqual(client.getSnapshot().session.cards, complete.cards)
 })
