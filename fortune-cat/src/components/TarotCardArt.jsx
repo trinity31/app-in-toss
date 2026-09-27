@@ -108,7 +108,7 @@ function CardViewer({ src, alt, onClose }) {
     onCancel={event => { event.preventDefault(); onClose(); }}>
     <div className="tarot-art-viewer__toolbar">
       <span>{alt ?? '타로 카드'}</span>
-      <button type="button" aria-label="카드 크게 보기 닫기" onClick={onClose}>×</button>
+      <button type="button" aria-label="카드 크게 보기 닫기" onClick={onClose}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
     </div>
     <div className="tarot-art-viewer__image"><CardImage src={src} alt={alt} /></div>
   </dialog>, document.body);
