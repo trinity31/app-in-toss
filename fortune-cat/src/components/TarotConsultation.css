@@ -47,3 +47,17 @@
     animation: none;
   }
 }
+
+/* Give each illustration room without nesting the image retry button in a summary. */
+.tarot-reading-card { padding: 24px 0 32px; border-bottom: 1px solid #e6dcec; }
+.tarot-reading-card + .tarot-reading-card { padding-top: 32px; }
+.tarot-reading-card__heading { margin-bottom: 24px; color: #3f3754; }
+.tarot-reading-card__heading p { margin: 0 0 8px; font-size: 14px; color: #71617f; }
+.tarot-reading-card__heading h3 { margin: 0; font-size: 22px; line-height: 1.5; }
+.tarot-reading-card__art { display: flex; justify-content: center; margin-bottom: 24px; }
+.tarot-reading-card__details > summary { cursor: pointer; padding: 12px 0; color: #64119f; font-size: 15px; font-weight: 600; }
+.tarot-reading-card__details > summary:focus-visible { outline: 2px solid #64119f; outline-offset: 4px; border-radius: 4px; }
+.tarot-reading-card__close,
+.tarot-reading-card__details[open] .tarot-reading-card__open { display: none; }
+.tarot-reading-card__details[open] .tarot-reading-card__close { display: inline; }
+.tarot-reading-card__preview { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px 0; }

@@ -59,18 +59,22 @@ function ConcernForm({ title, initialValue = '', options = [], busy, submitLabel
 }
 
 function Card({ card, position, interpretation, comparison }) {
-  return <details style={{ padding: '18px 0', borderBottom: '1px solid #E6DCEC' }}>
-    <summary style={{ cursor: 'pointer', color: '#3F3754' }}>
-      <span style={{ display: 'inline-flex', gap: 14, alignItems: 'center', verticalAlign: 'middle', width: 'calc(100% - 22px)' }}>
-        <TarotCardArt size="sm" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
-        <span style={{ minWidth: 0 }}><span style={{ display: 'block', fontSize: 13, color: '#71617F', lineHeight: 1.6 }}>{position}</span><strong style={{ display: 'block', margin: '5px 0', fontSize: 18 }}>{card.name_ko}</strong><span style={{ fontSize: 12, color: '#64119F' }}>풀이 펼쳐 보기</span></span>
-      </span>
-    </summary>
-    <p style={{ ...textStyle, marginTop: 18 }}>{interpretation}</p>
-    {comparison && <dl style={{ marginTop: 16 }}>
-      {[['가능성', comparison.possibility], ['주의점', comparison.caution], ['확인할 조건', comparison.condition]].map(([label, value]) => <div key={label} style={{ marginTop: 12 }}><dt style={{ fontSize: 14, fontWeight: 700, color: '#64119F' }}>{label}</dt><dd style={textStyle}>{value}</dd></div>)}
-    </dl>}
-  </details>
+  return <article className="tarot-reading-card">
+    <header className="tarot-reading-card__heading">
+      <p>{position}</p>
+      <h3>{card.name_ko}</h3>
+    </header>
+    <div className="tarot-reading-card__art">
+      <TarotCardArt size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
+    </div>
+    <details className="tarot-reading-card__details">
+      <summary><span className="tarot-reading-card__open">풀이 펼쳐 보기</span><span className="tarot-reading-card__close">풀이 접기</span></summary>
+      <p style={{ ...textStyle, marginTop: 16 }}>{interpretation}</p>
+      {comparison && <dl style={{ marginTop: 16 }}>
+        {[['가능성', comparison.possibility], ['주의점', comparison.caution], ['확인할 조건', comparison.condition]].map(([label, value]) => <div key={label} style={{ marginTop: 12 }}><dt style={{ fontSize: 14, fontWeight: 700, color: '#64119F' }}>{label}</dt><dd style={textStyle}>{value}</dd></div>)}
+      </dl>}
+    </details>
+  </article>
 }
 
 function Items({ values, ordered = false }) {
@@ -176,8 +180,8 @@ export default function TarotConsultation() {
 
           {!reading && session.cards.length > 0 && <section>
             <h1 style={{ ...headingStyle, fontSize: 24 }}>함께 살펴볼 카드예요</h1>
-            {session.cards.map((card, index) => <div key={card.id} style={{ display: 'flex', gap: 16, alignItems: 'center', padding: '16px 0' }}>
-              <TarotCardArt size="sm" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
+            {session.cards.map((card, index) => <div key={card.id} className="tarot-reading-card__preview">
+              <TarotCardArt size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
               <div><p style={{ fontSize: 14, color: '#71617F' }}>{session.plan.positions[index]}</p><strong>{card.name_ko}</strong></div>
             </div>)}
             <p style={{ fontSize: 14, color: '#71617F', marginTop: 14 }}>풀이를 다시 불러와도 이 카드들은 바뀌지 않아요.</p>
@@ -204,7 +208,7 @@ export default function TarotConsultation() {
               <h2 style={headingStyle}>{clarifier ? '확인 카드가 보충하는 이야기' : '조금 더 살펴보고 싶은 부분이 있나요?'}</h2>
               {clarifier ? <>
                 <p style={{ marginBottom: 18, color: '#71617F', fontSize: 14 }}>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18 }}><TarotCardArt size="sm" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
+                <div className="tarot-reading-card__preview"><TarotCardArt size="lg" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
                 {clarifier.reading && <><p style={textStyle}>{clarifier.reading.meaning}</p><p style={{ ...textStyle, marginTop: 16 }}><strong>현실에서 확인할 것</strong><br />{clarifier.reading.reality_check}</p><p style={{ ...textStyle, marginTop: 16 }}><strong>해볼 수 있는 일</strong><br />{clarifier.reading.action}</p></>}
                 <p style={{ fontSize: 13, color: '#71617F', marginTop: 16 }}>확인 카드는 한 상담에 한 번만 뽑아요. 처음 풀이와 함께 읽어 주세요.</p>
               </> : <>

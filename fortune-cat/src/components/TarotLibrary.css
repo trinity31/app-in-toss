@@ -27,7 +27,7 @@
 .tarot-saved-reading > section,
 .tarot-saved-reading > details { margin-top: 32px; padding-top: 28px; border-top: 1px solid #e6dcec; }
 .tarot-saved-label { margin: 24px 0 8px; font-size: 13px; color: #71617f; }
-.tarot-saved-art { margin: 20px 0 24px; }
+.tarot-saved-art { display: flex; justify-content: center; margin: 24px 0 32px; }
 .tarot-saved-prose { display: flex; flex-direction: column; gap: 16px; }
 .tarot-saved-prose p { margin: 0; white-space: pre-wrap; }
 .tarot-saved-limitations { margin-top: 24px; font-size: 14px; color: #71617f; }
