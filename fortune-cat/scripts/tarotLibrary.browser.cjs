@@ -7,6 +7,7 @@ const session = {
   reading: { positions: [{ card_id: 0, position: '현재', interpretation: '저장된 카드 해석' }], answer: '저장된 전체 풀이', relationships: '저장된 관계', reality_checks: ['확인할 것'], actions: ['해볼 일'] },
   clarifier: { card: { id: 1, name_ko: '마법사' }, target_index: 0, reading: { meaning: '저장된 확인 카드 해석', reality_check: '확인 카드 점검', action: '확인 카드 행동' } }, notice: '저장된 안내',
 }
+session.reading.positions[0].interpretation += '\n\n' + '지금의 상황을 다른 관점에서 살펴보고, 확인할 수 있는 사실을 바탕으로 선택을 생각해 보세요. '.repeat(4)
 ;(async () => {
   const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH, headless: true })
   try {
@@ -19,6 +20,7 @@ const session = {
       const url = new URL(route.request().url())
       if (url.pathname === '/test-library') return route.fulfill({ contentType: 'text/html', body: `<div id="root"></div><script type="module">
 import RefreshRuntime from '/@react-refresh'; RefreshRuntime.injectIntoGlobalHook(window); window.$RefreshReg$ = () => {}; window.$RefreshSig$ = () => type => type; window.__vite_plugin_react_preamble_installed__ = true;
+await import('/src/index.css');
 const React = (await import('/node_modules/.vite/deps/react.js')).default;
 const {createRoot} = (await import('/node_modules/.vite/deps/react-dom_client.js')).default;
 const {default: Library} = await import('/src/components/TarotLibrary.jsx');
@@ -38,6 +40,11 @@ createRoot(document.getElementById('root')).render(React.createElement(Library))
     await page.getByText('저장된 전체 풀이', { exact: true }).waitFor()
     await page.getByText('저장된 확인 카드 해석', { exact: true }).waitFor()
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+    await page.screenshot({ path: '/tmp/tarot-library-spacing.png', fullPage: true })
+    for (const width of [320, 390, 430]) {
+      await page.setViewportSize({ width, height: 844 })
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+    }
     await page.getByRole('button', { name: '타로 목록으로 돌아가기' }).first().click()
     fail = true
     await page.getByRole('button', { name: '목록 새로고침' }).click()

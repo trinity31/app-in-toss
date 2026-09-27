@@ -1,0 +1,48 @@
+/* Scoped spacing survives the app-wide margin reset without changing other readings. */
+.tarot-library {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 32px;
+  padding: 24px 20px;
+  border-radius: 16px;
+  background: #fff;
+  color: #3f3754;
+}
+
+.tarot-library > h2 { margin-bottom: 20px; line-height: 1.5; }
+.tarot-library > p { margin: 16px 0; line-height: 1.8; }
+.tarot-library > button { max-width: 100%; min-height: 48px; line-height: 1.5; }
+.tarot-library button:focus-visible { outline: 2px solid #64119f; outline-offset: 4px; }
+
+.tarot-saved-reading {
+  margin: 32px 0;
+  font-size: 16px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.tarot-saved-reading h3 { font-size: 21px; line-height: 1.55; font-weight: 700; }
+.tarot-saved-reading h4 { margin: 28px 0 16px; font-size: 18px; line-height: 1.55; font-weight: 700; }
+.tarot-saved-reading section > h4:first-child { margin-top: 0; }
+.tarot-saved-reading > section,
+.tarot-saved-reading > details { margin-top: 32px; padding-top: 28px; border-top: 1px solid #e6dcec; }
+.tarot-saved-label { margin: 24px 0 8px; font-size: 13px; color: #71617f; }
+.tarot-saved-art { margin: 20px 0 24px; }
+.tarot-saved-prose { display: flex; flex-direction: column; gap: 16px; }
+.tarot-saved-prose p { margin: 0; white-space: pre-wrap; }
+.tarot-saved-limitations { margin-top: 24px; font-size: 14px; color: #71617f; }
+.tarot-saved-reading ul { padding-left: 24px; }
+.tarot-saved-reading li + li { margin-top: 16px; }
+.tarot-saved-reading dl { margin-top: 24px; }
+.tarot-saved-reading dl > div + div { margin-top: 20px; }
+.tarot-saved-reading dt { margin-bottom: 8px; font-weight: 600; }
+.tarot-saved-reading dd { margin: 0; }
+.tarot-saved-reading summary { cursor: pointer; padding: 8px 0; font-weight: 600; }
+.tarot-saved-exchange { margin-top: 24px; }
+.tarot-saved-exchange p + p { margin-top: 12px; color: #71617f; }
+.tarot-saved-notice { margin-top: 32px; font-size: 12px; line-height: 1.8; color: #71617f; }
+
+@media (max-width: 360px) {
+  .tarot-library { padding: 24px 16px; }
+  .tarot-saved-reading h3 { font-size: 20px; }
+}
