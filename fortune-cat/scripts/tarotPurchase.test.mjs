@@ -6,7 +6,7 @@ function iap(pending = []) {
   return {
     getPendingOrders: async () => ({ orders: pending }),
     completed: [],
-    completeProductGrant: async function ({ params }) { this.completed.push(params.orderId) },
+    completeProductGrant: async function ({ params }) { this.completed.push(params.orderId); return true },
     createOneTimePurchaseOrder(options) { this.options = options; return () => {} },
   }
 }
@@ -65,4 +65,34 @@ test('passes the console price to grant for revenue tracking', async () => {
   const granted = []
   await purchaseTarot(async (id, amount) => granted.push([id, amount]), sdk)
   assert.deepEqual(granted, [['tarot', 2900]])
+})
+
+test('recovers native delivery failure after a successful server grant without another charge', async () => {
+  const sdk = iap()
+  const granted = []
+  const buying = purchaseTarot(async id => granted.push(id), sdk)
+  await new Promise(resolve => setImmediate(resolve))
+  assert.equal(await sdk.options.options.processProductGrant({ orderId: 'paid' }), true)
+  await sdk.options.onError(new Error('PRODUCT_NOT_GRANTED_BY_PARTNER'))
+  await buying
+  assert.deepEqual(granted, ['paid'])
+  assert.deepEqual(sdk.completed, ['paid'])
+})
+
+test('never acknowledges an order when server grant failed', async () => {
+  const sdk = iap()
+  const buying = purchaseTarot(async () => { throw new Error('denied') }, sdk)
+  const rejected = assert.rejects(buying, /denied/)
+  await new Promise(resolve => setImmediate(resolve))
+  assert.equal(await sdk.options.options.processProductGrant({ orderId: 'unverified' }), false)
+  await sdk.options.onError(new Error('PRODUCT_NOT_GRANTED_BY_PARTNER'))
+  await rejected
+  assert.deepEqual(sdk.completed, [])
+})
+
+test('a false delivery acknowledgement must not report recovery success', async () => {
+  const sdk = iap([{ orderId: 'paid', sku: TAROT_PRODUCT_SKU }])
+  sdk.completeProductGrant = async () => false
+  await assert.rejects(purchaseTarot(async () => {}, sdk), /구매 복구/)
+  assert.equal(sdk.options, undefined)
 })

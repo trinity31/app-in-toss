@@ -19,24 +19,31 @@ async function productAmount(IAP) {
 // Persist the entitlement before acknowledging delivery to Toss.
 export async function purchaseTarot(grant, suppliedIAP) {
   const IAP = suppliedIAP || (await import('@apps-in-toss/web-framework')).IAP
+  const completeGrant = async orderId => {
+    const completed = await IAP.completeProductGrant({ params: { orderId } })
+    if (completed !== true) throw new Error('구매 복구를 완료하지 못했어요. 추가 결제 없이 다시 시도해 주세요.')
+  }
   const amount = await productAmount(IAP)
   const { orders } = await IAP.getPendingOrders()
   const pending = orders.filter(order => TAROT_PURCHASE_SKUS.has(order.sku))
   if (pending.length) {
     for (const order of pending) {
       await grant(order.orderId, amount)
-      await IAP.completeProductGrant({ params: { orderId: order.orderId } })
+      await completeGrant(order.orderId)
     }
     return
   }
   return new Promise((resolve, reject) => {
     let cleanup
+    let grantedOrderId
+    let recovering = false
     cleanup = IAP.createOneTimePurchaseOrder({
       options: {
         sku: TAROT_PRODUCT_SKU,
         processProductGrant: async ({ orderId }) => {
           try {
             await grant(orderId, amount)
+            grantedOrderId = orderId
             return true
           } catch (error) {
             reject(error)
@@ -47,7 +54,23 @@ export async function purchaseTarot(grant, suppliedIAP) {
       onEvent: event => {
         if (event.type === 'success') { cleanup?.(); resolve() }
       },
-      onError: error => { cleanup?.(); reject(error || new Error('결제가 취소됐어요.')) },
+      onError: async error => {
+        if (recovering) return
+        recovering = true
+        cleanup?.()
+        // Recover only this checkout's server-confirmed grant; never start another charge.
+        if (grantedOrderId) {
+          try {
+            await completeGrant(grantedOrderId)
+            resolve()
+            return
+          } catch (recoveryError) {
+            reject(recoveryError)
+            return
+          }
+        }
+        reject(error || new Error('결제가 취소됐어요.'))
+      },
     })
   })
 }
