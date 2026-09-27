@@ -9,14 +9,15 @@ import { useSession } from './useSession.jsx'
  * product: 'tarot' 를 항상 붙여 사주 결제 이벤트와 섞이지 않게 한다.
  * 샌드박스는 Firebase 에만 남기고 서버(운영 퍼널 집계)에는 보내지 않는다.
  */
-export function useTarotTrack() {
+export function useTarotTrack(disabled = false) {
   const { anonymousKey } = useAnonymousKey()
   const { sessionId } = useSession()
   const ids = useRef({})
   ids.current = { anonymousKey, sessionId }
   return useCallback((name, params = {}) => {
+    if (disabled) return
     const eventParams = { product: 'tarot', ...params }
     logEvent(name, { ...eventParams, session_id: ids.current.sessionId })
     if (!isSandbox()) trackServerEvent(name, eventParams, ids.current.anonymousKey, ids.current.sessionId)
-  }, [])
+  }, [disabled])
 }

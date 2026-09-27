@@ -38,7 +38,7 @@ export function continuation(session) {
 }
 
 // Keep mutations and their recovery in one place so a lost response never means a new draw.
-export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, makeCredentials = newCredentials, purchase, accountHeaders = async () => ({}) }) {
+export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION_KEY, fetcher = fetch, makeCredentials = newCredentials, purchase, accountHeaders = async () => ({}) }) {
   let credentials = null
   let active = null
   let pending = null
@@ -102,7 +102,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
       update({ error: '무료 상담 1회를 사용해 이전 상담을 불러왔어요. 이 상담의 결과와 확인 카드는 계속 이용할 수 있어요.' })
     }
     credentials = { ...credentials, created: true }
-    await storage.setItem(SESSION_KEY, JSON.stringify(credentials))
+    await storage.setItem(sessionKey, JSON.stringify(credentials))
     return session
   }
 
@@ -152,7 +152,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
       return run(async () => {
         update({ restoreFailed: true })
         let raw
-        try { raw = await storage.getItem(SESSION_KEY) }
+        try { raw = await storage.getItem(sessionKey) }
         catch { throw new EntryError('storageRead') }
         update({ restoreFailed: false })
         if (!raw) return
@@ -173,7 +173,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
         const trimmed = question.trim()
         if (!trimmed || trimmed.length > 3000) return
         const next = makeCredentials(trimmed)
-        await storage.setItem(SESSION_KEY, JSON.stringify(next))
+        await storage.setItem(sessionKey, JSON.stringify(next))
         credentials = next
         update({ hasSaved: true })
         await create()
@@ -221,7 +221,7 @@ export function createTarotConsultation({ baseUrl, storage, fetcher = fetch, mak
     },
     reset() {
       return run(async () => {
-        await storage.removeItem(SESSION_KEY)
+        await storage.removeItem(sessionKey)
         credentials = null
         pending = null
         update({ session: null, hasSaved: false, restoreFailed: false, invalidSaved: false })
