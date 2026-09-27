@@ -735,12 +735,9 @@ export default function DeepReadingResult({
       {/* 헤더 */}
       <div
         style={{
-          position: "sticky",
-          top: 0,
           background: "var(--color-white)",
           borderBottom: "1px solid var(--color-gray-200)",
           padding: "20px 24px",
-          zIndex: 100,
         }}
       >
         <h1
