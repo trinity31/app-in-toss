@@ -78,7 +78,7 @@ function Items({ values }) {
 }
 
 export default function TarotConsultation() {
-  const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client, track } = useTarotConsultation()
+  const { session, busy, error, initialized, hasSaved, restoreFailed, invalidSaved, client, track, sandbox } = useTarotConsultation()
   const insets = useSafeAreaInsets()
   const [editing, setEditing] = useState(false)
   const [introDone, setIntroDone] = useState(false)
@@ -126,6 +126,7 @@ export default function TarotConsultation() {
     {(!initialized || busy) && <BusyIndicator />}
     <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `20px 22px ${insets.bottom + 140}px`, color: '#3F3754', overflowWrap: 'anywhere' }}>
     <div style={{ maxWidth: 520, margin: '0 auto' }}>
+      {sandbox && <p role="status" style={{ padding: 12, background: '#FFF5EF', borderRadius: 12 }}>샌드박스 결제 테스트 · 실제 AI 풀이를 사용하며 상담과 이용권은 테스트용으로 별도 저장돼요.</p>}
       {failure && <div role="alert" style={{ padding: 16, background: '#FFF5EF', borderRadius: 16, color: '#7C3A21', marginBottom: 24 }}>
         <p style={{ ...textStyle, marginBottom: 12 }}>{failure}</p>
         <Action secondary disabled={busy} onClick={() => client.retry()}>저장된 상담으로 다시 시도</Action>

@@ -5,6 +5,7 @@ import { createTarotConsultation } from '../lib/tarotConsultation'
 import { useTarotTrack } from './useTarotTrack'
 import { createTossAccountHeaders } from '../lib/tossAccount'
 import { isSandbox } from '../lib/analytics'
+import { tarotRuntime } from '../lib/tarotRuntime'
 
 const storage = {
   async getItem(key) {
@@ -34,7 +35,10 @@ const storage = {
 }
 
 export function useTarotConsultation() {
-  const track = useTarotTrack()
+  const [runtime] = useState(() => tarotRuntime({
+    development: import.meta.env.DEV, sandbox: isSandbox(), baseUrl: import.meta.env.VITE_API_BASE_URL,
+  }))
+  const track = useTarotTrack(runtime.sandbox)
   const trackRef = useRef(track)
   trackRef.current = track
   const [client] = useState(() => {
@@ -54,7 +58,7 @@ export function useTarotConsultation() {
         throw error
       }
     }
-    return createTarotConsultation({ baseUrl: import.meta.env.VITE_API_BASE_URL, storage, purchase,
+    return createTarotConsultation({ baseUrl: runtime.baseUrl, sessionKey: runtime.sessionKey, storage, purchase,
       accountHeaders: createTossAccountHeaders({
         baseUrl: import.meta.env.VITE_API_BASE_URL,
         development: import.meta.env.DEV,
@@ -67,5 +71,5 @@ export function useTarotConsultation() {
   })
   const state = useSyncExternalStore(client.subscribe, client.getSnapshot)
   useEffect(() => { client.restore() }, [client])
-  return { ...state, client, track }
+  return { ...state, client, track, sandbox: runtime.sandbox }
 }
