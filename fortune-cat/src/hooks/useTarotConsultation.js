@@ -57,6 +57,7 @@ export function useTarotConsultation() {
     return createTarotConsultation({ baseUrl: import.meta.env.VITE_API_BASE_URL, storage, purchase,
       accountHeaders: createTossAccountHeaders({
         baseUrl: import.meta.env.VITE_API_BASE_URL,
+        development: import.meta.env.DEV,
         appLogin: async () => {
           const { appLogin } = await import('@apps-in-toss/web-framework')
           return appLogin()
