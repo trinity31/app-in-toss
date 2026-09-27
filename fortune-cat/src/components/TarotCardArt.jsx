@@ -1,7 +1,9 @@
+import { useState } from 'react';
+
 // 타로 카드 시각 컴포넌트 — 앞/뒷면 + framed 매트 + size sm/md/lg.
 // Source: boknyang-tarot/src/components/TarotCardArt.tsx 포팅 + UI-SPEC Layout/Color 적용.
 // CONTEXT D-02: motion library 미사용 (신규 의존성 0). CSS transition만 사용.
-// CONTEXT D-11: 앞면 이미지는 webp 정적 import URL을 image prop으로 받음.
+// 앞면 이미지는 버전이 고정된 HTTPS WebP URL을 image prop으로 받는다.
 
 const SIZES = {
   sm: { w: 64,  h: 96,  fs: 28,  label: 7,  pad: 4,  radius: 10 },
@@ -39,7 +41,7 @@ export default function TarotCardArt({
               aria-label="카드 이미지 사용 불가"
               style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', fontSize: 12, background: '#F4E6FF' }}
             >이미지 준비 중</div>
-          : image ? <CardImage src={image} alt={nameEn} /> : <CardFront s={s} emoji={emoji} nameEn={nameEn} />)
+          : image ? <CardImage key={image} src={image} alt={nameEn} /> : <CardFront s={s} emoji={emoji} nameEn={nameEn} />)
         : <CardBack s={s} />}
     </div>
   );
@@ -64,20 +66,21 @@ export default function TarotCardArt({
 }
 
 function CardImage({ src, alt }) {
-  return (
-    <img
-      src={src}
-      alt={alt ?? 'tarot card'}
-      draggable={false}
-      style={{
-        height: '100%',
-        width: '100%',
-        userSelect: 'none',
-        display: 'block',
-        objectFit: 'cover',
-      }}
-    />
-  );
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const url = attempt ? `${src}${src.includes('?') ? '&' : '?'}retry=${attempt}` : src;
+  if (failed) return <button type="button" aria-label="다시 불러오기"
+    onClick={() => { setFailed(false); setLoaded(false); setAttempt(value => value + 1); }}
+    style={{ height: '100%', width: '100%', padding: 4, border: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, textAlign: 'center', fontSize: 11, lineHeight: 1.4, background: '#F4E6FF', color: '#64119F', cursor: 'pointer' }}>
+    <span>이미지 오류</span><span>다시 불러오기</span>
+  </button>;
+  return <>
+    {!loaded && <span role="status" style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, background: '#F4E6FF' }}>이미지 로딩 중</span>}
+    <img key={url} src={url} alt={alt ?? 'tarot card'} draggable={false}
+      onLoad={() => setLoaded(true)} onError={() => setFailed(true)}
+      style={{ height: '100%', width: '100%', userSelect: 'none', display: 'block', objectFit: 'cover' }} />
+  </>;
 }
 
 function CardBack({ s }) {

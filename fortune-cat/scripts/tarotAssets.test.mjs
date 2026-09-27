@@ -11,7 +11,7 @@ const executable = index.replace(/import (card\d+) from '\.\/(\d+\.webp)';/g, 'c
 const lookup = await import(`data:text/javascript;base64,${Buffer.from(executable).toString('base64')}`)
 
 test('all 78 IDs resolve exactly, invalid IDs are unavailable', () => {
-  for (let id = 0; id < 78; id++) assert.equal(lookup.getCardImageUrl(id), `${String(id).padStart(2, '0')}.webp`)
+  for (let id = 0; id < 78; id++) assert.equal(lookup.getCardImageUrl(id), `https://www.fortunecat.art/tarot/cards/tarot78-v1/${String(id).padStart(2, '0')}.webp`)
   for (const id of [-1, 78, 999, '22', null, undefined, 1.5, NaN]) assert.equal(lookup.getCardImageUrl(id), null)
 })
 
@@ -20,7 +20,7 @@ test('daily prefetch requests only 00..21', () => {
   globalThis.window = {}
   globalThis.Image = class { set src(value) { fetched.push(value) } }
   try { lookup.prefetchAllCardImages() } finally { delete globalThis.window; delete globalThis.Image }
-  assert.deepEqual(fetched, Array.from({ length: 22 }, (_, id) => `${String(id).padStart(2, '0')}.webp`))
+  assert.deepEqual(fetched, Array.from({ length: 22 }, (_, id) => `https://www.fortunecat.art/tarot/cards/tarot78-v1/${String(id).padStart(2, '0')}.webp`))
 })
 
 test('manifest covers 56 minor identities and verifies every shipped asset hash', async () => {
