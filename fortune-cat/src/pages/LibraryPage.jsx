@@ -3,6 +3,7 @@ import { useToast } from "../hooks/useToast";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { supabase } from "../lib/supabase";
+import TarotLibrary from "../components/TarotLibrary";
 import DeepReadingResult from "../components/DeepReadingResult";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -210,6 +211,8 @@ export default function LibraryPage() {
           padding: `16px 16px ${96 + insets.bottom}px`,
         }}
       >
+        <TarotLibrary />
+        <h2 style={{ fontSize: 18 }}>사주 풀이</h2>
         {loading ? (
           <p
             style={{
@@ -230,7 +233,7 @@ export default function LibraryPage() {
                 margin: "0 0 4px",
               }}
             >
-              아직 본 풀이가 없어요
+              아직 본 사주 풀이가 없어요
             </p>
             <p
               style={{
