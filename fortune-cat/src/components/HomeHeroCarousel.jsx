@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const HERO_AUTOPLAY_MS = 4500;
 
@@ -17,29 +17,44 @@ const visuallyHidden = {
 export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
   const scrollerRef = useRef(null);
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [pointerPaused, setPointerPaused] = useState(false);
+  const [touchPaused, setTouchPaused] = useState(false);
+  const [focusPaused, setFocusPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false);
+  const paused = pointerPaused || touchPaused || focusPaused;
+
+  useEffect(() => {
+    const media = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    if (!media) return;
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
+
+  // Reordered or shrinking campaigns must start at a valid page before paint.
+  useLayoutEffect(() => {
+    setActive(0);
+    scrollerRef.current?.scrollTo({ left: 0, behavior: "auto" });
+  }, [slides]);
 
   const goTo = (index) => {
     const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
+    if (!el || slides.length === 0) return;
+    const target = Math.max(0, Math.min(index, slides.length - 1));
+    el.scrollTo({ left: target * el.clientWidth, behavior: reducedMotion ? "auto" : "smooth" });
   };
 
   const onScroll = () => {
     const el = scrollerRef.current;
     if (!el || el.clientWidth === 0) return;
-    setActive(Math.round(el.scrollLeft / el.clientWidth));
+    setActive(Math.max(0, Math.min(slides.length - 1, Math.round(el.scrollLeft / el.clientWidth))));
   };
 
   // 자동 슬라이드 — 사용자가 만지는 동안·동작 줄이기 설정 시 멈춤
   useEffect(() => {
-    if (paused || slides.length <= 1) return;
-    if (
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
+    if (paused || reducedMotion || slides.length <= 1) return;
     const timer = window.setInterval(() => {
       const el = scrollerRef.current;
       if (!el) return;
@@ -47,7 +62,9 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
       el.scrollTo({ left: nextIndex * el.clientWidth, behavior: "smooth" });
     }, HERO_AUTOPLAY_MS);
     return () => window.clearInterval(timer);
-  }, [active, paused, slides.length]);
+  }, [active, paused, reducedMotion, slides.length]);
+
+  if (slides.length === 0) return <h1 style={visuallyHidden}>복냥사주·타로</h1>;
 
   return (
     <section
@@ -58,12 +75,15 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
       }}
       aria-roledescription="carousel"
       aria-label="추천 풀이 바로가기"
-      onPointerEnter={() => setPaused(true)}
-      onPointerLeave={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
+      onPointerEnter={() => setPointerPaused(true)}
+      onPointerLeave={() => setPointerPaused(false)}
+      onTouchStart={() => setTouchPaused(true)}
+      onTouchEnd={() => setTouchPaused(false)}
+      onTouchCancel={() => setTouchPaused(false)}
+      onFocusCapture={() => setFocusPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocusPaused(false);
+      }}
     >
       <style>{`.home-hero-scroller::-webkit-scrollbar { display: none; }`}</style>
 
@@ -201,7 +221,7 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
               padding: 0,
               cursor: "pointer",
               background: active === i ? "#2a1f36" : "rgba(42,31,54,0.3)",
-              transition: "all 0.2s ease",
+              transition: reducedMotion ? "none" : "all 0.2s ease",
             }}
           />
         ))}
