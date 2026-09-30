@@ -1,0 +1,33 @@
+name: Fortune Cat CI
+
+on:
+  pull_request:
+    paths:
+      - 'fortune-cat/**'
+      - '.github/workflows/fortune-cat-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fortune-cat
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: fortune-cat/.nvmrc
+          cache: npm
+          cache-dependency-path: fortune-cat/package-lock.json
+      - run: npm ci
+      - run: node --test scripts/*.test.mjs
+      - name: Lint feature source (zero errors)
+        run: ./node_modules/.bin/eslint src/components/HomeHeroCarousel.jsx src/hooks/useHomeBanners.js src/lib/homeBanners.js src/pages/HomePage.jsx
+      - name: Build with synthetic offline configuration
+        run: ./node_modules/.bin/vite build --mode ci
+        env:
+          VITE_SUPABASE_URL: https://example.invalid
+          VITE_SUPABASE_ANON_KEY: synthetic-anon-key
