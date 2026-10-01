@@ -10,7 +10,7 @@ const menus = {
 };
 const row = (overrides = {}) => ({
   id: 1, key: 'tarot_deep', is_active: true, display_order: 0,
-  surfaces: ['web', 'toss'], icon: '🔮', eyebrow: '심화 타로상담',
+  surfaces: ['web', 'android', 'toss'], icon: '🔮', eyebrow: '심화 타로상담',
   title: '마음에 걸리는 고민 있나요?', description: '고민을 들려주면 복냥이가 카드를 뽑아 깊이 풀이해 드려요. 첫 상담은 무료예요',
   cta: '심화 타로상담 · 무료로 시작', color_start: '#efe4fb', color_end: '#c9a8ef',
   action_type: 'tarot_deep', menu_source: null, menu_code: null, ...overrides,
@@ -55,7 +55,6 @@ test('malformed/unsupported rows skip independently, text stays plain, and surfa
     { id: 0 }, { id: 9007199254740992 }, { id: '9223372036854775808' },
     { key: '' }, { is_active: false }, { display_order: 1.5 }, { display_order: 2147483648 },
     { surfaces: ['web'] }, { surfaces: ['toss', 'unknown'] }, { surfaces: 'toss' },
-    { surfaces: ['android', 'toss'] },
     { color_start: 'red' }, { color_end: '#123456;url(https://bad)' }, { color_start: '#abc' },
     { icon: '' }, { title: '   ' }, { cta: null }, { eyebrow: 'a'.repeat(201) }, { description: 4 },
     { action_type: 'external' }, { action_type: 'menu', menu_source: 'saju', menu_code: 'x' }, { menu_code: 'unexpected' },
