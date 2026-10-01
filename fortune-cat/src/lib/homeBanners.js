@@ -51,7 +51,6 @@ export function validateHomeBanners(rows, menus = {}, surface = "toss") {
         row.display_order < -2147483648 || row.display_order > 2147483647 ||
         !Array.isArray(row.surfaces) || !row.surfaces.includes(surface) ||
         !row.surfaces.every((value) => SURFACES.has(value)) ||
-        (row.action_type === "tarot_deep" && row.surfaces.includes("android")) ||
         !text(row.icon, 50) || !text(row.eyebrow, 200) || !text(row.title, 200) ||
         !text(row.description) || !text(row.cta, 200) ||
         typeof row.color_start !== "string" || !COLOR.test(row.color_start) ||
