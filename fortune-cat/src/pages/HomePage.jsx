@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { colors } from "@toss/tds-colors";
 import { Loader } from "@toss/tds-mobile";
@@ -20,6 +20,8 @@ import { logEvent } from "../lib/firebase";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
 import { useTarotTrack } from "../hooks/useTarotTrack";
+import { useHomeBanners } from "../hooks/useHomeBanners";
+import { navigateHomeBanner } from "../lib/homeBanners";
 
 const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 
@@ -33,77 +35,10 @@ const HOME_TABS = [
   { id: "new_year", label: "2026 신년운세" },
 ];
 
-// 궁합풀이 selectedType — 퀵메뉴·Hero 배너가 동일 값을 공유 (DRY)
-const COMPATIBILITY_SELECTED_TYPE = {
-  fortuneType: "ai_saju_compatibility",
-  themeType: "ai_saju",
-  readingType: "ai_saju",
-  fortuneTypeTitle: "궁합풀이",
-};
-
-// 애정운 selectedType — Supabase new_year_fortune_types 검증값
-const LOVE_SELECTED_TYPE = {
-  fortuneType: "new_year_2026_love",
-  themeType: "new_year_2026_love",
-  readingType: "new_year_2026_love",
-  fortuneTypeTitle: "2026년 애정운",
-};
-
-// 4분기 운세 selectedType — Supabase new_year_fortune_types 검증값 (scripts/add_q4_menu.py)
-const Q4_SELECTED_TYPE = {
-  fortuneType: "new_year_2026_q4",
-  themeType: "new_year_2026_q4",
-  readingType: "new_year_2026_q4",
-  fortuneTypeTitle: "2026년 4분기 운세",
-};
-
-// 홈 상단 슬라이딩 배너 — 1번: 심화 타로상담, 2번: 4분기 운세(시즌), 3·4번: 연애상담 모드가 붙는 애정운·궁합
-// to 가 있으면 해당 경로로, 없으면 selectedType 으로 신년운세 흐름에 진입한다.
-const HERO_SLIDES = [
-  {
-    key: "tarot_deep",
-    to: "/tarot?mode=deep",
-    icon: "🔮",
-    eyebrow: "심화 타로상담",
-    title: "마음에 걸리는 고민 있나요?",
-    description: "고민을 들려주면 복냥이가 카드를 뽑아 깊이 풀이해 드려요. 첫 상담은 무료예요",
-    bg: "linear-gradient(135deg, #efe4fb 0%, #c9a8ef 100%)",
-    cta: "심화 타로상담 · 무료로 시작",
-  },
-  {
-    key: "new_year_2026_q4",
-    icon: "🍂",
-    eyebrow: "2026 4분기 운세",
-    title: "남은 3개월 운세는?",
-    description: "올해도 3개월 밖에 안 남았어요. 어떻게 하면 알차게 마무리 할 수 있을까요?",
-    bg: "linear-gradient(135deg, #fdeedd 0%, #f2c48d 100%)",
-    cta: "4분기 운세 · 바로 보기",
-    selectedType: Q4_SELECTED_TYPE,
-  },
-  {
-    key: "new_year_2026_love",
-    icon: "❤️",
-    eyebrow: "2026 애정운",
-    title: "올해 내 연애운은?",
-    description: "풀이를 보고 나면 복냥이와 연애상담까지 이어져요",
-    bg: "linear-gradient(135deg, #fde4ec 0%, #f7b6cd 100%)",
-    cta: "연애상담 모드 · 바로 보기",
-    selectedType: LOVE_SELECTED_TYPE,
-  },
-  {
-    key: "ai_saju_compatibility",
-    icon: "💕",
-    eyebrow: "궁합 풀이",
-    title: "우리, 찰떡일까 상극일까?",
-    description: "두 사람 궁합을 보고 실제 고민을 연애상담으로 물어보세요",
-    bg: "linear-gradient(135deg, #ece3f8 0%, #c4ade8 100%)",
-    cta: "연애상담 모드 · 바로 보기",
-    selectedType: COMPATIBILITY_SELECTED_TYPE,
-  },
-];
-
 export default function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const banners = useHomeBanners(supabase, location.key);
   const trackTarot = useTarotTrack();
   const { openToast } = useToast();
   const [aiSajuTypes, setAiSajuTypes] = useState([]);
@@ -248,16 +183,8 @@ export default function HomePage() {
     });
   };
 
-  const handleHeroSlideClick = (slide) => {
-    trackClick("hero_banner_click", { menu: slide.key }, slide.eyebrow);
-    if (slide.to) {
-      // 타로 퍼널의 '심화 상담 진입'에 배너 유입도 포함되도록 같은 이벤트를 남긴다.
-      trackTarot("tarot_deep_entry_click", { from: "home_banner" });
-      navigate(slide.to);
-      return;
-    }
-    goToNewYear(slide.selectedType);
-  };
+  const handleHeroSlideClick = (slide) =>
+    navigateHomeBanner(slide, { navigate, trackClick, trackTarot });
 
   const handleShare = async () => {
     trackClick("share_click", {}, "home_share");
@@ -285,7 +212,7 @@ export default function HomePage() {
     <div style={{ ...styles.container, paddingBottom: `${96 + insets.bottom}px` }}>
       {/* 히어로: 심화 타로상담·4분기 운세·연애상담 바로가기 배너 */}
       <HomeHeroCarousel
-        slides={HERO_SLIDES}
+        slides={banners}
         onSlideClick={handleHeroSlideClick}
         onShare={handleShare}
       />

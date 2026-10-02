@@ -198,7 +198,9 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
             await purchase((orderId, amount) => request(`/${credentials.id}/purchase`, { orderId, ...(amount ? { amount } : {}) }))
           } catch (error) {
             if (isDeckError(error)) throw error
-            update({ error: '결제를 완료하지 못했어요. 이미 결제했다면 같은 버튼으로 구매를 복구할 수 있어요.' })
+            update({ error: error.paymentCompleted
+              ? '결제는 완료됐지만 이용권을 연결하지 못했어요. 같은 버튼을 누르면 추가 결제 없이 구매를 복구해요.'
+              : '결제를 완료하지 못했어요. 이미 결제했다면 같은 버튼으로 구매를 복구할 수 있어요.' })
             return
           }
         }

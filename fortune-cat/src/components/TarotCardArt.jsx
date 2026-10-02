@@ -1,7 +1,11 @@
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import './TarotCardArt.css';
+
 // 타로 카드 시각 컴포넌트 — 앞/뒷면 + framed 매트 + size sm/md/lg.
 // Source: boknyang-tarot/src/components/TarotCardArt.tsx 포팅 + UI-SPEC Layout/Color 적용.
 // CONTEXT D-02: motion library 미사용 (신규 의존성 0). CSS transition만 사용.
-// CONTEXT D-11: 앞면 이미지는 webp 정적 import URL을 image prop으로 받음.
+// 앞면 이미지는 버전이 고정된 HTTPS WebP URL을 image prop으로 받는다.
 
 const SIZES = {
   sm: { w: 64,  h: 96,  fs: 28,  label: 7,  pad: 4,  radius: 10 },
@@ -17,6 +21,7 @@ export default function TarotCardArt({
   faceUp = true,
   size = 'md',
   framed = false,
+  zoomable = false,
 }) {
   const s = SIZES[size];
 
@@ -39,7 +44,7 @@ export default function TarotCardArt({
               aria-label="카드 이미지 사용 불가"
               style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', fontSize: 12, background: '#F4E6FF' }}
             >이미지 준비 중</div>
-          : image ? <CardImage src={image} alt={nameEn} /> : <CardFront s={s} emoji={emoji} nameEn={nameEn} />)
+          : image ? <CardImage key={image} src={image} alt={nameEn} zoomable={zoomable} /> : <CardFront s={s} emoji={emoji} nameEn={nameEn} />)
         : <CardBack s={s} />}
     </div>
   );
@@ -63,21 +68,50 @@ export default function TarotCardArt({
   );
 }
 
-function CardImage({ src, alt }) {
-  return (
-    <img
-      src={src}
-      alt={alt ?? 'tarot card'}
-      draggable={false}
-      style={{
-        height: '100%',
-        width: '100%',
-        userSelect: 'none',
-        display: 'block',
-        objectFit: 'cover',
-      }}
-    />
-  );
+function CardImage({ src, alt, zoomable = false }) {
+  const [expanded, setExpanded] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const url = attempt ? `${src}${src.includes('?') ? '&' : '?'}retry=${attempt}` : src;
+  if (failed) return <button type="button" aria-label="다시 불러오기"
+    onClick={() => { setFailed(false); setLoaded(false); setAttempt(value => value + 1); }}
+    style={{ height: '100%', width: '100%', padding: 4, border: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, textAlign: 'center', fontSize: 11, lineHeight: 1.4, background: '#F4E6FF', color: '#64119F', cursor: 'pointer' }}>
+    <span>이미지 오류</span><span>다시 불러오기</span>
+  </button>;
+  const artwork = <img key={url} src={url} alt={alt ?? 'tarot card'} draggable={false}
+    onLoad={() => setLoaded(true)} onError={() => setFailed(true)}
+    style={{ height: '100%', width: '100%', userSelect: 'none', display: 'block', objectFit: 'contain' }} />;
+  return <>
+    {!loaded && <span role="status" style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, background: '#F4E6FF' }}>이미지 로딩 중</span>}
+    {zoomable ? <button type="button" className="tarot-art-trigger" disabled={!loaded}
+      aria-label={`${alt ?? '타로 카드'} 크게 보기`} aria-haspopup="dialog" onClick={() => setExpanded(true)}>{artwork}</button> : artwork}
+    {expanded && <CardViewer src={url} alt={alt} onClose={() => setExpanded(false)} />}
+  </>;
+}
+
+function CardViewer({ src, alt, onClose }) {
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement;
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, []);
+  return createPortal(<dialog ref={dialogRef} className="tarot-art-viewer" aria-label={`${alt ?? '타로 카드'} 크게 보기`}
+    onCancel={event => { event.preventDefault(); onClose(); }}>
+    <div className="tarot-art-viewer__toolbar">
+      <span>{alt ?? '타로 카드'}</span>
+      <button type="button" aria-label="카드 크게 보기 닫기" onClick={onClose}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+    </div>
+    <div className="tarot-art-viewer__image"><CardImage src={src} alt={alt} /></div>
+  </dialog>, document.body);
 }
 
 function CardBack({ s }) {

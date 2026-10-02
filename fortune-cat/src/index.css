@@ -1,5 +1,5 @@
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 
   /* Primary Color System - granite.config.ts의 primaryColor와 동기화 */
   --color-primary: #64119F;           /* 보라색 - 버튼, 강조 텍스트 */
@@ -32,9 +32,21 @@
 
 body {
   font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  font-kerning: normal;
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
 }
 
 #root {
