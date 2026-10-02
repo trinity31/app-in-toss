@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
+import PastelIcon from "./PastelIcon";
+
 const HERO_AUTOPLAY_MS = 4500;
 
 const visuallyHidden = {
@@ -14,7 +16,7 @@ const visuallyHidden = {
   border: 0,
 };
 
-export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
+export default function HomeHeroCarousel({ slides, onSlideClick }) {
   const scrollerRef = useRef(null);
   const [active, setActive] = useState(0);
   const [pointerPaused, setPointerPaused] = useState(false);
@@ -178,19 +180,19 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
                 {slide.cta || "바로 보기"} →
               </span>
             </div>
-            <span
-              aria-hidden="true"
+            <PastelIcon
+              code={slide.selectedType?.fortuneType}
+              emoji={slide.icon}
+              size={80}
+              glyphSize={40}
               style={{
                 position: "absolute",
                 right: "16px",
-                bottom: "32px",
-                fontSize: "56px",
-                lineHeight: 1,
-                filter: "drop-shadow(0 4px 10px rgba(0,0,0,0.15))",
+                bottom: "24px",
+                background: "rgba(255,255,255,0.8)",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
               }}
-            >
-              {slide.icon}
-            </span>
+            />
           </button>
         ))}
       </div>
@@ -227,42 +229,6 @@ export default function HomeHeroCarousel({ slides, onSlideClick, onShare }) {
         ))}
       </div>
 
-      <div style={{ position: "absolute", top: "16px", right: "20px" }}>
-        <button
-          onClick={onShare}
-          aria-label="공유"
-          style={{
-            background: "rgba(255,255,255,0.8)",
-            border: "none",
-            borderRadius: "50%",
-            width: "44px",
-            height: "44px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            flexShrink: 0,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-          }}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#191F28"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-          </svg>
-        </button>
-      </div>
     </section>
   );
 }

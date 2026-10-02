@@ -4,21 +4,15 @@ import { colors } from "@toss/tds-colors";
 import { Loader } from "@toss/tds-mobile";
 import { useToast } from "../hooks/useToast";
 import {
-  getTossShareLink,
-  share,
-  getOperationalEnvironment,
-  env,
-} from "@apps-in-toss/web-framework";
-import {
   supabase,
   getMenuImageUrl,
   getAmuletStyleImageUrl,
-  getOgImageUrl,
 } from "../lib/supabase";
 import { trackClick } from "../lib/analytics";
 import { logEvent } from "../lib/firebase";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
+import PastelIcon from "../components/PastelIcon";
 import { useTarotTrack } from "../hooks/useTarotTrack";
 import { useHomeBanners } from "../hooks/useHomeBanners";
 import { navigateHomeBanner } from "../lib/homeBanners";
@@ -186,21 +180,6 @@ export default function HomePage() {
   const handleHeroSlideClick = (slide) =>
     navigateHomeBanner(slide, { navigate, trackClick, trackTarot });
 
-  const handleShare = async () => {
-    trackClick("share_click", {}, "home_share");
-    try {
-      const isSandbox = getOperationalEnvironment() === "sandbox";
-      const deepLink = isSandbox
-        ? `intoss-private://appsintoss?_deploymentId=${env.getDeploymentId()}`
-        : "intoss://fortune-cat";
-
-      const tossLink = await getTossShareLink(deepLink, getOgImageUrl());
-      await share({ message: tossLink });
-    } catch (error) {
-      console.error("[HomePage] 공유 실패:", error);
-    }
-  };
-
   const getDisplayItems = (items, sectionKey, limit = 3) =>
     expandedSections[sectionKey] ? items : items.slice(0, limit);
 
@@ -214,7 +193,6 @@ export default function HomePage() {
       <HomeHeroCarousel
         slides={banners}
         onSlideClick={handleHeroSlideClick}
-        onShare={handleShare}
       />
 
       {hasNewYear && (
@@ -294,40 +272,15 @@ export default function HomePage() {
             role={hasNewYear ? "tabpanel" : undefined}
             aria-labelledby={hasNewYear ? "home-tab-ai_saju" : undefined}
           >
-            <div style={styles.sectionHeaderRow}>
-              <div style={styles.sectionHeaderLeft}>
-                <span style={styles.sectionIcon}>🔮</span>
-                <h2 style={styles.sectionTitle}>AI 사주 분석</h2>
-                <span
-                  style={{ ...styles.badge, backgroundColor: colors.blue500 }}
-                >
-                  NEW
-                </span>
-              </div>
-              {aiSajuTypes.length > 3 && (
-                <button
-                  onClick={() => toggleSection("ai_saju")}
-                  className="tap-pill"
-                  style={styles.moreButton}
-                >
-                  {expandedSections["ai_saju"] ? "접기" : "더보기"}
-                </button>
-              )}
-            </div>
-            <p style={styles.sectionDescription}>
-              사주팔자로 깊이 있는 분석을 받아보세요
-            </p>
             <div style={styles.typeGrid}>
-              {getDisplayItems(aiSajuTypes, "ai_saju").map((type) => (
+              {getDisplayItems(aiSajuTypes, "ai_saju").map((type, index) => (
                 <button
                   key={type.id}
                   onClick={() => handleNewYearTypeClick(type, "ai_saju")}
                   className="tap-card"
                   style={styles.typeCard}
                 >
-                  <div style={styles.typeIconWrapper}>
-                    <span style={{ fontSize: "32px" }}>{type.icon}</span>
-                  </div>
+                  <PastelIcon code={type.code} emoji={type.icon} index={index} />
                   <div style={styles.typeCardContent}>
                     <div style={styles.typeCardTitle}>
                       {type.title_ko}
@@ -359,40 +312,15 @@ export default function HomePage() {
             role="tabpanel"
             aria-labelledby="home-tab-new_year"
           >
-            <div style={styles.sectionHeaderRow}>
-              <div style={styles.sectionHeaderLeft}>
-                <span style={styles.sectionIcon}>🧧</span>
-                <h2 style={styles.sectionTitle}>2026 신년운세</h2>
-                <span
-                  style={{ ...styles.badge, backgroundColor: colors.red500 }}
-                >
-                  NEW
-                </span>
-              </div>
-              {newYearTypes.length > 3 && (
-                <button
-                  onClick={() => toggleSection("new_year")}
-                  className="tap-pill"
-                  style={styles.moreButton}
-                >
-                  {expandedSections["new_year"] ? "접기" : "더보기"}
-                </button>
-              )}
-            </div>
-            <p style={styles.sectionDescription}>
-              다가오는 한 해의 흐름을 미리 살펴보세요
-            </p>
             <div style={styles.typeGrid}>
-              {getDisplayItems(newYearTypes, "new_year").map((type) => (
+              {getDisplayItems(newYearTypes, "new_year").map((type, index) => (
                 <button
                   key={type.id}
                   onClick={() => handleNewYearTypeClick(type, "new_year")}
                   className="tap-card"
                   style={styles.typeCard}
                 >
-                  <div style={styles.typeIconWrapper}>
-                    <span style={{ fontSize: "32px" }}>{type.icon}</span>
-                  </div>
+                  <PastelIcon code={type.code} emoji={type.icon} index={index} />
                   <div style={styles.typeCardContent}>
                     <div style={styles.typeCardTitle}>
                       {type.title_ko}
