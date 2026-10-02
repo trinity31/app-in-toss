@@ -68,11 +68,9 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
           : code === 'TAROT_DECK_INVALID'
           ? '상담 카드 데이터를 준비하지 못했어요. 잠시 후 이 상담을 다시 열어 주세요.'
           : null
-        const error = new Error(deckMessage || (response.status === 402
-          ? '무료 심화 타로 상담 1회를 모두 사용했어요. 결제 후 새 상담을 이어갈 수 있어요.'
-          : response.status === 404
-          ? '저장된 상담을 찾지 못했어요. 잠시 후 다시 불러와 주세요.'
-          : '상담을 연결하지 못했어요. 저장된 내용을 다시 불러와 이어갈 수 있어요.'))
+        const error = deckMessage ? new Error(deckMessage) : new EntryError(response.status >= 500 ? 'server'
+          : response.status === 402 ? 'quota'
+          : response.status === 404 ? 'missing' : 'request')
         if (response.status === 402 && snapshot.session) {
           update({ session: { ...snapshot.session, payment_required: true } })
         }
@@ -80,9 +78,11 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
         error.status = response.status
         throw error
       }
-      const session = await response.json()
-      if ((path !== '/free' && session.id !== credentials.id) || !Number.isInteger(session.version) || !Array.isArray(session.cards)) {
-        throw new Error('상담 내용을 확인하지 못했어요. 다시 불러와 주세요.')
+      let session
+      try { session = await response.json() }
+      catch { throw new EntryError('response') }
+      if (!session || (path !== '/free' && session.id !== credentials.id) || !Number.isInteger(session.version) || !Array.isArray(session.cards)) {
+        throw new EntryError('response')
       }
       if (path === '/free') credentials = { ...credentials, id: session.id, question: session.question }
       update({ session, error: null })
@@ -90,6 +90,11 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
     } finally {
       clearTimeout(timer)
     }
+  }
+
+  async function writeCredentials(value) {
+    try { await storage.setItem(sessionKey, JSON.stringify(value)) }
+    catch { throw new EntryError('storageWrite') }
   }
 
   async function create() {
@@ -102,7 +107,7 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
       update({ error: '무료 상담 1회를 사용해 이전 상담을 불러왔어요. 이 상담의 결과와 확인 카드는 계속 이용할 수 있어요.' })
     }
     credentials = { ...credentials, created: true }
-    await storage.setItem(sessionKey, JSON.stringify(credentials))
+    await writeCredentials(credentials)
     return session
   }
 
@@ -173,7 +178,7 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
         const trimmed = question.trim()
         if (!trimmed || trimmed.length > 3000) return
         const next = makeCredentials(trimmed)
-        await storage.setItem(sessionKey, JSON.stringify(next))
+        await writeCredentials(next)
         credentials = next
         update({ hasSaved: true })
         await create()
@@ -223,7 +228,8 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
     },
     reset() {
       return run(async () => {
-        await storage.removeItem(sessionKey)
+        try { await storage.removeItem(sessionKey) }
+        catch { throw new EntryError('storageWrite') }
         credentials = null
         pending = null
         update({ session: null, hasSaved: false, restoreFailed: false, invalidSaved: false })
