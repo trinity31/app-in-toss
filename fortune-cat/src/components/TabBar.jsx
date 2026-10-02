@@ -18,8 +18,8 @@ const TABS = [
 const VISIBLE_PATHS = new Set(['/', '/tarot', '/library'])
 
 // D-09 active = 컬러 + fill, inactive = grey + stroke
-// active는 앱 primary 컬러(보라 #64119F, index.css --color-primary와 동일)와 일치
-const ACTIVE_COLOR = '#64119F'
+// active는 앱 primary 컬러(핑크 #B03A6A, index.css --color-primary와 동일)와 일치
+const ACTIVE_COLOR = '#B03A6A'
 const INACTIVE_COLOR = colors.grey500
 
 // 타로 첫 발견 유도용 NEW 배지 — 첫 진입 시각을 기록하고 이후 3일간 노출

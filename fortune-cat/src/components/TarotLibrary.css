@@ -3,16 +3,13 @@
   width: 100%;
   max-width: 640px;
   margin: 0 auto 32px;
-  padding: 24px 20px;
-  border-radius: 16px;
-  background: #fff;
-  color: #3f3754;
+  color: #3A2433;
 }
 
 .tarot-library > h2 { margin-bottom: 20px; line-height: 1.5; }
 .tarot-library > p { margin: 16px 0; line-height: 1.8; }
 .tarot-library > button { max-width: 100%; min-height: 48px; line-height: 1.5; }
-.tarot-library button:focus-visible { outline: 2px solid #64119f; outline-offset: 4px; }
+.tarot-library button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
 
 .tarot-saved-reading {
   margin: 32px 0;
@@ -26,11 +23,11 @@
 .tarot-saved-reading section > h4:first-child { margin-top: 0; }
 .tarot-saved-reading > section,
 .tarot-saved-reading > details { margin-top: 32px; padding-top: 28px; border-top: 1px solid #e6dcec; }
-.tarot-saved-label { margin: 24px 0 8px; font-size: 13px; color: #71617f; }
+.tarot-saved-label { margin: 24px 0 8px; font-size: 13px; color: #6E5462; }
 .tarot-saved-art { display: flex; justify-content: center; margin: 24px 0 32px; }
 .tarot-saved-prose { display: flex; flex-direction: column; gap: 16px; }
 .tarot-saved-prose p { margin: 0; white-space: pre-wrap; }
-.tarot-saved-limitations { margin-top: 24px; font-size: 14px; color: #71617f; }
+.tarot-saved-limitations { margin-top: 24px; font-size: 14px; color: #6E5462; }
 .tarot-saved-reading ul { padding-left: 24px; }
 .tarot-saved-reading li + li { margin-top: 16px; }
 .tarot-saved-reading dl { margin-top: 24px; }
@@ -39,8 +36,8 @@
 .tarot-saved-reading dd { margin: 0; }
 .tarot-saved-reading summary { cursor: pointer; padding: 8px 0; font-weight: 600; }
 .tarot-saved-exchange { margin-top: 24px; }
-.tarot-saved-exchange p + p { margin-top: 12px; color: #71617f; }
-.tarot-saved-notice { margin-top: 32px; font-size: 12px; line-height: 1.8; color: #71617f; }
+.tarot-saved-exchange p + p { margin-top: 12px; color: #6E5462; }
+.tarot-saved-notice { margin-top: 32px; font-size: 12px; line-height: 1.8; color: #6E5462; }
 
 @media (max-width: 360px) {
   .tarot-library { padding: 24px 16px; }

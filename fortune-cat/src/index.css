@@ -1,14 +1,15 @@
 :root {
   --font-sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 
-  /* Primary Color System - granite.config.ts의 primaryColor와 동기화 */
-  --color-primary: #64119F;           /* 보라색 - 버튼, 강조 텍스트 */
-  --color-primary-light: #F4E6FF;     /* 밝은 보라색 - 선택된 항목 배경 */
-  --color-primary-dark: #4A0A78;      /* 어두운 보라색 - 그래디언트용 */
+  /* Primary Color System - granite.config.ts의 primaryColor와 동기화
+     웹 fortunecat app.css(Pastel Dream Pink)와 같은 값을 쓴다. */
+  --color-primary: #B03A6A;           /* 핑크 - 버튼, 강조 텍스트 (흰 글자 대비 5.74:1) */
+  --color-primary-light: #FFE1EC;     /* 밝은 핑크 - 선택된 항목 배경 */
+  --color-primary-dark: #8E2D55;      /* 어두운 핑크 - 그래디언트용 */
 
   /* Neutral Colors */
   --color-white: #FFFFFF;
-  --color-bg-soft: #F7F0FE;           /* 옅은 라벤더 - 탭 화면 body 배경(흰 pill·카드 분리) */
+  --color-bg-soft: #FFF8FA;           /* 옅은 핑크 - 탭 화면 body 배경(흰 pill·카드 분리) */
   --color-gray-50: #F9FAFB;
   --color-gray-100: #F2F4F6;
   --color-gray-200: #E5E8EB;
@@ -16,6 +17,22 @@
   --color-gray-500: #6B7684;
   --color-gray-600: #4E5968;
   --color-gray-700: #191F28;
+
+  /* 파스텔 아이콘 톤 — 웹 PastelIcon 과 1:1 (배경 / 글리프) */
+  --color-tone-peach: #FFE3D6;
+  --color-tone-peach-ink: #B4472A;
+  --color-tone-lavender: #E6DEFF;
+  --color-tone-lavender-ink: #5B3FC4;
+  --color-tone-butter: #FFF2C7;
+  --color-tone-butter-ink: #8A6A00;
+  --color-tone-pink: #FFE1EC;
+  --color-tone-pink-ink: #B03A6A;
+  --color-tone-sky: #DDEBFF;
+  --color-tone-sky-ink: #2E5FA8;
+  --color-tone-mint: #DDF3EA;
+  --color-tone-mint-ink: #23694D;
+  --color-tone-leaf: #E4F4D9;
+  --color-tone-leaf-ink: #3F6E1F;
 
   /* Semantic Colors */
   --color-success: #10B981;

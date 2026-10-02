@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: var(--color-bg-soft);
   padding: calc(24px + env(safe-area-inset-top)) 20px calc(130px + env(safe-area-inset-bottom));
-  color: #3f3754;
+  color: #3A2433;
 }
 
 .tarot-landing-inner {
@@ -30,7 +30,7 @@
 .tarot-landing-header p {
   margin-top: 4px;
   font-size: 13px;
-  color: #71617f;
+  color: #6E5462;
 }
 
 .tarot-entry-grid {
@@ -69,7 +69,7 @@
 
 .tarot-entry-deep {
   color: #fffaff;
-  background: #64119f;
+  background: var(--color-primary);
 }
 
 .tarot-entry-symbol {
@@ -83,7 +83,7 @@
 .tarot-entry-title { font-size: clamp(17px, 4.6vw, 21px); line-height: 1.45; letter-spacing: -0.04em; }
 .tarot-entry-deep .tarot-entry-title { font-size: clamp(21px, 5.6vw, 27px); }
 .tarot-entry-description { margin-top: 6px; font-size: clamp(11px, 3.2vw, 13px); line-height: 1.8; white-space: nowrap; }
-.tarot-entry-daily .tarot-entry-description { color: #71617f; }
+.tarot-entry-daily .tarot-entry-description { color: #6E5462; }
 .tarot-entry-deep .tarot-entry-description { color: #f0dfff; }
 .tarot-entry-action {
   align-self: stretch;
@@ -95,8 +95,8 @@
   line-height: 1.5;
   text-align: center;
 }
-.tarot-entry-daily .tarot-entry-action { color: #64119f; background: #f1e6fb; }
-.tarot-entry-deep .tarot-entry-action { color: #64119f; background: #fffaff; }
+.tarot-entry-daily .tarot-entry-action { color: var(--color-primary); background: #f1e6fb; }
+.tarot-entry-deep .tarot-entry-action { color: var(--color-primary); background: #fffaff; }
 
 @media (max-width: 360px) {
   .tarot-landing { padding-inline: 16px; }
