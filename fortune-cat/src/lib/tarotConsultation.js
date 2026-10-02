@@ -153,7 +153,10 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
   return {
     getSnapshot: () => snapshot,
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener) },
-    restore() {
+    // dropFinished: 타로 화면에 새로 들어온 경우에만 true.
+    // 끝난 상담은 버리고 새 고민으로 시작한다. retry() 같은 복구 경로는 false 로 둬야
+    // 저장된 상담이 그대로 돌아온다.
+    restore({ dropFinished = false } = {}) {
       return run(async () => {
         update({ restoreFailed: true })
         let raw
@@ -170,6 +173,14 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
         }
         credentials = parsed
         await refresh()
+        // 끝난 상담(풀이가 나왔고 이어서 할 일도 없는 건)은 보관함에서 다시 본다.
+        // 타로에 다시 들어오면 새 고민으로 시작한다 (웹 consultation-client.js 와 동일).
+        // 확인 카드 해석이 남았거나 재시도가 필요한 상태는 그대로 복원한다.
+        if (dropFinished && snapshot.session?.reading && !continuation(snapshot.session)) {
+          try { await storage.removeItem(sessionKey) } catch { /* 저장소 실패가 새 상담을 막지 않는다 */ }
+          credentials = null
+          update({ session: null, hasSaved: false })
+        }
       })
     },
     start(question) {

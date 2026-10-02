@@ -79,6 +79,7 @@ export function useTarotConsultation() {
     })
   })
   const state = useSyncExternalStore(client.subscribe, client.getSnapshot)
-  useEffect(() => { client.restore() }, [client])
+  // 화면 진입 — 끝난 상담은 버리고 새 고민으로 시작한다.
+  useEffect(() => { client.restore({ dropFinished: true }) }, [client])
   return { ...state, client, track, sandbox: runtime.sandbox, paymentDiagnostics }
 }
