@@ -28,6 +28,8 @@ export default function LibraryPage() {
   const { openToast } = useToast();
 
   const [items, setItems] = useState([]);
+  // 웹 library.tsx 와 같은 세그먼트 탭 — 한 번에 한 종류만 본다.
+  const [tarotTab, setTarotTab] = useState(true);
   const [typeMap, setTypeMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null); // 상세(대화) 데이터
@@ -211,8 +213,46 @@ export default function LibraryPage() {
           padding: `16px 16px ${96 + insets.bottom}px`,
         }}
       >
-        <TarotLibrary />
-        <h2 style={{ fontSize: 18 }}>사주 풀이</h2>
+        <div
+          role="tablist"
+          aria-label="보관함 종류"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 4,
+            padding: 4,
+            marginBottom: 20,
+            borderRadius: 999,
+            background: "var(--color-primary-light)",
+          }}
+        >
+          {[["심화 타로 상담", true], ["사주 풀이", false]].map(([label, tarot]) => (
+            <button
+              key={label}
+              type="button"
+              role="tab"
+              aria-selected={tarotTab === tarot}
+              onClick={() => setTarotTab(tarot)}
+              style={{
+                height: 44,
+                border: 0,
+                borderRadius: 999,
+                font: "inherit",
+                fontSize: 15,
+                fontWeight: tarotTab === tarot ? 700 : 500,
+                color: tarotTab === tarot ? "var(--color-gray-700)" : "var(--color-gray-500)",
+                background: tarotTab === tarot ? "var(--color-white)" : "transparent",
+                cursor: "pointer",
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div hidden={!tarotTab}>
+          <TarotLibrary />
+        </div>
+        <div hidden={tarotTab}>
         {loading ? (
           <p
             style={{
@@ -398,6 +438,7 @@ export default function LibraryPage() {
             })}
           </div>
         )}
+        </div>
       </div>
     </div>
   );

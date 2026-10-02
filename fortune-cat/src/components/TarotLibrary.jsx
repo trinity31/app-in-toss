@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createTarotLibrary } from '../lib/tarotLibrary'
 import { createTossAccountHeaders } from '../lib/tossAccount'
 import { tarotRuntime } from '../lib/tarotRuntime'
@@ -7,7 +7,8 @@ import TarotCardArt from './TarotCardArt'
 import { getCardImageUrl } from '../assets/images/cards'
 import './TarotLibrary.css'
 
-const buttonStyle = { font: 'inherit', padding: '12px 16px', borderRadius: 12, border: '1px solid #D8C8E4', background: '#FFF', color: '#64119F', cursor: 'pointer' }
+const listItemStyle = { display: 'block', width: '100%', textAlign: 'left', overflowWrap: 'anywhere', font: 'inherit', marginBottom: 12, padding: 16, borderRadius: 16, border: '1px solid var(--color-gray-200)', background: 'var(--color-white)', cursor: 'pointer' }
+const buttonStyle = { font: 'inherit', padding: '12px 16px', borderRadius: 12, border: '1px solid var(--color-primary-light)', background: '#FFF', color: 'var(--color-primary)', cursor: 'pointer' }
 // Preserve the saved words while giving existing paragraph breaks real spacing.
 function Prose({ text }) {
   return <div className="tarot-saved-prose">{text.split(/\n+/).filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
@@ -44,9 +45,9 @@ function SavedReading({ session }) {
 }
 
 export default function TarotLibrary() {
-  const [{ client, sandbox }] = useState(() => {
+  const [{ client }] = useState(() => {
     const runtime = tarotRuntime({ development: import.meta.env.DEV, sandbox: isSandbox(), baseUrl: import.meta.env.VITE_API_BASE_URL })
-    return { sandbox: runtime.sandbox, client: createTarotLibrary({ baseUrl: runtime.baseUrl,
+    return { client: createTarotLibrary({ baseUrl: runtime.baseUrl,
       accountHeaders: createTossAccountHeaders({ baseUrl: import.meta.env.VITE_API_BASE_URL, development: import.meta.env.DEV,
         appLogin: async () => (await import('@apps-in-toss/web-framework')).appLogin(),
       }),
@@ -70,8 +71,11 @@ export default function TarotLibrary() {
     } catch (error) { setError(error.message) }
     finally { setBusy(false) }
   }
+  // 웹 보관함과 동일 — 버튼 없이 들어오자마자 목록을 불러온다.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { load() }, [])
+
   return <section aria-label="심화 타로 보관함" className="tarot-library">
-    <h2 style={{ fontSize: 18 }}>심화 타로 상담{sandbox ? ' · 샌드박스' : ''}</h2>
     {error && <p role="alert">{error}</p>}
     {busy && <p role="status">타로 풀이를 불러오는 중...</p>}
     {selected ? <>
@@ -79,11 +83,11 @@ export default function TarotLibrary() {
       <SavedReading session={selected} />
       <button style={buttonStyle} onClick={() => setSelected(null)}>타로 목록으로 돌아가기</button>
     </> : <>
-      {!items && <p>토스 로그인으로 이전 심화 타로 풀이를 다시 볼 수 있어요.</p>}
-      <button style={buttonStyle} disabled={busy} onClick={() => load()}>{items ? '목록 새로고침' : '저장된 타로 풀이 불러오기'}</button>
+      {error && <button style={buttonStyle} disabled={busy} onClick={() => load()}>다시 시도</button>}
       {items?.length === 0 && <p>아직 완료한 심화 타로 풀이가 없어요.</p>}
-      {items?.map(item => <button key={item.id} style={{ ...buttonStyle, display: 'block', width: '100%', textAlign: 'left', marginTop: 12, overflowWrap: 'anywhere' }} disabled={busy} onClick={() => load(item.id)}>
-        <strong>{item.question}</strong>{item.created_at && <span style={{ display: 'block', fontSize: 12, marginTop: 6 }}>{new Date(item.created_at).toLocaleDateString('ko-KR')}</span>}
+      {items?.map(item => <button key={item.id} style={listItemStyle} disabled={busy} onClick={() => load(item.id)}>
+        <span style={{ display: 'block', fontSize: 16, fontWeight: 600, color: 'var(--color-gray-700)', marginBottom: 4 }}>{item.question}</span>
+        {item.created_at && <span style={{ display: 'block', fontSize: 12, color: 'var(--color-gray-400)' }}>{new Date(item.created_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>}
       </button>)}
       {more && <button style={{ ...buttonStyle, marginTop: 12 }} disabled={busy} onClick={() => load(null, true)}>이전 타로 더 보기</button>}
     </>}
