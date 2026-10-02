@@ -7,10 +7,10 @@ import { continuation } from '../lib/tarotConsultation'
 import './TarotConsultation.css'
 
 const textStyle = { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', lineHeight: 1.8 }
-const headingStyle = { fontSize: 19, lineHeight: 1.5, marginBottom: 12, color: '#3F3754' }
+const headingStyle = { fontSize: 19, lineHeight: 1.5, marginBottom: 12, color: '#3A2433' }
 const sectionStyle = { marginTop: 28, paddingTop: 24, borderTop: '1px solid #E6DCEC' }
-const chipStyle = selected => ({ border: selected ? '1px solid #64119F' : '1px solid #D8C8E4', borderRadius: 14, padding: '11px 14px', font: 'inherit', fontSize: 15, color: '#4A0A78', background: selected ? '#F4E6FF' : '#FFFFFF', textAlign: 'left', overflowWrap: 'anywhere' })
-const inputStyle = { width: '100%', padding: 16, font: 'inherit', fontSize: 16, lineHeight: 1.7, color: '#3F3754', background: '#FFFFFF', border: '1px solid #BBAAC9', borderRadius: 16, resize: 'vertical', minHeight: 130, boxSizing: 'border-box' }
+const chipStyle = selected => ({ border: selected ? '1px solid var(--color-primary)' : '1px solid var(--color-primary-light)', borderRadius: 14, padding: '11px 14px', font: 'inherit', fontSize: 15, color: 'var(--color-primary-dark)', background: selected ? 'var(--color-primary-light)' : '#FFFFFF', textAlign: 'left', overflowWrap: 'anywhere' })
+const inputStyle = { width: '100%', padding: 16, font: 'inherit', fontSize: 16, lineHeight: 1.7, color: '#3A2433', background: '#FFFFFF', border: '1px solid #BBAAC9', borderRadius: 16, resize: 'vertical', minHeight: 130, boxSizing: 'border-box' }
 
 function BusyIndicator() {
   const dialogRef = useRef(null)
@@ -35,7 +35,7 @@ function BusyIndicator() {
 }
 
 function Action({ children, secondary = false, disabled, style, ...props }) {
-  return <button type="button" {...props} disabled={disabled} className="tap-card" style={{ width: '100%', minHeight: 52, border: secondary ? '1px solid #D8C8E4' : 0, borderRadius: 16, padding: '13px 16px', font: 'inherit', fontWeight: 700, fontSize: 16, background: secondary ? '#FFFFFF' : 'var(--color-primary)', color: secondary ? '#64119F' : '#FFFFFF', cursor: disabled ? 'default' : 'pointer', opacity: disabled ? 0.55 : 1, ...style }}>{children}</button>
+  return <button type="button" {...props} disabled={disabled} className="tap-card" style={{ width: '100%', minHeight: 52, border: secondary ? '1px solid var(--color-primary-light)' : 0, borderRadius: 16, padding: '13px 16px', font: 'inherit', fontWeight: 700, fontSize: 16, background: secondary ? '#FFFFFF' : 'var(--color-primary)', color: secondary ? 'var(--color-primary)' : '#FFFFFF', cursor: disabled ? 'default' : 'pointer', opacity: disabled ? 0.55 : 1, ...style }}>{children}</button>
 }
 
 function ConcernForm({ title, initialValue = '', options = [], busy, submitLabel, onSubmit, onCancel, examples = false }) {
@@ -46,9 +46,9 @@ function ConcernForm({ title, initialValue = '', options = [], busy, submitLabel
       {options.map(option => <button type="button" key={option} disabled={busy} aria-pressed={value === option} onClick={() => setValue(option)} style={chipStyle(value === option)}>{option}</button>)}
     </div>}
     <textarea id="tarot-concern" value={value} onChange={event => setValue(event.target.value)} disabled={busy} maxLength={3000} rows={4} placeholder={options.length ? '선택하거나 편하게 직접 적어 주세요' : '지금 가장 마음에 걸리는 고민 하나를 적어 주세요'} style={inputStyle} required />
-    <p style={{ textAlign: 'right', fontSize: 12, color: '#71617F', margin: '4px 0 10px' }}>{value.length} / 3,000</p>
+    <p style={{ textAlign: 'right', fontSize: 12, color: '#6E5462', margin: '4px 0 10px' }}>{value.length} / 3,000</p>
     {examples && <div style={{ marginBottom: 24 }}>
-      <p style={{ fontSize: 13, color: '#71617F', marginBottom: 8 }}>이런 고민도 괜찮아요</p>
+      <p style={{ fontSize: 13, color: '#6E5462', marginBottom: 8 }}>이런 고민도 괜찮아요</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {['지금 만나는 사람과 계속 만날 수 있을까요?', '새로운 회사로 이직하는게 좋을까요?'].map(example => <button type="button" key={example} disabled={busy} aria-pressed={value === example} onClick={() => setValue(example)} style={chipStyle(value === example)}>{example}</button>)}
       </div>
@@ -61,7 +61,7 @@ function ConcernForm({ title, initialValue = '', options = [], busy, submitLabel
 function Card({ card, position, interpretation, comparison }) {
   return <article className="tarot-reading-card">
     <header className="tarot-reading-card__heading">
-      <p>{position}</p>
+      <h2>{position}</h2>
       <h3>{card.name_ko}</h3>
     </header>
     <div className="tarot-reading-card__art">
@@ -71,15 +71,19 @@ function Card({ card, position, interpretation, comparison }) {
       <summary><span className="tarot-reading-card__open">풀이 펼쳐 보기</span><span className="tarot-reading-card__close">풀이 접기</span></summary>
       <p style={{ ...textStyle, marginTop: 16 }}>{interpretation}</p>
       {comparison && <dl style={{ marginTop: 16 }}>
-        {[['가능성', comparison.possibility], ['주의점', comparison.caution], ['확인할 조건', comparison.condition]].map(([label, value]) => <div key={label} style={{ marginTop: 12 }}><dt style={{ fontSize: 14, fontWeight: 700, color: '#64119F' }}>{label}</dt><dd style={textStyle}>{value}</dd></div>)}
+        {[['가능성', comparison.possibility], ['주의점', comparison.caution], ['확인할 조건', comparison.condition]].map(([label, value]) => <div key={label} style={{ marginTop: 12 }}><dt style={{ fontSize: 14, fontWeight: 700, color: 'var(--color-primary)' }}>{label}</dt><dd style={textStyle}>{value}</dd></div>)}
       </dl>}
     </details>
   </article>
 }
 
-function Items({ values, ordered = false }) {
-  const List = ordered ? 'ol' : 'ul'
-  return <List style={{ paddingLeft: 22 }}>{values.map((value, index) => <li key={index} style={{ ...textStyle, paddingLeft: 3, marginBottom: 10 }}>{value}</li>)}</List>
+function Items({ values }) {
+  // 웹 tarot-consultation.tsx 와 동일 — 핑크 체크 리스트
+  return <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>{values.map((value, index) =>
+    <li key={index} style={{ ...textStyle, display: 'flex', gap: 8, marginBottom: 10 }}>
+      <span aria-hidden style={{ color: 'var(--color-primary)', fontWeight: 800 }}>✓</span>
+      <span>{value}</span>
+    </li>)}</ul>
 }
 
 export default function TarotConsultation() {
@@ -129,7 +133,7 @@ export default function TarotConsultation() {
 
   return <>
     {(!initialized || busy) && <BusyIndicator />}
-    <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `20px 22px ${insets.bottom + 140}px`, color: '#3F3754', overflowWrap: 'anywhere' }}>
+    <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `20px 22px ${insets.bottom + 140}px`, color: '#3A2433', overflowWrap: 'anywhere' }}>
     <div style={{ maxWidth: 520, margin: '0 auto' }}>
       {sandbox && <p role="status" style={{ padding: 12, background: '#FFF5EF', borderRadius: 12 }}>샌드박스 결제 테스트 · 실제 AI 풀이를 사용하며 상담과 이용권은 테스트용으로 별도 저장돼요.</p>}
       {failure && <div role="alert" style={{ padding: 16, background: '#FFF5EF', borderRadius: 16, color: '#7C3A21', marginBottom: 24 }}>
@@ -148,9 +152,9 @@ export default function TarotConsultation() {
 
       {/* 심사 요구: 토스 로그인(고민 제출 시) 전에 서비스 소개를 먼저 보여준다. */}
       {showIntro && <section>
-        <h1 style={{ ...headingStyle, fontSize: 24, fontWeight: 700 }}>복냥이의 심화 타로상담</h1>
-        <p style={{ ...textStyle, marginBottom: 20, color: '#71617F' }}>마음에 걸리는 고민 하나를 들려주시면, 복냥이가 고민에 맞는 카드를 뽑아 깊이 풀이해 드려요.</p>
-        <Items ordered values={[
+        <h1 style={{ ...headingStyle, fontSize: 24, fontWeight: 800, color: '#3A2433' }}>복냥이의 심화 타로상담</h1>
+        <p style={{ ...textStyle, marginBottom: 20, color: '#6E5462' }}>마음에 걸리는 고민 하나를 들려주시면, 복냥이가 고민에 맞는 카드를 뽑아 깊이 풀이해 드려요.</p>
+        <Items values={[
           '고민을 적으면 필요한 내용을 자세히 물어볼게요.',
           '고민에 맞는 기준으로 몇장의 카드를 뽑아서 풀이해 드려요.',
           '더 궁금한 점이 있으면 확인 카드 1개를 더 뽑을 수 있어요.',
@@ -160,7 +164,7 @@ export default function TarotConsultation() {
 
       {isNewUser && introDone && <>
         <ConcernForm title="어떤 고민이 있나요?" busy={busy} submitLabel="고민 이야기하기" onSubmit={question => { track('tarot_deep_question_submitted'); client.start(question) }} examples />
-        <p style={{ marginTop: 14, padding: '12px 16px', borderRadius: 14, background: '#F4E6FF', color: '#64119F', fontSize: 15, fontWeight: 700, textAlign: 'center' }}>🎁 심화 상담 <strong style={{ fontWeight: 800 }}>1회 무료</strong>로 받아보세요</p>
+        <p style={{ marginTop: 14, padding: '12px 16px', borderRadius: 14, background: 'var(--color-primary-light)', color: 'var(--color-primary)', fontSize: 15, fontWeight: 700, textAlign: 'center' }}>🎁 심화 상담 <strong style={{ fontWeight: 800 }}>1회 무료</strong>로 받아보세요</p>
       </>}
 
       {initialized && !session && hasSaved && !busy && (invalidSaved ? <div>
@@ -170,17 +174,17 @@ export default function TarotConsultation() {
 
       {session && <>
         {editing ? <ConcernForm title="고민을 다시 적어 주세요" initialValue={session.question} busy={busy} submitLabel="수정한 고민으로 살펴보기" onSubmit={revise} onCancel={() => setEditing(false)} /> : <>
-          {!reading && <p style={{ ...textStyle, marginBottom: 24, color: '#71617F', fontSize: 14 }}>“{session.question}”</p>}
+          {!reading && <p style={{ ...textStyle, marginBottom: 24, color: '#6E5462', fontSize: 14 }}>“{session.question}”</p>}
 
           {session.status === 'question' && <ConcernForm key={session.pending_question.question} title={session.pending_question.question} options={session.pending_question.options} busy={busy} submitLabel="답변 보내기" onSubmit={answer => client.command('answer', { answer })} />}
 
           {session.plan && !session.cards.length && <section>
             <h1 style={{ ...headingStyle, fontSize: 24 }}>이렇게 살펴볼게요</h1>
             <p style={{ ...textStyle, fontSize: 18, fontWeight: 600 }}>{session.plan.summary}</p>
-            <p style={{ margin: '14px 0', color: '#64119F', fontWeight: 700 }}>카드 {session.plan.positions.length}장으로 살펴볼 관점</p>
+            <p style={{ margin: '14px 0', color: 'var(--color-primary)', fontWeight: 700 }}>카드 {session.plan.positions.length}장으로 살펴볼 관점</p>
             <ol style={{ paddingLeft: 22 }}>{session.plan.positions.map(position => <li key={position} style={{ marginBottom: 10, paddingLeft: 3 }}>{position}</li>)}</ol>
-            {session.plan.conditions.length > 0 && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#71617F' }}>함께 생각할 조건: {session.plan.conditions.join(' · ')}</p>}
-            {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#71617F' }}>{session.plan.limitations}</p>}
+            {session.plan.conditions.length > 0 && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#6E5462' }}>함께 생각할 조건: {session.plan.conditions.join(' · ')}</p>}
+            {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#6E5462' }}>{session.plan.limitations}</p>}
             <div aria-hidden="true" style={{ display: 'flex', justifyContent: 'center', gap: 14, margin: '28px 0' }}>{session.plan.positions.map(position => <TarotCardArt key={position} faceUp={false} size="sm" framed />)}</div>
             {session.payment_required && <p style={{ ...textStyle, fontSize: 14, marginBottom: 12 }}>무료 상담 1회를 모두 사용했어요. 이번 심화풀이 1회와 확인 카드가 포함되며, 결제창에서 금액을 확인할 수 있어요.</p>}
             <Action disabled={busy} onClick={() => session.payment_required ? client.pay() : client.command('draw')}>{session.payment_required ? '결제하고 카드 뽑기 · 구매 복구' : '카드 뽑기'}</Action>
@@ -191,23 +195,23 @@ export default function TarotConsultation() {
             <h1 style={{ ...headingStyle, fontSize: 24 }}>함께 살펴볼 카드예요</h1>
             {session.cards.map((card, index) => <div key={card.id} className="tarot-reading-card__preview">
               <TarotCardArt zoomable size="lg" image={getCardImageUrl(card.id)} nameEn={card.name_ko} />
-              <div><p style={{ fontSize: 14, color: '#71617F' }}>{session.plan.positions[index]}</p><strong>{card.name_ko}</strong></div>
+              <div><p style={{ fontSize: 14, color: '#6E5462' }}>{session.plan.positions[index]}</p><strong>{card.name_ko}</strong></div>
             </div>)}
-            <p style={{ fontSize: 14, color: '#71617F', marginTop: 14 }}>풀이를 다시 불러와도 이 카드들은 바뀌지 않아요.</p>
+            <p style={{ fontSize: 14, color: '#6E5462', marginTop: 14 }}>풀이를 다시 불러와도 이 카드들은 바뀌지 않아요.</p>
           </section>}
 
           {!failure && retryAction && !busy && <Action onClick={() => client.retry()} style={{ marginTop: 24 }}>{retryAction === 'plan' ? '상담 방향 살펴보기' : retryAction === 'interpret-clarifier' ? '확인 카드 풀이 이어보기' : '카드 풀이 이어보기'}</Action>}
 
           {reading && <>
             <section>
-              <h2 style={headingStyle}>각 카드가 들려주는 이야기</h2>
+              <h1 style={{ ...headingStyle, fontSize: 26, fontWeight: 800, color: '#3A2433', marginBottom: 20 }}>각 카드가 들려주는 이야기</h1>
               {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} comparison={position.comparison} />)}
             </section>
             <section style={sectionStyle}>
-              <p style={{ fontSize: 13, color: '#71617F', marginBottom: 10 }}>고민에 대한 복냥이의 이야기</p>
+              <p style={{ fontSize: 13, color: '#6E5462', marginBottom: 10 }}>고민에 대한 복냥이의 이야기</p>
               <h1 style={{ ...headingStyle, fontSize: 24 }}>{session.plan.summary}</h1>
               <p style={{ ...textStyle, fontSize: 18 }}>{reading.answer}</p>
-              {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#71617F' }}>{session.plan.limitations}</p>}
+              {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#6E5462' }}>{session.plan.limitations}</p>}
             </section>
             <section style={sectionStyle}><h2 style={headingStyle}>카드를 함께 보면</h2><p style={textStyle}>{reading.relationships}</p></section>
             <section style={sectionStyle}><h2 style={headingStyle}>현실에서 확인해 볼 것</h2><Items values={reading.reality_checks} /></section>
@@ -216,12 +220,12 @@ export default function TarotConsultation() {
             <section style={sectionStyle}>
               <h2 style={headingStyle}>{clarifier ? '확인 카드가 보충하는 이야기' : '조금 더 살펴보고 싶은 부분이 있나요?'}</h2>
               {clarifier ? <>
-                <p style={{ marginBottom: 18, color: '#71617F', fontSize: 14 }}>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
+                <p style={{ marginBottom: 18, color: '#6E5462', fontSize: 14 }}>{session.plan.positions[clarifier.target_index]}의 의미를 보충해요.</p>
                 <div className="tarot-reading-card__preview"><TarotCardArt zoomable size="lg" image={getCardImageUrl(clarifier.card.id)} nameEn={clarifier.card.name_ko} /><strong>{clarifier.card.name_ko}</strong></div>
                 {clarifier.reading && <><p style={textStyle}>{clarifier.reading.meaning}</p><p style={{ ...textStyle, marginTop: 16 }}><strong>현실에서 확인할 것</strong><br />{clarifier.reading.reality_check}</p><p style={{ ...textStyle, marginTop: 16 }}><strong>해볼 수 있는 일</strong><br />{clarifier.reading.action}</p></>}
-                <p style={{ fontSize: 13, color: '#71617F', marginTop: 16 }}>확인 카드는 한 상담에 한 번만 뽑아요. 처음 풀이와 함께 읽어 주세요.</p>
+                <p style={{ fontSize: 13, color: '#6E5462', marginTop: 16 }}>확인 카드는 한 상담에 한 번만 뽑아요. 처음 풀이와 함께 읽어 주세요.</p>
               </> : <>
-                <p style={{ ...textStyle, fontSize: 14, color: '#71617F', marginBottom: 16 }}>뜻이 흐릿하게 느껴지는 부분을 골라 주세요. 새 카드 한 장으로 의미를 보충하며, 기존 결과를 바꾸지는 않아요.</p>
+                <p style={{ ...textStyle, fontSize: 14, color: '#6E5462', marginBottom: 16 }}>뜻이 흐릿하게 느껴지는 부분을 골라 주세요. 새 카드 한 장으로 의미를 보충하며, 기존 결과를 바꾸지는 않아요.</p>
                 <label htmlFor="tarot-clarifier" style={{ display: 'block', marginBottom: 8, fontSize: 14 }}>더 알아보고 싶은 부분</label>
                 <select id="tarot-clarifier" value={target} disabled={busy} onChange={event => setTarget(event.target.value)} style={{ ...inputStyle, minHeight: 52, padding: '12px 10px', marginBottom: 12 }}>
                   <option value="">카드의 관점을 골라 주세요</option>
@@ -231,12 +235,12 @@ export default function TarotConsultation() {
               </>}
             </section>
             <details style={{ ...sectionStyle, fontSize: 14 }}><summary style={{ cursor: 'pointer' }}>나눈 고민 다시 보기</summary><p style={{ ...textStyle, marginTop: 12 }}>{session.question}</p>{session.answers.map((answer, index) => <div key={index} style={{ marginTop: 12 }}><p style={textStyle}>{answer.question}</p><p style={{ ...textStyle, fontWeight: 600 }}>{answer.answer}</p></div>)}</details>
-            <Action secondary disabled={busy} onClick={async () => { await client.reset(); setTarget(''); setEditing(false) }} style={{ marginTop: 28 }}>새 고민으로 상담하기</Action>
+            <Action disabled={busy} onClick={async () => { await client.reset(); setTarget(''); setEditing(false) }} style={{ marginTop: 28 }}>새 고민으로 상담하기</Action>
           </>}
         </>}
       </>}
 
-      <p style={{ ...textStyle, fontSize: 12, color: '#71617F', marginTop: 30 }}>{session?.notice || '타로는 자기 성찰과 선택을 돕는 참고예요. 상대의 마음이나 미래를 확정하지 않으며, 중요한 의료·법률·재정 판단은 사실 확인과 전문가 상담을 함께해 주세요.'}</p>
+      <p style={{ ...textStyle, fontSize: 12, color: '#6E5462', marginTop: 30 }}>{session?.notice || '타로는 자기 성찰과 선택을 돕는 참고예요. 상대의 마음이나 미래를 확정하지 않으며, 중요한 의료·법률·재정 판단은 사실 확인과 전문가 상담을 함께해 주세요.'}</p>
     </div>
   </main>
   </>

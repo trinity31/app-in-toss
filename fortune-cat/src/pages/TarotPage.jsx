@@ -300,7 +300,7 @@ export default function TarotPage() {
             fontSize: 16,
             fontWeight: 700,
             color: '#FFFFFF',
-            background: '#64119F',
+            background: 'var(--color-primary)',
             border: 0,
             borderRadius: 12,
             cursor: 'pointer',
@@ -361,12 +361,12 @@ function TarotIntro({ hasTodayDraw, onStart, onResume, onConsultation }) {
           onClick={hasTodayDraw ? onResume : onStart}
           className="tarot-entry-card tarot-entry-daily"
         >
-          <strong className="tarot-entry-title">오늘의 운세 <span className="tarot-entry-symbol" aria-hidden="true">☀</span></strong>
+          <strong className="tarot-entry-title">오늘의 운세</strong>
           <span className="tarot-entry-description">가볍게 만나는 오늘의 카드</span>
-          <span className="tarot-entry-action">{hasTodayDraw ? '오늘의 카드 다시 보기 ✨' : '오늘의 카드 뽑기 ✨'}</span>
+          <span className="tarot-entry-action">{hasTodayDraw ? '오늘의 카드 다시 보기' : '오늘의 카드 뽑기'}</span>
         </button>
         <button type="button" onClick={onConsultation} className="tarot-entry-card tarot-entry-deep">
-          <strong className="tarot-entry-title">심화 타로상담 <span className="tarot-entry-symbol" aria-hidden="true">✦</span></strong>
+          <strong className="tarot-entry-title">심화 타로상담</strong>
           <span className="tarot-entry-description">마음에 걸리는 고민 하나, 복냥이에게 물어보세요</span>
           <span className="tarot-entry-action">내 고민 이야기하기 <span aria-hidden="true">→</span></span>
         </button>

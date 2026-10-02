@@ -211,7 +211,7 @@ export default function TarotResult({ card, onHome, onShare, onConsultation }) {
         </p>
       </div>
 
-      {onConsultation && <button type="button" onClick={onConsultation} className="tap-card" style={{ marginTop: 24, minHeight: 52, padding: '14px 20px', width: '100%', maxWidth: 360, fontSize: 16, fontWeight: 700, color: '#64119F', background: '#FFFFFF', border: '1px solid #D8C8E4', borderRadius: 20 }}>
+      {onConsultation && <button type="button" onClick={onConsultation} className="tap-card" style={{ marginTop: 24, minHeight: 52, padding: '14px 20px', width: '100%', maxWidth: 360, fontSize: 16, fontWeight: 700, color: 'var(--color-primary)', background: '#FFFFFF', border: '1px solid var(--color-primary-light)', borderRadius: 20 }}>
         고민을 나누는 심화 타로 상담
       </button>}
 
@@ -273,7 +273,7 @@ export default function TarotResult({ card, onHome, onShare, onConsultation }) {
             cursor: 'pointer',
           }}
         >
-          공유하기 ✨
+          공유하기
         </button>
       </div>
 

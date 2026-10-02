@@ -104,7 +104,7 @@ export default function TarotShuffle({ cards, onSelect }) {
 
         <div style={{ textAlign: 'center' }}>
           <p style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.5, color: '#3F3754', margin: 0 }}>
-            {isReady ? '이 카드로 결정할까냥?' : '세 장의 카드 중 한 장을 골라달라냥 🐾'}
+            {isReady ? '이 카드로 결정할까냥?' : '세 장의 카드 중 한 장을 골라달라냥'}
           </p>
           <p style={{ marginTop: 8, fontSize: 14, fontWeight: 400, lineHeight: 1.6, color: '#888194', margin: 0 }}>
             한 번 선택하면 오늘 자정까지 같은 카드가 보여져요
@@ -137,7 +137,7 @@ export default function TarotShuffle({ cards, onSelect }) {
             transition: 'opacity 0.2s ease-out',
           }}
         >
-          이 카드로 결정할래요 ✨
+          이 카드로 결정할래요
         </button>
       </div>
     </div>
