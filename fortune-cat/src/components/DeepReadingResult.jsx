@@ -1473,6 +1473,8 @@ export default function DeepReadingResult({
               disabled={isSending}
               style={{
                 flex: 1,
+                // iOS WebKit 은 input 의 기본 너비 아래로 줄이지 않아 전송 버튼을 화면 밖으로 민다.
+                minWidth: 0,
                 padding: "12px 16px",
                 fontSize: "15px",
                 border: "1px solid var(--color-primary)",
@@ -1498,6 +1500,7 @@ export default function DeepReadingResult({
                 cursor:
                   !inputMessage.trim() || isSending ? "not-allowed" : "pointer",
                 whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
             >
               {isSending ? "전송 중..." : "전송"}
