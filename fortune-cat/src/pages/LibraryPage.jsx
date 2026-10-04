@@ -29,7 +29,7 @@ export default function LibraryPage() {
 
   const [items, setItems] = useState([]);
   // 웹 library.tsx 와 같은 세그먼트 탭 — 한 번에 한 종류만 본다.
-  const [tarotTab, setTarotTab] = useState(true);
+  const [tarotTab, setTarotTab] = useState(false); // 기본은 사주 풀이 탭
   const [typeMap, setTypeMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null); // 상세(대화) 데이터
@@ -226,7 +226,7 @@ export default function LibraryPage() {
             background: "var(--color-primary-light)",
           }}
         >
-          {[["심화 타로 상담", true], ["사주 풀이", false]].map(([label, tarot]) => (
+          {[["사주 풀이", false], ["심화 타로 상담", true]].map(([label, tarot]) => (
             <button
               key={label}
               type="button"
