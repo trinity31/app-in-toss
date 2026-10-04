@@ -726,7 +726,10 @@ export default function DeepReadingResult({
   return (
     <div
       style={{
-        minHeight: "100vh",
+        // 문서(window) 대신 이 화면이 스크롤한다. iOS WebKit 은 문서가 스크롤된 채로
+        // 키보드가 닫히거나 내용이 늘면 position: fixed 하단 바를 위로 띄워 놓는다.
+        height: "100dvh",
+        overflowY: "auto",
         background: "var(--color-white)",
         display: "flex",
         flexDirection: "column",
@@ -756,7 +759,8 @@ export default function DeepReadingResult({
       {/* 메시지 목록 */}
       <div
         style={{
-          flex: 1,
+          // 줄어들면 목록이 따로 스크롤돼 제목이 고정된다. 바깥 컨테이너와 함께 스크롤.
+          flex: "1 0 auto",
           padding: "20px",
           paddingBottom: `${bottomBarHeight + 100}px`,
           overflowY: "auto",
