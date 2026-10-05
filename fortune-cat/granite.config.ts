@@ -16,7 +16,7 @@ export default defineConfig({
     host: '192.168.35.64',
     port: 5173,
     commands: {
-      dev: 'vite --host',
+      dev: 'vite --host 192.168.35.64 --port 5173 --strictPort',
       build: 'vite build',
     },
   },

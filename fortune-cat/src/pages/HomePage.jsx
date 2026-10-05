@@ -9,6 +9,7 @@ import {
   getAmuletStyleImageUrl,
 } from "../lib/supabase";
 import { trackClick } from "../lib/analytics";
+import { withJobMenu } from "../lib/jobMenu";
 import { logEvent } from "../lib/firebase";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
@@ -85,7 +86,7 @@ export default function HomePage() {
           .order("display_order", { ascending: true }),
       ]);
 
-      if (aiSajuRes.data) setAiSajuTypes(aiSajuRes.data);
+      setAiSajuTypes(withJobMenu(aiSajuRes.data || []));
       if (newYearRes.data) setNewYearTypes(newYearRes.data);
       if (sajuRes.data) setSajuTypes(sajuRes.data);
       if (amuletRes.data) setAmuletTypes(amuletRes.data);
