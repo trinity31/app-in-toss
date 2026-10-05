@@ -15,7 +15,7 @@ session.reading.positions[0].interpretation += '\n\n' + '지금의 상황을 다
     const errors = [], api = []
     page.on('pageerror', error => { errors.push(error.message); console.error(error.message) })
     page.setDefaultTimeout(10000)
-    let fail = false
+    let fail = false, loggedIn = false
     await page.route('**/*', route => {
       const url = new URL(route.request().url())
       if (url.pathname === '/test-library') return route.fulfill({ contentType: 'text/html', body: `<div id="root"></div><script type="module">
@@ -25,7 +25,7 @@ const React = (await import('/node_modules/.vite/deps/react.js')).default;
 const {createRoot} = (await import('/node_modules/.vite/deps/react-dom_client.js')).default;
 const {default: Library} = await import('/src/components/TarotLibrary.jsx');
 createRoot(document.getElementById('root')).render(React.createElement(Library));</script>` })
-      if (url.pathname === '/src/lib/tossAccount.js') return route.fulfill({ contentType: 'text/javascript', body: "export const createTossAccountHeaders = () => async () => ({'X-Toss-Access-Token':'test-only'});" })
+      if (url.pathname === '/src/lib/tossAccount.js') return route.fulfill({ contentType: 'text/javascript', body: "export const createTossAccountHeaders = () => async () => ({'X-Toss-Access-Token':'test-only'}); export const isTossLoggedIn = async () => " + loggedIn + ";" })
       if (url.pathname === '/src/lib/analytics.js') return route.fulfill({ contentType: 'text/javascript', body: 'export const isSandbox = () => true;' })
       if (url.pathname.includes('/tarot/sessions/history')) {
         api.push(route.request().method() + ' ' + url.pathname)
@@ -35,7 +35,14 @@ createRoot(document.getElementById('root')).render(React.createElement(Library))
       return route.continue()
     })
     await page.goto(base + '/test-library')
-    await page.getByRole('button', { name: '저장된 타로 풀이 불러오기' }).click()
+    // 로그인 안 된 사용자: 로그인 창 없이 안내부터, 버튼을 눌러야 불러온다.
+    await page.getByText('로그인하면 저장한 풀이를 볼 수 있어요.').waitFor()
+    assert.deepEqual(api, [])
+    fail = true
+    await page.getByRole('button', { name: '토스 로그인하고 풀이 보기' }).click()
+    await page.getByRole('alert').waitFor()
+    fail = false
+    await page.getByRole('button', { name: '토스 로그인하고 풀이 보기' }).click()
     await page.getByRole('button', { name: session.question }).click()
     await page.getByText('저장된 전체 풀이', { exact: true }).waitFor()
     await page.getByText('저장된 확인 카드 해석', { exact: true }).waitFor()
@@ -46,14 +53,15 @@ createRoot(document.getElementById('root')).render(React.createElement(Library))
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
     }
     await page.getByRole('button', { name: '타로 목록으로 돌아가기' }).first().click()
-    fail = true
-    await page.getByRole('button', { name: '목록 새로고침' }).click()
-    await page.getByRole('alert').waitFor()
-    fail = false
-    await page.getByRole('button', { name: '목록 새로고침' }).click()
     await page.getByRole('button', { name: session.question }).waitFor()
+    assert.equal(await page.getByText('로그인하면 저장한 풀이를 볼 수 있어요.').count(), 0)
+    // 이미 로그인한 사용자: 안내 없이 바로 불러온다.
+    loggedIn = true
+    await page.goto(base + '/test-library')
+    await page.getByRole('button', { name: session.question }).waitFor()
+    assert.equal(await page.getByText('로그인하면 저장한 풀이를 볼 수 있어요.').count(), 0)
     assert.deepEqual(errors, [])
     assert.ok(api.every(call => call.startsWith('GET /sandbox/tarot/sessions/history')))
-    console.log('Mobile library list, saved reading, clarifier, back, error/retry, read-only routing passed')
+    console.log('Mobile library login guide, logged-in auto-load, error/retry, list, saved reading, clarifier, back, read-only routing passed')
   } finally { await browser.close() }
 })().catch(error => { console.error(error); process.exitCode = 1 })

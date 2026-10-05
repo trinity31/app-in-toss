@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createTarotLibrary } from '../lib/tarotLibrary'
-import { createTossAccountHeaders } from '../lib/tossAccount'
+import { createTossAccountHeaders, isTossLoggedIn } from '../lib/tossAccount'
 import { tarotRuntime } from '../lib/tarotRuntime'
 import { isSandbox } from '../lib/analytics'
 import TarotCardArt from './TarotCardArt'
@@ -58,6 +58,7 @@ export default function TarotLibrary() {
   const [selected, setSelected] = useState(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
+  const [needsLogin, setNeedsLogin] = useState(false)
   async function load(id, append = false) {
     if (busy) return
     setBusy(true); setError(null)
@@ -67,13 +68,18 @@ export default function TarotLibrary() {
         const data = await client.list(append ? items.length : 0)
         setItems(previous => append ? [...previous, ...data.items] : data.items)
         setMore(data.has_more)
+        setNeedsLogin(false)
       }
     } catch (error) { setError(error.message) }
     finally { setBusy(false) }
   }
-  // 웹 보관함과 동일 — 버튼 없이 들어오자마자 목록을 불러온다.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { load() }, [])
+  // 이미 토스 로그인한 사용자는 바로 불러온다. 아니면 설명 없이 로그인 창을 띄우지 않도록
+  // 안내와 버튼을 먼저 보여준다(앱인토스 심사 요구).
+  useEffect(() => {
+    isTossLoggedIn(async () => (await import('@apps-in-toss/web-framework')).getIsTossLoginIntegratedService())
+      .then(loggedIn => loggedIn ? load() : setNeedsLogin(true))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return <section aria-label="심화 타로 보관함" className="tarot-library">
     {error && <p role="alert">{error}</p>}
@@ -83,7 +89,11 @@ export default function TarotLibrary() {
       <SavedReading session={selected} />
       <button style={buttonStyle} onClick={() => setSelected(null)}>타로 목록으로 돌아가기</button>
     </> : <>
-      {error && <button style={buttonStyle} disabled={busy} onClick={() => load()}>다시 시도</button>}
+      {needsLogin && <>
+        <p>로그인하면 저장한 풀이를 볼 수 있어요.</p>
+        <button style={buttonStyle} disabled={busy} onClick={() => load()}>토스 로그인하고 풀이 보기</button>
+      </>}
+      {error && !needsLogin && <button style={buttonStyle} disabled={busy} onClick={() => load()}>다시 시도</button>}
       {items?.length === 0 && <p>아직 완료한 심화 타로 풀이가 없어요.</p>}
       {items?.map(item => <button key={item.id} style={listItemStyle} disabled={busy} onClick={() => load(item.id)}>
         <span style={{ display: 'block', fontSize: 16, fontWeight: 600, color: 'var(--color-gray-700)', marginBottom: 4 }}>{item.question}</span>

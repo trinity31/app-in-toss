@@ -39,3 +39,11 @@ export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, n
     return { 'X-Toss-Access-Token': login.token }
   }
 }
+
+// 로그인 창 없이 토스 로그인 연동 여부만 본다. 모르면(구버전 앱·오류·브리지 무응답)
+// 로그인 안 된 것으로 보고 안내부터 보여준다.
+export async function isTossLoggedIn(check, timeoutMs = 3000) {
+  let timer
+  const timeout = new Promise(resolve => { timer = setTimeout(() => resolve(false), timeoutMs) })
+  try { return (await Promise.race([check(), timeout])) === true } catch { return false } finally { clearTimeout(timer) }
+}

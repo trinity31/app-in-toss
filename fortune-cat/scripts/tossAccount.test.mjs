@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { createTossAccountHeaders } from '../src/lib/tossAccount.js'
+import { createTossAccountHeaders, isTossLoggedIn } from '../src/lib/tossAccount.js'
 import { EntryError } from '../src/lib/entryErrors.js'
 
 const result = { authorizationCode: 'test-code', referrer: 'SANDBOX' }
@@ -90,4 +90,12 @@ test('unstructured native error codes are omitted', async () => {
     appLogin: async () => { throw { code: 'private user payload', name: 'private user name' } },
   })
   await assert.rejects(headers(), error => /SDK_REJECTED/.test(error.message) && !error.message.includes('private'))
+})
+
+test('login check only trusts an explicit true and never throws', async () => {
+  assert.equal(await isTossLoggedIn(async () => true), true)
+  assert.equal(await isTossLoggedIn(async () => false), false)
+  assert.equal(await isTossLoggedIn(async () => undefined), false) // 구버전 토스 앱
+  assert.equal(await isTossLoggedIn(async () => { throw new Error('bridge') }), false)
+  assert.equal(await isTossLoggedIn(() => new Promise(() => {}), 10), false) // 브리지 무응답
 })
