@@ -4,6 +4,8 @@ import { formatBirthdate } from "../utils/dataTransform";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSession } from "../hooks/useSession.jsx";
 import loadingGif from "../assets/images/cat_greeting.gif";
+import { classifyAnalyticsUser } from "../lib/analytics";
+import { logEvent } from "../lib/firebase";
 
 const ANALYSIS_STEPS = [
   "사주 명식을 계산하고 있어요",
@@ -53,6 +55,11 @@ export default function DeepReadingLoading({ userData, onNext }) {
       return;
     }
     apiCalledRef.current = true;
+
+    await classifyAnalyticsUser(userData.name);
+    const startedAt = performance.now();
+    const funnelParams = { saju_code: userData.fortuneType || userData.readingType || 'unknown', is_compat: Number(!!userData.partnerName) };
+    logEvent('saju_create', funnelParams);
 
     try {
       setLoadingMessage(
@@ -194,6 +201,11 @@ export default function DeepReadingLoading({ userData, onNext }) {
       }
 
       const result = await response.json();
+      if (!result.thread_id || !result.reading) throw new Error('invalid_response');
+      logEvent('saju_create_completed', {
+        ...funnelParams, thread_id: result.thread_id,
+        is_revisit: Number(!!result.is_revisit), elapsed_ms: Math.round(performance.now() - startedAt),
+      });
       console.log("Deep Reading API 호출 성공:", result);
 
       setApiCompleted(true);
@@ -212,6 +224,10 @@ export default function DeepReadingLoading({ userData, onNext }) {
         },
       });
     } catch (error) {
+      logEvent(error.name === 'AbortError' ? 'saju_create_timeout' : 'saju_create_failed', {
+        ...funnelParams, elapsed_ms: Math.round(performance.now() - startedAt),
+        ...(error.name === 'AbortError' ? {} : { reason: error.message === 'invalid_response' ? 'invalid_response' : 'unknown' }),
+      });
       console.error("Deep Reading API 호출 오류:", error);
 
       Sentry.captureException(error, {

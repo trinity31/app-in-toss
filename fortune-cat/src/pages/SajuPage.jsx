@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import UserInfoInput from '../components/UserInfoInput'
 import PhotoUpload from '../components/PhotoUpload'
 import Loading from '../components/Loading'
+import { logEvent } from '../lib/firebase'
 import Result from '../components/Result'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 
@@ -12,6 +13,10 @@ export default function SajuPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const selectedType = location.state?.selectedType
+
+  useEffect(() => {
+    if (selectedType) logEvent('select_saju', { saju_code: selectedType.fortuneType || 'unknown' })
+  }, [selectedType])
 
   const [currentPage, setCurrentPage] = useState('userInfo')
   const [userData, setUserData] = useState({})

@@ -8,6 +8,8 @@ import {
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { resolveAdGroupId } from "../config/ads";
 import loadingGif from "../assets/images/cat_greeting.gif";
+import { classifyAnalyticsUser } from "../lib/analytics";
+import { logEvent } from "../lib/firebase";
 
 const ANALYSIS_STEPS = [
   "사주 명식을 계산하고 있어요",
@@ -186,6 +188,11 @@ export default function Loading({ userData, onNext }) {
     }
     apiCalledRef.current = true;
 
+    await classifyAnalyticsUser(userData.name);
+    const startedAt = performance.now();
+    const funnelParams = { saju_code: userData.fortuneType || userData.themeType || 'unknown', is_compat: 0 };
+    logEvent('saju_create', funnelParams);
+
     try {
       setLoadingMessage(
         "사주풀이와 이미지를 생성하고 있어요.\n최대 1분 정도 걸려요...",
@@ -277,6 +284,10 @@ export default function Loading({ userData, onNext }) {
       }
 
       const result = await response.json();
+      if (!result.reading) throw new Error('invalid_response');
+      logEvent('saju_create_completed', {
+        ...funnelParams, is_revisit: 0, elapsed_ms: Math.round(performance.now() - startedAt),
+      });
       console.log("API 호출 성공:", result);
 
       // API 완료 상태로 변경
@@ -285,6 +296,10 @@ export default function Loading({ userData, onNext }) {
       // 결과를 onNext로 전달
       onNext({ fortuneResult: result });
     } catch (error) {
+      logEvent(error.name === 'AbortError' ? 'saju_create_timeout' : 'saju_create_failed', {
+        ...funnelParams, elapsed_ms: Math.round(performance.now() - startedAt),
+        ...(error.name === 'AbortError' ? {} : { reason: error.message === 'invalid_response' ? 'invalid_response' : 'unknown' }),
+      });
       console.error("API 호출 오류:", error);
 
       // Sentry로 에러 리포트 전송

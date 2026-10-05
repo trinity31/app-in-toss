@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import UserInfoInput from '../components/UserInfoInput'
 import DeepReadingLoading from '../components/DeepReadingLoading'
+import { logEvent } from '../lib/firebase'
 import DeepReadingResult from '../components/DeepReadingResult'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 
@@ -9,6 +10,10 @@ export default function NewYearPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const selectedType = location.state?.selectedType
+
+  useEffect(() => {
+    if (selectedType) logEvent('select_saju', { saju_code: selectedType.fortuneType || 'unknown' })
+  }, [selectedType])
 
   const [currentPage, setCurrentPage] = useState('userInfo')
   const [userData, setUserData] = useState({})

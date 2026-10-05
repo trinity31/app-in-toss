@@ -169,6 +169,13 @@ export default function DeepReadingResult({
     trackServerEvent(name, params, anonymousKey, sessionId);
   };
 
+  const previewTrackedRef = useRef(false);
+  useEffect(() => {
+    if (isLibrary || !isPreview || previewTrackedRef.current) return;
+    previewTrackedRef.current = true;
+    logEvent('reading_preview', { thread_id: fortuneResult.thread_id, is_match: Number(!!userData.partnerName) });
+  }, [isLibrary, isPreview, fortuneResult.thread_id, userData.partnerName]);
+
   useEffect(() => {
     if (bottomBarRef.current) {
       setBottomBarHeight(bottomBarRef.current.offsetHeight);

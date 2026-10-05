@@ -6,7 +6,7 @@
 //   trackClick('share_click')  // button_name = 'share_click' 로 자동 fallback
 
 import { Analytics, getOperationalEnvironment } from '@apps-in-toss/web-framework'
-import { logEvent } from './firebase'
+import { logEvent, getAnalyticsUserType, setAnalyticsUserType } from './firebase'
 
 /**
  * @param {string} eventName - Firebase 이벤트명 (snake_case, GA4 규약)
@@ -34,6 +34,19 @@ export function isSandbox() {
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY
 
+export async function classifyAnalyticsUser(name) {
+  if (getAnalyticsUserType() === 'internal') return
+  try {
+    const response = await fetch(`${API_BASE_URL}/analytics/context`, {
+      method: 'POST',
+      headers: { 'X-API-Key': API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name || '' }),
+      signal: AbortSignal.timeout(2000),
+    })
+    setAnalyticsUserType(response.ok ? (await response.json()).user_type : 'unknown')
+  } catch { setAnalyticsUserType('unknown') }
+}
+
 /**
  * 서버(Supabase user_events)로 이벤트 기록 — 결제 funnel SQL 분석용. fire-and-forget.
  * @param {string} eventName
@@ -48,7 +61,7 @@ export function trackServerEvent(eventName, eventParams = {}, anonymousKey, sess
       headers: { 'X-API-Key': API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         event_name: eventName,
-        event_params: eventParams,
+        event_params: { ...eventParams, app_platform: 'toss', user_type: getAnalyticsUserType() },
         user_anonymous_id: anonymousKey,
         session_id: sessionId,
       }),

@@ -4,7 +4,10 @@ import {
   logEvent as firebaseLogEvent,
   setUserId as firebaseSetUserId,
   setUserProperties as firebaseSetUserProperties,
+  setDefaultEventParameters,
 } from 'firebase/analytics'
+import { getOperationalEnvironment } from '@apps-in-toss/web-framework'
+import { nextUserType, readUserType, USER_TYPE_KEY } from './analytics-context'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -19,9 +22,27 @@ const firebaseConfig = {
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig)
 
 let analytics = null
+let storage
+try { storage = window.localStorage } catch { /* optional */ }
+let development = import.meta.env.DEV
+try { development ||= getOperationalEnvironment() === 'sandbox' } catch { /* outside Toss */ }
+let userType = readUserType(storage, development)
+
+export function setAnalyticsUserType(value) {
+  userType = nextUserType(userType, value)
+  try { storage?.setItem(USER_TYPE_KEY, userType) } catch { /* optional */ }
+  try {
+    setDefaultEventParameters({ app_platform: 'toss', user_type: userType })
+    if (analytics) firebaseSetUserProperties(analytics, { app_platform: 'toss', user_type: userType })
+  } catch { /* Analytics must not prevent a reading. */ }
+}
+
+export function getAnalyticsUserType() { return userType }
 if (typeof window !== 'undefined') {
   try {
+    setDefaultEventParameters({ app_platform: 'toss', user_type: userType })
     analytics = getAnalytics(app)
+    setAnalyticsUserType(userType)
   } catch (err) {
     console.error('[Firebase] Analytics 초기화 실패:', err)
   }
@@ -29,8 +50,9 @@ if (typeof window !== 'undefined') {
 
 export function logEvent(eventName, eventParams = {}) {
   if (analytics) {
-    firebaseLogEvent(analytics, eventName, eventParams)
-    console.log(`[Firebase] Event logged: ${eventName}`, eventParams)
+    try {
+      firebaseLogEvent(analytics, eventName, { ...eventParams, app_platform: 'toss', user_type: userType })
+    } catch { /* Analytics must not block the app. */ }
   }
 }
 
