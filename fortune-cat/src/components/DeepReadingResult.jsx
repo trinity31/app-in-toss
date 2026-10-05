@@ -13,6 +13,7 @@ import { Analytics } from "@apps-in-toss/web-framework";
 import { logEvent } from "../lib/firebase";
 import { trackServerEvent } from "../lib/analytics";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
+import { normalizeDeepReadingMessage } from "../utils/deepReadingMessage";
 import {
   purchaseDeepReading,
   grantDeepReading,
@@ -900,6 +901,9 @@ export default function DeepReadingResult({
         )}
 
         {messages.map((message, index) => {
+          const displayMessage = message.role === "assistant"
+            ? normalizeDeepReadingMessage(message.content, message.followUpQuestions)
+            : message;
           const isLastAssistant =
             message.role === "assistant" && index === messages.length - 1;
           // 미리보기(미결제) 첫 메시지는 하단을 그라데이션으로 페이드
@@ -946,7 +950,7 @@ export default function DeepReadingResult({
                         }}
                       >
                         <ReactMarkdown components={markdownComponents}>
-                          {normalizeMarkdown(message.content)}
+                          {normalizeMarkdown(displayMessage.content)}
                         </ReactMarkdown>
                       </div>
                       {isPreviewMsg && (
@@ -1009,7 +1013,7 @@ export default function DeepReadingResult({
               {/* 후속 질문 버튼 (마지막 assistant 메시지에만, 전송 중이 아닐 때) */}
               {isLastAssistant &&
                 !isSending &&
-                message.followUpQuestions?.length > 0 && (
+                displayMessage.followUpQuestions?.length > 0 && (
                   <div
                     style={{
                       display: "flex",
@@ -1018,7 +1022,7 @@ export default function DeepReadingResult({
                       marginTop: "12px",
                     }}
                   >
-                    {message.followUpQuestions.map((question, qIndex) => (
+                    {displayMessage.followUpQuestions.map((question, qIndex) => (
                       <button
                         key={qIndex}
                         onClick={() => handleFollowUpClick(question)}
