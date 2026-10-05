@@ -100,6 +100,11 @@ h1, h2, h3, h4 {
   opacity: 0.8;
 }
 
+/* 모델이 풀이 끝에 덧붙인 구분선은 표시하지 않는다. */
+.deep-reading-content > hr:last-child {
+  display: none;
+}
+
 /* 결과 화면 등장 애니메이션 */
 .result-fade-in {
   animation: resultFadeIn 0.6s ease-out both;
