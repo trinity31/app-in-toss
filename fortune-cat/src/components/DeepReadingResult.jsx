@@ -942,6 +942,7 @@ export default function DeepReadingResult({
                   {message.role === "assistant" ? (
                     <>
                       <div
+                        className="deep-reading-content"
                         style={{
                           fontSize: "16px",
                           lineHeight: "1.8",
