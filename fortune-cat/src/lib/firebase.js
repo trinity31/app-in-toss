@@ -7,6 +7,7 @@ import {
   setDefaultEventParameters,
 } from 'firebase/analytics'
 import { getOperationalEnvironment } from '@apps-in-toss/web-framework'
+import { isAnalyticsBackendAllowed } from './analytics-url'
 import { nextUserType, readUserType, USER_TYPE_KEY } from './analytics-context'
 
 const firebaseConfig = {
@@ -21,6 +22,7 @@ const firebaseConfig = {
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig)
 
+export const analyticsEnabled = isAnalyticsBackendAllowed(import.meta.env.VITE_API_BASE_URL)
 let analytics = null
 let storage
 try { storage = window.localStorage } catch { /* optional */ }
@@ -29,6 +31,7 @@ try { development ||= getOperationalEnvironment() === 'sandbox' } catch { /* out
 let userType = readUserType(storage, development)
 
 export function setAnalyticsUserType(value) {
+  if (!analyticsEnabled) return
   userType = nextUserType(userType, value)
   try { storage?.setItem(USER_TYPE_KEY, userType) } catch { /* optional */ }
   try {
@@ -38,7 +41,7 @@ export function setAnalyticsUserType(value) {
 }
 
 export function getAnalyticsUserType() { return userType }
-if (typeof window !== 'undefined') {
+if (analyticsEnabled && typeof window !== 'undefined') {
   try {
     setDefaultEventParameters({ app_platform: 'toss', user_type: userType })
     analytics = getAnalytics(app)
@@ -49,7 +52,7 @@ if (typeof window !== 'undefined') {
 }
 
 export function logEvent(eventName, eventParams = {}) {
-  if (analytics) {
+  if (analyticsEnabled && analytics) {
     try {
       firebaseLogEvent(analytics, eventName, { ...eventParams, app_platform: 'toss', user_type: userType })
     } catch { /* Analytics must not block the app. */ }
@@ -57,7 +60,7 @@ export function logEvent(eventName, eventParams = {}) {
 }
 
 export function setUserId(userId) {
-  if (!analytics) return
+  if (!analyticsEnabled || !analytics) return
   try {
     firebaseSetUserId(analytics, userId)
   } catch (err) {
@@ -66,7 +69,7 @@ export function setUserId(userId) {
 }
 
 export function setUserProperties(props) {
-  if (!analytics) return
+  if (!analyticsEnabled || !analytics) return
   try {
     firebaseSetUserProperties(analytics, props)
   } catch (err) {

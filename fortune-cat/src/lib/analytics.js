@@ -6,7 +6,7 @@
 //   trackClick('share_click')  // button_name = 'share_click' 로 자동 fallback
 
 import { Analytics, getOperationalEnvironment } from '@apps-in-toss/web-framework'
-import { logEvent, getAnalyticsUserType, setAnalyticsUserType } from './firebase'
+import { logEvent, getAnalyticsUserType, setAnalyticsUserType, analyticsEnabled } from './firebase'
 
 /**
  * @param {string} eventName - Firebase 이벤트명 (snake_case, GA4 규약)
@@ -35,7 +35,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY
 
 export async function classifyAnalyticsUser(name) {
-  if (getAnalyticsUserType() === 'internal') return
+  if (!analyticsEnabled || getAnalyticsUserType() === 'internal') return
   try {
     const response = await fetch(`${API_BASE_URL}/analytics/context`, {
       method: 'POST',
