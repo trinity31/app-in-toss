@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: milestone
 status: completed
-last_updated: "2026-09-22T01:56:31.932036+00:00"
+last_updated: "2026-10-06T01:27:00+00:00"
 progress:
   total_phases: 5
   completed_phases: 5
@@ -14,7 +14,7 @@ progress:
 
 # STATE: 복냥사주 v1.1
 
-**Last Updated:** 2026-09-22
+**Last Updated:** 2026-10-06
 
 ## Project Reference
 
@@ -92,6 +92,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | 260922-f2m | 결제 화면 3곳에 기간 한정 50% 할인·정가/할인가·1회 조건 표시, 기간 종료 자동 복귀 | 2026-09-22 | 83c924b | [260922-f2m-discount](./quick/260922-f2m-show-limited-time-50-percent-discount-pr/) |
 
+| 261006-edm | 로컬 백엔드 URL에서 웹·앱·토스 GA SDK/수동 이벤트 차단, 공개 URL 수집 유지 | 2026-10-06 | web 30ee358 / app c295630 / toss e9cc6f8 | [261006-edm](./quick/261006-edm-block-ga-collection-for-local-backend-ur/) |
+
 ### Notes
 
 - 브라운필드 — v1.0(사주·딥리딩·부적)은 운영 중이며, 회귀 방지가 NAV-03의 핵심 제약
@@ -107,6 +109,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 **Resume from:** Clean slate — v1.2 questioning/research/requirements/roadmap 시작 가능
 
 ### Recent Activity
+
+- 2026-10-06: Quick task 261006-edm — URL 기반 로컬 GA 차단 완료. 웹 170개·앱 383개·토스 54개 테스트 및 웹/토스 빌드·Flutter 분석 통과. 기존 설치에 저장된 SDK collection=true의 Dart 이전 자동 이벤트 가능성은 SUMMARY에 명시.
 
 - 2026-09-22: Quick task 260922-lcx — 모든 심화 상담 요청 중 화면 중앙에 “잠시만 기다려 주세요” 스피너 표시. 랜딩의 오늘의 운세/심화 타로상담 카드 너비 1:2. 390/320px 브라우저 실측·지연 응답 로딩 검증·13개 테스트·AIT 빌드 통과.
 - 2026-09-22: Quick task 260922-htq — 토스 심화 타로 구현 완료. 복구/API 테스트 13개 및 변경 파일 ESLint·AIT 빌드 통과. 390×844 실제 화면에서 입력부터 확인 카드와 새로고침 유지까지 검증. 기존 전체 lint 오류 13개/경고 11개는 별도 기록. 네이티브 Toss Storage 실기기 검증과 백엔드 배포/마이그레이션은 출시 전 필요.
