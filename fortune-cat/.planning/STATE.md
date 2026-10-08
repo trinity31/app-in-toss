@@ -96,6 +96,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | 261008-f58 | DB 기준 AI 메뉴 순서와 NEW 배지 표시 | 2026-10-08 | 02d8ddd | [261008-f58](./quick/261008-f58-prioritize-job-wealth-compatibility-menu/) |
 
+| 261008-i3u | SDK 3.7.0 마이그레이션과 Node 24 빌드 | 2026-10-08 | 4078b0e | [261008-i3u](./quick/261008-i3u-migrate-fortune-cat-webview-sdk-to-stabl/) |
+
 ### Notes
 
 - 브라운필드 — v1.0(사주·딥리딩·부적)은 운영 중이며, 회귀 방지가 NAV-03의 핵심 제약
@@ -111,6 +113,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 **Resume from:** Clean slate — v1.2 questioning/research/requirements/roadmap 시작 가능
 
 ### Recent Activity
+
+- 2026-10-08: Quick task 261008-i3u — SDK 3.7.0/TDS 2.4.1, Node 24 설정, 38개 테스트 및 AIT 빌드 통과. 프로덕션 API/SDK 메타데이터 확인. 배포하지 않음.
 
 - 2026-10-08: Quick task 261008-f58 — AI 메뉴를 DB display_order/is_new 기준으로 표시. 테스트·빌드는 사용자 요청으로 생략.
 
