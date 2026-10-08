@@ -149,8 +149,8 @@ function eventTarget() {
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
 
-test('mount, re-entry and foreground clear stale campaigns and guard late/unmounted requests', async () => {
-  let state, cleanup, dependencies;
+test('mount and re-entry load banners; foreground retains layout and guards late/unmounted requests', async () => {
+  let state = [], cleanup, dependencies;
   const requests = [], doc = eventTarget(), win = eventTarget();
   const hook = runInNewContext(`${hookSource}\nuseHomeBanners`, {
     useState: () => [[], next => { state = next; }],
@@ -167,7 +167,7 @@ test('mount, re-entry and foreground clear stale campaigns and guard late/unmoun
   await flush();
   assert.deepEqual(state, ['old']);
   doc.emit('visibilitychange');
-  assert.deepEqual(Array.from(state), []);
+  assert.deepEqual(state, ['old']);
   win.emit('focus');
   assert.equal(requests[1].signal.aborted, true);
   requests[2].resolve(['latest']);
@@ -183,13 +183,13 @@ test('mount, re-entry and foreground clear stale campaigns and guard late/unmoun
   assert.equal(requests.length, 3);
   doc.visibilityState = 'visible';
   win.emit('pageshow', { persisted: true });
-  assert.deepEqual(Array.from(state), []);
+  assert.deepEqual(state, ['latest']);
   cleanup();
   assert.equal(requests[3].signal.aborted, true);
   assert.equal(doc.events.size + win.events.size, 0);
   requests[3].resolve(['unmounted']);
   await flush();
-  assert.deepEqual(Array.from(state), []);
+  assert.deepEqual(state, ['latest']);
   hook(client, 'entry-2');
   assert.equal(requests.length, 5);
   assert.deepEqual(Array.from(dependencies), [client, 'entry-2']);

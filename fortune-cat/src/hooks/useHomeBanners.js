@@ -10,7 +10,7 @@ export function useHomeBanners(client, entryKey) {
       const request = ++sequence;
       pending?.abort();
       pending = new AbortController();
-      setBanners([]);
+      // Keep the current hero mounted while refreshing so menu tap targets stay put.
       const next = await fetchHomeBanners(client, { signal: pending.signal });
       if (request === sequence) setBanners(next);
     };
