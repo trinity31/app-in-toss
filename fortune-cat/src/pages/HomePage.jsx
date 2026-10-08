@@ -9,7 +9,6 @@ import {
   getAmuletStyleImageUrl,
 } from "../lib/supabase";
 import { trackClick } from "../lib/analytics";
-import { withJobMenu } from "../lib/jobMenu";
 import { logEvent } from "../lib/firebase";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
@@ -86,7 +85,7 @@ export default function HomePage() {
           .order("display_order", { ascending: true }),
       ]);
 
-      setAiSajuTypes(withJobMenu(aiSajuRes.data || []));
+      setAiSajuTypes(aiSajuRes.data || []);
       if (newYearRes.data) setNewYearTypes(newYearRes.data);
       if (sajuRes.data) setSajuTypes(sajuRes.data);
       if (amuletRes.data) setAmuletTypes(amuletRes.data);
@@ -285,6 +284,18 @@ export default function HomePage() {
                   <div style={styles.typeCardContent}>
                     <div style={styles.typeCardTitle}>
                       {type.title_ko}
+                      {type.is_new === true && (
+                        <span
+                          style={{
+                            ...styles.badge,
+                            backgroundColor: colors.purple500,
+                            marginLeft: "6px",
+                            verticalAlign: "middle",
+                          }}
+                        >
+                          NEW
+                        </span>
+                      )}
                       {isFreeReading(type.reading_type) && (
                         <span
                           style={{
