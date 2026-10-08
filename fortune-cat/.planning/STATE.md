@@ -94,6 +94,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | 261006-edm | 로컬 백엔드 URL에서 웹·앱·토스 GA SDK/수동 이벤트 차단, 공개 URL 수집 유지 | 2026-10-06 | web 30ee358 / app c295630 / toss e9cc6f8 | [261006-edm](./quick/261006-edm-block-ga-collection-for-local-backend-ur/) |
 
+| 261008-f58 | DB 기준 AI 메뉴 순서와 NEW 배지 표시 | 2026-10-08 | 02d8ddd | [261008-f58](./quick/261008-f58-prioritize-job-wealth-compatibility-menu/) |
+
 ### Notes
 
 - 브라운필드 — v1.0(사주·딥리딩·부적)은 운영 중이며, 회귀 방지가 NAV-03의 핵심 제약
@@ -109,6 +111,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 **Resume from:** Clean slate — v1.2 questioning/research/requirements/roadmap 시작 가능
 
 ### Recent Activity
+
+- 2026-10-08: Quick task 261008-f58 — AI 메뉴를 DB display_order/is_new 기준으로 표시. 테스트·빌드는 사용자 요청으로 생략.
 
 - 2026-10-06: Quick task 261006-edm — URL 기반 로컬 GA 차단 완료. 웹 170개·앱 383개·토스 54개 테스트 및 웹/토스 빌드·Flutter 분석 통과. 기존 설치에 저장된 SDK collection=true의 Dart 이전 자동 이벤트 가능성은 SUMMARY에 명시.
 
