@@ -1,3 +1,18 @@
+## 앱인토스 SDK 3 빌드
+
+Node.js 24 이상이 필요합니다. `.nvmrc`를 적용한 뒤 빌드하세요.
+
+```sh
+nvm install
+nvm use
+npm ci
+npm run build
+```
+
+빌드는 `fortune-cat.ait`를 생성하며 배포하지 않습니다. 설정 파일은 `apps-in-toss.config.ts`입니다.
+SDK 3 출시 전 백엔드에서 `https://fortune-cat.web.tossmini.com`과 `https://fortune-cat.private-web.tossmini.com`을 허용해야 합니다. 콘솔 QR 테스트를 마친 뒤 출시하세요. SDK 3으로 출시하면 SDK 2로 롤백할 수 없습니다.
+[공식 마이그레이션 안내](https://developers-apps-in-toss.toss.im/documentation/integration/sdk-3.x)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
