@@ -186,6 +186,7 @@ export default function LibraryPage() {
         is_preview: false,
         cross_reading_ctas: [],
         messages: selected.messages || [],
+        moving_date_result: selected.moving_date_result,
       },
     };
     return (

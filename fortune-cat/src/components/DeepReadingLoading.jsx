@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import * as Sentry from "@sentry/react";
+import { appendMovingPeriod, isMovingResponse } from "../lib/movingDate";
 import { formatBirthdate } from "../utils/dataTransform";
 import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
 import { useSession } from "../hooks/useSession.jsx";
@@ -18,13 +19,15 @@ const ANALYSIS_STEPS = [
   "최종 사주 풀이를 하고 있어요",
 ];
 
-export default function DeepReadingLoading({ userData, onNext }) {
+export default function DeepReadingLoading({ userData, onNext, onBack }) {
   const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
   const { startNewSession } = useSession();
 
   const [loadingMessage, setLoadingMessage] = useState("운세를 풀이하고 있어요...");
   const [apiCompleted, setApiCompleted] = useState(false);
   const [apiError, setApiError] = useState(null);
+  const isMoving = userData.readingType === "moving_date";
+  const steps = isMoving ? ["사주 명식을 확인하고 있어요", "희망 기간의 이사일을 비교하고 있어요", "추천일과 피해야 할 날을 정리하고 있어요"] : ANALYSIS_STEPS;
   const [currentStep, setCurrentStep] = useState(-1);
   const abortControllerRef = useRef(null);
   const apiCalledRef = useRef(false);
@@ -35,11 +38,11 @@ export default function DeepReadingLoading({ userData, onNext }) {
     setCurrentStep(0);
     const interval = setInterval(() => {
       setCurrentStep((prev) =>
-        prev < ANALYSIS_STEPS.length - 1 ? prev + 1 : prev,
+        prev < steps.length - 1 ? prev + 1 : prev,
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [apiCompleted, apiError]);
+  }, [apiCompleted, apiError, isMoving, steps.length]);
 
   // anonymousKey 해석 후 바로 풀이 생성 (광고 제거 — 유료는 결제, 무료는 무광고)
   useEffect(() => {
@@ -63,7 +66,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
 
     try {
       setLoadingMessage(
-        "2026년 신년운세를 풀이하고 있어요.\n10~30초 정도 걸려요...",
+        isMoving ? "희망 기간의 이사일을 비교하고 있어요..." : "사주를 풀이하고 있어요.\n10~30초 정도 걸려요...",
       );
 
       abortControllerRef.current = new AbortController();
@@ -142,6 +145,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
         endpoint = `${baseUrl}/deep-reading/start`;
 
         const formData = new FormData();
+        appendMovingPeriod(formData, userData);
         formData.append("name", userData.name || "사용자");
         formData.append("datetime", formatBirthdate(userData.birthdate));
         formData.append("gender", userData.gender);
@@ -201,7 +205,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
       }
 
       const result = await response.json();
-      if (!result.thread_id || !result.reading) throw new Error('invalid_response');
+      if (isMoving ? !isMovingResponse(result, userData.moving_period) : (!result.thread_id || !result.reading)) throw new Error('invalid_response');
       logEvent('saju_create_completed', {
         ...funnelParams, thread_id: result.thread_id,
         is_revisit: Number(!!result.is_revisit), elapsed_ms: Math.round(performance.now() - startedAt),
@@ -221,6 +225,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
           is_preview: result.is_preview || false,
           paywall_required: result.paywall_required || null,
           is_revisit: result.is_revisit || false,
+          moving_date_result: result.moving_date_result,
         },
       });
     } catch (error) {
@@ -306,7 +311,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
         </button>
 
         <button
-          onClick={() => window.location.reload()}
+          onClick={onBack || (() => window.location.reload())}
           style={{
             marginTop: "12px",
             padding: "12px 32px",
@@ -318,7 +323,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
             cursor: "pointer",
           }}
         >
-          처음부터 다시하기
+          {onBack ? "기간 다시 선택하기" : "처음부터 다시하기"}
         </button>
       </div>
     );
@@ -349,7 +354,7 @@ export default function DeepReadingLoading({ userData, onNext }) {
 
       {currentStep >= 0 ? (
         <div style={{ width: "100%", maxWidth: "280px" }}>
-          {ANALYSIS_STEPS.map((step, i) => {
+          {steps.map((step, i) => {
             const isDone = i < currentStep;
             const isCurrent = i === currentStep;
             if (i > currentStep) return null;

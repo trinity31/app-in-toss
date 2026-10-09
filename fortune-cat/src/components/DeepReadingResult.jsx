@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 
+import MovingDateResults from "./MovingDateResults";
 import ReactMarkdown from "react-markdown";
 import PurchasePromotion from "./PurchasePromotion";
 import { usePurchasePromotion } from "../hooks/usePurchasePromotion";
@@ -43,6 +44,7 @@ export default function DeepReadingResult({
   onCrossReading,
   restartLabel = "처음부터 다시하기",
   isLibrary = false,
+  onChangePeriod,
 }) {
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const crossCtas = fortuneResult.cross_reading_ctas || [];
@@ -119,6 +121,7 @@ export default function DeepReadingResult({
   // 결제 후 reveal로 받은 전체 풀이가 있으면 그것을, 없으면 기존 값을 표시
   const headline = revealed?.headline ?? fortuneResult.headline;
   const summary = revealed?.summary ?? fortuneResult.summary;
+  const movingResult = !previewActive ? (revealed?.moving_date_result ?? fortuneResult.moving_date_result) : null;
 
   // SDK 상품 정가는 유지하고, 할인 안내는 별도 표시 정보로만 사용한다.
   const [products, setProducts] = useState({});
@@ -731,6 +734,10 @@ export default function DeepReadingResult({
 
   const handleFollowUpClick = (question) => sendMessage(question, { inputType: "follow_up_button" });
 
+  if (readingType === "moving_date" && !previewActive && !movingResult) {
+    return <div className="moving-period" role="alert"><p>이전 결과에 이사택일 날짜가 없습니다. 기간을 다시 선택해 주세요.</p><button onClick={onChangePeriod || onRestart}>기간 다시 선택하기</button></div>;
+  }
+
   return (
     <div
       style={{
@@ -775,7 +782,7 @@ export default function DeepReadingResult({
         }}
       >
         {/* 요약 섹션 */}
-        {headline && (
+        {headline && !movingResult && (
           <div style={{ marginBottom: "20px" }}>
             <p
               className="result-fade-in-delay-1"
@@ -907,7 +914,12 @@ export default function DeepReadingResult({
           </div>
         )}
 
+        {movingResult && <>
+          <MovingDateResults result={movingResult} />
+          {onChangePeriod && <button onClick={onChangePeriod} style={{ minHeight: '44px', marginBottom: '20px' }}>다른 기간으로 알아보기</button>}
+        </>}
         {messages.map((message, index) => {
+          if (movingResult && index === 0) return null;
           const displayMessage = message.role === "assistant"
             ? normalizeDeepReadingMessage(message.content, message.followUpQuestions)
             : message;

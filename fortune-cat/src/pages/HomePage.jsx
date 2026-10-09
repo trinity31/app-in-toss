@@ -67,7 +67,9 @@ export default function HomePage() {
         supabase
           .from("ai_saju_types")
           .select("*")
-          // .eq("is_active", true) // TODO: 테스트 후 복원
+          .or(import.meta.env.DEV && import.meta.env.VITE_PREVIEW_MOVING_DATE === "true"
+            ? "is_active.eq.true,reading_type.eq.moving_date" : "is_active.eq.true")
+          .order("is_new", { ascending: false, nullsFirst: false })
           .order("display_order", { ascending: true }),
         supabase
           .from("new_year_fortune_types")

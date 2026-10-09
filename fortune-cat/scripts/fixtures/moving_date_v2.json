@@ -1,0 +1,218 @@
+{
+  "period": {
+    "end_date": "2026-10-31",
+    "start_date": "2026-10-10"
+  },
+  "status": "ok",
+  "timezone": "Asia/Seoul",
+  "limitations": [
+    "출생시간이 없어 알려진 원국 범위에서 용신을 참고했습니다."
+  ],
+  "rules_version": "moving_date_v2",
+  "excluded_dates": [
+    {
+      "date": "2026-10-13",
+      "day_pillar": "庚申",
+      "exclusion_reasons": [
+        "일지충",
+        "천극지충"
+      ],
+      "warnings": [
+        "일지와 형"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "day_pillar": "壬戌",
+      "exclusion_reasons": [
+        "일주 공망"
+      ],
+      "warnings": [
+        "12운성 묘"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "day_pillar": "癸亥",
+      "exclusion_reasons": [
+        "년지충",
+        "일주 공망"
+      ],
+      "warnings": [
+        "12운성 절"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "day_pillar": "丙寅",
+      "exclusion_reasons": [
+        "복음"
+      ],
+      "warnings": []
+    },
+    {
+      "date": "2026-10-25",
+      "day_pillar": "壬申",
+      "exclusion_reasons": [
+        "일지충",
+        "천극지충"
+      ],
+      "warnings": [
+        "일지와 형"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "day_pillar": "甲戌",
+      "exclusion_reasons": [
+        "일주 공망"
+      ],
+      "warnings": [
+        "12운성 묘"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "day_pillar": "乙亥",
+      "exclusion_reasons": [
+        "년지충",
+        "일주 공망"
+      ],
+      "warnings": [
+        "12운성 절"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "date": "2026-10-20",
+      "rank": 1,
+      "tags": [
+        "1순위 용신일",
+        "천간 용신",
+        "손 없는 날"
+      ],
+      "rules": [
+        {
+          "delta": 3,
+          "label": "1순위 용신일",
+          "rule_id": "primary_yongshin",
+          "evidence": "木",
+          "severity": "info"
+        },
+        {
+          "delta": 1,
+          "label": "천간 용신",
+          "rule_id": "stem_yongshin",
+          "evidence": "火",
+          "severity": "info"
+        },
+        {
+          "delta": 0,
+          "label": "12운성 목욕",
+          "rule_id": "life_stage",
+          "evidence": "목욕",
+          "severity": "info"
+        },
+        {
+          "delta": 1,
+          "label": "손 없는 날",
+          "rule_id": "son_free",
+          "evidence": "2026-09-10",
+          "severity": "info"
+        }
+      ],
+      "weekday": "화",
+      "son_free": true,
+      "warnings": [],
+      "day_pillar": "丁卯",
+      "lunar_date": "2026-09-10",
+      "is_leap_month": false
+    },
+    {
+      "date": "2026-10-31",
+      "rank": 2,
+      "tags": [
+        "1순위 용신일",
+        "12운성 장생"
+      ],
+      "rules": [
+        {
+          "delta": 3,
+          "label": "1순위 용신일",
+          "rule_id": "primary_yongshin",
+          "evidence": "木",
+          "severity": "info"
+        },
+        {
+          "delta": 1,
+          "label": "12운성 장생",
+          "rule_id": "life_stage",
+          "evidence": "장생",
+          "severity": "info"
+        }
+      ],
+      "weekday": "토",
+      "son_free": false,
+      "warnings": [],
+      "day_pillar": "戊寅",
+      "lunar_date": "2026-09-21",
+      "is_leap_month": false
+    },
+    {
+      "date": "2026-10-10",
+      "rank": 3,
+      "tags": [
+        "2순위 용신일",
+        "천간 용신",
+        "12운성 건록",
+        "손 없는 날"
+      ],
+      "rules": [
+        {
+          "delta": -2,
+          "label": "일지와 형",
+          "rule_id": "punishment",
+          "evidence": "寅·巳",
+          "severity": "warning"
+        },
+        {
+          "delta": 2,
+          "label": "2순위 용신일",
+          "rule_id": "secondary_yongshin",
+          "evidence": "火",
+          "severity": "info"
+        },
+        {
+          "delta": 1,
+          "label": "천간 용신",
+          "rule_id": "stem_yongshin",
+          "evidence": "火",
+          "severity": "info"
+        },
+        {
+          "delta": 1,
+          "label": "12운성 건록",
+          "rule_id": "life_stage",
+          "evidence": "건록",
+          "severity": "info"
+        },
+        {
+          "delta": 1,
+          "label": "손 없는 날",
+          "rule_id": "son_free",
+          "evidence": "2026-08-30",
+          "severity": "info"
+        }
+      ],
+      "weekday": "토",
+      "son_free": true,
+      "warnings": [
+        "일지와 형"
+      ],
+      "day_pillar": "丁巳",
+      "lunar_date": "2026-08-30",
+      "is_leap_month": false
+    }
+  ]
+}

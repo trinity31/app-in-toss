@@ -4,6 +4,7 @@ import UserInfoInput from '../components/UserInfoInput'
 import DeepReadingLoading from '../components/DeepReadingLoading'
 import { logEvent } from '../lib/firebase'
 import DeepReadingResult from '../components/DeepReadingResult'
+import MovingPeriodInput from '../components/MovingPeriodInput'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 
 export default function NewYearPage() {
@@ -17,6 +18,7 @@ export default function NewYearPage() {
 
   const [currentPage, setCurrentPage] = useState('userInfo')
   const [userData, setUserData] = useState({})
+  const [emptyResult, setEmptyResult] = useState(null)
   const [isInitializing, setIsInitializing] = useState(true)
 
   const { loading, storedUserInfo, saveUserInfo } = useUserInfoStorage()
@@ -61,9 +63,15 @@ export default function NewYearPage() {
     }
 
     if (currentPage === 'userInfo') {
+      setCurrentPage(updatedData.readingType === 'moving_date' ? 'movingPeriod' : 'loading')
+    } else if (currentPage === 'movingPeriod') {
+      setEmptyResult(null)
       setCurrentPage('loading')
     } else if (currentPage === 'loading') {
-      setCurrentPage('result')
+      if (data.fortuneResult?.moving_date_result?.status === 'no_candidates') {
+        setEmptyResult(data.fortuneResult.moving_date_result)
+        setCurrentPage('movingPeriod')
+      } else setCurrentPage('result')
     }
   }
 
@@ -89,7 +97,7 @@ export default function NewYearPage() {
       readingType: cta.reading_type,
       fortuneTypeTitle: cta.title,
     }))
-    setCurrentPage('loading')
+    setCurrentPage(cta.reading_type === 'moving_date' ? 'movingPeriod' : 'loading')
   }
 
   if (!selectedType) return null
@@ -112,10 +120,12 @@ export default function NewYearPage() {
   switch (currentPage) {
     case 'userInfo':
       return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} isCompatibility={selectedType?.fortuneType === 'ai_saju_compatibility'} />
+    case 'movingPeriod':
+      return <MovingPeriodInput initialPeriod={userData.moving_period} emptyResult={emptyResult} onNext={handleNext} onBack={() => setCurrentPage('userInfo')} />
     case 'loading':
-      return <DeepReadingLoading userData={userData} onNext={handleNext} />
+      return <DeepReadingLoading userData={userData} onNext={handleNext} onBack={userData.readingType === 'moving_date' ? () => setCurrentPage('movingPeriod') : undefined} />
     case 'result':
-      return <DeepReadingResult userData={userData} onRestart={handleRestart} onCrossReading={handleCrossReading} />
+      return <DeepReadingResult userData={userData} onRestart={handleRestart} onCrossReading={handleCrossReading} onChangePeriod={userData.readingType === 'moving_date' ? () => setCurrentPage('movingPeriod') : undefined} />
     default:
       return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} isCompatibility={selectedType?.fortuneType === 'ai_saju_compatibility'} />
   }
