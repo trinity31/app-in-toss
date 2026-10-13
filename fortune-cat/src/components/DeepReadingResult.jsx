@@ -34,7 +34,7 @@ import {
 // 연애상담 모드(후속채팅 무료 1회) 대상 메뉴 — Supabase 메뉴 테이블의 reading_type 값.
 // 애정운=new_year_fortune_types, 궁합=ai_saju_types. 다른 메뉴는 어떤 안내도 띄우지 않는다.
 const LOVE_COUNSELING_TYPES = new Set([
-  "new_year_2026_love",
+  "new_year_2026_love", "new_year_2027_love",
   "new_year_compatibility",
 ]);
 

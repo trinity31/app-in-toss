@@ -23,10 +23,10 @@ const Spacing = ({ size }) => <div style={{ height: `${size}px` }} />;
 const SHOW_IMAGE_SAJU = false;
 const SHOW_AMULET = false;
 
-// 상단 탭 — 라벨은 웹·앱과 통일 (이모지·배지 없음). 2027 전환 때 연도 교체.
+// 상단 탭 — 라벨은 웹·앱과 통일 (이모지·배지 없음).
 const HOME_TABS = [
   { id: "ai_saju", label: "AI 사주분석" },
-  { id: "new_year", label: "2026 신년운세" },
+  { id: "new_year", label: "신년운세" },
 ];
 
 export default function HomePage() {
@@ -41,7 +41,7 @@ export default function HomePage() {
   const [amuletTypes, setAmuletTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  // AI 사주 분석·2026 신년운세는 기본적으로 펼친 상태로 노출
+  // AI 사주 분석·신년운세는 기본적으로 펼친 상태로 노출
   const [expandedSections, setExpandedSections] = useState({
     ai_saju: true,
     new_year: true,
@@ -189,6 +189,21 @@ export default function HomePage() {
   const isFreeReading = (rt) =>
     rt === "deep_reading_daily" || rt === "lucky_number" || rt === "lucky_color";
 
+  // NEW 배지는 DB의 is_new 설정을 따른다 (AI 사주·신년운세 공통).
+  const newBadge = (type) =>
+    type.is_new === true && (
+      <span
+        style={{
+          ...styles.badge,
+          backgroundColor: colors.purple500,
+          marginLeft: "6px",
+          verticalAlign: "middle",
+        }}
+      >
+        NEW
+      </span>
+    );
+
   return (
     <div style={{ ...styles.container, paddingBottom: `${96 + insets.bottom}px` }}>
       {/* 히어로: 심화 타로상담·4분기 운세·연애상담 바로가기 배너 */}
@@ -286,18 +301,7 @@ export default function HomePage() {
                   <div style={styles.typeCardContent}>
                     <div style={styles.typeCardTitle}>
                       {type.title_ko}
-                      {type.is_new === true && (
-                        <span
-                          style={{
-                            ...styles.badge,
-                            backgroundColor: colors.purple500,
-                            marginLeft: "6px",
-                            verticalAlign: "middle",
-                          }}
-                        >
-                          NEW
-                        </span>
-                      )}
+                      {newBadge(type)}
                       {isFreeReading(type.reading_type) && (
                         <span
                           style={{
@@ -338,6 +342,7 @@ export default function HomePage() {
                   <div style={styles.typeCardContent}>
                     <div style={styles.typeCardTitle}>
                       {type.title_ko}
+                      {newBadge(type)}
                       {isFreeReading(type.reading_type) && (
                         <span
                           style={{
