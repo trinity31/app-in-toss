@@ -19,13 +19,15 @@ async function check() {
     })
     for (const path of ['/newyear', '/library']) {
       await page.goto(`http://127.0.0.1:4173${path}`, { waitUntil: 'networkidle' })
-      await page.getByRole('button', { name: '토스로 로그인하기' }).waitFor()
+      await page.getByRole('button', { name: '시작하기' }).waitFor()
+      assert.match(await page.getByRole('heading', { level: 1 }).innerText(), /복냥이와 나를/)
+      assert.equal(await page.getByRole('list', { name: '이렇게 이용해요' }).getByRole('listitem').count(), 3)
       assert.deepEqual(protectedCalls, [], 'A protected request ran before explicit login')
     }
     // A normal browser has no native Toss login. Rejection must stay recoverable.
-    await page.getByRole('button', { name: '토스로 로그인하기' }).click()
+    await page.getByRole('button', { name: '시작하기' }).click()
     await page.getByRole('alert').waitFor({ timeout: 20000 })
-    await page.getByRole('button', { name: '토스로 로그인하기' }).waitFor()
+    await page.getByRole('button', { name: '시작하기' }).waitFor()
     assert.deepEqual(protectedCalls, [], 'Failed native login reached backend')
     for (const path of ['/saju', '/amulet']) {
       await page.goto(`http://127.0.0.1:4173${path}`, { waitUntil: 'networkidle' })
