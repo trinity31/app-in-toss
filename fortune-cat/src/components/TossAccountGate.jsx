@@ -43,9 +43,12 @@ export default function TossAccountGate({ children, hasBottomNavigation = false 
     <section
       className={`${styles.gate} ${hasBottomNavigation ? styles.withNavigation : ''}`}
       aria-labelledby={busy ? undefined : 'toss-account-title'}
-      aria-label={busy ? '토스 계정 확인' : undefined}
       style={{ '--account-safe-bottom': `${insets.bottom}px` }}
     >
+      {busy && <div className={styles.loading} role="status">
+        <span className={styles.spinner} aria-hidden="true" />
+        <p className={styles.status}>토스 계정을 확인하고 있어요.</p>
+      </div>}
       {!busy && <div className={styles.content}>
         <h1 id="toss-account-title" className={styles.title}>
           로그인하고 풀이 받기
@@ -54,9 +57,8 @@ export default function TossAccountGate({ children, hasBottomNavigation = false 
           무료 이용 횟수와 풀이 보관함을<br />토스 계정으로 관리해요.
         </p>
       </div>}
-      <div className={styles.action}>
+      {!busy && <div className={styles.action}>
         {error && <p className={styles.error} role="alert">{error}</p>}
-        <p className={styles.status} role="status">{busy ? '토스 계정을 확인하고 있어요.' : ''}</p>
         {!busy && <button
           className={styles.loginButton}
           type="button"
@@ -66,7 +68,7 @@ export default function TossAccountGate({ children, hasBottomNavigation = false 
         >
           {busy ? '로그인 중...' : '토스로 로그인하기'}
         </button>}
-      </div>
+      </div>}
     </section>
   )
 }

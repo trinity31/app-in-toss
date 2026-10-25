@@ -79,6 +79,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 261025-o3p | 계정 확인 중 안내를 중앙 정렬하고18px 문구·로딩 인디케이터 추가 | 2026-10-25 | 로컬 후속 커밋 | [261025-o3p](./quick/261025-o3p-center-the-toss-account-verification-loa/) |
 | 261025-ntw | 토스 연동 계정 자동 인증 복구, 로그인 제목 간소화·이전 풀이 안내 제거. 토큰 장기 저장 없음 | 2026-10-25 | 로컬 후속 커밋 | [261025-ntw](./quick/261025-ntw-persist-verified-toss-login-safely-acros/) |
 | 261025-na0 | 로그인 안내 화면 스타일·접근성·보관함 하단 메뉴 간격 수정. 인증 동작 유지 | 2026-10-25 | 로컬 보안 후속 커밋 | [261025-na0](./quick/261025-na0-style-the-toss-account-login-gate-using-/) |
 | 261025-k7j | 결제 상태·SKU 검증과 orderId 전역 1회 지급, 결제·영수증 복구 복원. 구매자 일치 검증은 사용자 선택으로 생략 | 2026-10-25 | 미커밋 | [261025-k7j](./quick/261025-k7j-enable-verified-completed-toss-purchases/) |
