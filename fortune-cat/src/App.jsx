@@ -54,7 +54,7 @@ function App() {
             <Route path="/newyear" element={<TossAccountGate><NewYearPage /></TossAccountGate>} />
             <Route path="/amulet" element={<section role="status" style={{ padding: 24 }}>{PURCHASE_UNAVAILABLE_MESSAGE}</section>} />
             <Route path="/tarot" element={<TarotPage />} />
-            <Route path="/library" element={<TossAccountGate><LibraryPage /></TossAccountGate>} />
+            <Route path="/library" element={<TossAccountGate hasBottomNavigation><LibraryPage /></TossAccountGate>} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </Suspense>
