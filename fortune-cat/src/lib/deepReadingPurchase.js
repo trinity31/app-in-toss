@@ -1,261 +1,178 @@
-// 심화풀이 결제 — 토스 IAP 단건 구매 + 백엔드 quota 적립(grant).
-// 가격은 앱인토스 콘솔 등록값(getProductItemList의 displayAmount)이 단일 출처.
-// 부적 결제(AmuletPayment.jsx)와 동일한 IAP 패턴 재사용.
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY;
-// 결제 상품. 키는 백엔드 grant의 product 코드(quota_service.PURCHASE_PRODUCTS)와 일치해야 한다.
-// fallbackAmount: IAP 상품 조회 실패(개발 브라우저·구버전 토스앱) 시 grant에 보낼 금액.
+import { authenticatedReadingFetch, getTossSession } from './tossSession.js'
+export { parseDisplayAmount } from '../utils/displayAmount.js'
 export const PRODUCTS = {
-  deep_reading: {
-    sku: import.meta.env.VITE_DEEP_READING_PRODUCT_SKU,
-    envName: "VITE_DEEP_READING_PRODUCT_SKU",
-    fallbackAmount: 4900,
-  }, // 풀이 1 + 후속질문 10
-  followup_pack: {
-    sku: import.meta.env.VITE_FOLLOWUP_PACK_PRODUCT_SKU,
-    envName: "VITE_FOLLOWUP_PACK_PRODUCT_SKU",
-    fallbackAmount: 1980,
-  }, // 후속질문 10 전용
-};
-
-const DEFAULT_PRODUCT = "deep_reading";
-
-/** SKU → 상품 코드. 모르는 SKU면 null. */
-function productBySku(sku) {
-  return Object.keys(PRODUCTS).find((key) => PRODUCTS[key].sku && PRODUCTS[key].sku === sku) || null;
+  deep_reading: { sku: import.meta.env?.VITE_DEEP_READING_PRODUCT_SKU },
+  followup_pack: { sku: import.meta.env?.VITE_FOLLOWUP_PACK_PRODUCT_SKU },
 }
+const PENDING_KEY = 'deep_reading_pending_order'
+const validOrder = id => typeof id === 'string' && id.length > 0 && id.length <= 200
+const failure = message => new Error(message)
 
-/**
- * 콘솔에 등록된 결제 상품 정보를 조회한다. 가격 표기(displayAmount)의 단일 출처.
- * IAP 미지원 환경(개발 브라우저·구버전 토스앱)이나 조회 실패 시 null — throw 하지 않는다.
- * @param {keyof PRODUCTS} [product]
- * @returns {Promise<{sku: string, displayAmount: string, displayName: string} | null>}
- */
-export async function getDeepReadingProduct(product = DEFAULT_PRODUCT) {
-  const { sku, envName } = PRODUCTS[product];
-  if (!sku) {
-    console.warn(`[deepReadingPurchase] ${envName} 미설정`);
-    return null;
+// The provider verifies status/SKU; the server grants each order globally once.
+// Order ownership is intentionally first-claim, not proof of the original buyer.
+export function createDeepReadingPurchase({ products = PRODUCTS, storage = globalThis.localStorage, session = getTossSession, request = authenticatedReadingFetch, getIAP = async () => (await import('@apps-in-toss/web-framework')).IAP } = {}) {
+  let active = null
+  const pending = () => {
+    const raw = storage.getItem(PENDING_KEY)
+    if (!raw) return null
+    try { return JSON.parse(raw) } catch { throw failure('저장된 결제 정보를 확인하지 못했어요. 문의해 주세요.') }
   }
-  try {
-    const { IAP } = await import("@apps-in-toss/web-framework");
-    const response = await IAP.getProductItemList();
-    const products = response?.products ?? [];
-    return products.find((p) => p.sku === sku) || null;
-  } catch (e) {
-    console.warn("[deepReadingPurchase] 상품 정보 조회 실패:", e);
-    return null;
+  const save = receipt => {
+    const existing = pending()
+    if (existing?.orderId && existing.orderId !== receipt.orderId) throw failure('이전 결제를 먼저 복구해 주세요.')
+    const encoded = JSON.stringify(receipt)
+    storage.setItem(PENDING_KEY, encoded)
+    if (storage.getItem(PENDING_KEY) !== encoded) throw failure('구매 복구 정보를 저장하지 못했어요.')
   }
-}
-
-export { parseDisplayAmount } from "../utils/displayAmount.js";
-
-// 결제 성공 후 서버 지급 실패 시 복구용 — 보류 주문 컨텍스트(thread_id 등) 로컬 저장
-const PENDING_KEY = "deep_reading_pending_order";
-
-export function saveDeepReadingPending(ctx) {
-  try {
-    localStorage.setItem(PENDING_KEY, JSON.stringify(ctx));
-  } catch (e) {
-    console.warn("[deepReadingPurchase] pending 저장 실패:", e);
+  const remove = orderId => {
+    if (pending()?.orderId !== orderId) throw failure('저장된 결제 정보가 일치하지 않아요.')
+    storage.removeItem(PENDING_KEY)
+    if (storage.getItem(PENDING_KEY) !== null) throw failure('구매 복구 정보를 정리하지 못했어요.')
   }
-}
-
-export function getDeepReadingPending() {
-  try {
-    const s = localStorage.getItem(PENDING_KEY);
-    return s ? JSON.parse(s) : null;
-  } catch {
-    return null;
+  const account = () => {
+    const userId = session()?.userId
+    if (!/^toss:[0-9]+$/.test(userId || '')) throw failure('다시 로그인한 뒤 결제를 진행해 주세요.')
+    return userId
   }
-}
-
-export function clearDeepReadingPending() {
-  try {
-    localStorage.removeItem(PENDING_KEY);
-  } catch (e) {
-    console.warn("[deepReadingPurchase] pending 삭제 실패:", e);
-  }
-}
-
-/**
- * 결제됐지만 미완료(서버 지급 실패)된 결제 주문 목록.
- * @returns {Promise<Array<{order: object, product: keyof PRODUCTS | null}>>}
- *   product가 null이면 SKU로 상품을 판정하지 못한 주문 — 호출측이 결제 직전 저장한 pending의 product로 판정한다.
- */
-export async function getPendingDeepReadingOrders() {
-  const { IAP } = await import("@apps-in-toss/web-framework");
-  const response = await IAP.getPendingOrders();
-  const orders = Array.isArray(response)
-    ? response
-    : response?.orders || response?.pendingOrders || [];
-  console.log("[deepReadingPurchase] pending orders:", JSON.stringify(orders));
-  const withProduct = orders.map((o) => ({
-    order: o,
-    product: productBySku(
-      o?.sku || o?.productId || o?.productSku || o?.product?.sku || o?.productCode,
-    ),
-  }));
-  const matched = withProduct.filter((x) => x.product);
-  // SKU 필드명이 예상과 달라 매칭 0건이면 전체로 폴백(복구 우선)
-  return matched.length ? matched : withProduct;
-}
-
-/** 복구 지급 완료를 토스에 통지 (보류 주문 정리). */
-export async function completeDeepReadingGrant(orderId) {
-  try {
-    const { IAP } = await import("@apps-in-toss/web-framework");
-    await IAP.completeProductGrant({ params: { orderId } });
-  } catch (e) {
-    console.warn("[deepReadingPurchase] completeProductGrant 실패:", e);
-  }
-}
-
-/**
- * 토스 IAP 단건 결제를 실행한다.
- * @param {keyof PRODUCTS} [product]
- * @returns {Promise<{orderId: string}>} 결제 성공 시 orderId. 취소/실패 시 reject.
- */
-export async function purchaseDeepReading(product = DEFAULT_PRODUCT) {
-  const { sku, envName } = PRODUCTS[product];
-  if (!sku) {
-    throw new Error(`${envName} 미설정`);
-  }
-  const { IAP } = await import("@apps-in-toss/web-framework");
-
-  return new Promise((resolve, reject) => {
-    let cleanup;
-    cleanup = IAP.createOneTimePurchaseOrder({
-      options: {
-        sku,
-        // 결제 성공 시 즉시 true (백엔드 적립은 onEvent success에서 grant 호출)
-        processProductGrant: () => true,
-      },
-      onEvent: (event) => {
-        if (event.type === "success") {
-          cleanup?.();
-          resolve({ orderId: event.data?.orderId });
-        }
-      },
-      onError: (error) => {
-        cleanup?.();
-        reject(error || new Error("purchase_failed"));
-      },
-    });
-  });
-}
-
-/**
- * 결제 완료 후 백엔드에 quota 적립. 적립량은 서버 상품표가 결정(deep_reading: 풀이 1 + 후속 10 / followup_pack: 후속 10). orderId 멱등.
- * @param {number} [amount] 실제 결제 금액(콘솔 displayAmount 파싱값). 없으면 상품별 fallbackAmount.
- * @param {keyof PRODUCTS} [product]
- * @returns {Promise<{success: boolean, reading_remaining?: number, followup_remaining?: number}>}
- */
-export async function grantDeepReading(orderId, anonymousKey, amount, product = DEFAULT_PRODUCT) {
-  const response = await fetch(`${API_BASE_URL}/payment/deep-reading/grant`, {
-    method: "POST",
-    headers: { "X-API-Key": API_KEY, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      orderId,
-      user_anonymous_id: anonymousKey,
-      amount: Number.isFinite(amount) && amount > 0 ? amount : PRODUCTS[product].fallbackAmount,
-      product,
-    }),
-  });
-  if (!response.ok) {
-    throw new Error(`grant 실패: ${response.status}`);
-  }
-  return response.json();
-}
-
-/**
- * 심화풀이 무료 1회 공개 (백엔드 Phase C). 결제 없이 전체 풀이만 열고,
- * reading/followup 크레딧은 지급되지 않는다(후속채팅은 유료 유지).
- * 계정(=user_anonymous_id)당 1회로 백엔드가 원자적으로 제한한다.
- * @throws {Error & {code?: string}} 무료 1회 소진 시 code === "free_trial_used"
- * @returns {Promise<object>} DeepReadingStartResponse 형태(전체 reading/summary/follow_up_questions).
- */
-export async function freeRevealDeepReading(threadId, anonymousKey) {
-  const response = await fetch(`${API_BASE_URL}/deep-reading/free-reveal`, {
-    method: "POST",
-    headers: { "X-API-Key": API_KEY, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      thread_id: threadId,
-      user_anonymous_id: anonymousKey,
-    }),
-  });
-  if (response.status === 403) {
-    // 403은 무료 소진(detail: "free_trial_used") 외에 API 키/Origin 미들웨어도 반환한다.
-    // detail로 구분해야 인증 오류를 "이미 사용함"으로 오인하지 않는다.
-    const body = await response.json().catch(() => ({}));
-    if (body?.detail === "free_trial_used") {
-      const err = new Error("free_trial_used");
-      err.code = "free_trial_used";
-      throw err;
+  const productFor = sku => Object.keys(products).find(key => products[key].sku && products[key].sku === sku)
+  async function grant(orderId, expectedUserId = account()) {
+    if (account() !== expectedUserId) throw failure('이 결제를 시작한 계정으로 로그인해 주세요.')
+    if (!validOrder(orderId)) throw failure('결제 주문 번호를 확인하지 못했어요.')
+    const response = await request('/payment/deep-reading/toss-grant', { method: 'POST', body: JSON.stringify({ orderId }) })
+    if (!response.ok) {
+      const error = failure(response.status === 409 ? '이미 다른 계정 또는 상품에 연결된 주문이에요. 결제 내역을 보관하고 문의해 주세요.' : '결제 확인을 완료하지 못했어요. 추가 결제 없이 다시 복구해 주세요.')
+      error.status = response.status
+      throw error
     }
-    throw new Error(`무료 공개 거부됨: ${body?.detail || "forbidden"}`);
+    const result = await response.json()
+    if (account() !== expectedUserId) throw failure('이 결제를 시작한 계정으로 로그인해 주세요.')
+    if (result?.success !== true || !Object.hasOwn(products, result.product)
+      || !Number.isSafeInteger(result.reading_remaining) || result.reading_remaining < 0
+      || !Number.isSafeInteger(result.followup_remaining) || result.followup_remaining < 0) throw failure('결제 지급 결과를 확인하지 못했어요. 다시 복구해 주세요.')
+    return result
   }
-  if (!response.ok) {
-    throw new Error(`무료 공개 실패: ${response.status}`);
+  async function recoverWith(IAP) {
+    const userId = account(), saved = pending()
+    if (saved?.userId && saved.userId !== userId) throw failure('이 결제를 시작한 계정으로 로그인해 주세요.')
+    if (saved?.orderId && !validOrder(saved.orderId)) throw failure('저장된 결제 정보를 확인하지 못했어요. 문의해 주세요.')
+    const response = await IAP.getPendingOrders()
+    const orders = Array.isArray(response) ? response : response?.orders
+    if (!Array.isArray(orders)) throw failure('미완료 결제를 확인하지 못했어요. 다시 시도해 주세요.')
+    const matched = orders.filter(order => productFor(order.sku) && validOrder(order.orderId))
+    const recovery = saved?.orderId ? [{ ...saved }, ...matched.filter(order => order.orderId !== saved.orderId)] : matched
+    if (saved && !saved.orderId && !recovery.length) throw failure('이전 결제 정보를 확인해야 해요. 문의해 주세요.')
+    const results = []
+    for (const order of recovery) {
+      const receipt = { ...order, product: order.product || productFor(order.sku), userId }
+      save(receipt)
+      const result = await grant(order.orderId, userId)
+      if (matched.some(item => item.orderId === order.orderId)) {
+        const completed = await IAP.completeProductGrant({ params: { orderId: order.orderId } })
+        if (completed !== true) throw failure('구매 복구 완료를 확인하지 못했어요. 추가 결제 없이 다시 복구해 주세요.')
+      }
+      remove(order.orderId)
+      results.push({ orderId: order.orderId, grant: result, context: receipt.context, recovered: true })
+    }
+    return results
   }
-  return response.json();
-}
-
-/**
- * 개발 빌드 전용 quota 오버라이드 — 결제 상태별 화면(무료 공개 버튼, 보유 크레딧,
- * 연애상담 무료 질문 배너, 후속 paywall)을 실제 결제·DB 수정 없이 확인하기 위한 장치.
- *
- * `.env.development`에 아래처럼 넣는다(일부 필드만 써도 된다, 나머지는 서버 값 유지):
- *   VITE_DEBUG_QUOTA={"total_purchased":0,"free_reveals_used":0,"free_followups_used":0}
- *
- * `import.meta.env.DEV` 가드 안에 있어 프로덕션 빌드에서는 제거된다.
- * ⚠️ 화면 표시만 바꾼다 — 백엔드는 실제 계정 상태로 동작하므로 무료 공개는 403,
- * 무료 질문은 유료 처리될 수 있다. 문구·레이아웃 확인용이다.
- */
-function applyDebugQuota(quota) {
-  if (!import.meta.env.DEV) return quota;
-  const raw = import.meta.env.VITE_DEBUG_QUOTA;
-  if (!raw) return quota;
-  try {
-    const merged = { ...quota, ...JSON.parse(raw) };
-    console.warn("[deepReadingPurchase] VITE_DEBUG_QUOTA 적용:", merged);
-    return merged;
-  } catch (e) {
-    console.warn("[deepReadingPurchase] VITE_DEBUG_QUOTA 파싱 실패:", e);
-    return quota;
+  const serialized = (kind, work) => {
+    if (active) {
+      const current = active
+      if (current.kind === kind) return current.promise
+      if (kind === 'purchase') {
+        // A recovered payment satisfies the click; never start a second charge.
+        return current.promise.then(results => results.length ? results.at(-1) : serialized(kind, work))
+      }
+      // A remounted screen can recover after an earlier checkout settles or fails.
+      return current.promise.then(() => serialized(kind, work), () => serialized(kind, work))
+    }
+    const promise = Promise.resolve().then(work).finally(() => {
+      if (active?.promise === promise) active = null
+    })
+    active = { kind, promise }
+    return promise
   }
-}
-
-/**
- * 잔여 quota 조회. { reading_remaining, followup_remaining, total_purchased, free_reveals_used }
- */
-export async function getQuota(anonymousKey) {
-  const response = await fetch(
-    `${API_BASE_URL}/quota?user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
-    { headers: { "X-API-Key": API_KEY } },
-  );
-  if (!response.ok) {
-    throw new Error(`quota 조회 실패: ${response.status}`);
-  }
-  return applyDebugQuota(await response.json());
-}
-
-/**
- * 결제 후 미리보기 → 캐시된 전체풀이 공개(재생성 없음). reading quota 1 소진.
- * @returns {Promise<object>} DeepReadingStartResponse 형태(전체 reading/summary/follow_up_questions).
- */
-export async function revealDeepReading(threadId, anonymousKey) {
-  const response = await fetch(`${API_BASE_URL}/deep-reading/reveal`, {
-    method: "POST",
-    headers: { "X-API-Key": API_KEY, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      thread_id: threadId,
-      user_anonymous_id: anonymousKey,
+  return {
+    pending,
+    grant,
+    async product(product = 'deep_reading') {
+      const sku = products[product]?.sku
+      if (!sku) return null
+      try { return (await (await getIAP()).getProductItemList()).products?.find(item => item.sku === sku) || null } catch { return null }
+    },
+    recover: () => serialized('recover', async () => recoverWith(await getIAP())),
+    purchase: (product = 'deep_reading', context = {}) => serialized('purchase', async () => {
+      const userId = account()
+      const IAP = await getIAP()
+      const recovered = await recoverWith(IAP)
+      if (recovered.length) return recovered.at(-1)
+      const sku = products[product]?.sku
+      if (!sku) throw failure('결제 상품을 준비하지 못했어요. 잠시 후 다시 시도해 주세요.')
+      // Test durable storage before entering a checkout that could charge the user.
+      storage.setItem(`${PENDING_KEY}:probe`, 'ready')
+      if (storage.getItem(`${PENDING_KEY}:probe`) !== 'ready') throw failure('구매 복구 정보를 저장하지 못했어요.')
+      storage.removeItem(`${PENDING_KEY}:probe`)
+      return new Promise((resolve, reject) => {
+        let cleanup, receiptOrderId, finished = false
+        const receipt = orderId => ({ orderId, product, userId, context: { threadId: context.threadId || null } })
+        cleanup = IAP.createOneTimePurchaseOrder({
+          options: { sku, processProductGrant: ({ orderId }) => {
+            if (finished) return false
+            try {
+              if (!validOrder(orderId) || (receiptOrderId && receiptOrderId !== orderId)) throw failure('결제 주문 정보가 일치하지 않아요.')
+              save(receipt(orderId)); receiptOrderId = orderId
+              return true
+            } catch (error) { finished = true; cleanup?.(); reject(error); return false }
+          } },
+          onEvent: async event => {
+            if (event.type !== 'success' || finished) return
+            finished = true; cleanup?.()
+            try {
+              const orderId = event.data?.orderId || receiptOrderId
+              if (!validOrder(orderId) || (receiptOrderId && orderId !== receiptOrderId)) throw failure('결제 주문 정보가 일치하지 않아요.')
+              save(receipt(orderId))
+              const result = await grant(orderId, userId)
+              remove(orderId)
+              resolve({ orderId, grant: result, context: receipt(orderId).context, recovered: false })
+            } catch (error) { error.paymentCompleted = true; reject(error) }
+          },
+          onError: error => {
+            if (finished) return
+            finished = true; cleanup?.()
+            const errorMessage = failure(receiptOrderId ? '결제 내역을 보관했어요. 추가 결제 없이 다시 복구해 주세요.' : '결제가 취소되었거나 완료되지 않았어요.')
+            errorMessage.code = error?.code === 'USER_CANCELED' ? 'USER_CANCELED' : 'PURCHASE_FAILED'
+            reject(errorMessage)
+          },
+        })
+      })
     }),
-  });
-  if (!response.ok) {
-    throw new Error(`reveal 실패: ${response.status}`);
   }
-  return response.json();
+}
+const storage = {
+  getItem: key => globalThis.localStorage.getItem(key),
+  setItem: (key, value) => globalThis.localStorage.setItem(key, value),
+  removeItem: key => globalThis.localStorage.removeItem(key),
+}
+const client = createDeepReadingPurchase({ storage })
+export const purchaseDeepReading = (product, context) => client.purchase(product, context)
+export const recoverDeepReadingPurchases = () => client.recover()
+export const getDeepReadingPending = () => client.pending()
+export const getDeepReadingProduct = product => client.product(product)
+export const grantDeepReading = orderId => client.grant(orderId)
+async function readingAction(path, body) {
+  const response = await authenticatedReadingFetch(path, { method: 'POST', body: JSON.stringify(body) })
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}))
+    const error = new Error('풀이를 불러오지 못했어요. 다시 시도해 주세요.')
+    if (response.status === 403 && data.detail === 'free_trial_used') error.code = 'free_trial_used'
+    throw error
+  }
+  return response.json()
+}
+export const freeRevealDeepReading = threadId => readingAction('/deep-reading/free-reveal', { thread_id: threadId })
+export const revealDeepReading = threadId => readingAction('/deep-reading/reveal', { thread_id: threadId })
+export async function getQuota() {
+  const response = await authenticatedReadingFetch('/quota')
+  if (!response.ok) throw new Error('이용 횟수를 확인하지 못했어요. 다시 시도해 주세요.')
+  return response.json()
 }

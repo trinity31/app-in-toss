@@ -182,14 +182,11 @@ test('pending lookup failures produce a diagnostic without opening a purchase', 
 })
 
 
-test('storage failure refuses acknowledgement and makes no server grant', async () => {
+test('storage failure blocks checkout and makes no server grant', async () => {
   const sdk = iap(), storage = memoryStorage()
   storage.setItem = () => { throw new Error('quota exceeded') }
-  const buying = purchaseTarot(async () => assert.fail('must not grant'), sdk, undefined, { storage })
-  const rejected = assert.rejects(buying, /quota exceeded/)
-  await new Promise(resolve => setImmediate(resolve))
-  assert.equal(sdk.options.options.processProductGrant({ orderId: 'paid' }), false)
-  await rejected
+  await assert.rejects(purchaseTarot(async () => assert.fail('must not grant'), sdk, undefined, { storage }), /quota exceeded/)
+  assert.equal(sdk.options, undefined)
 })
 
 test('failed saved-order verification blocks a new checkout and keeps the receipt', async () => {

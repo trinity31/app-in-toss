@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import * as Sentry from "@sentry/react";
+import { authenticatedReadingFetch } from "../lib/tossSession";
 import { appendMovingPeriod, isMovingResponse } from "../lib/movingDate";
 import { formatBirthdate } from "../utils/dataTransform";
-import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+
 import { useSession } from "../hooks/useSession.jsx";
 import loadingGif from "../assets/images/cat_greeting.gif";
 import { classifyAnalyticsUser } from "../lib/analytics";
@@ -20,7 +20,7 @@ const ANALYSIS_STEPS = [
 ];
 
 export default function DeepReadingLoading({ userData, onNext, onBack }) {
-  const { anonymousKey, loading: anonymousKeyLoading } = useAnonymousKey();
+
   const { startNewSession } = useSession();
 
   const [loadingMessage, setLoadingMessage] = useState("운세를 풀이하고 있어요...");
@@ -44,12 +44,11 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
     return () => clearInterval(interval);
   }, [apiCompleted, apiError, isMoving, steps.length]);
 
-  // anonymousKey 해석 후 바로 풀이 생성 (광고 제거 — 유료는 결제, 무료는 무광고)
+  // The parent login gate establishes the personal account before generation.
   useEffect(() => {
-    if (anonymousKeyLoading) return;
     callDeepReadingApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [anonymousKeyLoading, anonymousKey]);
+  }, []);
 
   // Deep Reading API 호출
   const callDeepReadingApi = async () => {
@@ -76,7 +75,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
       );
 
       const isCompatibility = !!userData.partnerName;
-      const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
+
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
       // 새 리딩 세션 시작 (이후 /chat 요청은 이 session_id 를 유지)
@@ -125,9 +124,6 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
           body.concerns = userData.fortuneTypeTitle;
         }
 
-        if (anonymousKey) {
-          body.user_anonymous_id = anonymousKey;
-        }
         if (newSessionId) {
           body.session_id = newSessionId;
         }
@@ -135,7 +131,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
         fetchOptions = {
           method: "POST",
           headers: {
-            "X-API-Key": apiKey,
+
             "Content-Type": "application/json",
           },
           body: JSON.stringify(body),
@@ -176,32 +172,23 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
         }
         formData.append("language", "ko");
 
-        if (anonymousKey) {
-          formData.append("user_anonymous_id", anonymousKey);
-        }
         if (newSessionId) {
           formData.append("session_id", newSessionId);
         }
 
         fetchOptions = {
           method: "POST",
-          headers: {
-            "X-API-Key": apiKey,
-          },
-          body: formData,
+                    body: formData,
           signal: abortControllerRef.current.signal,
         };
       }
 
-      console.log("Deep Reading API 호출 시작:", { endpoint, isCompatibility, userData });
-
-      const response = await fetch(endpoint, fetchOptions);
+      const response = await authenticatedReadingFetch(endpoint, fetchOptions);
 
       clearTimeout(timeoutId);
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`API 호출 실패: ${response.status} ${errorText}`);
+        throw new Error(`API 호출 실패: ${response.status}`);
       }
 
       const result = await response.json();
@@ -210,7 +197,6 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
         ...funnelParams, thread_id: result.thread_id,
         is_revisit: Number(!!result.is_revisit), elapsed_ms: Math.round(performance.now() - startedAt),
       });
-      console.log("Deep Reading API 호출 성공:", result);
 
       setApiCompleted(true);
 
@@ -232,14 +218,6 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
       logEvent(error.name === 'AbortError' ? 'saju_create_timeout' : 'saju_create_failed', {
         ...funnelParams, elapsed_ms: Math.round(performance.now() - startedAt),
         ...(error.name === 'AbortError' ? {} : { reason: error.message === 'invalid_response' ? 'invalid_response' : 'unknown' }),
-      });
-      console.error("Deep Reading API 호출 오류:", error);
-
-      Sentry.captureException(error, {
-        extra: {
-          userName: userData?.name,
-          readingType: userData?.readingType,
-        },
       });
 
       if (error.name === "AbortError") {

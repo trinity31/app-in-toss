@@ -1,12 +1,12 @@
+import { authenticatedReadingFetch, getTossSession } from "../lib/tossSession";
 import { useState, useCallback, useRef, useEffect } from "react";
 
 import MovingDateResults from "./MovingDateResults";
 import ReactMarkdown from "react-markdown";
 import PurchasePromotion from "./PurchasePromotion";
 import { usePurchasePromotion } from "../hooks/usePurchasePromotion";
-import * as Sentry from "@sentry/react";
 import { useToast } from "../hooks/useToast";
-import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+
 import { useSession } from "../hooks/useSession.jsx";
 import { useBlockSwipeBack } from "../hooks/useBlockSwipeBack";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
@@ -16,17 +16,11 @@ import { trackServerEvent } from "../lib/analytics";
 import { normalizeMarkdown, markdownComponents } from "../utils/markdown";
 import { normalizeDeepReadingMessage } from "../utils/deepReadingMessage";
 import {
-  purchaseDeepReading,
-  grantDeepReading,
   revealDeepReading,
   getQuota,
-  saveDeepReadingPending,
-  getDeepReadingPending,
-  clearDeepReadingPending,
-  getPendingDeepReadingOrders,
-  completeDeepReadingGrant,
+  purchaseDeepReading,
+  recoverDeepReadingPurchases,
   getDeepReadingProduct,
-  parseDisplayAmount,
   freeRevealDeepReading,
   PRODUCTS,
 } from "../lib/deepReadingPurchase";
@@ -49,7 +43,7 @@ export default function DeepReadingResult({
   const { name, fortuneResult, fortuneTypeTitle } = userData;
   const crossCtas = fortuneResult.cross_reading_ctas || [];
   const { openToast } = useToast();
-  const { anonymousKey } = useAnonymousKey();
+  const anonymousKey = getTossSession()?.userId;
   const { sessionId } = useSession();
 
   // 보관함 상세: 백버튼(iOS·Android 모두)을 가로채 리스트로 복귀(확인창 없음 — 이미 저장됨).
@@ -106,6 +100,7 @@ export default function DeepReadingResult({
   const [revealed, setRevealed] = useState(null);
   const [followupPaywall, setFollowupPaywall] = useState(false);
   const [isPurchasing, setIsPurchasing] = useState(false);
+  const purchaseBusy = useRef(false);
   const [followupRemaining, setFollowupRemaining] = useState(null);
   // 무료 1회 공개 사용 가능 여부 (백엔드 quota.free_reveals_used === 0)
   const [freeAvailable, setFreeAvailable] = useState(false);
@@ -159,12 +154,6 @@ export default function DeepReadingResult({
   useEffect(() => {
     Object.keys(PRODUCTS).forEach((key) => loadProduct(key));
   }, []);
-
-  // grant에 보낼 실제 결제 금액. 상품 조회 전에 결제/복구가 시작되면 그 자리에서 1회 조회.
-  const resolveAmount = async (key = "deep_reading") => {
-    if (!productsRef.current[key]) await loadProduct(key);
-    return parseDisplayAmount(productsRef.current[key]?.displayAmount);
-  };
 
   // 결제 funnel 이벤트: Firebase + Supabase(user_events) 양쪽으로 발화
   const firePaywall = (name, params = {}) => {
@@ -238,13 +227,14 @@ export default function DeepReadingResult({
     (async () => {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const r = await fetch(
+        const r = await authenticatedReadingFetch(
           `${baseUrl}/deep-reading/conversation?thread_id=${encodeURIComponent(
             fortuneResult.thread_id,
           )}&user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
-          { headers: { "X-API-Key": import.meta.env.VITE_SAJU_AI_API_KEY } },
+          {} ,
         );
-        if (!r.ok || cancelled) return;
+        if (!r.ok) throw new Error("conversation_unavailable");
+        if (cancelled) return;
         const data = await r.json();
         const past = data.messages || [];
         if (cancelled || past.length === 0) return;
@@ -263,7 +253,7 @@ export default function DeepReadingResult({
           return [...prev.slice(0, 1), ...restored];
         });
       } catch {
-        /* 복원 실패해도 현재 풀이는 정상 표시 */
+        if (!cancelled) openToast({ message: "이전 대화를 불러오지 못했어요. 다시 로그인한 뒤 시도해 주세요." });
       }
     })();
     return () => {
@@ -290,7 +280,7 @@ export default function DeepReadingResult({
     try {
       applyQuota(await getQuota(anonymousKey), opts);
     } catch {
-      /* 조회 실패는 화면 동작을 막지 않는다 */
+      openToast({ message: "이용 횟수를 확인하지 못했어요. 다시 로그인한 뒤 시도해 주세요." });
     }
   };
 
@@ -298,7 +288,7 @@ export default function DeepReadingResult({
     if (!anonymousKey) return;
     getQuota(anonymousKey)
       .then((q) => applyQuota(q, { withFollowup: !isPreview }))
-      .catch(() => {});
+      .catch(() => openToast({ message: "이용 횟수를 확인하지 못했어요. 다시 로그인한 뒤 시도해 주세요." }));
     // applyQuota는 매 렌더 새로 만들어지지만 내부가 setState + 순수 판정뿐이라
     // 의존성에 넣으면 무의미한 재조회만 늘어난다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -317,88 +307,44 @@ export default function DeepReadingResult({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [previewActive, freeFollowupAvailable]);
 
-  // 결제 성공 후 서버 지급 실패 시 복구 (토스 getPendingOrders 기반, 부적아트와 동일 패턴)
-  const recoverPendingPurchase = async () => {
-    if (!anonymousKey) return false;
-    const pending = getDeepReadingPending();
-    if (!pending) return false;
-
-    let orders = [];
-    try {
-      orders = await getPendingDeepReadingOrders();
-    } catch {
-      return false; // SDK 없음/일시 오류 — 다음 기회에 재시도
-    }
-    if (!orders.length) {
-      clearDeepReadingPending();
-      return false;
-    }
-
-    for (const { order: o, product: orderProduct } of orders) {
-      const orderId = o.orderId || o.id || o;
-      // SKU로 판정 못 한 주문은 결제 직전 저장한 상품으로 (구버전 pending은 기존 상품)
-      const product = orderProduct || pending.product || "deep_reading";
-      try {
-        const res = await grantDeepReading(
-          orderId,
-          anonymousKey,
-          await resolveAmount(product),
-          product,
-        );
-        if (!res?.success) continue;
-        await completeDeepReadingGrant(orderId);
-        // 미리보기 중이면 현재 보고 있는 풀이를 전체 공개 (quota는 위 grant로 복구됨)
-        // 후속질문 전용 상품은 풀이 크레딧이 없으므로 reveal 금지 — 이전에 받아 둔 크레딧이 소진됨
-        if (previewActive && product === "deep_reading") {
-          try {
-            const full = await revealDeepReading(
-              fortuneResult.thread_id,
-              anonymousKey,
-            );
-            if (!full.is_preview) {
-              setRevealed(full);
-              setMessages([
-                {
-                  role: "assistant",
-                  content: full.reading,
-                  followUpQuestions: full.follow_up_questions,
-                },
-              ]);
-              setPreviewActive(false);
-            }
-          } catch {
-            /* reveal 실패해도 quota는 복구됨 */
-          }
-        }
-        setFollowupRemaining(res.followup_remaining ?? 10);
-        setFollowupPaywall(false);
-        clearDeepReadingPending();
-        firePaywall("paywall_purchase_completed", {
-          reading_type: readingType,
-          trigger: "recovery",
-          product,
-          order_id: orderId,
-          session_id: sessionId,
-        });
-        openToast({
-          message:
-            product === "followup_pack"
-              ? "결제가 복구되었어요. 후속질문 10회가 충전되었어요."
-              : "결제가 복구되었어요. 전체 풀이를 확인하세요.",
-        });
-        return true;
-      } catch {
-        /* 다음 주문 시도 */
+  const applyPurchase = async (purchase) => {
+    const grant = purchase.grant;
+    setReadingRemaining(grant.reading_remaining);
+    setFollowupRemaining(grant.followup_remaining);
+    setFreeFollowupAvailable(false);
+    if (grant.followup_remaining > 0) setFollowupPaywall(false);
+    // Recovery for another thread or a followup-only SKU never consumes a reading credit.
+    if (previewActive && grant.product === "deep_reading"
+      && purchase.context?.threadId === fortuneResult.thread_id) {
+      const full = await revealDeepReading(fortuneResult.thread_id);
+      if (!full.is_preview) {
+        setRevealed(full);
+        setMessages([{ role: "assistant", content: full.reading, followUpQuestions: full.follow_up_questions }]);
+        setPreviewActive(false);
+        await refreshQuota({ withFollowup: true });
       }
     }
-    return false;
   };
 
-  // 마운트/익명키 준비 시 미완료 결제 자동 복구
   useEffect(() => {
-    recoverPendingPurchase();
+    let cancelled = false;
+    if (purchaseBusy.current) return;
+    purchaseBusy.current = true;
+    setIsPurchasing(true);
+    recoverDeepReadingPurchases().then(async purchases => {
+      if (cancelled) return;
+      for (const purchase of purchases) await applyPurchase(purchase);
+      if (purchases.length) openToast({ message: "이전 결제를 복구했어요. 이용 횟수를 확인해 주세요." });
+    }).catch(() => {
+      if (!cancelled) openToast({ message: "미완료 결제를 확인하지 못했어요. 결제 내역은 보관되며, 결제 버튼으로 다시 복구할 수 있어요." });
+    }).finally(() => {
+      purchaseBusy.current = false;
+      if (!cancelled) setIsPurchasing(false);
+    });
+    return () => { cancelled = true; };
+    // Run once for this verified account and result, never on quota/display changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [anonymousKey]);
+  }, [anonymousKey, fortuneResult.thread_id]);
 
   // 보유한 유료 풀이 크레딧 1회로 전체 풀이 열기 (재결제 없이 /reveal이 원자적으로 차감)
   const handleUseReadingCredit = async () => {
@@ -493,116 +439,23 @@ export default function DeepReadingResult({
     }
   };
 
-  // 첫 풀이 결제 → grant → reveal → 전체 풀이 공개
-  const handleReadingPurchase = async () => {
-    if (isPurchasing) return;
-    setIsPurchasing(true);
-    saveDeepReadingPending({ thread_id: fortuneResult.thread_id, product: "deep_reading" });
-    firePaywall("paywall_purchase_started", {
-      reading_type: readingType,
-      trigger: "reading_start",
-      product: "deep_reading",
-      session_id: sessionId,
-    });
+  const handlePurchase = async product => {
+    if (purchaseBusy.current || isFreeRevealing || isUsingCredit) return;
+    purchaseBusy.current = true;
+    setIsPurchasing(true); setPurchasingProduct(product);
     try {
-      const { orderId } = await purchaseDeepReading("deep_reading");
-      const grantRes = await grantDeepReading(
-        orderId,
-        anonymousKey,
-        await resolveAmount("deep_reading"),
-        "deep_reading",
-      );
-      firePaywall("paywall_purchase_completed", {
-        reading_type: readingType,
-        trigger: "reading_start",
-        product: "deep_reading",
-        order_id: orderId,
-        session_id: sessionId,
-      });
-      const full = await revealDeepReading(fortuneResult.thread_id, anonymousKey);
-      setRevealed(full);
-      setMessages([
-        {
-          role: "assistant",
-          content: full.reading,
-          followUpQuestions: full.follow_up_questions,
-        },
-      ]);
-      setPreviewActive(false);
-      setFollowupRemaining(grantRes?.followup_remaining ?? 10);
-      // 결제 이력이 생기면 무료 질문 대상에서 빠진다(백엔드 total_purchased 조건)
-      setFreeFollowupAvailable(false);
-      clearDeepReadingPending();
-    } catch (err) {
-      firePaywall("paywall_purchase_failed", {
-        reading_type: readingType,
-        trigger: "reading_start",
-        product: "deep_reading",
-        reason: err?.message || "cancelled",
-        session_id: sessionId,
-      });
-      // 결제는 됐는데 서버 지급이 실패했을 수 있음 → 복구 시도
-      const recovered = await recoverPendingPurchase();
-      if (!recovered) {
-        openToast({ message: "결제가 취소되었거나 완료되지 않았습니다." });
-      }
+      const purchase = await purchaseDeepReading(product, { threadId: fortuneResult.thread_id });
+      await applyPurchase(purchase);
+      openToast({ message: purchase.recovered ? "이전 결제를 복구했어요. 추가 결제는 진행하지 않았어요." : "결제가 완료되었어요. 이용 횟수가 반영되었어요." });
+    } catch {
+      openToast({ message: "결제 확인을 완료하지 못했어요. 저장된 결제는 추가 결제 없이 다시 복구할 수 있어요." });
     } finally {
-      setIsPurchasing(false);
+      purchaseBusy.current = false;
+      setIsPurchasing(false); setPurchasingProduct(null);
     }
   };
-
-  // 후속질문 결제 → grant (후속 10회 충전)
-  // product: "followup_pack"(질문 10회) | "deep_reading"(질문 10회 + 풀이 1회)
-  const handleFollowupPurchase = async (product) => {
-    if (isPurchasing) return;
-    setIsPurchasing(true);
-    setPurchasingProduct(product);
-    saveDeepReadingPending({ thread_id: fortuneResult.thread_id, product });
-    firePaywall("paywall_purchase_started", {
-      reading_type: readingType,
-      trigger: "followup",
-      product,
-      session_id: sessionId,
-    });
-    try {
-      const { orderId } = await purchaseDeepReading(product);
-      const grantRes = await grantDeepReading(
-        orderId,
-        anonymousKey,
-        await resolveAmount(product),
-        product,
-      );
-      firePaywall("paywall_purchase_completed", {
-        reading_type: readingType,
-        trigger: "followup",
-        product,
-        order_id: orderId,
-        session_id: sessionId,
-      });
-      setFollowupPaywall(false);
-      setFollowupRemaining(grantRes?.followup_remaining ?? 10);
-      // deep_reading은 풀이 1회가 함께 적립 → 다음 풀이에서 쓸 크레딧이 남는다
-      setReadingRemaining((prev) => grantRes?.reading_remaining ?? prev);
-      setFreeFollowupAvailable(false);
-      clearDeepReadingPending();
-      openToast({ message: "결제 완료! 후속질문 10회가 충전되었어요. 다시 전송해 주세요." });
-    } catch (err) {
-      firePaywall("paywall_purchase_failed", {
-        reading_type: readingType,
-        trigger: "followup",
-        product,
-        reason: err?.message || "cancelled",
-        session_id: sessionId,
-      });
-      const recovered = await recoverPendingPurchase();
-      if (!recovered) {
-        openToast({ message: "결제가 취소되었거나 완료되지 않았습니다." });
-      }
-    } finally {
-      setIsPurchasing(false);
-      setPurchasingProduct(null);
-    }
-  };
+  const handleReadingPurchase = () => handlePurchase("deep_reading");
+  const handleFollowupPurchase = product => handlePurchase(product);
 
   // callback ref: 로딩 표시가 DOM에 마운트되면 스크롤
   // setTimeout으로 사용자 메시지 버블의 레이아웃 완료를 기다린 후 스크롤
@@ -642,7 +495,7 @@ export default function DeepReadingResult({
     setIsSending(true);
 
     try {
-      const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
+
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
       const isCompatibility = userData.isCompatibility ?? !!userData.partnerName;
       const endpoint = isCompatibility
@@ -656,18 +509,17 @@ export default function DeepReadingResult({
       if (anonymousKey) chatBody.user_anonymous_id = anonymousKey;
       if (sessionId) chatBody.session_id = sessionId;
 
-      const response = await fetch(endpoint, {
+      const response = await authenticatedReadingFetch(endpoint, {
         method: "POST",
         headers: {
-          "X-API-Key": apiKey,
+
           "Content-Type": "application/json",
         },
         body: JSON.stringify(chatBody),
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`채팅 API 호출 실패: ${response.status} ${errorText}`);
+        throw new Error(`채팅 API 호출 실패: ${response.status}`);
       }
 
       const result = await response.json();
@@ -707,15 +559,7 @@ export default function DeepReadingResult({
         });
       }
       setFollowupRemaining((n) => (typeof n === "number" ? Math.max(0, n - 1) : n));
-    } catch (error) {
-      console.error("채팅 메시지 전송 오류:", error);
-      Sentry.captureException(error, {
-        extra: {
-          threadId: fortuneResult.thread_id,
-          userMessage,
-        },
-      });
-
+    } catch {
       setLastFailedMessage(userMessage);
       setMessages((prev) => [
         ...prev,

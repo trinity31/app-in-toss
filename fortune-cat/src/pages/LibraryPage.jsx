@@ -1,14 +1,14 @@
 import { JOB_MENU } from '../lib/jobMenu';
 import { useEffect, useState } from "react";
 import { useToast } from "../hooks/useToast";
-import { useAnonymousKey } from "../hooks/useAnonymousKey.jsx";
+import { authenticatedReadingFetch, getTossSession } from "../lib/tossSession";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { supabase } from "../lib/supabase";
 import TarotLibrary from "../components/TarotLibrary";
 import DeepReadingResult from "../components/DeepReadingResult";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY;
+
 
 const fmtDate = (s) => {
   try {
@@ -23,7 +23,9 @@ const fmtDate = (s) => {
 };
 
 export default function LibraryPage() {
-  const { anonymousKey, loading: keyLoading } = useAnonymousKey();
+  const anonymousKey = getTossSession()?.userId;
+  const keyLoading = false;
+  const [loadError, setLoadError] = useState(false);
   const insets = useSafeAreaInsets();
 
   const { openToast } = useToast();
@@ -66,13 +68,13 @@ export default function LibraryPage() {
       setLoading(false);
       return;
     }
-    fetch(
+    authenticatedReadingFetch(
       `${API_BASE_URL}/deep-reading/history?user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
-      { headers: { "X-API-Key": API_KEY } },
+      {},
     )
-      .then((r) => r.json())
+      .then((r) => { if (!r.ok) throw new Error("history_unavailable"); return r.json(); })
       .then((d) => setItems(d.items || []))
-      .catch(() => {})
+      .catch(() => setLoadError(true))
       .finally(() => setLoading(false));
   }, [anonymousKey, keyLoading]);
 
@@ -94,9 +96,9 @@ export default function LibraryPage() {
   const handleDelete = async (item) => {
     setDeletingId(item.thread_id);
     try {
-      const r = await fetch(
+      const r = await authenticatedReadingFetch(
         `${API_BASE_URL}/deep-reading/history/${encodeURIComponent(item.thread_id)}?user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
-        { method: "DELETE", headers: { "X-API-Key": API_KEY } },
+        { method: "DELETE" },
       );
       if (!r.ok) throw new Error(String(r.status));
       setItems((prev) => prev.filter((i) => i.thread_id !== item.thread_id));
@@ -111,9 +113,9 @@ export default function LibraryPage() {
   const openDetail = async (item) => {
     setSelected({ ...item, _loading: true });
     try {
-      const r = await fetch(
+      const r = await authenticatedReadingFetch(
         `${API_BASE_URL}/deep-reading/conversation?thread_id=${encodeURIComponent(item.thread_id)}&user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
-        { headers: { "X-API-Key": API_KEY } },
+        {},
       );
       if (!r.ok) throw new Error(String(r.status));
       const data = await r.json();
@@ -255,7 +257,7 @@ export default function LibraryPage() {
           <TarotLibrary />
         </div>
         <div hidden={tarotTab}>
-        {loading ? (
+        {loadError ? <p role="alert">보관함을 불러오지 못했어요. 다시 로그인한 뒤 시도해 주세요.</p> : loading ? (
           <p
             style={{
               textAlign: "center",

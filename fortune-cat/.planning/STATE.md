@@ -73,12 +73,14 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 ### Blockers
 
-(none)
+- User accepted first-claim purchase settlement without buyer equality proof (2026-10-25). Production needs the global once-only SQL, server SKU settings, coordinated deployment and native QR validation. Dependency audit follow-up remains.
 
 ### Quick Tasks Completed
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 261025-k7j | 결제 상태·SKU 검증과 orderId 전역 1회 지급, 결제·영수증 복구 복원. 구매자 일치 검증은 사용자 선택으로 생략 | 2026-10-25 | 미커밋 | [261025-k7j](./quick/261025-k7j-enable-verified-completed-toss-purchases/) |
+| 261023-v2l | 개인 토스 로그인·계정별 상담 인증, 신규 결제 차단, 새 공개 키 AIT 빌드. 결제 재개 미완료 | 2026-10-23 | 미커밋 | [261023-v2l](./quick/261023-v2l-prepare-toss-app-supabase-publishable-ke/) |
 | 260504-f2q | HomePage 헤더 '복냥사주' → '복냥사주&타로' 변경 | 2026-05-04 | bbe5bc4 | [260504-f2q-homepage](./quick/260504-f2q-homepage/) |
 | 260504-gbj | TarotResult — 하단 버튼 여백 확대 + 카드 이미지 확대 모달 추가 | 2026-05-04 | 515c746 / bf0d645 | [260504-gbj-tarotresult](./quick/260504-gbj-tarotresult/) |
 | 260602-mou | 탭바를 토스 브랜딩 가이드 플로팅 형태로 전환 + 탭 화면 body 라벤더(#F7F0FE) + 퀵메뉴 칩/탭 하이라이트 정리 | 2026-06-02 | 4f4a7a6 (merge) | [260602-mou-tabbar-jsx](./quick/260602-mou-tabbar-jsx/) |

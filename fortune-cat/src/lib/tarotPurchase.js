@@ -7,7 +7,7 @@ const TAROT_PURCHASE_SKUS = new Set([
   TAROT_PRODUCT_SKU, 'ait.0000014507.eaf72598.2a019a3e97.0134075568',
 ])
 
-// 매출 집계용 결제 금액 — 콘솔 등록가가 단일 출처. 조회 실패 시 null(금액 없이 지급만 진행).
+// Display metadata only. The server never trusts this client-supplied amount for settlement.
 async function productAmount(IAP) {
   try {
     const { products = [] } = await IAP.getProductItemList()
@@ -36,16 +36,22 @@ async function runPurchase(grant, suppliedIAP, report, storage, receiptKey) {
   if (saved && !validOrder(saved.orderId)) throw new Error('저장된 결제 정보를 확인하지 못했어요. 문의해 주세요.')
   const saveReceipt = (orderId, amount) => {
     if (!validOrder(orderId)) throw new Error('결제 주문 번호를 확인하지 못했어요.')
+    const current = storage.getItem(receiptKey)
+    if (current && JSON.parse(current).orderId !== orderId) throw new Error('이전 결제를 먼저 복구해 주세요.')
     const value = JSON.stringify({ orderId, amount })
     storage.setItem(receiptKey, value)
     if (storage.getItem(receiptKey) !== value) throw new Error('구매 복구 정보를 저장하지 못했어요.')
   }
-  const clearReceipt = () => storage.removeItem(receiptKey)
+  const clearReceipt = () => {
+    storage.removeItem(receiptKey)
+    if (storage.getItem(receiptKey) !== null) throw new Error('구매 복구 정보를 정리하지 못했어요.')
+  }
   const IAP = suppliedIAP || (await import('@apps-in-toss/web-framework')).IAP
   const grantOrder = async (orderId, amount) => {
     report('grant_started')
     try {
-      await grant(orderId, amount)
+      const result = await grant(orderId, amount)
+      if (result === false || result?.success === false) throw new Error('결제 지급을 확인하지 못했어요.')
       report('grant_succeeded')
     } catch (error) {
       report('grant_failed', error)
@@ -84,6 +90,11 @@ async function runPurchase(grant, suppliedIAP, report, storage, receiptKey) {
     }
     return
   }
+  // Refuse checkout before charging if a recovery receipt cannot be persisted.
+  const probe = `${receiptKey}:probe`
+  storage.setItem(probe, 'ready')
+  if (storage.getItem(probe) !== 'ready') throw new Error('구매 복구 정보를 저장하지 못했어요.')
+  storage.removeItem(probe)
   return new Promise((resolve, reject) => {
     let cleanup
     let receiptOrderId
@@ -93,12 +104,14 @@ async function runPurchase(grant, suppliedIAP, report, storage, receiptKey) {
       options: {
         sku: TAROT_PRODUCT_SKU,
         processProductGrant: ({ orderId }) => {
+          if (finishing) return false
           try {
             saveReceipt(orderId, amount)
             receiptOrderId = orderId
             report('grant_callback_ready')
             return true
           } catch (error) {
+            finishing = true
             cleanup?.()
             reject(error)
             return false

@@ -262,7 +262,7 @@ export default function Loading({ userData, onNext }) {
       }
 
       // API 호출
-      const apiKey = import.meta.env.VITE_SAJU_AI_API_KEY;
+
       const endpoint = `${import.meta.env.VITE_API_BASE_URL}/saju-reading`;
 
       console.log("API 호출 시작:", { endpoint, userData });
@@ -270,7 +270,7 @@ export default function Loading({ userData, onNext }) {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
-          "X-API-Key": apiKey,
+
         },
         body: formData,
         signal: abortControllerRef.current.signal,

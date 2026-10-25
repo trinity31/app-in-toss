@@ -2,11 +2,11 @@ import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import { Component, lazy, Suspense } from 'react'
 import HomePage from './pages/HomePage'
 import TabBar from './components/TabBar'
+import TossAccountGate from './components/TossAccountGate'
+import { PURCHASE_UNAVAILABLE_MESSAGE } from './lib/purchaseAvailability'
 import './App.css'
 
-const SajuPage = lazy(() => import('./pages/SajuPage'))
 const NewYearPage = lazy(() => import('./pages/NewYearPage'))
-const AmuletPage = lazy(() => import('./pages/AmuletPage'))
 const TarotPage = lazy(() => import('./pages/TarotPage'))
 const LibraryPage = lazy(() => import('./pages/LibraryPage'))
 
@@ -50,11 +50,11 @@ function App() {
         <Suspense fallback={<div role="status" style={{ padding: 24 }}>화면을 불러오고 있어요.</div>}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/saju" element={<SajuPage />} />
-            <Route path="/newyear" element={<NewYearPage />} />
-            <Route path="/amulet" element={<AmuletPage />} />
+            <Route path="/saju" element={<section role="status" style={{ padding: 24 }}>이전 사주 서비스는 안전 점검 중이에요. 신년운세 메뉴에서 이용 가능한 풀이를 확인해 주세요.</section>} />
+            <Route path="/newyear" element={<TossAccountGate><NewYearPage /></TossAccountGate>} />
+            <Route path="/amulet" element={<section role="status" style={{ padding: 24 }}>{PURCHASE_UNAVAILABLE_MESSAGE}</section>} />
             <Route path="/tarot" element={<TarotPage />} />
-            <Route path="/library" element={<LibraryPage />} />
+            <Route path="/library" element={<TossAccountGate><LibraryPage /></TossAccountGate>} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </Suspense>

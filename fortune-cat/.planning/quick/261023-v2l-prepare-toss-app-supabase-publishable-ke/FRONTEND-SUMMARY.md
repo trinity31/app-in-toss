@@ -1,0 +1,13 @@
+# Frontend security slice
+
+Implemented personal Toss identity in memory. `/toss-login` uses existing top-level userKey/accessToken/expiresIn. Login is explicit via a gate around NewYearPage and LibraryPage. Native login and exchange are single flight, limited to 15 seconds each; cached token lifetime is bounded to one hour with a 60-second buffer. Expiry returns the gate to an explicit login action. Requests and analytics never launch login implicitly.
+
+`deepReadingAuth.js` validates the account ID and destination path/origin, overwrites the historical `user_anonymous_id` request field with canonical `toss:<userKey>` in JSON/FormData/query, and strips X-API-Key. Start, history, conversation, deletion, quota, free reveal, credit reveal and chat use it. Unavailable history/quota/conversation produce visible errors. No anonymous histories/balances are automatically claimed.
+
+New deep-reading and tarot purchases fail before SDK import/access or checkout. Pending receipt records remain untouched, including when pending lookup is unavailable or empty. Existing personal-account credits and free grants remain usable. Legacy saju and amulet routes display an unavailable notice; their lazy modules are excluded from the reachable route graph. Payment availability message is visible in deep-reading and tarot pages. No browser common API key references remain.
+
+Removed raw request/result/error and consultation input from changed active deep-reading logging/Sentry paths. Server analytics skips unauthenticated sessions, uses the verified identity, and sends a small allowlist of event attributes. Name is no longer submitted for analytics classification.
+
+Verification: TDD missing-helper transport tests and pre-SDK payment blocking test failed first, then passed. `node --test scripts/*.test.mjs`: 77 passed. Old positive checkout tests were intentionally replaced by four fail-closed cases, since that contract is now prohibited; baseline was 88 tests before additions/replacement. Touched active files ESLint clean. `git diff --check` clean. Legacy Loading.jsx retains two pre-existing hooks warnings when linted separately. No SDK/provider/production calls or builds run. User WIP src/lib/tarotRuntime.js and scripts/tarotRuntime.test.mjs were never edited.
+
+Remaining release gates: root review, Node 24 build/artifact inspection and browser mocked flows; actual platform buyer/order proof remains unavailable. Paid reopening is blocked. Native device validation and backend deployment/configuration must be coordinated. Old anonymous balances and history need a separate authenticated ownership/reconciliation process; never reassign using claimed anonymous IDs alone.

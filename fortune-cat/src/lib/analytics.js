@@ -5,6 +5,7 @@
 //   trackClick('home_tab_view', { tab: 'new_year', trigger: 'tap' }, '2026 신년운세')
 //   trackClick('share_click')  // button_name = 'share_click' 로 자동 fallback
 
+import { authenticatedReadingFetch, getTossSession } from './tossSession'
 import { Analytics, getOperationalEnvironment } from '@apps-in-toss/web-framework'
 import { logEvent, getAnalyticsUserType, setAnalyticsUserType, analyticsEnabled } from './firebase'
 
@@ -31,16 +32,14 @@ export function isSandbox() {
   }
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-const API_KEY = import.meta.env.VITE_SAJU_AI_API_KEY
 
-export async function classifyAnalyticsUser(name) {
-  if (!analyticsEnabled || getAnalyticsUserType() === 'internal') return
+export async function classifyAnalyticsUser() {
+  if (!analyticsEnabled || getAnalyticsUserType() === 'internal' || !getTossSession()) return
   try {
-    const response = await fetch(`${API_BASE_URL}/analytics/context`, {
+    const response = await authenticatedReadingFetch(`/analytics/context`, {
       method: 'POST',
-      headers: { 'X-API-Key': API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name || '' }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
       signal: AbortSignal.timeout(2000),
     })
     setAnalyticsUserType(response.ok ? (await response.json()).user_type : 'unknown')
@@ -55,13 +54,14 @@ export async function classifyAnalyticsUser(name) {
  * @param {string} [sessionId]
  */
 export function trackServerEvent(eventName, eventParams = {}, anonymousKey, sessionId) {
+  if (!getTossSession()) return
   try {
-    fetch(`${API_BASE_URL}/track`, {
+    authenticatedReadingFetch(`/track`, {
       method: 'POST',
-      headers: { 'X-API-Key': API_KEY, 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         event_name: eventName,
-        event_params: { ...eventParams, app_platform: 'toss', user_type: getAnalyticsUserType() },
+        event_params: { ...safeEventParams(eventParams), app_platform: 'toss', user_type: getAnalyticsUserType() },
         user_anonymous_id: anonymousKey,
         session_id: sessionId,
       }),
@@ -70,4 +70,9 @@ export function trackServerEvent(eventName, eventParams = {}, anonymousKey, sess
   } catch {
     /* ignore */
   }
+}
+
+function safeEventParams(params) {
+  const allowed = new Set(['reading_type', 'trigger', 'product', 'reason', 'stage', 'error_code', 'elapsed_ms', 'attempt_id', 'occurred_at', 'app_platform', 'user_type', 'session_id', 'input_type', 'message_length'])
+  return Object.fromEntries(Object.entries(params).filter(([key, value]) => allowed.has(key) && (typeof value === 'number' || typeof value === 'boolean' || (typeof value === 'string' && /^[a-zA-Z0-9_:.-]{1,100}$/.test(value)))))
 }
