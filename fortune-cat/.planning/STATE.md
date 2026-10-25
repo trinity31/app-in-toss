@@ -79,6 +79,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 261025-w0f | 첫 이용자에게 서비스 소개 후 시작하기로 토스 로그인, 기존 자동 로그인 유지 | 2026-10-25 | fe1388f | [261025-w0f](./quick/261025-w0f-show-a-service-introduction-before-first/) |
+
 | 261025-tcr | 각 고객의 로그인·일회용 익명 인증을 검증해 과거 풀이·잔여 횟수 자동 연결. SQL → 서버 → 새 AIT 적용 필요 | 2026-10-25 | 로컬 후속 커밋 | [261025-tcr](./quick/261025-tcr-automatically-reconnect-every-toss-custo/) |
 
 | 261025-o3p | 계정 확인 중 안내를 중앙 정렬하고18px 문구·로딩 인디케이터 추가 | 2026-10-25 | 로컬 후속 커밋 | [261025-o3p](./quick/261025-o3p-center-the-toss-account-verification-loa/) |
@@ -147,4 +149,4 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 - 2026-10-25: Quick task 261025-ntw — 토스 연동 계정 자동 인증 복구 및 로그인 화면 문구 정리. 오프라인 테스트130개·StrictMode Chromium/WebKit 화면 조합22개 통과. 실기기 자동복구는 새 파일 업로드 후 확인 필요.
 
-Last activity: 2026-10-25 - Completed quick task 261025-tcr: verified per-customer legacy account linking; production rollout pending.
+Last activity: 2026-10-25 - Completed quick task 261025-w0f: service introduction before first-time login; new review submission pending.

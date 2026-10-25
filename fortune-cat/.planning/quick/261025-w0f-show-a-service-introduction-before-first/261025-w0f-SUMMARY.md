@@ -55,4 +55,24 @@ Includes Chromium/WebKit 320/390 introduction with/without nav, short200%text, a
 
 Build log: `/tmp/catbot-intro-build.log`.
 
-Root review remains: inspect scoped diff/screenshots, make a normal scoped local commit if appropriate, then copy reviewed AIT to canonical ignored artifact. Executor did not commit, push, deploy, change account settings, or replace the canonical AIT. User will upload the replacement and submit a new review; approval is not guaranteed.
+Executor handoff completed without a commit, push, deployment or account-setting change. Root subsequently completed review and replaced the local AIT as recorded below. The user will upload the replacement and submit a new review; approval is not guaranteed.
+
+## Root review complete
+
+Local implementation commit: `fe1388f`. All tracked runtime source, public assets and
+build/dependency configuration in the release snapshot match committed files. The route
+smoke script gained two more assertions after build, which do not affect the artifact.
+Root visually checked the390px introduction and WebKit centered spinner. No blocking
+correctness, auth, accessibility or ownership finding. Replacing the service headline
+with a login-only headline in the temporary fixture fails the rendered regression suite;
+restoring the source passes all48 checks. Canonical source was never mutated.
+Root scanned32 changed-source/log/container entries and decompressed AIT members against
+45 available private environment values plus private-key patterns:0 matches. No values
+printed. Canonical ignored AIT replaced only after successful review and hash verification.
+User preview: ~/Downloads/catbot-service-intro-preview.png.
+
+Existing user authentication, legacy mapping and restored-library flows remain unchanged.
+The previous library fix is deployed and user-confirmed. This frontend-only review fix
+has not been uploaded, pushed or deployed; the user must upload the new AIT and resubmit.
+Do not disconnect an existing Toss account merely to expose intro: returning integration
+intentionally skips it, and first-use behavior is verified with offline mocked identities.
