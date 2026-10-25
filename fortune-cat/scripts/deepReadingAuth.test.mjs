@@ -59,3 +59,23 @@ test('clearing the account notifies the login gate', async () => {
   assert.equal(auth.getSession(), null)
   unsubscribe()
 })
+
+test('HTTP 401 suppresses automatic restoration but an explicit login can recover', async () => {
+  let logins = 0
+  const auth = createTossAccountHeaders({ baseUrl: 'https://example.test',
+    checkIntegrated: async () => true,
+    appLogin: async () => { logins++; return { authorizationCode: 'code', referrer: 'DEFAULT' } },
+    fetcher: async () => response({ accessToken: 'personal', expiresIn: 120, userKey: 123 }),
+  })
+  await auth.restore()
+  const request = createDeepReadingRequest({ baseUrl: 'https://example.test',
+    session: auth.getSession, onUnauthorized: auth.clear,
+    fetcher: async () => ({ status: 401, ok: false }),
+  })
+  assert.equal((await request('/quota')).status, 401)
+  assert.equal(await auth.restore(), null)
+  assert.equal(logins, 1)
+  await auth()
+  assert.ok(auth.getSession())
+  assert.equal(logins, 2)
+})

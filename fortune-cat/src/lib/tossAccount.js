@@ -1,9 +1,12 @@
 import { EntryError } from './entryErrors.js'
 
 // Cache only a validated exchange; failed attempts remain explicitly retryable.
-export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, now = Date.now, development = false }) {
+export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, now = Date.now, development = false, checkIntegrated, integrationTimeoutMs = 3000 }) {
   let login = null
   let pending = null
+  let restoring = null
+  let generation = 0
+  let automaticAttempted = false
   const listeners = new Set()
   const loginError = (reason, error) => {
     const failure = new EntryError('login')
@@ -23,13 +26,14 @@ export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, n
       return await Promise.race([work(), new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('login_timeout')), 15000) })])
     } finally { clearTimeout(timer) }
   }
-  const exchange = async () => {
+  const exchange = async (startedAt) => {
     if (!login || login.expiresAt <= now()) {
       if (!baseUrl) throw new EntryError('configuration')
       let result
       try { result = await bounded(appLogin) } catch (error) { throw loginError('SDK_REJECTED', error) }
       if (typeof result?.authorizationCode !== 'string' || !result.authorizationCode
         || typeof result.referrer !== 'string' || !result.referrer) throw loginError('SDK_INVALID_RESULT')
+      if (startedAt !== generation) throw new EntryError('login')
       let response
       try {
         response = await bounded(() => fetcher(`${baseUrl.replace(/\/$/, '')}/toss-login`, {
@@ -40,22 +44,58 @@ export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, n
       } catch { throw new EntryError('exchangeNetwork') }
       if (!response.ok) throw new EntryError(response.status >= 500 ? 'exchangeServer' : 'exchangeRejected')
       let data
-      try { data = await response.json() } catch { throw new EntryError('exchangeInvalid') }
+      try { data = await bounded(() => response.json()) } catch { throw new EntryError('exchangeInvalid') }
       if (typeof data?.accessToken !== 'string' || !data.accessToken
         || !Number.isFinite(data.expiresIn) || data.expiresIn <= 0) throw new EntryError('exchangeInvalid')
       const key = data.userKey
       const userId = (typeof key === 'string' || Number.isSafeInteger(key)) && /^(?:0|[1-9][0-9]{0,39})$/.test(String(key)) ? `toss:${key}` : null
-      login = { token: data.accessToken, userId, expiresAt: now() + Math.max(0, Math.min(data.expiresIn, 3600) - 60) * 1000 }
+      if (!userId || data.expiresIn <= 60) throw new EntryError('exchangeInvalid')
+      // Clearing a session also invalidates every earlier SDK/exchange result.
+      if (startedAt !== generation) throw new EntryError('login')
+      login = { token: data.accessToken, userId, expiresAt: now() + (Math.min(data.expiresIn, 3600) - 60) * 1000 }
+      automaticAttempted = false
+      listeners.forEach(listener => listener())
     }
     return { 'X-Toss-Access-Token': login.token }
   }
-  const headers = async () => {
-    if (!pending) pending = exchange().finally(() => { pending = null })
+  const headers = () => {
+    if (!pending) {
+      const request = exchange(generation)
+      pending = request
+      request.finally(() => { if (pending === request) pending = null }).catch(() => {})
+    }
     return pending
   }
   headers.getSession = () => login && login.userId && login.expiresAt > now() ? { ...login } : null
   headers.subscribe = listener => { listeners.add(listener); return () => listeners.delete(listener) }
-  headers.clear = () => { login = null; listeners.forEach(listener => listener()) }
+  headers.clear = () => {
+    generation++
+    login = null
+    pending = null
+    restoring = null
+    // HTTP 401 must return to an explicit retry, never an automatic loop.
+    automaticAttempted = true
+    listeners.forEach(listener => listener())
+  }
+  headers.restore = () => {
+    const session = headers.getSession()
+    if (session) return Promise.resolve(session)
+    if (restoring) return restoring
+    if (automaticAttempted) return Promise.resolve(null)
+    automaticAttempted = true
+    const startedAt = generation
+    const request = (async () => {
+      try {
+        // Native integration only allows a fresh server-verified login attempt.
+        if (!await isTossLoggedIn(checkIntegrated, integrationTimeoutMs) || startedAt !== generation) return null
+        await headers()
+        return startedAt === generation ? headers.getSession() : null
+      } catch { return null }
+    })()
+    restoring = request
+    request.finally(() => { if (restoring === request) restoring = null }).catch(() => {})
+    return request
+  }
   return headers
 }
 

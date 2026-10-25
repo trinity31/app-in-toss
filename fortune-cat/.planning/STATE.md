@@ -79,6 +79,7 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 261025-ntw | 토스 연동 계정 자동 인증 복구, 로그인 제목 간소화·이전 풀이 안내 제거. 토큰 장기 저장 없음 | 2026-10-25 | 로컬 후속 커밋 | [261025-ntw](./quick/261025-ntw-persist-verified-toss-login-safely-acros/) |
 | 261025-na0 | 로그인 안내 화면 스타일·접근성·보관함 하단 메뉴 간격 수정. 인증 동작 유지 | 2026-10-25 | 로컬 보안 후속 커밋 | [261025-na0](./quick/261025-na0-style-the-toss-account-login-gate-using-/) |
 | 261025-k7j | 결제 상태·SKU 검증과 orderId 전역 1회 지급, 결제·영수증 복구 복원. 구매자 일치 검증은 사용자 선택으로 생략 | 2026-10-25 | 미커밋 | [261025-k7j](./quick/261025-k7j-enable-verified-completed-toss-purchases/) |
 | 261023-v2l | 개인 토스 로그인·계정별 상담 인증, 신규 결제 차단, 새 공개 키 AIT 빌드. 결제 재개 미완료 | 2026-10-23 | 미커밋 | [261023-v2l](./quick/261023-v2l-prepare-toss-app-supabase-publishable-ke/) |
@@ -140,3 +141,5 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 *State initialized: 2026-04-29*
 
 - 2026-10-25: Quick task 261025-na0 — 로그인 화면 스타일 수정. 오프라인 테스트 105개, Chromium/WebKit 화면 조합 20개 통과. 사용자 실기기에서 로그인 후 정보 입력 화면 진입 확인.
+
+- 2026-10-25: Quick task 261025-ntw — 토스 연동 계정 자동 인증 복구 및 로그인 화면 문구 정리. 오프라인 테스트130개·StrictMode Chromium/WebKit 화면 조합22개 통과. 실기기 자동복구는 새 파일 업로드 후 확인 필요.
