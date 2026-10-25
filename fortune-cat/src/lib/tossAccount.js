@@ -1,7 +1,7 @@
 import { EntryError } from './entryErrors.js'
 
 // Cache only a validated exchange; failed attempts remain explicitly retryable.
-export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, now = Date.now, development = false, checkIntegrated, integrationTimeoutMs = 3000 }) {
+export function createTossAccountHeaders({ baseUrl, appLogin, createAnonymousKeyAuthCode, fetcher = fetch, now = Date.now, development = false, checkIntegrated, integrationTimeoutMs = 3000 }) {
   let login = null
   let pending = null
   let restoring = null
@@ -34,18 +34,24 @@ export function createTossAccountHeaders({ baseUrl, appLogin, fetcher = fetch, n
       if (typeof result?.authorizationCode !== 'string' || !result.authorizationCode
         || typeof result.referrer !== 'string' || !result.referrer) throw loginError('SDK_INVALID_RESULT')
       if (startedAt !== generation) throw new EntryError('login')
+      // Obtain fresh, single-use native proof after consent so it cannot expire in the login UI.
+      let proof
+      try { proof = await bounded(() => createAnonymousKeyAuthCode()) } catch (error) { throw loginError('PROOF_REJECTED', error) }
+      if (typeof proof?.code !== 'string' || !proof.code.trim() || proof.code.length > 2048
+        || !Number.isFinite(proof.expiresIn) || proof.expiresIn <= 0) throw loginError('PROOF_INVALID_RESULT')
+      if (startedAt !== generation) throw new EntryError('login')
       let response
       try {
         response = await bounded(() => fetcher(`${baseUrl.replace(/\/$/, '')}/toss-login`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ authorizationCode: result.authorizationCode, referrer: result.referrer }),
+          body: JSON.stringify({ authorizationCode: result.authorizationCode, referrer: result.referrer, anonymousAuthCode: proof.code }),
           signal: AbortSignal.timeout(15000),
         }))
       } catch { throw new EntryError('exchangeNetwork') }
       if (!response.ok) throw new EntryError(response.status >= 500 ? 'exchangeServer' : 'exchangeRejected')
       let data
       try { data = await bounded(() => response.json()) } catch { throw new EntryError('exchangeInvalid') }
-      if (typeof data?.accessToken !== 'string' || !data.accessToken
+      if (data?.legacyLinked !== true || typeof data?.accessToken !== 'string' || !data.accessToken
         || !Number.isFinite(data.expiresIn) || data.expiresIn <= 0) throw new EntryError('exchangeInvalid')
       const key = data.userKey
       const userId = (typeof key === 'string' || Number.isSafeInteger(key)) && /^(?:0|[1-9][0-9]{0,39})$/.test(String(key)) ? `toss:${key}` : null

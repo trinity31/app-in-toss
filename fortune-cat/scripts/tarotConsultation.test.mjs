@@ -384,12 +384,12 @@ test('SDK-to-exchange entry failures retry with the original credentials and car
   let stage = 'sdk'
   let exchanges = 0
   let requests = 0
-  const accountHeaders = createTossAccountHeaders({ baseUrl: 'https://example.test',
+  const accountHeaders = createTossAccountHeaders({ createAnonymousKeyAuthCode: async () => ({ code: 'test-native-code', expiresIn: 300 }), baseUrl: 'https://example.test',
     appLogin: async () => {
       if (stage === 'sdk') throw { code: 'unknown', message: 'private SDK payload' }
       return { authorizationCode: 'test-code', referrer: 'SANDBOX' }
     },
-    fetcher: async () => { exchanges++; return stage === 'exchange' ? reply({ error: 'private payload' }, 401) : reply({ accessToken: 'test-token', expiresIn: 120, userKey: 123 }) },
+    fetcher: async () => { exchanges++; return stage === 'exchange' ? reply({ error: 'private payload' }, 401) : reply({ legacyLinked: true, accessToken: 'test-token', expiresIn: 120, userKey: 123 }) },
   })
   const client = createTarotConsultation({ baseUrl: 'https://example.test', accountHeaders,
     storage: { getItem: async () => JSON.stringify(saved) },

@@ -5,7 +5,7 @@ import { createTossAccountHeaders } from '../src/lib/tossAccount.js'
 const response = data => ({ ok: true, json: async () => data })
 test('personal login is single flight and exposes only canonical account identity', async () => {
   let calls = 0
-  const auth = createTossAccountHeaders({ baseUrl: 'https://example.test', appLogin: async () => { calls++; return { authorizationCode: 'code', referrer: 'DEFAULT' } }, fetcher: async () => response({ accessToken: 'personal', expiresIn: 120, userKey: 123 }) })
+  const auth = createTossAccountHeaders({ createAnonymousKeyAuthCode: async () => ({ code: 'test-native-code', expiresIn: 300 }), baseUrl: 'https://example.test', appLogin: async () => { calls++; return { authorizationCode: 'code', referrer: 'DEFAULT' } }, fetcher: async () => response({ legacyLinked: true, accessToken: 'personal', expiresIn: 120, userKey: 123 }) })
   await Promise.all([auth(), auth()])
   assert.equal(calls, 1)
   assert.equal(auth.getSession().userId, 'toss:123')
@@ -50,7 +50,7 @@ test('a revoked token clears the session without retrying or starting login', as
 })
 
 test('clearing the account notifies the login gate', async () => {
-  const auth = createTossAccountHeaders({ baseUrl: 'https://example.test', appLogin: async () => ({ authorizationCode: 'code', referrer: 'DEFAULT' }), fetcher: async () => response({ accessToken: 'personal', expiresIn: 120, userKey: 123 }) })
+  const auth = createTossAccountHeaders({ createAnonymousKeyAuthCode: async () => ({ code: 'test-native-code', expiresIn: 300 }), baseUrl: 'https://example.test', appLogin: async () => ({ authorizationCode: 'code', referrer: 'DEFAULT' }), fetcher: async () => response({ legacyLinked: true, accessToken: 'personal', expiresIn: 120, userKey: 123 }) })
   await auth()
   let notified = false
   const unsubscribe = auth.subscribe(() => { notified = true })
@@ -62,10 +62,10 @@ test('clearing the account notifies the login gate', async () => {
 
 test('HTTP 401 suppresses automatic restoration but an explicit login can recover', async () => {
   let logins = 0
-  const auth = createTossAccountHeaders({ baseUrl: 'https://example.test',
+  const auth = createTossAccountHeaders({ createAnonymousKeyAuthCode: async () => ({ code: 'test-native-code', expiresIn: 300 }), baseUrl: 'https://example.test',
     checkIntegrated: async () => true,
     appLogin: async () => { logins++; return { authorizationCode: 'code', referrer: 'DEFAULT' } },
-    fetcher: async () => response({ accessToken: 'personal', expiresIn: 120, userKey: 123 }),
+    fetcher: async () => response({ legacyLinked: true, accessToken: 'personal', expiresIn: 120, userKey: 123 }),
   })
   await auth.restore()
   const request = createDeepReadingRequest({ baseUrl: 'https://example.test',
@@ -79,3 +79,36 @@ test('HTTP 401 suppresses automatic restoration but an explicit login can recove
   assert.ok(auth.getSession())
   assert.equal(logins, 2)
 })
+
+for (const linked of [true, false, undefined]) {
+  test(`history and quotas remain gated until verified legacy-link acknowledgment (${linked})`, async () => {
+    let reads = 0
+    const auth = createTossAccountHeaders({ baseUrl: 'https://example.test',
+      appLogin: async () => ({ authorizationCode: 'test-oauth', referrer: 'DEFAULT' }),
+      createAnonymousKeyAuthCode: async () => ({ code: 'test-native-proof', expiresIn: 300 }),
+      checkIntegrated: async () => true,
+      fetcher: async (_url, options) => {
+        assert.deepEqual(JSON.parse(options.body), { authorizationCode: 'test-oauth', referrer: 'DEFAULT', anonymousAuthCode: 'test-native-proof' })
+        return response({ accessToken: 'test-token', userKey: 123, expiresIn: 120, legacyLinked: linked })
+      },
+    })
+    const request = createDeepReadingRequest({ baseUrl: 'https://example.test', session: auth.getSession,
+      fetcher: async (url, options) => {
+        reads++
+        assert.equal(new URL(url).searchParams.get('user_anonymous_id'), 'toss:123')
+        assert.equal(options.headers.get('X-Toss-Access-Token'), 'test-token')
+        return response(url.includes('/history') ? { readings: ['legacy-reading', 'canonical-reading'] } : { reading_remaining: 2, followup_remaining: 3 })
+      },
+    })
+    await auth.restore()
+    if (linked === true) {
+      assert.deepEqual(await (await request('/deep-reading/history?user_anonymous_id=forged')).json(), { readings: ['legacy-reading', 'canonical-reading'] })
+      assert.equal((await (await request('/quota?user_anonymous_id=forged')).json()).reading_remaining, 2)
+      assert.equal(reads, 2)
+    } else {
+      await assert.rejects(request('/deep-reading/history'), /로그인/)
+      await assert.rejects(request('/quota'), /로그인/)
+      assert.equal(reads, 0)
+    }
+  })
+}

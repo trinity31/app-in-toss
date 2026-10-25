@@ -79,6 +79,8 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 261025-tcr | 각 고객의 로그인·일회용 익명 인증을 검증해 과거 풀이·잔여 횟수 자동 연결. SQL → 서버 → 새 AIT 적용 필요 | 2026-10-25 | 로컬 후속 커밋 | [261025-tcr](./quick/261025-tcr-automatically-reconnect-every-toss-custo/) |
+
 | 261025-o3p | 계정 확인 중 안내를 중앙 정렬하고18px 문구·로딩 인디케이터 추가 | 2026-10-25 | 로컬 후속 커밋 | [261025-o3p](./quick/261025-o3p-center-the-toss-account-verification-loa/) |
 | 261025-ntw | 토스 연동 계정 자동 인증 복구, 로그인 제목 간소화·이전 풀이 안내 제거. 토큰 장기 저장 없음 | 2026-10-25 | 로컬 후속 커밋 | [261025-ntw](./quick/261025-ntw-persist-verified-toss-login-safely-acros/) |
 | 261025-na0 | 로그인 안내 화면 스타일·접근성·보관함 하단 메뉴 간격 수정. 인증 동작 유지 | 2026-10-25 | 로컬 보안 후속 커밋 | [261025-na0](./quick/261025-na0-style-the-toss-account-login-gate-using-/) |
@@ -144,3 +146,5 @@ Phase 5: 공유 + Analytics 마무리                     [x] 2026-05-04
 - 2026-10-25: Quick task 261025-na0 — 로그인 화면 스타일 수정. 오프라인 테스트 105개, Chromium/WebKit 화면 조합 20개 통과. 사용자 실기기에서 로그인 후 정보 입력 화면 진입 확인.
 
 - 2026-10-25: Quick task 261025-ntw — 토스 연동 계정 자동 인증 복구 및 로그인 화면 문구 정리. 오프라인 테스트130개·StrictMode Chromium/WebKit 화면 조합22개 통과. 실기기 자동복구는 새 파일 업로드 후 확인 필요.
+
+Last activity: 2026-10-25 - Completed quick task 261025-tcr: verified per-customer legacy account linking; production rollout pending.

@@ -3,6 +3,10 @@ import { createDeepReadingRequest } from './deepReadingAuth.js'
 const account = createTossAccountHeaders({
   baseUrl: import.meta.env?.VITE_API_BASE_URL,
   appLogin: async () => (await import('@apps-in-toss/web-framework')).appLogin(),
+  createAnonymousKeyAuthCode: async () => {
+    const sdk = await import('@apps-in-toss/web-framework')
+    return sdk.User.createAnonymousKeyAuthCode()
+  },
   checkIntegrated: async () => {
     const sdk = await import('@apps-in-toss/web-framework')
     if (typeof sdk.TossAuth?.isIntegrated === 'function') return sdk.TossAuth.isIntegrated()
