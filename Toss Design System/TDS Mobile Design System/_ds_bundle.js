@@ -1,0 +1,5862 @@
+/* @ds-bundle: {"format":4,"namespace":"TDSMobileDesignSystem_7852d9","components":[{"name":"Icon","sourcePath":"assets/icons/Icon.jsx"},{"name":"BankPicker","sourcePath":"components/content/BankPicker.jsx"},{"name":"Bar","sourcePath":"components/content/Bar.jsx"},{"name":"BarChart","sourcePath":"components/content/BarChart.jsx"},{"name":"BoardRow","sourcePath":"components/content/BoardRow.jsx"},{"name":"BottomInfo","sourcePath":"components/content/BottomInfo.jsx"},{"name":"GridList","sourcePath":"components/content/GridList.jsx"},{"name":"GridListItem","sourcePath":"components/content/GridListItem.jsx"},{"name":"LeftAccessory","sourcePath":"components/content/LeftAccessory.jsx"},{"name":"ListRow","sourcePath":"components/content/ListRow.jsx"},{"name":"ListRowText","sourcePath":"components/content/ListRowText.jsx"},{"name":"Post","sourcePath":"components/content/Post.jsx"},{"name":"ProgressStepper","sourcePath":"components/content/ProgressStepper.jsx"},{"name":"Rating","sourcePath":"components/content/Rating.jsx"},{"name":"RightAccessory","sourcePath":"components/content/RightAccessory.jsx"},{"name":"StarIcon","sourcePath":"components/content/StarIcon.jsx"},{"name":"StepIcon","sourcePath":"components/content/StepIcon.jsx"},{"name":"Stepper","sourcePath":"components/content/Stepper.jsx"},{"name":"StepperRow","sourcePath":"components/content/StepperRow.jsx"},{"name":"TableRow","sourcePath":"components/content/TableRow.jsx"},{"name":"Top","sourcePath":"components/content/Top.jsx"},{"name":"Asset","sourcePath":"components/core/Asset.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Border","sourcePath":"components/core/Border.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Chip","sourcePath":"components/core/Chip.jsx"},{"name":"ChipAccessory","sourcePath":"components/core/ChipAccessory.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"TextButton","sourcePath":"components/core/TextButton.jsx"},{"name":"Title","sourcePath":"components/core/Title.jsx"},{"name":"BottomSheet","sourcePath":"components/feedback/BottomSheet.jsx"},{"name":"Bubble","sourcePath":"components/feedback/Bubble.jsx"},{"name":"ButtonArea","sourcePath":"components/feedback/ButtonArea.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Menu","sourcePath":"components/feedback/Menu.jsx"},{"name":"MenuItem","sourcePath":"components/feedback/MenuItem.jsx"},{"name":"ProgressBar","sourcePath":"components/feedback/ProgressBar.jsx"},{"name":"Result","sourcePath":"components/feedback/Result.jsx"},{"name":"SelectionRow","sourcePath":"components/feedback/SelectionRow.jsx"},{"name":"SheetBody","sourcePath":"components/feedback/SheetBody.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"ClearButton","sourcePath":"components/forms/ClearButton.jsx"},{"name":"FieldPrefix","sourcePath":"components/forms/FieldPrefix.jsx"},{"name":"Keyboard","sourcePath":"components/forms/Keyboard.jsx"},{"name":"Keypad","sourcePath":"components/forms/Keypad.jsx"},{"name":"KeypadButton","sourcePath":"components/forms/KeypadButton.jsx"},{"name":"NumberField","sourcePath":"components/forms/NumberField.jsx"},{"name":"NumericSpinner","sourcePath":"components/forms/NumericSpinner.jsx"},{"name":"PasswordField","sourcePath":"components/forms/PasswordField.jsx"},{"name":"SearchField","sourcePath":"components/forms/SearchField.jsx"},{"name":"SelectorField","sourcePath":"components/forms/SelectorField.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"SliderKnob","sourcePath":"components/forms/SliderKnob.jsx"},{"name":"SliderTooltip","sourcePath":"components/forms/SliderTooltip.jsx"},{"name":"StepButton","sourcePath":"components/forms/StepButton.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"TextArea","sourcePath":"components/forms/TextArea.jsx"},{"name":"TextField","sourcePath":"components/forms/TextField.jsx"},{"name":"BottomCTA","sourcePath":"components/navigation/BottomCTA.jsx"},{"name":"HeaderAccessory","sourcePath":"components/navigation/HeaderAccessory.jsx"},{"name":"HomeIndicator","sourcePath":"components/navigation/HomeIndicator.jsx"},{"name":"ListFooter","sourcePath":"components/navigation/ListFooter.jsx"},{"name":"ListHeader","sourcePath":"components/navigation/ListHeader.jsx"},{"name":"Navigation","sourcePath":"components/navigation/Navigation.jsx"},{"name":"NavigationAndroid","sourcePath":"components/navigation/NavigationAndroid.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SegmentedItem","sourcePath":"components/navigation/SegmentedItem.jsx"},{"name":"StatusBar","sourcePath":"components/navigation/StatusBar.jsx"},{"name":"Tab","sourcePath":"components/navigation/Tab.jsx"},{"name":"TabBar","sourcePath":"components/navigation/TabBar.jsx"},{"name":"TabBarItem","sourcePath":"components/navigation/TabBarItem.jsx"},{"name":"TabItem","sourcePath":"components/navigation/TabItem.jsx"},{"name":"GLYPHS","sourcePath":"components/navigation/statusbar-glyphs.js"}],"sourceHashes":{"assets/icons/Icon.jsx":"b81dfc2559d3","assets/icons/icon-data.js":"ae04a3ae18ff","components/content/BankPicker.jsx":"fec1f1ba514c","components/content/Bar.jsx":"cd7ce2d9811f","components/content/BarChart.jsx":"77cec214beb6","components/content/BoardRow.jsx":"3173250c2f3b","components/content/BottomInfo.jsx":"99d389d62f46","components/content/GridList.jsx":"674dd55e27b3","components/content/GridListItem.jsx":"e6ee10eb1cce","components/content/LeftAccessory.jsx":"c5bba0a9e448","components/content/ListRow.jsx":"e510801946b2","components/content/ListRowText.jsx":"35887a1d9666","components/content/Post.jsx":"940af092b585","components/content/ProgressStepper.jsx":"3c2a299d9bcc","components/content/Rating.jsx":"232f86851b0d","components/content/RightAccessory.jsx":"5775f54b75c7","components/content/StarIcon.jsx":"aca5d05a0591","components/content/StepIcon.jsx":"112ce2b5a32f","components/content/Stepper.jsx":"a1cc006e4d46","components/content/StepperRow.jsx":"9aa35e05a19d","components/content/TableRow.jsx":"744a154d6f64","components/content/Top.jsx":"79341207cb47","components/core/Asset.jsx":"989383c82e8b","components/core/Badge.jsx":"21baa462112f","components/core/Border.jsx":"23186ef65b12","components/core/Button.jsx":"6085e0462895","components/core/Chip.jsx":"12adf33dceb7","components/core/ChipAccessory.jsx":"eedd10ba9d51","components/core/IconButton.jsx":"c6d539127b8c","components/core/TextButton.jsx":"4a20c919d556","components/core/Title.jsx":"6a2c9827f8a2","components/feedback/BottomSheet.jsx":"e0452a3d4356","components/feedback/Bubble.jsx":"d868b3e29e69","components/feedback/ButtonArea.jsx":"e9c8a6327b23","components/feedback/Dialog.jsx":"cd7687fcbef5","components/feedback/Loader.jsx":"f048284149a3","components/feedback/Menu.jsx":"01332376180b","components/feedback/MenuItem.jsx":"b7bda56c392d","components/feedback/ProgressBar.jsx":"3ee4e363477a","components/feedback/Result.jsx":"228b4ff52963","components/feedback/SelectionRow.jsx":"da067f29d0ff","components/feedback/SheetBody.jsx":"d6596f3c32cb","components/feedback/Toast.jsx":"2cc6d3b42bb4","components/feedback/Tooltip.jsx":"8330f2a2fc44","components/forms/Checkbox.jsx":"4dd447cf3473","components/forms/ClearButton.jsx":"0b537e429191","components/forms/FieldPrefix.jsx":"3843cce847b0","components/forms/Keyboard.jsx":"3fb053035f92","components/forms/Keypad.jsx":"f2e5ed9dd4b7","components/forms/KeypadButton.jsx":"869903aebce7","components/forms/NumberField.jsx":"b3b3a82e8f41","components/forms/NumericSpinner.jsx":"5812681dc7ae","components/forms/PasswordField.jsx":"6b8aaf8ec4ba","components/forms/SearchField.jsx":"eb9c76195a05","components/forms/SelectorField.jsx":"4a80b0300bf7","components/forms/Slider.jsx":"d23d72931e6e","components/forms/SliderKnob.jsx":"45b1b595a9fb","components/forms/SliderTooltip.jsx":"00a03b1a0053","components/forms/StepButton.jsx":"fbf76bdab148","components/forms/Switch.jsx":"6719c5b0db9a","components/forms/TextArea.jsx":"13027992d5ed","components/forms/TextField.jsx":"01b0f3b2567c","components/navigation/BottomCTA.jsx":"b9b14d0574e2","components/navigation/HeaderAccessory.jsx":"98f7be3ca5d3","components/navigation/HomeIndicator.jsx":"9470604bfef1","components/navigation/ListFooter.jsx":"5dc7ea0e3b2c","components/navigation/ListHeader.jsx":"a402add25b1d","components/navigation/Navigation.jsx":"7562551d2371","components/navigation/NavigationAndroid.jsx":"b4dda1c36268","components/navigation/SegmentedControl.jsx":"6da47e4a88e9","components/navigation/SegmentedItem.jsx":"9ef7afd1e567","components/navigation/StatusBar.jsx":"eb9376125499","components/navigation/Tab.jsx":"6b423e13b7da","components/navigation/TabBar.jsx":"b81e7e9ae736","components/navigation/TabBarItem.jsx":"d5d13a2c4009","components/navigation/TabItem.jsx":"79e3eac3cc3d","components/navigation/statusbar-glyphs.js":"8c4f3bc3d92d","ui_kits/apps_in_toss/DetailScreen.jsx":"70bf5b6250da","ui_kits/apps_in_toss/HomeScreen.jsx":"4b9d83873f0c","ui_kits/apps_in_toss/SettingsScreen.jsx":"8420701d101d","ui_kits/apps_in_toss/TransferScreen.jsx":"71ab4cc7eecc"},"inlinedExternals":[],"unexposedExports":[]} */
+
+(() => {
+
+const __ds_ns = (window.TDSMobileDesignSystem_7852d9 = window.TDSMobileDesignSystem_7852d9 || {});
+
+const __ds_scope = {};
+
+(__ds_ns.__errors = __ds_ns.__errors || []);
+
+// assets/icons/icon-data.js
+try { (() => {
+// Generated by fig_materialize (moduleFormat: 'icon-data') — 501 icon(s)
+// as { viewBox, body } SVG-markup entries. Render via the sibling Icon.jsx
+// (<Icon name="Icon123Fill123" />), or consume the path data directly.
+let __ds_default_assets_icons_icon_data_imae2q;try{__ds_default_assets_icons_icon_data_imae2q={"Icon123Fill123":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.046 0 40 8.954 40 20 C 40 31.046 31.046 40 20 40 Z\" fill=\"rgb(34,114,235)\" fill-rule=\"evenodd\"/><path d=\"M 17 19 L 2 19 C 1.47 19 0.961 18.789 0.586 18.414 C 0.211 18.039 0 17.53 0 17 L 0 2 C 0 1.47 0.211 0.961 0.586 0.586 C 0.961 0.211 1.47 0 2 0 L 17 0 C 17.53 0 18.039 0.211 18.414 0.586 C 18.789 0.961 19 1.47 19 2 L 19 17 C 19 17.53 18.789 18.039 18.414 18.414 C 18.039 18.789 17.53 19 17 19 Z\" fill=\"rgb(201,226,255)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 10.500)\"/><path d=\"M 4.167 5.164 C 4.167 4.894 4.28 4.703 4.562 4.461 L 6.171 3 C 6.831 2.398 7.011 2.141 7.011 1.773 C 7.011 1.367 6.698 1.078 6.249 1.078 C 5.878 1.078 5.624 1.258 5.417 1.633 C 5.237 1.91 5.069 2.023 4.78 2.023 C 4.41 2.023 4.187 1.809 4.187 1.457 C 4.187 1.348 4.202 1.246 4.245 1.144 C 4.491 0.496 5.241 0 6.269 0 C 7.554 0 8.397 0.684 8.397 1.68 C 8.397 2.402 8.03 2.816 7.136 3.625 L 6.016 4.648 L 6.016 4.676 L 7.964 4.676 C 8.327 4.676 8.538 4.891 8.538 5.226 C 8.538 5.555 8.327 5.777 7.964 5.777 L 4.839 5.777 C 4.378 5.777 4.167 5.519 4.167 5.164 Z M 9.233 4.824 C 9.189 4.72 9.165 4.609 9.163 4.496 C 9.163 4.137 9.401 3.91 9.793 3.91 C 10.065 3.91 10.241 4.008 10.381 4.234 C 10.588 4.586 10.842 4.794 11.378 4.794 C 11.87 4.793 12.213 4.504 12.213 4.097 C 12.213 3.625 11.863 3.371 11.237 3.371 L 11.1 3.371 C 10.76 3.371 10.581 3.176 10.581 2.883 C 10.581 2.597 10.761 2.398 11.101 2.398 L 11.229 2.398 C 11.78 2.398 12.116 2.129 12.116 1.719 C 12.116 1.32 11.836 1.066 11.346 1.066 C 10.944 1.066 10.682 1.23 10.51 1.566 C 10.35 1.867 10.178 1.98 9.862 1.98 C 9.472 1.98 9.272 1.746 9.272 1.418 C 9.272 1.298 9.292 1.199 9.342 1.078 C 9.565 0.531 10.229 0 11.338 0 C 12.565 0 13.448 0.558 13.448 1.515 C 13.448 2.238 12.924 2.699 12.28 2.828 L 12.28 2.855 C 13.131 2.941 13.67 3.422 13.67 4.183 C 13.67 5.238 12.76 5.918 11.346 5.918 C 10.147 5.918 9.46 5.371 9.233 4.824 Z M 1.565 5.16 L 1.565 1.406 L 1.539 1.406 L 0.836 1.894 C 0.737 1.975 0.612 2.017 0.484 2.015 C 0.42 2.016 0.355 2.004 0.295 1.98 C 0.235 1.955 0.18 1.918 0.135 1.872 C 0.09 1.825 0.054 1.77 0.031 1.709 C 0.008 1.649 -0.002 1.584 0 1.519 C 0 1.312 0.082 1.152 0.285 1.012 L 1.351 0.285 C 1.651 0.082 1.894 0.051 2.175 0.051 C 2.691 0.051 2.992 0.359 2.992 0.851 L 2.992 5.16 C 2.992 5.59 2.707 5.867 2.281 5.867 C 1.855 5.867 1.566 5.59 1.566 5.16\" fill=\"rgb(49,130,246)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 13.165 17.041)\"/>"},"IconAbAbAbtestAb":{viewBox:"0 0 24 24",body:"<path d=\"M 17 19 L 2 19 C 1.47 19 0.961 18.789 0.586 18.414 C 0.211 18.039 0 17.53 0 17 L 0 2 C 0 1.47 0.211 0.961 0.586 0.586 C 0.961 0.211 1.47 0 2 0 L 17 0 C 17.53 0 18.039 0.211 18.414 0.586 C 18.789 0.961 19 1.47 19 2 L 19 17 C 19 17.53 18.789 18.039 18.414 18.414 C 18.039 18.789 17.53 19 17 19 Z\" fill=\"rgb(255,207,209)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.500)\"/><path d=\"M 3.814 4.024 L 3.044 1.493 L 3.008 1.493 L 2.262 4.024 L 3.814 4.024 Z M 0 5.972 C 0 5.831 0.045 5.626 0.118 5.426 L 1.738 0.974 C 1.98 0.305 2.385 0 3.036 0 C 3.723 0 4.124 0.292 4.374 0.974 L 6.007 5.426 C 6.085 5.64 6.117 5.795 6.117 5.968 C 6.117 6.436 5.767 6.769 5.279 6.769 C 4.797 6.769 4.547 6.55 4.401 6.013 L 4.178 5.285 L 1.929 5.285 L 1.707 5.986 C 1.547 6.541 1.297 6.769 0.851 6.769 C 0.323 6.769 0 6.468 0 5.972 Z M 9.573 5.485 C 10.26 5.485 10.643 5.185 10.643 4.629 C 10.643 4.092 10.251 3.792 9.563 3.792 L 8.58 3.792 L 8.58 5.485 L 9.573 5.485 Z M 9.441 2.777 C 10.046 2.777 10.41 2.49 10.41 2.017 C 10.41 1.557 10.083 1.284 9.523 1.284 L 8.58 1.284 L 8.58 2.777 L 9.44 2.777 L 9.441 2.777 Z M 6.91 5.795 L 6.91 0.974 C 6.91 0.419 7.22 0.1 7.748 0.1 L 9.964 0.1 C 11.257 0.1 12.034 0.724 12.034 1.739 C 12.034 2.476 11.48 3.063 10.752 3.164 L 10.752 3.2 C 11.639 3.241 12.341 3.901 12.341 4.775 C 12.341 5.927 11.453 6.668 10.046 6.668 L 7.748 6.668 C 7.22 6.668 6.91 6.35 6.91 5.795 Z\" fill=\"rgb(242,101,112)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.500) matrix(1 0 0 1 3.382 6.102)\"/>"},"IconAbFillAb":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.046 0 40 8.954 40 20 C 40 31.046 31.046 40 20 40 Z\" fill=\"rgb(228,41,57)\" fill-rule=\"evenodd\"/><path d=\"M 17 19 L 2 19 C 1.47 19 0.961 18.789 0.586 18.414 C 0.211 18.039 0 17.53 0 17 L 0 2 C 0 1.47 0.211 0.961 0.586 0.586 C 0.961 0.211 1.47 0 2 0 L 17 0 C 17.53 0 18.039 0.211 18.414 0.586 C 18.789 0.961 19 1.47 19 2 L 19 17 C 19 17.53 18.789 18.039 18.414 18.414 C 18.039 18.789 17.53 19 17 19 Z\" fill=\"rgb(255,207,209)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 10.500)\"/><path d=\"M 3.814 4.024 L 3.044 1.493 L 3.008 1.493 L 2.262 4.024 L 3.814 4.024 Z M 0 5.972 C 0 5.831 0.045 5.626 0.118 5.426 L 1.738 0.974 C 1.98 0.305 2.385 0 3.036 0 C 3.723 0 4.124 0.292 4.374 0.974 L 6.007 5.426 C 6.085 5.64 6.117 5.795 6.117 5.968 C 6.117 6.436 5.767 6.769 5.279 6.769 C 4.797 6.769 4.547 6.55 4.401 6.013 L 4.178 5.285 L 1.929 5.285 L 1.707 5.986 C 1.547 6.541 1.297 6.769 0.851 6.769 C 0.323 6.769 0.001 6.468 0.001 5.972 L 0 5.972 Z M 9.573 5.485 C 10.26 5.485 10.643 5.185 10.643 4.629 C 10.643 4.092 10.251 3.792 9.563 3.792 L 8.58 3.792 L 8.58 5.485 L 9.573 5.485 Z M 9.441 2.777 C 10.046 2.777 10.41 2.49 10.41 2.017 C 10.41 1.557 10.083 1.284 9.523 1.284 L 8.58 1.284 L 8.58 2.777 L 9.441 2.777 Z M 6.91 5.795 L 6.91 0.974 C 6.91 0.419 7.22 0.1 7.748 0.1 L 9.964 0.1 C 11.257 0.1 12.034 0.724 12.034 1.739 C 12.034 2.476 11.48 3.063 10.752 3.164 L 10.752 3.2 C 11.639 3.241 12.341 3.901 12.341 4.775 C 12.341 5.927 11.453 6.668 10.046 6.668 L 7.748 6.668 C 7.22 6.668 6.91 6.35 6.91 5.795 Z\" fill=\"rgb(242,101,112)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 13.882 16.602)\"/>"},"IconAccountAccountBankbook":{viewBox:"0 0 24 24",body:"<path d=\"M 18 16 L 2 16 C 0.895 16 0 15.105 0 14 L 0 2 C 0 0.895 0.895 0 2 0 L 18 0 C 19.105 0 20 0.895 20 2 L 20 14 C 20 15.105 19.105 16 18 16 Z\" fill=\"rgb(176,191,204)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 18 14.331 L 2 14.331 C 0.895 14.331 0 13.436 0 12.331 L 0 2 C 0 0.895 0.895 0 2 0 L 18 0 C 19.105 0 20 0.895 20 2 L 20 12.331 C 20 13.436 19.105 14.331 18 14.331 Z\" fill=\"rgb(39,163,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 1 0 L 19 0 C 19.552 0 20 0.448 20 1 L 20 3 L 0 3 L 0 1 C 0 0.448 0.448 0 1 0 Z\" fill=\"rgb(0,124,247)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/>"},"IconAccountAlarmMonoBank":{viewBox:"0 0 24 24",body:"<path d=\"M 2 5 L 2 3 C 2 2.7 2.2 2.5 2.5 2.5 L 19.5 2.5 C 19.8 2.5 20 2.7 20 3 L 20 5 C 20 5.3 19.8 5.5 19.5 5.5 L 2.5 5.5 C 2.2 5.5 2 5.3 2 5 Z M 10.2 16.3 L 10.2 13.8 C 10.2 11.9 11 10.1 12.4 8.9 C 13.8 7.6 15.7 7 17.5 7.2 C 19.3 7.4 20.9 8.3 22 9.7 L 22 1 C 22 0.4 21.6 0 21 0 L 1 0 C 0.4 0 0 0.4 0 1 L 0 15 C 0 16.1 0.9 17 2 17 L 9.7 17 L 10.2 16.3 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.700)\"/><path d=\"M 12.003 9.325 L 11.203 7.925 L 11.203 5.325 C 11.203 2.625 9.203 0.225 6.603 0.025 C 3.503 -0.275 0.903 2.125 0.903 5.125 L 0.903 8.025 L 0.103 9.525 C -0.197 10.025 0.203 10.525 0.703 10.525 L 3.903 10.525 C 4.103 11.525 5.003 12.225 6.103 12.225 C 7.203 12.225 8.003 11.525 8.303 10.525 L 11.503 10.525 C 11.903 10.425 12.303 9.825 12.003 9.325 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.700) matrix(1 0 0 1 10.797 8.775)\"/>"},"IconAccountAlertMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5.001 C 20 5.134 19.947 5.261 19.854 5.355 C 19.76 5.448 19.633 5.501 19.5 5.501 L 2.5 5.501 C 2.367 5.501 2.24 5.448 2.146 5.355 C 2.053 5.261 2 5.134 2 5.001 L 2 3.001 C 2 2.868 2.053 2.741 2.146 2.647 C 2.24 2.554 2.367 2.501 2.5 2.501 L 19.5 2.501 C 19.633 2.501 19.76 2.554 19.854 2.647 C 19.947 2.741 20 2.868 20 3.001 L 20 5.001 Z M 21 0.001 L 1 0.001 C 0.735 0.001 0.48 0.106 0.293 0.294 C 0.105 0.481 0 0.736 0 1.001 L 0 15.001 C 0 15.531 0.211 16.04 0.586 16.415 C 0.961 16.79 1.47 17.001 2 17.001 L 8.937 17.001 C 8.65 16.199 8.502 15.353 8.5 14.501 C 8.5 10.365 11.865 7.001 16 7.001 C 17.166 7.002 18.316 7.275 19.358 7.799 C 20.399 8.324 21.304 9.084 22 10.02 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0.001 21 0.001 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.749)\"/><path d=\"M 6 0 C 6.788 0 7.568 0.155 8.296 0.457 C 9.024 0.758 9.685 1.2 10.243 1.757 C 10.8 2.315 11.242 2.976 11.543 3.704 C 11.845 4.432 12 5.212 12 6 C 12 6.788 11.845 7.568 11.543 8.296 C 11.242 9.024 10.8 9.685 10.243 10.243 C 9.685 10.8 9.024 11.242 8.296 11.543 C 7.568 11.845 6.788 12 6 12 C 4.409 12 2.883 11.368 1.757 10.243 C 0.632 9.117 0 7.591 0 6 C 0 4.409 0.632 2.883 1.757 1.757 C 2.883 0.632 4.409 0 6 0 Z M 6 7.482 C 5.826 7.482 5.66 7.551 5.537 7.674 C 5.414 7.797 5.345 7.963 5.345 8.137 C 5.345 8.311 5.414 8.477 5.537 8.6 C 5.66 8.723 5.826 8.792 6 8.792 C 6.174 8.792 6.34 8.723 6.463 8.6 C 6.586 8.477 6.655 8.311 6.655 8.137 C 6.655 7.963 6.586 7.797 6.463 7.674 C 6.34 7.551 6.174 7.482 6 7.482 Z M 6 2.882 C 5.928 2.882 5.858 2.896 5.791 2.923 C 5.725 2.951 5.665 2.991 5.615 3.042 C 5.564 3.092 5.524 3.152 5.496 3.218 C 5.469 3.285 5.455 3.355 5.455 3.427 L 5.455 6.154 C 5.455 6.299 5.512 6.437 5.615 6.539 C 5.717 6.642 5.855 6.699 6 6.699 C 6.145 6.699 6.283 6.642 6.385 6.539 C 6.488 6.437 6.545 6.299 6.545 6.154 L 6.545 3.427 C 6.545 3.355 6.531 3.284 6.504 3.218 C 6.477 3.151 6.437 3.091 6.386 3.04 C 6.335 2.99 6.275 2.949 6.209 2.922 C 6.143 2.894 6.072 2.88 6 2.88 L 6 2.882 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.749) matrix(1 0 0 1 10 8.251)\"/>"},"IconAccountArrowDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5 C 20 5.133 19.947 5.26 19.854 5.354 C 19.76 5.447 19.633 5.5 19.5 5.5 L 2.5 5.5 C 2.367 5.5 2.24 5.447 2.146 5.354 C 2.053 5.26 2 5.133 2 5 L 2 3 C 2 2.867 2.053 2.74 2.146 2.646 C 2.24 2.553 2.367 2.5 2.5 2.5 L 19.5 2.5 C 19.633 2.5 19.76 2.553 19.854 2.646 C 19.947 2.74 20 2.867 20 3 L 20 5 Z M 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 8.939 17 C 8.009 14.361 8.59 11.304 10.697 9.197 C 13.621 6.272 18.379 6.272 21.303 9.196 C 21.561 9.454 21.788 9.73 22 10.014 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750)\"/><path d=\"M 9.159 6.51 L 6.459 9.21 L 5.929 9.741 L 5.399 9.211 L 2.699 6.511 C 2.558 6.37 2.479 6.179 2.479 5.98 C 2.479 5.782 2.558 5.591 2.698 5.45 C 2.839 5.309 3.03 5.23 3.229 5.23 C 3.428 5.229 3.618 5.308 3.759 5.449 L 5.179 6.869 L 5.179 3.18 C 5.179 2.981 5.258 2.79 5.399 2.649 C 5.54 2.509 5.73 2.43 5.929 2.43 C 6.128 2.43 6.319 2.509 6.46 2.649 C 6.6 2.79 6.679 2.981 6.679 3.18 L 6.679 6.87 L 8.099 5.45 C 8.168 5.376 8.251 5.317 8.343 5.276 C 8.435 5.235 8.534 5.213 8.635 5.211 C 8.735 5.209 8.835 5.228 8.929 5.266 C 9.022 5.303 9.107 5.36 9.178 5.431 C 9.25 5.502 9.306 5.587 9.343 5.68 C 9.381 5.774 9.4 5.874 9.398 5.974 C 9.396 6.075 9.374 6.174 9.333 6.266 C 9.292 6.358 9.233 6.441 9.159 6.51 Z M 1.687 1.687 C 0.593 2.818 -0.013 4.335 0 5.909 C 0.013 7.483 0.644 8.989 1.757 10.102 C 2.87 11.215 4.376 11.846 5.95 11.859 C 7.524 11.873 9.041 11.267 10.172 10.173 C 11.267 9.041 11.872 7.525 11.859 5.951 C 11.846 4.377 11.215 2.871 10.102 1.758 C 8.989 0.645 7.483 0.014 5.909 0 C 4.335 -0.013 2.819 0.593 1.687 1.687 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750) matrix(1 0 0 1 10.071 8.570)\"/>"},"IconAccountArrowRightMono":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5 C 20 5.133 19.947 5.26 19.854 5.354 C 19.76 5.447 19.633 5.5 19.5 5.5 L 2.5 5.5 C 2.367 5.5 2.24 5.447 2.146 5.354 C 2.053 5.26 2 5.133 2 5 L 2 3 C 2 2.867 2.053 2.74 2.146 2.646 C 2.24 2.553 2.367 2.5 2.5 2.5 L 19.5 2.5 C 19.633 2.5 19.76 2.553 19.854 2.646 C 19.947 2.74 20 2.867 20 3 L 20 5 Z M 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 8.939 17 C 8.009 14.361 8.59 11.304 10.697 9.197 C 13.621 6.272 18.379 6.272 21.303 9.196 C 21.561 9.454 21.788 9.73 22 10.014 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750)\"/><path d=\"M 9.314 6.495 L 6.614 9.195 C 6.545 9.265 6.462 9.32 6.371 9.358 C 6.28 9.396 6.183 9.416 6.084 9.416 C 5.986 9.416 5.888 9.396 5.797 9.358 C 5.706 9.32 5.623 9.265 5.554 9.195 C 5.484 9.125 5.429 9.043 5.391 8.952 C 5.354 8.861 5.334 8.763 5.334 8.665 C 5.334 8.567 5.354 8.469 5.391 8.378 C 5.429 8.287 5.484 8.205 5.554 8.135 L 6.974 6.715 L 3.284 6.715 C 3.085 6.715 2.894 6.636 2.754 6.495 C 2.613 6.355 2.534 6.164 2.534 5.965 C 2.534 5.766 2.613 5.575 2.754 5.435 C 2.894 5.294 3.085 5.215 3.284 5.215 L 6.974 5.215 L 5.554 3.795 C 5.484 3.725 5.429 3.643 5.392 3.552 C 5.354 3.461 5.335 3.363 5.335 3.265 C 5.335 3.167 5.354 3.069 5.392 2.978 C 5.429 2.887 5.484 2.805 5.554 2.735 C 5.624 2.665 5.706 2.61 5.797 2.572 C 5.888 2.535 5.986 2.515 6.084 2.515 C 6.182 2.515 6.28 2.535 6.371 2.572 C 6.462 2.61 6.544 2.665 6.614 2.735 L 9.314 5.434 L 9.844 5.964 L 9.314 6.494 L 9.314 6.495 Z M 1.792 1.723 C 1.227 2.278 0.778 2.94 0.471 3.67 C 0.163 4.4 0.003 5.184 0 5.976 C -0.003 6.768 0.15 7.552 0.452 8.285 C 0.754 9.017 1.197 9.683 1.757 10.243 C 2.317 10.803 2.983 11.246 3.715 11.548 C 4.448 11.85 5.232 12.003 6.024 12 C 6.816 11.997 7.6 11.837 8.33 11.529 C 9.06 11.222 9.722 10.773 10.277 10.208 C 11.387 9.08 12.006 7.558 12 5.976 C 11.994 4.393 11.362 2.877 10.243 1.757 C 9.123 0.638 7.607 0.006 6.024 0 C 4.442 -0.006 2.92 0.613 1.792 1.723 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750) matrix(1 0 0 1 9.966 8.535)\"/>"},"IconAccountCheck":{viewBox:"0 0 24 24",body:"<path d=\"M 20 16 L 2 16 C 1.47 16 0.961 15.789 0.586 15.414 C 0.211 15.039 0 14.53 0 14 L 0 0.5 C 0 0.367 0.053 0.24 0.146 0.146 C 0.24 0.053 0.367 0 0.5 0 L 21.5 0 C 21.633 0 21.76 0.053 21.854 0.146 C 21.947 0.24 22 0.367 22 0.5 L 22 14 C 22 14.53 21.789 15.039 21.414 15.414 C 21.039 15.789 20.53 16 20 16 Z\" fill=\"rgb(228,231,234)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3)\"/><path d=\"M 17.5 3 L 0.5 3 C 0.367 3 0.24 2.947 0.146 2.854 C 0.053 2.76 0 2.633 0 2.5 L 0 0.5 C 0 0.367 0.053 0.24 0.146 0.146 C 0.24 0.053 0.367 0 0.5 0 L 17.5 0 C 17.633 0 17.76 0.053 17.854 0.146 C 17.947 0.24 18 0.367 18 0.5 L 18 2.5 C 18 2.633 17.947 2.76 17.854 2.854 C 17.76 2.947 17.633 3 17.5 3 Z\" fill=\"rgb(137,147,159)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 2 2.500)\"/><path d=\"M 6 12 C 7.591 12 9.117 11.368 10.243 10.243 C 11.368 9.117 12 7.591 12 6 C 12 4.409 11.368 2.883 10.243 1.757 C 9.117 0.632 7.591 0 6 0 C 4.409 0 2.883 0.632 1.757 1.757 C 0.632 2.883 0 4.409 0 6 C 0 7.591 0.632 9.117 1.757 10.243 C 2.883 11.368 4.409 12 6 12 Z\" fill=\"rgb(67,166,102)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 10 8)\"/><path d=\"M 0.521 0.635 C 0.223 0.348 -0.252 0.356 -0.54 0.654 C -0.827 0.952 -0.819 1.427 -0.521 1.715 L 0 1.175 L 0.521 0.635 Z M 1.891 3 L 1.37 3.54 C 1.661 3.82 2.121 3.82 2.412 3.54 L 1.891 3 Z M 5.521 0.54 C 5.819 0.252 5.827 -0.223 5.54 -0.521 C 5.252 -0.819 4.777 -0.827 4.479 -0.54 L 5 0 L 5.521 0.54 Z M 0 1.175 L -0.521 1.715 L 1.37 3.54 L 1.891 3 L 2.412 2.46 L 0.521 0.635 L 0 1.175 Z M 1.891 3 L 2.412 3.54 L 5.521 0.54 L 5 0 L 4.479 -0.54 L 1.37 2.46 L 1.891 3 Z\" fill=\"rgb(243,244,244)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 14.500 15.801)\"/>"},"IconAccountFillBankAccount":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.046 0 40 8.954 40 20 C 40 31.046 31.046 40 20 40 Z\" fill=\"rgb(108,175,255)\" fill-rule=\"evenodd\"/><path d=\"M 20 16 L 2 16 C 1.47 16 0.961 15.789 0.586 15.414 C 0.211 15.039 0 14.53 0 14 L 0 0.5 C 0 0.367 0.053 0.24 0.146 0.146 C 0.24 0.052 0.367 0 0.5 0 L 21.5 0 C 21.633 0 21.76 0.053 21.854 0.146 C 21.948 0.24 22 0.367 22 0.5 L 22 14 C 22 14.53 21.789 15.039 21.414 15.414 C 21.039 15.789 20.53 16 20 16 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 9 12.776)\"/><path d=\"M 17.5 3 L 0.5 3 C 0.367 3 0.24 2.947 0.146 2.854 C 0.052 2.76 0 2.633 0 2.5 L 0 0.5 C 0 0.367 0.053 0.24 0.146 0.146 C 0.24 0.052 0.367 0 0.5 0 L 17.5 0 C 17.633 0 17.76 0.053 17.854 0.146 C 17.948 0.24 18 0.367 18 0.5 L 18 2.5 C 18 2.633 17.947 2.76 17.854 2.854 C 17.76 2.948 17.633 3 17.5 3 Z\" fill=\"rgb(135,145,157)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11 15.276)\"/>"},"IconAccountGlobal":{viewBox:"0 0 24 24",body:"<path d=\"M 17 15 L 2 15 C 0.895 15 0 14.105 0 13 L 0 2 C 0 0.895 0.895 0 2 0 L 18 0 C 19.105 0 20 0.895 20 2 L 20 12 C 20 13.657 18.657 15 17 15 Z\" fill=\"rgb(173,131,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 1 0 L 19 0 C 19.552 0 20 0.448 20 1 L 20 3 L 0 3 L 0 1 C 0 0.448 0.448 0 1 0 Z\" fill=\"rgb(132,98,239)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 5.71 11.42 C 8.863 11.42 11.42 8.864 11.42 5.71 C 11.42 2.556 8.864 0 5.71 0 C 2.556 0 0 2.556 0 5.71 C 0 8.864 2.557 11.42 5.71 11.42 Z\" fill=\"rgb(0,97,239)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.580 10.584)\"/><path d=\"M 2.759 3.767 C 1.741 3.665 1.334 3.258 1.334 3.054 C 1.334 2.85 1.538 2.545 1.843 2.443 C 2.963 2.036 3.676 2.545 4.082 2.85 C 4.286 3.054 4.693 3.054 4.896 2.85 C 5.1 2.646 5.1 2.239 4.896 2.036 C 4.59 1.73 4.082 1.323 3.267 1.222 L 3.267 0.611 C 3.267 0.305 3.063 0 2.656 0 C 2.35 0 2.045 0.204 2.045 0.611 L 2.045 1.12 C 1.841 1.12 1.638 1.222 1.332 1.324 C 0.518 1.63 0.009 2.444 0.111 3.157 C 0.315 4.48 1.944 4.786 2.554 4.888 C 3.572 4.99 3.979 5.397 3.979 5.601 C 3.979 5.805 3.775 6.11 3.47 6.212 C 2.045 6.823 1.129 5.703 1.027 5.601 C 0.823 5.397 0.518 5.295 0.213 5.499 C 0.009 5.703 -0.093 6.008 0.111 6.313 C 0.417 6.72 1.129 7.229 2.046 7.433 L 2.046 7.942 C 2.046 8.248 2.25 8.553 2.657 8.553 C 2.963 8.553 3.268 8.349 3.268 7.942 L 3.268 7.433 C 3.472 7.433 3.675 7.331 3.981 7.229 C 4.795 6.923 5.304 6.109 5.202 5.396 C 4.998 4.073 3.267 3.767 2.759 3.767 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 13.682 12.018)\"/>"},"IconAccountHeartMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 2 5 L 2 3 C 2 2.867 2.053 2.74 2.146 2.646 C 2.24 2.553 2.367 2.5 2.5 2.5 L 19.5 2.5 C 19.633 2.5 19.76 2.553 19.854 2.646 C 19.947 2.74 20 2.867 20 3 L 20 5 C 20 5.133 19.947 5.26 19.854 5.354 C 19.76 5.447 19.633 5.5 19.5 5.5 L 2.5 5.5 C 2.367 5.5 2.24 5.447 2.146 5.354 C 2.053 5.26 2 5.133 2 5 Z M 8.499 9.939 C 9.417 8.412 10.974 7.5 12.664 7.5 C 14.123 7.5 15.219 8.045 16 8.747 C 16.781 8.045 17.877 7.5 19.337 7.5 C 20.301 7.5 21.216 7.805 22 8.344 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 9.171 17 C 8.919 16.655 8.691 16.294 8.487 15.918 C 7.435 13.936 7.439 11.701 8.499 9.939 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750)\"/><path d=\"M 10.136 0 C 7.573 0 6.8 2.349 6.8 2.349 C 6.8 2.349 6.027 0 3.463 0 C 0.9 0 -1.041 3.103 0.613 6.214 C 2.262 9.326 6.8 12 6.8 12 C 6.8 12 11.336 9.326 12.988 6.214 C 14.64 3.103 12.699 0 10.136 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750) matrix(1 0 0 1 9.200 9)\"/>"},"IconAccountHomeMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5 C 20 5.133 19.947 5.26 19.854 5.354 C 19.76 5.447 19.633 5.5 19.5 5.5 L 2.5 5.5 C 2.367 5.5 2.24 5.447 2.146 5.354 C 2.053 5.26 2 5.133 2 5 L 2 3 C 2 2.867 2.053 2.74 2.146 2.646 C 2.24 2.553 2.367 2.5 2.5 2.5 L 19.5 2.5 C 19.633 2.5 19.76 2.553 19.854 2.646 C 19.947 2.74 20 2.867 20 3 L 20 5 Z M 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 9.5 17 L 9.5 13.029 C 9.5 12.204 9.907 11.433 10.587 10.966 L 15.087 7.884 C 15.502 7.597 15.995 7.443 16.5 7.443 C 17.005 7.443 17.498 7.597 17.913 7.884 L 22 10.684 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750)\"/><path d=\"M 10.565 3.257 L 6.065 0.175 C 5.899 0.061 5.702 0 5.5 0 C 5.298 0 5.101 0.061 4.935 0.175 L 0.435 3.257 C 0.301 3.349 0.191 3.472 0.116 3.616 C 0.04 3.759 0 3.919 0 4.082 L 0 10.318 C 0 10.583 0.105 10.837 0.293 11.025 C 0.48 11.213 0.735 11.318 1 11.318 L 4.75 11.318 L 4.75 8.148 L 6.25 8.148 L 6.25 11.318 L 10 11.318 C 10.265 11.318 10.52 11.213 10.707 11.025 C 10.895 10.837 11 10.583 11 10.318 L 11 4.083 C 11 3.753 10.837 3.444 10.565 3.257 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750) matrix(1 0 0 1 11 8.947)\"/>"},"IconAccountIdCardIdcard":{viewBox:"0 0 24 24",body:"<path d=\"M 2 0 L 20 0 C 21.105 0 22 0.895 22 2 L 22 14 C 22 15.105 21.105 16 20 16 L 2 16 C 0.895 16 0 15.105 0 14 L 0 2 C 0 0.895 0.895 0 2 0 Z\" fill=\"rgb(228,231,234)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 4)\"/><path d=\"M 1.9 3.8 C 2.949 3.8 3.8 2.949 3.8 1.9 C 3.8 0.851 2.949 0 1.9 0 C 0.851 0 0 0.851 0 1.9 C 0 2.949 0.851 3.8 1.9 3.8 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.800 8) matrix(1 0 0 1 1.700 0)\"/><path d=\"M 3.6 0 C 6.2 0 7.2 1.8 7.2 2.6 C 7.2 3.4 5.1 3.6 3.6 3.6 C 2.1 3.6 0 3.4 0 2.6 C 0 1.7 1 0 3.6 0 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.800 8) matrix(1 0 0 1 0 4.400)\"/><path d=\"M 3.9 1.4 L 0.4 1.4 C 0.2 1.4 0 1.2 0 1 L 0 0.4 C 0 0.2 0.2 0 0.4 0 L 3.9 0 C 4.1 0 4.3 0.2 4.3 0.4 L 4.3 1 C 4.3 1.3 4.1 1.4 3.9 1.4 Z M 6.6 4 L 0.4 4 C 0.2 4 0 3.8 0 3.6 L 0 3 C 0 2.8 0.2 2.6 0.4 2.6 L 6.6 2.6 C 6.8 2.6 7 2.8 7 3 L 7 3.6 C 7 3.8 6.8 4 6.6 4 Z\" fill=\"rgb(175,183,192)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 13.400 8.600)\"/>"},"IconAccountMinusMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5.001 C 20 5.134 19.947 5.261 19.854 5.355 C 19.76 5.448 19.633 5.501 19.5 5.501 L 2.5 5.501 C 2.367 5.501 2.24 5.448 2.146 5.355 C 2.053 5.261 2 5.134 2 5.001 L 2 3.001 C 2 2.868 2.053 2.741 2.146 2.647 C 2.24 2.554 2.367 2.501 2.5 2.501 L 19.5 2.501 C 19.633 2.501 19.76 2.554 19.854 2.647 C 19.947 2.741 20 2.868 20 3.001 L 20 5.001 Z M 21 0.001 L 1 0.001 C 0.735 0.001 0.48 0.106 0.293 0.294 C 0.105 0.481 0 0.736 0 1.001 L 0 15.001 C 0 15.531 0.211 16.04 0.586 16.415 C 0.961 16.79 1.47 17.001 2 17.001 L 8.937 17.001 C 8.65 16.199 8.502 15.353 8.5 14.501 C 8.5 10.365 11.864 7.001 16 7.001 C 17.166 7.002 18.316 7.275 19.358 7.799 C 20.399 8.324 21.304 9.084 22 10.02 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0.001 21 0.001 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.749)\"/><path d=\"M 8.5 6.75 L 3.5 6.75 C 3.301 6.75 3.11 6.671 2.97 6.53 C 2.829 6.39 2.75 6.199 2.75 6 C 2.75 5.801 2.829 5.61 2.97 5.47 C 3.11 5.329 3.301 5.25 3.5 5.25 L 8.5 5.25 C 8.699 5.25 8.89 5.329 9.03 5.47 C 9.171 5.61 9.25 5.801 9.25 6 C 9.25 6.199 9.171 6.39 9.03 6.53 C 8.89 6.671 8.699 6.75 8.5 6.75 Z M 6 0 C 4.408 0 2.882 0.633 1.757 1.758 C 0.632 2.884 0 4.41 0 6.002 C 0 7.594 0.633 9.12 1.758 10.245 C 2.884 11.37 4.41 12.002 6.002 12.002 C 6.79 12.002 7.57 11.847 8.298 11.545 C 9.026 11.243 9.688 10.801 10.245 10.244 C 10.802 9.686 11.244 9.025 11.546 8.297 C 11.847 7.568 12.002 6.788 12.002 6 C 12.002 5.212 11.847 4.432 11.545 3.704 C 11.243 2.976 10.801 2.314 10.244 1.757 C 9.686 1.2 9.025 0.758 8.297 0.456 C 7.568 0.155 6.788 0 6 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.749) matrix(1 0 0 1 10 8.501)\"/>"},"IconAccountMoneyBagMono":{viewBox:"0 0 24 24",body:"<path d=\"M 21 0 C 21.265 0 21.52 0.105 21.707 0.293 C 21.895 0.48 22 0.735 22 1 L 22 11.55 C 21.602 11.056 21.137 10.618 20.62 10.25 L 20.454 10.136 L 20.806 9.581 L 20.884 9.381 L 20.93 9.248 C 21.245 8.152 20.483 7 19.262 7 L 14.062 7 L 13.947 7.004 L 13.854 7.012 L 13.726 7.027 C 13.448 7.066 13.183 7.172 12.955 7.335 C 12.726 7.498 12.54 7.713 12.412 7.964 C 12.284 8.214 12.219 8.491 12.221 8.772 C 12.222 9.052 12.292 9.329 12.423 9.577 L 12.493 9.701 L 12.736 10.086 L 12.593 10.18 C 11.031 11.237 9.907 12.885 9.583 14.744 C 9.474 15.493 9.477 16.253 9.591 17.001 L 2 17.001 C 1.47 17.001 0.961 16.79 0.586 16.415 C 0.211 16.04 0 15.531 0 15.001 L 0 1.001 C 0 0.736 0.105 0.481 0.293 0.294 C 0.48 0.106 0.735 0.001 1 0.001 L 21 0 Z M 19.028 2.583 L 2.972 2.583 C 2.847 2.583 2.727 2.633 2.638 2.721 C 2.55 2.81 2.5 2.93 2.5 3.055 L 2.5 4.945 C 2.5 5.205 2.711 5.416 2.972 5.416 L 19.028 5.416 C 19.153 5.416 19.273 5.366 19.362 5.278 C 19.45 5.189 19.5 5.069 19.5 4.944 L 19.5 3.055 C 19.5 2.93 19.45 2.81 19.362 2.721 C 19.273 2.633 19.153 2.583 19.028 2.583 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3.500)\"/><path d=\"M 8.263 0 C 8.441 0 8.539 0.158 8.489 0.334 L 8.463 0.4 L 7.302 2.239 C 9.505 2.966 11.062 5.039 11.062 7.501 C 11.062 8.501 10.762 9.501 10.262 10.2 C 9.992 10.56 9.561 10.839 9.112 10.89 L 8.962 10.9 L 2.062 10.9 C 1.562 10.9 1.062 10.6 0.762 10.2 C 0.162 9.2 -0.138 7.9 0.062 6.5 C 0.408 4.514 1.946 2.827 3.905 2.21 L 2.763 0.4 C 2.673 0.222 2.743 0.044 2.97 0.007 L 3.063 0 L 8.263 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 3.500) matrix(1 0 0 1 10.999 8.500)\"/>"},"IconAccountMoneySearchMono":{viewBox:"0 0 24 24",body:"<path d=\"M 21.5 0 C 21.633 0 21.76 0.053 21.854 0.146 C 21.947 0.24 22 0.367 22 0.5 L 22 11.46 C 21.78 10.635 21.386 9.866 20.845 9.205 C 20.304 8.544 19.628 8.007 18.863 7.628 C 18.097 7.249 17.26 7.038 16.406 7.009 C 15.552 6.98 14.702 7.134 13.913 7.46 C 13.124 7.786 12.413 8.277 11.828 8.899 C 11.244 9.522 10.799 10.262 10.523 11.071 C 10.248 11.879 10.148 12.737 10.231 13.587 C 10.314 14.437 10.577 15.26 11.003 16 L 2 16 C 1.47 16 0.961 15.789 0.586 15.414 C 0.211 15.039 0 14.53 0 14 L 0 0.5 C 0 0.367 0.053 0.24 0.146 0.146 C 0.24 0.053 0.367 0 0.5 0 L 21.5 0 Z M 19.5 2.5 L 2.5 2.5 C 2.383 2.5 2.27 2.541 2.18 2.616 C 2.09 2.691 2.029 2.795 2.008 2.91 L 2 3 L 2 5 C 2 5.117 2.041 5.23 2.116 5.32 C 2.191 5.41 2.295 5.471 2.41 5.492 L 2.5 5.5 L 19.5 5.5 C 19.617 5.5 19.73 5.459 19.82 5.384 C 19.91 5.309 19.971 5.205 19.992 5.09 L 20 5 L 20 3 C 20 2.867 19.947 2.74 19.854 2.646 C 19.76 2.553 19.633 2.5 19.5 2.5 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 2.500)\"/><path d=\"M 6.61 5.338 C 6.259 4.986 5.689 4.986 5.338 5.338 C 4.986 5.689 4.986 6.259 5.338 6.61 L 5.974 5.974 L 6.61 5.338 Z M 8.364 9.636 C 8.715 9.988 9.285 9.988 9.636 9.636 C 9.988 9.285 9.988 8.715 9.636 8.364 L 9 9 L 8.364 9.636 Z M 5.974 5.974 L 5.338 6.61 L 8.364 9.636 L 9 9 L 9.636 8.364 L 6.61 5.338 L 5.974 5.974 Z M 3.5 7 L 3.5 6.1 C 2.067 6.1 0.9 4.933 0.9 3.5 L 0 3.5 L -0.9 3.5 C -0.9 5.927 1.073 7.9 3.5 7.9 L 3.5 7 Z M 0 3.5 L 0.9 3.5 C 0.9 2.067 2.067 0.9 3.5 0.9 L 3.5 0 L 3.5 -0.9 C 1.073 -0.9 -0.9 1.073 -0.9 3.5 L 0 3.5 Z M 3.5 0 L 3.5 0.9 C 4.933 0.9 6.1 2.067 6.1 3.5 L 7 3.5 L 7.9 3.5 C 7.9 1.073 5.927 -0.9 3.5 -0.9 L 3.5 0 Z M 7 3.5 L 6.1 3.5 C 6.1 4.933 4.933 6.1 3.5 6.1 L 3.5 7 L 3.5 7.9 C 5.927 7.9 7.9 5.927 7.9 3.5 L 7 3.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.800 2.500) matrix(1 0 0 1 12.700 9.500)\"/>"},"IconAccountMonoAccountBankbook":{viewBox:"0 0 24 24",body:"<path d=\"M 19.5 4.944 C 19.5 5.069 19.45 5.189 19.362 5.278 C 19.273 5.366 19.153 5.416 19.028 5.416 L 2.972 5.416 C 2.847 5.416 2.727 5.366 2.638 5.278 C 2.55 5.189 2.5 5.069 2.5 4.944 L 2.5 3.055 C 2.5 2.795 2.711 2.583 2.972 2.583 L 19.028 2.583 C 19.289 2.583 19.5 2.795 19.5 3.055 L 19.5 4.944 Z M 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 20 17 C 20.53 17 21.039 16.789 21.414 16.414 C 21.789 16.039 22 15.53 22 15 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3.500)\"/>"},"IconAccountPlusMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5 C 20 5.133 19.947 5.26 19.854 5.354 C 19.76 5.447 19.633 5.5 19.5 5.5 L 2.5 5.5 C 2.367 5.5 2.24 5.447 2.146 5.354 C 2.053 5.26 2 5.133 2 5 L 2 3 C 2 2.867 2.053 2.74 2.146 2.646 C 2.24 2.553 2.367 2.5 2.5 2.5 L 19.5 2.5 C 19.633 2.5 19.76 2.553 19.854 2.646 C 19.947 2.74 20 2.867 20 3 L 20 5 Z M 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 8.937 17 C 8.65 16.198 8.502 15.352 8.5 14.5 C 8.5 10.364 11.865 7 16 7 C 17.166 7.001 18.316 7.274 19.358 7.798 C 20.399 8.323 21.304 9.083 22 10.019 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750)\"/><path d=\"M 9 6.75 L 6.75 6.75 L 6.75 9 C 6.75 9.199 6.671 9.39 6.53 9.53 C 6.39 9.671 6.199 9.75 6 9.75 C 5.801 9.75 5.61 9.671 5.47 9.53 C 5.329 9.39 5.25 9.199 5.25 9 L 5.25 6.75 L 3 6.75 C 2.801 6.75 2.61 6.671 2.47 6.53 C 2.329 6.39 2.25 6.199 2.25 6 C 2.25 5.801 2.329 5.61 2.47 5.47 C 2.61 5.329 2.801 5.25 3 5.25 L 5.25 5.25 L 5.25 3 C 5.25 2.801 5.329 2.61 5.47 2.47 C 5.61 2.329 5.801 2.25 6 2.25 C 6.199 2.25 6.39 2.329 6.53 2.47 C 6.671 2.61 6.75 2.801 6.75 3 L 6.75 5.25 L 9 5.25 C 9.199 5.25 9.39 5.329 9.53 5.47 C 9.671 5.61 9.75 5.801 9.75 6 C 9.75 6.199 9.671 6.39 9.53 6.53 C 9.39 6.671 9.199 6.75 9 6.75 Z M 6 0 C 4.408 0 2.882 0.633 1.757 1.758 C 0.632 2.884 0 4.41 0 6.002 C 0 7.594 0.633 9.12 1.758 10.245 C 2.884 11.37 4.41 12.002 6.002 12.002 C 6.79 12.002 7.57 11.847 8.298 11.545 C 9.026 11.243 9.688 10.801 10.245 10.244 C 10.802 9.686 11.244 9.025 11.546 8.297 C 11.847 7.568 12.002 6.788 12.002 6 C 12.002 5.212 11.847 4.432 11.545 3.704 C 11.243 2.976 10.801 2.314 10.244 1.757 C 9.686 1.2 9.025 0.758 8.297 0.456 C 7.568 0.155 6.788 0 6 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750) matrix(1 0 0 1 10 8.500)\"/>"},"IconAccountShieldCheck":{viewBox:"0 0 24 24",body:"<path d=\"M 17 15 L 2 15 C 0.895 15 0 14.105 0 13 L 0 2 C 0 0.895 0.895 0 2 0 L 18 0 C 19.105 0 20 0.895 20 2 L 20 12 C 20 13.657 18.657 15 17 15 Z\" fill=\"rgb(39,163,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 1 0 L 19 0 C 19.552 0 20 0.448 20 1 L 20 3 L 0 3 L 0 1 C 0 0.448 0.448 0 1 0 Z\" fill=\"rgb(0,124,247)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 5.002 0.04 L 0.372 1.903 C 0.159 2.009 0 2.222 0 2.435 L 0 6.852 C 0 8.874 2.554 10.843 4.949 12.067 C 5.109 12.12 5.268 12.12 5.428 12.067 C 7.823 10.842 10.377 8.874 10.377 6.851 L 10.377 2.434 C 10.377 2.221 10.271 2.008 10.058 1.955 L 5.428 0.039 C 5.269 -0.013 5.109 -0.013 5.002 0.04 Z\" fill=\"rgb(0,97,239)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 11.623 9.953)\"/><path d=\"M 2.591 4.401 C 2.416 4.401 2.24 4.336 2.105 4.205 L 0.214 2.38 C -0.064 2.111 -0.072 1.668 0.196 1.39 C 0.466 1.112 0.908 1.104 1.186 1.372 L 2.59 2.728 L 5.213 0.197 C 5.491 -0.072 5.934 -0.065 6.203 0.215 C 6.472 0.493 6.464 0.937 6.185 1.205 L 3.076 4.205 C 2.942 4.335 2.766 4.401 2.591 4.401 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 13.611 13.806)\"/>"},"IconAccountStarMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 20 5.001 C 20 5.134 19.947 5.261 19.854 5.355 C 19.76 5.448 19.633 5.501 19.5 5.501 L 2.5 5.501 C 2.367 5.501 2.24 5.448 2.146 5.355 C 2.053 5.261 2 5.134 2 5.001 L 2 3.001 C 2 2.868 2.053 2.741 2.146 2.647 C 2.24 2.554 2.367 2.501 2.5 2.501 L 19.5 2.501 C 19.633 2.501 19.76 2.554 19.854 2.647 C 19.947 2.741 20 2.868 20 3.001 L 20 5.001 Z M 21 0.001 L 1 0.001 C 0.735 0.001 0.48 0.106 0.293 0.294 C 0.105 0.481 0 0.736 0 1.001 L 0 15.001 C 0 15.531 0.211 16.04 0.586 16.415 C 0.961 16.79 1.47 17.001 2 17.001 L 8.937 17.001 C 8.65 16.199 8.502 15.353 8.5 14.501 C 8.5 10.365 11.865 7.001 16 7.001 C 17.166 7.002 18.316 7.275 19.358 7.799 C 20.399 8.324 21.304 9.084 22 10.02 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0.001 21 0.001 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.749)\"/><path d=\"M 9.373 5.608 L 8.15 6.8 C 8.102 6.847 8.066 6.906 8.045 6.97 C 8.024 7.034 8.019 7.102 8.03 7.169 L 8.32 8.853 C 8.333 8.93 8.324 9.009 8.295 9.081 C 8.266 9.153 8.216 9.216 8.153 9.262 C 8.09 9.307 8.015 9.335 7.938 9.34 C 7.86 9.346 7.782 9.329 7.713 9.293 L 6.202 8.499 C 6.142 8.467 6.075 8.451 6.007 8.451 C 5.939 8.451 5.872 8.467 5.812 8.499 L 4.301 9.294 C 4.232 9.33 4.154 9.346 4.076 9.341 C 3.999 9.335 3.924 9.308 3.861 9.262 C 3.798 9.216 3.749 9.153 3.72 9.081 C 3.69 9.009 3.682 8.93 3.695 8.853 L 3.983 7.169 C 3.995 7.102 3.99 7.034 3.969 6.969 C 3.948 6.904 3.912 6.846 3.863 6.799 L 2.64 5.607 C 2.584 5.553 2.544 5.484 2.526 5.408 C 2.507 5.332 2.51 5.253 2.534 5.179 C 2.558 5.105 2.603 5.039 2.662 4.988 C 2.722 4.938 2.795 4.906 2.872 4.895 L 4.562 4.649 C 4.629 4.639 4.693 4.613 4.748 4.573 C 4.802 4.533 4.846 4.48 4.876 4.419 L 5.633 2.888 C 5.668 2.818 5.721 2.76 5.787 2.718 C 5.853 2.677 5.93 2.656 6.007 2.656 C 6.085 2.656 6.162 2.677 6.228 2.718 C 6.294 2.76 6.347 2.818 6.382 2.888 L 7.138 4.42 C 7.168 4.481 7.212 4.534 7.267 4.574 C 7.322 4.613 7.386 4.639 7.453 4.649 L 9.143 4.895 C 9.486 4.944 9.623 5.365 9.375 5.607 M 6 0 C 5.212 0 4.432 0.155 3.704 0.457 C 2.976 0.758 2.315 1.2 1.757 1.757 C 1.2 2.315 0.758 2.976 0.457 3.704 C 0.155 4.432 0 5.212 0 6 C 0 6.788 0.155 7.568 0.457 8.296 C 0.758 9.024 1.2 9.685 1.757 10.243 C 2.315 10.8 2.976 11.242 3.704 11.543 C 4.432 11.845 5.212 12 6 12 C 7.591 12 9.117 11.368 10.243 10.243 C 11.368 9.117 12 7.591 12 6 C 12 4.409 11.368 2.883 10.243 1.757 C 9.117 0.632 7.591 0 6 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.749) matrix(1 0 0 1 10 8.251)\"/>"},"IconAccountSyncMonoAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 2 5 L 2 3 C 2 2.867 2.053 2.74 2.146 2.646 C 2.24 2.553 2.367 2.5 2.5 2.5 L 19.5 2.5 C 19.633 2.5 19.76 2.553 19.854 2.646 C 19.947 2.74 20 2.867 20 3 L 20 5 C 20 5.133 19.947 5.26 19.854 5.354 C 19.76 5.447 19.633 5.5 19.5 5.5 L 2.5 5.5 C 2.367 5.5 2.24 5.447 2.146 5.354 C 2.053 5.26 2 5.133 2 5 Z M 8.5 14.5 C 8.5 10.364 11.865 7 16 7 C 17.166 7.001 18.316 7.274 19.358 7.798 C 20.399 8.323 21.304 9.083 22 10.019 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.53 0.211 16.039 0.586 16.414 C 0.961 16.789 1.47 17 2 17 L 8.937 17 C 8.65 16.198 8.502 15.352 8.5 14.5 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750)\"/><path d=\"M 9.29 7.899 C 8.956 8.476 8.477 8.955 7.9 9.288 C 7.414 9.566 6.873 9.733 6.315 9.778 L 6.315 10.405 C 6.315 10.442 6.305 10.478 6.286 10.51 C 6.266 10.541 6.239 10.567 6.206 10.584 C 6.173 10.601 6.136 10.608 6.099 10.605 C 6.062 10.602 6.027 10.589 5.997 10.567 L 4.351 9.36 C 4.326 9.341 4.305 9.317 4.291 9.289 C 4.277 9.261 4.27 9.23 4.27 9.199 C 4.27 9.168 4.277 9.137 4.291 9.109 C 4.305 9.081 4.326 9.057 4.351 9.038 L 5.996 7.832 C 6.026 7.81 6.061 7.797 6.098 7.794 C 6.135 7.791 6.171 7.798 6.204 7.815 C 6.237 7.832 6.265 7.857 6.284 7.889 C 6.304 7.92 6.314 7.956 6.314 7.993 L 6.314 8.557 C 6.658 8.514 6.996 8.424 7.299 8.249 C 7.693 8.02 8.021 7.692 8.249 7.297 C 8.478 6.903 8.599 6.455 8.601 5.999 C 8.601 5.545 8.479 5.096 8.25 4.701 C 8.211 4.633 8.185 4.557 8.175 4.479 C 8.164 4.401 8.169 4.322 8.19 4.246 C 8.21 4.169 8.245 4.098 8.293 4.036 C 8.341 3.973 8.401 3.92 8.469 3.881 C 8.537 3.842 8.613 3.816 8.691 3.806 C 8.769 3.795 8.848 3.8 8.924 3.821 C 9.001 3.841 9.072 3.876 9.134 3.924 C 9.197 3.972 9.25 4.032 9.289 4.1 C 9.623 4.678 9.801 5.335 9.801 5.999 C 9.801 6.663 9.623 7.319 9.289 7.898 M 3.751 7.297 C 3.79 7.365 3.816 7.441 3.826 7.519 C 3.836 7.597 3.831 7.676 3.811 7.753 C 3.79 7.829 3.755 7.9 3.707 7.963 C 3.659 8.025 3.599 8.078 3.531 8.117 C 3.463 8.156 3.387 8.182 3.309 8.192 C 3.231 8.202 3.152 8.197 3.075 8.177 C 2.999 8.156 2.928 8.121 2.865 8.073 C 2.803 8.025 2.75 7.965 2.711 7.897 C 2.461 7.465 2.299 6.989 2.234 6.494 C 2.168 6 2.201 5.497 2.33 5.016 C 2.459 4.534 2.682 4.082 2.986 3.687 C 3.29 3.291 3.669 2.96 4.101 2.711 C 4.587 2.432 5.128 2.264 5.687 2.22 L 5.687 1.593 C 5.687 1.556 5.697 1.52 5.717 1.489 C 5.736 1.457 5.764 1.432 5.797 1.415 C 5.83 1.398 5.866 1.391 5.903 1.394 C 5.94 1.397 5.975 1.41 6.005 1.432 L 7.65 2.638 C 7.675 2.657 7.696 2.681 7.71 2.709 C 7.724 2.737 7.731 2.768 7.731 2.799 C 7.731 2.83 7.724 2.861 7.71 2.889 C 7.696 2.917 7.675 2.941 7.65 2.96 L 6.005 4.166 C 5.975 4.188 5.94 4.201 5.903 4.204 C 5.866 4.207 5.829 4.2 5.796 4.183 C 5.763 4.166 5.736 4.14 5.716 4.109 C 5.697 4.077 5.687 4.041 5.687 4.004 L 5.687 3.44 C 5.341 3.476 5.006 3.581 4.702 3.749 C 4.307 3.978 3.979 4.306 3.75 4.701 C 3.522 5.095 3.401 5.543 3.401 5.999 C 3.401 6.455 3.522 6.903 3.75 7.297 M 6.001 0 C 4.409 0 2.883 0.632 1.758 1.758 C 0.632 2.883 0 4.409 0 6.001 C 0 7.593 0.632 9.119 1.758 10.244 C 2.883 11.37 4.409 12.002 6.001 12.002 C 7.593 12.002 9.119 11.37 10.244 10.244 C 11.37 9.119 12.002 7.593 12.002 6.001 C 12.002 4.409 11.37 2.883 10.244 1.758 C 9.119 0.632 7.593 0 6.001 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 2.750) matrix(1 0 0 1 9.999 8.500)\"/>"},"IconAcorn":{viewBox:"0 0 24 24",body:"<path d=\"M 10.02 13.08 L 9.66 13.2 C 9.06 13.38 8.46 13.38 7.86 13.2 L 7.5 13.08 C 3.06 11.82 0 7.74 0 3.12 L 0 0 L 17.58 0 L 17.58 3.12 C 17.58 7.8 14.46 11.82 10.02 13.08 Z\" fill=\"rgb(180,101,77)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.300 8.880)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 4.86 1.38 C 4.86 0.6 3.78 0 2.4 0 C 1.02 0 0 0.6 0 1.38 L 0 2.76 L 4.92 2.76 L 4.92 1.38 L 4.86 1.38 Z\" fill=\"rgb(180,101,77)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 9.600 1.920)\"/><path d=\"M 1.44 5.753 L 18.36 5.753 C 19.74 5.753 20.34 4.013 19.26 3.173 C 13.74 -1.027 6.24 -1.027 0.72 2.993 L 0.6 3.113 C -0.54 3.953 0.06 5.753 1.44 5.753 Z\" fill=\"rgb(204,172,161)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.160 3.427)\"/>"},"IconAdFull":{viewBox:"0 0 24 24",body:"<path d=\"M 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 18 C 0 19.1 0.9 20 2 20 L 14 20 C 15.1 20 16 19.1 16 18 L 16 2 C 16 0.9 15.1 0 14 0 Z\" fill=\"rgb(0,137,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2)\"/><path d=\"M 5.5 11 C 8.538 11 11 8.538 11 5.5 C 11 2.462 8.538 0 5.5 0 C 2.462 0 0 2.462 0 5.5 C 0 8.538 2.462 11 5.5 11 Z\" fill=\"rgb(150,186,245)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.500 6.500)\"/><path d=\"M 3.078 0.225 C 2.878 -0.075 2.478 -0.075 2.278 0.225 L 0.078 3.725 C -0.122 4.025 0.078 4.425 0.478 4.425 L 4.878 4.425 C 5.278 4.425 5.478 4.025 5.278 3.725 L 3.078 0.225 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.722 8.800) matrix(1 0 0 1 0 1.175)\"/><path d=\"M 1 0 C 0.5 0 0 0.4 0 1 C 0 1.6 0.4 2 1 2 C 1.6 2 2 1.6 2 1 C 2 0.4 1.6 0 1 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.722 8.800) matrix(1 0 0 1 4.778 0)\"/>"},"IconAdList":{viewBox:"0 0 24 24",body:"<path d=\"M 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 18 C 0 19.1 0.9 20 2 20 L 14 20 C 15.1 20 16 19.1 16 18 L 16 2 C 16 0.9 15.1 0 14 0 Z M 14.631 9.969 C 14.631 10.347 14.325 10.653 13.947 10.653 L 2.053 10.653 C 1.675 10.653 1.369 10.347 1.369 9.969 L 1.369 5.929 C 1.369 5.551 1.675 5.245 2.053 5.245 L 13.946 5.245 C 14.324 5.245 14.63 5.551 14.63 5.929 L 14.63 9.969 L 14.631 9.969 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2)\"/><path d=\"M 12.578 0 L 0.684 0 C 0.306 0 0 0.306 0 0.684 L 0 4.724 C 0 5.102 0.306 5.408 0.684 5.408 L 12.577 5.408 C 12.955 5.408 13.261 5.102 13.261 4.724 L 13.261 0.684 C 13.261 0.306 12.955 0 12.577 0 L 12.578 0 Z M 2.352 3.681 C 1.813 3.681 1.376 3.244 1.376 2.705 C 1.376 2.166 1.813 1.728 2.352 1.728 C 2.891 1.728 3.328 2.165 3.328 2.705 C 3.328 3.245 2.891 3.681 2.352 3.681 Z M 11.057 3.405 L 5.259 3.405 C 4.872 3.405 4.559 3.092 4.559 2.705 C 4.559 2.318 4.872 2.005 5.259 2.005 L 11.057 2.005 C 11.444 2.005 11.757 2.318 11.757 2.705 C 11.757 3.092 11.444 3.405 11.057 3.405 Z\" fill=\"rgb(0,137,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.369 7.245)\"/><path d=\"M 0.976 0 C 0.437 0 0 0.437 0 0.977 C 0 1.517 0.437 1.953 0.976 1.953 C 1.515 1.953 1.952 1.516 1.952 0.977 C 1.952 0.438 1.515 0 0.976 0 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.745 8.973)\"/><path d=\"M 6.498 0 L 0.7 0 C 0.313 0 0 0.313 0 0.7 C 0 1.087 0.313 1.4 0.7 1.4 L 6.498 1.4 C 6.885 1.4 7.198 1.087 7.198 0.7 C 7.198 0.313 6.885 0 6.498 0 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.745 8.973) matrix(1 0 0 1 3.183 0.276)\"/>"},"IconAdMoment":{viewBox:"0 0 24 24",body:"<path d=\"M 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 18 C 0 19.1 0.9 20 2 20 L 14 20 C 15.1 20 16 19.1 16 18 L 16 2 C 16 0.9 15.1 0 14 0 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2)\"/><path d=\"M 5.5 0 C 2.5 0 0 2.5 0 5.5 C 0 8.5 2.5 11 5.5 11 C 8.5 11 11 8.5 11 5.5 C 11 2.5 8.5 0 5.5 0 Z M 7.1 7.9 L 2.7 7.9 C 2.3 7.9 2.1 7.5 2.3 7.2 L 4.5 3.7 C 4.7 3.4 5.1 3.4 5.3 3.7 L 7.5 7.2 C 7.7 7.5 7.5 7.9 7.1 7.9 Z M 8 4.3 C 7.4 4.3 7 3.9 7 3.3 C 7 2.7 7.5 2.3 8 2.3 C 8.5 2.3 9 2.7 9 3.3 C 9 3.9 8.6 4.3 8 4.3 Z\" fill=\"rgb(0,137,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.500 6.500)\"/><path d=\"M 3.078 0.225 C 2.878 -0.075 2.478 -0.075 2.278 0.225 L 0.078 3.725 C -0.122 4.025 0.078 4.425 0.478 4.425 L 4.878 4.425 C 5.278 4.425 5.478 4.025 5.278 3.725 L 3.078 0.225 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.722 8.800) matrix(1 0 0 1 0 1.175)\"/><path d=\"M 1 0 C 0.5 0 0 0.4 0 1 C 0 1.6 0.4 2 1 2 C 1.6 2 2 1.6 2 1 C 2 0.4 1.6 0 1 0 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.722 8.800) matrix(1 0 0 1 4.778 0)\"/>"},"IconAdThumbnail":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 0 9.949 C 0 11.049 0.9 11.949 2 11.949 L 14 11.949 C 15.1 11.949 16 11.049 16 9.949 L 16 0 L 0 0 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 10.051)\"/><path d=\"M 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 8.965 L 16 8.965 L 16 2 C 16 0.9 15.1 0 14 0 Z M 10.188 4.838 L 7.236 6.787 C 6.957 6.971 6.585 6.771 6.585 6.437 L 6.585 2.53 C 6.585 2.195 6.958 1.995 7.237 2.18 L 10.189 4.138 C 10.44 4.304 10.439 4.672 10.189 4.838 L 10.188 4.838 Z\" fill=\"rgb(0,137,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2)\"/><path d=\"M 0.652 0.071 C 0.373 -0.114 0 0.086 0 0.421 L 0 4.328 C 0 4.662 0.372 4.863 0.651 4.678 L 3.603 2.729 C 3.854 2.563 3.854 2.195 3.603 2.029 L 0.651 0.071 L 0.652 0.071 Z\" fill=\"rgb(132,155,178)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.585 4.109)\"/>"},"IconAgree":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 8.551 0 L 8.551 3.883 L 0 3.883 L 0 0 Z\" fill=\"rgb(6,176,122)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.304 3.595) matrix(1 0 0 1 10.452 5.599) matrix(0.707 -0.707 0.707 0.707 0.914 7.552)\"/><path d=\"M 4.12 2.875 L 2.745 4.251 L 0 1.505 L 1.375 0.13 C 1.548 -0.043 1.828 -0.043 2 0.13 L 4.12 2.25 C 4.293 2.423 4.293 2.703 4.12 2.875 Z\" fill=\"rgb(0,129,86)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.304 3.595) matrix(1 0 0 1 10.452 5.599) matrix(1 0 0 1 6.961 0)\"/><path d=\"M 0.278 1.613 L 1.62 1.253 L 0.367 0 L 0.007 1.342 C -0.036 1.507 0.114 1.657 0.278 1.613 Z\" fill=\"rgb(0,129,86)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.304 3.595) matrix(1 0 0 1 10.452 5.599) matrix(1 0 0 1 0 9.590)\"/><path d=\"M 0 2.039 L 1.253 3.292 L 3.292 2.746 L 0.547 0 L 0 2.039 Z\" fill=\"rgb(255,201,147)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.304 3.595) matrix(1 0 0 1 10.452 5.599) matrix(1 0 0 1 0.367 7.551)\"/><path d=\"M 13.611 5.818 C 13.768 6.405 14.371 6.753 14.958 6.596 C 15.545 6.438 15.893 5.835 15.736 5.248 L 14.673 5.533 L 13.611 5.818 Z M 0.256 9.397 L -0.806 9.682 L -0.806 9.682 L 0.256 9.397 Z M 7.122 16.024 C 7.729 16.049 8.241 15.576 8.265 14.969 C 8.29 14.362 7.817 13.85 7.21 13.826 L 7.166 14.925 L 7.122 16.024 Z M 14.673 5.533 L 15.736 5.248 C 14.512 0.681 9.816 -2.031 5.248 -0.806 L 5.532 0.256 L 5.817 1.319 C 9.212 0.409 12.701 2.424 13.611 5.818 L 14.673 5.533 Z M 5.532 0.256 L 5.248 -0.806 C 0.678 0.418 -2.03 5.113 -0.806 9.682 L 0.256 9.397 L 1.319 9.113 C 0.409 5.717 2.422 2.228 5.817 1.319 L 5.532 0.256 Z M 0.256 9.397 L -0.806 9.682 C 0.189 13.395 3.476 15.879 7.122 16.024 L 7.166 14.925 L 7.21 13.826 C 4.499 13.718 2.058 11.869 1.319 9.112 L 0.256 9.397 Z\" fill=\"rgb(6,176,122)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.304 3.595)\"/>"},"IconAlarmFillNotiNotification":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.95 40 0 31.05 0 20 C 0 8.95 8.95 0 20 0 C 31.05 0 40 8.95 40 20 C 40 31.05 31.05 40 20 40 Z\" fill=\"rgb(255,221,120)\" fill-rule=\"evenodd\"/><path d=\"M 7.06 0 C 7.06 0.94 6.69 1.84 6.03 2.5 C 5.37 3.16 4.47 3.53 3.53 3.53 C 2.59 3.53 1.69 3.16 1.03 2.5 C 0.37 1.84 0 0.94 0 0 L 7.07 0 L 7.06 0 Z\" fill=\"rgb(255,175,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 16.470 27.120)\"/><path d=\"M 1.651 8.759 C 1.651 7.559 1.901 6.369 2.371 5.269 C 2.851 4.169 3.551 3.179 4.421 2.359 C 5.301 1.539 6.331 0.909 7.461 0.509 C 8.591 0.109 9.791 -0.061 10.991 0.019 C 15.651 0.319 19.171 4.399 19.171 9.069 L 19.171 13.509 L 20.661 16.089 C 20.761 16.259 20.811 16.449 20.811 16.649 C 20.811 16.849 20.761 17.039 20.661 17.209 C 20.561 17.379 20.421 17.519 20.251 17.619 C 20.081 17.719 19.891 17.769 19.691 17.769 L 1.121 17.769 C 0.261 17.769 -0.279 16.839 0.151 16.099 L 1.641 13.519 L 1.641 8.779 L 1.651 8.759 Z\" fill=\"rgb(255,205,88)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 9.589 9.361)\"/>"},"IconAlarmGrey":{viewBox:"0 0 24 24",body:"<path d=\"M 7.06 0 C 7.06 1.95 5.48 3.53 3.53 3.53 C 1.58 3.53 0 1.95 0 0 C 0 0 7.07 0 7.06 0 Z\" fill=\"rgb(209,214,219)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 8.470 19.120)\"/><path d=\"M 1.641 8.77 C 1.641 3.93 5.571 0 10.411 0 C 10.601 0 10.801 0 10.991 0.02 C 15.651 0.32 19.171 4.4 19.171 9.07 L 19.171 13.51 L 20.661 16.09 C 20.971 16.62 20.791 17.31 20.251 17.61 C 20.081 17.71 19.891 17.76 19.691 17.76 L 1.121 17.76 C 0.261 17.76 -0.279 16.83 0.151 16.09 L 1.641 13.51 L 1.641 8.77 Z\" fill=\"rgb(229,232,235)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.589 1.350)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconAlarmMonoNotiNotification":{viewBox:"0 0 24 24",body:"<path d=\"M 9.586 21.716 C 10.523 21.716 11.421 21.343 12.083 20.681 C 12.746 20.018 13.118 19.12 13.118 18.183 L 6.053 18.183 C 6.053 19.12 6.425 20.018 7.088 20.681 C 7.75 21.344 8.649 21.716 9.586 21.716 Z M 19.035 14.826 L 17.661 12.446 L 17.661 8.353 C 17.661 4.053 14.416 0.296 10.124 0.018 C 9.021 -0.056 7.914 0.098 6.873 0.47 C 5.831 0.842 4.877 1.423 4.07 2.179 C 3.263 2.934 2.619 3.848 2.179 4.862 C 1.739 5.876 1.512 6.97 1.512 8.076 L 1.512 12.446 L 0.138 14.826 C 0.048 14.982 0 15.159 0 15.34 C 0 15.52 0.047 15.697 0.138 15.853 C 0.228 16.01 0.358 16.139 0.514 16.229 C 0.67 16.32 0.847 16.367 1.028 16.367 L 18.144 16.367 C 18.936 16.367 19.431 15.511 19.034 14.825\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.002 1.649)\"/>"},"IconAlarmNotiNotificationAlarm":{viewBox:"0 0 24 24",body:"<path d=\"M 7.065 0 C 7.065 0.937 6.693 1.835 6.03 2.498 C 5.368 3.16 4.469 3.532 3.532 3.532 C 2.596 3.532 1.697 3.16 1.035 2.498 C 0.372 1.835 0 0.937 0 0 L 7.065 0 Z\" fill=\"rgb(255,175,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.592 1.350) matrix(1 0 0 1 6.876 17.767)\"/><path d=\"M 1.643 8.766 C 1.643 7.566 1.889 6.379 2.367 5.278 C 2.845 4.176 3.543 3.185 4.42 2.365 C 5.296 1.545 6.332 0.914 7.462 0.51 C 8.593 0.107 9.794 -0.06 10.992 0.019 C 15.651 0.321 19.174 4.399 19.174 9.066 L 19.174 13.509 L 20.664 16.092 C 20.761 16.262 20.813 16.454 20.813 16.65 C 20.813 16.846 20.762 17.038 20.664 17.208 C 20.566 17.378 20.425 17.519 20.255 17.617 C 20.086 17.715 19.893 17.766 19.698 17.766 L 1.118 17.766 C 0.258 17.766 -0.278 16.836 0.152 16.092 L 1.642 13.509 L 1.643 8.766 Z\" fill=\"rgb(255,205,88)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.592 1.350)\"/>"},"IconAlarmOffFillNoti":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.046 0 40 8.954 40 20 C 40 31.046 31.046 40 20 40 Z\" fill=\"rgb(255,221,120)\" fill-rule=\"evenodd\"/><path d=\"M 7.065 0 C 7.065 0.937 6.693 1.835 6.03 2.498 C 5.368 3.16 4.469 3.532 3.533 3.532 C 2.596 3.532 1.697 3.16 1.035 2.498 C 0.372 1.835 0 0.937 0 0 L 7.065 0 Z\" fill=\"rgb(255,175,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 16.467 27.117)\"/><path d=\"M 1.642 8.766 C 1.642 7.566 1.889 6.378 2.366 5.277 C 2.844 4.176 3.543 3.185 4.42 2.365 C 5.296 1.545 6.332 0.913 7.462 0.51 C 8.593 0.107 9.794 -0.06 10.992 0.019 C 15.65 0.321 19.173 4.399 19.173 9.066 L 19.173 13.509 L 20.664 16.092 C 20.762 16.262 20.813 16.455 20.813 16.651 C 20.813 16.846 20.762 17.039 20.664 17.209 C 20.566 17.378 20.425 17.519 20.255 17.617 C 20.085 17.715 19.893 17.766 19.697 17.766 L 1.118 17.766 C 0.259 17.766 -0.278 16.836 0.151 16.092 L 1.642 13.509 L 1.642 8.766 Z\" fill=\"rgb(255,205,88)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 9.592 9.350)\"/><path d=\"M 1.2 20.401 C 0.962 20.401 0.73 20.33 0.533 20.198 C 0.336 20.066 0.182 19.879 0.091 19.66 C 0.001 19.44 -0.023 19.199 0.023 18.966 C 0.069 18.734 0.183 18.52 0.351 18.352 L 18.351 0.352 C 18.576 0.127 18.881 0 19.199 0 C 19.518 0 19.823 0.126 20.048 0.351 C 20.273 0.576 20.4 0.882 20.4 1.2 C 20.4 1.518 20.274 1.824 20.049 2.049 L 2.049 20.049 C 1.937 20.161 1.805 20.249 1.659 20.31 C 1.513 20.37 1.357 20.401 1.2 20.401 Z\" fill=\"rgb(236,68,82)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 9.800 9.799)\"/>"},"IconAlarmOffMonoNoti":{viewBox:"0 0 24 24",body:"<path d=\"M 8.075 21.716 C 8.539 21.716 8.998 21.624 9.427 21.447 C 9.855 21.269 10.245 21.009 10.573 20.681 C 10.901 20.353 11.161 19.963 11.338 19.535 C 11.516 19.106 11.607 18.647 11.607 18.183 L 4.543 18.183 C 4.543 18.647 4.634 19.106 4.812 19.535 C 4.989 19.963 5.249 20.353 5.577 20.681 C 5.905 21.009 6.295 21.269 6.723 21.447 C 7.152 21.624 7.611 21.716 8.075 21.716 Z M 8.613 0.018 C 7.51 -0.056 6.403 0.098 5.362 0.47 C 4.32 0.842 3.366 1.423 2.559 2.179 C 1.751 2.934 1.107 3.847 0.667 4.862 C 0.227 5.876 0 6.97 0 8.076 L 0 11.786 L 11.146 0.638 C 10.343 0.289 9.486 0.079 8.613 0.018 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.094 0.730) matrix(1 0 0 1 2.990 0.852)\"/><path d=\"M 20.514 15.677 L 19.14 13.298 L 19.14 9.205 C 19.14 7.358 18.538 5.615 17.517 4.201 L 19.646 2.07 C 19.762 1.96 19.855 1.828 19.919 1.681 C 19.983 1.534 20.017 1.376 20.019 1.216 C 20.022 1.056 19.992 0.897 19.931 0.748 C 19.871 0.6 19.782 0.465 19.668 0.352 C 19.555 0.238 19.42 0.149 19.272 0.089 C 19.124 0.028 18.965 -0.002 18.805 0 C 18.644 0.002 18.486 0.036 18.339 0.1 C 18.193 0.164 18.06 0.257 17.95 0.373 L 17.818 0.504 C 17.77 0.638 17.693 0.76 17.593 0.861 L 1.32 17.135 C 1.219 17.235 1.097 17.312 0.963 17.36 L 0.352 17.971 C 0.127 18.196 0 18.502 0 18.82 C 0 19.138 0.126 19.444 0.351 19.669 C 0.576 19.894 0.882 20.02 1.2 20.021 C 1.518 20.021 1.824 19.894 2.049 19.669 L 4.498 17.219 L 19.623 17.219 C 20.413 17.219 20.911 16.363 20.514 15.677 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.094 0.730)\"/>"},"IconAlarmReddot":{viewBox:"0 0 24 24",body:"<path d=\"M 7.064 0 C 7.064 1.951 5.482 3.532 3.532 3.532 C 1.582 3.532 0 1.95 0 0 L 7.065 0 L 7.064 0 Z\" fill=\"rgb(255,171,0)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.468 19.117)\"/><path d=\"M 1.643 8.765 C 1.643 3.731 5.886 -0.312 10.991 0.019 C 15.65 0.321 19.173 4.397 19.173 9.066 L 19.173 13.509 L 20.664 16.092 C 21.094 16.836 20.557 17.767 19.697 17.767 L 1.118 17.767 C 0.259 17.767 -0.279 16.837 0.151 16.092 L 1.642 13.509 L 1.642 8.766 L 1.643 8.765 Z\" fill=\"rgb(255,203,56)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.592 1.351)\"/><path d=\"M 4 8 C 6.209 8 8 6.209 8 4 C 8 1.791 6.209 0 4 0 C 1.791 0 0 1.791 0 4 C 0 6.209 1.791 8 4 8 Z\" fill=\"rgb(240,68,82)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 15.593 0.289)\"/>"},"IconAlarmStarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.653 0.277 L 5.553 2.11 C 5.619 2.26 5.769 2.36 5.936 2.377 L 7.953 2.677 C 8.369 2.744 8.519 3.244 8.236 3.527 L 6.769 4.96 C 6.653 5.077 6.603 5.244 6.619 5.41 L 6.969 7.427 C 7.036 7.844 6.603 8.144 6.236 7.96 L 4.436 6.994 C 4.286 6.91 4.119 6.91 3.969 6.994 L 2.153 7.944 C 1.786 8.144 1.353 7.827 1.419 7.41 L 1.769 5.394 C 1.803 5.227 1.736 5.06 1.619 4.944 L 0.153 3.51 C -0.147 3.227 0.019 2.71 0.436 2.66 L 2.453 2.36 C 2.619 2.344 2.753 2.227 2.836 2.094 L 3.736 0.26 C 3.936 -0.09 4.469 -0.09 4.653 0.277 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.326 1.173) matrix(1 0 0 1 13.555 0)\"/><path d=\"M 3.533 3.533 C 5.483 3.533 7.067 1.95 7.067 0 L 0 0 C 0 1.95 1.583 3.533 3.533 3.533 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.326 1.173) matrix(1 0 0 1 6.058 18.427)\"/><path d=\"M 17.674 12.465 L 17.674 8.365 C 17.674 8.332 17.674 8.299 17.674 8.265 L 16.374 8.949 C 15.724 9.282 14.958 9.232 14.374 8.799 C 13.791 8.365 13.491 7.665 13.624 6.949 L 13.891 5.399 L 12.774 4.299 C 12.258 3.799 12.074 3.049 12.291 2.349 C 12.491 1.732 12.991 1.265 13.608 1.099 C 12.574 0.482 11.408 0.099 10.141 0.015 C 5.424 -0.268 1.524 3.449 1.524 8.099 L 1.524 12.465 L 0.141 14.832 C -0.259 15.515 0.241 16.365 1.024 16.365 L 18.141 16.365 C 18.941 16.365 19.424 15.515 19.024 14.832 L 17.674 12.465 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.326 1.173) matrix(1 0 0 1 0 0.229)\"/>"},"IconAlarmWonMonoNoti":{viewBox:"0 0 24 24",body:"<path d=\"M 9.586 21.716 C 10.523 21.716 11.422 21.343 12.084 20.681 C 12.746 20.018 13.118 19.12 13.118 18.183 L 6.053 18.183 C 6.053 18.647 6.145 19.106 6.322 19.535 C 6.5 19.963 6.76 20.353 7.088 20.681 C 7.416 21.009 7.806 21.269 8.234 21.447 C 8.663 21.624 9.122 21.716 9.586 21.716 Z M 1.512 8.076 C 1.512 6.97 1.74 5.876 2.18 4.862 C 2.62 3.848 3.263 2.934 4.071 2.179 C 4.878 1.423 5.832 0.842 6.873 0.47 C 7.915 0.098 9.021 -0.056 10.124 0.018 C 14.416 0.296 17.662 4.052 17.661 8.353 L 17.661 12.446 L 19.035 14.826 C 19.125 14.982 19.173 15.159 19.173 15.34 C 19.172 15.52 19.125 15.697 19.035 15.853 C 18.944 16.01 18.814 16.139 18.658 16.229 C 18.502 16.319 18.325 16.367 18.144 16.367 L 1.028 16.367 C 0.848 16.367 0.67 16.32 0.514 16.23 C 0.358 16.139 0.228 16.01 0.138 15.853 C 0.047 15.697 0 15.519 0 15.339 C 0 15.158 0.048 14.981 0.138 14.825 L 1.512 12.446 L 1.512 8.076 Z M 13.123 5.696 C 12.938 5.645 12.739 5.67 12.571 5.765 C 12.404 5.86 12.281 6.018 12.229 6.204 L 11.277 9.662 L 10.36 6.326 C 10.31 6.136 10.198 5.969 10.042 5.85 C 9.886 5.732 9.695 5.668 9.498 5.67 C 9.303 5.668 9.112 5.732 8.956 5.851 C 8.801 5.969 8.689 6.137 8.638 6.326 L 7.718 9.662 L 6.767 6.204 C 6.709 6.026 6.584 5.878 6.42 5.79 C 6.255 5.702 6.063 5.681 5.883 5.73 C 5.703 5.78 5.549 5.897 5.452 6.057 C 5.356 6.217 5.325 6.407 5.365 6.59 L 5.875 8.442 L 4.65 8.442 C 4.458 8.442 4.272 8.518 4.136 8.655 C 4 8.791 3.923 8.976 3.923 9.169 C 3.923 9.362 4 9.547 4.136 9.684 C 4.272 9.82 4.458 9.897 4.65 9.897 L 6.275 9.897 L 6.857 12.014 C 6.908 12.203 7.021 12.37 7.177 12.488 C 7.333 12.607 7.524 12.67 7.719 12.669 C 7.915 12.67 8.106 12.606 8.261 12.488 C 8.417 12.369 8.529 12.202 8.579 12.013 L 9.499 8.677 L 10.417 12.013 C 10.468 12.202 10.58 12.369 10.735 12.488 C 10.891 12.606 11.082 12.67 11.277 12.669 C 11.474 12.67 11.665 12.607 11.821 12.488 C 11.977 12.369 12.09 12.202 12.14 12.013 L 12.722 9.897 L 14.347 9.897 C 14.54 9.897 14.725 9.82 14.862 9.684 C 14.998 9.547 15.075 9.362 15.075 9.169 C 15.075 8.976 14.998 8.791 14.862 8.655 C 14.725 8.518 14.54 8.442 14.347 8.442 L 13.122 8.442 L 13.632 6.59 C 13.658 6.498 13.665 6.401 13.653 6.307 C 13.641 6.212 13.611 6.12 13.563 6.037 C 13.516 5.954 13.453 5.881 13.377 5.823 C 13.302 5.764 13.216 5.721 13.123 5.696 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.502 0.999)\"/>"},"IconAlmondAlmond":{viewBox:"0 0 24 24",body:"<path d=\"M 8.499 0.253 C 8.362 0.092 7.925 -0.09 7.761 0.05 C 4.805 0.899 2.013 3.272 0.778 6.812 C -0.605 10.45 -0.091 14.37 1.901 16.789 C 1.943 16.841 2.011 16.864 2.076 16.848 C 5.129 16.127 8.035 13.63 9.419 9.992 C 10.681 6.151 10.247 2.644 8.499 0.253 Z\" fill=\"rgb(186,106,55)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.475 2.702)\"/><path d=\"M 12.355 0.474 C 12.283 0.276 11.936 -0.047 11.733 0.027 C 8.667 -0.204 5.224 1.049 2.835 3.939 C 0.273 6.87 -0.607 10.724 0.419 13.685 C 0.44 13.748 0.496 13.793 0.562 13.801 C 3.676 14.186 7.269 12.856 9.831 9.925 C 12.35 6.763 13.163 3.324 12.355 0.474 Z\" fill=\"rgb(204,133,87)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.671 7.471)\"/>"},"IconAndroidFillAndAndroid":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 Z\" fill=\"rgb(207,244,229)\" fill-rule=\"nonzero\"/><path d=\"M 19.419 12.05 C 18.772 12.05 18.247 11.51 18.247 10.843 C 18.247 10.176 18.772 9.635 19.419 9.635 C 20.065 9.635 20.59 10.176 20.59 10.843 C 20.59 11.51 20.065 12.05 19.419 12.05 Z M 7.047 12.05 C 6.401 12.05 5.876 11.51 5.876 10.843 C 5.876 10.176 6.401 9.635 7.047 9.635 C 7.694 9.635 8.219 10.176 8.219 10.843 C 8.219 11.51 7.694 12.05 7.047 12.05 Z M 19.805 4.68 L 21.989 0.782 C 22.128 0.533 22.045 0.214 21.803 0.07 C 21.562 -0.074 21.253 0.011 21.113 0.261 L 18.884 4.241 C 17.194 3.508 15.315 3.097 13.333 3.097 C 11.268 3.097 9.313 3.541 7.568 4.332 C 7.561 4.315 7.555 4.297 7.546 4.281 L 5.294 0.261 C 5.155 0.011 4.846 -0.074 4.604 0.07 C 4.362 0.214 4.279 0.533 4.419 0.782 L 6.662 4.788 C 2.681 6.965 0 11.029 0 15.686 L 26.667 15.686 C 26.667 10.952 23.897 6.83 19.805 4.68 Z\" fill=\"rgb(21,196,126)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.667 10)\"/>"},"IconAnimal":{viewBox:"0 0 24 24",body:"<path d=\"M 8.517 20.283 C 3.9 20.283 0 18.067 0 13.8 C 0 12.833 0.183 11.7 0.483 10.567 C 0.717 9.483 1.2 8.467 1.8 5.467 C 2.517 2.35 4.733 0 8.517 0 C 12.233 0 14.517 2.333 15.233 5.517 C 15.9 8.517 16.317 9.533 16.55 10.617 C 16.783 11.7 17.033 12.9 17.033 13.85 C 17.033 18.133 13.133 20.283 8.517 20.283 Z\" fill=\"rgb(107,219,142)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.483 2.633)\"/><path d=\"M 0.833 1.667 C 1.294 1.667 1.667 1.294 1.667 0.833 C 1.667 0.373 1.294 0 0.833 0 C 0.373 0 0 0.373 0 0.833 C 0 1.294 0.373 1.667 0.833 1.667 Z\" fill=\"rgb(0,0,0)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 9.483 8.167)\"/><path d=\"M 0.833 1.667 C 1.294 1.667 1.667 1.294 1.667 0.833 C 1.667 0.373 1.294 0 0.833 0 C 0.373 0 0 0.373 0 0.833 C 0 1.294 0.373 1.667 0.833 1.667 Z\" fill=\"rgb(0,0,0)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 12.967 8.167)\"/><path d=\"M 18.103 0.554 L 16.186 1.871 C 15.953 2.054 15.703 2.054 15.519 1.871 L 13.003 0.138 C 12.769 -0.046 12.519 -0.046 12.336 0.138 L 9.819 1.871 C 9.586 2.054 9.336 2.054 9.153 1.871 L 6.653 0.138 C 6.419 -0.046 6.169 -0.046 5.986 0.138 L 3.586 1.871 C 3.353 2.054 3.103 2.054 2.919 1.871 L 1.003 0.554 C 0.703 0.321 0.219 0.487 0.169 0.971 C -0.081 2.237 -0.081 3.671 0.353 5.054 C 1.436 9.254 5.386 12.371 9.836 12.254 C 15.119 12.187 19.319 7.938 19.319 2.654 C 19.319 2.121 19.253 1.454 19.136 0.921 C 18.953 0.554 18.469 0.321 18.103 0.554 Z\" fill=\"rgb(69,146,251)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.414 0.667) matrix(1 0 0 1 0 10.479)\"/><path d=\"M 14.959 5.267 C 13.642 1.617 10.525 0 7.525 0 C 4.525 0 1.459 1.617 0.025 5.283 C -0.041 5.517 0.025 5.767 0.209 5.95 L 2.125 7.033 C 2.309 7.217 2.542 7.217 2.659 7.033 C 3.192 6.733 4.092 6.067 4.575 5.767 C 4.759 5.583 4.992 5.583 5.109 5.767 L 7.142 7.2 C 7.209 7.267 7.325 7.267 7.442 7.267 C 7.625 7.267 7.675 7.267 7.742 7.2 L 9.775 5.767 C 9.959 5.583 10.192 5.583 10.309 5.767 C 10.792 6.067 11.625 6.733 12.225 7.033 C 12.409 7.1 12.642 7.1 12.759 7.033 L 14.675 5.95 C 14.959 5.75 15.092 5.517 14.959 5.267 Z\" fill=\"rgb(69,146,251)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.414 0.667) matrix(1 0 0 1 2.061 0)\"/>"},"IconAntennaFillAntennaCommunication":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.046 0 40 8.954 40 20 C 40 31.046 31.046 40 20 40 Z\" fill=\"rgb(209,214,219)\" fill-rule=\"evenodd\"/><path d=\"M 3.249 3.204 C 3.074 3.384 2.866 3.528 2.635 3.627 C 2.405 3.726 2.157 3.778 1.906 3.78 C 1.655 3.782 1.406 3.734 1.174 3.639 C 0.942 3.544 0.731 3.404 0.554 3.227 C 0.376 3.049 0.236 2.838 0.141 2.606 C 0.046 2.374 -0.002 2.126 0 1.875 C 0.002 1.624 0.054 1.376 0.153 1.146 C 0.252 0.915 0.395 0.706 0.576 0.532 C 0.932 0.187 1.409 -0.004 1.905 0 C 2.401 0.004 2.875 0.203 3.226 0.553 C 3.577 0.904 3.776 1.378 3.78 1.874 C 3.784 2.37 3.593 2.848 3.249 3.204 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 25.110 9.442)\"/><path d=\"M 7.766 0.116 L 0.232 5.663 C 0.166 5.712 0.111 5.774 0.071 5.846 C 0.032 5.918 0.008 5.997 0.002 6.079 C -0.005 6.161 0.007 6.243 0.036 6.32 C 0.064 6.397 0.109 6.467 0.167 6.524 L 2.153 8.511 C 2.211 8.569 2.281 8.614 2.358 8.642 C 2.434 8.671 2.517 8.682 2.598 8.676 C 2.68 8.67 2.759 8.646 2.831 8.607 C 2.903 8.567 2.965 8.512 3.014 8.446 L 8.562 0.912 C 8.949 0.387 8.291 -0.271 7.766 0.116 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 18.494 11.161)\"/><path d=\"M 2.27 13.257 C 2.696 13.778 3.172 14.254 3.692 14.68 C 7.51 17.808 13.092 17.703 16.79 14.365 C 16.84 14.319 16.88 14.262 16.907 14.2 C 16.935 14.138 16.95 14.071 16.951 14.002 C 16.952 13.934 16.939 13.867 16.913 13.804 C 16.888 13.74 16.85 13.683 16.801 13.635 L 3.314 0.15 C 3.266 0.102 3.209 0.063 3.146 0.038 C 3.083 0.012 3.016 -0.001 2.948 0 C 2.879 0.001 2.812 0.016 2.75 0.043 C 2.688 0.071 2.632 0.11 2.585 0.16 C 0.977 1.946 0.061 4.248 0.003 6.65 C -0.055 9.053 0.749 11.396 2.27 13.257 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 12.433 8.950)\"/><path d=\"M 11.664 10.299 L 1 10.299 C 0.837 10.299 0.676 10.259 0.532 10.183 C 0.388 10.107 0.265 9.996 0.173 9.861 C 0.081 9.726 0.024 9.571 0.006 9.409 C -0.012 9.247 0.01 9.083 0.07 8.931 L 3.6 0 L 8.2 0 L 12.56 8.857 C 12.635 9.009 12.67 9.178 12.662 9.348 C 12.654 9.518 12.602 9.682 12.513 9.827 C 12.423 9.971 12.298 10.09 12.15 10.173 C 12.001 10.255 11.834 10.299 11.664 10.299 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.088 20.751)\"/>"},"IconAntennaMonoAntenna":{viewBox:"0 0 24 24",body:"<path d=\"M 18.136 14.366 C 18.186 14.319 18.226 14.263 18.253 14.2 C 18.281 14.138 18.295 14.071 18.296 14.003 C 18.297 13.935 18.284 13.867 18.259 13.804 C 18.233 13.741 18.195 13.684 18.146 13.636 L 12.434 7.925 L 15.239 4.115 C 15.644 4.275 16.091 4.29 16.506 4.159 C 16.92 4.027 17.277 3.757 17.515 3.393 C 17.753 3.029 17.859 2.594 17.814 2.162 C 17.769 1.729 17.576 1.325 17.268 1.018 C 16.96 0.711 16.555 0.52 16.123 0.476 C 15.69 0.433 15.255 0.54 14.892 0.78 C 14.529 1.02 14.26 1.377 14.13 1.792 C 14 2.208 14.018 2.655 14.179 3.059 L 10.373 5.863 L 4.66 0.151 C 4.612 0.102 4.555 0.064 4.492 0.038 C 4.429 0.012 4.361 -0.001 4.293 0 C 4.225 0.001 4.158 0.016 4.095 0.043 C 4.033 0.071 3.977 0.111 3.93 0.161 C 0.739 3.698 0.51 8.949 3.23 12.74 L 0.07 20.733 C 0.01 20.884 -0.012 21.048 0.006 21.211 C 0.024 21.373 0.081 21.528 0.173 21.663 C 0.265 21.798 0.388 21.908 0.532 21.984 C 0.676 22.061 0.837 22.101 1 22.101 L 11.665 22.101 C 11.835 22.101 12.002 22.057 12.151 21.975 C 12.299 21.892 12.425 21.773 12.514 21.629 C 12.604 21.485 12.656 21.32 12.664 21.15 C 12.672 20.98 12.637 20.811 12.562 20.659 L 10.724 16.927 C 12.068 17.019 13.417 16.84 14.691 16.4 C 15.964 15.96 17.136 15.268 18.136 14.366 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.087 0.949)\"/>"},"IconAppleFillAppleFruit":{viewBox:"0 0 40 40",body:"<path d=\"M 40 20 C 40 31.045 31.045 40 20 40 C 8.954 40 0 31.045 0 20 C 0 8.955 8.954 0 20 0 C 31.045 0 40 8.955 40 20 Z\" fill=\"rgba(255,191,200,0.8)\" fill-rule=\"evenodd\"/><path d=\"M 3.89 3.626 C 3.304 3.964 2.646 4.16 1.97 4.197 C 1.295 4.233 0.62 4.111 0 3.838 C 0.074 3.166 0.306 2.52 0.676 1.954 C 1.046 1.388 1.544 0.916 2.13 0.578 C 2.716 0.24 3.373 0.044 4.048 0.007 C 4.724 -0.031 5.398 0.091 6.018 0.363 C 5.944 1.036 5.713 1.682 5.343 2.248 C 4.973 2.815 4.475 3.287 3.889 3.625\" fill=\"rgb(3,178,108)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 20 9.344)\"/><path d=\"M 2.989 4.342 C 2.989 4.839 3.392 5.242 3.889 5.242 C 4.386 5.242 4.789 4.839 4.789 4.342 L 3.889 4.342 L 2.989 4.342 Z M 0.213 -0.874 C -0.27 -0.992 -0.757 -0.696 -0.874 -0.213 C -0.992 0.27 -0.696 0.757 -0.213 0.874 L 0 0 L 0.213 -0.874 Z M 3.889 4.342 L 4.789 4.342 C 4.789 3.803 4.55 2.744 3.892 1.713 C 3.211 0.648 2.057 -0.425 0.213 -0.874 L 0 0 L -0.213 0.874 C 1.114 1.197 1.904 1.945 2.375 2.683 C 2.869 3.455 2.989 4.181 2.989 4.342 L 3.889 4.342 Z\" fill=\"rgb(78,89,104)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 16.111 10.520)\"/><path d=\"M 9.5 0.701 C 7.957 0.701 6.841 -0.372 4.43 0.137 C 1.556 0.744 -0.351 3.295 0.054 7.891 C 0.458 12.487 3.819 16.496 7.022 16.496 C 7.474 16.496 7.907 16.39 8.321 16.217 C 8.695 16.062 9.096 15.982 9.5 15.982 C 9.905 15.982 10.305 16.062 10.679 16.217 C 11.093 16.39 11.526 16.496 11.978 16.496 C 15.181 16.496 18.542 12.487 18.946 7.891 C 19.351 3.295 17.444 0.744 14.57 0.137 C 12.159 -0.372 11.043 0.701 9.5 0.701 Z\" fill=\"rgb(236,68,82)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 14.161)\"/>"},"IconAppleMonoAppleFruit":{viewBox:"0 0 24 24",body:"<path d=\"M 14.57 4.956 C 12.646 4.55 11.546 5.145 10.395 5.405 C 10.377 5.103 10.288 4.611 10.075 4.039 C 10.627 4.195 11.204 4.239 11.774 4.168 C 12.343 4.098 12.892 3.913 13.389 3.627 C 13.975 3.289 14.474 2.817 14.844 2.25 C 15.214 1.684 15.445 1.037 15.519 0.365 C 14.899 0.092 14.224 -0.031 13.548 0.007 C 12.872 0.044 12.215 0.24 11.629 0.579 C 10.616 1.164 9.954 2.104 9.659 3.148 C 9.012 2 7.851 0.796 5.825 0.304 C 5.71 0.276 5.591 0.271 5.474 0.289 C 5.357 0.307 5.245 0.348 5.144 0.409 C 5.043 0.471 4.955 0.551 4.886 0.647 C 4.816 0.742 4.765 0.85 4.737 0.965 C 4.709 1.08 4.704 1.199 4.722 1.316 C 4.741 1.433 4.782 1.545 4.843 1.646 C 4.904 1.747 4.985 1.835 5.08 1.905 C 5.176 1.974 5.284 2.025 5.399 2.053 C 7.885 2.657 8.519 4.779 8.587 5.401 C 7.444 5.139 6.344 4.552 4.431 4.956 C 1.556 5.563 -0.35 8.114 0.054 12.71 C 0.459 17.307 3.82 21.315 7.023 21.315 C 7.47 21.309 7.911 21.214 8.321 21.036 C 8.695 20.881 9.096 20.801 9.5 20.801 C 9.905 20.801 10.306 20.881 10.68 21.036 C 11.093 21.209 11.527 21.315 11.979 21.315 C 15.181 21.315 18.543 17.307 18.947 12.71 C 19.351 8.114 17.445 5.563 14.57 4.956 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.342)\"/>"},"IconArMonoArAugmented":{viewBox:"0 0 24 24",body:"<path d=\"M 4.416 3.225 L 2.4 2.062 L 3.383 1.494 C 3.766 1.273 3.897 0.784 3.676 0.401 C 3.456 0.018 2.967 -0.115 2.584 0.108 L 0.908 1.075 C 0.631 1.235 0.407 1.464 0.251 1.732 C 0.249 1.735 0.245 1.737 0.243 1.74 C 0.241 1.743 0.241 1.747 0.24 1.75 C 0.086 2.02 0 2.328 0 2.648 L 0 4.55 C 0 4.992 0.358 5.35 0.8 5.35 C 1.242 5.35 1.6 4.992 1.6 4.55 L 1.6 3.447 L 3.616 4.611 C 3.742 4.684 3.879 4.718 4.015 4.718 C 4.292 4.718 4.561 4.574 4.709 4.318 C 4.929 3.935 4.798 3.446 4.416 3.225 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 0 3.439)\"/><path d=\"M 3.616 0.773 L 1.6 1.937 L 1.6 0.8 C 1.6 0.359 1.242 0 0.8 0 C 0.358 0 0 0.358 0 0.8 L 0 2.735 C 0 3.054 0.086 3.361 0.238 3.629 C 0.241 3.634 0.24 3.639 0.243 3.644 C 0.244 3.646 0.247 3.647 0.248 3.649 C 0.405 3.918 0.63 4.147 0.907 4.307 L 2.553 5.258 C 2.679 5.331 2.817 5.365 2.952 5.365 C 3.229 5.365 3.497 5.221 3.646 4.966 C 3.867 4.583 3.736 4.094 3.354 3.873 L 2.399 3.321 L 4.415 2.157 C 4.798 1.936 4.929 1.447 4.708 1.064 C 4.487 0.684 3.999 0.549 3.616 0.773 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 0 11.896)\"/><path d=\"M 2.948 5.32 C 3.39 5.32 3.748 4.962 3.748 4.52 L 3.748 2.502 L 5.497 1.493 C 5.879 1.272 6.011 0.783 5.789 0.4 C 5.569 0.017 5.08 -0.114 4.696 0.107 L 2.948 1.116 L 1.2 0.107 C 0.817 -0.114 0.328 0.017 0.107 0.4 C -0.114 0.782 0.017 1.272 0.4 1.493 L 2.148 2.502 L 2.148 4.52 C 2.148 4.961 2.506 5.32 2.948 5.32 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 6.267 8.435)\"/><path d=\"M 5.539 1.21 L 3.864 0.243 C 3.587 0.083 3.276 0.004 2.966 0.002 C 2.962 0.002 2.959 0 2.956 0 C 2.952 0 2.95 0.002 2.946 0.002 C 2.635 0.004 2.325 0.083 2.048 0.243 L 0.4 1.193 C 0.017 1.414 -0.114 1.903 0.107 2.286 C 0.328 2.669 0.815 2.801 1.2 2.579 L 2.155 2.028 L 2.155 4.355 C 2.155 4.797 2.513 5.155 2.955 5.155 C 3.397 5.155 3.755 4.797 3.755 4.355 L 3.755 2.028 L 4.738 2.596 C 4.864 2.669 5.002 2.703 5.137 2.703 C 5.413 2.703 5.683 2.559 5.83 2.303 C 6.053 1.921 5.921 1.431 5.539 1.21 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 6.260 0)\"/><path d=\"M 4.737 2.576 L 3.783 3.128 L 3.783 0.8 C 3.783 0.359 3.425 0 2.983 0 C 2.541 0 2.183 0.358 2.183 0.8 L 2.183 3.128 L 1.2 2.56 C 0.817 2.337 0.327 2.469 0.107 2.852 C -0.113 3.235 0.017 3.724 0.399 3.945 L 2.076 4.914 C 2.352 5.073 2.661 5.152 2.97 5.154 C 2.974 5.154 2.978 5.157 2.983 5.157 C 2.988 5.157 2.992 5.154 2.997 5.154 C 3.306 5.151 3.615 5.072 3.891 4.914 L 5.537 3.963 C 5.92 3.742 6.051 3.253 5.829 2.87 C 5.61 2.485 5.121 2.355 4.737 2.576 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 6.232 15.563)\"/><path d=\"M 4.575 1.734 C 4.573 1.731 4.573 1.727 4.572 1.724 C 4.57 1.721 4.567 1.719 4.565 1.716 C 4.408 1.448 4.184 1.219 3.908 1.059 L 2.262 0.108 C 1.879 -0.114 1.389 0.018 1.169 0.401 C 0.947 0.783 1.079 1.273 1.461 1.494 L 2.416 2.045 L 0.4 3.209 C 0.018 3.43 -0.114 3.919 0.108 4.302 C 0.255 4.559 0.525 4.702 0.801 4.702 C 0.937 4.702 1.074 4.667 1.2 4.595 L 3.216 3.432 L 3.216 4.567 C 3.216 5.009 3.574 5.367 4.016 5.367 C 4.458 5.367 4.816 5.009 4.816 4.567 L 4.816 2.633 C 4.815 2.313 4.729 2.004 4.575 1.734 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 13.615 3.455)\"/><path d=\"M 4.214 0.078 C 4.112 0.03 4 0 3.88 0 C 3.439 0 3.08 0.358 3.08 0.8 L 3.08 1.863 L 1.201 0.778 C 0.818 0.554 0.328 0.688 0.108 1.07 C -0.114 1.453 0.018 1.942 0.4 2.163 L 2.28 3.249 L 1.332 3.795 C 0.949 4.016 0.817 4.505 1.038 4.888 C 1.112 5.016 1.217 5.117 1.337 5.185 C 1.481 5.304 1.648 5.388 1.833 5.388 C 1.969 5.388 2.106 5.354 2.232 5.281 L 3.906 4.314 C 4.103 4.201 4.261 4.045 4.4 3.873 L 4.679 3.712 L 4.679 3.388 C 4.759 3.182 4.815 2.967 4.815 2.74 L 4.815 0.838 C 4.816 0.467 4.557 0.168 4.214 0.078 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.785 1.641) matrix(1 0 0 1 13.614 11.891)\"/>"},"IconArmMuscleArmMuscle":{viewBox:"0 0 24 24",body:"<path d=\"M 9.398 9.058 C 7.591 9.285 6.498 10.147 5.78 10.669 C 5.48 10.887 5.065 10.653 5.117 10.286 L 5.702 6.443 C 5.727 6.282 5.848 6.153 6.009 6.128 C 6.462 6.058 7.409 5.812 8.139 4.962 C 8.539 4.497 8.759 3.904 8.849 3.297 C 8.925 2.784 8.937 2.184 8.756 1.706 C 8.453 0.692 6.946 -0.33 5.215 0.102 C 4.061 0.445 3.247 1.259 2.708 3.154 L 0.071 14.339 C -0.177 15.4 0.238 16.505 1.122 17.141 L 1.14 17.155 C 1.524 17.433 1.972 17.609 2.446 17.666 C 4.975 17.965 14.179 18.723 16.791 16.081 C 18.432 14.419 15.346 8.623 9.398 9.058 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.768 3.001)\"/>"},"IconArmMuscleFill":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 9 40 0 31 0 20 C 0 9 9 0 20 0 C 31 0 40 9 40 20 C 40 31 31 40 20 40 Z\" fill=\"rgb(247,172,90)\" fill-rule=\"evenodd\"/><path d=\"M 9.398 9.058 C 7.591 9.285 6.498 10.147 5.78 10.669 C 5.48 10.887 5.065 10.653 5.117 10.286 L 5.702 6.443 C 5.727 6.282 5.848 6.153 6.009 6.128 C 6.462 6.058 7.409 5.812 8.139 4.962 C 8.539 4.497 8.759 3.904 8.849 3.297 C 8.925 2.784 8.937 2.184 8.756 1.706 C 8.453 0.692 6.946 -0.33 5.215 0.102 C 4.06 0.447 3.246 1.261 2.707 3.155 L 0.071 14.339 C -0.177 15.4 0.238 16.505 1.122 17.141 L 1.14 17.155 C 1.524 17.433 1.972 17.609 2.446 17.666 C 4.975 17.965 14.179 18.723 16.791 16.081 C 18.432 14.419 15.346 8.623 9.398 9.058 Z\" fill=\"rgb(253,191,154)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.386 11.001)\"/>"},"IconArrowBackAndroidMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.132 7.506 L 4.096 7.506 L 9.547 2.055 C 9.66 1.944 9.75 1.812 9.811 1.666 C 9.873 1.52 9.905 1.363 9.905 1.205 C 9.906 1.046 9.875 0.89 9.815 0.743 C 9.755 0.597 9.666 0.463 9.554 0.351 C 9.442 0.239 9.309 0.151 9.162 0.09 C 9.016 0.03 8.859 -0.001 8.7 0 C 8.542 0.001 8.385 0.033 8.239 0.094 C 8.093 0.156 7.961 0.245 7.85 0.358 L 0.35 7.858 C 0.347 7.86 0.346 7.864 0.343 7.867 C 0.178 8.035 0.067 8.248 0.022 8.479 C -0.023 8.709 0.001 8.948 0.091 9.165 C 0.151 9.308 0.236 9.435 0.343 9.545 L 0.35 9.555 L 7.85 17.055 C 8.085 17.289 8.392 17.405 8.698 17.405 C 8.935 17.405 9.167 17.335 9.364 17.203 C 9.562 17.071 9.716 16.884 9.806 16.665 C 9.897 16.446 9.921 16.205 9.875 15.972 C 9.829 15.739 9.715 15.525 9.547 15.357 L 4.097 9.906 L 18.133 9.906 C 18.451 9.906 18.756 9.78 18.981 9.555 C 19.206 9.33 19.333 9.025 19.333 8.706 C 19.333 8.388 19.206 8.083 18.981 7.858 C 18.756 7.633 18.45 7.506 18.132 7.506 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.836 3.294)\"/>"},"IconArrowBackIosMono":{viewBox:"0 0 24 24",body:"<path d=\"M 8.675 17.475 C 8.375 17.475 8.075 17.375 7.875 17.075 L 0.375 9.575 C -0.125 9.075 -0.125 8.375 0.375 7.875 L 7.875 0.375 C 8.375 -0.125 9.075 -0.125 9.575 0.375 C 10.075 0.875 10.075 1.575 9.575 2.075 L 2.775 8.775 L 9.475 15.475 C 9.975 15.975 9.975 16.675 9.475 17.175 C 9.275 17.375 8.975 17.475 8.675 17.475 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 12.125 3.225)\"/>"},"IconArrowCalendarLeftMono":{viewBox:"0 0 24 24",body:"<path d=\"M 12.375 0.328 L 1.125 6.778 C -0.375 7.678 -0.375 9.778 1.125 10.678 L 12.375 17.128 C 13.875 18.028 15.675 16.978 15.675 15.178 L 15.675 2.278 C 15.675 0.478 13.875 -0.572 12.375 0.328 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.125 3.272)\"/>"},"IconArrowCalendarRightMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.7 6.781 C 16.2 7.681 16.2 9.781 14.7 10.681 L 3.45 17.131 C 1.95 18.031 0 16.981 0 15.181 L 0 2.131 C 0.15 0.481 1.95 -0.569 3.45 0.331 L 14.7 6.781 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.050 3.269)\"/>"},"IconArrowCircle":{viewBox:"0 0 24 24",body:"<path d=\"M 22 11 C 22 17.075 17.075 22 11 22 C 4.925 22 0 17.075 0 11 C 0 4.925 4.925 0 11 0 C 17.075 0 22 4.925 22 11 Z\" fill=\"rgb(49,130,246)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.015 0.835)\"/><path d=\"M 10.814 2.899 L 2.363 2.899 L 3.93 1.241 C 4.057 1.104 4.128 0.918 4.126 0.726 C 4.125 0.534 4.052 0.35 3.924 0.214 C 3.795 0.078 3.621 0.001 3.439 0 C 3.257 -0.001 3.082 0.073 2.952 0.208 L 0.204 3.113 C 0.139 3.181 0.088 3.262 0.053 3.35 C 0.018 3.439 0 3.534 0 3.63 C 0 3.727 0.018 3.822 0.053 3.911 C 0.088 3.999 0.139 4.08 0.204 4.148 L 2.952 7.054 C 3.017 7.122 3.093 7.176 3.177 7.213 C 3.261 7.249 3.351 7.268 3.441 7.268 C 3.532 7.268 3.622 7.249 3.706 7.213 C 3.79 7.176 3.866 7.122 3.93 7.054 C 3.995 6.986 4.046 6.906 4.08 6.817 C 4.115 6.728 4.133 6.633 4.133 6.537 C 4.133 6.441 4.115 6.346 4.08 6.257 C 4.046 6.168 3.995 6.088 3.93 6.02 L 2.363 4.362 L 10.813 4.362 C 10.997 4.362 11.173 4.285 11.302 4.148 C 11.432 4.01 11.505 3.824 11.505 3.63 C 11.505 3.437 11.432 3.251 11.302 3.113 C 11.173 2.976 10.997 2.899 10.814 2.899 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.300 5.100) matrix(1 0 0 1 0 6.232)\"/><path d=\"M 9.142 4.375 L 0.692 4.375 C 0.508 4.375 0.332 4.298 0.203 4.161 C 0.073 4.024 0 3.838 0 3.644 C 0 3.45 0.073 3.264 0.203 3.127 C 0.332 2.99 0.508 2.913 0.692 2.913 L 9.142 2.913 L 7.574 1.255 C 7.509 1.187 7.457 1.107 7.421 1.018 C 7.385 0.928 7.366 0.833 7.365 0.736 C 7.365 0.639 7.383 0.543 7.417 0.453 C 7.452 0.364 7.503 0.282 7.568 0.214 C 7.633 0.146 7.71 0.091 7.795 0.055 C 7.879 0.018 7.97 -0.001 8.062 0 C 8.153 0.001 8.244 0.021 8.328 0.059 C 8.412 0.097 8.489 0.152 8.552 0.221 L 11.3 3.126 C 11.365 3.194 11.417 3.274 11.452 3.363 C 11.487 3.452 11.505 3.547 11.505 3.643 C 11.505 3.74 11.487 3.835 11.452 3.924 C 11.417 4.012 11.365 4.093 11.3 4.161 L 8.552 7.067 C 8.421 7.194 8.248 7.263 8.07 7.259 C 7.892 7.255 7.722 7.178 7.596 7.045 C 7.47 6.911 7.397 6.732 7.393 6.544 C 7.389 6.355 7.454 6.172 7.574 6.033 L 9.142 4.375 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.300 5.100) matrix(1 0 0 1 0.002 0)\"/>"},"IconArrowCursorMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.486 0.812 L 0.093 10.152 C -0.268 10.919 0.488 11.736 1.28 11.436 L 4.655 10.158 C 5.37 9.888 6.158 9.887 6.873 10.155 L 10.241 11.42 C 11.033 11.718 11.786 10.903 11.426 10.137 L 7.041 0.812 C 6.532 -0.271 4.994 -0.271 4.485 0.812 L 4.486 0.812 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.240 6.049)\"/>"},"IconArrowDecreaseMonoMinus":{viewBox:"0 0 24 24",body:"<path d=\"M 0.541 11.95 C 0.041 11.95 -0.159 11.35 0.141 10.95 L 8.941 0.45 C 9.441 -0.15 10.341 -0.15 10.841 0.45 L 19.941 10.95 C 20.241 11.35 19.941 11.95 19.541 11.95 L 0.541 11.95 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 -1 2 18.950)\"/>"},"IconArrowDiagonalMonoArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 16.05 0.68 C 15.939 0.411 15.724 0.197 15.455 0.085 C 15.321 0.03 15.178 0 15.035 0 L 6.964 0 C 6.357 0 5.864 0.493 5.864 1.101 C 5.864 1.708 6.357 2.201 6.964 2.201 L 12.379 2.201 L 2.2 12.38 L 2.2 6.965 C 2.2 6.357 1.707 5.865 1.1 5.865 C 0.492 5.865 0 6.357 0 6.965 L 0 15.036 C 0 15.179 0.029 15.322 0.085 15.456 C 0.196 15.725 0.41 15.939 0.679 16.051 C 0.814 16.106 0.956 16.136 1.1 16.136 L 9.171 16.136 C 9.778 16.136 10.271 15.643 10.271 15.036 C 10.271 14.428 9.778 13.935 9.171 13.935 L 3.756 13.935 L 13.935 3.756 L 13.935 9.171 C 13.935 9.779 14.427 10.271 15.035 10.271 C 15.642 10.271 16.135 9.779 16.135 9.171 L 16.135 1.101 C 16.135 0.957 16.106 0.815 16.05 0.68 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.933 3.932)\"/>"},"IconArrowDown2Mono":{viewBox:"0 0 24 24",body:"<path d=\"M 0.379 12.465 L 9.077 21.165 C 9.283 21.37 9.617 21.37 9.822 21.165 L 18.521 12.465 C 18.767 12.221 18.9 11.893 18.9 11.552 C 18.9 11.211 18.767 10.882 18.52 10.638 L 18.399 10.531 C 17.885 10.133 17.155 10.179 16.695 10.639 L 10.74 16.597 L 10.742 1.292 C 10.742 0.579 10.163 0 9.45 0 L 9.3 0.009 C 8.65 0.085 8.159 0.637 8.159 1.292 L 8.159 16.596 L 2.205 10.64 C 1.7 10.135 0.883 10.135 0.379 10.64 C -0.126 11.145 -0.126 11.961 0.379 12.465 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.545 1.336)\"/>"},"IconArrowDownDoubleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 1 C 0 0.8 0.1 0.5 0.3 0.4 C 0.7 0 1.2 0 1.6 0.4 L 5.4 4.2 L 9.3 0.3 C 9.7 -0.1 10.2 -0.1 10.6 0.3 C 11 0.7 11 1.2 10.6 1.6 L 6.1 6.1 C 5.7 6.5 5.2 6.5 4.8 6.1 L 0.3 1.6 C 0.1 1.4 0 1.2 0 1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.550 5.353)\"/><path d=\"M 0 1 C 0 0.8 0.1 0.5 0.3 0.4 C 0.7 0 1.2 0 1.6 0.4 L 5.4 4.2 L 9.3 0.3 C 9.7 -0.1 10.2 -0.1 10.6 0.3 C 11 0.7 11 1.2 10.6 1.6 L 6.1 6.1 C 5.7 6.5 5.2 6.5 4.8 6.1 L 0.3 1.6 C 0.1 1.4 0 1.2 0 1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.550 5.353) matrix(1 0 0 1 0 6.894)\"/>"},"IconArrowDownFatMono":{viewBox:"0 0 24 24",body:"<path d=\"M 8.779 0.001 C 9.832 0.001 10.535 0.703 10.535 1.757 L 10.535 14.036 L 14.573 9.998 C 15.275 9.296 16.329 9.296 17.031 9.998 C 17.733 10.7 17.733 11.754 17.031 12.456 L 10.008 19.479 C 9.306 20.181 8.252 20.181 7.55 19.479 L 0.527 12.456 C 0.176 12.105 0 11.754 0 11.227 C 0 10.7 0.176 10.349 0.527 9.998 C 1.229 9.296 2.283 9.296 2.985 9.998 L 7.023 14.036 L 7.023 1.756 C 7.023 0.878 7.725 0.001 8.779 0.001 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.221 1.779)\"/>"},"IconArrowDownLimitMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9.7 15.9 C 9.8 16 9.9 16.1 10.1 16.1 C 10.4 16.2 10.7 16.2 10.9 16.1 C 11 16 11.2 16 11.3 15.9 L 17 10.2 C 17.4 9.8 17.4 9.1 17 8.6 C 16.6 8.1 15.9 8.2 15.4 8.6 L 11.6 12.4 L 11.6 1.1 C 11.6 0.5 11.1 0 10.5 0 C 9.9 0 9.4 0.5 9.4 1.1 L 9.4 12.4 L 5.6 8.6 C 5.4 8.4 5.1 8.3 4.8 8.3 C 4.5 8.3 4.2 8.4 4 8.6 C 3.6 9 3.6 9.7 4 10.2 L 9.7 15.9 Z M 1.1 20.4 L 19.9 20.4 C 20.5 20.4 21 19.9 21 19.3 C 21 18.7 20.5 18.2 19.9 18.2 L 1.1 18.2 C 0.5 18.2 0 18.7 0 19.3 C 0 19.9 0.5 20.4 1.1 20.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.500 1.800)\"/>"},"IconArrowDownMonoArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 1 10.9 C 0.8 10.9 0.5 10.8 0.4 10.6 C 0 10.2 0 9.7 0.4 9.3 L 4.2 5.5 L 0.3 1.6 C -0.1 1.2 -0.1 0.7 0.3 0.3 C 0.7 -0.1 1.2 -0.1 1.6 0.3 L 6.1 4.8 C 6.5 5.2 6.5 5.7 6.1 6.1 L 1.6 10.6 C 1.4 10.8 1.2 10.9 1 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(0 1 -1 0 17.650 9.250)\"/>"},"IconArrowDownRightMono":{viewBox:"0 0 24 24",body:"<path d=\"M 19.327 3.627 L 15.527 7.427 L 8.427 0.227 C 8.281 0.082 8.083 0 7.877 0 C 7.671 0 7.473 0.082 7.327 0.227 L 0.227 7.327 C 0.082 7.473 0 7.671 0 7.877 C 0 8.083 0.082 8.281 0.227 8.427 L 7.327 15.527 L 3.627 19.227 C 3.541 19.313 3.492 19.43 3.492 19.552 C 3.492 19.674 3.541 19.791 3.627 19.877 C 3.669 19.923 3.719 19.961 3.776 19.987 C 3.833 20.012 3.895 20.026 3.957 20.027 L 19.037 20.027 C 19.276 20.027 19.505 19.932 19.673 19.763 C 19.842 19.595 19.937 19.366 19.937 19.127 L 19.937 3.927 C 20.037 3.527 19.637 3.327 19.337 3.627\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.963 2.003)\"/>"},"IconArrowDownSidebarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 13.095 0.347 L 7.475 6.338 L 1.904 0.398 C 1.489 -0.045 0.792 -0.068 0.349 0.346 C -0.095 0.76 -0.118 1.456 0.297 1.898 L 6.641 8.662 C 6.98 9.023 7.5 9.089 7.923 8.883 C 8.083 8.826 8.235 8.743 8.359 8.612 L 14.703 1.848 C 15.118 1.405 15.095 0.71 14.651 0.296 C 14.207 -0.118 13.51 -0.096 13.095 0.347 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.700 7.701)\"/>"},"IconArrowDownSquareMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 17.1 0 L 2.4 0 C 1.075 0 0 1.075 0 2.4 L 0 17.1 C 0 18.425 1.075 19.5 2.4 19.5 L 17.1 19.5 C 18.426 19.5 19.5 18.425 19.5 17.1 L 19.5 2.4 C 19.5 1.075 18.425 0 17.1 0 Z M 14.448 10.972 L 10.462 14.957 C 10.267 15.152 10.011 15.25 9.755 15.25 C 9.499 15.25 9.243 15.152 9.048 14.957 L 5.062 10.972 C 4.671 10.581 4.671 9.948 5.062 9.557 C 5.453 9.166 6.085 9.166 6.476 9.557 L 8.764 11.845 L 8.764 5.25 C 8.764 4.703 9.208 4.259 9.755 4.259 C 10.302 4.259 10.746 4.703 10.746 5.25 L 10.746 11.845 L 13.034 9.557 C 13.425 9.166 14.057 9.166 14.448 9.557 C 14.839 9.948 14.839 10.58 14.448 10.972 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.245 2.250)\"/>"},"IconArrowHorizontalArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 6.222 10.502 C 5.813 10.952 5.113 10.983 4.673 10.563 L 0.322 6.222 L 0.322 6.213 C -0.108 5.783 -0.108 5.093 0.322 4.663 L 4.673 0.322 C 5.102 -0.108 5.793 -0.108 6.222 0.322 L 6.233 0.322 C 6.662 0.752 6.652 1.453 6.222 1.873 L 3.763 4.342 L 14.44 4.342 L 11.979 1.873 C 11.58 1.453 11.58 0.802 11.979 0.382 C 12.389 -0.068 13.09 -0.097 13.53 0.322 L 17.879 4.663 L 17.879 4.672 C 18.309 5.102 18.309 5.793 17.879 6.222 L 13.53 10.563 C 13.32 10.773 13.04 10.883 12.76 10.883 C 12.48 10.883 12.2 10.773 11.979 10.563 L 11.97 10.563 C 11.55 10.133 11.549 9.432 11.979 9.012 L 14.44 6.543 L 3.761 6.543 L 6.222 9.012 C 6.622 9.432 6.622 10.082 6.222 10.502 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.899 6.557)\"/>"},"IconArrowIncreaseMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0.541 11.95 C 0.041 11.95 -0.159 11.35 0.141 10.95 L 8.941 0.45 C 9.441 -0.15 10.341 -0.15 10.841 0.45 L 19.941 10.95 C 20.241 11.35 19.941 11.95 19.541 11.95 L 0.541 11.95 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 5)\"/>"},"IconArrowLeft2Mono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 18.132 7.506 L 4.096 7.506 L 9.547 2.055 C 9.854 1.753 9.976 1.309 9.865 0.893 C 9.755 0.476 9.429 0.151 9.013 0.04 C 8.596 -0.07 8.152 0.051 7.85 0.358 L 0.35 7.858 C 0.347 7.86 0.346 7.864 0.343 7.867 C 0.007 8.211 -0.093 8.721 0.091 9.165 C 0.151 9.308 0.236 9.435 0.343 9.545 L 0.35 9.555 L 7.85 17.055 C 8.085 17.289 8.392 17.405 8.698 17.405 C 9.183 17.405 9.621 17.113 9.806 16.665 C 9.992 16.217 9.89 15.701 9.547 15.357 L 4.097 9.906 L 18.133 9.906 C 18.796 9.906 19.333 9.369 19.333 8.706 C 19.333 8.044 18.795 7.506 18.132 7.506 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.800 3.300)\"/>"},"IconArrowLeftCircleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z M 15.5 12 L 8.9 12 L 11.2 14.3 C 11.6 14.7 11.6 15.3 11.2 15.7 C 11 15.9 10.7 16 10.5 16 C 10.3 16 10 15.9 9.8 15.7 L 5.8 11.7 C 5.4 11.3 5.4 10.7 5.8 10.3 L 9.8 6.3 C 10.2 5.9 10.8 5.9 11.2 6.3 C 11.6 6.7 11.6 7.3 11.2 7.7 L 8.9 10 L 15.5 10 C 16.1 10 16.5 10.4 16.5 11 C 16.5 11.6 16 12 15.5 12 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconArrowLeftDoubleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 5.4 10.9 C 5.2 10.9 5 10.8 4.8 10.6 L 0.3 6.1 C -0.1 5.7 -0.1 5.2 0.3 4.8 L 4.8 0.3 C 5.2 -0.1 5.7 -0.1 6.1 0.3 C 6.5 0.7 6.5 1.2 6.1 1.6 L 2.2 5.5 L 6 9.3 C 6.4 9.7 6.4 10.2 6 10.6 C 5.9 10.8 5.6 10.9 5.4 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.612 6.550) matrix(1 0 0 1 6.894 0)\"/><path d=\"M 5.4 10.9 C 5.2 10.9 5 10.8 4.8 10.6 L 0.3 6.1 C -0.1 5.7 -0.1 5.2 0.3 4.8 L 4.8 0.3 C 5.2 -0.1 5.7 -0.1 6.1 0.3 C 6.5 0.7 6.5 1.2 6.1 1.6 L 2.2 5.5 L 6 9.3 C 6.4 9.7 6.4 10.2 6 10.6 C 5.9 10.8 5.6 10.9 5.4 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.612 6.550)\"/>"},"IconArrowLeftMonoArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 5.4 10.9 C 5.6 10.9 5.9 10.8 6 10.6 C 6.4 10.2 6.4 9.7 6 9.3 L 2.2 5.5 L 6.1 1.6 C 6.5 1.2 6.5 0.7 6.1 0.3 C 5.7 -0.1 5.2 -0.1 4.8 0.3 L 0.3 4.8 C -0.1 5.2 -0.1 5.7 0.3 6.1 L 4.8 10.6 C 5 10.7 5.2 10.9 5.4 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 8.141 6.550)\"/>"},"IconArrowLeftRightMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.103 6.582 L 14.545 6.582 L 12.051 9.076 C 11.86 9.285 11.757 9.56 11.763 9.843 C 11.769 10.127 11.885 10.397 12.085 10.597 C 12.286 10.798 12.556 10.913 12.84 10.919 C 13.123 10.925 13.398 10.822 13.607 10.631 L 17.978 6.259 C 18.081 6.157 18.163 6.036 18.219 5.902 C 18.275 5.769 18.303 5.626 18.303 5.481 C 18.303 5.336 18.275 5.193 18.219 5.059 C 18.163 4.926 18.081 4.804 17.978 4.703 L 13.607 0.333 C 13.505 0.228 13.384 0.145 13.25 0.088 C 13.116 0.031 12.972 0.001 12.826 0 C 12.681 -0.001 12.536 0.027 12.402 0.082 C 12.267 0.137 12.144 0.219 12.041 0.322 C 11.938 0.425 11.857 0.547 11.801 0.682 C 11.746 0.817 11.718 0.961 11.719 1.107 C 11.72 1.253 11.75 1.397 11.807 1.531 C 11.864 1.665 11.947 1.786 12.051 1.888 L 14.545 4.382 L 1.103 4.382 C 0.811 4.382 0.532 4.498 0.325 4.704 C 0.119 4.91 0.003 5.19 0.003 5.482 C 0.003 5.773 0.119 6.053 0.325 6.26 C 0.532 6.466 0.811 6.582 1.103 6.582 Z M 17.201 15.065 L 3.759 15.065 L 6.252 12.571 C 6.454 12.363 6.566 12.085 6.564 11.796 C 6.562 11.507 6.446 11.23 6.241 11.025 C 6.037 10.821 5.76 10.705 5.471 10.704 C 5.181 10.702 4.903 10.814 4.696 11.016 L 0.324 15.387 C 0.221 15.489 0.14 15.61 0.084 15.743 C 0.029 15.877 0 16.02 0 16.165 C 0 16.309 0.029 16.453 0.084 16.586 C 0.14 16.72 0.221 16.841 0.324 16.943 L 4.696 21.315 C 4.798 21.417 4.919 21.498 5.053 21.553 C 5.186 21.609 5.33 21.637 5.474 21.637 C 5.619 21.637 5.762 21.609 5.895 21.553 C 6.029 21.498 6.15 21.417 6.252 21.315 C 6.354 21.213 6.435 21.091 6.491 20.958 C 6.546 20.824 6.574 20.681 6.574 20.537 C 6.574 20.392 6.546 20.249 6.491 20.116 C 6.435 19.982 6.354 19.861 6.252 19.759 L 3.758 17.265 L 17.2 17.265 C 17.492 17.265 17.772 17.149 17.978 16.943 C 18.184 16.736 18.3 16.456 18.3 16.165 C 18.3 15.873 18.184 15.593 17.978 15.387 C 17.772 15.181 17.493 15.065 17.201 15.065 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.848 1.176)\"/>"},"IconArrowLeftSideMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.95 0.541 C 11.95 0.041 11.35 -0.159 10.95 0.141 L 0.45 8.941 C -0.15 9.441 -0.15 10.341 0.45 10.841 L 10.95 19.941 C 11.35 20.241 11.95 19.941 11.95 19.541 L 11.95 0.541 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 5.650 1.976)\"/>"},"IconArrowLeftSidebarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0.325 5.922 L 6.227 0.315 C 6.661 -0.11 7.357 -0.104 7.782 0.329 C 8.207 0.763 8.201 1.459 7.767 1.884 L 2.674 6.723 L 7.786 11.58 C 8.219 12.005 8.226 12.702 7.801 13.135 C 7.376 13.569 6.679 13.575 6.246 13.149 L 0.344 7.542 C 0.225 7.425 0.145 7.286 0.09 7.139 C -0.083 6.734 -0.008 6.249 0.325 5.922 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.542 5.468)\"/>"},"IconArrowMaximumMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.803 9.506 C 4.912 9.612 5.088 9.612 5.197 9.506 L 9.8 5.018 C 9.93 4.892 10 4.722 10 4.546 C 10 4.371 9.93 4.201 9.799 4.075 L 9.735 4.02 C 9.463 3.814 9.077 3.838 8.834 4.075 L 5.682 7.149 L 5.683 0.666 C 5.683 0.299 5.377 0 5 0 L 4.921 0.005 C 4.576 0.044 4.317 0.328 4.317 0.666 L 4.316 7.149 L 1.166 4.076 C 0.9 3.816 0.467 3.816 0.2 4.076 C -0.067 4.336 -0.067 4.758 0.2 5.018 L 4.803 9.506 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 -0.000) matrix(-0.707 -0.707 0.707 -0.707 16.996 13.849)\"/><path d=\"M 4.803 9.506 L 4.628 9.685 L 4.629 9.686 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 5.371 9.685 L 5.197 9.506 Z M 9.8 5.018 L 9.626 4.838 L 9.625 4.839 L 9.8 5.018 Z M 9.799 4.075 L 9.973 3.894 L 9.962 3.885 L 9.799 4.075 Z M 9.735 4.02 L 9.898 3.83 L 9.892 3.825 L 9.886 3.82 L 9.735 4.02 Z M 8.834 4.075 L 9.008 4.254 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.432 7.149 L 5.432 7.743 L 5.857 7.328 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 L 5.933 0.666 L 5.683 0.666 Z M 5 0 L 5 -0.25 L 4.993 -0.25 L 4.985 -0.25 L 5 0 Z M 4.921 0.005 L 4.906 -0.245 L 4.892 -0.244 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.067 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.142 7.328 L 4.566 7.742 L 4.566 7.149 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 L 1.341 3.897 L 1.166 4.076 Z M 0.2 5.018 L 0.375 4.839 L 0.375 4.839 L 0.2 5.018 Z M 4.803 9.506 L 4.629 9.686 C 4.834 9.886 5.166 9.886 5.371 9.685 L 5.197 9.506 L 5.022 9.327 C 5.018 9.332 5.01 9.336 5 9.336 C 4.99 9.336 4.982 9.332 4.977 9.327 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 9.974 5.197 L 9.8 5.018 L 9.625 4.839 L 5.022 9.328 L 5.197 9.506 Z M 9.8 5.018 L 9.973 5.197 C 10.153 5.024 10.25 4.789 10.25 4.546 L 10 4.546 L 9.75 4.546 C 9.75 4.655 9.707 4.76 9.626 4.838 L 9.8 5.018 Z M 10 4.546 L 10.25 4.546 C 10.25 4.304 10.153 4.068 9.972 3.895 L 9.799 4.075 L 9.626 4.255 C 9.707 4.333 9.75 4.438 9.75 4.546 L 10 4.546 Z M 9.799 4.075 L 9.962 3.885 L 9.898 3.83 L 9.735 4.02 L 9.572 4.209 L 9.636 4.264 L 9.799 4.075 Z M 9.735 4.02 L 9.886 3.82 C 9.516 3.54 8.991 3.572 8.659 3.896 L 8.834 4.075 L 9.008 4.254 C 9.163 4.104 9.411 4.088 9.584 4.219 L 9.735 4.02 Z M 8.834 4.075 L 8.659 3.896 L 5.508 6.97 L 5.682 7.149 L 5.857 7.328 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.932 7.149 L 5.933 0.666 L 5.683 0.666 L 5.433 0.666 L 5.432 7.149 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 C 5.933 0.155 5.509 -0.25 5 -0.25 L 5 0 L 5 0.25 C 5.245 0.25 5.433 0.443 5.433 0.666 L 5.683 0.666 Z M 5 0 L 4.985 -0.25 L 4.906 -0.245 L 4.921 0.005 L 4.935 0.254 L 5.015 0.25 L 5 0 Z M 4.921 0.005 L 4.892 -0.244 C 4.427 -0.191 4.067 0.196 4.067 0.666 L 4.317 0.666 L 4.567 0.666 C 4.567 0.46 4.726 0.278 4.949 0.253 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.066 7.149 L 4.316 7.149 L 4.566 7.149 L 4.567 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.491 6.97 L 1.341 3.897 L 1.166 4.076 L 0.992 4.255 L 4.142 7.328 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 C 0.977 3.542 0.39 3.542 0.026 3.897 L 0.2 4.076 L 0.375 4.255 C 0.544 4.089 0.822 4.089 0.992 4.255 L 1.166 4.076 Z M 0.2 4.076 L 0.026 3.897 C -0.342 4.255 -0.342 4.839 0.026 5.197 L 0.2 5.018 L 0.375 4.839 C 0.208 4.677 0.208 4.417 0.375 4.255 L 0.2 4.076 Z M 0.2 5.018 L 0.026 5.197 L 4.628 9.685 L 4.803 9.506 L 4.977 9.327 L 0.375 4.839 L 0.2 5.018 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 -0.000) matrix(-0.707 -0.707 0.707 -0.707 16.996 13.849)\"/><path d=\"M 4.803 9.506 C 4.912 9.612 5.088 9.612 5.197 9.506 L 9.8 5.018 C 9.93 4.892 10 4.722 10 4.546 C 10 4.371 9.93 4.201 9.799 4.075 L 9.735 4.02 C 9.463 3.814 9.077 3.838 8.834 4.075 L 5.682 7.149 L 5.683 0.666 C 5.683 0.299 5.377 0 5 0 L 4.921 0.005 C 4.576 0.044 4.317 0.328 4.317 0.666 L 4.316 7.149 L 1.166 4.076 C 0.9 3.816 0.467 3.816 0.2 4.076 C -0.067 4.336 -0.067 4.758 0.2 5.018 L 4.803 9.506 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 -0.000) matrix(0.707 0.707 -0.707 0.707 6.778 9.869)\"/><path d=\"M 4.803 9.506 L 4.628 9.685 L 4.629 9.686 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 5.371 9.685 L 5.197 9.506 Z M 9.8 5.018 L 9.626 4.838 L 9.625 4.839 L 9.8 5.018 Z M 9.799 4.075 L 9.973 3.894 L 9.962 3.885 L 9.799 4.075 Z M 9.735 4.02 L 9.898 3.83 L 9.892 3.825 L 9.886 3.82 L 9.735 4.02 Z M 8.834 4.075 L 9.008 4.254 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.432 7.149 L 5.432 7.743 L 5.857 7.328 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 L 5.933 0.666 L 5.683 0.666 Z M 5 0 L 5 -0.25 L 4.993 -0.25 L 4.985 -0.25 L 5 0 Z M 4.921 0.005 L 4.906 -0.245 L 4.892 -0.244 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.067 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.142 7.328 L 4.566 7.742 L 4.566 7.149 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 L 1.341 3.897 L 1.166 4.076 Z M 0.2 5.018 L 0.375 4.839 L 0.375 4.839 L 0.2 5.018 Z M 4.803 9.506 L 4.629 9.686 C 4.834 9.886 5.166 9.886 5.371 9.685 L 5.197 9.506 L 5.022 9.327 C 5.018 9.332 5.01 9.336 5 9.336 C 4.99 9.336 4.982 9.332 4.977 9.327 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 9.974 5.197 L 9.8 5.018 L 9.625 4.839 L 5.022 9.328 L 5.197 9.506 Z M 9.8 5.018 L 9.973 5.197 C 10.153 5.024 10.25 4.789 10.25 4.546 L 10 4.546 L 9.75 4.546 C 9.75 4.655 9.707 4.76 9.626 4.838 L 9.8 5.018 Z M 10 4.546 L 10.25 4.546 C 10.25 4.304 10.153 4.068 9.972 3.895 L 9.799 4.075 L 9.626 4.255 C 9.707 4.333 9.75 4.438 9.75 4.546 L 10 4.546 Z M 9.799 4.075 L 9.962 3.885 L 9.898 3.83 L 9.735 4.02 L 9.572 4.209 L 9.636 4.264 L 9.799 4.075 Z M 9.735 4.02 L 9.886 3.82 C 9.516 3.54 8.991 3.572 8.659 3.896 L 8.834 4.075 L 9.008 4.254 C 9.163 4.104 9.411 4.088 9.584 4.219 L 9.735 4.02 Z M 8.834 4.075 L 8.659 3.896 L 5.508 6.97 L 5.682 7.149 L 5.857 7.328 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.932 7.149 L 5.933 0.666 L 5.683 0.666 L 5.433 0.666 L 5.432 7.149 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 C 5.933 0.155 5.509 -0.25 5 -0.25 L 5 0 L 5 0.25 C 5.245 0.25 5.433 0.443 5.433 0.666 L 5.683 0.666 Z M 5 0 L 4.985 -0.25 L 4.906 -0.245 L 4.921 0.005 L 4.935 0.254 L 5.015 0.25 L 5 0 Z M 4.921 0.005 L 4.892 -0.244 C 4.427 -0.191 4.067 0.196 4.067 0.666 L 4.317 0.666 L 4.567 0.666 C 4.567 0.46 4.726 0.278 4.949 0.253 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.066 7.149 L 4.316 7.149 L 4.566 7.149 L 4.567 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.491 6.97 L 1.341 3.897 L 1.166 4.076 L 0.992 4.255 L 4.142 7.328 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 C 0.977 3.542 0.39 3.542 0.026 3.897 L 0.2 4.076 L 0.375 4.255 C 0.544 4.089 0.822 4.089 0.992 4.255 L 1.166 4.076 Z M 0.2 4.076 L 0.026 3.897 C -0.342 4.255 -0.342 4.839 0.026 5.197 L 0.2 5.018 L 0.375 4.839 C 0.208 4.677 0.208 4.417 0.375 4.255 L 0.2 4.076 Z M 0.2 5.018 L 0.026 5.197 L 4.628 9.685 L 4.803 9.506 L 4.977 9.327 L 0.375 4.839 L 0.2 5.018 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 -0.000) matrix(0.707 0.707 -0.707 0.707 6.778 9.869)\"/>"},"IconArrowMinimumMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.803 9.506 C 4.912 9.612 5.088 9.612 5.197 9.506 L 9.8 5.018 C 9.93 4.892 10 4.722 10 4.546 C 10 4.371 9.93 4.201 9.799 4.075 L 9.735 4.02 C 9.463 3.814 9.077 3.838 8.834 4.075 L 5.682 7.149 L 5.683 0.666 C 5.683 0.299 5.377 0 5 0 L 4.921 0.005 C 4.576 0.044 4.317 0.328 4.317 0.666 L 4.316 7.149 L 1.166 4.076 C 0.9 3.816 0.467 3.816 0.2 4.076 C -0.067 4.336 -0.067 4.758 0.2 5.018 L 4.803 9.506 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 0) matrix(0.707 0.707 -0.707 0.707 16.703 0)\"/><path d=\"M 4.803 9.506 L 4.628 9.685 L 4.629 9.686 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 5.371 9.685 L 5.197 9.506 Z M 9.8 5.018 L 9.626 4.838 L 9.625 4.839 L 9.8 5.018 Z M 9.799 4.075 L 9.973 3.894 L 9.962 3.885 L 9.799 4.075 Z M 9.735 4.02 L 9.898 3.83 L 9.892 3.825 L 9.886 3.82 L 9.735 4.02 Z M 8.834 4.075 L 9.008 4.254 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.432 7.149 L 5.432 7.743 L 5.857 7.328 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 L 5.933 0.666 L 5.683 0.666 Z M 5 0 L 5 -0.25 L 4.993 -0.25 L 4.985 -0.25 L 5 0 Z M 4.921 0.005 L 4.906 -0.245 L 4.892 -0.244 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.067 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.142 7.328 L 4.566 7.742 L 4.566 7.149 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 L 1.341 3.897 L 1.166 4.076 Z M 0.2 5.018 L 0.375 4.839 L 0.375 4.839 L 0.2 5.018 Z M 4.803 9.506 L 4.629 9.686 C 4.834 9.886 5.166 9.886 5.371 9.685 L 5.197 9.506 L 5.022 9.327 C 5.018 9.332 5.01 9.336 5 9.336 C 4.99 9.336 4.982 9.332 4.977 9.327 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 9.974 5.197 L 9.8 5.018 L 9.625 4.839 L 5.022 9.328 L 5.197 9.506 Z M 9.8 5.018 L 9.973 5.197 C 10.153 5.024 10.25 4.789 10.25 4.546 L 10 4.546 L 9.75 4.546 C 9.75 4.655 9.707 4.76 9.626 4.838 L 9.8 5.018 Z M 10 4.546 L 10.25 4.546 C 10.25 4.304 10.153 4.068 9.972 3.895 L 9.799 4.075 L 9.626 4.255 C 9.707 4.333 9.75 4.438 9.75 4.546 L 10 4.546 Z M 9.799 4.075 L 9.962 3.885 L 9.898 3.83 L 9.735 4.02 L 9.572 4.209 L 9.636 4.264 L 9.799 4.075 Z M 9.735 4.02 L 9.886 3.82 C 9.516 3.54 8.991 3.572 8.659 3.896 L 8.834 4.075 L 9.008 4.254 C 9.163 4.104 9.411 4.088 9.584 4.219 L 9.735 4.02 Z M 8.834 4.075 L 8.659 3.896 L 5.508 6.97 L 5.682 7.149 L 5.857 7.328 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.932 7.149 L 5.933 0.666 L 5.683 0.666 L 5.433 0.666 L 5.432 7.149 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 C 5.933 0.155 5.509 -0.25 5 -0.25 L 5 0 L 5 0.25 C 5.245 0.25 5.433 0.443 5.433 0.666 L 5.683 0.666 Z M 5 0 L 4.985 -0.25 L 4.906 -0.245 L 4.921 0.005 L 4.935 0.254 L 5.015 0.25 L 5 0 Z M 4.921 0.005 L 4.892 -0.244 C 4.427 -0.191 4.067 0.196 4.067 0.666 L 4.317 0.666 L 4.567 0.666 C 4.567 0.46 4.726 0.278 4.949 0.253 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.066 7.149 L 4.316 7.149 L 4.566 7.149 L 4.567 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.491 6.97 L 1.341 3.897 L 1.166 4.076 L 0.992 4.255 L 4.142 7.328 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 C 0.977 3.542 0.39 3.542 0.026 3.897 L 0.2 4.076 L 0.375 4.255 C 0.544 4.089 0.822 4.089 0.992 4.255 L 1.166 4.076 Z M 0.2 4.076 L 0.026 3.897 C -0.342 4.255 -0.342 4.839 0.026 5.197 L 0.2 5.018 L 0.375 4.839 C 0.208 4.677 0.208 4.417 0.375 4.255 L 0.2 4.076 Z M 0.2 5.018 L 0.026 5.197 L 4.628 9.685 L 4.803 9.506 L 4.977 9.327 L 0.375 4.839 L 0.2 5.018 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 0) matrix(0.707 0.707 -0.707 0.707 16.703 0)\"/><path d=\"M 4.803 9.506 C 4.912 9.612 5.088 9.612 5.197 9.506 L 9.8 5.018 C 9.93 4.892 10 4.722 10 4.546 C 10 4.371 9.93 4.201 9.799 4.075 L 9.735 4.02 C 9.463 3.814 9.077 3.838 8.834 4.075 L 5.682 7.149 L 5.683 0.666 C 5.683 0.299 5.377 0 5 0 L 4.921 0.005 C 4.576 0.044 4.317 0.328 4.317 0.666 L 4.316 7.149 L 1.166 4.076 C 0.9 3.816 0.467 3.816 0.2 4.076 C -0.067 4.336 -0.067 4.758 0.2 5.018 L 4.803 9.506 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 0) matrix(-0.707 -0.707 0.707 -0.707 7.071 23.718)\"/><path d=\"M 4.803 9.506 L 4.628 9.685 L 4.629 9.686 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 5.371 9.685 L 5.197 9.506 Z M 9.8 5.018 L 9.626 4.838 L 9.625 4.839 L 9.8 5.018 Z M 9.799 4.075 L 9.973 3.894 L 9.962 3.885 L 9.799 4.075 Z M 9.735 4.02 L 9.898 3.83 L 9.892 3.825 L 9.886 3.82 L 9.735 4.02 Z M 8.834 4.075 L 9.008 4.254 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.432 7.149 L 5.432 7.743 L 5.857 7.328 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 L 5.933 0.666 L 5.683 0.666 Z M 5 0 L 5 -0.25 L 4.993 -0.25 L 4.985 -0.25 L 5 0 Z M 4.921 0.005 L 4.906 -0.245 L 4.892 -0.244 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.067 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.142 7.328 L 4.566 7.742 L 4.566 7.149 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 L 1.341 3.897 L 1.166 4.076 Z M 0.2 5.018 L 0.375 4.839 L 0.375 4.839 L 0.2 5.018 Z M 4.803 9.506 L 4.629 9.686 C 4.834 9.886 5.166 9.886 5.371 9.685 L 5.197 9.506 L 5.022 9.327 C 5.018 9.332 5.01 9.336 5 9.336 C 4.99 9.336 4.982 9.332 4.977 9.327 L 4.803 9.506 Z M 5.197 9.506 L 5.371 9.685 L 9.974 5.197 L 9.8 5.018 L 9.625 4.839 L 5.022 9.328 L 5.197 9.506 Z M 9.8 5.018 L 9.973 5.197 C 10.153 5.024 10.25 4.789 10.25 4.546 L 10 4.546 L 9.75 4.546 C 9.75 4.655 9.707 4.76 9.626 4.838 L 9.8 5.018 Z M 10 4.546 L 10.25 4.546 C 10.25 4.304 10.153 4.068 9.972 3.895 L 9.799 4.075 L 9.626 4.255 C 9.707 4.333 9.75 4.438 9.75 4.546 L 10 4.546 Z M 9.799 4.075 L 9.962 3.885 L 9.898 3.83 L 9.735 4.02 L 9.572 4.209 L 9.636 4.264 L 9.799 4.075 Z M 9.735 4.02 L 9.886 3.82 C 9.516 3.54 8.991 3.572 8.659 3.896 L 8.834 4.075 L 9.008 4.254 C 9.163 4.104 9.411 4.088 9.584 4.219 L 9.735 4.02 Z M 8.834 4.075 L 8.659 3.896 L 5.508 6.97 L 5.682 7.149 L 5.857 7.328 L 9.008 4.254 L 8.834 4.075 Z M 5.682 7.149 L 5.932 7.149 L 5.933 0.666 L 5.683 0.666 L 5.433 0.666 L 5.432 7.149 L 5.682 7.149 Z M 5.683 0.666 L 5.933 0.666 C 5.933 0.155 5.509 -0.25 5 -0.25 L 5 0 L 5 0.25 C 5.245 0.25 5.433 0.443 5.433 0.666 L 5.683 0.666 Z M 5 0 L 4.985 -0.25 L 4.906 -0.245 L 4.921 0.005 L 4.935 0.254 L 5.015 0.25 L 5 0 Z M 4.921 0.005 L 4.892 -0.244 C 4.427 -0.191 4.067 0.196 4.067 0.666 L 4.317 0.666 L 4.567 0.666 C 4.567 0.46 4.726 0.278 4.949 0.253 L 4.921 0.005 Z M 4.317 0.666 L 4.067 0.666 L 4.066 7.149 L 4.316 7.149 L 4.566 7.149 L 4.567 0.666 L 4.317 0.666 Z M 4.316 7.149 L 4.491 6.97 L 1.341 3.897 L 1.166 4.076 L 0.992 4.255 L 4.142 7.328 L 4.316 7.149 Z M 1.166 4.076 L 1.341 3.897 C 0.977 3.542 0.39 3.542 0.026 3.897 L 0.2 4.076 L 0.375 4.255 C 0.544 4.089 0.822 4.089 0.992 4.255 L 1.166 4.076 Z M 0.2 4.076 L 0.026 3.897 C -0.342 4.255 -0.342 4.839 0.026 5.197 L 0.2 5.018 L 0.375 4.839 C 0.208 4.677 0.208 4.417 0.375 4.255 L 0.2 4.076 Z M 0.2 5.018 L 0.026 5.197 L 4.628 9.685 L 4.803 9.506 L 4.977 9.327 L 0.375 4.839 L 0.2 5.018 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.075 0) matrix(-0.707 -0.707 0.707 -0.707 7.071 23.718)\"/>"},"IconArrowRightAndroidMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.132 7.5 L 4.096 7.5 L 9.547 2.049 C 10.016 1.58 10.016 0.82 9.547 0.352 C 9.078 -0.117 8.319 -0.117 7.851 0.352 L 0.35 7.852 C 0.347 7.854 0.346 7.858 0.343 7.861 C 0.236 7.97 0.15 8.099 0.091 8.241 C -0.031 8.535 -0.031 8.865 0.091 9.159 C 0.15 9.302 0.236 9.43 0.343 9.539 C 0.346 9.542 0.347 9.546 0.35 9.549 L 7.851 17.049 C 8.085 17.283 8.391 17.4 8.698 17.4 C 9.006 17.4 9.313 17.283 9.547 17.049 C 10.016 16.58 10.016 15.82 9.547 15.352 L 4.096 9.9 L 18.132 9.9 C 18.795 9.9 19.333 9.363 19.333 8.7 C 19.333 8.038 18.795 7.5 18.132 7.5 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(-1 0 0 1 22 3.300)\"/>"},"IconArrowRightBigMono":{viewBox:"0 0 24 24",body:"<path d=\"M 21.79 10.738 L 11.25 0.198 C 11.04 -0.152 10.63 -0.012 10.63 0.408 L 10.63 5.678 L 0.71 5.608 C 0.517 5.621 0.337 5.707 0.205 5.848 C 0.073 5.989 0 6.175 0 6.368 L 0 16.208 C 0.003 16.409 0.083 16.601 0.225 16.743 C 0.367 16.885 0.559 16.966 0.76 16.968 L 10.61 16.968 L 10.61 22.098 C 10.605 22.216 10.645 22.331 10.724 22.419 C 10.803 22.507 10.912 22.561 11.03 22.568 C 11.092 22.572 11.154 22.563 11.212 22.542 C 11.27 22.522 11.324 22.49 11.37 22.448 L 21.79 11.978 C 21.954 11.814 22.046 11.591 22.046 11.358 C 22.046 11.126 21.954 10.903 21.79 10.738 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.712)\"/>"},"IconArrowRightCircleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 C 4.9 0 0 4.9 0 11 Z M 5.5 11 C 5.5 10.4 5.9 10 6.5 10 L 13.1 10 L 10.8 7.7 C 10.4 7.3 10.4 6.7 10.8 6.3 C 11.2 5.9 11.8 5.9 12.2 6.3 L 16.2 10.3 C 16.6 10.7 16.6 11.3 16.2 11.7 L 12.2 15.7 C 12 15.9 11.8 16 11.5 16 C 11.2 16 11 15.9 10.8 15.7 C 10.4 15.3 10.4 14.7 10.8 14.3 L 13.1 12 L 6.5 12 C 6 12 5.5 11.6 5.5 11 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconArrowRightDoubleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1 10.9 C 0.8 10.9 0.5 10.8 0.4 10.6 C 0 10.2 0 9.7 0.4 9.3 L 4.2 5.5 L 0.3 1.6 C -0.1 1.2 -0.1 0.7 0.3 0.3 C 0.7 -0.1 1.2 -0.1 1.6 0.3 L 6.1 4.8 C 6.5 5.2 6.5 5.7 6.1 6.1 L 1.6 10.6 C 1.4 10.8 1.2 10.9 1 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 5.353 6.550)\"/><path d=\"M 1 10.9 C 0.8 10.9 0.5 10.8 0.4 10.6 C 0 10.2 0 9.7 0.4 9.3 L 4.2 5.5 L 0.3 1.6 C -0.1 1.2 -0.1 0.7 0.3 0.3 C 0.7 -0.1 1.2 -0.1 1.6 0.3 L 6.1 4.8 C 6.5 5.2 6.5 5.7 6.1 6.1 L 1.6 10.6 C 1.4 10.8 1.2 10.9 1 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 5.353 6.550) matrix(1 0 0 1 6.894 0)\"/>"},"IconArrowRightDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 8.293 7.74 C 8.273 7.8 8.243 7.86 8.203 7.92 C 8.163 7.97 8.122 8.02 8.072 8.07 C 7.892 8.25 7.642 8.36 7.372 8.36 L 1.732 8.36 C 1.182 8.36 0.732 7.91 0.732 7.36 C 0.732 6.81 1.182 6.36 1.732 6.36 L 4.952 6.36 L 0.292 1.71 C -0.097 1.31 -0.097 0.68 0.292 0.29 C 0.493 0.1 0.743 0 1.003 0 C 1.263 0 1.513 0.1 1.713 0.29 L 6.372 4.96 L 6.372 1.72 C 6.372 1.17 6.822 0.72 7.372 0.72 C 7.923 0.72 8.373 1.17 8.373 1.72 L 8.373 7.36 C 8.373 7.49 8.343 7.62 8.293 7.74 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.813 7.820)\"/>"},"IconArrowRightLimitMono":{viewBox:"0 0 24 24",body:"<path d=\"M 20 19.512 L 20 1.079 C 20 0.483 19.516 0 18.92 0 C 18.324 0 17.842 0.483 17.842 1.079 L 17.842 19.513 C 17.842 20.109 18.325 20.593 18.92 20.593 C 19.515 20.593 20 20.108 20 19.512 Z M 15.581 11.058 C 15.681 10.959 15.759 10.839 15.814 10.708 C 15.924 10.444 15.924 10.147 15.814 9.883 C 15.759 9.751 15.681 9.632 15.581 9.532 L 9.981 3.933 C 9.561 3.512 8.876 3.511 8.454 3.933 C 8.033 4.354 8.033 5.038 8.454 5.459 L 12.212 9.217 L 1.079 9.217 C 0.483 9.217 0 9.701 0 10.297 C 0 10.893 0.483 11.375 1.079 11.375 L 12.211 11.375 L 8.453 15.132 C 8.242 15.343 8.137 15.619 8.137 15.895 C 8.137 16.171 8.242 16.448 8.453 16.658 C 8.875 17.08 9.559 17.08 9.98 16.658 L 15.58 11.058 L 15.581 11.058 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.932 1.704)\"/>"},"IconArrowRightMonoArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 8.800 6.500)\"/>"},"IconArrowRightSideMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0.541 C 0 0.041 0.6 -0.159 1 0.141 L 11.5 8.941 C 12.1 9.441 12.1 10.341 11.5 10.841 L 1 19.941 C 0.6 20.241 0 19.941 0 19.541 L 0 0.541 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.783 1.976)\"/>"},"IconArrowRightSidebarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 7.79 5.922 L 1.888 0.315 C 1.454 -0.11 0.758 -0.104 0.333 0.329 C -0.093 0.762 -0.086 1.459 0.348 1.884 L 5.441 6.723 L 0.329 11.58 C -0.104 12.005 -0.111 12.702 0.314 13.135 C 0.739 13.569 1.436 13.575 1.869 13.149 L 7.771 7.542 C 7.89 7.425 7.97 7.286 8.025 7.139 C 8.198 6.734 8.123 6.249 7.79 5.922 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.143 5.468)\"/>"},"IconArrowRightUpMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 8.373 1 L 8.373 6.64 C 8.373 7.19 7.923 7.64 7.372 7.64 C 6.822 7.64 6.372 7.19 6.372 6.64 L 6.372 3.4 L 1.713 8.07 C 1.513 8.26 1.263 8.36 1.003 8.36 C 0.743 8.36 0.493 8.26 0.292 8.07 C -0.097 7.68 -0.097 7.05 0.292 6.65 L 4.953 2 L 1.733 2 C 1.183 2 0.733 1.55 0.733 1 C 0.733 0.45 1.183 0 1.733 0 L 7.372 0 C 7.642 0 7.893 0.11 8.073 0.29 C 8.123 0.34 8.163 0.39 8.203 0.44 C 8.243 0.5 8.273 0.56 8.293 0.62 C 8.343 0.74 8.373 0.87 8.373 1 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.817 7.820)\"/>"},"IconArrowRightwardsMono":{viewBox:"0 0 24 24",body:"<path d=\"M 6.143 4.67 L 1.489 0.248 C 1.147 -0.087 0.598 -0.082 0.263 0.259 C -0.073 0.6 -0.067 1.15 0.275 1.485 L 4.291 5.301 L 0.26 9.131 C -0.081 9.466 -0.087 10.016 0.248 10.357 C 0.583 10.699 1.133 10.704 1.474 10.368 L 6.128 5.946 C 6.222 5.854 6.285 5.744 6.328 5.628 C 6.464 5.309 6.405 4.926 6.143 4.668 L 6.143 4.67 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 8.801 6.641)\"/>"},"IconArrowSolidDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9.064 8.734 L 16.539 0.844 C 16.606 0.773 16.651 0.684 16.669 0.588 C 16.686 0.491 16.674 0.392 16.636 0.302 C 16.597 0.213 16.533 0.136 16.451 0.082 C 16.37 0.029 16.274 0 16.176 0 L 0.5 0 C 0.402 0 0.307 0.029 0.225 0.082 C 0.143 0.136 0.079 0.213 0.041 0.302 C 0.002 0.392 -0.009 0.491 0.008 0.588 C 0.025 0.684 0.07 0.773 0.137 0.844 L 7.612 8.734 C 7.706 8.833 7.818 8.911 7.943 8.965 C 8.068 9.019 8.202 9.046 8.338 9.046 C 8.474 9.046 8.608 9.019 8.733 8.965 C 8.858 8.911 8.971 8.833 9.064 8.734 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.662 8)\"/>"},"IconArrowSolidRightMono":{viewBox:"0 0 24 24",body:"<path d=\"M 8.734 7.612 L 0.844 0.137 C 0.644 -0.053 0.327 -0.045 0.137 0.156 C 0.049 0.249 0 0.372 0 0.5 L 0 16.176 C 0 16.452 0.224 16.676 0.5 16.676 C 0.628 16.676 0.751 16.627 0.844 16.539 L 8.734 9.064 C 9.135 8.684 9.152 8.051 8.772 7.65 C 8.76 7.637 8.747 7.624 8.734 7.612 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 8.324 3.662)\"/>"},"IconArrowUp2Mono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.521 8.853 L 9.822 0.154 C 9.616 -0.051 9.283 -0.051 9.078 0.154 L 0.379 8.853 C 0.133 9.097 0 9.426 0 9.767 C 0 10.108 0.133 10.437 0.38 10.681 L 0.501 10.788 C 1.015 11.186 1.744 11.14 2.204 10.68 L 8.16 4.722 L 8.158 20.027 C 8.158 20.74 8.737 21.319 9.449 21.319 L 9.599 21.31 C 10.25 21.234 10.741 20.682 10.741 20.027 L 10.741 4.723 L 16.695 10.679 C 17.2 11.184 18.016 11.184 18.521 10.679 C 19.026 10.174 19.026 9.357 18.521 8.852 L 18.521 8.853 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.546 1.337)\"/>"},"IconArrowUpDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 21.158 11.978 C 21.056 11.876 20.935 11.795 20.801 11.74 C 20.668 11.684 20.525 11.656 20.38 11.656 C 20.236 11.656 20.093 11.684 19.959 11.74 C 19.826 11.795 19.705 11.876 19.602 11.978 L 17.135 14.445 L 17.135 1.101 C 17.135 0.809 17.02 0.53 16.813 0.323 C 16.607 0.117 16.327 0.001 16.035 0.001 C 15.744 0.001 15.464 0.117 15.258 0.323 C 15.051 0.53 14.935 0.809 14.935 1.101 L 14.935 14.445 L 12.468 11.978 C 12.366 11.876 12.245 11.795 12.111 11.74 C 11.978 11.684 11.835 11.656 11.69 11.656 C 11.546 11.656 11.403 11.684 11.269 11.74 C 11.136 11.795 11.015 11.876 10.912 11.978 C 10.81 12.08 10.729 12.202 10.674 12.335 C 10.619 12.469 10.59 12.612 10.59 12.756 C 10.59 12.901 10.619 13.044 10.674 13.177 C 10.729 13.311 10.81 13.432 10.912 13.534 L 15.257 17.878 C 15.411 18.032 15.608 18.137 15.821 18.179 C 16.035 18.222 16.256 18.2 16.457 18.116 C 16.59 18.06 16.712 17.98 16.813 17.878 L 21.158 13.534 C 21.261 13.432 21.342 13.311 21.397 13.177 C 21.452 13.044 21.481 12.901 21.481 12.756 C 21.481 12.612 21.452 12.469 21.397 12.335 C 21.342 12.202 21.261 12.08 21.158 11.978 Z M 10.54 4.668 L 6.195 0.323 C 6.093 0.221 5.972 0.139 5.839 0.084 C 5.705 0.029 5.562 0 5.418 0 C 5.273 0 5.13 0.029 4.997 0.084 C 4.864 0.139 4.742 0.221 4.64 0.323 L 0.294 4.668 C 0.1 4.877 -0.005 5.153 0 5.438 C 0.005 5.723 0.121 5.995 0.322 6.196 C 0.524 6.398 0.796 6.513 1.081 6.518 C 1.366 6.524 1.642 6.418 1.85 6.224 L 4.316 3.756 L 4.316 17.101 C 4.316 17.393 4.432 17.673 4.639 17.879 C 4.845 18.085 5.125 18.201 5.416 18.201 C 5.708 18.201 5.988 18.085 6.194 17.879 C 6.401 17.673 6.516 17.393 6.516 17.101 L 6.516 3.757 L 8.983 6.224 C 9.085 6.327 9.207 6.408 9.34 6.464 C 9.474 6.519 9.617 6.548 9.761 6.548 C 9.906 6.548 10.049 6.519 10.183 6.464 C 10.316 6.408 10.437 6.327 10.539 6.224 C 10.642 6.122 10.723 6.001 10.778 5.867 C 10.833 5.734 10.862 5.591 10.862 5.446 C 10.862 5.302 10.833 5.159 10.778 5.025 C 10.723 4.892 10.642 4.77 10.539 4.668\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.274 2.899)\"/>"},"IconArrowUpLimitMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.27 4.504 C 11.115 4.351 10.92 4.248 10.707 4.206 C 10.494 4.163 10.273 4.185 10.072 4.267 C 9.938 4.322 9.817 4.403 9.714 4.504 L 4.008 10.21 C 3.806 10.417 3.694 10.695 3.696 10.985 C 3.698 11.274 3.813 11.551 4.018 11.755 C 4.222 11.96 4.499 12.076 4.788 12.078 C 5.077 12.08 5.356 11.968 5.563 11.766 L 9.392 7.936 L 9.392 19.281 C 9.392 19.573 9.508 19.853 9.714 20.059 C 9.92 20.265 10.2 20.381 10.492 20.381 C 10.784 20.381 11.064 20.265 11.27 20.059 C 11.476 19.853 11.592 19.573 11.592 19.281 L 11.592 7.938 L 15.421 11.767 C 15.636 11.982 15.917 12.089 16.199 12.089 C 16.417 12.089 16.629 12.025 16.81 11.904 C 16.991 11.783 17.132 11.611 17.216 11.41 C 17.299 11.209 17.321 10.988 17.278 10.774 C 17.236 10.561 17.131 10.365 16.977 10.211 L 11.27 4.504 Z M 19.884 0 L 1.1 0 C 0.808 0 0.528 0.116 0.322 0.322 C 0.116 0.528 0 0.808 0 1.1 C 0 1.392 0.116 1.672 0.322 1.878 C 0.528 2.084 0.808 2.2 1.1 2.2 L 19.885 2.2 C 20.177 2.2 20.457 2.084 20.663 1.878 C 20.869 1.672 20.985 1.392 20.985 1.1 C 20.985 0.808 20.869 0.528 20.663 0.322 C 20.457 0.116 20.177 0 19.885 0\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.496 2.100)\"/>"},"IconArrowUpMonoUp":{viewBox:"0 0 24 24",body:"<path d=\"M 1 10.9 C 0.8 10.9 0.5 10.8 0.4 10.6 C 0 10.2 0 9.7 0.4 9.3 L 4.2 5.5 L 0.3 1.6 C -0.1 1.2 -0.1 0.7 0.3 0.3 C 0.7 -0.1 1.2 -0.1 1.6 0.3 L 6.1 4.8 C 6.5 5.2 6.5 5.7 6.1 6.1 L 1.6 10.6 C 1.4 10.8 1.2 10.9 1 10.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(0 -1 -1 0 17.650 15.650)\"/>"},"IconArrowUpSidebarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.651 8.703 C 15.095 8.289 15.118 7.594 14.703 7.151 L 8.359 0.387 C 8.235 0.256 8.083 0.173 7.923 0.116 C 7.5 -0.09 6.98 -0.024 6.641 0.337 L 0.297 7.101 C -0.118 7.543 -0.095 8.239 0.349 8.653 C 0.792 9.067 1.489 9.044 1.904 8.601 L 7.475 2.661 L 13.095 8.652 C 13.51 9.095 14.207 9.117 14.651 8.703 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.700 7.000)\"/>"},"IconArrowVerticalArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 10.503 11.979 C 10.953 12.389 10.983 13.09 10.563 13.53 L 6.223 17.88 L 6.213 17.88 C 5.783 18.31 5.092 18.31 4.662 17.88 L 0.322 13.53 C -0.108 13.099 -0.108 12.41 0.322 11.979 L 0.322 11.969 C 0.752 11.539 1.452 11.549 1.872 11.979 L 4.343 14.439 L 4.343 3.762 L 1.872 6.222 C 1.452 6.622 0.802 6.622 0.382 6.222 C -0.068 5.813 -0.097 5.113 0.322 4.673 L 4.662 0.322 L 4.673 0.322 C 5.102 -0.108 5.793 -0.108 6.223 0.322 L 10.563 4.673 C 10.773 4.883 10.882 5.162 10.882 5.443 C 10.882 5.723 10.773 6.003 10.563 6.222 L 10.563 6.233 C 10.132 6.653 9.432 6.652 9.012 6.222 L 6.543 3.762 L 6.543 14.439 L 9.012 11.979 C 9.432 11.58 10.083 11.58 10.503 11.979 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.558 2.898)\"/>"},"IconAssetImage":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconAtEmailAt":{viewBox:"0 0 24 24",body:"<path d=\"M 7.58 4.499 L 6.48 4.499 C 6.48 6.56 5.107 7.897 3.79 7.897 L 3.79 8.997 L 3.79 10.097 C 6.661 10.097 8.68 7.406 8.68 4.499 L 7.58 4.499 Z M 3.79 8.997 L 3.79 7.897 C 2.474 7.897 1.1 6.56 1.1 4.499 L 0 4.499 L -1.1 4.499 C -1.1 7.406 0.92 10.097 3.79 10.097 L 3.79 8.997 Z M 0 4.499 L 1.1 4.499 C 1.1 2.438 2.474 1.1 3.79 1.1 L 3.79 0 L 3.79 -1.1 C 0.92 -1.1 -1.1 1.592 -1.1 4.499 L 0 4.499 Z M 3.79 0 L 3.79 1.1 C 5.107 1.1 6.48 2.437 6.48 4.499 L 7.58 4.499 L 8.68 4.499 C 8.68 1.591 6.661 -1.1 3.79 -1.1 L 3.79 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 5.604 5.535)\"/><path d=\"M 14.798 5.536 C 14.798 4.928 14.306 4.436 13.698 4.436 C 13.09 4.436 12.598 4.928 12.598 5.536 L 13.698 5.536 L 14.798 5.536 Z M 16.368 14.766 L 16.368 15.866 L 16.379 15.866 L 16.368 14.766 Z M 17.33 14.584 L 16.926 13.561 L 16.924 13.562 L 17.33 14.584 Z M 19.343 6.937 L 20.413 6.681 L 20.413 6.68 L 19.343 6.937 Z M 16.458 2.122 L 17.173 1.286 L 17.173 1.286 L 16.458 2.122 Z M 14.194 20.362 C 14.753 20.125 15.015 19.48 14.778 18.92 C 14.541 18.361 13.896 18.099 13.336 18.336 L 13.765 19.349 L 14.194 20.362 Z M 13.698 5.536 L 12.598 5.536 L 12.598 11.791 L 13.698 11.791 L 14.798 11.791 L 14.798 5.536 L 13.698 5.536 Z M 13.698 11.791 L 12.598 11.791 C 12.598 13.878 13.967 15.866 16.368 15.866 L 16.368 14.766 L 16.368 13.666 C 15.485 13.666 14.798 12.99 14.798 11.791 L 13.698 11.791 Z M 16.368 14.766 L 16.379 15.866 C 16.912 15.86 17.364 15.754 17.736 15.606 L 17.33 14.584 L 16.924 13.562 C 16.788 13.616 16.604 13.664 16.357 13.666 L 16.368 14.766 Z M 17.33 14.584 L 17.734 15.607 C 19.193 15.03 19.955 13.893 20.337 12.807 C 20.709 11.747 20.747 10.67 20.747 10.033 L 19.647 10.033 L 18.547 10.033 C 18.547 10.606 18.507 11.378 18.261 12.077 C 18.025 12.75 17.628 13.284 16.926 13.561 L 17.33 14.584 Z M 19.647 10.033 L 20.747 10.033 C 20.747 9.497 20.751 8.092 20.413 6.681 L 19.343 6.937 L 18.273 7.193 C 18.545 8.326 18.547 9.497 18.547 10.033 L 19.647 10.033 Z M 19.343 6.937 L 20.413 6.68 C 20.008 4.995 19.118 2.95 17.173 1.286 L 16.458 2.122 L 15.743 2.958 C 17.242 4.24 17.944 5.823 18.273 7.194 L 19.343 6.937 Z M 16.458 2.122 L 17.173 1.286 C 15.389 -0.239 12.991 -1.1 10.033 -1.1 L 10.033 0 L 10.033 1.1 C 12.549 1.1 14.417 1.823 15.743 2.958 L 16.458 2.122 Z M 10.033 0 L 10.033 -1.1 C 3.884 -1.1 -1.1 3.884 -1.1 10.033 L 0 10.033 L 1.1 10.033 C 1.1 5.1 5.1 1.1 10.033 1.1 L 10.033 0 Z M 0 10.033 L -1.1 10.033 C -1.1 16.182 3.884 21.166 10.033 21.166 L 10.033 20.066 L 10.033 18.966 C 5.1 18.966 1.1 14.966 1.1 10.033 L 0 10.033 Z M 10.033 20.066 L 10.033 21.166 C 11.75 21.166 13.193 20.786 14.194 20.362 L 13.765 19.349 L 13.336 18.336 C 12.583 18.654 11.432 18.966 10.033 18.966 L 10.033 20.066 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2)\"/>"},"IconAtFillEmailAt":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 Z\" fill=\"rgb(49,130,246)\" fill-rule=\"nonzero\"/><path d=\"M 7.58 4.5 L 6.48 4.5 C 6.48 6.561 5.106 7.898 3.79 7.898 L 3.79 8.998 L 3.79 10.098 C 6.66 10.098 8.68 7.407 8.68 4.5 L 7.58 4.5 Z M 3.79 8.998 L 3.79 7.898 C 2.474 7.898 1.1 6.561 1.1 4.5 L 0 4.5 L -1.1 4.5 C -1.1 7.407 0.92 10.098 3.79 10.098 L 3.79 8.998 Z M 0 4.5 L 1.1 4.5 C 1.1 2.439 2.474 1.1 3.79 1.1 L 3.79 0 L 3.79 -1.1 C 0.92 -1.1 -1.1 1.593 -1.1 4.5 L 0 4.5 Z M 3.79 0 L 3.79 1.1 C 5.107 1.1 6.48 2.439 6.48 4.5 L 7.58 4.5 L 8.68 4.5 C 8.68 1.593 6.661 -1.1 3.79 -1.1 L 3.79 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10 10) matrix(1 0 0 1 5.604 5.535)\"/><path d=\"M 14.798 5.536 C 14.798 4.928 14.306 4.436 13.698 4.436 C 13.09 4.436 12.598 4.928 12.598 5.536 L 13.698 5.536 L 14.798 5.536 Z M 16.368 14.766 L 16.368 15.866 L 16.379 15.866 L 16.368 14.766 Z M 17.33 14.584 L 16.926 13.561 L 16.924 13.562 L 17.33 14.584 Z M 19.343 6.937 L 20.413 6.681 L 20.413 6.68 L 19.343 6.937 Z M 16.458 2.122 L 17.173 1.286 L 17.173 1.286 L 16.458 2.122 Z M 14.194 20.362 C 14.753 20.125 15.015 19.48 14.778 18.92 C 14.541 18.361 13.896 18.099 13.336 18.336 L 13.765 19.349 L 14.194 20.362 Z M 13.698 5.536 L 12.598 5.536 L 12.598 11.791 L 13.698 11.791 L 14.798 11.791 L 14.798 5.536 L 13.698 5.536 Z M 13.698 11.791 L 12.598 11.791 C 12.598 13.878 13.967 15.866 16.368 15.866 L 16.368 14.766 L 16.368 13.666 C 15.485 13.666 14.798 12.99 14.798 11.791 L 13.698 11.791 Z M 16.368 14.766 L 16.379 15.866 C 16.912 15.86 17.364 15.754 17.736 15.606 L 17.33 14.584 L 16.924 13.562 C 16.788 13.616 16.604 13.664 16.357 13.666 L 16.368 14.766 Z M 17.33 14.584 L 17.734 15.607 C 19.193 15.03 19.955 13.893 20.337 12.807 C 20.709 11.747 20.747 10.67 20.747 10.033 L 19.647 10.033 L 18.547 10.033 C 18.547 10.606 18.507 11.378 18.261 12.077 C 18.025 12.75 17.628 13.284 16.926 13.561 L 17.33 14.584 Z M 19.647 10.033 L 20.747 10.033 C 20.747 9.497 20.751 8.092 20.413 6.681 L 19.343 6.937 L 18.273 7.193 C 18.545 8.326 18.547 9.497 18.547 10.033 L 19.647 10.033 Z M 19.343 6.937 L 20.413 6.68 C 20.008 4.995 19.118 2.95 17.173 1.286 L 16.458 2.122 L 15.743 2.958 C 17.242 4.24 17.944 5.823 18.273 7.194 L 19.343 6.937 Z M 16.458 2.122 L 17.173 1.286 C 15.389 -0.239 12.991 -1.1 10.033 -1.1 L 10.033 0 L 10.033 1.1 C 12.549 1.1 14.417 1.823 15.743 2.958 L 16.458 2.122 Z M 10.033 0 L 10.033 -1.1 C 3.884 -1.1 -1.1 3.884 -1.1 10.033 L 0 10.033 L 1.1 10.033 C 1.1 5.1 5.1 1.1 10.033 1.1 L 10.033 0 Z M 0 10.033 L -1.1 10.033 C -1.1 16.182 3.884 21.166 10.033 21.166 L 10.033 20.066 L 10.033 18.966 C 5.1 18.966 1.1 14.966 1.1 10.033 L 0 10.033 Z M 10.033 20.066 L 10.033 21.166 C 11.75 21.166 13.193 20.786 14.194 20.362 L 13.765 19.349 L 13.336 18.336 C 12.583 18.654 11.432 18.966 10.033 18.966 L 10.033 20.066 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10 10)\"/>"},"IconAtMonoEmailAt":{viewBox:"0 0 24 24",body:"<path d=\"M 10.495 14.533 C 9.011 14.533 7.804 13.009 7.804 11.135 C 7.804 9.261 9.011 7.736 10.494 7.736 C 11.979 7.736 13.186 9.261 13.186 11.135 C 13.186 13.009 11.979 14.533 10.495 14.533 Z M 21.513 7.781 C 20.989 5.591 19.899 3.776 18.273 2.387 C 16.424 0.803 14.022 0 11.134 0 C 4.996 0 0 4.994 0 11.133 C 0 17.272 4.995 22.266 11.134 22.266 C 13.1 22.266 14.584 21.762 15.294 21.462 C 15.427 21.406 15.548 21.324 15.649 21.221 C 15.75 21.118 15.831 20.996 15.885 20.862 C 15.939 20.728 15.966 20.585 15.965 20.441 C 15.964 20.296 15.935 20.154 15.878 20.021 C 15.822 19.887 15.74 19.767 15.637 19.665 C 15.535 19.564 15.413 19.484 15.279 19.43 C 15.145 19.375 15.002 19.348 14.857 19.349 C 14.713 19.35 14.57 19.38 14.437 19.436 C 13.881 19.672 12.711 20.067 11.134 20.067 C 6.208 20.067 2.201 16.059 2.201 11.133 C 2.2 6.207 6.208 2.2 11.134 2.2 C 13.481 2.2 15.403 2.825 16.844 4.058 C 18.109 5.14 18.959 6.565 19.374 8.294 C 19.649 9.439 19.649 10.626 19.649 11.132 C 19.647 13.077 19.117 14.231 18.026 14.662 C 17.848 14.73 17.659 14.765 17.469 14.766 C 16.384 14.766 15.899 13.824 15.899 12.891 L 15.899 6.636 C 15.899 6.344 15.783 6.064 15.577 5.858 C 15.371 5.652 15.091 5.536 14.799 5.536 C 14.507 5.536 14.227 5.652 14.021 5.858 C 13.815 6.064 13.699 6.344 13.699 6.636 L 13.699 6.916 C 12.839 6.059 11.721 5.536 10.495 5.536 C 7.798 5.536 5.604 8.048 5.604 11.135 C 5.604 14.221 7.798 16.732 10.494 16.732 C 11.944 16.732 13.244 16.003 14.14 14.853 C 14.753 16.137 15.963 16.966 17.48 16.966 C 17.944 16.964 18.403 16.876 18.835 16.708 C 20.208 16.165 21.845 14.758 21.848 11.133 C 21.848 10.548 21.848 9.179 21.513 7.781 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconBNPLBNPLCalendar":{viewBox:"0 0 24 24",body:"<path d=\"M 1 0 C 1 -0.552 0.552 -1 0 -1 C -0.552 -1 -1 -0.552 -1 0 L 0 0 L 1 0 Z M -1 1.765 C -1 2.317 -0.552 2.765 0 2.765 C 0.552 2.765 1 2.317 1 1.765 L 0 1.765 L -1 1.765 Z M 11 0 C 11 -0.552 10.552 -1 10 -1 C 9.448 -1 9 -0.552 9 0 L 10 0 L 11 0 Z M 9 1.765 C 9 2.317 9.448 2.765 10 2.765 C 10.552 2.765 11 2.317 11 1.765 L 10 1.765 L 9 1.765 Z M 0 0 L -1 0 L -1 1.765 L 0 1.765 L 1 1.765 L 1 0 L 0 0 Z M 10 0 L 9 0 L 9 1.765 L 10 1.765 L 11 1.765 L 11 0 L 10 0 Z\" fill=\"rgb(141,192,253)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.996 2.005)\"/><path d=\"M 15.992 17.992 L 2 17.992 C 0.895 17.992 0 17.097 0 15.992 L 0 2 C 0 0.895 0.895 0 2 0 L 15.992 0 C 17.097 0 17.992 0.895 17.992 2 L 17.992 15.992 C 17.992 17.097 17.097 17.992 15.992 17.992 Z\" fill=\"rgb(28,137,253)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.004 2.956)\"/><path d=\"M 10.225 0.188 C 10.327 -0.185 10.108 -0.57 9.735 -0.672 C 9.363 -0.775 8.977 -0.556 8.875 -0.183 L 9.55 0.002 L 10.225 0.188 Z M 7.83 6.262 L 7.155 6.077 L 7.153 6.084 L 7.83 6.262 Z M 7.46 6.262 L 8.137 6.084 L 8.135 6.077 L 7.46 6.262 Z M 5.78 0.142 L 5.103 0.321 L 5.105 0.328 L 5.78 0.142 Z M 5.41 0.142 L 6.085 0.328 L 6.087 0.321 L 5.41 0.142 Z M 3.73 6.262 L 3.055 6.077 L 3.053 6.084 L 3.73 6.262 Z M 3.36 6.262 L 4.037 6.084 L 4.035 6.077 L 3.36 6.262 Z M 2.315 -0.183 C 2.213 -0.556 1.827 -0.775 1.455 -0.672 C 1.082 -0.57 0.863 -0.185 0.965 0.188 L 1.64 0.002 L 2.315 -0.183 Z M 8.68 2.502 C 8.293 2.502 7.98 2.816 7.98 3.202 C 7.98 3.589 8.293 3.902 8.68 3.902 L 8.68 3.202 L 8.68 2.502 Z M 11.2 3.902 C 11.587 3.902 11.9 3.589 11.9 3.202 C 11.9 2.816 11.587 2.502 11.2 2.502 L 11.2 3.202 L 11.2 3.902 Z M 2.52 3.902 C 2.907 3.902 3.22 3.589 3.22 3.202 C 3.22 2.816 2.907 2.502 2.52 2.502 L 2.52 3.202 L 2.52 3.902 Z M 0 2.502 C -0.387 2.502 -0.7 2.816 -0.7 3.202 C -0.7 3.589 -0.387 3.902 0 3.902 L 0 3.202 L 0 2.502 Z M 9.55 0.002 L 8.875 -0.183 L 7.155 6.077 L 7.83 6.262 L 8.505 6.448 L 10.225 0.188 L 9.55 0.002 Z M 7.83 6.262 L 7.153 6.084 C 7.286 5.579 8.004 5.579 8.137 6.084 L 7.46 6.262 L 6.783 6.441 C 7.016 7.326 8.274 7.326 8.507 6.441 L 7.83 6.262 Z M 7.46 6.262 L 8.135 6.077 L 6.455 -0.043 L 5.78 0.142 L 5.105 0.328 L 6.785 6.448 L 7.46 6.262 Z M 5.78 0.142 L 6.457 -0.036 C 6.224 -0.921 4.966 -0.921 4.733 -0.036 L 5.41 0.142 L 6.087 0.321 C 5.954 0.826 5.236 0.826 5.103 0.321 L 5.78 0.142 Z M 5.41 0.142 L 4.735 -0.043 L 3.055 6.077 L 3.73 6.262 L 4.405 6.448 L 6.085 0.328 L 5.41 0.142 Z M 3.73 6.262 L 3.053 6.084 C 3.186 5.579 3.904 5.579 4.037 6.084 L 3.36 6.262 L 2.683 6.441 C 2.916 7.326 4.174 7.326 4.407 6.441 L 3.73 6.262 Z M 3.36 6.262 L 4.035 6.077 L 2.315 -0.183 L 1.64 0.002 L 0.965 0.188 L 2.685 6.448 L 3.36 6.262 Z M 8.68 3.202 L 8.68 3.902 L 11.2 3.902 L 11.2 3.202 L 11.2 2.502 L 8.68 2.502 L 8.68 3.202 Z M 2.52 3.202 L 2.52 2.502 L 0 2.502 L 0 3.202 L 0 3.902 L 2.52 3.902 L 2.52 3.202 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.400 8.750)\"/>"},"IconBNPLFillBNPLCalendar":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 9 40 0 31 0 20 C 0 9 9 0 20 0 C 31 0 40 9 40 20 C 40 31 31 40 20 40 Z\" fill=\"rgb(70,147,252)\" fill-rule=\"evenodd\"/><path d=\"M 1 0 C 1 -0.552 0.552 -1 0 -1 C -0.552 -1 -1 -0.552 -1 0 L 0 0 L 1 0 Z M -1 2 C -1 2.552 -0.552 3 0 3 C 0.552 3 1 2.552 1 2 L 0 2 L -1 2 Z M 0 0 L -1 0 L -1 2 L 0 2 L 1 2 L 1 0 L 0 0 Z\" fill=\"rgb(78,89,104)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.300 9.800) matrix(1 0 0 1 4.600 0)\"/><path d=\"M 1 0 C 1 -0.552 0.552 -1 0 -1 C -0.552 -1 -1 -0.552 -1 0 L 0 0 L 1 0 Z M -1 2 C -1 2.552 -0.552 3 0 3 C 0.552 3 1 2.552 1 2 L 0 2 L -1 2 Z M 0 0 L -1 0 L -1 2 L 0 2 L 1 2 L 1 0 L 0 0 Z\" fill=\"rgb(78,89,104)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.300 9.800) matrix(1 0 0 1 14.800 0)\"/><path d=\"M 17.4 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 17.4 C 0 18.5 0.9 19.4 2 19.4 L 17.4 19.4 C 18.5 19.4 19.4 18.5 19.4 17.4 L 19.4 2 C 19.4 0.9 18.5 0 17.4 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.300 9.800) matrix(1 0 0 1 0 1)\"/><path d=\"M 9.269 0.284 C 9.398 -0.197 9.114 -0.69 8.634 -0.819 C 8.153 -0.948 7.66 -0.664 7.531 -0.184 L 8.4 0.05 L 9.269 0.284 Z M 6.6 6.75 L 7.405 7.152 C 7.432 7.098 7.454 7.042 7.469 6.984 L 6.6 6.75 Z M 6.2 6.75 L 5.332 6.987 C 5.347 7.044 5.369 7.099 5.395 7.152 L 6.2 6.75 Z M 4.4 0.15 L 5.268 -0.087 C 5.253 -0.144 5.231 -0.199 5.205 -0.252 L 4.4 0.15 Z M 4 0.15 L 3.195 -0.252 C 3.169 -0.199 3.147 -0.144 3.132 -0.087 L 4 0.15 Z M 2.2 6.75 L 3.005 7.152 C 3.031 7.099 3.053 7.044 3.068 6.987 L 2.2 6.75 Z M 1.8 6.75 L 0.931 6.984 C 0.946 7.042 0.968 7.098 0.995 7.152 L 1.8 6.75 Z M 0.869 -0.184 C 0.74 -0.664 0.247 -0.948 -0.234 -0.819 C -0.714 -0.69 -0.998 -0.197 -0.869 0.284 L 0 0.05 L 0.869 -0.184 Z M 8.4 0.05 L 7.531 -0.184 L 5.731 6.516 L 6.6 6.75 L 7.469 6.984 L 9.269 0.284 L 8.4 0.05 Z M 6.6 6.75 L 5.795 6.348 C 5.847 6.243 6.035 6 6.4 6 C 6.765 6 6.953 6.243 7.005 6.348 L 6.2 6.75 L 5.395 7.152 C 5.547 7.457 5.885 7.8 6.4 7.8 C 6.915 7.8 7.253 7.457 7.405 7.152 L 6.6 6.75 Z M 6.2 6.75 L 7.068 6.513 L 5.268 -0.087 L 4.4 0.15 L 3.532 0.387 L 5.332 6.987 L 6.2 6.75 Z M 4.4 0.15 L 5.205 -0.252 C 5.053 -0.557 4.715 -0.9 4.2 -0.9 C 3.685 -0.9 3.347 -0.557 3.195 -0.252 L 4 0.15 L 4.805 0.552 C 4.753 0.657 4.565 0.9 4.2 0.9 C 3.835 0.9 3.647 0.657 3.595 0.552 L 4.4 0.15 Z M 4 0.15 L 3.132 -0.087 L 1.332 6.513 L 2.2 6.75 L 3.068 6.987 L 4.868 0.387 L 4 0.15 Z M 2.2 6.75 L 1.395 6.348 C 1.447 6.243 1.635 6 2 6 C 2.365 6 2.553 6.243 2.605 6.348 L 1.8 6.75 L 0.995 7.152 C 1.147 7.457 1.485 7.8 2 7.8 C 2.515 7.8 2.853 7.457 3.005 7.152 L 2.2 6.75 Z M 1.8 6.75 L 2.669 6.516 L 0.869 -0.184 L 0 0.05 L -0.869 0.284 L 0.931 6.984 L 1.8 6.75 Z\" fill=\"rgb(0,127,249)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.300 9.800) matrix(1 0 0 1 3.700 7.750) matrix(1 0 0 1 1.800 0)\"/><path d=\"M 0 -0.9 C -0.497 -0.9 -0.9 -0.497 -0.9 0 C -0.9 0.497 -0.497 0.9 0 0.9 L 0 0 L 0 -0.9 Z M 2.7 0.9 C 3.197 0.9 3.6 0.497 3.6 0 C 3.6 -0.497 3.197 -0.9 2.7 -0.9 L 2.7 0 L 2.7 0.9 Z M 0 0 L 0 0.9 L 2.7 0.9 L 2.7 0 L 2.7 -0.9 L 0 -0.9 L 0 0 Z\" fill=\"rgb(0,127,249)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.300 9.800) matrix(1 0 0 1 3.700 7.750) matrix(1 0 0 1 9.300 3.450)\"/><path d=\"M 2.7 0.9 C 3.197 0.9 3.6 0.497 3.6 0 C 3.6 -0.497 3.197 -0.9 2.7 -0.9 L 2.7 0 L 2.7 0.9 Z M 0 -0.9 C -0.497 -0.9 -0.9 -0.497 -0.9 0 C -0.9 0.497 -0.497 0.9 0 0.9 L 0 0 L 0 -0.9 Z M 2.7 0 L 2.7 -0.9 L 0 -0.9 L 0 0 L 0 0.9 L 2.7 0.9 L 2.7 0 Z\" fill=\"rgb(0,127,249)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.300 9.800) matrix(1 0 0 1 3.700 7.750) matrix(1 0 0 1 0 3.450)\"/>"},"IconBNPLMonoBNPLCalendar":{viewBox:"0 0 24 24",body:"<path d=\"M 13.725 0 C 14.238 0 14.654 0.418 14.654 0.935 L 14.654 1.896 L 16.144 1.896 C 17.108 1.896 17.919 2.666 17.994 3.619 L 18 3.763 L 18 18.133 C 18 19.103 17.235 19.919 16.287 19.994 L 16.144 20 L 1.856 20 C 0.892 20 0.081 19.23 0.006 18.277 L 0 18.133 L 0 3.763 C 0 2.793 0.765 1.977 1.713 1.902 L 1.856 1.896 L 3.345 1.896 L 3.346 0.935 C 3.346 0.418 3.761 0 4.275 0 C 4.789 0 5.204 0.418 5.204 0.935 L 5.204 1.896 L 12.795 1.896 L 12.796 0.935 C 12.796 0.418 13.212 0 13.725 0 Z M 8.973 7.377 C 8.56 7.377 8.194 7.61 8.017 7.999 L 7.969 8.12 L 6.907 11.969 L 5.871 8.018 C 5.754 7.569 5.295 7.301 4.849 7.419 C 4.437 7.528 4.178 7.929 4.233 8.343 L 4.254 8.447 L 4.822 10.616 L 3.375 10.616 C 2.913 10.616 2.539 10.993 2.539 11.458 C 2.539 11.886 2.858 12.24 3.27 12.292 L 3.375 12.299 L 5.264 12.298 L 5.9 14.722 C 6.039 15.142 6.438 15.424 6.891 15.424 C 7.302 15.424 7.669 15.191 7.846 14.802 L 7.893 14.681 L 8.959 10.821 L 10.006 14.777 C 10.133 15.159 10.472 15.427 10.873 15.474 L 10.995 15.481 C 11.408 15.481 11.774 15.248 11.952 14.859 L 12 14.738 L 12.677 12.298 L 14.625 12.299 C 15.087 12.299 15.461 11.922 15.461 11.458 C 15.461 11.028 15.142 10.675 14.73 10.623 L 14.625 10.616 L 13.144 10.616 L 13.743 8.459 C 13.868 8.011 13.608 7.547 13.163 7.422 C 12.753 7.306 12.327 7.52 12.166 7.907 L 12.132 8.007 L 11.011 12.043 L 9.962 8.08 C 9.823 7.66 9.426 7.377 8.973 7.377 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 1.500)\"/>"},"IconBabyFillBabyInfant":{viewBox:"0 0 40 40",body:"<path d=\"M 40 20 C 40 31.046 31.045 40 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.045 0 40 8.954 40 20 Z\" fill=\"rgb(250,87,108)\" fill-rule=\"evenodd\"/><path d=\"M 9 0 C 6.613 0 4.324 0.948 2.636 2.636 C 0.948 4.324 0 6.613 0 9 L 0 13.956 C 0 16.343 0.948 18.632 2.636 20.32 C 4.324 22.008 6.613 22.956 9 22.956 C 11.387 22.956 13.676 22.008 15.364 20.32 C 17.052 18.632 18 16.343 18 13.956 L 18 9 C 18 6.613 17.052 4.324 15.364 2.636 C 13.676 0.948 11.387 0 9 0 Z\" fill=\"rgb(251,164,172)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11 8.522)\"/><path d=\"M 5.76 0 C 4.232 0 2.767 0.607 1.687 1.687 C 0.607 2.767 0 4.232 0 5.76 L 0 6.24 C 0 7.768 0.607 9.233 1.687 10.313 C 2.767 11.393 4.232 12 5.76 12 C 7.288 12 8.753 11.393 9.833 10.313 C 10.913 9.233 11.52 7.768 11.52 6.24 L 11.52 5.76 C 11.52 4.232 10.913 2.767 9.833 1.687 C 8.753 0.607 7.288 0 5.76 0 Z\" fill=\"rgb(252,208,182)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 14.240 11)\"/><path d=\"M 5.583 0.791 C 5.587 0.897 5.569 1.002 5.531 1.101 C 5.493 1.2 5.435 1.291 5.362 1.367 C 5.288 1.443 5.2 1.504 5.102 1.545 C 5.004 1.587 4.899 1.608 4.793 1.608 C 4.687 1.608 4.582 1.587 4.484 1.545 C 4.387 1.504 4.298 1.443 4.225 1.366 C 4.151 1.29 4.094 1.199 4.056 1.1 C 4.018 1.001 4 0.896 4.004 0.79 C 4.004 0.58 4.087 0.379 4.236 0.231 C 4.384 0.083 4.585 0 4.795 0 C 5.004 0 5.205 0.083 5.353 0.232 C 5.501 0.38 5.583 0.581 5.583 0.791 Z M 0.001 0.791 C -0.003 0.897 0.015 1.002 0.053 1.101 C 0.091 1.2 0.149 1.291 0.222 1.367 C 0.296 1.443 0.384 1.504 0.482 1.545 C 0.58 1.587 0.685 1.608 0.791 1.608 C 0.897 1.608 1.002 1.587 1.1 1.545 C 1.197 1.504 1.286 1.443 1.359 1.366 C 1.433 1.29 1.49 1.199 1.528 1.1 C 1.566 1.001 1.584 0.896 1.58 0.79 C 1.58 0.58 1.497 0.379 1.348 0.231 C 1.2 0.083 0.999 0 0.789 0 C 0.58 0 0.379 0.083 0.231 0.232 C 0.083 0.38 0.001 0.581 0.001 0.791 Z\" fill=\"rgb(49,61,76)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 17.208 16.209)\"/><path d=\"M 14.289 1.579 C 14.219 2.387 13.586 2.992 12.877 2.929 C 12.167 2.867 11.65 2.162 11.721 1.354 C 11.791 0.546 12.423 -0.058 13.133 0.004 C 13.843 0.066 14.359 0.771 14.289 1.579 Z M 0.006 1.579 C 0.077 2.387 0.709 2.992 1.418 2.929 C 2.128 2.867 2.645 2.162 2.574 1.354 C 2.504 0.546 1.872 -0.058 1.162 0.004 C 0.453 0.066 -0.064 0.771 0.006 1.579 Z\" fill=\"rgb(252,208,182)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 12.852 15.533)\"/><path d=\"M 3 1.5 C 3 1.898 2.842 2.279 2.561 2.561 C 2.279 2.842 1.898 3 1.5 3 C 1.102 3 0.721 2.842 0.439 2.561 C 0.158 2.279 0 1.898 0 1.5 C 0 1.102 0.158 0.721 0.439 0.439 C 0.721 0.158 1.102 0 1.5 0 C 1.898 0 2.279 0.158 2.561 0.439 C 2.842 0.721 3 1.102 3 1.5 Z\" fill=\"rgb(250,88,108)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 18.500 18.500)\"/>"},"IconBabyMonoBabyInfant":{viewBox:"0 0 24 24",body:"<path d=\"M 4.796 0 C 4.586 0 4.386 0.084 4.237 0.232 C 4.089 0.38 4.006 0.581 4.006 0.79 C 4.006 1 4.089 1.201 4.237 1.349 C 4.386 1.497 4.586 1.58 4.796 1.58 C 5.006 1.58 5.206 1.497 5.355 1.349 C 5.503 1.201 5.586 1 5.586 0.79 C 5.586 0.581 5.503 0.38 5.355 0.232 C 5.206 0.084 5.006 0 4.796 0 Z M 1.581 0.79 C 1.581 0.581 1.498 0.38 1.349 0.232 C 1.201 0.083 1 0 0.79 0 C 0.581 0 0.38 0.083 0.232 0.232 C 0.083 0.38 0 0.581 0 0.79 C 0 1 0.083 1.201 0.231 1.349 C 0.38 1.497 0.58 1.58 0.79 1.58 C 1 1.58 1.2 1.497 1.349 1.349 C 1.497 1.201 1.581 1 1.581 0.79 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 0.522) matrix(1 0 0 1 6.206 7.688)\"/><path d=\"M 14.729 9.941 C 14.695 9.938 14.665 9.927 14.631 9.921 C 14.355 11.21 13.646 12.365 12.621 13.194 C 11.596 14.023 10.318 14.475 9 14.475 C 7.681 14.475 6.403 14.023 5.378 13.194 C 4.353 12.365 3.644 11.21 3.368 9.921 C 3.334 9.927 3.304 9.938 3.27 9.941 C 2.561 10.003 1.929 9.399 1.858 8.59 C 1.788 7.783 2.305 7.077 3.014 7.015 C 3.135 7.005 3.251 7.02 3.365 7.045 C 3.639 5.754 4.348 4.596 5.374 3.765 C 6.4 2.934 7.68 2.481 9 2.481 C 10.319 2.481 11.599 2.934 12.625 3.765 C 13.651 4.596 14.36 5.754 14.634 7.045 C 14.748 7.02 14.864 7.005 14.985 7.015 C 15.694 7.077 16.211 7.783 16.141 8.59 C 16.07 9.399 15.438 10.003 14.729 9.941 Z M 9 0 C 6.613 0 4.324 0.948 2.636 2.636 C 0.948 4.324 0 6.613 0 9 L 0 13.957 C 0 16.344 0.948 18.633 2.636 20.321 C 4.324 22.009 6.613 22.957 9 22.957 C 11.387 22.957 13.676 22.009 15.364 20.321 C 17.052 18.633 18 16.344 18 13.957 L 18 9 C 18 6.613 17.052 4.324 15.364 2.636 C 13.676 0.948 11.387 0 9 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 0.522)\"/><path d=\"M 1.5 0 C 1.303 0 1.108 0.039 0.926 0.114 C 0.744 0.19 0.579 0.3 0.439 0.439 C 0.3 0.579 0.19 0.744 0.114 0.926 C 0.039 1.108 0 1.303 0 1.5 C 0 1.698 0.039 1.893 0.114 2.075 C 0.19 2.257 0.3 2.422 0.439 2.562 C 0.579 2.701 0.744 2.811 0.926 2.887 C 1.108 2.962 1.303 3.001 1.5 3.001 C 1.898 3.001 2.28 2.843 2.561 2.562 C 2.842 2.28 3 1.899 3 1.501 C 3 1.103 2.842 0.722 2.561 0.44 C 2.28 0.159 1.898 0.001 1.5 0.001\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 0.522) matrix(1 0 0 1 7.500 9.978)\"/>"},"IconBalanceFillScale":{viewBox:"0 0 40 40",body:"<path d=\"M 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 C 31.046 40 40 31.046 40 20 Z\" fill=\"rgb(255,221,120)\" fill-rule=\"nonzero\"/><path d=\"M 7.72 1.506 C 7.72 0.674 8.394 0 9.226 0 C 10.058 0 10.733 0.674 10.733 1.506 L 10.733 3.013 L 17.134 3.013 C 17.55 3.013 17.888 3.35 17.888 3.766 C 17.888 4.182 17.55 4.519 17.134 4.519 L 10.733 4.519 L 10.733 18.829 L 16.946 18.829 C 17.778 18.829 18.453 19.504 18.453 20.335 C 18.453 21.167 17.778 21.842 16.946 21.842 L 1.506 21.842 C 0.674 21.842 0 21.167 0 20.335 C 0 19.504 0.674 18.829 1.506 18.829 L 7.72 18.829 L 7.72 4.519 L 1.318 4.519 C 0.902 4.519 0.565 4.182 0.565 3.766 C 0.565 3.35 0.902 3.013 1.318 3.013 L 7.72 3.013 L 7.72 1.506 Z\" fill=\"rgb(255,195,66)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 7 9) matrix(1 0 0 1 3.774 0)\"/><path d=\"M 4.716 0.119 C 4.573 0 4.573 0 4.573 0 L 4.542 0.038 C 4.521 0.062 4.491 0.098 4.453 0.145 C 4.376 0.237 4.266 0.371 4.131 0.535 C 3.862 0.862 3.495 1.311 3.104 1.795 C 2.33 2.754 1.438 3.882 1.044 4.473 C 0.239 5.68 0.011 6.631 0.008 7.501 L 0 7.501 C 0 8.124 0.122 8.741 0.359 9.317 C 0.596 9.893 0.943 10.416 1.381 10.857 C 1.819 11.297 2.339 11.647 2.911 11.885 C 3.483 12.124 4.096 12.246 4.715 12.246 C 5.334 12.246 5.948 12.124 6.52 11.885 C 7.092 11.647 7.611 11.297 8.049 10.857 C 8.487 10.416 8.834 9.893 9.071 9.317 C 9.308 8.741 9.43 8.124 9.43 7.501 L 9.424 7.501 C 9.421 6.631 9.193 5.68 8.388 4.473 C 7.994 3.882 7.102 2.754 6.328 1.795 C 5.937 1.311 5.57 0.862 5.3 0.535 C 5.166 0.371 5.055 0.237 4.979 0.145 C 4.94 0.098 4.91 0.062 4.89 0.038 L 4.859 0 C 4.859 0 4.859 0 4.716 0.119 Z M 4.716 1.603 C 4.497 1.87 4.245 2.18 3.983 2.505 C 3.199 3.476 2.343 4.56 1.984 5.099 C 1.293 6.136 1.14 6.872 1.138 7.501 L 4.715 7.501 L 8.294 7.501 C 8.292 6.872 8.139 6.136 7.448 5.099 C 7.088 4.56 6.233 3.476 5.449 2.505 C 5.186 2.18 4.934 1.87 4.716 1.603 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 7 9) matrix(1 0 0 1 0 2.259) matrix(1 0 0 1 16.570 1.145)\"/><path d=\"M 4.716 0.119 C 4.573 0 4.573 0 4.573 0 L 4.542 0.038 C 4.522 0.062 4.492 0.098 4.453 0.145 C 4.376 0.237 4.266 0.371 4.131 0.535 C 3.862 0.862 3.495 1.311 3.104 1.795 C 2.33 2.754 1.438 3.882 1.044 4.473 C 0.239 5.68 0.01 6.631 0.008 7.501 L 0 7.501 C 0 8.124 0.122 8.741 0.359 9.317 C 0.596 9.893 0.943 10.416 1.381 10.857 C 1.819 11.297 2.339 11.647 2.911 11.885 C 3.483 12.124 4.096 12.246 4.715 12.246 C 5.334 12.246 5.948 12.124 6.52 11.885 C 7.092 11.647 7.611 11.297 8.049 10.857 C 8.487 10.416 8.834 9.893 9.071 9.317 C 9.308 8.741 9.43 8.124 9.43 7.501 L 9.424 7.501 C 9.421 6.631 9.193 5.68 8.388 4.473 C 7.994 3.882 7.102 2.754 6.328 1.795 C 5.937 1.311 5.57 0.862 5.3 0.535 C 5.166 0.371 5.055 0.237 4.979 0.145 C 4.94 0.098 4.91 0.062 4.89 0.038 L 4.859 0 C 4.859 0 4.859 0 4.716 0.119 Z M 4.716 1.603 C 4.497 1.87 4.245 2.18 3.983 2.505 C 3.199 3.476 2.343 4.56 1.984 5.099 C 1.293 6.136 1.14 6.872 1.138 7.501 L 4.715 7.501 L 8.294 7.501 C 8.292 6.872 8.139 6.136 7.448 5.099 C 7.088 4.56 6.233 3.476 5.449 2.505 C 5.186 2.18 4.934 1.87 4.716 1.603 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 7 9) matrix(1 0 0 1 0 2.259) matrix(1 0 0 1 0 1.145)\"/><path d=\"M 1.506 3.013 C 2.338 3.013 3.013 2.338 3.013 1.506 C 3.013 0.674 2.338 0 1.506 0 C 0.674 0 0 0.674 0 1.506 C 0 2.338 0.674 3.013 1.506 3.013 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7 9) matrix(1 0 0 1 0 2.259) matrix(1 0 0 1 3.209 0)\"/><path d=\"M 1.506 3.013 C 2.338 3.013 3.013 2.338 3.013 1.506 C 3.013 0.674 2.338 0 1.506 0 C 0.674 0 0 0.674 0 1.506 C 0 2.338 0.674 3.013 1.506 3.013 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7 9) matrix(1 0 0 1 0 2.259) matrix(1 0 0 1 19.778 0)\"/>"},"IconBalanceScale":{viewBox:"0 0 24 24",body:"<path d=\"M 5.938 1.159 C 5.938 0.519 6.457 0 7.097 0 C 7.737 0 8.256 0.519 8.256 1.159 L 8.256 2.317 L 13.18 2.317 C 13.5 2.317 13.76 2.577 13.76 2.897 C 13.76 3.217 13.5 3.476 13.18 3.476 L 8.256 3.476 L 8.256 14.484 L 13.036 14.484 C 13.675 14.484 14.194 15.003 14.194 15.643 C 14.194 16.283 13.675 16.801 13.036 16.801 L 1.159 16.801 C 0.519 16.801 0 16.283 0 15.643 C 0 15.003 0.519 14.484 1.159 14.484 L 5.938 14.484 L 5.938 3.476 L 1.014 3.476 C 0.694 3.476 0.435 3.217 0.435 2.897 C 0.435 2.577 0.694 2.317 1.014 2.317 L 5.938 2.317 L 5.938 1.159 Z\" fill=\"rgb(255,195,66)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 3) matrix(1 0 0 1 2.903 0)\"/><path d=\"M 3.628 0.091 C 3.518 0 3.518 0 3.518 0 L 3.494 0.029 C 3.478 0.048 3.455 0.076 3.426 0.111 C 3.367 0.183 3.282 0.285 3.178 0.411 C 2.971 0.663 2.688 1.008 2.388 1.381 C 1.792 2.118 1.106 2.986 0.803 3.44 C 0.184 4.369 0.008 5.101 0.006 5.77 L 0 5.77 C 0 6.249 0.094 6.724 0.276 7.167 C 0.458 7.61 0.726 8.012 1.062 8.351 C 1.399 8.69 1.799 8.959 2.239 9.143 C 2.679 9.326 3.151 9.42 3.627 9.42 C 4.103 9.42 4.575 9.326 5.015 9.143 C 5.455 8.959 5.855 8.69 6.192 8.351 C 6.529 8.012 6.796 7.61 6.978 7.167 C 7.16 6.724 7.254 6.249 7.254 5.77 L 7.249 5.77 C 7.247 5.101 7.071 4.369 6.452 3.44 C 6.149 2.986 5.463 2.118 4.868 1.381 C 4.567 1.008 4.284 0.663 4.077 0.411 C 3.974 0.285 3.889 0.183 3.83 0.111 C 3.8 0.076 3.777 0.048 3.761 0.029 L 3.737 0 C 3.737 0 3.737 0 3.628 0.091 Z M 3.628 1.233 C 3.459 1.439 3.266 1.677 3.064 1.927 C 2.46 2.674 1.803 3.508 1.526 3.923 C 0.995 4.72 0.877 5.286 0.875 5.77 L 3.627 5.77 L 6.38 5.77 C 6.378 5.286 6.261 4.72 5.729 3.923 C 5.453 3.508 4.795 2.674 4.192 1.927 C 3.99 1.677 3.796 1.439 3.628 1.233 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 3) matrix(1 0 0 1 0 1.738) matrix(1 0 0 1 12.746 0.881)\"/><path d=\"M 3.628 0.091 C 3.518 0 3.518 0 3.518 0 L 3.494 0.029 C 3.478 0.048 3.455 0.076 3.426 0.111 C 3.367 0.183 3.282 0.285 3.178 0.411 C 2.971 0.663 2.688 1.008 2.388 1.381 C 1.792 2.118 1.106 2.986 0.803 3.44 C 0.184 4.369 0.008 5.101 0.006 5.77 L 0 5.77 C 0 6.249 0.094 6.724 0.276 7.167 C 0.458 7.61 0.726 8.012 1.062 8.351 C 1.399 8.69 1.799 8.959 2.239 9.143 C 2.679 9.326 3.151 9.42 3.627 9.42 C 4.103 9.42 4.575 9.326 5.015 9.143 C 5.455 8.959 5.855 8.69 6.192 8.351 C 6.529 8.012 6.796 7.61 6.978 7.167 C 7.16 6.724 7.254 6.249 7.254 5.77 L 7.249 5.77 C 7.247 5.101 7.071 4.369 6.452 3.44 C 6.149 2.986 5.463 2.118 4.868 1.381 C 4.567 1.008 4.284 0.663 4.077 0.411 C 3.974 0.285 3.889 0.183 3.83 0.111 C 3.8 0.076 3.777 0.048 3.761 0.029 L 3.737 0 C 3.737 0 3.737 0 3.628 0.091 Z M 3.628 1.233 C 3.46 1.439 3.266 1.677 3.064 1.927 C 2.46 2.674 1.803 3.508 1.526 3.923 C 0.995 4.72 0.877 5.286 0.875 5.77 L 3.627 5.77 L 6.38 5.77 C 6.378 5.286 6.261 4.72 5.729 3.923 C 5.453 3.508 4.795 2.674 4.192 1.927 C 3.99 1.677 3.796 1.439 3.628 1.233 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 3) matrix(1 0 0 1 0 1.738) matrix(1 0 0 1 0 0.881)\"/><path d=\"M 1.159 2.317 C 1.799 2.317 2.317 1.799 2.317 1.159 C 2.317 0.519 1.799 0 1.159 0 C 0.519 0 0 0.519 0 1.159 C 0 1.799 0.519 2.317 1.159 2.317 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 3) matrix(1 0 0 1 0 1.738) matrix(1 0 0 1 2.468 0)\"/><path d=\"M 1.159 2.317 C 1.799 2.317 2.317 1.799 2.317 1.159 C 2.317 0.519 1.799 0 1.159 0 C 0.519 0 0 0.519 0 1.159 C 0 1.799 0.519 2.317 1.159 2.317 Z\" fill=\"rgb(250,161,49)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 3) matrix(1 0 0 1 0 1.738) matrix(1 0 0 1 15.214 0)\"/>"},"IconBankBankAccountBanking":{viewBox:"0 0 24 24",body:"<path d=\"M 4.5 8.347 C 4.5 9.175 5.172 9.847 6 9.847 C 6.828 9.847 7.5 9.175 7.5 8.347 L 6 8.347 L 4.5 8.347 Z M 7.5 0 C 7.5 -0.828 6.828 -1.5 6 -1.5 C 5.172 -1.5 4.5 -0.828 4.5 0 L 6 0 L 7.5 0 Z M 10.5 8.347 C 10.5 9.175 11.172 9.847 12 9.847 C 12.828 9.847 13.5 9.175 13.5 8.347 L 12 8.347 L 10.5 8.347 Z M 13.5 0 C 13.5 -0.828 12.828 -1.5 12 -1.5 C 11.172 -1.5 10.5 -0.828 10.5 0 L 12 0 L 13.5 0 Z M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 6 8.347 L 7.5 8.347 L 7.5 0 L 6 0 L 4.5 0 L 4.5 8.347 L 6 8.347 Z M 12 8.347 L 13.5 8.347 L 13.5 0 L 12 0 L 10.5 0 L 10.5 8.347 L 12 8.347 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 1.580) matrix(1 0 0 1 3.500 8.778)\"/><path d=\"M 0.5 19.989 L 18.5 19.989 C 18.633 19.989 18.76 19.936 18.854 19.842 C 18.947 19.748 19 19.621 19 19.489 L 19 17.489 C 19 17.356 18.947 17.229 18.854 17.135 C 18.76 17.041 18.633 16.989 18.5 16.989 L 0.5 16.989 C 0.367 16.989 0.24 17.041 0.146 17.135 C 0.053 17.229 0 17.356 0 17.489 L 0 19.489 C 0 19.621 0.053 19.748 0.146 19.842 C 0.24 19.936 0.367 19.989 0.5 19.989 Z M 9.5 6.852 C 9.102 6.852 8.721 6.694 8.439 6.412 C 8.158 6.131 8 5.75 8 5.352 C 8 4.954 8.158 4.572 8.439 4.291 C 8.721 4.01 9.102 3.852 9.5 3.852 C 9.898 3.852 10.279 4.01 10.561 4.291 C 10.842 4.572 11 4.954 11 5.352 C 11 5.75 10.842 6.131 10.561 6.412 C 10.279 6.694 9.898 6.852 9.5 6.852 Z M 18.237 4.785 L 9.992 0.13 C 9.842 0.045 9.672 0 9.5 0 C 9.328 0 9.158 0.045 9.008 0.13 L 0.763 4.785 C 0.531 4.915 0.339 5.105 0.205 5.334 C 0.07 5.564 0 5.825 0 6.091 L 0 8.216 C 0 8.481 0.105 8.735 0.293 8.923 C 0.48 9.11 0.735 9.216 1 9.216 L 18 9.216 C 18.265 9.216 18.52 9.11 18.707 8.923 C 18.895 8.735 19 8.481 19 8.216 L 19 6.091 C 19 5.55 18.709 5.051 18.237 4.785 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.580)\"/>"},"IconBankCancel":{viewBox:"0 0 24 23.502",body:"<path d=\"M -1.5 8.16 C -1.5 8.988 -0.828 9.66 0 9.66 C 0.828 9.66 1.5 8.988 1.5 8.16 L 0 8.16 L -1.5 8.16 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.16 L 1.5 8.16 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.16 L 0 8.16 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.863 10.114) matrix(1 0 0 1 5.863 0)\"/><path d=\"M -1.5 8.16 C -1.5 8.988 -0.828 9.66 0 9.66 C 0.828 9.66 1.5 8.988 1.5 8.16 L 0 8.16 L -1.5 8.16 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.16 L 1.5 8.16 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.16 L 0 8.16 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.863 10.114) matrix(1 0 0 1 11.726 0)\"/><path d=\"M -1.5 8.16 C -1.5 8.988 -0.828 9.66 0 9.66 C 0.828 9.66 1.5 8.988 1.5 8.16 L 0 8.16 L -1.5 8.16 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.16 L 1.5 8.16 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.16 L 0 8.16 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.863 10.114)\"/><path d=\"M 0.489 2.932 L 18.078 2.932 C 18.352 2.932 18.567 2.717 18.567 2.443 L 18.567 0.489 C 18.567 0.215 18.352 0 18.078 0 L 0.489 0 C 0.215 0 0 0.215 0 0.489 L 0 2.443 C 0 2.717 0.215 2.932 0.489 2.932 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.443 18.147)\"/><path d=\"M 9.283 6.691 C 8.472 6.691 7.818 6.037 7.818 5.226 C 7.818 4.414 8.472 3.76 9.283 3.76 C 10.094 3.76 10.749 4.414 10.749 5.226 C 10.749 6.037 10.094 6.691 9.283 6.691 Z M 17.824 4.669 L 9.762 0.125 C 9.459 -0.042 9.098 -0.042 8.805 0.125 L 0.743 4.678 C 0.283 4.942 0 5.421 0 5.958 L 0 8.03 C 0 8.568 0.44 9.007 0.977 9.007 L 17.59 9.007 C 18.127 9.007 18.567 8.568 18.567 8.03 L 18.567 5.958 C 18.567 5.431 18.283 4.942 17.824 4.678\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.443 1.546)\"/><path d=\"M 0 0 L 12.831 0 L 12.831 12.831 L 0 12.831 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.179 10.671)\"/><path d=\"M 5.883 11.765 C 9.132 11.765 11.765 9.132 11.765 5.883 C 11.765 2.634 9.132 0 5.883 0 C 2.634 0 0 2.634 0 5.883 C 0 9.132 2.634 11.765 5.883 11.765 Z\" fill=\"rgb(240,68,82)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 11.169 11.199)\"/><path d=\"M 0.535 4.805 C 0.398 4.805 0.261 4.757 0.154 4.649 C -0.051 4.444 -0.051 4.102 0.154 3.897 L 3.897 0.154 C 4.102 -0.051 4.444 -0.051 4.649 0.154 C 4.854 0.359 4.854 0.701 4.649 0.906 L 0.906 4.649 C 0.799 4.757 0.662 4.805 0.525 4.805 L 0.535 4.805 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 14.651 14.680)\"/><path d=\"M 4.278 4.805 C 4.141 4.805 4.004 4.757 3.897 4.649 L 0.154 0.906 C -0.051 0.701 -0.051 0.359 0.154 0.154 C 0.359 -0.051 0.701 -0.051 0.906 0.154 L 4.649 3.897 C 4.854 4.102 4.854 4.444 4.649 4.649 C 4.542 4.757 4.405 4.805 4.268 4.805 L 4.278 4.805 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 14.651 14.680)\"/><path d=\"M 0 0 L 23.453 0 L 23.453 23.453 L 0 23.453 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconBankCertificationFillGovernment":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"evenodd\"/><path d=\"M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 3.500 8.777) matrix(1 0 0 1 6 0)\"/><path d=\"M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 3.500 8.777) matrix(1 0 0 1 12 0)\"/><path d=\"M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 3.500 8.777)\"/><path d=\"M 0.5 3 L 18.5 3 C 18.776 3 19 2.776 19 2.5 L 19 0.5 C 19 0.224 18.776 0 18.5 0 L 0.5 0 C 0.224 0 0 0.224 0 0.5 L 0 2.5 C 0 2.776 0.224 3 0.5 3 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 0 16.988)\"/><path d=\"M 9.5 6.852 C 8.672 6.852 8 6.181 8 5.352 C 8 4.524 8.672 3.852 9.5 3.852 C 10.328 3.852 11 4.524 11 5.352 C 11 6.181 10.328 6.852 9.5 6.852 Z M 18.237 4.785 L 9.992 0.13 C 9.687 -0.043 9.313 -0.043 9.008 0.13 L 0.763 4.785 C 0.291 5.051 0 5.55 0 6.091 L 0 8.216 C 0 8.768 0.448 9.216 1 9.216 L 18 9.216 C 18.552 9.216 19 8.768 19 8.216 L 19 6.091 C 19 5.55 18.709 5.051 18.237 4.785 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 9.580)\"/><path d=\"M 4.8 0 L 2 0 L 0 5.3 L 2.9 5.3 L 4.8 0 Z\" fill=\"rgb(242,101,112)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 12.900 16.620)\"/><path d=\"M 0 0 L 2.8 0 L 4.8 5.3 L 1.9 5.3 L 0 0 Z\" fill=\"rgb(242,101,112)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 15.300 16.620)\"/><path d=\"M 0 4.4 C 0 2 2 0 4.4 0 C 6.8 0 8.8 2 8.8 4.4 C 8.8 6.8 6.8 8.8 4.4 8.8 C 2 8.8 0 6.8 0 4.4 Z\" fill=\"rgb(255,205,88)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 9.580) matrix(1 0 0 1 12.100 9.920)\"/>"},"IconBankCertificationMonoGovernment":{viewBox:"0 0 24 24",body:"<path d=\"M 11.2 16.975 L 11 16.975 L 11 16.375 C 10.7 15.675 10.6 14.975 10.6 14.275 C 10.6 13.475 10.7 12.775 11 12.175 L 11 9.175 L 13.6 9.175 C 14.5 8.675 15.5 8.375 16.5 8.375 C 17.4 8.375 18.2 8.575 19 8.975 L 19 8.175 L 19 6.075 C 19 5.675 18.8 5.375 18.6 5.075 C 18.5 4.975 18.4 4.875 18.3 4.875 L 10.1 0.175 C 10 0.175 10 0.175 9.9 0.075 C 9.7 -0.025 9.5 -0.025 9.2 0.075 C 9.1 0.075 9.1 0.075 9 0.175 L 0.8 4.775 C 0.7 4.775 0.6 4.875 0.5 4.875 C 0.2 5.175 0 5.575 0 6.075 L 0 8.175 L 0 9.175 L 1 9.175 L 2 9.175 L 2 16.975 L 0.5 16.975 C 0.3 16.975 0.1 17.075 0 17.275 L 0 17.475 L 0 19.475 C 0 19.775 0.2 19.975 0.5 19.975 L 12 19.975 L 12.5 18.675 C 12 18.175 11.6 17.575 11.2 16.975 Z M 8 16.975 L 5 16.975 L 5 9.175 L 8 9.175 L 8 16.975 Z M 10.1 6.675 C 10 6.675 10 6.675 9.9 6.775 C 9.8 6.775 9.6 6.875 9.5 6.875 C 9.2 6.875 9 6.775 8.7 6.675 C 8.7 6.675 8.7 6.675 8.6 6.675 L 8.5 6.575 C 8.5 6.375 8.5 6.375 8.4 6.375 L 8.3 6.275 C 8.3 6.275 8.3 6.175 8.2 6.175 C 8.2 6.075 8.1 6.075 8.1 5.975 C 8 5.775 8 5.575 8 5.375 C 8 4.575 8.7 3.875 9.5 3.875 C 10.3 3.875 11 4.575 11 5.375 C 11 5.875 10.6 6.475 10.1 6.675 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 1.625)\"/><path d=\"M 8.8 4.4 C 8.8 2 6.8 0 4.4 0 C 2 0 0 2 0 4.4 C 0 6 0.9 7.4 2.2 8.2 L 0.8 12 L 3.7 12 L 4.4 10 L 5.1 12 L 8 12 L 6.6 8.2 C 7.9 7.5 8.8 6 8.8 4.4 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.625) matrix(1 0 0 1 12.100 9.875)\"/>"},"IconBankFillGovernmentOffice":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"evenodd\"/><path d=\"M 4.5 8.347 C 4.5 9.175 5.172 9.847 6 9.847 C 6.828 9.847 7.5 9.175 7.5 8.347 L 6 8.347 L 4.5 8.347 Z M 7.5 0 C 7.5 -0.828 6.828 -1.5 6 -1.5 C 5.172 -1.5 4.5 -0.828 4.5 0 L 6 0 L 7.5 0 Z M 10.5 8.347 C 10.5 9.175 11.172 9.847 12 9.847 C 12.828 9.847 13.5 9.175 13.5 8.347 L 12 8.347 L 10.5 8.347 Z M 13.5 0 C 13.5 -0.828 12.828 -1.5 12 -1.5 C 11.172 -1.5 10.5 -0.828 10.5 0 L 12 0 L 13.5 0 Z M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 6 8.347 L 7.5 8.347 L 7.5 0 L 6 0 L 4.5 0 L 4.5 8.347 L 6 8.347 Z M 12 8.347 L 13.5 8.347 L 13.5 0 L 12 0 L 10.5 0 L 10.5 8.347 L 12 8.347 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 14 18.357)\"/><path d=\"M 0.5 19.989 L 18.5 19.989 C 18.633 19.989 18.76 19.936 18.854 19.842 C 18.947 19.748 19 19.621 19 19.489 L 19 17.489 C 19 17.356 18.947 17.229 18.854 17.135 C 18.76 17.041 18.633 16.989 18.5 16.989 L 0.5 16.989 C 0.367 16.989 0.24 17.041 0.146 17.135 C 0.053 17.229 0 17.356 0 17.489 L 0 19.489 C 0 19.621 0.053 19.748 0.146 19.842 C 0.24 19.936 0.367 19.989 0.5 19.989 Z M 9.5 6.852 C 9.102 6.852 8.721 6.694 8.439 6.412 C 8.158 6.131 8 5.75 8 5.352 C 8 4.954 8.158 4.572 8.439 4.291 C 8.721 4.01 9.102 3.852 9.5 3.852 C 9.898 3.852 10.279 4.01 10.561 4.291 C 10.842 4.572 11 4.954 11 5.352 C 11 5.75 10.842 6.131 10.561 6.412 C 10.279 6.694 9.898 6.852 9.5 6.852 Z M 18.237 4.785 L 9.992 0.13 C 9.842 0.045 9.672 0 9.5 0 C 9.328 0 9.158 0.045 9.008 0.13 L 0.763 4.785 C 0.531 4.915 0.339 5.105 0.205 5.334 C 0.07 5.564 0 5.825 0 6.091 L 0 8.216 C 0 8.481 0.105 8.735 0.293 8.923 C 0.48 9.11 0.735 9.216 1 9.216 L 18 9.216 C 18.265 9.216 18.52 9.11 18.707 8.923 C 18.895 8.735 19 8.481 19 8.216 L 19 6.091 C 19 5.55 18.709 5.051 18.237 4.785 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 9.580)\"/>"},"IconBankFillTossToss":{viewBox:"0 0 40 40",body:"<path d=\"M 0 0 L 40 0 L 40 40 L 0 40 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 0 0 L 40 0 L 40 40 L 0 40 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 0 0 L 26.995 0 L 26.995 26.995 L 0 26.995 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.500 6.500)\"/>"},"IconBankMonoBankAccount":{viewBox:"0 0 24 24",body:"<path d=\"M 11 16.988 L 14 16.988 L 14 9.215 L 11 9.215 L 11 16.988 Z M 5 16.988 L 8 16.988 L 8 9.215 L 5 9.215 L 5 16.988 Z M 9.5 3.852 C 9.898 3.852 10.279 4.01 10.561 4.291 C 10.842 4.573 11 4.954 11 5.352 C 11 5.75 10.842 6.131 10.561 6.413 C 10.279 6.694 9.898 6.852 9.5 6.852 C 9.102 6.852 8.721 6.694 8.439 6.413 C 8.158 6.131 8 5.75 8 5.352 C 8 4.954 8.158 4.573 8.439 4.291 C 8.721 4.01 9.102 3.852 9.5 3.852 Z M 19 9.215 L 19 6.091 C 19 5.55 18.709 5.051 18.237 4.785 L 9.991 0.129 C 9.841 0.044 9.672 0 9.5 0 C 9.328 0 9.159 0.044 9.009 0.129 L 0.763 4.785 C 0.531 4.915 0.339 5.105 0.205 5.335 C 0.07 5.564 0 5.825 0 6.091 L 0 9.215 L 2 9.215 L 2 16.988 L 0.5 16.988 C 0.367 16.988 0.24 17.041 0.146 17.134 C 0.053 17.228 0 17.355 0 17.488 L 0 19.488 C 0 19.621 0.053 19.748 0.146 19.842 C 0.24 19.935 0.367 19.988 0.5 19.988 L 18.5 19.988 C 18.633 19.988 18.76 19.935 18.854 19.842 C 18.947 19.748 19 19.621 19 19.488 L 19 17.488 C 19 17.355 18.947 17.228 18.854 17.134 C 18.76 17.041 18.633 16.988 18.5 16.988 L 17 16.988 L 17 9.215 L 19 9.215 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.580)\"/>"},"IconBankPlus":{viewBox:"0 0 24 24",body:"<path d=\"M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6 10.358) matrix(1 0 0 1 6 0)\"/><path d=\"M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6 10.358) matrix(1 0 0 1 12 0)\"/><path d=\"M -1.5 8.347 C -1.5 9.175 -0.828 9.847 0 9.847 C 0.828 9.847 1.5 9.175 1.5 8.347 L 0 8.347 L -1.5 8.347 Z M 1.5 0 C 1.5 -0.828 0.828 -1.5 0 -1.5 C -0.828 -1.5 -1.5 -0.828 -1.5 0 L 0 0 L 1.5 0 Z M 0 8.347 L 1.5 8.347 L 1.5 0 L 0 0 L -1.5 0 L -1.5 8.347 L 0 8.347 Z\" fill=\"rgb(101,119,138)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6 10.358)\"/><path d=\"M 0.5 3 L 18.5 3 C 18.776 3 19 2.776 19 2.5 L 19 0.5 C 19 0.224 18.776 0 18.5 0 L 0.5 0 C 0.224 0 0 0.224 0 0.5 L 0 2.5 C 0 2.776 0.224 3 0.5 3 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 18.569)\"/><path d=\"M 9.5 6.852 C 8.672 6.852 8 6.181 8 5.352 C 8 4.524 8.672 3.852 9.5 3.852 C 10.328 3.852 11 4.524 11 5.352 C 11 6.181 10.328 6.852 9.5 6.852 Z M 18.237 4.785 L 9.992 0.13 C 9.687 -0.043 9.313 -0.043 9.008 0.13 L 0.763 4.785 C 0.291 5.051 0 5.55 0 6.091 L 0 8.216 C 0 8.768 0.448 9.216 1 9.216 L 18 9.216 C 18.552 9.216 19 8.768 19 8.216 L 19 6.091 C 19 5.55 18.709 5.051 18.237 4.785 Z\" fill=\"rgb(167,179,195)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.580)\"/><path d=\"M 4.979 9.958 C 2.229 9.958 0 7.729 0 4.979 C 0 2.229 2.229 0 4.979 0 C 7.729 0 9.958 2.229 9.958 4.979 C 9.958 7.729 7.729 9.958 4.979 9.958 Z\" fill=\"rgb(0,127,251)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 13 13)\"/><path d=\"M 0.398 0 C 0.398 -0.22 0.22 -0.398 0 -0.398 C -0.22 -0.398 -0.398 -0.22 -0.398 0 L 0 0 L 0.398 0 Z M -0.398 3.734 C -0.398 3.954 -0.22 4.133 0 4.133 C 0.22 4.133 0.398 3.954 0.398 3.734 L 0 3.734 L -0.398 3.734 Z M 0 0 L -0.398 0 L -0.398 3.734 L 0 3.734 L 0.398 3.734 L 0.398 0 L 0 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 13 13) matrix(1 0 0 1 3.112 3.112) matrix(1 0 0 1 1.867 0)\"/><path d=\"M 3.734 0.398 C 3.954 0.398 4.133 0.22 4.133 0 C 4.133 -0.22 3.954 -0.398 3.734 -0.398 L 3.734 0 L 3.734 0.398 Z M 0 -0.398 C -0.22 -0.398 -0.398 -0.22 -0.398 0 C -0.398 0.22 -0.22 0.398 0 0.398 L 0 0 L 0 -0.398 Z M 3.734 0 L 3.734 -0.398 L 0 -0.398 L 0 0 L 0 0.398 L 3.734 0.398 L 3.734 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 13 13) matrix(1 0 0 1 3.112 3.112) matrix(1 0 0 1 0 1.867)\"/>"},"IconBankToss":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 22.3 L 0 22.3 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 0.850)\"/>"},"IconBarcodeMonoBarcode":{viewBox:"0 0 24 24",body:"<path d=\"M 2.817 14.567 L 1.133 14.567 C 0.5 14.567 0 14.05 0 13.433 L 0 1.133 C 0 0.5 0.517 0 1.133 0 L 2.817 0 C 3.45 0 3.95 0.517 3.95 1.133 L 3.95 13.433 C 3.95 14.067 3.433 14.567 2.817 14.567 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.467 4.700) matrix(1 0 0 1 0 0.033)\"/><path d=\"M 3.183 14.567 L 1.15 14.567 C 0.517 14.567 0 14.05 0 13.433 L 0 1.133 C 0 0.5 0.517 0 1.15 0 L 3.183 0 C 3.817 0 4.333 0.517 4.333 1.133 L 4.333 13.433 C 4.333 14.067 3.817 14.567 3.183 14.567 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.467 4.700) matrix(1 0 0 1 5.617 0.033)\"/><path d=\"M 1.083 14.567 C 0.483 14.567 0 14.1 0 13.517 L 0 1.05 C 0 0.467 0.483 0 1.083 0 C 1.683 0 2.167 0.467 2.167 1.05 L 2.167 13.517 C 2.167 14.1 1.683 14.567 1.083 14.567 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.467 4.700) matrix(1 0 0 1 11.617 0.033)\"/><path d=\"M 4.467 14.567 L 1.133 14.567 C 0.5 14.567 0 14.05 0 13.433 L 0 1.133 C 0 0.5 0.517 0 1.133 0 L 4.467 0 C 5.1 0 5.6 0.517 5.6 1.133 L 5.6 13.433 C 5.6 14.067 5.1 14.567 4.467 14.567 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.467 4.700) matrix(1 0 0 1 15.467 0)\"/>"},"IconBarcodeScanMono":{viewBox:"0 0 24 24",body:"<path d=\"M 3.4 0 L 0.9 0 C 0.403 0 0 0.403 0 0.9 C 0 1.397 0.403 1.8 0.9 1.8 L 3.4 1.8 C 4.394 1.8 5.2 2.606 5.2 3.6 L 5.2 5.1 C 5.2 5.597 5.603 6 6.1 6 C 6.597 6 7 5.597 7 5.1 L 7 3.6 C 7 1.612 5.388 0 3.4 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 17 0)\"/><path d=\"M 0.9 6 C 1.397 6 1.8 5.597 1.8 5.1 L 1.8 3.6 C 1.8 2.606 2.606 1.8 3.6 1.8 L 6.1 1.8 C 6.597 1.8 7 1.397 7 0.9 C 7 0.403 6.597 0 6.1 0 L 3.6 0 C 1.612 0 0 1.612 0 3.6 L 0 5.1 C 0 5.597 0.403 6 0.9 6 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2)\"/><path d=\"M 6.1 0 C 5.603 0 5.2 0.403 5.2 0.9 L 5.2 2.4 C 5.2 3.394 4.394 4.2 3.4 4.2 L 0.9 4.2 C 0.403 4.2 0 4.603 0 5.1 C 0 5.597 0.403 6 0.9 6 L 3.4 6 C 5.388 6 7 4.388 7 2.4 L 7 0.9 C 7 0.403 6.597 0 6.1 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 17 14)\"/><path d=\"M 6.1 4.2 L 3.6 4.2 C 2.606 4.2 1.8 3.394 1.8 2.4 L 1.8 0.9 C 1.8 0.403 1.397 0 0.9 0 C 0.403 0 0 0.403 0 0.9 L 0 2.4 C 0 4.388 1.612 6 3.6 6 L 6.1 6 C 6.597 6 7 5.597 7 5.1 C 7 4.603 6.597 4.2 6.1 4.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 0 14)\"/><path d=\"M 3.269 0 L 0.81 0 C 0.363 0 0 0.414 0 0.924 L 0 10.058 C 0 10.568 0.362 10.982 0.81 10.982 L 3.269 10.982 C 3.716 10.982 4.079 10.568 4.079 10.058 L 4.079 0.924 C 4.079 0.414 3.717 0 3.269 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 3.854 4.518)\"/><path d=\"M 1.62 0 L 0.81 0 C 0.363 0 0 0.414 0 0.924 L 0 10.058 C 0 10.568 0.362 10.982 0.81 10.982 L 1.62 10.982 C 2.067 10.982 2.43 10.568 2.43 10.058 L 2.43 0.924 C 2.43 0.414 2.068 0 1.62 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 12.620 4.518)\"/><path d=\"M 0.81 0 C 0.363 0 0 0.414 0 0.924 L 0 10.058 C 0 10.568 0.362 10.982 0.81 10.982 C 1.258 10.982 1.62 10.568 1.62 10.058 L 1.62 0.924 C 1.62 0.414 1.258 0 0.81 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 9.445 4.518)\"/><path d=\"M 2.75 10.982 C 3.197 10.982 3.56 10.568 3.56 10.058 L 3.56 0.924 C 3.56 0.414 3.198 0 2.75 0 L 0.81 0 C 0.363 0 0 0.414 0 0.924 L 0 10.058 C 0 10.568 0.362 10.982 0.81 10.982 L 2.75 10.982 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2) matrix(1 0 0 1 16.586 4.518)\"/>"},"IconBasketballMono":{viewBox:"0 0 24 24",body:"<path d=\"M 6.96 10.264 L 6.96 0 C 4.259 0.17 1.824 1.307 0 3.079 C 1.868 4.944 3.086 7.462 3.262 10.264 L 6.96 10.264 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 3.305 0)\"/><path d=\"M 5.167 6.148 C 4.995 3.757 3.953 1.608 2.365 0 C 1.003 1.708 0.147 3.83 0 6.148 L 5.167 6.148 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 0 4.116)\"/><path d=\"M 0 10.264 L 3.698 10.264 C 3.873 7.463 5.092 4.945 6.96 3.079 C 5.136 1.307 2.701 0.17 0 0 L 0 10.264 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 11.665 0)\"/><path d=\"M 5.166 6.148 C 5.019 3.83 4.163 1.708 2.801 0 C 1.213 1.607 0.171 3.756 0 6.147 L 5.166 6.147 L 5.166 6.148 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 16.764 4.116)\"/><path d=\"M 3.698 0 L 0 0 L 0 10.265 C 2.701 10.095 5.136 8.958 6.96 7.185 C 5.092 5.319 3.874 2.801 3.698 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 11.665 11.664)\"/><path d=\"M 0 0 C 0.146 2.317 1.003 4.439 2.365 6.147 C 3.953 4.54 4.995 2.391 5.166 0 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 0 11.664)\"/><path d=\"M 0 0 C 0.171 2.391 1.213 4.54 2.801 6.147 C 4.163 4.439 5.02 2.317 5.166 0 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 16.763 11.664)\"/><path d=\"M 6.96 0 L 3.262 0 C 3.087 2.801 1.868 5.319 0 7.185 C 1.824 8.957 4.259 10.094 6.96 10.265 L 6.96 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.035 1.036) matrix(1 0 0 1 3.305 11.664)\"/>"},"IconBattery100Charge":{viewBox:"0 0 24 24",body:"<path d=\"M 21 4.56 L 20.16 4.56 L 20.16 2.4 C 20.16 1.08 19.08 0 17.76 0 L 2.4 0 C 1.08 0 0 1.08 0 2.4 L 0 11.88 C 0 13.2 1.08 14.28 2.4 14.28 L 17.76 14.28 C 19.08 14.28 20.16 13.2 20.16 11.88 L 20.16 9.72 L 21 9.72 C 21.66 9.72 22.2 9.18 22.2 8.52 L 22.2 5.76 C 22.2 5.1 21.66 4.56 21 4.56 Z\" fill=\"rgb(107,118,131)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 4.860)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 16.68 0 L 0.6 0 C 0.24 0 0 0.42 0 0.9 L 0 10.5 C 0 10.98 0.3 11.4 0.6 11.4 L 16.68 11.4 C 17.04 11.4 17.28 10.98 17.28 10.5 L 17.28 0.9 C 17.28 0.42 16.98 0 16.68 0 Z\" fill=\"rgb(123,213,143)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.340 6.300)\"/>"},"IconBattery25Charge":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 21 4.56 L 20.16 4.56 L 20.16 2.4 C 20.16 1.08 19.08 0 17.76 0 L 2.4 0 C 1.08 0 0 1.08 0 2.4 L 0 11.88 C 0 13.2 1.08 14.28 2.4 14.28 L 17.76 14.28 C 19.08 14.28 20.16 13.2 20.16 11.88 L 20.16 9.72 L 21 9.72 C 21.66 9.72 22.2 9.18 22.2 8.52 L 22.2 5.76 C 22.2 5.1 21.66 4.56 21 4.56 Z\" fill=\"rgb(107,118,131)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 4.860)\"/><path d=\"M 0.6 0 C 0.24 0 0 0.42 0 0.9 L 0 10.5 C 0 10.98 0.3 11.4 0.6 11.4 L 4.32 11.4 L 4.32 0 L 0.6 0 Z\" fill=\"rgb(255,88,108)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.340 6.300)\"/>"},"IconBattery50Charge":{viewBox:"0 0 24 24",body:"<path d=\"M 21 4.56 L 20.16 4.56 L 20.16 2.4 C 20.16 1.08 19.08 0 17.76 0 L 2.4 0 C 1.08 0 0 1.08 0 2.4 L 0 11.88 C 0 13.2 1.08 14.28 2.4 14.28 L 17.76 14.28 C 19.08 14.28 20.16 13.2 20.16 11.88 L 20.16 9.72 L 21 9.72 C 21.66 9.72 22.2 9.18 22.2 8.52 L 22.2 5.76 C 22.2 5.1 21.66 4.56 21 4.56 Z\" fill=\"rgb(107,118,131)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 4.860)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 8.64 0 L 8.64 11.4 L 0.6 11.4 C 0.24 11.4 0 10.98 0 10.5 L 0 0.9 C 0 0.42 0.3 0 0.6 0 L 8.64 0 Z\" fill=\"rgb(123,213,143)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.340 6.300)\"/>"},"IconBattery75753":{viewBox:"0 0 24 24",body:"<path d=\"M 21 4.56 L 20.16 4.56 L 20.16 2.4 C 20.16 1.08 19.08 0 17.76 0 L 2.4 0 C 1.08 0 0 1.08 0 2.4 L 0 11.88 C 0 13.2 1.08 14.28 2.4 14.28 L 17.76 14.28 C 19.08 14.28 20.16 13.2 20.16 11.88 L 20.16 9.72 L 21 9.72 C 21.66 9.72 22.2 9.18 22.2 8.52 L 22.2 5.76 C 22.2 5.1 21.66 4.56 21 4.56 Z\" fill=\"rgb(107,118,131)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 4.860)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 12.66 0 L 12.66 11.4 L 0.9 11.4 C 0.42 11.4 0 10.98 0 10.5 L 0 0.9 C 0 0.42 0.42 0 0.9 0 L 12.66 0 Z\" fill=\"rgb(123,213,143)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.340 6.300)\"/>"},"IconBeautyMaskSheetMask":{viewBox:"0 0 24 24",body:"<path d=\"M 19.359 11.207 C 18.85 10.936 19.07 10.286 19.675 10.271 L 20.974 10.239 C 20.834 4.562 16.198 0 10.487 0 C 4.776 0 0.136 4.564 0 10.245 L 1.023 10.27 C 1.628 10.285 1.848 10.935 1.339 11.206 L 0.087 11.873 C 0.385 14.144 1.403 16.184 2.912 17.757 L 3.796 16.9 C 4.262 16.448 4.863 16.711 4.662 17.278 L 4.112 18.827 C 5.881 20.183 8.087 20.998 10.488 20.998 C 12.82 20.998 14.967 20.228 16.71 18.942 L 16.132 17.313 C 15.931 16.746 16.532 16.483 16.998 16.935 L 17.962 17.87 C 19.498 16.313 20.541 14.277 20.869 12.009 L 19.362 11.206 L 19.359 11.207 Z M 4.114 8.929 C 4.114 7.828 5.21 6.935 6.561 6.935 C 7.912 6.935 9.008 7.828 9.008 8.929 C 9.008 10.03 7.912 10.923 6.561 10.923 C 5.21 10.923 4.114 10.03 4.114 8.929 Z M 10.42 16.97 C 8.637 16.97 7.191 16.19 7.191 15.229 C 7.191 14.268 8.637 13.488 10.42 13.488 C 12.203 13.488 13.649 14.268 13.649 15.229 C 13.649 16.19 12.203 16.97 10.42 16.97 Z M 14.185 10.923 C 12.833 10.923 11.738 10.03 11.738 8.929 C 11.738 7.828 12.834 6.935 14.185 6.935 C 15.536 6.935 16.632 7.828 16.632 8.929 C 16.632 10.03 15.536 10.923 14.185 10.923 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.513 1.501)\"/>"},"IconBeerFillBeerBar":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 Z\" fill=\"rgb(247,158,49)\" fill-rule=\"nonzero\"/><path d=\"M 16.64 11.409 L 15 11.409 L 15 9.609 L 16.64 9.609 C 16.653 9.609 16.666 9.606 16.678 9.601 C 16.69 9.596 16.701 9.589 16.711 9.58 C 16.72 9.57 16.727 9.559 16.732 9.547 C 16.737 9.535 16.74 9.522 16.74 9.509 L 16.74 4.635 C 16.74 4.622 16.738 4.609 16.733 4.596 C 16.728 4.584 16.72 4.573 16.711 4.564 C 16.702 4.554 16.691 4.547 16.679 4.542 C 16.666 4.537 16.653 4.534 16.64 4.534 L 15 4.534 L 15 2.734 L 16.64 2.734 C 17.688 2.734 18.54 3.587 18.54 4.634 L 18.54 9.509 C 18.54 10.557 17.688 11.409 16.64 11.409 Z M 13 16 L 2 16 C 1.47 16 0.961 15.789 0.586 15.414 C 0.211 15.039 0 14.53 0 14 L 0 0 L 15 0 L 15 14 C 15 14.53 14.789 15.039 14.414 15.414 C 14.039 15.789 13.53 16 13 16 Z\" fill=\"rgb(255,207,88)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.680 14)\"/><path d=\"M 13 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 4 L 15 4 L 15 2 C 15 1.47 14.789 0.961 14.414 0.586 C 14.039 0.211 13.53 0 13 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.680 10)\"/><path d=\"M 3 7.912 L 4.5 7.912 L 4.5 0 L 3 0 L 3 7.912 Z M 6 7.912 L 7.5 7.912 L 7.5 0 L 6 0 L 6 7.912 Z M 0 7.912 L 1.5 7.912 L 1.5 0 L 0 0 L 0 7.912 Z\" fill=\"rgb(255,177,49)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 15.430 18.044)\"/>"},"IconBeerMonoBeerAlcohol":{viewBox:"0 0 24 24",body:"<path d=\"M 15 13.308 L 16.44 13.308 L 16.44 8.834 L 15 8.834 L 15 13.308 Z M 9.801 15.956 L 11.201 15.956 L 11.201 8.044 L 9.801 8.044 L 9.801 15.956 Z M 6.801 15.956 L 8.201 15.956 L 8.201 8.044 L 6.801 8.044 L 6.801 15.956 Z M 3.801 15.956 L 5.201 15.956 L 5.201 8.044 L 3.801 8.044 L 3.801 15.956 Z M 16.641 6.434 L 15.001 6.434 L 15.001 4.75 L 0.001 4.75 L 0.001 18 C 0.001 18.53 0.212 19.039 0.587 19.414 C 0.962 19.789 1.471 20 2.001 20 L 13.001 20 C 13.531 20 14.04 19.789 14.415 19.414 C 14.79 19.039 15.001 18.53 15.001 18 L 15.001 15.708 L 16.641 15.708 C 17.224 15.707 17.783 15.475 18.195 15.063 C 18.608 14.651 18.84 14.092 18.841 13.509 L 18.841 8.634 C 18.841 7.421 17.853 6.434 16.641 6.434 Z M 15 2 C 15 1.47 14.789 0.961 14.414 0.586 C 14.039 0.211 13.53 0 13 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 3.25 L 15 3.25 L 15 2 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.680 2)\"/>"},"IconBellStrokeMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.23 10.25 C 18.23 6.31 15.59 2.82 11.91 1.88 C 11.89 1.67 11.85 1.47 11.77 1.28 C 11.67 1.03 11.52 0.8 11.33 0.61 C 11.14 0.42 10.92 0.27 10.67 0.16 C 10.42 0.06 10.16 0 9.89 0 C 9.62 0 9.35 0.05 9.11 0.16 C 8.86 0.26 8.64 0.42 8.45 0.61 C 8.26 0.8 8.11 1.03 8.01 1.28 C 7.93 1.47 7.89 1.67 7.87 1.88 C 7.61 1.95 7.35 2.02 7.09 2.12 C 6.01 2.5 5.03 3.1 4.2 3.88 C 3.37 4.66 2.7 5.6 2.25 6.65 C 1.8 7.7 1.56 8.83 1.56 9.97 L 1.56 13.9 L 0.14 16.36 C 0.05 16.52 0 16.7 0 16.89 C 0 17.08 0.05 17.26 0.14 17.42 C 0.23 17.58 0.37 17.72 0.53 17.81 C 0.69 17.9 0.88 17.95 1.06 17.95 L 6.54 17.95 C 6.54 18.85 6.9 19.7 7.52 20.32 C 8.15 20.95 9 21.3 9.9 21.3 C 10.8 21.3 11.65 20.95 12.28 20.32 C 12.91 19.69 13.26 18.84 13.26 17.95 L 18.74 17.95 C 18.93 17.95 19.11 17.9 19.27 17.81 C 19.43 17.72 19.57 17.58 19.66 17.42 C 19.75 17.26 19.8 17.08 19.8 16.89 C 19.8 16.7 19.75 16.52 19.66 16.36 L 18.24 13.9 L 18.24 10.25 L 18.23 10.25 Z M 3.55 9.96 L 3.55 13.89 L 3.55 14.43 L 3.28 14.89 L 2.67 15.95 L 17.1 15.95 L 16.49 14.9 L 16.22 14.44 L 16.22 10.26 C 16.22 6.78 13.6 3.86 10.31 3.65 C 9.44 3.59 8.58 3.71 7.76 4 C 6.94 4.29 6.19 4.75 5.56 5.34 C 4.93 5.93 4.42 6.65 4.08 7.45 C 3.73 8.25 3.56 9.1 3.56 9.97 L 3.55 9.96 Z M 8.93 18.9 C 8.68 18.65 8.54 18.31 8.53 17.96 L 11.25 17.96 C 11.25 18.31 11.1 18.65 10.85 18.9 C 10.59 19.16 10.25 19.3 9.89 19.3 C 9.53 19.3 9.18 19.16 8.93 18.9 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.110 1.330)\"/>"},"IconBikeMonoBicyleBike":{viewBox:"0 0 24 24",body:"<path d=\"M 19.225 8.884 C 19.148 8.884 19.073 8.892 18.997 8.896 C 18.983 8.834 18.962 8.773 18.935 8.713 L 15.781 1.792 L 19.105 1.792 C 19.6 1.792 20.001 1.391 20.001 0.896 C 20.001 0.401 19.6 0 19.105 0 L 14.35 0 C 14.346 0 14.343 0.001 14.34 0.001 C 14.299 0.002 14.257 0.008 14.215 0.014 C 14.198 0.016 14.18 0.017 14.163 0.02 C 14.092 0.035 14.023 0.055 13.954 0.086 C 13.474 0.305 13.262 0.871 13.481 1.352 L 15.036 4.764 L 9.1 4.764 L 8.252 3.129 L 8.732 3.129 C 9.227 3.129 9.628 2.728 9.628 2.233 C 9.628 1.738 9.227 1.337 8.732 1.337 L 5.209 1.337 C 4.714 1.337 4.313 1.738 4.313 2.233 C 4.313 2.728 4.714 3.129 5.209 3.129 L 6.253 3.129 C 6.268 3.18 6.287 3.231 6.313 3.28 L 7.516 5.603 C 7.488 5.641 7.46 5.68 7.438 5.723 L 5.753 9.038 C 5.438 8.972 5.111 8.936 4.777 8.936 C 2.143 8.936 0 11.079 0 13.712 C 0 16.346 2.143 18.489 4.777 18.489 C 7.201 18.489 9.204 16.673 9.509 14.33 L 12.55 14.33 C 13.045 14.33 13.445 13.928 13.445 13.434 C 13.445 13.366 13.436 13.299 13.421 13.235 C 13.409 13.133 13.381 13.031 13.331 12.935 L 10.027 6.556 L 15.831 6.556 C 15.838 6.556 15.844 6.554 15.85 6.554 L 17.135 9.373 C 15.547 10.15 14.448 11.777 14.448 13.661 C 14.448 16.295 16.591 18.437 19.224 18.437 C 21.858 18.437 24.001 16.295 24.001 13.661 C 24.002 11.027 21.859 8.884 19.225 8.884 Z M 8.589 7.675 L 11.108 12.539 L 9.401 12.539 C 9.116 11.414 8.434 10.448 7.509 9.801 L 8.589 7.675 Z M 7.519 12.538 L 6.116 12.538 L 6.679 11.432 C 7.037 11.732 7.333 12.104 7.519 12.538 Z M 4.777 16.697 C 3.131 16.697 1.792 15.358 1.792 13.712 C 1.792 12.066 3.131 10.727 4.777 10.727 C 4.815 10.727 4.85 10.736 4.888 10.738 L 3.799 12.882 C 3.64 13.194 3.673 13.551 3.848 13.827 C 3.994 14.123 4.296 14.33 4.649 14.33 L 7.696 14.33 C 7.41 15.68 6.211 16.697 4.777 16.697 Z M 19.225 16.646 C 17.579 16.646 16.24 15.307 16.24 13.661 C 16.24 12.014 17.579 10.675 19.225 10.675 C 20.872 10.675 22.211 12.014 22.211 13.661 C 22.21 15.307 20.871 16.646 19.225 16.646 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 2.792)\"/>"},"IconBinBinTrashDelete":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 0.512 13.015 C 0.536 13.634 0.799 14.22 1.246 14.65 C 1.693 15.08 2.288 15.32 2.908 15.321 L 13.704 15.321 C 14.324 15.321 14.92 15.081 15.367 14.651 C 15.814 14.221 16.078 13.635 16.102 13.015 L 16.614 0 L 0 0 Z\" fill=\"rgb(135,145,157)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.859) matrix(1 0 0 1 1.292 4.961)\"/><path d=\"M 0.9 0 C 0.9 -0.497 0.497 -0.9 0 -0.9 C -0.497 -0.9 -0.9 -0.497 -0.9 0 L 0 0 L 0.9 0 Z M -0.9 5.007 C -0.9 5.504 -0.497 5.907 0 5.907 C 0.497 5.907 0.9 5.504 0.9 5.007 L 0 5.007 L -0.9 5.007 Z M 5.033 0 C 5.033 -0.497 4.63 -0.9 4.133 -0.9 C 3.636 -0.9 3.233 -0.497 3.233 0 L 4.133 0 L 5.033 0 Z M 3.233 5.007 C 3.233 5.504 3.636 5.907 4.133 5.907 C 4.63 5.907 5.033 5.504 5.033 5.007 L 4.133 5.007 L 3.233 5.007 Z M 0 0 L -0.9 0 L -0.9 5.007 L 0 5.007 L 0.9 5.007 L 0.9 0 L 0 0 Z M 4.133 0 L 3.233 0 L 3.233 5.007 L 4.133 5.007 L 5.033 5.007 L 5.033 0 L 4.133 0 Z\" fill=\"rgb(78,89,104)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 1.859) matrix(1 0 0 1 7.533 9.870)\"/><path d=\"M -1 2.945 C -1 3.497 -0.552 3.945 0 3.945 C 0.552 3.945 1 3.497 1 2.945 L 0 2.945 L -1 2.945 Z M 2 0 L 2 -1 L 2 0 Z M 7.143 2.945 C 7.143 3.497 7.591 3.945 8.143 3.945 C 8.695 3.945 9.143 3.497 9.143 2.945 L 8.143 2.945 L 7.143 2.945 Z M 0 2.945 L 1 2.945 L 1 2 L 0 2 L -1 2 L -1 2.945 L 0 2.945 Z M 0 2 L 1 2 C 1 1.735 1.105 1.48 1.293 1.293 L 0.586 0.586 L -0.121 -0.121 C -0.684 0.441 -1 1.204 -1 2 L 0 2 Z M 0.586 0.586 L 1.293 1.293 C 1.48 1.105 1.735 1 2 1 L 2 0 L 2 -1 C 1.204 -1 0.441 -0.684 -0.121 -0.121 L 0.586 0.586 Z M 2 0 L 2 1 L 6.143 1 L 6.143 0 L 6.143 -1 L 2 -1 L 2 0 Z M 6.143 0 L 6.143 1 C 6.408 1 6.663 1.105 6.85 1.293 L 7.557 0.586 L 8.264 -0.121 C 7.702 -0.684 6.939 -1 6.143 -1 L 6.143 0 Z M 7.557 0.586 L 6.85 1.293 C 7.038 1.48 7.143 1.735 7.143 2 L 8.143 2 L 9.143 2 C 9.143 1.204 8.827 0.441 8.264 -0.121 L 7.557 0.586 Z M 8.143 2 L 7.143 2 L 7.143 2.945 L 8.143 2.945 L 9.143 2.945 L 9.143 2 L 8.143 2 Z\" fill=\"rgb(78,89,104)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 1.859) matrix(1 0 0 1 5.530 0)\"/><path d=\"M 17.8 3 L 1.2 3 C 0.882 3 0.577 2.874 0.351 2.649 C 0.126 2.423 0 2.118 0 1.8 L 0 1.2 C 0 0.882 0.126 0.577 0.351 0.351 C 0.577 0.126 0.882 0 1.2 0 L 17.8 0 C 18.118 0 18.423 0.126 18.649 0.351 C 18.874 0.577 19 0.882 19 1.2 L 19 1.8 C 19 2.118 18.874 2.423 18.649 2.649 C 18.423 2.874 18.118 3 17.8 3 Z\" fill=\"rgb(135,145,157)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.859) matrix(1 0 0 1 0 2.941)\"/>"},"IconBinFillRecycleBin":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 8.954 40 0 31.046 0 20 C 0 8.954 8.954 0 20 0 C 31.046 0 40 8.954 40 20 C 40 31.046 31.046 40 20 40 Z\" fill=\"rgb(107,118,132)\" fill-rule=\"evenodd\"/><path d=\"M 0 0 L 0.51 13.015 C 0.534 13.635 0.798 14.221 1.245 14.651 C 1.692 15.081 2.288 15.321 2.908 15.321 L 13.704 15.321 C 14.324 15.321 14.92 15.081 15.367 14.651 C 15.814 14.221 16.078 13.635 16.102 13.015 L 16.614 0 L 0 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.793 14.820)\"/><path d=\"M 0.9 0 C 0.9 -0.497 0.497 -0.9 0 -0.9 C -0.497 -0.9 -0.9 -0.497 -0.9 0 L 0 0 L 0.9 0 Z M -0.9 5.007 C -0.9 5.504 -0.497 5.907 0 5.907 C 0.497 5.907 0.9 5.504 0.9 5.007 L 0 5.007 L -0.9 5.007 Z M 5.033 0 C 5.033 -0.497 4.63 -0.9 4.133 -0.9 C 3.636 -0.9 3.233 -0.497 3.233 0 L 4.133 0 L 5.033 0 Z M 3.233 5.007 C 3.233 5.504 3.636 5.907 4.133 5.907 C 4.63 5.907 5.033 5.504 5.033 5.007 L 4.133 5.007 L 3.233 5.007 Z M 0 0 L -0.9 0 L -0.9 5.007 L 0 5.007 L 0.9 5.007 L 0.9 0 L 0 0 Z M 4.133 0 L 3.233 0 L 3.233 5.007 L 4.133 5.007 L 5.033 5.007 L 5.033 0 L 4.133 0 Z\" fill=\"rgb(78,89,104)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 18.033 19.730)\"/><path d=\"M -1 2.945 C -1 3.497 -0.552 3.945 0 3.945 C 0.552 3.945 1 3.497 1 2.945 L 0 2.945 L -1 2.945 Z M 7.143 2.945 C 7.143 3.497 7.591 3.945 8.143 3.945 C 8.695 3.945 9.143 3.497 9.143 2.945 L 8.143 2.945 L 7.143 2.945 Z M 0 2.945 L 1 2.945 L 1 2 L 0 2 L -1 2 L -1 2.945 L 0 2.945 Z M 0 2 L 1 2 C 1 1.735 1.105 1.48 1.293 1.293 L 0.586 0.586 L -0.121 -0.121 C -0.684 0.441 -1 1.204 -1 2 L 0 2 Z M 0.586 0.586 L 1.293 1.293 C 1.48 1.105 1.735 1 2 1 L 2 0 L 2 -1 C 1.204 -1 0.441 -0.684 -0.121 -0.121 L 0.586 0.586 Z M 2 0 L 2 1 L 6.143 1 L 6.143 0 L 6.143 -1 L 2 -1 L 2 0 Z M 6.143 0 L 6.143 1 C 6.408 1 6.663 1.105 6.85 1.293 L 7.557 0.586 L 8.264 -0.121 C 7.702 -0.684 6.939 -1 6.143 -1 L 6.143 0 Z M 7.557 0.586 L 6.85 1.293 C 7.038 1.48 7.143 1.735 7.143 2 L 8.143 2 L 9.143 2 C 9.143 1.204 8.827 0.441 8.264 -0.121 L 7.557 0.586 Z M 8.143 2 L 7.143 2 L 7.143 2.945 L 8.143 2.945 L 9.143 2.945 L 9.143 2 L 8.143 2 Z\" fill=\"rgb(51,61,75)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 16.030 9.859)\"/><path d=\"M 17.8 3 L 1.2 3 C 0.882 3 0.577 2.874 0.351 2.649 C 0.126 2.423 0 2.118 0 1.8 L 0 1.2 C 0 0.882 0.126 0.577 0.351 0.351 C 0.577 0.126 0.882 0 1.2 0 L 17.8 0 C 18.118 0 18.423 0.126 18.649 0.351 C 18.874 0.577 19 0.882 19 1.2 L 19 1.8 C 19 2.118 18.874 2.423 18.649 2.649 C 18.423 2.874 18.118 3 17.8 3 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.500 12.800)\"/>"},"IconBinLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.15 0 L 1.15 0 C 0.515 0 0 0.515 0 1.15 C 0 1.785 0.515 2.3 1.15 2.3 L 18.15 2.3 C 18.785 2.3 19.3 1.785 19.3 1.15 C 19.3 0.515 18.785 0 18.15 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 0.840) matrix(1 0 0 1 0 4.281)\"/><path d=\"M 5.656 0 L 1.15 0 C 0.515 0 0 0.515 0 1.15 C 0 1.785 0.515 2.3 1.15 2.3 L 5.656 2.3 C 6.291 2.3 6.806 1.785 6.806 1.15 C 6.806 0.515 6.291 0 5.656 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 0.840) matrix(0 -1 1 0 6.434 16.796)\"/><path d=\"M 5.656 0 L 1.15 0 C 0.515 0 0 0.515 0 1.15 C 0 1.785 0.515 2.3 1.15 2.3 L 5.656 2.3 C 6.291 2.3 6.806 1.785 6.806 1.15 C 6.806 0.515 6.291 0 5.656 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 0.840) matrix(0 -1 1 0 10.566 16.796)\"/><path d=\"M 10.144 5.431 L 8.144 5.431 L 8.144 3 C 8.144 2.449 7.696 2 7.144 2 L 3 2 C 2.449 2 2 2.449 2 3 L 2 5.431 L 0 5.431 L 0 3 C 0 1.346 1.346 0 3 0 L 7.144 0 C 8.798 0 10.144 1.346 10.144 3 L 10.144 5.431 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 0.840) matrix(1 0 0 1 4.578 0)\"/><path d=\"M 14.384 2.3 L 13.896 14.049 C 13.88 14.424 13.572 14.72 13.197 14.72 L 3.595 14.72 C 3.22 14.72 2.911 14.424 2.896 14.05 L 2.4 2.3 L 14.384 2.3 Z M 16.783 0 L 0 0 L 0.626 14.817 C 0.678 16.048 1.691 17.02 2.924 17.02 L 13.868 17.02 C 15.101 17.02 16.115 16.048 16.166 14.816 L 16.783 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 0.840) matrix(1 0 0 1 1.259 4.281)\"/>"},"IconBinMonoBinTrash":{viewBox:"0 0 24 24",body:"<path d=\"M 12.566 15.877 C 12.566 16.116 12.471 16.345 12.302 16.513 C 12.134 16.682 11.905 16.777 11.666 16.777 C 11.427 16.777 11.198 16.682 11.03 16.513 C 10.861 16.345 10.766 16.116 10.766 15.877 L 10.766 10.871 C 10.766 10.632 10.861 10.403 11.03 10.235 C 11.198 10.066 11.427 9.971 11.666 9.971 C 11.905 9.971 12.134 10.066 12.302 10.235 C 12.471 10.403 12.566 10.632 12.566 10.871 L 12.566 15.877 Z M 8.433 15.877 C 8.433 16.116 8.338 16.345 8.169 16.513 C 8.001 16.682 7.772 16.777 7.533 16.777 C 7.294 16.777 7.065 16.682 6.897 16.513 C 6.728 16.345 6.633 16.116 6.633 15.877 L 6.633 10.871 C 6.633 10.632 6.728 10.403 6.897 10.235 C 7.065 10.066 7.294 9.971 7.533 9.971 C 7.772 9.971 8.001 10.066 8.169 10.235 C 8.338 10.403 8.433 10.632 8.433 10.871 L 8.433 15.877 Z M 6.529 3 C 6.529 2.735 6.634 2.48 6.822 2.293 C 7.009 2.105 7.264 2 7.529 2 L 11.673 2 C 12.224 2 12.673 2.448 12.673 3 L 12.673 3.941 L 6.529 3.941 L 6.529 3 Z M 17.799 3.941 L 14.673 3.941 L 14.673 3 C 14.673 1.346 13.328 0 11.673 0 L 7.529 0 C 5.875 0 4.529 1.346 4.529 3 L 4.529 3.941 L 1.2 3.941 C 0.882 3.941 0.577 4.067 0.351 4.292 C 0.126 4.518 0 4.823 0 5.141 L 0 5.741 C 0 6.059 0.126 6.364 0.351 6.59 C 0.577 6.815 0.882 6.941 1.2 6.941 L 1.331 6.941 L 1.803 18.977 C 1.828 19.597 2.091 20.183 2.538 20.613 C 2.986 21.042 3.582 21.282 4.202 21.282 L 14.998 21.282 C 15.618 21.282 16.214 21.042 16.661 20.612 C 17.108 20.183 17.371 19.597 17.395 18.977 L 17.869 6.927 C 18.173 6.911 18.46 6.78 18.671 6.559 C 18.881 6.339 18.999 6.046 19 5.741 L 19 5.141 C 19 4.479 18.462 3.941 17.799 3.941 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 0.859)\"/>"},"IconCalculatorMonoCalculatorCal":{viewBox:"0 0 24 24",body:"<path d=\"M 15.888 5.25 L 12.618 5.25 C 12.485 5.25 12.358 5.197 12.264 5.104 C 12.171 5.01 12.118 4.883 12.118 4.75 C 12.118 4.617 12.171 4.49 12.264 4.396 C 12.358 4.303 12.485 4.25 12.618 4.25 L 15.888 4.25 C 16.021 4.25 16.148 4.303 16.242 4.396 C 16.335 4.49 16.388 4.617 16.388 4.75 C 16.388 4.883 16.335 5.01 16.242 5.104 C 16.148 5.197 16.021 5.25 15.888 5.25 Z M 6.66 5.25 L 5.253 5.25 L 5.253 6.657 C 5.253 6.79 5.2 6.917 5.107 7.011 C 5.013 7.104 4.886 7.157 4.753 7.157 C 4.62 7.157 4.493 7.104 4.399 7.011 C 4.306 6.917 4.253 6.79 4.253 6.657 L 4.253 5.25 L 2.846 5.25 C 2.713 5.25 2.586 5.197 2.492 5.104 C 2.399 5.01 2.346 4.883 2.346 4.75 C 2.346 4.617 2.399 4.49 2.492 4.396 C 2.586 4.303 2.713 4.25 2.846 4.25 L 4.253 4.25 L 4.253 2.843 C 4.253 2.71 4.306 2.583 4.399 2.489 C 4.493 2.396 4.62 2.343 4.753 2.343 C 4.886 2.343 5.013 2.396 5.107 2.489 C 5.2 2.583 5.253 2.71 5.253 2.843 L 5.253 4.25 L 6.66 4.25 C 6.793 4.25 6.92 4.303 7.014 4.396 C 7.107 4.49 7.16 4.617 7.16 4.75 C 7.16 4.883 7.107 5.01 7.014 5.104 C 6.92 5.197 6.793 5.25 6.66 5.25 Z M 6.421 15.122 C 6.492 15.192 6.54 15.281 6.559 15.378 C 6.579 15.475 6.569 15.576 6.531 15.668 C 6.494 15.759 6.429 15.838 6.347 15.892 C 6.264 15.947 6.167 15.976 6.068 15.976 C 6.002 15.976 5.937 15.963 5.876 15.938 C 5.816 15.913 5.76 15.876 5.714 15.829 L 4.753 14.869 L 3.792 15.829 C 3.746 15.876 3.691 15.913 3.63 15.939 C 3.57 15.964 3.504 15.977 3.438 15.977 C 3.373 15.977 3.307 15.964 3.247 15.939 C 3.186 15.913 3.131 15.876 3.085 15.829 C 2.991 15.735 2.939 15.608 2.939 15.476 C 2.939 15.343 2.991 15.216 3.085 15.122 L 4.046 14.162 L 3.085 13.201 C 2.994 13.107 2.944 12.98 2.945 12.849 C 2.946 12.718 2.998 12.593 3.091 12.5 C 3.184 12.407 3.309 12.355 3.44 12.354 C 3.571 12.353 3.698 12.403 3.792 12.494 L 4.753 13.455 L 5.714 12.494 C 5.76 12.447 5.815 12.411 5.876 12.385 C 5.937 12.36 6.002 12.347 6.068 12.347 C 6.133 12.347 6.198 12.36 6.259 12.385 C 6.32 12.411 6.375 12.447 6.421 12.494 C 6.468 12.54 6.504 12.595 6.53 12.656 C 6.555 12.717 6.568 12.782 6.568 12.847 C 6.568 12.913 6.555 12.978 6.53 13.039 C 6.504 13.1 6.468 13.155 6.421 13.201 L 5.46 14.162 L 6.421 15.122 Z M 12.618 14.771 L 15.888 14.771 C 16.021 14.771 16.148 14.824 16.242 14.917 C 16.335 15.011 16.388 15.138 16.388 15.271 C 16.388 15.404 16.335 15.531 16.242 15.625 C 16.148 15.718 16.021 15.771 15.888 15.771 L 12.618 15.771 C 12.485 15.771 12.358 15.718 12.264 15.625 C 12.171 15.531 12.118 15.404 12.118 15.271 C 12.118 15.138 12.171 15.011 12.264 14.917 C 12.358 14.824 12.485 14.771 12.618 14.771 Z M 12.618 12.729 L 15.888 12.729 C 16.021 12.729 16.148 12.782 16.242 12.875 C 16.335 12.969 16.388 13.096 16.388 13.229 C 16.388 13.362 16.335 13.489 16.242 13.583 C 16.148 13.676 16.021 13.729 15.888 13.729 L 12.618 13.729 C 12.485 13.729 12.358 13.676 12.264 13.583 C 12.171 13.489 12.118 13.362 12.118 13.229 C 12.118 13.096 12.171 12.969 12.264 12.875 C 12.358 12.782 12.485 12.729 12.618 12.729 Z M 17 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 17 C 0 17.53 0.211 18.039 0.586 18.414 C 0.961 18.789 1.47 19 2 19 L 17 19 C 17.53 19 18.039 18.789 18.414 18.414 C 18.789 18.039 19 17.53 19 17 L 19 10.1 L 10.106 10.1 L 10.106 19 L 8.906 19 L 8.906 9.5 C 8.906 9.168 9.174 8.9 9.505 8.9 L 19 8.9 L 19 2 C 19 1.47 18.789 0.961 18.414 0.586 C 18.039 0.211 17.53 0 17 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.495 2.500)\"/>"},"IconCalendar31MonoCal":{viewBox:"0 0 24 24",body:"<path d=\"M 15.345 15.31 C 15.345 15.906 15.028 16.248 14.478 16.248 C 13.934 16.248 13.616 15.899 13.616 15.31 L 13.616 9.017 L 13.577 9.017 L 12.691 9.644 C 12.412 9.826 12.251 9.884 12.063 9.884 C 11.981 9.886 11.899 9.872 11.823 9.842 C 11.746 9.811 11.677 9.766 11.619 9.708 C 11.56 9.65 11.515 9.58 11.484 9.504 C 11.454 9.428 11.439 9.346 11.441 9.264 C 11.441 8.991 11.609 8.751 11.941 8.531 L 13.098 7.722 C 13.565 7.404 13.934 7.275 14.296 7.275 C 14.926 7.275 15.346 7.708 15.346 8.363 L 15.345 15.31 Z M 7.122 16.36 C 5.374 16.36 4.034 15.374 4.034 14.306 C 4.034 13.898 4.325 13.601 4.72 13.601 C 5.005 13.601 5.22 13.737 5.458 14.086 C 5.834 14.682 6.41 14.999 7.136 14.999 C 8.107 14.999 8.736 14.475 8.736 13.672 C 8.736 12.869 8.094 12.325 7.142 12.325 L 6.508 12.325 C 6.119 12.325 5.834 12.035 5.834 11.632 C 5.834 11.244 6.114 10.953 6.508 10.953 L 7.11 10.953 C 7.906 10.953 8.49 10.435 8.49 9.723 C 8.49 9.01 7.92 8.524 7.096 8.524 C 6.456 8.524 5.957 8.822 5.614 9.405 L 5.54 9.518 C 5.362 9.761 5.155 9.865 4.89 9.865 C 4.795 9.869 4.701 9.854 4.612 9.819 C 4.524 9.785 4.443 9.733 4.376 9.666 C 4.309 9.599 4.257 9.518 4.223 9.43 C 4.188 9.341 4.173 9.247 4.177 9.152 C 4.177 8.117 5.439 7.165 7.129 7.165 C 8.916 7.165 10.172 8.129 10.172 9.509 C 10.172 10.467 9.453 11.349 8.56 11.477 L 8.56 11.587 C 9.635 11.69 10.444 12.61 10.444 13.73 C 10.444 15.277 9.071 16.36 7.122 16.36 Z M 16.932 2.072 L 15.81 2.072 L 15.81 1.052 C 15.81 0.781 15.703 0.522 15.511 0.331 C 15.32 0.139 15.061 0.032 14.79 0.032 C 14.519 0.032 14.26 0.139 14.069 0.331 C 13.877 0.522 13.77 0.781 13.77 1.052 L 13.77 2.072 L 5.61 2.072 L 5.61 1.052 C 5.614 0.915 5.591 0.779 5.542 0.652 C 5.492 0.524 5.418 0.408 5.323 0.31 C 5.228 0.212 5.114 0.134 4.988 0.081 C 4.862 0.027 4.727 0 4.59 0 C 4.454 0 4.319 0.027 4.193 0.081 C 4.067 0.134 3.953 0.212 3.858 0.31 C 3.763 0.408 3.689 0.524 3.639 0.652 C 3.59 0.779 3.567 0.915 3.571 1.052 L 3.571 2.072 L 2.448 2.072 C 2.126 2.072 1.808 2.135 1.511 2.258 C 1.214 2.381 0.944 2.561 0.717 2.789 C 0.489 3.016 0.309 3.286 0.186 3.583 C 0.063 3.88 0 4.198 0 4.52 L 0 19.004 C 0 19.325 0.063 19.644 0.186 19.941 C 0.309 20.238 0.489 20.508 0.717 20.735 C 0.944 20.963 1.214 21.143 1.511 21.266 C 1.808 21.389 2.126 21.452 2.448 21.452 L 16.932 21.452 C 17.581 21.452 18.204 21.194 18.663 20.735 C 19.122 20.276 19.38 19.653 19.38 19.004 L 19.38 4.52 C 19.38 3.871 19.122 3.248 18.663 2.789 C 18.204 2.33 17.581 2.072 16.932 2.072 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.310 0.258)\"/>"},"IconCalendarCheckMonoCal":{viewBox:"0 0 24 24",body:"<path d=\"M 16.051 1.994 L 15.025 1.994 L 15.025 1 C 15.025 0.448 14.578 0 14.025 0 C 13.472 0 13.025 0.448 13.025 1 L 13.025 1.994 L 5.025 1.994 L 5.025 1 C 5.025 0.448 4.577 0 4.025 0 C 3.473 0 3.025 0.448 3.025 1 L 3.025 1.994 L 2.007 1.994 C 0.899 1.994 0 2.892 0 4.001 L 0 17.969 C 0 19.077 0.898 19.976 2.007 19.976 L 16.051 19.976 C 17.16 19.976 18.058 19.077 18.058 17.969 L 18.058 4.001 C 18.058 2.893 17.16 1.994 16.051 1.994 Z M 14.166 8.834 L 8.582 14.418 C 8.406 14.594 8.176 14.682 7.946 14.682 C 7.716 14.682 7.486 14.594 7.31 14.418 L 3.894 11.001 C 3.542 10.65 3.542 10.08 3.894 9.729 C 4.246 9.377 4.815 9.377 5.166 9.729 L 7.946 12.509 L 12.893 7.561 C 13.245 7.209 13.815 7.209 14.166 7.561 C 14.518 7.912 14.518 8.483 14.166 8.834 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.971 1.005)\"/>"},"IconCalendarClockMono":{viewBox:"0 0 24 24",body:"<path d=\"M 8.15 15.035 C 8.15 11.188 11.28 8.058 15.127 8.058 C 16.212 8.058 17.237 8.314 18.154 8.758 L 18.154 3.744 C 18.154 3.248 17.957 2.772 17.606 2.421 C 17.255 2.07 16.779 1.873 16.283 1.873 L 14.758 1.873 L 14.758 0.936 C 14.758 0.688 14.659 0.45 14.484 0.274 C 14.309 0.098 14.071 0 13.822 0 C 13.306 0 12.886 0.419 12.886 0.936 L 12.886 1.872 L 5.268 1.872 L 5.268 0.936 C 5.268 0.688 5.169 0.45 4.994 0.274 C 4.819 0.099 4.581 0.001 4.332 0.001 C 4.083 0.001 3.846 0.099 3.671 0.275 C 3.495 0.45 3.397 0.688 3.397 0.936 L 3.397 1.872 L 1.871 1.872 C 1.375 1.872 0.899 2.069 0.548 2.42 C 0.197 2.771 0 3.247 0 3.744 L 0 18.154 C 0 18.65 0.197 19.126 0.548 19.477 C 0.899 19.828 1.375 20.025 1.871 20.025 L 10.26 20.025 C 8.961 18.757 8.15 16.99 8.15 15.035 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.996 1.965)\"/><path d=\"M 5.677 0 C 2.542 0 0 2.542 0 5.677 C 0 8.812 2.542 11.354 5.677 11.354 C 8.812 11.354 11.354 8.812 11.354 5.677 C 11.354 2.542 8.812 0 5.677 0 Z M 6.477 5.517 C 6.477 5.784 6.344 6.032 6.123 6.181 L 3.432 7.99 C 3.295 8.082 3.14 8.126 2.987 8.126 C 2.729 8.126 2.476 8.002 2.322 7.772 C 2.076 7.405 2.174 6.908 2.54 6.662 L 4.878 5.091 L 4.878 2.671 C 4.878 2.229 5.236 1.871 5.678 1.871 C 6.12 1.871 6.478 2.229 6.478 2.671 L 6.477 5.517 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.996 1.965) matrix(1 0 0 1 9.450 9.390)\"/>"},"IconCalendarLineMonoCal":{viewBox:"0 0 24 24",body:"<path d=\"M 14.7 17.2 L 10.7 17.2 C 10.435 17.2 10.18 17.095 9.993 16.907 C 9.805 16.72 9.7 16.465 9.7 16.2 C 9.7 15.935 9.805 15.68 9.993 15.493 C 10.18 15.305 10.435 15.2 10.7 15.2 L 14.7 15.2 C 14.965 15.2 15.22 15.305 15.407 15.493 C 15.595 15.68 15.7 15.935 15.7 16.2 C 15.7 16.465 15.595 16.72 15.407 16.907 C 15.22 17.095 14.965 17.2 14.7 17.2 Z M 17.4 2 L 15.77 2 L 15.77 1 C 15.77 0.735 15.665 0.48 15.477 0.293 C 15.29 0.105 15.035 0 14.77 0 C 14.505 0 14.25 0.105 14.063 0.293 C 13.875 0.48 13.77 0.735 13.77 1 L 13.77 2 L 5.63 2 L 5.63 1 C 5.63 0.735 5.525 0.48 5.337 0.293 C 5.15 0.105 4.895 0 4.63 0 C 4.365 0 4.11 0.105 3.923 0.293 C 3.735 0.48 3.63 0.735 3.63 1 L 3.63 2 L 2 2 C 1.47 2 0.961 2.211 0.586 2.586 C 0.211 2.961 0 3.47 0 4 L 0 19.4 C 0 19.93 0.211 20.439 0.586 20.814 C 0.961 21.189 1.47 21.4 2 21.4 L 17.4 21.4 C 17.93 21.4 18.439 21.189 18.814 20.814 C 19.189 20.439 19.4 19.93 19.4 19.4 L 19.4 4 C 19.4 3.47 19.189 2.961 18.814 2.586 C 18.439 2.211 17.93 2 17.4 2 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.300 0.800)\"/>"},"IconCalendarWonMonoCal":{viewBox:"0 0 24 24",body:"<path d=\"M 15.7 13.1 L 13.689 13.1 L 12.969 15.719 C 12.906 15.953 12.767 16.16 12.574 16.307 C 12.381 16.454 12.145 16.533 11.902 16.531 C 11.398 16.531 10.971 16.204 10.837 15.719 L 9.7 11.591 L 8.563 15.719 C 8.501 15.953 8.362 16.16 8.17 16.307 C 7.977 16.454 7.741 16.533 7.499 16.531 C 6.995 16.531 6.566 16.205 6.432 15.72 L 5.711 13.1 L 3.7 13.1 C 3.461 13.1 3.232 13.005 3.064 12.836 C 2.895 12.668 2.8 12.439 2.8 12.2 C 2.8 11.961 2.895 11.732 3.064 11.564 C 3.232 11.395 3.461 11.3 3.7 11.3 L 5.216 11.3 L 4.585 9.008 C 4.551 8.893 4.54 8.773 4.553 8.654 C 4.566 8.535 4.603 8.42 4.661 8.315 C 4.719 8.21 4.797 8.118 4.891 8.044 C 4.985 7.97 5.093 7.916 5.209 7.884 C 5.324 7.852 5.445 7.844 5.563 7.859 C 5.682 7.875 5.797 7.913 5.9 7.974 C 6.004 8.034 6.094 8.114 6.166 8.209 C 6.238 8.305 6.291 8.414 6.32 8.53 L 7.498 12.809 L 8.635 8.681 C 8.697 8.447 8.836 8.24 9.028 8.093 C 9.221 7.946 9.458 7.867 9.7 7.869 C 10.204 7.869 10.633 8.195 10.766 8.681 L 11.902 12.809 L 13.08 8.53 C 13.147 8.304 13.3 8.114 13.506 7.999 C 13.712 7.885 13.955 7.856 14.182 7.919 C 14.409 7.981 14.602 8.13 14.721 8.334 C 14.839 8.538 14.873 8.78 14.815 9.008 L 14.184 11.3 L 15.7 11.3 C 15.939 11.3 16.168 11.395 16.336 11.564 C 16.505 11.732 16.6 11.961 16.6 12.2 C 16.6 12.439 16.505 12.668 16.336 12.836 C 16.168 13.005 15.939 13.1 15.7 13.1 Z M 17.4 2 L 15.77 2 L 15.77 1 C 15.77 0.735 15.665 0.48 15.477 0.293 C 15.29 0.105 15.035 0 14.77 0 C 14.505 0 14.25 0.105 14.063 0.293 C 13.875 0.48 13.77 0.735 13.77 1 L 13.77 2 L 5.63 2 L 5.63 1 C 5.63 0.735 5.525 0.48 5.337 0.293 C 5.15 0.105 4.895 0 4.63 0 C 4.365 0 4.11 0.105 3.923 0.293 C 3.735 0.48 3.63 0.735 3.63 1 L 3.63 2 L 2 2 C 1.47 2 0.961 2.211 0.586 2.586 C 0.211 2.961 0 3.47 0 4 L 0 19.4 C 0 19.93 0.211 20.439 0.586 20.814 C 0.961 21.189 1.47 21.4 2 21.4 L 17.4 21.4 C 17.93 21.4 18.439 21.189 18.814 20.814 C 19.189 20.439 19.4 19.93 19.4 19.4 L 19.4 4 C 19.4 3.47 19.189 2.961 18.814 2.586 C 18.439 2.211 17.93 2 17.4 2 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.300 0.800)\"/>"},"IconCalendarXMono":{viewBox:"0 0 24 24",body:"<path d=\"M 13.725 0 C 14.238 0 14.654 0.418 14.654 0.935 L 14.654 1.896 L 16.144 1.896 C 17.156 1.896 18 2.745 18 3.763 L 18 18.133 C 18 19.151 17.156 20 16.144 20 L 1.856 20 C 0.844 20 0 19.151 0 18.133 L 0 3.763 C 0 2.745 0.844 1.896 1.856 1.896 L 3.345 1.896 L 3.346 0.935 C 3.346 0.418 3.761 0 4.275 0 C 4.789 0 5.204 0.418 5.204 0.935 L 5.204 1.896 L 12.795 1.896 L 12.796 0.935 C 12.796 0.418 13.212 0 13.725 0 Z M 4.288 6.184 L 4.206 6.276 C 3.906 6.662 3.934 7.219 4.288 7.573 L 7.611 10.896 L 4.288 14.22 C 3.904 14.603 3.904 15.225 4.288 15.609 C 4.671 15.992 5.293 15.992 5.677 15.609 L 9 12.285 L 12.323 15.609 C 12.707 15.992 13.329 15.992 13.712 15.609 L 13.794 15.516 C 14.094 15.131 14.066 14.574 13.712 14.22 L 10.389 10.896 L 13.712 7.573 C 14.096 7.189 14.096 6.567 13.712 6.184 C 13.329 5.8 12.707 5.8 12.323 6.184 L 9 9.507 L 5.677 6.184 C 5.293 5.8 4.671 5.8 4.288 6.184 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 1.500)\"/>"},"IconCallMonoCallTelephone":{viewBox:"0 0 24 24",body:"<path d=\"M 21.22 16.033 L 17.241 12.953 C 17.049 12.805 16.809 12.731 16.567 12.747 C 16.325 12.763 16.096 12.866 15.925 13.038 L 13.813 15.151 C 13.655 15.31 13.449 15.411 13.227 15.438 C 13.005 15.465 12.781 15.416 12.59 15.3 C 11.91 14.883 10.772 14.075 9.348 12.65 C 7.924 11.227 7.116 10.088 6.699 9.409 C 6.582 9.218 6.533 8.994 6.561 8.772 C 6.588 8.55 6.689 8.344 6.849 8.187 L 8.961 6.074 C 9.133 5.902 9.236 5.674 9.252 5.432 C 9.267 5.189 9.194 4.95 9.045 4.758 L 5.966 0.778 C 5.266 -0.125 3.946 -0.268 3.086 0.487 C 1.953 1.481 0.592 2.97 0.196 4.641 C -0.521 7.651 0.612 11.428 5.592 16.408 C 10.572 21.387 14.349 22.521 17.358 21.805 C 19.029 21.407 20.519 20.045 21.513 18.913 C 22.267 18.053 22.124 16.733 21.22 16.033 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.120 0.880)\"/>"},"IconCallSlashMonoCall":{viewBox:"0 0 24 24",body:"<path d=\"M 7.66 10.35 C 7.433 10.045 7.22 9.731 7.02 9.408 C 6.903 9.217 6.855 8.993 6.882 8.771 C 6.909 8.549 7.011 8.342 7.17 8.185 L 9.282 6.073 C 9.454 5.902 9.557 5.673 9.573 5.431 C 9.588 5.188 9.515 4.948 9.366 4.756 L 6.286 0.779 C 5.586 -0.126 4.265 -0.268 3.406 0.486 C 2.274 1.48 0.913 2.97 0.515 4.641 C -0.088 7.179 0.633 10.265 3.855 14.155 L 7.661 10.351 L 7.66 10.35 Z M 21.54 16.032 L 17.562 12.952 C 17.37 12.804 17.13 12.731 16.888 12.746 C 16.646 12.762 16.417 12.865 16.246 13.037 L 14.134 15.15 C 13.977 15.309 13.77 15.41 13.548 15.437 C 13.326 15.464 13.102 15.416 12.911 15.299 C 12.377 14.971 11.557 14.397 10.54 13.477 L 20.049 3.967 C 20.271 3.742 20.395 3.437 20.393 3.121 C 20.392 2.804 20.266 2.501 20.042 2.277 C 19.818 2.053 19.515 1.927 19.198 1.926 C 18.882 1.924 18.577 2.048 18.352 2.27 L 0.352 20.27 C 0.127 20.495 0 20.801 0 21.119 C 0 21.437 0.126 21.743 0.351 21.968 C 0.576 22.193 0.882 22.32 1.2 22.32 C 1.518 22.32 1.824 22.193 2.049 21.968 L 6.775 17.241 C 11.332 21.511 14.845 22.478 17.679 21.804 C 19.349 21.406 20.839 20.044 21.834 18.912 C 22.588 18.052 22.443 16.732 21.54 16.032 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 0.881)\"/>"},"IconCameraMonoCameraPicture":{viewBox:"0 0 24 24",body:"<path d=\"M 10.634 16.44 C 9.243 16.438 7.91 15.885 6.926 14.902 C 5.943 13.918 5.39 12.585 5.388 11.194 C 5.389 9.803 5.942 8.469 6.926 7.486 C 7.909 6.502 9.243 5.949 10.634 5.947 C 12.025 5.949 13.359 6.502 14.342 7.486 C 15.326 8.469 15.879 9.803 15.88 11.194 C 15.878 12.585 15.325 13.918 14.342 14.902 C 13.358 15.885 12.025 16.438 10.634 16.44 Z M 18.747 3.309 L 15.793 3.309 L 14.68 1.14 C 14.504 0.797 14.236 0.509 13.906 0.307 C 13.577 0.106 13.198 0 12.812 0 L 8.399 0 C 8.005 0 7.62 0.111 7.286 0.319 C 6.952 0.528 6.683 0.826 6.511 1.18 L 5.475 3.309 L 2.521 3.309 C 2.19 3.309 1.862 3.374 1.556 3.501 C 1.25 3.627 0.973 3.813 0.738 4.047 C 0.504 4.281 0.319 4.559 0.192 4.864 C 0.065 5.17 0 5.498 0 5.829 L 0 17.43 C 0 17.761 0.065 18.089 0.192 18.395 C 0.319 18.7 0.504 18.978 0.738 19.212 C 0.973 19.446 1.25 19.632 1.556 19.758 C 1.862 19.885 2.19 19.95 2.521 19.95 L 18.747 19.95 C 19.078 19.95 19.406 19.885 19.712 19.758 C 20.018 19.632 20.295 19.446 20.53 19.212 C 20.764 18.978 20.949 18.7 21.076 18.395 C 21.203 18.089 21.268 17.761 21.268 17.43 L 21.268 5.829 C 21.268 5.498 21.203 5.17 21.076 4.864 C 20.949 4.559 20.764 4.281 20.53 4.047 C 20.295 3.813 20.018 3.627 19.712 3.501 C 19.406 3.374 19.078 3.309 18.747 3.309 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.366 1.827)\"/><path d=\"M 3.355 0 C 2.465 0.001 1.612 0.355 0.983 0.984 C 0.354 1.613 0.001 2.466 0 3.356 C 0.001 4.246 0.354 5.099 0.983 5.728 C 1.612 6.357 2.465 6.711 3.355 6.712 C 4.245 6.711 5.098 6.357 5.727 5.728 C 6.356 5.099 6.709 4.246 6.71 3.356 C 6.709 2.466 6.356 1.613 5.727 0.984 C 5.098 0.355 4.245 0.001 3.355 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.366 1.827) matrix(1 0 0 1 7.279 7.837)\"/>"},"IconCameraSlashMonoCamera":{viewBox:"0 0 24 24",body:"<path d=\"M 11.593 16.701 C 10.318 16.701 9.163 16.226 8.254 15.468 L 9.59 14.132 C 10.166 14.571 10.869 14.809 11.592 14.811 C 12.482 14.811 13.335 14.457 13.964 13.828 C 14.593 13.199 14.947 12.346 14.948 11.456 C 14.948 10.702 14.69 10.013 14.269 9.452 L 15.605 8.117 C 16.363 9.027 16.838 10.181 16.838 11.456 C 16.837 12.847 16.284 14.18 15.3 15.164 C 14.317 16.147 12.984 16.7 11.593 16.701 Z M 20.113 3.611 L 21.666 2.055 C 21.779 1.944 21.869 1.812 21.93 1.666 C 21.992 1.52 22.024 1.363 22.024 1.205 C 22.025 1.046 21.994 0.89 21.934 0.743 C 21.874 0.597 21.785 0.463 21.673 0.351 C 21.561 0.239 21.428 0.151 21.281 0.09 C 21.135 0.03 20.978 -0.001 20.82 0 C 20.661 0.001 20.504 0.033 20.359 0.094 C 20.213 0.156 20.08 0.245 19.969 0.358 L 19.869 0.459 C 19.864 0.463 19.864 0.469 19.86 0.473 L 0.345 19.987 C 0.235 20.099 0.147 20.232 0.088 20.378 C 0.029 20.524 -0.001 20.68 0 20.837 C 0.001 20.995 0.033 21.15 0.095 21.295 C 0.156 21.44 0.245 21.572 0.357 21.682 C 0.469 21.793 0.602 21.88 0.748 21.939 C 0.894 21.999 1.05 22.029 1.207 22.027 C 1.364 22.026 1.52 21.994 1.665 21.933 C 1.81 21.872 1.942 21.782 2.052 21.67 L 3.51 20.211 L 19.706 20.211 C 20.037 20.212 20.365 20.146 20.671 20.02 C 20.977 19.893 21.255 19.708 21.489 19.474 C 21.723 19.24 21.908 18.962 22.035 18.656 C 22.162 18.35 22.227 18.022 22.227 17.691 L 22.227 6.09 C 22.226 5.493 22.013 4.916 21.625 4.462 C 21.237 4.008 20.701 3.706 20.111 3.611 M 15.796 1.708 L 15.639 1.402 C 15.462 1.059 15.195 0.771 14.865 0.57 C 14.536 0.368 14.157 0.262 13.771 0.261 L 9.358 0.261 C 8.964 0.261 8.579 0.372 8.245 0.581 C 7.911 0.789 7.643 1.088 7.47 1.441 L 6.434 3.571 L 3.48 3.571 C 2.812 3.572 2.171 3.837 1.698 4.31 C 1.226 4.782 0.96 5.423 0.96 6.091 L 0.96 16.545 L 15.796 1.708 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.407 1.565)\"/>"},"IconCancelLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.007 7.871 L 10.319 7.871 C 10.058 7.791 9.794 7.713 9.507 7.652 L 6.941 7.113 C 4.773 6.656 3.789 6.058 3.789 4.687 C 3.789 3.421 4.902 2.238 7.105 2.238 C 8.901 2.238 10.026 2.978 10.554 4.045 C 10.792 4.527 11.246 4.863 11.784 4.863 C 12.811 4.863 13.461 3.748 12.951 2.857 C 11.93 1.074 9.915 0 7.129 0 C 3.379 0 1 2.238 1 4.98 C 1 6.168 1.38 7.13 2.119 7.871 L 1 7.871 C 0.448 7.871 0 8.319 0 8.871 C 0 9.423 0.448 9.871 1 9.871 L 7.535 9.871 L 7.972 9.961 C 10.269 10.43 11.183 11.332 11.183 12.727 C 11.183 14.426 9.847 15.469 7.773 15.469 C 5.672 15.469 4.369 14.54 3.757 13.198 C 3.529 12.699 3.063 12.352 2.514 12.352 L 2.449 12.352 C 1.485 12.352 0.799 13.36 1.221 14.227 C 2.289 16.42 4.545 17.743 7.644 17.743 C 11.523 17.743 14.007 15.598 14.007 12.434 C 14.007 11.431 13.752 10.579 13.279 9.872 L 14.007 9.872 C 14.56 9.872 15.007 9.424 15.007 8.872 C 15.007 8.32 14.56 7.872 14.007 7.872 L 14.007 7.871 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.497 3.129)\"/>"},"IconCancleMonoCancel":{viewBox:"0 0 24 24",body:"<path d=\"M 5.8 3.2 C 4 3.2 2.6 2.5 2.2 0.9 C 2 0.3 1.6 0 1.1 0 C 0.5 0 0 0.5 0 1.2 C 0 1.5 0.1 1.7 0.1 2 C 0.7 3.9 2.7 5.3 5.7 5.3 C 9.1 5.3 11.3 3.5 11.5 0.7 L 9.1 0.7 C 9.1 2.2 7.7 3.2 5.8 3.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 3.400) matrix(1 0 0 1 2.100 11.500)\"/><path d=\"M 14.2 7.5 L 9.6 7.5 C 9.4 7.5 9.3 7.4 9.1 7.4 L 7.5 7 C 5.5 6.5 4.7 5.7 4.7 4.5 C 4.7 3 6 2.1 7.8 2.1 C 9.3 2.1 10.5 2.7 11 4.3 C 11.2 4.9 11.6 5.2 12.2 5.2 C 12.8 5.2 13.2 4.8 13.2 4.1 C 13.2 3.9 13.2 3.7 13.1 3.5 C 12.5 1.3 10.4 0 7.8 0 C 4.5 0 2.3 1.9 2.3 4.7 C 2.3 5.8 2.6 6.8 3.3 7.5 L 1.2 7.5 C 0.5 7.5 0 8 0 8.7 C 0 9.4 0.5 9.9 1.2 9.9 L 9.3 9.9 L 13.2 9.9 L 14.2 9.9 C 14.9 9.9 15.4 9.4 15.4 8.7 C 15.4 8 14.9 7.5 14.2 7.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 3.400)\"/>"},"IconCarMonoCarAuto":{viewBox:"0 0 24 24",body:"<path d=\"M 17.966 0.001 L 2 0.001 C 0.895 0.001 0 0.896 0 2.001 L 0 11.548 C 0 12.1 0.448 12.548 1 12.548 L 3.444 12.548 C 3.996 12.548 4.444 12.1 4.444 11.548 L 4.444 10.184 L 15.522 10.184 L 15.522 11.548 C 15.522 12.1 15.97 12.548 16.522 12.548 L 18.966 12.548 C 19.518 12.548 19.966 12.1 19.966 11.548 L 19.966 2 C 19.966 0.895 19.072 0.001 17.966 0.001 Z M 16.002 4.764 L 3.964 4.764 C 3.575 4.764 3.187 4.375 3.187 3.987 C 3.187 3.599 3.478 3.21 3.964 3.21 L 16.099 3.21 C 16.488 3.21 16.876 3.599 16.876 3.987 C 16.876 4.377 16.488 4.764 16.002 4.764 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.017 2.777) matrix(1 0 0 1 0 6.174)\"/><path d=\"M 13.527 1.747 C 13.236 0.679 12.265 0 11.1 0 L 3.333 0 C 2.265 0 1.295 0.679 0.906 1.747 L 0 4.676 L 14.432 4.676 L 13.526 1.747 L 13.527 1.747 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.017 2.777) matrix(1 0 0 1 2.767 0)\"/>"},"IconCarSearchMonoCar":{viewBox:"0 0 24 24",body:"<path d=\"M 14.764 13.28 C 14.694 13.35 14.612 13.405 14.521 13.443 C 14.43 13.481 14.332 13.501 14.234 13.501 C 14.135 13.501 14.037 13.481 13.946 13.443 C 13.855 13.405 13.773 13.35 13.703 13.28 L 11.989 11.565 C 11.242 12.099 10.346 12.387 9.428 12.388 C 8.25 12.387 7.12 11.918 6.287 11.085 C 5.454 10.252 4.985 9.122 4.984 7.944 C 4.985 6.766 5.454 5.636 6.287 4.803 C 7.12 3.97 8.25 3.501 9.428 3.5 C 10.606 3.501 11.736 3.97 12.569 4.803 C 13.402 5.636 13.871 6.766 13.872 7.944 C 13.872 8.899 13.564 9.779 13.049 10.504 L 14.764 12.219 C 14.834 12.289 14.889 12.371 14.927 12.462 C 14.964 12.553 14.984 12.651 14.984 12.75 C 14.984 12.848 14.964 12.946 14.927 13.037 C 14.889 13.128 14.834 13.21 14.764 13.28 Z M 17.968 6.452 L 15.619 1.185 C 15.462 0.832 15.205 0.533 14.881 0.322 C 14.557 0.112 14.179 0 13.793 0 L 6.174 0 C 5.787 0 5.409 0.112 5.085 0.322 C 4.761 0.533 4.504 0.833 4.347 1.186 L 2 6.452 C 1.47 6.452 0.961 6.663 0.586 7.038 C 0.211 7.413 0 7.922 0 8.452 L 0 18 C 0 18.265 0.105 18.52 0.293 18.707 C 0.48 18.895 0.735 19 1 19 L 3.445 19 C 3.71 19 3.965 18.895 4.152 18.707 C 4.34 18.52 4.445 18.265 4.445 18 L 4.445 16.636 L 15.523 16.636 L 15.523 18 C 15.523 18.265 15.628 18.52 15.816 18.707 C 16.003 18.895 16.258 19 16.523 19 L 18.967 19 C 19.232 19 19.487 18.895 19.674 18.707 C 19.862 18.52 19.967 18.265 19.967 18 L 19.967 16.636 L 19.968 8.452 C 19.968 7.922 19.757 7.413 19.382 7.038 C 19.007 6.663 18.498 6.452 17.968 6.452 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.016 2.500)\"/><path d=\"M 5.025 5.025 C 5.558 4.492 5.888 3.755 5.888 2.945 C 5.888 2.164 5.578 1.415 5.025 0.863 C 4.473 0.311 3.725 0.001 2.944 0 C 2.163 0.001 1.415 0.311 0.863 0.863 C 0.311 1.415 0.001 2.163 0 2.944 C 0.001 3.724 0.312 4.473 0.863 5.025 C 1.415 5.576 2.164 5.887 2.944 5.888 C 3.755 5.888 4.492 5.558 5.025 5.025 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.016 2.500) matrix(1 0 0 1 6.484 5)\"/>"},"IconCardAlarmMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 14.081 9.563 C 14.749 9.633 15.399 9.821 16 10.12 L 16 2 C 16 1.47 15.789 0.961 15.414 0.586 C 15.039 0.211 14.53 0 14 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 19 C 0 19.53 0.211 20.039 0.586 20.414 C 0.961 20.789 1.47 21 2 21 L 6.725 21 C 6.593 20.493 6.666 19.954 6.927 19.5 L 7.542 18.433 L 7.542 15.493 C 7.543 14.663 7.717 13.842 8.053 13.083 C 8.389 12.323 8.88 11.643 9.494 11.084 C 10.111 10.526 10.837 10.102 11.627 9.84 C 12.417 9.578 13.253 9.484 14.081 9.563 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 1.500)\"/><path d=\"M 10.616 9.215 L 9.799 7.8 L 9.799 4.65 C 9.799 2.322 8.097 0.243 5.78 0.022 C 5.161 -0.04 4.535 0.03 3.944 0.225 C 3.353 0.42 2.81 0.737 2.348 1.155 C 1.887 1.573 1.519 2.083 1.266 2.652 C 1.014 3.221 0.884 3.836 0.884 4.459 L 0.884 7.799 L 0.067 9.215 C 0.023 9.291 0 9.377 0 9.465 C 0 9.552 0.023 9.639 0.067 9.715 C 0.111 9.791 0.174 9.854 0.25 9.898 C 0.326 9.941 0.412 9.965 0.5 9.965 L 3.461 9.965 C 3.658 10.823 4.424 11.465 5.342 11.465 C 6.26 11.465 7.025 10.823 7.222 9.965 L 10.183 9.965 C 10.271 9.965 10.357 9.941 10.433 9.898 C 10.509 9.854 10.572 9.791 10.616 9.715 C 10.66 9.639 10.683 9.552 10.683 9.465 C 10.683 9.377 10.66 9.291 10.616 9.215 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 1.500) matrix(1 0 0 1 8.158 11.035)\"/>"},"IconCardAlertMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6 0 C 6.788 0 7.568 0.155 8.296 0.457 C 9.024 0.758 9.685 1.2 10.243 1.757 C 10.8 2.315 11.242 2.976 11.543 3.704 C 11.845 4.432 12 5.212 12 6 C 12 6.788 11.845 7.568 11.543 8.296 C 11.242 9.024 10.8 9.685 10.243 10.243 C 9.685 10.8 9.024 11.242 8.296 11.543 C 7.568 11.845 6.788 12 6 12 C 4.409 12 2.883 11.368 1.757 10.243 C 0.632 9.117 0 7.591 0 6 C 0 4.409 0.632 2.883 1.757 1.757 C 2.883 0.632 4.409 0 6 0 Z M 6 7.482 C 5.826 7.482 5.66 7.551 5.537 7.674 C 5.414 7.797 5.345 7.963 5.345 8.137 C 5.345 8.311 5.414 8.477 5.537 8.6 C 5.66 8.723 5.826 8.792 6 8.792 C 6.174 8.792 6.34 8.723 6.463 8.6 C 6.586 8.477 6.655 8.311 6.655 8.137 C 6.655 7.963 6.586 7.797 6.463 7.674 C 6.34 7.551 6.174 7.482 6 7.482 Z M 6 2.882 C 5.928 2.882 5.858 2.896 5.791 2.923 C 5.725 2.951 5.665 2.991 5.615 3.042 C 5.564 3.092 5.524 3.152 5.496 3.218 C 5.469 3.285 5.455 3.355 5.455 3.427 L 5.455 6.154 C 5.455 6.299 5.512 6.437 5.615 6.539 C 5.717 6.642 5.855 6.699 6 6.699 C 6.145 6.699 6.283 6.642 6.385 6.539 C 6.488 6.437 6.545 6.299 6.545 6.154 L 6.545 3.427 C 6.545 3.355 6.531 3.284 6.504 3.218 C 6.477 3.151 6.437 3.091 6.386 3.04 C 6.335 2.99 6.275 2.949 6.209 2.922 C 6.143 2.894 6.072 2.88 6 2.88 L 6 2.882 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500) matrix(1 0 0 1 7 9.500)\"/><path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 13 8 C 14.1 8 15.1 8.2 16 8.6 L 16 2 C 16 0.9 15.1 0 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 19 C 0 20.1 0.9 21 2 21 L 7.9 21 C 6.4 19.6 5.5 17.7 5.5 15.5 C 5.5 11.4 8.9 8 13 8 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/>"},"IconCardCertificationMonoIdcard":{viewBox:"0 0 24 24",body:"<path d=\"M 19 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 15.8 C 0 16.9 0.9 17.8 2 17.8 L 19 17.8 C 20.1 17.8 21 16.9 21 15.8 L 21 2 C 21 0.9 20.1 0 19 0 Z M 10.5 3.6 C 11.9 3.6 13 4.7 13 6.1 C 13 7.5 11.9 8.6 10.5 8.6 C 9.1 8.6 8 7.5 8 6.1 C 8 4.7 9.1 3.6 10.5 3.6 Z M 10.5 14.3 C 8.5 14.3 5.5 14 5.5 13 C 5.5 12 6.9 9.6 10.5 9.6 C 14.1 9.6 15.5 11.9 15.5 13 C 15.5 14.1 12.5 14.3 10.5 14.3 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 3.100)\"/>"},"IconCardCheckMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6 0 C 9.314 0 12 2.686 12 6 C 12 9.314 9.314 12 6 12 C 2.686 12 0 9.314 0 6 C 0 2.686 2.686 0 6 0 Z M 9.15 4.007 C 8.857 3.714 8.382 3.714 8.089 4.007 L 5.369 6.728 L 3.911 5.27 C 3.618 4.977 3.143 4.977 2.85 5.27 C 2.557 5.562 2.557 6.037 2.85 6.33 L 4.838 8.319 C 4.979 8.46 5.17 8.539 5.369 8.539 C 5.568 8.539 5.758 8.46 5.899 8.319 L 9.15 5.068 C 9.443 4.775 9.443 4.3 9.15 4.007 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500) matrix(1 0 0 1 7 9.500)\"/><path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 13 8 C 14.1 8 15.1 8.2 16 8.6 L 16 2 C 16 0.9 15.1 0 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 19 C 0 20.1 0.9 21 2 21 L 7.9 21 C 6.4 19.6 5.5 17.7 5.5 15.5 C 5.5 11.4 8.9 8 13 8 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/>"},"IconCardDoubleMonoCard":{viewBox:"0 0 24 25",body:"<path d=\"M 10.602 0 L 9.845 0 L 9.845 13.116 C 9.845 13.565 9.685 13.995 9.401 14.313 C 9.117 14.63 8.732 14.809 8.33 14.809 L 0 14.809 L 0 16.078 C 0 17.009 0.682 17.77 1.515 17.77 L 10.602 17.77 C 11.435 17.77 12.117 17.009 12.117 16.078 L 12.117 1.692 C 12.117 0.761 11.435 0 10.602 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.170 2) matrix(1 0 0 1 2.271 2.961)\"/><path d=\"M 11.673 0.496 C 11.388 0.178 11.003 0 10.602 0 L 1.515 0 C 1.113 0 0.728 0.178 0.444 0.496 C 0.16 0.813 0 1.243 0 1.692 L 0 16.077 C 0 16.526 0.16 16.956 0.444 17.274 C 0.728 17.591 1.113 17.77 1.515 17.77 L 2.272 17.77 L 10.602 17.77 C 11.004 17.77 11.389 17.592 11.673 17.274 C 11.957 16.957 12.117 16.526 12.117 16.077 L 12.117 2.961 L 12.117 1.692 C 12.116 1.243 11.957 0.813 11.673 0.496 Z M 7.194 5.078 L 4.922 5.078 L 4.922 2.961 L 4.922 2.539 L 7.194 2.539 L 7.194 2.961 L 7.194 5.078 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.170 2)\"/>"},"IconCardMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 14 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 19 C 0 19.53 0.211 20.039 0.586 20.414 C 0.961 20.789 1.47 21 2 21 L 14 21 C 14.53 21 15.039 20.789 15.414 20.414 C 15.789 20.039 16 19.53 16 19 L 16 2 C 16 1.47 15.789 0.961 15.414 0.586 C 15.039 0.211 14.53 0 14 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/>"},"IconCardPlusMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 13 8 C 14.067 8 15.081 8.227 16 8.63 L 16 2 C 16 1.47 15.789 0.961 15.414 0.586 C 15.039 0.211 14.53 0 14 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 19 C 0 19.53 0.211 20.039 0.586 20.414 C 0.961 20.789 1.47 21 2 21 L 7.918 21 C 7.156 20.3 6.548 19.45 6.132 18.504 C 5.716 17.557 5.501 16.534 5.5 15.5 C 5.5 11.364 8.865 8 13 8 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/><path d=\"M 9 6.75 L 6.75 6.75 L 6.75 9 C 6.75 9.199 6.671 9.39 6.53 9.53 C 6.39 9.671 6.199 9.75 6 9.75 C 5.801 9.75 5.61 9.671 5.47 9.53 C 5.329 9.39 5.25 9.199 5.25 9 L 5.25 6.75 L 3 6.75 C 2.801 6.75 2.61 6.671 2.47 6.53 C 2.329 6.39 2.25 6.199 2.25 6 C 2.25 5.801 2.329 5.61 2.47 5.47 C 2.61 5.329 2.801 5.25 3 5.25 L 5.25 5.25 L 5.25 3 C 5.25 2.801 5.329 2.61 5.47 2.47 C 5.61 2.329 5.801 2.25 6 2.25 C 6.199 2.25 6.39 2.329 6.53 2.47 C 6.671 2.61 6.75 2.801 6.75 3 L 6.75 5.25 L 9 5.25 C 9.199 5.25 9.39 5.329 9.53 5.47 C 9.671 5.61 9.75 5.801 9.75 6 C 9.75 6.199 9.671 6.39 9.53 6.53 C 9.39 6.671 9.199 6.75 9 6.75 Z M 6 0 C 5.212 0 4.432 0.155 3.704 0.457 C 2.976 0.758 2.315 1.2 1.757 1.757 C 1.2 2.315 0.758 2.976 0.457 3.704 C 0.155 4.432 0 5.212 0 6 C 0 6.788 0.155 7.568 0.457 8.296 C 0.758 9.024 1.2 9.685 1.757 10.243 C 2.315 10.8 2.976 11.242 3.704 11.543 C 4.432 11.845 5.212 12 6 12 C 7.591 12 9.117 11.368 10.243 10.243 C 11.368 9.117 12 7.591 12 6 C 12 4.409 11.368 2.883 10.243 1.757 C 9.117 0.632 7.591 0 6 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500) matrix(1 0 0 1 7 9.500)\"/>"},"IconCardSearchMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6.239 6.236 L 6.237 6.237 L 6.236 6.239 C 5.765 6.709 5.116 7 4.4 7 C 3.711 6.999 3.05 6.725 2.562 6.238 C 2.075 5.75 1.801 5.089 1.8 4.4 C 1.8 2.966 2.967 1.8 4.4 1.8 C 5.834 1.8 7 2.966 7 4.4 C 7 5.116 6.709 5.765 6.239 6.236 Z M 10.537 9.263 L 8.077 6.804 C 8.548 6.091 8.8 5.255 8.801 4.4 C 8.801 1.974 6.826 0 4.4 0 C 3.233 0.001 2.115 0.465 1.29 1.29 C 0.465 2.115 0.001 3.233 0 4.4 C 0 6.826 1.974 8.8 4.4 8.8 C 5.288 8.8 6.112 8.532 6.804 8.078 L 9.263 10.538 C 9.347 10.621 9.446 10.688 9.555 10.733 C 9.665 10.777 9.782 10.8 9.9 10.8 C 10.078 10.799 10.251 10.746 10.399 10.647 C 10.547 10.548 10.662 10.408 10.73 10.243 C 10.798 10.079 10.816 9.898 10.781 9.724 C 10.747 9.55 10.662 9.389 10.537 9.263 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500) matrix(1 0 0 1 7.855 10.914)\"/><path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 6.355 15.314 C 6.357 13.75 6.979 12.251 8.085 11.145 C 9.192 10.039 10.691 9.417 12.255 9.415 C 13.622 9.413 14.946 9.889 16 10.759 L 16 2 C 16 1.47 15.789 0.961 15.414 0.586 C 15.039 0.211 14.53 0 14 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 19 C 0 19.53 0.211 20.039 0.586 20.414 C 0.961 20.789 1.47 21 2 21 L 10.7 21 C 8.2 20.315 6.355 18.029 6.355 15.314 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/>"},"IconCardStarMonoCard":{viewBox:"0 0 24 24",body:"<path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 5.5 15.5 C 5.5 11.364 8.865 8 13 8 C 14.067 8 15.081 8.227 16 8.63 L 16 2 C 16 1.47 15.789 0.961 15.414 0.586 C 15.039 0.211 14.53 0 14 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 19 C 0 19.53 0.211 20.039 0.586 20.414 C 0.961 20.789 1.47 21 2 21 L 7.918 21 C 7.156 20.3 6.548 19.45 6.132 18.504 C 5.716 17.557 5.501 16.534 5.5 15.5 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/><path d=\"M 9.373 5.608 L 8.15 6.8 C 8.102 6.847 8.066 6.906 8.045 6.97 C 8.024 7.034 8.019 7.102 8.03 7.169 L 8.32 8.853 C 8.333 8.93 8.324 9.009 8.295 9.081 C 8.265 9.153 8.216 9.215 8.153 9.261 C 8.09 9.307 8.016 9.334 7.938 9.34 C 7.861 9.345 7.783 9.329 7.714 9.293 L 6.2 8.5 C 6.14 8.468 6.073 8.452 6.006 8.452 C 5.938 8.452 5.871 8.468 5.811 8.5 L 4.299 9.295 C 4.23 9.331 4.152 9.347 4.074 9.342 C 3.997 9.336 3.922 9.309 3.859 9.263 C 3.796 9.217 3.747 9.154 3.718 9.082 C 3.688 9.01 3.68 8.931 3.693 8.854 L 3.981 7.17 C 3.993 7.103 3.988 7.035 3.967 6.97 C 3.946 6.905 3.91 6.847 3.861 6.8 L 2.638 5.608 C 2.582 5.554 2.542 5.485 2.524 5.409 C 2.505 5.333 2.508 5.254 2.532 5.18 C 2.556 5.106 2.601 5.04 2.66 4.989 C 2.72 4.939 2.793 4.907 2.87 4.896 L 4.56 4.65 C 4.627 4.64 4.691 4.614 4.746 4.574 C 4.8 4.534 4.844 4.481 4.874 4.42 L 5.631 2.889 C 5.665 2.819 5.719 2.76 5.785 2.719 C 5.851 2.678 5.928 2.656 6.006 2.656 C 6.084 2.656 6.161 2.678 6.227 2.719 C 6.293 2.76 6.347 2.819 6.381 2.889 L 7.136 4.421 C 7.166 4.482 7.21 4.535 7.265 4.575 C 7.32 4.614 7.384 4.64 7.451 4.65 L 9.141 4.896 C 9.484 4.945 9.621 5.366 9.373 5.608 Z M 6 0 C 5.212 0 4.432 0.155 3.704 0.457 C 2.976 0.758 2.315 1.2 1.757 1.757 C 1.2 2.315 0.758 2.976 0.457 3.704 C 0.155 4.432 0 5.212 0 6 C 0 6.788 0.155 7.568 0.457 8.296 C 0.758 9.024 1.2 9.685 1.757 10.243 C 2.315 10.8 2.976 11.242 3.704 11.543 C 4.432 11.845 5.212 12 6 12 C 7.591 12 9.117 11.368 10.243 10.243 C 11.368 9.117 12 7.591 12 6 C 12 4.409 11.368 2.883 10.243 1.757 C 9.117 0.632 7.591 0 6 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500) matrix(1 0 0 1 7 9.500)\"/>"},"IconCardXMono":{viewBox:"0 0 24 24",body:"<path d=\"M 6.5 6 L 9.5 6 L 9.5 3 L 6.5 3 L 6.5 6 Z M 13 8 C 14.1 8 15.1 8.2 16 8.6 L 16 2 C 16 0.9 15.1 0 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 19 C 0 20.1 0.9 21 2 21 L 7.9 21 C 6.4 19.6 5.5 17.7 5.5 15.5 C 5.5 11.4 8.9 8 13 8 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.500)\"/><path d=\"M 5.99 0 C 2.68 0 0 2.68 0 5.99 C 0 9.3 2.68 11.98 5.99 11.98 C 9.3 11.98 11.98 9.3 11.98 5.99 C 11.98 2.68 9.3 0 5.99 0 Z M 8.28 7.51 C 8.49 7.72 8.49 8.07 8.28 8.28 C 8.07 8.49 7.72 8.49 7.51 8.28 L 5.99 6.76 L 4.47 8.28 C 4.26 8.49 3.91 8.49 3.7 8.28 C 3.59 8.18 3.54 8.04 3.54 7.9 C 3.54 7.76 3.59 7.62 3.7 7.51 L 5.22 5.99 L 3.7 4.47 C 3.49 4.26 3.49 3.91 3.7 3.7 C 3.91 3.49 4.26 3.49 4.47 3.7 L 5.99 5.22 L 7.51 3.7 C 7.72 3.49 8.07 3.49 8.28 3.7 C 8.49 3.91 8.49 4.26 8.28 4.47 L 6.76 5.99 L 8.28 7.51 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 11.010 11.010)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconCarrierMonoCarrierTravel":{viewBox:"0 0 24 24",body:"<path d=\"M 13.049 16.057 L 14.549 16.057 L 14.549 8.145 L 13.049 8.145 L 13.049 16.057 Z M 6.935 4.547 L 12.798 4.547 L 12.798 2.029 L 6.935 2.029 L 6.935 4.547 Z M 9.117 16.057 L 10.617 16.057 L 10.617 8.145 L 9.117 8.145 L 9.117 16.057 Z M 5.185 16.057 L 6.685 16.057 L 6.685 8.145 L 5.185 8.145 L 5.185 16.057 Z M 17.335 4.546 L 14.799 4.546 L 14.799 2 L 15.367 2 C 15.632 2 15.887 1.895 16.074 1.707 C 16.262 1.52 16.367 1.265 16.367 1 C 16.367 0.735 16.262 0.48 16.074 0.293 C 15.887 0.105 15.632 0 15.367 0 L 4.367 0 C 4.102 0 3.847 0.105 3.66 0.293 C 3.472 0.48 3.367 0.735 3.367 1 C 3.367 1.265 3.472 1.52 3.66 1.707 C 3.847 1.895 4.102 2 4.367 2 L 4.935 2 L 4.935 4.546 L 2.399 4.546 C 1.763 4.546 1.152 4.799 0.703 5.249 C 0.253 5.699 0 6.31 0 6.946 L 0 17.255 C 0 17.891 0.253 18.502 0.703 18.952 C 1.152 19.402 1.763 19.655 2.399 19.655 L 2.747 19.655 L 2.747 20.155 C 2.747 20.42 2.852 20.675 3.04 20.862 C 3.227 21.05 3.482 21.155 3.747 21.155 C 4.012 21.155 4.267 21.05 4.454 20.862 C 4.642 20.675 4.747 20.42 4.747 20.155 L 4.747 19.655 L 14.987 19.655 L 14.987 20.155 C 14.987 20.42 15.092 20.675 15.28 20.862 C 15.467 21.05 15.722 21.155 15.987 21.155 C 16.252 21.155 16.507 21.05 16.694 20.862 C 16.882 20.675 16.987 20.42 16.987 20.155 L 16.987 19.655 L 17.335 19.655 C 17.971 19.655 18.582 19.402 19.031 18.952 C 19.481 18.502 19.734 17.891 19.734 17.255 L 19.734 6.946 C 19.734 6.31 19.481 5.699 19.031 5.249 C 18.582 4.799 17.971 4.546 17.335 4.546 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.133 1)\"/>"},"IconCartMono":{viewBox:"0 0 24 24",body:"<path d=\"M 2.25 0 C 1.01 0 0 1.004 0 2.25 C 0 3.496 1.009 4.5 2.25 4.5 C 3.491 4.5 4.5 3.491 4.5 2.25 C 4.5 1.009 3.49 0 2.25 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.149 1.601) matrix(1 0 0 1 14.781 15.298)\"/><path d=\"M 2.25 0 C 1.004 0 0 1.004 0 2.25 C 0 3.496 1.004 4.5 2.25 4.5 C 3.496 4.5 4.5 3.491 4.5 2.25 C 4.5 1.009 3.49 0 2.25 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.149 1.601) matrix(1 0 0 1 6.833 15.298)\"/><path d=\"M 21.557 3.514 C 21.348 3.253 21.036 3.105 20.702 3.105 L 6.076 3.105 L 5.906 2.373 C 5.612 0.997 4.379 0 2.973 0 L 1 0 C 0.447 0 0 0.447 0 1 C 0 1.553 0.447 2 1 2 L 2.974 2 C 3.442 2 3.853 2.332 3.955 2.808 L 6.097 12.546 C 6.316 13.506 7.158 14.177 8.144 14.177 L 17.971 14.177 C 18.956 14.177 19.798 13.506 20.018 12.545 L 21.778 4.439 C 21.847 4.111 21.768 3.774 21.557 3.514 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.149 1.601)\"/>"},"IconCashbackMonoArrow":{viewBox:"0 0 24 24",body:"<path d=\"M 0.83 1.026 C 1.003 0.924 1.107 0.737 1.102 0.538 C 1.094 0.236 0.852 0 0.551 0 C 0.249 0 0.007 0.236 0 0.538 C -0.005 0.737 0.098 0.924 0.272 1.026 C 0.444 1.128 0.658 1.127 0.83 1.026 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 3.730 0) matrix(1 0 0 1 4.589 6.032)\"/><path d=\"M 0.565 0 C 0.568 0.005 0.556 0 0.55 0 C 0.355 0 0.175 0.102 0.076 0.271 C -0.025 0.444 -0.025 0.657 0.076 0.829 C 0.178 1.002 0.371 1.113 0.565 1.102 C 0.866 1.094 1.103 0.852 1.103 0.551 C 1.103 0.25 0.866 0.008 0.565 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 3.730 0) matrix(1 0 0 1 8.878 10.321)\"/><path d=\"M 9.474 12.605 C 9.459 12.605 9.443 12.606 9.428 12.606 C 8.817 12.606 8.247 12.281 7.936 11.751 C 7.617 11.209 7.617 10.536 7.936 9.992 C 8.256 9.449 8.846 9.13 9.474 9.14 C 10.42 9.164 11.163 9.924 11.163 10.872 C 11.163 11.819 10.42 12.58 9.474 12.605 Z M 4.66 11.941 C 4.509 11.941 4.357 11.884 4.242 11.768 C 4.012 11.537 4.012 11.164 4.243 10.933 L 9.52 5.656 C 9.75 5.425 10.125 5.425 10.356 5.656 C 10.587 5.887 10.587 6.261 10.356 6.492 L 5.078 11.768 C 4.963 11.884 4.812 11.941 4.66 11.941 Z M 3.407 6.538 C 3.432 5.591 4.193 4.85 5.14 4.85 C 6.088 4.85 6.849 5.591 6.873 6.538 C 6.889 7.168 6.562 7.756 6.02 8.076 C 5.748 8.235 5.444 8.315 5.14 8.315 C 4.836 8.315 4.532 8.235 4.261 8.076 C 3.718 7.756 3.391 7.168 3.407 6.538 Z M 11.987 0 L 2.611 0 C 1.169 0 0 1.169 0 2.611 L 0 14.844 C 0 16.286 1.169 17.456 2.611 17.456 L 11.987 17.456 C 13.429 17.456 14.598 16.286 14.598 14.844 L 14.598 2.611 C 14.598 1.169 13.429 0 11.987 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 3.730 0)\"/><path d=\"M 5.994 0 L 7.634 0.309 C 9.06 0.576 9.999 1.948 9.732 3.374 L 7.675 14.364 C 7.408 15.79 6.036 16.73 4.611 16.462 L 0 15.599 L 3.494 15.599 C 4.88 15.599 6.015 14.518 6.1 13.153 L 6.105 12.988 L 6.105 0.755 C 6.105 0.493 6.066 0.239 5.994 0 Z\" fill=\"rgb(139,149,161)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 3.730 0) matrix(1 0 0 1 8.493 1.856)\"/><path d=\"M 3.844 0 C 3.77 0.242 3.73 0.5 3.73 0.766 L 3.73 12.999 C 3.73 14.441 4.898 15.61 6.341 15.61 L 9.779 15.61 L 5.167 16.473 C 3.796 16.73 2.475 15.871 2.137 14.538 L 2.102 14.375 L 0.045 3.385 C -0.221 1.959 0.718 0.587 2.143 0.32 L 3.844 0 Z\" fill=\"rgb(166,176,186)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 3) matrix(1 0 0 1 0 1.845)\"/>"},"IconCertificationMonoCertificationCert":{viewBox:"0 0 24 24",body:"<path d=\"M 1.95 8.5 C 1.952 6.763 2.643 5.098 3.87 3.87 C 5.098 2.643 6.763 1.952 8.5 1.95 C 10.237 1.952 11.901 2.643 13.129 3.871 C 14.357 5.099 15.048 6.763 15.05 8.5 C 15.048 10.237 14.357 11.901 13.129 13.129 C 11.901 14.357 10.237 15.048 8.5 15.05 C 6.763 15.048 5.098 14.357 3.87 13.13 C 2.643 11.902 1.952 10.237 1.95 8.5 Z M 12.646 15.917 C 13.966 15.18 15.066 14.104 15.831 12.8 C 16.597 11.496 17 10.012 17 8.5 C 17 6.246 16.104 4.084 14.51 2.49 C 12.916 0.896 10.754 0 8.5 0 C 6.246 0 4.084 0.896 2.49 2.49 C 0.896 4.084 0 6.246 0 8.5 C 0 10.012 0.404 11.496 1.169 12.8 C 1.934 14.104 3.033 15.18 4.353 15.917 L 1.998 22.269 L 7.18 22.269 L 8.5 18.709 L 9.82 22.269 L 15.003 22.269 L 12.646 15.917 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 0.616)\"/><path d=\"M 5.35 0 C 2.4 0 0 2.4 0 5.35 C 0 8.3 2.4 10.7 5.35 10.7 C 8.3 10.7 10.7 8.3 10.7 5.35 C 10.7 2.4 8.3 0 5.35 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 0.616) matrix(1 0 0 1 3.150 3.150)\"/>"},"IconChartBlankMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.1 0 L 3.1 0 C 1.391 0 0 1.391 0 3.1 L 0 16.1 C 0 17.809 1.391 19.2 3.1 19.2 L 16.1 19.2 C 17.809 19.2 19.2 17.809 19.2 16.1 L 19.2 3.1 C 19.2 1.391 17.809 0 16.1 0 Z M 17 16.1 C 17 16.596 16.596 17 16.1 17 L 5.846 17 L 5.846 13.533 L 17 13.532 L 17 16.1 Z M 17 11.334 L 5.846 11.334 L 5.846 7.867 L 17 7.867 L 17 11.334 Z M 17 5.666 L 5.846 5.666 L 5.846 2.2 L 16.1 2.2 C 16.596 2.2 17 2.604 17 3.1 L 17 5.666 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.400 2.400)\"/>"},"IconChartMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.1 0 L 3.1 0 C 1.391 0 0 1.391 0 3.1 L 0 16.1 C 0 17.809 1.391 19.2 3.1 19.2 L 16.1 19.2 C 17.809 19.2 19.2 17.809 19.2 16.1 L 19.2 3.1 C 19.2 1.391 17.809 0 16.1 0 Z M 2.2 7.867 L 5.846 7.867 L 5.846 11.334 L 2.2 11.334 L 2.2 7.867 Z M 8.046 7.867 L 17 7.867 L 17 11.334 L 8.046 11.334 L 8.046 7.867 Z M 17 3.1 L 17 5.666 L 8.046 5.666 L 8.046 2.2 L 16.1 2.2 C 16.596 2.2 17 2.604 17 3.1 Z M 3.1 2.2 L 5.846 2.2 L 5.846 5.666 L 2.2 5.666 L 2.2 3.1 C 2.2 2.604 2.604 2.2 3.1 2.2 Z M 2.2 16.1 L 2.2 13.533 L 5.846 13.533 L 5.846 17 L 3.1 17 C 2.604 17 2.2 16.596 2.2 16.1 Z M 16.1 17 L 8.046 17 L 8.046 13.532 L 17 13.532 L 17 16.1 C 17 16.596 16.596 17 16.1 17 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.400 2.400)\"/>"},"IconChartPlusMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9 16 L 7.399 16 L 7.399 10 L 17 10 C 17.553 10 18 9.552 18 9 L 18 3 C 18 1.346 16.654 0 15 0 L 3 0 C 1.346 0 0 1.346 0 3 L 0 15 C 0 16.654 1.346 18 3 18 L 9 18 C 9.552 18 10 17.553 10 17 C 10 16.447 9.552 16 9 16 Z M 16 3 L 16 8 L 7.399 8 L 7.399 2 L 15 2 C 15.552 2 16 2.449 16 3 Z M 2 15 L 2 3 C 2 2.449 2.449 2 3 2 L 5.399 2 L 5.399 16 L 3 16 C 2.449 16 2 15.552 2 15 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3 3)\"/><path d=\"M 6.692 2.846 L 4.846 2.846 L 4.846 1 C 4.846 0.447 4.399 0 3.846 0 C 3.293 0 2.846 0.447 2.846 1 L 2.846 2.846 L 1 2.846 C 0.447 2.846 0 3.293 0 3.846 C 0 4.399 0.447 4.846 1 4.846 L 2.846 4.846 L 2.846 6.692 C 2.846 7.245 3.293 7.692 3.846 7.692 C 4.399 7.692 4.846 7.245 4.846 6.692 L 4.846 4.846 L 6.692 4.846 C 7.245 4.846 7.692 4.399 7.692 3.846 C 7.692 3.293 7.244 2.846 6.692 2.846 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3 3) matrix(1 0 0 1 11.037 11.196)\"/>"},"IconChartRefreshMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9 16 L 7.399 16 L 7.399 10 L 17 10 C 17.553 10 18 9.552 18 9 L 18 3 C 18 1.346 16.654 0 15 0 L 3 0 C 1.346 0 0 1.346 0 3 L 0 15 C 0 16.654 1.346 18 3 18 L 9 18 C 9.552 18 10 17.553 10 17 C 10 16.447 9.552 16 9 16 Z M 16 3 L 16 8 L 7.399 8 L 7.399 2 L 15 2 C 15.552 2 16 2.449 16 3 Z M 2 15 L 2 3 C 2 2.449 2.449 2 3 2 L 5.399 2 L 5.399 16 L 3 16 C 2.449 16 2 15.552 2 15 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3 3)\"/><path d=\"M 6.717 5.162 C 6.961 4.729 6.808 4.18 6.374 3.937 C 5.941 3.693 5.392 3.846 5.149 4.28 L 5.933 4.721 L 6.717 5.162 Z M 5.051 1.901 C 5.329 2.313 5.889 2.421 6.301 2.143 C 6.712 1.865 6.821 1.305 6.543 0.893 L 5.797 1.397 L 5.051 1.901 Z M 5.933 4.721 L 5.149 4.28 C 4.759 4.973 4.018 5.438 3.169 5.438 L 3.169 6.338 L 3.169 7.238 C 4.694 7.238 6.021 6.399 6.717 5.162 L 5.933 4.721 Z M 3.169 6.338 L 3.169 5.438 C 1.916 5.438 0.9 4.422 0.9 3.169 L 0 3.169 L -0.9 3.169 C -0.9 5.416 0.922 7.238 3.169 7.238 L 3.169 6.338 Z M 0 3.169 L 0.9 3.169 C 0.9 1.916 1.916 0.9 3.169 0.9 L 3.169 0 L 3.169 -0.9 C 0.922 -0.9 -0.9 0.922 -0.9 3.169 L 0 3.169 Z M 3.169 0 L 3.169 0.9 C 3.952 0.9 4.643 1.295 5.051 1.901 L 5.797 1.397 L 6.543 0.893 C 5.813 -0.187 4.574 -0.9 3.169 -0.9 L 3.169 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 14.795 15.089)\"/><path d=\"M 3.495 2.851 L 3.103 0.471 C 3.029 0.02 2.476 -0.158 2.153 0.165 L 0.165 2.153 C -0.158 2.476 0.02 3.029 0.471 3.103 L 2.851 3.495 C 3.229 3.558 3.557 3.229 3.495 2.851 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 18.560 14.493)\"/>"},"IconChatBubble3dotsMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9.814 0 C 4.403 0 0 4.002 0 8.922 C 0 11.028 0.891 13.894 3.371 15.743 L 3.079 18.799 C 3.057 19.028 3.163 19.25 3.355 19.378 C 3.459 19.448 3.58 19.482 3.7 19.482 C 3.802 19.482 3.903 19.457 3.996 19.408 L 7.179 17.697 C 7.576 17.736 8.739 17.844 9.815 17.844 C 15.226 17.844 19.629 13.842 19.629 8.922 C 19.629 4.002 15.225 0 9.814 0 Z M 5.346 10.136 C 4.679 10.136 4.146 9.605 4.146 8.936 C 4.146 8.267 4.677 7.729 5.346 7.729 C 6.015 7.729 6.553 8.267 6.553 8.936 C 6.553 9.605 6.014 10.136 5.346 10.136 Z M 9.812 10.136 C 9.145 10.136 8.612 9.598 8.612 8.929 C 8.612 8.267 9.143 7.729 9.812 7.729 C 10.481 7.729 11.019 8.267 11.019 8.929 C 11.018 9.598 10.48 10.136 9.812 10.136 Z M 14.275 10.136 C 13.608 10.136 13.075 9.598 13.075 8.929 C 13.075 8.267 13.606 7.729 14.275 7.729 C 14.944 7.729 15.482 8.267 15.482 8.929 C 15.482 9.598 14.944 10.136 14.275 10.136 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.186 2.259)\"/>"},"IconChatBubbleMonoBubble":{viewBox:"0 0 24 24",body:"<path d=\"M 10.087 0 C 4.515 0 0 4.131 0 9.126 C 0 11.528 1.057 13.737 2.786 15.37 L 1.921 19.405 C 1.825 19.789 2.209 20.077 2.593 19.981 L 7.108 17.868 C 8.069 18.156 9.029 18.252 10.086 18.252 C 15.658 18.252 20.173 14.121 20.173 9.126 C 20.173 4.131 15.659 0 10.087 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.913 2)\"/>"},"IconChatBubbleMonoFill":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 9 40 0 31 0 20 C 0 9 9 0 20 0 C 31 0 40 9 40 20 C 40 31 31 40 20 40 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 11 0 C 4.935 0 0 4.485 0 10 C 0 12.359 0.999 15.572 3.778 17.645 L 3.451 21.069 C 3.414 21.454 3.697 21.796 4.082 21.832 C 4.219 21.845 4.358 21.817 4.479 21.752 L 8.047 19.834 C 8.491 19.879 9.795 20 11 20 C 17.065 20 22 15.514 22 10 C 22 4.486 17.065 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 9 9.082)\"/>"},"IconChatBubbleQuestionMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11 0 C 17.065 0 22 4.485 22 10 C 22 15.514 17.065 20 11 20 C 9.795 20 8.491 19.879 8.047 19.834 L 4.479 21.752 C 4.367 21.812 4.242 21.84 4.115 21.835 C 3.989 21.829 3.866 21.788 3.76 21.718 C 3.655 21.648 3.57 21.551 3.516 21.436 C 3.461 21.322 3.439 21.195 3.451 21.069 L 3.778 17.646 C 0.999 15.572 0 12.358 0 10 C 0 4.485 4.935 0 11 0 Z M 11.072 13.05 C 10.754 13.05 10.449 13.177 10.224 13.401 C 10 13.626 9.873 13.931 9.873 14.249 C 9.873 14.486 9.943 14.719 10.074 14.916 C 10.206 15.114 10.393 15.268 10.613 15.359 C 10.832 15.45 11.073 15.474 11.306 15.428 C 11.539 15.382 11.753 15.268 11.921 15.1 C 12.089 14.932 12.204 14.718 12.25 14.485 C 12.296 14.252 12.272 14.011 12.182 13.792 C 12.091 13.572 11.937 13.385 11.739 13.253 C 11.542 13.121 11.309 13.05 11.072 13.05 Z M 11.057 4.578 C 10.2 4.579 9.378 4.92 8.771 5.526 C 8.165 6.133 7.824 6.955 7.823 7.812 C 7.835 8.012 7.924 8.2 8.07 8.338 C 8.216 8.475 8.409 8.551 8.609 8.551 C 8.81 8.551 9.003 8.475 9.149 8.338 C 9.295 8.2 9.384 8.012 9.396 7.812 C 9.396 6.896 10.141 6.151 11.057 6.151 C 11.621 6.151 12.193 6.411 12.514 6.813 C 12.759 7.121 12.835 7.488 12.738 7.904 C 12.629 8.384 12.348 8.583 11.814 8.924 C 11.164 9.341 10.271 9.912 10.271 11.359 C 10.278 11.563 10.364 11.756 10.511 11.897 C 10.658 12.039 10.854 12.118 11.057 12.118 C 11.261 12.118 11.457 12.039 11.604 11.897 C 11.751 11.756 11.837 11.563 11.844 11.359 C 11.844 10.794 12.081 10.62 12.664 10.248 C 13.234 9.883 14.014 9.384 14.271 8.256 C 14.474 7.376 14.287 6.516 13.743 5.832 C 13.127 5.059 12.098 4.578 11.057 4.578 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.922)\"/>"},"IconChatBubbleWonMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17.25 11.227 L 15.239 11.227 L 14.519 13.846 C 14.456 14.08 14.317 14.287 14.125 14.434 C 13.932 14.581 13.695 14.66 13.453 14.658 L 13.452 14.658 C 12.948 14.658 12.52 14.331 12.387 13.846 L 11.25 9.718 L 10.114 13.846 C 10.051 14.08 9.912 14.287 9.72 14.434 C 9.527 14.581 9.29 14.66 9.048 14.658 C 8.544 14.658 8.116 14.332 7.982 13.847 L 7.261 11.227 L 5.25 11.227 C 5.011 11.227 4.782 11.132 4.614 10.963 C 4.445 10.795 4.35 10.566 4.35 10.327 C 4.35 10.088 4.445 9.859 4.614 9.691 C 4.782 9.522 5.011 9.427 5.25 9.427 L 6.766 9.427 L 6.135 7.135 C 6.101 7.02 6.09 6.9 6.103 6.781 C 6.116 6.662 6.153 6.547 6.211 6.442 C 6.269 6.337 6.347 6.245 6.441 6.171 C 6.535 6.097 6.643 6.043 6.759 6.011 C 6.874 5.979 6.995 5.971 7.113 5.986 C 7.232 6.002 7.347 6.04 7.45 6.101 C 7.554 6.161 7.644 6.241 7.716 6.336 C 7.788 6.432 7.841 6.541 7.87 6.657 L 9.048 10.936 L 10.184 6.808 C 10.247 6.574 10.385 6.367 10.578 6.22 C 10.771 6.073 11.007 5.994 11.25 5.996 C 11.754 5.996 12.182 6.322 12.316 6.808 L 13.453 10.936 L 14.63 6.657 C 14.693 6.427 14.846 6.231 15.053 6.113 C 15.261 5.995 15.507 5.965 15.737 6.028 C 15.967 6.091 16.163 6.244 16.281 6.451 C 16.399 6.659 16.429 6.905 16.366 7.135 L 15.734 9.427 L 17.25 9.427 C 17.489 9.427 17.718 9.522 17.886 9.691 C 18.055 9.859 18.15 10.088 18.15 10.327 C 18.15 10.566 18.055 10.795 17.886 10.963 C 17.718 11.132 17.489 11.227 17.25 11.227 Z M 11.25 0 C 5.047 0 0 4.588 0 10.227 C 0 12.641 1.021 15.927 3.864 18.046 L 3.53 21.549 C 3.52 21.648 3.531 21.749 3.562 21.843 C 3.594 21.938 3.645 22.025 3.712 22.099 C 3.779 22.173 3.861 22.232 3.952 22.272 C 4.043 22.312 4.142 22.332 4.242 22.332 C 4.361 22.332 4.477 22.303 4.582 22.247 L 8.23 20.285 C 8.684 20.331 10.018 20.455 11.25 20.455 C 17.453 20.455 22.5 15.867 22.5 10.227 C 22.5 4.588 17.453 0 11.25 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.750 0.673)\"/>"},"IconChatSquareMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18 0 L 1 0 C 0.4 0 0 0.4 0 1 L 0 21 L 6 17 L 18 17 C 18.6 17 19 16.6 19 16 L 19 1 C 19 0.4 18.6 0 18 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2)\"/><path d=\"M 0 -0.9 C -0.497 -0.9 -0.9 -0.497 -0.9 0 C -0.9 0.497 -0.497 0.9 0 0.9 L 0 0 L 0 -0.9 Z M 7.8 0.9 C 8.297 0.9 8.7 0.497 8.7 0 C 8.7 -0.497 8.297 -0.9 7.8 -0.9 L 7.8 0 L 7.8 0.9 Z M 0 0 L 0 0.9 L 7.8 0.9 L 7.8 0 L 7.8 -0.9 L 0 -0.9 L 0 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7 8.300) matrix(1 0 0 1 0 4.900)\"/><path d=\"M 0 -0.9 C -0.497 -0.9 -0.9 -0.497 -0.9 0 C -0.9 0.497 -0.497 0.9 0 0.9 L 0 0 L 0 -0.9 Z M 10 0.9 C 10.497 0.9 10.9 0.497 10.9 0 C 10.9 -0.497 10.497 -0.9 10 -0.9 L 10 0 L 10 0.9 Z M 0 0 L 0 0.9 L 10 0.9 L 10 0 L 10 -0.9 L 0 -0.9 L 0 0 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7 8.300)\"/>"},"IconCheckCircleLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 10.7 1.7 L 5.1 7.3 C 4.9 7.5 4.7 7.6 4.4 7.6 C 4.1 7.6 3.9 7.5 3.7 7.3 L 0.3 3.9 C -0.1 3.5 -0.1 2.9 0.3 2.5 C 0.7 2.1 1.3 2.1 1.7 2.5 L 4.4 5.2 L 9.3 0.3 C 9.7 -0.1 10.3 -0.1 10.7 0.3 C 11.1 0.7 11.1 1.3 10.7 1.7 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.500 8.500)\"/><path d=\"M 11 2 C 16 2 20 6 20 11 C 20 16 16 20 11 20 C 6 20 2 16 2 11 C 2 6 6 2 11 2 Z M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCheckCircleMonoCheck":{viewBox:"0 0 24 24",body:"<path d=\"M 16.207 9.215 L 10.624 14.799 C 10.436 14.986 10.182 15.091 9.917 15.091 C 9.651 15.091 9.397 14.986 9.209 14.799 L 5.793 11.383 C 5.7 11.29 5.627 11.18 5.576 11.059 C 5.526 10.937 5.5 10.807 5.5 10.676 C 5.5 10.411 5.605 10.157 5.793 9.969 C 5.981 9.781 6.235 9.676 6.5 9.676 C 6.765 9.676 7.019 9.781 7.207 9.969 L 9.916 12.678 L 14.793 7.801 C 14.886 7.708 14.996 7.635 15.117 7.584 C 15.239 7.534 15.369 7.508 15.5 7.508 C 15.631 7.508 15.761 7.534 15.883 7.584 C 16.004 7.635 16.114 7.708 16.207 7.801 C 16.3 7.894 16.373 8.004 16.424 8.125 C 16.474 8.247 16.5 8.377 16.5 8.508 C 16.5 8.639 16.474 8.769 16.424 8.891 C 16.373 9.012 16.3 9.122 16.207 9.215 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCheckCircleMonoFill":{viewBox:"0 0 40 40",body:"<path d=\"M 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 Z\" fill=\"rgb(255,255,255)\" fill-rule=\"nonzero\"/><path d=\"M 20 0 C 8.95 0 0 8.95 0 20 C 0 31.05 8.95 40 20 40 C 31.05 40 40 31.05 40 20 C 40 8.95 31.05 0 20 0 Z M 29.467 16.75 L 19.317 26.9 C 18.983 27.233 18.517 27.433 18.033 27.433 C 17.55 27.433 17.083 27.233 16.75 26.9 L 10.533 20.683 C 9.817 19.967 9.817 18.817 10.533 18.117 C 11.25 17.4 12.4 17.4 13.1 18.117 L 18.033 23.05 L 26.9 14.183 C 27.617 13.467 28.767 13.467 29.467 14.183 C 30.183 14.9 30.183 16.05 29.467 16.75 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\"/>"},"IconCheckIndeterminatedMonoMinus":{viewBox:"0 0 24 24",body:"<path d=\"M 15.15 2.7 L 1.35 2.7 C 0.605 2.7 0 2.096 0 1.35 C 0 0.604 0.604 0 1.35 0 L 15.15 0 C 15.895 0 16.5 0.604 16.5 1.35 C 16.5 2.096 15.896 2.7 15.15 2.7 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.750 10.650)\"/>"},"IconCheckLargeMonoCheck":{viewBox:"0 0 24 24",body:"<path d=\"M 19.209 0.438 C 19.796 1.023 19.797 1.973 19.212 2.559 L 9.187 12.609 C 8.905 12.892 8.523 13.05 8.125 13.05 C 7.726 13.05 7.344 12.891 7.062 12.609 L 0.437 5.959 C -0.147 5.372 -0.146 4.422 0.441 3.837 C 1.028 3.253 1.978 3.254 2.563 3.841 L 8.126 9.425 L 17.088 0.441 C 17.673 -0.146 18.623 -0.147 19.209 0.438 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.100 5.475)\"/>"},"IconCheckMonoCheckConfirm":{viewBox:"0 0 24 24",body:"<path d=\"M 6.532 11.283 C 6.193 11.283 5.853 11.17 5.627 10.83 L 0.424 5.627 C -0.141 5.062 -0.141 4.27 0.424 3.704 C 0.99 3.139 1.781 3.139 2.347 3.704 L 6.532 7.889 L 13.997 0.424 C 14.563 -0.141 15.355 -0.141 15.92 0.424 C 16.486 0.99 16.486 1.781 15.92 2.347 L 7.55 10.717 C 7.211 11.17 6.871 11.283 6.532 11.283 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.878 6.571)\"/>"},"IconCheckMonoFill":{viewBox:"0 0 40 40",body:"<path d=\"M 20 0 C 9 0 0 9 0 20 C 0 31 9 40 20 40 C 31 40 40 31 40 20 C 40 9 31 0 20 0 Z M 29.3 16.6 L 19.1 26.7 C 18.8 27 18.4 27.2 18 27.2 C 17.6 27.2 17.2 27 16.9 26.7 L 10.7 20.5 C 10.1 19.9 10.1 18.9 10.7 18.2 C 11.3 17.6 12.3 17.6 13 18.2 L 18.1 23.3 L 27.2 14.3 C 27.8 13.7 28.8 13.7 29.5 14.3 C 30 15 30 16 29.3 16.6 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconCircleDashLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.796 2.174 C 1.21 2.059 0.605 2 0 2 L 0 0 C 0.735 0 1.47 0.071 2.183 0.212 L 1.796 2.174 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.934 0.934) matrix(1 0 0 1 11.066 0)\"/><path d=\"M 9.433 20.682 C 7.958 20.466 6.568 19.967 5.302 19.198 L 6.34 17.489 C 7.377 18.118 8.515 18.527 9.722 18.704 L 9.433 20.682 Z M 12.727 20.679 L 12.434 18.7 C 13.64 18.521 14.777 18.109 15.812 17.476 L 16.855 19.183 C 15.589 19.958 14.201 20.46 12.727 20.679 Z M 2.768 17.081 C 1.783 15.968 1.044 14.688 0.573 13.279 L 2.469 12.644 C 2.855 13.797 3.459 14.844 4.265 15.756 L 2.768 17.081 Z M 19.382 17.06 L 17.88 15.74 C 18.685 14.825 19.286 13.776 19.669 12.623 L 21.567 13.252 C 21.1 14.662 20.365 15.943 19.382 17.06 Z M 0.004 10.031 L 0 9.735 C 0 8.343 0.251 6.989 0.746 5.709 L 2.611 6.43 C 2.206 7.479 2 8.591 2 9.735 L 2.003 9.977 L 0.004 10.031 Z M 22.128 10.002 L 20.128 9.954 L 20.131 9.735 C 20.131 8.582 19.923 7.463 19.512 6.408 L 21.375 5.682 C 21.877 6.969 22.131 8.333 22.131 9.735 L 22.128 10.002 Z M 3.955 4.085 L 2.387 2.841 C 3.312 1.677 4.441 0.726 5.746 0.015 L 6.703 1.771 C 5.635 2.353 4.711 3.131 3.955 4.085 Z M 18.163 4.066 C 17.405 3.114 16.477 2.338 15.408 1.759 L 16.361 0 C 17.668 0.708 18.799 1.656 19.727 2.818 L 18.163 4.066 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.934 0.934) matrix(1 0 0 1 0 1.331)\"/><path d=\"M 0.388 2.174 L 0 0.212 C 0.713 0.071 1.448 0 2.184 0 L 2.184 2 C 1.578 2 0.974 2.059 0.388 2.174 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.934 0.934) matrix(1 0 0 1 8.882 0)\"/>"},"IconCircleEmptyMonoCircle":{viewBox:"0 0 24 24",body:"<path d=\"M 11 2 C 16 2 20 6 20 11 C 20 16 16 20 11 20 C 6 20 2 16 2 11 C 2 6 6 2 11 2 Z M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconClipMonoClipConnection":{viewBox:"0 0 24 24",body:"<path d=\"M 7.475 19.175 C 5.575 19.175 3.575 18.475 2.175 16.975 C -0.725 14.075 -0.725 9.275 2.175 6.275 L 6.675 1.775 C 7.075 1.375 7.775 1.375 8.275 1.775 C 8.675 2.175 8.675 2.875 8.275 3.375 L 3.775 7.875 C 1.675 9.975 1.675 13.375 3.775 15.375 C 5.875 17.475 9.275 17.475 11.275 15.375 L 19.075 7.575 C 20.275 6.375 20.275 4.275 19.075 3.075 C 17.875 1.875 15.775 1.875 14.575 3.075 L 7.475 10.175 C 7.075 10.575 7.075 11.275 7.475 11.675 C 7.875 12.075 8.575 12.075 8.975 11.675 L 13.775 6.875 C 14.175 6.475 14.875 6.475 15.375 6.875 C 15.775 7.275 15.775 7.975 15.375 8.475 L 10.575 13.275 C 9.175 14.575 7.075 14.575 5.875 13.275 C 4.575 11.975 4.575 9.975 5.875 8.675 L 12.975 1.575 C 15.075 -0.525 18.475 -0.525 20.575 1.575 C 22.675 3.675 22.675 7.075 20.575 9.175 L 12.775 16.975 C 11.375 18.375 9.475 19.175 7.475 19.175 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.925 2.425)\"/>"},"IconClockMonoClockWatch":{viewBox:"0 0 24 24",body:"<path d=\"M 11.5 10.261 C 11.5 10.294 11.484 10.323 11.481 10.355 C 11.475 10.423 11.462 10.49 11.44 10.554 C 11.404 10.674 11.345 10.785 11.266 10.882 C 11.222 10.935 11.176 10.982 11.122 11.026 C 11.097 11.046 11.082 11.075 11.055 11.093 L 6.329 14.243 C 6.108 14.385 5.841 14.434 5.584 14.38 C 5.328 14.326 5.102 14.174 4.957 13.956 C 4.812 13.738 4.758 13.471 4.807 13.214 C 4.856 12.956 5.004 12.728 5.22 12.579 L 9.5 9.726 L 9.5 5.056 C 9.5 4.791 9.605 4.536 9.793 4.349 C 9.98 4.161 10.235 4.056 10.5 4.056 C 10.765 4.056 11.02 4.161 11.207 4.349 C 11.395 4.536 11.5 4.791 11.5 5.056 L 11.5 10.261 Z M 10.5 0 C 4.701 0 0 4.701 0 10.5 C 0 16.299 4.701 21 10.5 21 C 16.299 21 21 16.299 21 10.5 C 21 4.701 16.299 0 10.5 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.500)\"/>"},"IconClockQuestionMonoClock":{viewBox:"0 0 24 24",body:"<path d=\"M 19.06 0.685 C 18.427 0.242 17.673 0.003 16.9 0 C 16.126 -0.003 15.371 0.231 14.734 0.67 C 14.173 1.058 14.192 1.9 14.749 2.29 L 19.025 5.284 C 19.583 5.674 20.38 5.404 20.552 4.744 C 20.748 3.996 20.709 3.206 20.443 2.481 C 20.176 1.755 19.694 1.128 19.06 0.684 M 1.648 5.284 L 5.923 2.29 C 6.481 1.9 6.5 1.057 5.939 0.67 C 5.303 0.232 4.548 -0.001 3.775 0.002 C 3.003 0.005 2.249 0.244 1.616 0.687 C 0.983 1.13 0.501 1.756 0.234 2.481 C -0.033 3.206 -0.073 3.995 0.121 4.743 C 0.293 5.403 1.09 5.674 1.648 5.284 Z M 13.618 10.783 C 13.35 11.957 12.552 12.471 11.969 12.847 C 11.377 13.227 11.206 13.361 11.206 13.867 C 11.206 14.106 11.112 14.335 10.943 14.504 C 10.774 14.673 10.545 14.767 10.306 14.767 C 10.068 14.767 9.839 14.673 9.67 14.504 C 9.501 14.335 9.406 14.106 9.406 13.867 C 9.406 12.357 10.361 11.741 10.994 11.334 C 11.511 11.001 11.764 10.822 11.864 10.383 C 11.952 9.992 11.885 9.663 11.655 9.376 C 11.358 9.003 10.829 8.762 10.306 8.762 C 9.46 8.762 8.771 9.459 8.771 10.315 C 8.764 10.549 8.665 10.77 8.498 10.932 C 8.33 11.095 8.105 11.185 7.872 11.185 C 7.638 11.185 7.414 11.095 7.246 10.932 C 7.078 10.77 6.98 10.549 6.972 10.315 C 6.972 8.465 8.468 6.963 10.306 6.963 C 11.371 6.963 12.428 7.457 13.062 8.253 C 13.632 8.966 13.828 9.863 13.618 10.783 Z M 10.32 17.863 C 10.176 17.863 10.034 17.834 9.901 17.778 C 9.768 17.723 9.647 17.641 9.546 17.539 C 9.444 17.437 9.364 17.316 9.309 17.182 C 9.255 17.049 9.227 16.906 9.227 16.762 C 9.227 16.155 9.717 15.662 10.32 15.662 C 10.924 15.662 11.413 16.155 11.413 16.762 C 11.413 17.37 10.924 17.863 10.32 17.863 Z M 10.336 2.417 C 4.85 2.417 0.389 6.879 0.389 12.365 C 0.389 17.849 4.85 22.312 10.336 22.312 C 15.821 22.312 20.283 17.849 20.283 12.365 C 20.283 6.879 15.821 2.417 10.336 2.417 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.664 1.137)\"/>"},"IconClothesMonoClothesShirts":{viewBox:"0 0 24 24",body:"<path d=\"M 12.5 9.313 L 16.337 9.313 L 16.337 7.813 L 12.5 7.813 L 12.5 9.313 Z M 17.607 0.004 L 15.211 5.184 C 15.121 5.379 14.99 5.553 14.826 5.693 C 14.663 5.833 14.472 5.936 14.265 5.996 C 14.058 6.055 13.841 6.069 13.628 6.038 C 13.416 6.006 13.212 5.928 13.032 5.811 L 10.25 4.003 L 10.25 16.9 L 8.75 16.9 L 8.75 4.003 L 5.968 5.811 C 5.787 5.928 5.584 6.004 5.371 6.036 C 5.159 6.068 4.942 6.053 4.735 5.994 C 4.528 5.935 4.337 5.832 4.174 5.692 C 4.011 5.552 3.879 5.379 3.789 5.184 L 1.432 0.087 C 1.419 0.059 1.413 0.029 1.401 0 C 0.996 0.126 0.641 0.379 0.389 0.721 C 0.137 1.062 0.001 1.475 0 1.9 L 0 14.9 C 0 15.43 0.211 15.939 0.586 16.314 C 0.961 16.689 1.47 16.9 2 16.9 L 17 16.9 C 17.53 16.9 18.039 16.689 18.414 16.314 C 18.789 15.939 19 15.43 19 14.9 L 19 1.9 C 19 1.007 18.413 0.262 17.607 0.004 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.998) matrix(1 0 0 1 0 2.602)\"/><path d=\"M 10.852 0 L 2.153 0 L 0 2.502 L 2.153 7.155 L 6.502 4.329 L 10.852 7.155 L 13.005 2.502 L 10.852 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.998) matrix(1 0 0 1 2.998 0)\"/>"},"IconCloudDownloadMono":{viewBox:"0 0 24 24",body:"<path d=\"M 5.88 15.031 L 10.171 10.286 L 10.2 10.255 L 10.229 10.226 C 10.639 9.816 11.189 9.588 11.772 9.588 C 12.355 9.588 12.905 9.814 13.315 10.226 L 13.337 10.248 L 13.356 10.27 L 17.779 15.019 C 18.168 15.425 18.35 15.965 18.3 16.498 L 19.174 16.498 C 21.847 16.433 24 14.15 24 11.477 C 24 8.998 22.174 6.912 19.826 6.456 C 19.5 2.868 16.5 0 12.847 0 C 9.456 -0.002 6.653 2.41 6 5.539 L 5.479 5.539 C 2.479 5.539 0 8.018 0 11.018 C 0 13.757 2.021 16.106 4.694 16.498 L 5.39 16.498 C 5.333 15.97 5.506 15.434 5.88 15.034 L 5.88 15.031 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 11.269 7.255 C 11.269 7.282 11.262 7.306 11.259 7.332 C 11.255 7.373 11.25 7.411 11.243 7.452 C 11.238 7.478 11.231 7.507 11.223 7.534 C 11.214 7.57 11.207 7.608 11.195 7.644 C 11.185 7.67 11.175 7.699 11.166 7.726 C 11.154 7.759 11.139 7.795 11.125 7.829 C 11.113 7.855 11.099 7.882 11.087 7.908 C 11.07 7.942 11.053 7.973 11.034 8.006 C 11.019 8.033 11.003 8.059 10.986 8.083 C 10.967 8.114 10.945 8.146 10.923 8.174 C 10.904 8.198 10.885 8.225 10.866 8.249 C 10.842 8.278 10.818 8.306 10.794 8.335 C 10.772 8.359 10.751 8.381 10.729 8.405 C 10.703 8.431 10.676 8.458 10.647 8.484 C 10.623 8.506 10.599 8.527 10.575 8.549 C 10.547 8.573 10.515 8.597 10.487 8.621 C 10.46 8.64 10.436 8.659 10.407 8.678 C 10.376 8.7 10.343 8.722 10.309 8.743 C 10.28 8.76 10.254 8.779 10.225 8.796 C 10.191 8.815 10.155 8.834 10.119 8.854 C 10.091 8.868 10.062 8.885 10.031 8.899 C 9.995 8.916 9.956 8.933 9.918 8.947 C 9.887 8.959 9.858 8.974 9.827 8.983 C 9.786 8.998 9.745 9.01 9.704 9.024 C 9.673 9.034 9.644 9.043 9.611 9.053 C 9.567 9.065 9.522 9.074 9.479 9.084 C 9.45 9.091 9.419 9.098 9.39 9.103 C 9.339 9.113 9.289 9.118 9.239 9.125 C 9.212 9.127 9.188 9.132 9.162 9.134 C 9.085 9.142 9.006 9.146 8.927 9.146 C 7.621 9.146 6.579 8.234 6.579 7.058 L 6.579 5.232 L 9.383 5.232 L 9.385 5.232 C 9.433 5.232 9.471 5.22 9.503 5.201 C 9.534 5.182 9.558 5.153 9.57 5.119 C 9.594 5.054 9.577 4.973 9.512 4.908 L 5.077 0.146 C 5.003 0.072 4.911 0.026 4.815 0.01 C 4.784 0.002 4.751 0 4.717 0 C 4.652 0 4.587 0.012 4.525 0.036 C 4.465 0.06 4.407 0.096 4.357 0.146 L 0.054 4.908 C -0.076 5.038 0.054 5.232 0.181 5.234 L 0.183 5.234 L 2.663 5.234 L 2.663 7.973 C 2.663 8.038 2.663 8.102 2.667 8.167 C 2.672 8.232 2.677 8.294 2.684 8.359 C 2.713 8.614 2.773 8.861 2.857 9.096 C 2.9 9.214 2.948 9.331 3.003 9.444 C 3.059 9.557 3.119 9.667 3.186 9.775 C 3.32 9.989 3.476 10.19 3.654 10.378 C 3.831 10.565 4.026 10.735 4.239 10.891 C 4.986 11.431 5.939 11.755 6.966 11.755 C 8.022 11.755 8.977 11.431 9.719 10.891 C 9.93 10.738 10.124 10.565 10.299 10.378 C 10.475 10.19 10.628 9.989 10.758 9.775 C 10.823 9.667 10.883 9.557 10.938 9.444 C 10.991 9.331 11.039 9.216 11.079 9.096 C 11.161 8.858 11.219 8.614 11.247 8.359 C 11.255 8.297 11.259 8.232 11.264 8.167 C 11.269 8.102 11.269 8.038 11.269 7.973 L 11.269 7.246 L 11.269 7.255 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.055 11.266)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconCodeMonoCodeInspector":{viewBox:"0 0 24 24",body:"<path d=\"M 5.15 10.298 C 4.843 10.298 4.536 10.181 4.301 9.946 L 0.352 5.998 C 0.127 5.773 0 5.468 0 5.149 C 0 4.83 0.126 4.525 0.352 4.3 L 4.301 0.352 C 4.77 -0.117 5.53 -0.117 5.998 0.352 C 6.466 0.821 6.467 1.581 5.998 2.049 L 2.898 5.149 L 5.998 8.249 C 6.466 8.718 6.467 9.478 5.998 9.946 C 5.764 10.18 5.457 10.298 5.15 10.298 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.609 3.800) matrix(1 0 0 1 0 3.211)\"/><path d=\"M 1.201 10.297 C 0.894 10.297 0.587 10.18 0.352 9.945 C -0.117 9.476 -0.117 8.716 0.352 8.248 L 3.452 5.148 L 0.352 2.048 C -0.117 1.579 -0.117 0.819 0.352 0.351 C 0.822 -0.118 1.581 -0.116 2.049 0.351 L 5.997 4.3 C 6.466 4.769 6.466 5.529 5.997 5.997 L 2.049 9.945 C 1.815 10.179 1.508 10.297 1.201 10.297 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.609 3.800) matrix(1 0 0 1 14.431 3.212)\"/><path d=\"M 1.202 16.4 C 1.123 16.4 1.044 16.392 0.964 16.377 C 0.314 16.246 -0.107 15.613 0.024 14.964 L 2.836 0.964 C 2.966 0.315 3.594 -0.106 4.249 0.024 C 4.898 0.155 5.319 0.787 5.189 1.437 L 2.378 15.437 C 2.262 16.007 1.761 16.4 1.202 16.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.609 3.800) matrix(1 0 0 1 7.785 0)\"/>"},"IconCoffeeMonoCoffeeStarbucks":{viewBox:"0 0 24 24",body:"<path d=\"M 2.93 21.087 C 2.952 21.336 3.066 21.568 3.25 21.737 C 3.435 21.906 3.676 22 3.926 22 L 14.889 22 C 15.139 22 15.38 21.906 15.565 21.737 C 15.749 21.568 15.863 21.336 15.885 21.087 L 16.137 18.193 L 16.854 9.969 L 16.97 8.631 L 1.845 8.631 L 2.93 21.087 Z M 18.107 3.53 L 16.51 3.53 L 15.421 0.666 C 15.346 0.47 15.214 0.302 15.042 0.183 C 14.869 0.064 14.665 0 14.455 0 L 4.361 0 C 3.931 0 3.547 0.265 3.394 0.666 L 2.305 3.53 L 0.5 3.53 C 0.367 3.53 0.24 3.583 0.146 3.676 C 0.053 3.77 0 3.897 0 4.03 L 0 6.131 C 0 6.264 0.053 6.391 0.146 6.485 C 0.24 6.578 0.367 6.631 0.5 6.631 L 18.107 6.631 C 18.24 6.631 18.367 6.578 18.461 6.485 C 18.554 6.391 18.607 6.264 18.607 6.131 L 18.607 4.03 C 18.607 3.897 18.554 3.77 18.461 3.676 C 18.367 3.583 18.24 3.53 18.107 3.53 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.697 1)\"/>"},"IconCoinBitcoinMonoCoin":{viewBox:"0 0 24 24",body:"<path d=\"M 3.023 0 L 0 0 L 0 2.581 L 3.024 2.581 C 3.735 2.581 4.314 2.002 4.314 1.291 C 4.314 0.579 3.735 0.001 3.024 0.001\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 0.800) matrix(1 0 0 1 9.880 12.116)\"/><path d=\"M 13.302 16.489 L 13.302 16.8 C 13.302 17.043 13.205 17.276 13.034 17.448 C 12.862 17.62 12.629 17.717 12.385 17.717 C 12.142 17.717 11.909 17.62 11.737 17.448 C 11.566 17.276 11.469 17.043 11.469 16.8 L 11.469 16.53 L 9.879 16.53 L 9.879 16.8 C 9.879 17.043 9.782 17.276 9.611 17.448 C 9.439 17.619 9.206 17.716 8.963 17.716 C 8.72 17.716 8.487 17.619 8.315 17.448 C 8.144 17.276 8.047 17.043 8.047 16.8 L 8.047 16.53 L 7.697 16.53 C 7.459 16.522 7.234 16.422 7.068 16.251 C 6.903 16.08 6.81 15.851 6.81 15.613 C 6.81 15.376 6.903 15.147 7.068 14.976 C 7.234 14.805 7.459 14.705 7.697 14.697 L 8.047 14.697 L 8.047 7.703 L 7.697 7.703 C 7.577 7.703 7.458 7.679 7.346 7.633 C 7.235 7.587 7.134 7.52 7.049 7.435 C 6.964 7.35 6.897 7.249 6.851 7.138 C 6.805 7.026 6.781 6.907 6.781 6.787 C 6.781 6.667 6.805 6.548 6.851 6.436 C 6.897 6.325 6.964 6.224 7.049 6.139 C 7.134 6.054 7.235 5.987 7.346 5.941 C 7.458 5.895 7.577 5.871 7.697 5.871 L 8.047 5.871 L 8.047 5.6 C 8.047 5.357 8.144 5.124 8.315 4.952 C 8.487 4.781 8.72 4.684 8.963 4.684 C 9.206 4.684 9.439 4.781 9.611 4.952 C 9.782 5.124 9.879 5.357 9.879 5.6 L 9.879 5.871 L 11.469 5.871 L 11.469 5.6 C 11.477 5.362 11.577 5.137 11.748 4.971 C 11.919 4.806 12.148 4.713 12.385 4.713 C 12.623 4.713 12.852 4.806 13.023 4.971 C 13.194 5.137 13.294 5.362 13.302 5.6 L 13.302 6.032 C 14.562 6.435 15.482 7.602 15.482 8.993 C 15.482 9.73 15.215 10.398 14.787 10.933 C 15.171 11.221 15.482 11.595 15.697 12.024 C 15.913 12.453 16.025 12.926 16.027 13.406 C 16.025 14.163 15.747 14.894 15.245 15.461 C 14.744 16.028 14.053 16.394 13.302 16.489 Z M 11.2 0 C 5.014 0 0 5.014 0 11.2 C 0 17.386 5.014 22.4 11.2 22.4 C 17.385 22.4 22.4 17.386 22.4 11.2 C 22.4 5.014 17.385 0 11.2 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 0.800)\"/><path d=\"M 3.77 1.29 C 3.77 0.58 3.19 0 2.48 0 L 0 0 L 0 2.58 L 2.48 2.58 C 3.19 2.58 3.77 2.001 3.77 1.29 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 0.800) matrix(1 0 0 1 9.880 7.703)\"/>"},"IconCoinDollarMonoCoin":{viewBox:"0 0 24 24",body:"<path d=\"M 12.864 15.506 C 12.529 15.638 12.18 15.734 11.825 15.793 L 11.825 16.5 C 11.825 16.719 11.738 16.929 11.583 17.083 C 11.429 17.238 11.219 17.325 11 17.325 C 10.781 17.325 10.571 17.238 10.417 17.083 C 10.262 16.929 10.175 16.719 10.175 16.5 L 10.175 15.774 C 8.814 15.508 7.787 14.683 7.312 14.077 C 7.177 13.905 7.115 13.686 7.141 13.469 C 7.167 13.252 7.278 13.053 7.45 12.918 C 7.622 12.783 7.841 12.721 8.058 12.747 C 8.275 12.773 8.474 12.884 8.609 13.056 C 8.677 13.14 10.084 14.839 12.253 13.973 C 12.771 13.766 13.099 13.355 13.049 12.974 C 12.994 12.553 12.398 11.998 10.901 11.818 C 7.838 11.451 7.382 9.751 7.314 9.239 C 7.165 8.091 7.896 6.987 9.135 6.493 C 9.471 6.361 9.819 6.264 10.175 6.204 L 10.175 5.5 C 10.185 5.288 10.277 5.089 10.43 4.942 C 10.584 4.796 10.788 4.715 11 4.715 C 11.212 4.715 11.416 4.796 11.57 4.942 C 11.723 5.089 11.815 5.288 11.825 5.5 L 11.825 6.216 C 13.002 6.448 13.86 7.099 14.276 7.486 C 14.436 7.635 14.531 7.842 14.538 8.06 C 14.546 8.279 14.467 8.492 14.318 8.652 C 14.169 8.812 13.962 8.907 13.744 8.914 C 13.525 8.922 13.312 8.843 13.152 8.694 C 12.583 8.165 11.383 7.373 9.747 8.026 C 9.228 8.233 8.901 8.644 8.951 9.026 C 9.006 9.446 9.601 10.001 11.098 10.18 C 14.162 10.548 14.618 12.248 14.685 12.76 C 14.835 13.908 14.103 15.011 12.864 15.506 Z M 11 0 C 4.925 0 0 4.924 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.924 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCoinEuroMonoMoney":{viewBox:"0 0 24 24",body:"<path d=\"M 10.5 8.8 C 11 8.8 11.3 9.2 11.3 9.6 C 11.3 10 10.9 10.4 10.5 10.4 L 8.1 10.4 C 8.1 10.6 8 10.7 8 10.9 C 8 11.1 8 11.2 8.1 11.4 L 10.4 11.4 C 10.9 11.4 11.2 11.8 11.2 12.2 C 11.2 12.7 10.8 13 10.4 13 L 8.8 13 C 9.5 13.9 10.5 14.5 11.7 14.5 C 12.4 14.5 13 14.3 13.6 14 C 14 13.8 14.5 13.9 14.7 14.3 C 14.9 14.7 14.8 15.2 14.4 15.4 C 13.6 15.9 12.6 16.1 11.7 16.1 C 9.5 16.1 7.7 14.8 6.9 12.9 L 5.2 12.9 C 4.7 12.9 4.4 12.5 4.4 12.1 C 4.4 11.6 4.8 11.3 5.2 11.3 L 6.4 11.3 C 6.4 11.1 6.3 11 6.3 10.8 C 6.3 10.6 6.3 10.5 6.4 10.3 L 5.2 10.3 C 4.7 10.3 4.4 9.9 4.4 9.5 C 4.4 9.1 4.8 8.7 5.2 8.7 L 6.8 8.7 C 7.6 6.8 9.5 5.5 11.6 5.5 C 12.6 5.5 13.5 5.8 14.3 6.3 C 14.7 6.5 14.8 7 14.6 7.4 C 14.5 8 14 8.1 13.6 7.9 C 13 7.6 12.4 7.4 11.7 7.4 C 10.5 7.4 9.4 8 8.8 8.9 L 10.5 8.9 L 10.5 8.8 Z M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCoinMonoCoinWon":{viewBox:"0 0 24 24",body:"<path d=\"M 17 12.247 L 14.989 12.247 L 14.269 14.866 C 14.206 15.1 14.067 15.307 13.875 15.454 C 13.682 15.601 13.445 15.68 13.203 15.678 L 13.202 15.678 C 12.698 15.678 12.27 15.351 12.137 14.866 L 11 10.738 L 9.864 14.866 C 9.801 15.1 9.662 15.307 9.47 15.454 C 9.277 15.601 9.04 15.68 8.798 15.678 C 8.294 15.678 7.866 15.352 7.732 14.867 L 7.011 12.247 L 5 12.247 C 4.761 12.247 4.532 12.152 4.364 11.983 C 4.195 11.815 4.1 11.586 4.1 11.347 C 4.1 11.108 4.195 10.879 4.364 10.711 C 4.532 10.542 4.761 10.447 5 10.447 L 6.516 10.447 L 5.885 8.155 C 5.85 8.04 5.839 7.919 5.851 7.8 C 5.864 7.68 5.9 7.564 5.958 7.459 C 6.016 7.354 6.095 7.261 6.189 7.187 C 6.283 7.112 6.392 7.058 6.508 7.026 C 6.624 6.994 6.745 6.986 6.864 7.001 C 6.983 7.017 7.098 7.056 7.201 7.117 C 7.305 7.178 7.396 7.259 7.467 7.355 C 7.539 7.452 7.591 7.561 7.62 7.678 L 8.798 11.956 L 9.934 7.829 C 9.996 7.595 10.135 7.387 10.328 7.24 C 10.521 7.093 10.757 7.014 11 7.016 C 11.504 7.016 11.933 7.343 12.066 7.829 L 13.203 11.956 L 14.38 7.678 C 14.411 7.564 14.465 7.457 14.537 7.364 C 14.61 7.271 14.7 7.193 14.803 7.134 C 14.906 7.076 15.019 7.038 15.136 7.023 C 15.253 7.009 15.373 7.017 15.486 7.049 C 15.6 7.08 15.707 7.133 15.801 7.206 C 15.894 7.278 15.972 7.369 16.03 7.471 C 16.089 7.574 16.127 7.687 16.141 7.805 C 16.156 7.922 16.147 8.041 16.116 8.155 L 15.484 10.447 L 17 10.447 C 17.239 10.447 17.468 10.542 17.636 10.711 C 17.805 10.879 17.9 11.108 17.9 11.347 C 17.9 11.586 17.805 11.815 17.636 11.983 C 17.468 12.152 17.239 12.247 17 12.247 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.076 4.925 22 11 22 C 17.075 22 22 17.076 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCoinPoundMonoMoney":{viewBox:"0 0 24 24",body:"<path d=\"M 15.2 15.8 C 14.7 16.3 13.7 17 12.5 17 C 12 17 11.5 16.9 10.9 16.6 C 9.5 15.8 7.9 16.6 7.9 16.6 C 7.5 16.8 7 16.7 6.7 16.3 C 6.4 15.9 6.5 15.4 6.9 15.1 C 7.3 14.8 8 14.2 8.3 13.8 C 8.7 13.2 8.9 12.7 8.8 12.2 L 7.5 12.2 C 7 12.2 6.7 11.8 6.7 11.4 C 6.7 11 7.1 10.6 7.5 10.6 L 8.4 10.6 C 8.2 10.2 8 9.9 7.9 9.5 C 7.5 8.3 7.6 7.2 8.3 6.2 C 9 5.3 10.1 4.7 11.2 4.7 C 13.2 4.7 14.8 6.3 14.8 8.3 C 14.8 8.8 14.4 9.2 13.9 9.2 C 13.4 9.2 13 8.8 13 8.3 C 13 7.3 12.2 6.5 11.2 6.5 C 10.7 6.5 10.1 6.8 9.8 7.3 C 9.5 7.7 9.4 8.3 9.6 8.9 C 9.7 9.1 9.8 9.4 10 9.7 C 10.1 10 10.3 10.2 10.4 10.6 L 12.8 10.6 C 13.3 10.6 13.6 11 13.6 11.4 C 13.6 11.8 13.2 12.2 12.8 12.2 L 10.8 12.2 C 10.8 12.9 10.6 13.6 10.2 14.5 C 10.8 14.6 11.4 14.7 11.9 15.1 C 12.9 15.7 13.8 14.8 13.9 14.7 C 14.2 14.3 14.8 14.3 15.2 14.6 C 15.6 14.9 15.5 15.5 15.2 15.8 Z M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCoinSlashMonoCoin":{viewBox:"0 0 24 24",body:"<path d=\"M 5.212 12.247 L 5 12.247 C 4.761 12.247 4.532 12.152 4.364 11.983 C 4.195 11.815 4.1 11.586 4.1 11.347 C 4.1 11.108 4.195 10.879 4.364 10.711 C 4.532 10.542 4.761 10.447 5 10.447 L 6.516 10.447 L 5.885 8.155 C 5.854 8.041 5.845 7.922 5.86 7.805 C 5.874 7.688 5.912 7.574 5.97 7.472 C 6.029 7.369 6.107 7.279 6.2 7.206 C 6.293 7.134 6.4 7.08 6.514 7.049 C 6.628 7.018 6.747 7.009 6.864 7.024 C 6.981 7.038 7.095 7.076 7.197 7.134 C 7.3 7.193 7.39 7.271 7.463 7.364 C 7.535 7.457 7.589 7.564 7.62 7.678 L 8.087 9.372 L 16.168 1.291 C 14.578 0.442 12.803 -0.001 11 0 C 4.925 0 0 4.925 0 11 C 0 12.869 0.469 14.627 1.291 16.168 L 5.212 12.247 Z M 17 12.247 L 14.99 12.247 L 14.27 14.866 C 14.207 15.1 14.068 15.307 13.875 15.454 C 13.682 15.601 13.446 15.68 13.203 15.678 C 12.698 15.678 12.27 15.351 12.137 14.866 L 11.423 12.275 L 12.887 10.81 L 13.203 11.956 L 13.757 9.94 L 16.08 7.618 C 16.14 7.787 16.167 7.969 16.116 8.155 L 15.484 10.447 L 17 10.447 C 17.239 10.447 17.468 10.542 17.636 10.711 C 17.805 10.879 17.9 11.108 17.9 11.347 C 17.9 11.586 17.805 11.815 17.636 11.983 C 17.468 12.152 17.239 12.247 17 12.247 Z M 8.798 15.678 C 8.578 15.678 8.376 15.606 8.203 15.495 L 10.255 13.442 L 9.865 14.866 C 9.73 15.351 9.305 15.658 8.798 15.678 Z M 19.576 4.122 L 20.849 2.849 C 21.062 2.621 21.177 2.32 21.172 2.009 C 21.167 1.697 21.041 1.4 20.82 1.18 C 20.6 0.96 20.303 0.834 19.991 0.828 C 19.68 0.823 19.379 0.939 19.151 1.152 L 17.876 2.427 L 17.846 2.399 C 17.817 2.44 17.801 2.486 17.766 2.523 L 12.15 8.137 L 12.153 8.149 L 8.968 11.334 L 8.974 11.312 L 8.696 11.59 L 8.699 11.603 L 7.235 13.067 L 7.232 13.054 L 2.416 17.87 L 2.423 17.879 L 1.15 19.152 C 0.937 19.38 0.822 19.681 0.827 19.992 C 0.832 20.304 0.958 20.601 1.179 20.821 C 1.399 21.041 1.696 21.167 2.008 21.173 C 2.319 21.178 2.62 21.062 2.848 20.849 L 4.12 19.577 C 6.069 21.149 8.498 22.004 11.001 22 C 17.075 22 22.001 17.076 22.001 11 C 22.001 8.395 21.091 6.005 19.576 4.122 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCoinYenMonoMoney":{viewBox:"0 0 24 24",body:"<path d=\"M 15.1 7.2 L 12 11.5 L 13.6 11.5 C 14.1 11.5 14.4 11.9 14.4 12.3 C 14.4 12.8 14 13.1 13.6 13.1 L 11.9 13.1 L 11.9 13.8 L 13.6 13.8 C 14.1 13.8 14.4 14.2 14.4 14.6 C 14.4 15 14 15.4 13.6 15.4 L 11.9 15.4 L 11.9 16.3 C 11.9 16.8 11.5 17.2 11 17.2 C 10.5 17.2 10.1 16.8 10.1 16.3 L 10.1 15.4 L 8.4 15.4 C 7.9 15.4 7.6 15 7.6 14.6 C 7.6 14.2 8 13.8 8.4 13.8 L 10.1 13.8 L 10.1 13.1 L 8.4 13.1 C 7.9 13.1 7.6 12.7 7.6 12.3 C 7.6 11.8 8 11.5 8.4 11.5 L 10 11.5 L 6.9 7.2 C 6.6 6.8 6.7 6.2 7.1 5.9 C 7.5 5.6 8.1 5.7 8.4 6.1 L 11 9.8 L 13.6 6.1 C 13.9 5.7 14.5 5.6 14.9 5.9 C 15.3 6.2 15.4 6.8 15.1 7.2 Z M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconCompassMonoCompassDiscover":{viewBox:"0 0 24 24",body:"<path d=\"M 12 0 C 18.627 0 24 5.373 24 12 C 24 18.627 18.627 24 12 24 C 5.373 24 0 18.627 0 12 C 0 5.373 5.373 0 12 0 Z M 18.356 5.021 L 8.356 8.021 C 8.277 8.045 8.205 8.088 8.146 8.146 C 8.088 8.205 8.045 8.277 8.021 8.356 L 5.021 18.356 C 4.995 18.443 4.993 18.535 5.015 18.622 C 5.037 18.71 5.082 18.79 5.146 18.854 C 5.21 18.918 5.29 18.963 5.378 18.985 C 5.465 19.007 5.557 19.005 5.644 18.979 L 15.644 15.979 C 15.723 15.955 15.795 15.912 15.854 15.854 C 15.912 15.795 15.955 15.723 15.979 15.644 L 18.979 5.644 C 19.005 5.557 19.007 5.465 18.985 5.378 C 18.963 5.29 18.918 5.21 18.854 5.146 C 18.79 5.082 18.71 5.037 18.622 5.015 C 18.535 4.993 18.443 4.995 18.356 5.021 Z M 12 10.5 C 12.398 10.5 12.779 10.658 13.061 10.939 C 13.342 11.221 13.5 11.602 13.5 12 C 13.5 12.398 13.342 12.779 13.061 13.061 C 12.779 13.342 12.398 13.5 12 13.5 C 11.602 13.5 11.221 13.342 10.939 13.061 C 10.658 12.779 10.5 12.398 10.5 12 C 10.5 11.602 10.658 11.221 10.939 10.939 C 11.221 10.658 11.602 10.5 12 10.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconComputerMonoComputerMonitor":{viewBox:"0 0 24 24",body:"<path d=\"M 20 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 15 C 0 15.552 0.448 16 1 16 L 7.561 16.001 L 6.127 19.092 C 5.973 19.423 6.215 19.802 6.581 19.802 L 14.421 19.802 C 14.786 19.802 15.028 19.423 14.875 19.092 L 13.439 16.001 L 20 16 C 20.552 16 21 15.552 21 15 L 21 1 C 21 0.447 20.552 0 20 0 Z M 19 14 L 2 14 L 2 2 L 19 2 L 19 14 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.500 2.599)\"/><path d=\"M 0 0 L 15 0 L 15 10 L 0 10 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.500 2.599) matrix(1 0 0 1 3 3)\"/>"},"IconCopyMonoCopyPaste":{viewBox:"0 0 24 24",body:"<path d=\"M 10.8 0 L 9.2 0 L 9.2 2.4 L 10.8 2.4 C 11.5 2.4 12 2.9 12 3.6 L 12 10.8 C 12 11.5 11.5 12 10.8 12 L 3.6 12 C 2.9 12 2.4 11.5 2.4 10.8 L 2.4 9.4 L 0 9.4 L 0 10.8 C 0 12.8 1.6 14.4 3.6 14.4 L 10.8 14.4 C 12.8 14.4 14.4 12.8 14.4 10.8 L 14.4 3.6 C 14.4 1.6 12.8 0 10.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.300 1.300) matrix(1 0 0 1 7 7)\"/><path d=\"M 3.6 2.4 C 2.9 2.4 2.4 2.9 2.4 3.6 L 2.4 10.8 C 2.4 11.5 2.9 12 3.6 12 L 10.8 12 C 11.5 12 12 11.5 12 10.8 L 12 3.6 C 12 2.9 11.5 2.4 10.8 2.4 L 3.6 2.4 Z M 10.8 14.4 L 3.6 14.4 C 1.6 14.4 0 12.8 0 10.8 L 0 3.6 C 0 1.6 1.6 0 3.6 0 L 10.8 0 C 12.8 0 14.4 1.6 14.4 3.6 L 14.4 10.8 C 14.4 12.8 12.8 14.4 10.8 14.4 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.300 1.300)\"/>"},"IconCropMonoCropCropping":{viewBox:"0 0 24 24",body:"<path d=\"M 2.4 6.959 L 2.4 0 L 0 0 L 0 6.96 C 0 8.944 1.615 10.56 3.6 10.56 L 10.558 10.56 L 10.558 8.16 L 3.6 8.16 C 2.938 8.16 2.4 7.62 2.4 6.959 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.548 0.555) matrix(1 0 0 1 3.967 8.366)\"/><path d=\"M 21.725 16.525 L 18.925 16.525 L 18.925 7.566 C 18.924 6.612 18.545 5.697 17.87 5.022 C 17.195 4.347 16.28 3.967 15.325 3.965 L 6.367 3.965 L 6.367 1.166 C 6.358 0.854 6.228 0.557 6.004 0.34 C 5.78 0.122 5.479 0 5.167 0 C 4.854 0 4.554 0.122 4.33 0.34 C 4.106 0.557 3.975 0.854 3.966 1.166 L 3.966 3.965 L 1.166 3.965 C 0.854 3.974 0.557 4.105 0.34 4.329 C 0.122 4.553 0 4.853 0 5.166 C 0 5.478 0.122 5.779 0.34 6.003 C 0.557 6.227 0.854 6.357 1.166 6.366 L 15.325 6.366 C 15.987 6.366 16.525 6.904 16.525 7.566 L 16.525 21.725 C 16.525 21.883 16.556 22.039 16.617 22.185 C 16.677 22.33 16.765 22.462 16.877 22.574 C 16.988 22.685 17.121 22.774 17.266 22.834 C 17.412 22.894 17.568 22.925 17.725 22.925 C 17.883 22.925 18.039 22.894 18.185 22.834 C 18.33 22.774 18.462 22.685 18.574 22.574 C 18.685 22.462 18.774 22.33 18.834 22.185 C 18.894 22.039 18.925 21.883 18.925 21.725 L 18.925 18.925 L 21.725 18.925 C 21.883 18.925 22.039 18.894 22.185 18.834 C 22.33 18.774 22.462 18.685 22.574 18.574 C 22.685 18.462 22.774 18.33 22.834 18.185 C 22.894 18.039 22.925 17.883 22.925 17.725 C 22.925 17.568 22.894 17.412 22.834 17.266 C 22.774 17.121 22.685 16.988 22.574 16.877 C 22.462 16.765 22.33 16.677 22.185 16.617 C 22.039 16.556 21.883 16.525 21.725 16.525 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.548 0.555)\"/>"},"IconCrownMonoCrownKing":{viewBox:"0 0 24 24",body:"<path d=\"M 4.191 18.791 C 4.191 19.056 4.296 19.311 4.484 19.498 C 4.671 19.686 4.926 19.791 5.191 19.791 L 18.808 19.791 C 19.073 19.791 19.328 19.686 19.515 19.498 C 19.703 19.311 19.808 19.056 19.808 18.791 L 19.808 17.541 L 4.191 17.541 L 4.191 18.791 Z M 19.961 7.445 L 16.111 9.435 L 12.877 4.46 C 12.782 4.314 12.652 4.193 12.499 4.11 C 12.345 4.027 12.173 3.983 11.999 3.983 C 11.825 3.983 11.653 4.027 11.499 4.11 C 11.346 4.193 11.216 4.314 11.121 4.46 L 7.887 9.435 L 4.037 7.445 C 3.862 7.354 3.664 7.315 3.467 7.332 C 3.271 7.349 3.083 7.421 2.925 7.54 C 2.768 7.659 2.647 7.82 2.577 8.004 C 2.507 8.189 2.49 8.389 2.529 8.583 L 4.039 16.041 L 19.959 16.041 L 21.469 8.583 C 21.644 7.721 20.742 7.041 19.961 7.445 Z M 11.999 3.14 C 12.415 3.14 12.815 2.975 13.109 2.68 C 13.404 2.386 13.569 1.986 13.569 1.57 C 13.569 1.154 13.404 0.754 13.109 0.46 C 12.815 0.165 12.415 0 11.999 0 C 11.583 0 11.183 0.165 10.889 0.46 C 10.594 0.754 10.429 1.154 10.429 1.57 C 10.429 1.986 10.594 2.386 10.889 2.68 C 11.183 2.975 11.583 3.14 11.999 3.14 Z M 22.429 3.984 C 22.013 3.984 21.613 4.149 21.319 4.444 C 21.024 4.738 20.859 5.138 20.859 5.554 C 20.859 5.97 21.024 6.37 21.319 6.664 C 21.613 6.959 22.013 7.124 22.429 7.124 C 22.845 7.124 23.245 6.959 23.539 6.664 C 23.834 6.37 23.999 5.97 23.999 5.554 C 23.999 5.138 23.834 4.738 23.539 4.444 C 23.245 4.149 22.845 3.984 22.429 3.984 Z M 3.14 5.554 C 3.14 5.138 2.975 4.738 2.68 4.444 C 2.386 4.149 1.986 3.984 1.57 3.984 C 1.154 3.984 0.754 4.149 0.46 4.444 C 0.165 4.738 0 5.138 0 5.554 C 0 5.97 0.165 6.37 0.46 6.664 C 0.754 6.959 1.154 7.124 1.57 7.124 C 1.986 7.124 2.386 6.959 2.68 6.664 C 2.975 6.37 3.14 5.97 3.14 5.554 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.001 2.001)\"/>"},"IconDiamondMonoDiamondJewel":{viewBox:"0 0 24 24",body:"<path d=\"M 16.02 0 L 6.22 0 C 5.62 0 5.02 0.3 4.62 0.8 L 0.32 7 C -0.18 7.8 -0.08 8.8 0.52 9.5 L 9.62 19.4 C 10.42 20.3 11.72 20.3 12.52 19.4 L 21.62 9.5 C 22.22 8.8 22.32 7.8 21.82 7 L 17.62 0.8 C 17.22 0.3 16.62 0 16.02 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.880 2)\"/>"},"IconDivideMonoDivide":{viewBox:"0 0 24 24",body:"<path d=\"M 15.767 2.4 L 1.2 2.4 C 0.55 2.4 0 1.867 0 1.2 C 0 0.533 0.533 0 1.2 0 L 15.767 0 C 16.417 0 16.967 0.533 16.967 1.2 C 16.967 1.867 16.433 2.4 15.767 2.4 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.517 4.033) matrix(1 0 0 1 0 6.767)\"/><path d=\"M 1.7 3.4 C 2.639 3.4 3.4 2.639 3.4 1.7 C 3.4 0.761 2.639 0 1.7 0 C 0.761 0 0 0.761 0 1.7 C 0 2.639 0.761 3.4 1.7 3.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.517 4.033) matrix(1 0 0 1 6.783 12.533)\"/><path d=\"M 1.7 3.4 C 2.639 3.4 3.4 2.639 3.4 1.7 C 3.4 0.761 2.639 0 1.7 0 C 0.761 0 0 0.761 0 1.7 C 0 2.639 0.761 3.4 1.7 3.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.517 4.033) matrix(1 0 0 1 6.783 0)\"/>"},"IconDocumentCertificationMonoDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 3.374 7.5 C 3.374 7.085 3.709 6.75 4.124 6.75 L 12 6.75 C 12.199 6.75 12.39 6.829 12.53 6.97 C 12.671 7.11 12.75 7.301 12.75 7.5 C 12.75 7.699 12.671 7.89 12.53 8.03 C 12.39 8.171 12.199 8.25 12 8.25 L 4.124 8.25 C 3.925 8.25 3.734 8.171 3.594 8.03 C 3.453 7.89 3.374 7.699 3.374 7.5 Z M 4.124 3.75 L 12 3.75 C 12.199 3.75 12.39 3.829 12.53 3.97 C 12.671 4.11 12.75 4.301 12.75 4.5 C 12.75 4.699 12.671 4.89 12.53 5.03 C 12.39 5.171 12.199 5.25 12 5.25 L 4.124 5.25 C 3.925 5.25 3.734 5.171 3.594 5.03 C 3.453 4.89 3.374 4.699 3.374 4.5 C 3.374 4.301 3.453 4.11 3.594 3.97 C 3.734 3.829 3.925 3.75 4.124 3.75 Z M 14.5 8 C 15.02 8 15.52 8.074 16 8.2 L 16 1 C 16 0.735 15.895 0.48 15.707 0.293 C 15.52 0.105 15.265 0 15 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 18 C 0 18.265 0.105 18.52 0.293 18.707 C 0.48 18.895 0.735 19 1 19 L 10.243 19 L 10.52 18.254 C 9.915 17.703 9.431 17.033 9.098 16.285 C 8.766 15.537 8.593 14.728 8.59 13.91 C 8.592 12.343 9.215 10.841 10.323 9.733 C 11.431 8.625 12.933 8.002 14.5 8 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/><path d=\"M 8.82 4.41 C 8.82 3.24 8.355 2.119 7.528 1.292 C 6.701 0.465 5.58 0 4.41 0 C 3.24 0 2.119 0.465 1.292 1.292 C 0.465 2.119 0 3.24 0 4.41 C 0 6.047 0.902 7.46 2.227 8.221 L 0.825 12.001 L 3.682 12.001 L 4.41 10.037 L 5.137 11.999 L 7.995 11.999 L 6.592 8.22 C 7.918 7.46 8.82 6.046 8.82 4.41 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2) matrix(1 0 0 1 10.090 9.500)\"/>"},"IconDocumentCheckLinesMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16 0 L 1 0 C 0.4 0 0 0.4 0 1 L 0 19 C 0 19.6 0.4 20 1 20 L 16 20 C 16.6 20 17 19.6 17 19 L 17 1 C 17 0.4 16.6 0 16 0 Z M 12.9 16.2 L 4 16.2 C 3.6 16.2 3.2 15.9 3.2 15.4 C 3.2 14.9 3.5 14.6 4 14.6 L 12.9 14.6 C 13.3 14.6 13.7 14.9 13.7 15.4 C 13.7 15.9 13.3 16.2 12.9 16.2 Z M 12.9 13.2 L 4 13.2 C 3.6 13.2 3.2 12.9 3.2 12.4 C 3.2 11.9 3.5 11.6 4 11.6 L 12.9 11.6 C 13.3 11.6 13.7 11.9 13.7 12.4 C 13.7 12.9 13.3 13.2 12.9 13.2 Z M 12.9 7.3 L 4.2 7.3 C 3.7 7.3 3.3 6.9 3.3 6.4 L 3.3 4.5 C 3.3 4 3.7 3.6 4.2 3.6 L 12.9 3.6 C 13.4 3.6 13.8 4 13.8 4.5 L 13.8 6.4 C 13.8 6.9 13.4 7.3 12.9 7.3 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentContractMonoDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 14 16.5 C 14 16.633 13.947 16.76 13.854 16.854 C 13.76 16.947 13.633 17 13.5 17 L 9.5 17 C 9.367 17 9.24 16.947 9.146 16.854 C 9.053 16.76 9 16.633 9 16.5 L 9 12.5 C 9 12.367 9.053 12.24 9.146 12.146 C 9.24 12.053 9.367 12 9.5 12 L 13.5 12 C 13.633 12 13.76 12.053 13.854 12.146 C 13.947 12.24 14 12.367 14 12.5 L 14 16.5 Z M 3.374 7.5 C 3.374 7.085 3.709 6.75 4.124 6.75 L 13 6.75 C 13.199 6.75 13.39 6.829 13.53 6.97 C 13.671 7.11 13.75 7.301 13.75 7.5 C 13.75 7.699 13.671 7.89 13.53 8.03 C 13.39 8.171 13.199 8.25 13 8.25 L 4.124 8.25 C 3.925 8.25 3.734 8.171 3.594 8.03 C 3.453 7.89 3.374 7.699 3.374 7.5 Z M 4.124 3.75 L 13 3.75 C 13.199 3.75 13.39 3.829 13.53 3.97 C 13.671 4.11 13.75 4.301 13.75 4.5 C 13.75 4.699 13.671 4.89 13.53 5.03 C 13.39 5.171 13.199 5.25 13 5.25 L 4.124 5.25 C 3.925 5.25 3.734 5.171 3.594 5.03 C 3.453 4.89 3.374 4.699 3.374 4.5 C 3.374 4.301 3.453 4.11 3.594 3.97 C 3.734 3.829 3.925 3.75 4.124 3.75 Z M 16 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 19 C 0 19.265 0.105 19.52 0.293 19.707 C 0.48 19.895 0.735 20 1 20 L 16 20 C 16.265 20 16.52 19.895 16.707 19.707 C 16.895 19.52 17 19.265 17 19 L 17 1 C 17 0.735 16.895 0.48 16.707 0.293 C 16.52 0.105 16.265 0 16 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentContractSignatureMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17 19 L 17 1 C 17 0.4 16.6 0 16 0 L 1 0 C 0.4 0 0 0.4 0 1 L 0 19 C 0 19.6 0.4 20 1 20 L 16 20 C 16.6 20 17 19.6 17 19 Z M 8 17.3 C 8.2 16.3 8.7 15.4 9.7 15 C 9.8 14.9 10.2 14.8 10.3 15 C 10.362 15.123 10.31 15.284 10.26 15.436 C 10.23 15.531 10.2 15.623 10.2 15.7 C 10.153 15.818 10.095 15.935 10.036 16.054 C 9.845 16.441 9.647 16.841 9.8 17.3 C 10 17.8 10.6 18 11.1 17.9 C 11.4 17.8 11.6 17.7 11.9 17.5 C 11.977 17.5 12.405 17.265 12.601 17.156 C 12.602 17.168 12.604 17.179 12.608 17.188 C 12.618 17.218 12.643 17.242 12.7 17.3 C 12.738 17.338 12.762 17.376 12.782 17.409 C 12.815 17.462 12.838 17.5 12.9 17.5 C 13.1 17.6 13.3 17.7 13.6 17.7 C 14.2 17.7 14.8 17.5 15.4 17.2 C 16 16.9 15.5 16.1 14.9 16.3 C 14.84 16.32 14.76 16.352 14.668 16.389 C 14.3 16.536 13.74 16.76 13.5 16.6 C 13.45 16.55 13.425 16.475 13.4 16.4 C 13.375 16.325 13.35 16.25 13.3 16.2 C 13.2 16.1 13.1 16 12.9 16 C 12.6 15.9 12.4 16 12.1 16.2 C 11.8 16.4 11.4 16.6 11.1 16.7 C 11.05 16.7 11 16.725 10.95 16.75 C 10.9 16.775 10.85 16.8 10.8 16.8 C 10.8 16.591 10.946 16.382 11.068 16.206 C 11.121 16.13 11.17 16.06 11.2 16 C 11.3 15.7 11.4 15.4 11.4 15.1 C 11.4 14.5 11 14.1 10.4 14 C 9.9 13.9 9.3 14.1 8.8 14.4 C 7.9 15 7.3 16 7.1 17.1 C 7.1 17.4 7.2 17.6 7.4 17.7 C 7.6 17.7 7.9 17.5 8 17.3 Z M 4.1 8.2 L 13 8.2 C 13.4 8.2 13.8 7.9 13.8 7.4 C 13.8 6.9 13.4 6.6 13 6.6 L 4.1 6.6 C 3.6 6.6 3.3 6.9 3.3 7.4 C 3.3 7.9 3.7 8.2 4.1 8.2 Z M 4.1 5.2 L 13 5.2 C 13.4 5.2 13.8 4.9 13.8 4.4 C 13.8 3.9 13.4 3.6 13 3.6 L 4.1 3.6 C 3.6 3.6 3.3 3.9 3.3 4.4 C 3.3 4.9 3.7 5.2 4.1 5.2 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentDotMonoTodo":{viewBox:"0 0 24 24",body:"<path d=\"M 16.051 0 L 2.007 0 C 0.899 0 0 0.898 0 2.007 L 0 17.305 C 0 18.413 0.898 19.312 2.007 19.312 L 10.957 19.312 L 10.957 14.644 C 10.957 13.302 12.049 12.21 13.391 12.21 L 18.059 12.21 L 18.059 2.007 C 18.059 0.899 17.161 0 16.052 0 L 16.051 0 Z M 4.5 7 C 3.672 7 3 6.328 3 5.5 C 3 4.672 3.672 4 4.5 4 C 5.328 4 6 4.672 6 5.5 C 6 6.328 5.328 7 4.5 7 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.971 2.344)\"/><path d=\"M 0.934 0 L 5.602 0 L 0 5.602 L 0 0.934 C 0 0.418 0.418 0 0.934 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.971 2.344) matrix(1 0 0 1 12.456 13.710)\"/>"},"IconDocumentFileMonoDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 3.662 13.979 L 12.462 13.979 L 12.462 12.479 L 3.662 12.479 L 3.662 13.979 Z M 3.662 16.652 L 12.462 16.652 L 12.462 15.152 L 3.662 15.152 L 3.662 16.652 Z M 3.6 7.146 L 12.401 7.146 L 12.401 3.679 L 3.6 3.679 L 3.6 7.146 Z M 16.989 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 19 C 0 19.265 0.105 19.52 0.293 19.707 C 0.48 19.895 0.735 20 1 20 L 15 20 C 15.265 20 15.52 19.895 15.707 19.707 C 15.895 19.52 16 19.265 16 19 L 16 6.818 L 17.843 4.975 C 17.889 4.929 17.926 4.874 17.951 4.813 C 17.976 4.753 17.989 4.688 17.989 4.622 L 17.989 1 C 17.989 0.735 17.884 0.48 17.696 0.293 C 17.509 0.105 17.254 0 16.989 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentInvestMonoDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 13.8 6.476 C 13.8 6.675 13.721 6.866 13.58 7.006 C 13.44 7.147 13.249 7.226 13.05 7.226 C 12.851 7.226 12.66 7.147 12.52 7.006 C 12.379 6.866 12.3 6.675 12.3 6.476 L 12.3 5.672 L 9.075 8.897 C 9.006 8.967 8.923 9.022 8.832 9.06 C 8.741 9.098 8.643 9.117 8.545 9.117 L 8.542 9.117 C 8.443 9.116 8.345 9.096 8.254 9.058 C 8.163 9.02 8.08 8.963 8.011 8.893 L 6.749 7.61 L 4.53 9.83 C 4.461 9.9 4.378 9.956 4.287 9.993 C 4.196 10.031 4.099 10.05 4 10.05 C 3.852 10.05 3.706 10.007 3.583 9.924 C 3.459 9.842 3.363 9.725 3.306 9.588 C 3.249 9.45 3.235 9.299 3.264 9.154 C 3.293 9.008 3.365 8.875 3.47 8.77 L 6.223 6.016 C 6.364 5.875 6.588 5.776 6.756 5.796 C 6.855 5.796 6.953 5.817 7.044 5.855 C 7.135 5.893 7.218 5.949 7.287 6.02 L 8.549 7.302 L 11.218 4.632 L 10.457 4.632 C 10.258 4.632 10.067 4.553 9.927 4.412 C 9.786 4.272 9.707 4.081 9.707 3.882 C 9.707 3.683 9.786 3.492 9.927 3.352 C 10.067 3.211 10.258 3.132 10.457 3.132 L 13.05 3.132 C 13.249 3.132 13.44 3.211 13.58 3.352 C 13.721 3.492 13.8 3.683 13.8 3.882 L 13.8 6.476 Z M 12.876 13.25 L 4 13.25 C 3.801 13.25 3.61 13.171 3.47 13.03 C 3.329 12.89 3.25 12.699 3.25 12.5 C 3.25 12.301 3.329 12.11 3.47 11.97 C 3.61 11.829 3.801 11.75 4 11.75 L 12.876 11.75 C 13.075 11.75 13.266 11.829 13.406 11.97 C 13.547 12.11 13.626 12.301 13.626 12.5 C 13.626 12.699 13.547 12.89 13.406 13.03 C 13.266 13.171 13.075 13.25 12.876 13.25 Z M 12.876 16.25 L 4 16.25 C 3.801 16.25 3.61 16.171 3.47 16.03 C 3.329 15.89 3.25 15.699 3.25 15.5 C 3.25 15.301 3.329 15.11 3.47 14.97 C 3.61 14.829 3.801 14.75 4 14.75 L 12.876 14.75 C 13.075 14.75 13.266 14.829 13.406 14.97 C 13.547 15.11 13.626 15.301 13.626 15.5 C 13.626 15.699 13.547 15.89 13.406 16.03 C 13.266 16.171 13.075 16.25 12.876 16.25 Z M 16 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 19 C 0 19.265 0.105 19.52 0.293 19.707 C 0.48 19.895 0.735 20 1 20 L 16 20 C 16.265 20 16.52 19.895 16.707 19.707 C 16.895 19.52 17 19.265 17 19 L 17 1 C 17 0.735 16.895 0.48 16.707 0.293 C 16.52 0.105 16.265 0 16 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentLinesMonoDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 0 1 L 0 6 L 6 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2) matrix(1 0 0 1 11 14)\"/><path d=\"M 13 5.25 L 4.124 5.25 C 3.925 5.25 3.734 5.171 3.594 5.03 C 3.453 4.89 3.374 4.699 3.374 4.5 C 3.374 4.301 3.453 4.11 3.594 3.97 C 3.734 3.829 3.925 3.75 4.124 3.75 L 13 3.75 C 13.199 3.75 13.39 3.829 13.53 3.97 C 13.671 4.11 13.75 4.301 13.75 4.5 C 13.75 4.699 13.671 4.89 13.53 5.03 C 13.39 5.171 13.199 5.25 13 5.25 Z M 13 8.25 L 4.124 8.25 C 3.925 8.25 3.734 8.171 3.594 8.03 C 3.453 7.89 3.374 7.699 3.374 7.5 C 3.374 7.301 3.453 7.11 3.594 6.97 C 3.734 6.829 3.925 6.75 4.124 6.75 L 13 6.75 C 13.199 6.75 13.39 6.829 13.53 6.97 C 13.671 7.11 13.75 7.301 13.75 7.5 C 13.75 7.699 13.671 7.89 13.53 8.03 C 13.39 8.171 13.199 8.25 13 8.25 Z M 16 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 19 C 0 19.265 0.105 19.52 0.293 19.707 C 0.48 19.895 0.735 20 1 20 L 9.5 20 L 9.5 15 C 9.5 13.622 10.622 12.5 12 12.5 L 17 12.5 L 17 1 C 17 0.735 16.895 0.48 16.707 0.293 C 16.52 0.105 16.265 0 16 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentMonoDocDocs":{viewBox:"0 0 24 24",body:"<path d=\"M 16 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 19 C 0 19.265 0.105 19.52 0.293 19.707 C 0.48 19.895 0.735 20 1 20 L 9.5 20 L 9.5 15 C 9.5 13.622 10.622 12.5 12 12.5 L 17 12.5 L 17 1 C 17 0.735 16.895 0.48 16.707 0.293 C 16.52 0.105 16.265 0 16 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/><path d=\"M 0 1 L 0 6 L 6 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2) matrix(1 0 0 1 11 14)\"/>"},"IconDocumentRetryMonoDocument":{viewBox:"0 0 24 24",body:"<path d=\"M 14.183 16.05 C 13.91 16.52 13.519 16.911 13.048 17.183 C 12.578 17.455 12.044 17.599 11.5 17.6 C 10.956 17.6 10.422 17.456 9.951 17.183 C 9.481 16.911 9.09 16.52 8.818 16.05 C 8.613 15.698 8.481 15.309 8.427 14.905 C 8.373 14.502 8.4 14.092 8.505 13.699 C 8.61 13.305 8.792 12.937 9.04 12.614 C 9.288 12.291 9.598 12.021 9.951 11.818 C 10.422 11.545 10.956 11.401 11.5 11.4 L 11.5 10.42 L 13.657 12 L 11.5 13.58 L 11.5 12.6 C 11.167 12.601 10.84 12.689 10.551 12.856 C 10.263 13.023 10.023 13.262 9.857 13.551 C 9.732 13.767 9.651 14.005 9.618 14.252 C 9.585 14.5 9.602 14.751 9.666 14.992 C 9.731 15.233 9.842 15.458 9.994 15.656 C 10.146 15.854 10.336 16.02 10.552 16.144 C 10.841 16.309 11.168 16.395 11.501 16.395 C 11.834 16.395 12.161 16.309 12.45 16.144 C 12.738 15.976 12.977 15.737 13.144 15.448 C 13.311 15.16 13.399 14.833 13.401 14.5 C 13.401 14.169 13.312 13.841 13.145 13.551 L 14.183 12.95 C 14.456 13.423 14.601 13.958 14.601 14.5 C 14.601 15.042 14.456 15.578 14.183 16.05 Z M 3.374 7.5 C 3.374 7.301 3.453 7.11 3.594 6.97 C 3.734 6.829 3.925 6.75 4.124 6.75 L 13 6.75 C 13.199 6.75 13.39 6.829 13.53 6.97 C 13.671 7.11 13.75 7.301 13.75 7.5 C 13.75 7.699 13.671 7.89 13.53 8.03 C 13.39 8.171 13.199 8.25 13 8.25 L 4.124 8.25 C 3.925 8.25 3.734 8.171 3.594 8.03 C 3.453 7.89 3.374 7.699 3.374 7.5 Z M 4.124 3.75 L 13 3.75 C 13.199 3.75 13.39 3.829 13.53 3.97 C 13.671 4.11 13.75 4.301 13.75 4.5 C 13.75 4.699 13.671 4.89 13.53 5.03 C 13.39 5.171 13.199 5.25 13 5.25 L 4.124 5.25 C 3.925 5.25 3.734 5.171 3.594 5.03 C 3.453 4.89 3.374 4.699 3.374 4.5 C 3.374 4.301 3.453 4.11 3.594 3.97 C 3.734 3.829 3.925 3.75 4.124 3.75 Z M 16 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 19 C 0 19.265 0.105 19.52 0.293 19.707 C 0.48 19.895 0.735 20 1 20 L 16 20 C 16.265 20 16.52 19.895 16.707 19.707 C 16.895 19.52 17 19.265 17 19 L 17 1 C 17 0.735 16.895 0.48 16.707 0.293 C 16.52 0.105 16.265 0 16 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 2)\"/>"},"IconDocumentSlashMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0.419 17.362 C -0.051 17.779 -0.142 18.492 0.229 19.017 C 0.627 19.581 1.407 19.716 1.971 19.317 L 3.433 18.285 L 3.433 19 C 3.433 19.265 3.538 19.52 3.726 19.707 C 3.913 19.895 4.168 20 4.433 20 L 12.933 20 L 12.933 15 C 12.933 13.622 14.055 12.5 15.433 12.5 L 20.433 12.5 L 20.433 6.28 L 23.345 4.223 C 23.909 3.825 24.044 3.045 23.645 2.481 C 23.275 1.956 22.572 1.803 22.022 2.107 L 0.419 17.362 Z M 20.433 1.424 L 20.433 1 C 20.433 0.735 20.327 0.48 20.14 0.293 C 19.952 0.105 19.698 0 19.433 0 L 4.433 0 C 4.168 0 3.913 0.105 3.726 0.293 C 3.538 0.48 3.433 0.735 3.433 1 L 3.433 13.429 L 20.433 1.424 Z M 14.433 20 L 14.433 15 C 14.433 14.735 14.538 14.48 14.726 14.293 C 14.913 14.105 15.168 14 15.433 14 L 20.433 14 L 14.433 20 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.067 2)\"/>"},"IconDocumentSquareMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 1.182 L 0 18.828 C 0 19.483 0.528 20 1.172 20 L 11.177 20 L 11.177 14.121 C 11.177 12.496 12.496 11.177 14.121 11.177 L 20 11.177 L 20 1.182 C 20 0.528 19.472 0 18.818 0 L 1.182 0 C 0.528 0 0 0.528 0 1.182 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2)\"/><path d=\"M 0 1.172 L 0 7 L 7 0 L 1.172 0 C 0.523 0 0.01 0.523 0.01 1.161\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 13 13)\"/>"},"IconDocumentWonMonoDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 13.036 0 C 13.611 0 14.077 0.466 14.077 1.041 L 14.077 1.93 L 15 1.93 C 16.105 1.93 17 2.825 17 3.93 L 17 19.529 C 17 20.634 16.105 21.529 15 21.529 L 2 21.529 C 0.895 21.529 0 20.634 0 19.529 L 0 3.93 C 0 2.825 0.895 1.93 2 1.93 L 2.923 1.93 L 2.923 1.041 C 2.923 0.466 3.388 0 3.963 0 C 4.538 0 5.004 0.466 5.004 1.041 L 5.004 1.93 L 11.996 1.93 L 11.996 1.041 C 11.996 0.466 12.461 0 13.036 0 Z M 4.082 17.215 C 3.696 17.215 3.382 17.529 3.382 17.915 C 3.382 18.302 3.695 18.615 4.082 18.615 L 12.988 18.615 C 13.375 18.615 13.688 18.302 13.688 17.915 C 13.688 17.529 13.375 17.215 12.988 17.215 L 4.082 17.215 Z M 4.082 14.354 C 3.695 14.354 3.382 14.668 3.382 15.055 C 3.382 15.441 3.695 15.755 4.082 15.755 L 12.988 15.755 L 13.13 15.74 C 13.449 15.675 13.688 15.393 13.688 15.055 C 13.688 14.717 13.449 14.435 13.13 14.369 L 12.988 14.354 L 4.082 14.354 Z M 9.366 6.396 C 9.134 5.549 7.934 5.549 7.701 6.396 L 6.78 9.736 L 6.597 9.071 C 6.589 9.024 6.576 8.978 6.559 8.934 L 5.828 6.275 L 5.777 6.144 C 5.63 5.853 5.294 5.696 4.968 5.786 C 4.642 5.876 4.434 6.182 4.455 6.507 L 4.479 6.647 L 4.984 8.487 L 4.293 8.487 C 3.906 8.487 3.593 8.801 3.593 9.188 C 3.593 9.574 3.906 9.888 4.293 9.888 L 5.37 9.888 L 5.947 11.984 L 5.947 11.985 C 6.179 12.833 7.382 12.833 7.614 11.985 L 7.613 11.984 L 8.533 8.645 L 9.453 11.984 L 9.453 11.985 C 9.685 12.833 10.886 12.833 11.118 11.986 L 11.119 11.987 L 11.697 9.888 L 12.777 9.888 L 12.919 9.873 C 13.238 9.808 13.477 9.526 13.478 9.188 C 13.478 8.849 13.238 8.567 12.919 8.502 L 12.777 8.487 L 12.082 8.487 L 12.589 6.647 C 12.691 6.275 12.472 5.889 12.1 5.786 C 11.773 5.696 11.438 5.853 11.29 6.144 L 11.239 6.275 L 10.286 9.736 L 9.366 6.396 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.465 0.648)\"/>"},"IconDogMonoDogPuppy":{viewBox:"0 0 24 24",body:"<path d=\"M 20.624 9.38 L 19.554 6.91 L 18.824 1.29 C 18.788 1.013 18.674 0.751 18.496 0.536 C 18.317 0.32 18.082 0.16 17.816 0.073 C 17.55 -0.014 17.265 -0.023 16.994 0.045 C 16.723 0.113 16.476 0.257 16.284 0.46 L 13.284 3.64 L 8.124 3.64 L 5.124 0.46 C 4.931 0.257 4.685 0.113 4.414 0.045 C 4.143 -0.023 3.858 -0.014 3.592 0.073 C 3.326 0.16 3.09 0.32 2.912 0.536 C 2.733 0.751 2.62 1.013 2.584 1.29 L 1.924 6.29 L 0.544 9.38 C 0.156 10.165 -0.029 11.035 0.004 11.91 L 0.004 12.05 L 0.004 12.52 C 0.004 12.52 0.004 12.68 0.004 12.76 C 0.004 12.84 0.064 13.13 0.104 13.32 C 0.381 14.494 0.937 15.585 1.724 16.5 C 2.824 17.989 4.26 19.198 5.914 20.03 L 6.204 20.18 L 6.634 20.37 C 6.869 20.476 7.109 20.57 7.354 20.65 L 7.514 20.7 C 7.801 20.8 8.095 20.88 8.394 20.94 L 8.504 20.94 C 8.804 21 9.114 21.05 9.414 21.09 L 9.554 21.09 C 9.902 21.13 10.253 21.15 10.604 21.15 L 10.704 21.15 C 11.004 21.15 11.314 21.15 11.614 21.1 L 12.004 21.05 L 12.614 20.95 L 13.054 20.84 C 13.223 20.804 13.39 20.757 13.554 20.7 L 14.144 20.5 L 14.394 20.41 C 16.331 19.627 18.028 18.347 19.314 16.7 L 19.464 16.56 C 20.329 15.602 20.899 14.415 21.105 13.141 C 21.311 11.867 21.143 10.561 20.624 9.38 Z M 8.054 9.8 C 7.856 9.8 7.663 9.741 7.498 9.631 C 7.334 9.521 7.206 9.365 7.13 9.183 C 7.054 9 7.034 8.799 7.073 8.605 C 7.112 8.411 7.207 8.233 7.347 8.093 C 7.486 7.953 7.665 7.858 7.859 7.819 C 8.053 7.781 8.254 7.8 8.436 7.876 C 8.619 7.952 8.775 8.08 8.885 8.244 C 8.995 8.409 9.054 8.602 9.054 8.8 C 9.054 9.062 8.951 9.313 8.768 9.5 C 8.585 9.687 8.335 9.795 8.074 9.8 L 8.054 9.8 Z M 12.454 16.55 C 12.454 17.048 12.256 17.527 11.903 17.879 C 11.551 18.232 11.072 18.43 10.574 18.43 C 10.075 18.43 9.597 18.232 9.244 17.879 C 8.892 17.527 8.694 17.048 8.694 16.55 L 8.694 14.91 L 8.754 14.91 C 9.178 14.925 9.596 14.795 9.936 14.54 C 10.276 14.285 10.519 13.922 10.624 13.51 C 10.549 13.506 10.477 13.487 10.41 13.454 C 10.343 13.422 10.283 13.376 10.234 13.32 L 9.134 12.02 C 9.066 11.941 9.023 11.844 9.01 11.741 C 8.996 11.638 9.012 11.533 9.057 11.439 C 9.101 11.345 9.171 11.266 9.26 11.211 C 9.348 11.156 9.45 11.128 9.554 11.13 L 11.734 11.13 C 11.836 11.132 11.935 11.163 12.021 11.218 C 12.107 11.274 12.175 11.353 12.219 11.445 C 12.263 11.537 12.28 11.64 12.268 11.742 C 12.257 11.843 12.217 11.94 12.154 12.02 L 11.064 13.32 C 10.961 13.434 10.817 13.502 10.664 13.51 C 10.765 13.901 10.99 14.249 11.306 14.501 C 11.621 14.753 12.01 14.897 12.414 14.91 L 12.474 14.91 L 12.474 16.58 L 12.454 16.55 Z M 13.094 9.8 C 12.896 9.8 12.703 9.741 12.538 9.631 C 12.374 9.521 12.246 9.365 12.17 9.183 C 12.094 9 12.074 8.799 12.113 8.605 C 12.152 8.411 12.247 8.233 12.387 8.093 C 12.526 7.953 12.705 7.858 12.899 7.819 C 13.093 7.781 13.294 7.8 13.476 7.876 C 13.659 7.952 13.815 8.08 13.925 8.244 C 14.035 8.409 14.094 8.602 14.094 8.8 C 14.094 9.062 13.991 9.313 13.808 9.5 C 13.625 9.687 13.375 9.795 13.114 9.8 L 13.094 9.8 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.376 1.090)\"/><path d=\"M 0 0 L 25 0 L 25 25 L 0 25 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 -0.500 -0.500)\"/>"},"IconDollarMonoDollar":{viewBox:"0 0 24 24",body:"<path d=\"M 11.203 11.846 C 11.092 11.075 10.376 8.528 5.845 8.112 C 3.701 7.916 2.838 7.137 2.75 6.53 C 2.667 5.96 3.15 5.328 3.915 5.022 C 5.606 4.321 7.541 4.696 8.842 5.98 C 9.339 6.468 10.134 6.463 10.624 5.967 C 11.112 5.471 11.106 4.674 10.611 4.185 C 9.594 3.182 8.328 2.537 6.99 2.279 L 6.99 1.26 C 6.99 0.564 6.427 0 5.73 0 C 5.033 0 4.47 0.564 4.47 1.26 L 4.47 2.271 C 3.961 2.359 3.454 2.485 2.964 2.689 C 1.117 3.428 0.004 5.157 0.256 6.893 C 0.368 7.663 1.086 10.206 5.614 10.622 C 7.758 10.818 8.621 11.599 8.709 12.207 C 8.792 12.777 8.309 13.407 7.561 13.704 C 4.398 14.97 2.342 12.483 2.248 12.365 C 1.818 11.823 1.029 11.727 0.483 12.155 C -0.065 12.584 -0.161 13.376 0.268 13.924 C 0.966 14.816 2.474 16.029 4.471 16.432 L 4.471 17.461 C 4.471 18.157 5.035 18.721 5.731 18.721 C 6.427 18.721 6.991 18.158 6.991 17.461 L 6.991 16.471 C 7.477 16.386 7.978 16.251 8.495 16.045 C 10.342 15.311 11.456 13.583 11.205 11.846 L 11.203 11.846 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.385 2.639)\"/>"},"IconDonationMonoDonationFund":{viewBox:"0 0 24 24",body:"<path d=\"M 11.604 15.995 C 10.625 16.56 9.876 17.362 9.364 18.282 L 9.364 14.705 C 9.404 14.683 9.449 14.673 9.487 14.647 C 11.176 13.531 14.865 10.86 16.452 7.871 C 18.545 3.93 16.087 0 12.84 0 C 9.593 0.001 8.614 2.977 8.614 2.977 C 8.614 2.977 7.635 0.001 4.388 0.001 C 1.141 0.001 -1.317 3.932 0.776 7.872 C 2.363 10.861 6.052 13.532 7.741 14.648 C 7.78 14.674 7.824 14.684 7.864 14.706 L 7.864 18.283 C 7.352 17.363 6.602 16.561 5.624 15.996 C 3.896 14.998 1.882 14.957 0.183 15.698 C 0.391 17.54 1.433 19.263 3.162 20.261 C 4.89 21.259 6.904 21.299 8.603 20.559 L 8.627 20.559 C 10.326 21.3 12.34 21.259 14.068 20.261 C 15.796 19.263 16.839 17.539 17.047 15.698 C 15.347 14.956 13.333 14.997 11.604 15.995 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.386 1.466)\"/>"},"IconDotsCircleMonoDot":{viewBox:"0 0 24 24",body:"<path d=\"M 15.914 12.538 C 15.709 12.543 15.505 12.507 15.314 12.432 C 15.122 12.357 14.948 12.245 14.801 12.101 C 14.654 11.958 14.538 11.787 14.458 11.598 C 14.378 11.408 14.337 11.205 14.337 11 C 14.337 10.795 14.379 10.592 14.458 10.402 C 14.538 10.213 14.655 10.042 14.802 9.899 C 14.949 9.756 15.123 9.643 15.314 9.568 C 15.506 9.494 15.71 9.458 15.915 9.463 C 16.316 9.473 16.697 9.64 16.977 9.927 C 17.257 10.215 17.413 10.6 17.413 11.001 C 17.413 11.402 17.256 11.787 16.976 12.074 C 16.696 12.362 16.315 12.528 15.914 12.538 Z M 11 12.538 C 10.795 12.543 10.591 12.507 10.4 12.432 C 10.208 12.357 10.034 12.245 9.887 12.101 C 9.74 11.958 9.624 11.787 9.544 11.598 C 9.464 11.408 9.423 11.205 9.423 11 C 9.423 10.795 9.465 10.592 9.544 10.402 C 9.624 10.213 9.741 10.042 9.888 9.899 C 10.035 9.756 10.209 9.643 10.4 9.568 C 10.592 9.494 10.796 9.458 11.001 9.463 C 11.402 9.473 11.783 9.64 12.063 9.927 C 12.343 10.215 12.499 10.6 12.499 11.001 C 12.499 11.402 12.342 11.787 12.062 12.074 C 11.782 12.362 11.401 12.528 11 12.538 Z M 6.086 12.538 C 5.881 12.543 5.676 12.507 5.485 12.432 C 5.294 12.357 5.12 12.245 4.973 12.101 C 4.826 11.958 4.709 11.786 4.629 11.597 C 4.549 11.408 4.508 11.204 4.508 10.999 C 4.508 10.794 4.55 10.59 4.629 10.401 C 4.709 10.212 4.826 10.04 4.973 9.897 C 5.12 9.754 5.295 9.641 5.486 9.566 C 5.677 9.492 5.882 9.456 6.087 9.461 C 6.488 9.471 6.87 9.638 7.15 9.926 C 7.43 10.213 7.586 10.599 7.586 11 C 7.586 11.401 7.429 11.787 7.149 12.074 C 6.869 12.361 6.487 12.528 6.086 12.538 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.076 4.925 22 11 22 C 17.075 22 22 17.076 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconDotsMonoDotDots":{viewBox:"0 0 24 24",body:"<path d=\"M 2 4.001 C 1.737 4.001 1.477 3.949 1.234 3.849 C 0.992 3.748 0.771 3.601 0.586 3.415 C 0.4 3.229 0.253 3.008 0.152 2.766 C 0.052 2.523 0 2.263 0 2 C 0 1.737 0.052 1.477 0.152 1.234 C 0.253 0.992 0.4 0.771 0.586 0.586 C 0.772 0.4 0.993 0.253 1.235 0.152 C 1.478 0.052 1.738 0 2.001 0 C 2.532 0 3.04 0.211 3.415 0.586 C 3.79 0.962 4.001 1.47 4.001 2.001 C 4.001 2.532 3.79 3.04 3.415 3.415 C 3.039 3.79 2.531 4.001 2 4.001 Z M 8.771 4.001 C 8.241 4.001 7.732 3.79 7.357 3.415 C 6.982 3.04 6.771 2.531 6.771 2.001 C 6.771 1.471 6.982 0.962 7.357 0.587 C 7.732 0.212 8.241 0.001 8.771 0.001 C 9.301 0.001 9.81 0.212 10.185 0.587 C 10.56 0.962 10.771 1.471 10.771 2.001 C 10.771 2.531 10.56 3.04 10.185 3.415 C 9.81 3.79 9.301 4.001 8.771 4.001 Z M 15.541 4.001 C 15.278 4.001 15.018 3.949 14.775 3.849 C 14.533 3.748 14.312 3.601 14.127 3.415 C 13.941 3.229 13.794 3.008 13.693 2.766 C 13.593 2.523 13.541 2.263 13.541 2 C 13.541 1.737 13.593 1.477 13.693 1.234 C 13.794 0.992 13.941 0.771 14.127 0.586 C 14.313 0.4 14.534 0.253 14.776 0.152 C 15.019 0.052 15.279 0 15.542 0 C 16.073 0 16.581 0.211 16.956 0.586 C 17.331 0.962 17.542 1.47 17.542 2.001 C 17.542 2.532 17.331 3.04 16.956 3.415 C 16.58 3.79 16.072 4.001 15.541 4.001 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.230 9.999)\"/>"},"IconDotsNineMonoHandle":{viewBox:"0 0 24 24",body:"<path d=\"M 1.8 0 C 2.794 0 3.6 0.806 3.6 1.8 C 3.6 2.794 2.794 3.6 1.8 3.6 C 0.806 3.6 0 2.794 0 1.8 C 0 0.806 0.806 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 13.600 12)\"/><path d=\"M 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 6.800 12)\"/><path d=\"M 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 0 12)\"/><path d=\"M 1.8 0 C 2.794 0 3.6 0.806 3.6 1.8 C 3.6 2.794 2.794 3.6 1.8 3.6 C 0.806 3.6 0 2.794 0 1.8 C 0 0.806 0.806 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 13.600 6)\"/><path d=\"M 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 6.800 6)\"/><path d=\"M 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 0 6)\"/><path d=\"M 1.8 0 C 2.794 0 3.6 0.806 3.6 1.8 C 3.6 2.794 2.794 3.6 1.8 3.6 C 0.806 3.6 0 2.794 0 1.8 C 0 0.806 0.806 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 13.600 0)\"/><path d=\"M 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200) matrix(1 0 0 1 6.800 0)\"/><path d=\"M 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 4.200)\"/>"},"IconDotsSixHorizontalMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.8 0 C 2.277 0 2.735 0.19 3.073 0.527 C 3.41 0.865 3.6 1.323 3.6 1.8 C 3.6 2.277 3.41 2.735 3.073 3.073 C 2.735 3.41 2.277 3.6 1.8 3.6 C 1.323 3.6 0.865 3.41 0.527 3.073 C 0.19 2.735 0 2.277 0 1.8 C 0 1.323 0.19 0.865 0.527 0.527 C 0.865 0.19 1.323 0 1.8 0 Z M 8.6 3.6 C 7.6 3.6 6.8 2.8 6.8 1.8 C 6.8 0.8 7.6 0 8.6 0 C 9.6 0 10.4 0.8 10.4 1.8 C 10.4 2.8 9.6 3.6 8.6 3.6 Z M 15.4 3.6 C 14.4 3.6 13.6 2.8 13.6 1.8 C 13.6 0.8 14.4 0 15.4 0 C 16.4 0 17.2 0.8 17.2 1.8 C 17.2 2.8 16.4 3.6 15.4 3.6 Z M 1.8 6 C 2.277 6 2.735 6.19 3.073 6.527 C 3.41 6.865 3.6 7.323 3.6 7.8 C 3.6 8.277 3.41 8.735 3.073 9.073 C 2.735 9.41 2.277 9.6 1.8 9.6 C 1.323 9.6 0.865 9.41 0.527 9.073 C 0.19 8.735 0 8.277 0 7.8 C 0 7.323 0.19 6.865 0.527 6.527 C 0.865 6.19 1.323 6 1.8 6 Z M 8.6 9.6 C 7.6 9.6 6.8 8.8 6.8 7.8 C 6.8 6.8 7.6 6 8.6 6 C 9.6 6 10.4 6.8 10.4 7.8 C 10.4 8.8 9.6 9.6 8.6 9.6 Z M 15.4 9.6 C 14.4 9.6 13.6 8.8 13.6 7.8 C 13.6 6.8 14.4 6 15.4 6 C 16.4 6 17.2 6.8 17.2 7.8 C 17.2 8.8 16.4 9.6 15.4 9.6 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.525 7.325)\"/>"},"IconDotsSixVerticalMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.8 13.6 C 2.277 13.6 2.735 13.79 3.073 14.127 C 3.41 14.465 3.6 14.923 3.6 15.4 C 3.6 15.877 3.41 16.335 3.073 16.673 C 2.735 17.01 2.277 17.2 1.8 17.2 C 1.323 17.2 0.865 17.01 0.527 16.673 C 0.19 16.335 0 15.877 0 15.4 C 0 14.923 0.19 14.465 0.527 14.127 C 0.865 13.79 1.323 13.6 1.8 13.6 Z M 3.6 8.6 C 3.6 9.6 2.8 10.4 1.8 10.4 C 0.8 10.4 0 9.6 0 8.6 C 0 7.6 0.8 6.8 1.8 6.8 C 2.8 6.8 3.6 7.6 3.6 8.6 Z M 3.6 1.8 C 3.6 2.8 2.8 3.6 1.8 3.6 C 0.8 3.6 0 2.8 0 1.8 C 0 0.8 0.8 0 1.8 0 C 2.8 0 3.6 0.8 3.6 1.8 Z M 7.8 13.6 C 8.277 13.6 8.735 13.79 9.073 14.127 C 9.41 14.465 9.6 14.923 9.6 15.4 C 9.6 15.877 9.41 16.335 9.073 16.673 C 8.735 17.01 8.277 17.2 7.8 17.2 C 7.323 17.2 6.865 17.01 6.527 16.673 C 6.19 16.335 6 15.877 6 15.4 C 6 14.923 6.19 14.465 6.527 14.127 C 6.865 13.79 7.323 13.6 7.8 13.6 Z M 9.6 8.6 C 9.6 9.6 8.8 10.4 7.8 10.4 C 6.8 10.4 6 9.6 6 8.6 C 6 7.6 6.8 6.8 7.8 6.8 C 8.8 6.8 9.6 7.6 9.6 8.6 Z M 9.6 1.8 C 9.6 2.8 8.8 3.6 7.8 3.6 C 6.8 3.6 6 2.8 6 1.8 C 6 0.8 6.8 0 7.8 0 C 8.8 0 9.6 0.8 9.6 1.8 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 7.325 3.525)\"/>"},"IconDotsVertical1Mono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 2 C 0 1.737 0.052 1.477 0.152 1.234 C 0.253 0.992 0.4 0.771 0.586 0.586 C 0.772 0.4 0.993 0.253 1.235 0.152 C 1.478 0.052 1.738 0 2.001 0 C 2.264 0 2.524 0.052 2.767 0.152 C 3.009 0.253 3.23 0.4 3.415 0.586 C 3.601 0.772 3.748 0.993 3.849 1.235 C 3.949 1.478 4.001 1.738 4.001 2.001 C 4.001 2.532 3.79 3.04 3.415 3.415 C 3.039 3.79 2.531 4.001 2 4.001 C 1.469 4.001 0.961 3.79 0.586 3.415 C 0.211 3.039 0 2.531 0 2 Z M 0 8.771 C 0 8.241 0.211 7.732 0.586 7.357 C 0.961 6.982 1.47 6.771 2 6.771 C 2.53 6.771 3.039 6.982 3.414 7.357 C 3.789 7.732 4 8.241 4 8.771 C 4 9.301 3.789 9.81 3.414 10.185 C 3.039 10.56 2.53 10.771 2 10.771 C 1.47 10.771 0.961 10.56 0.586 10.185 C 0.211 9.81 0 9.301 0 8.771 Z M 0 15.541 C 0 15.278 0.052 15.018 0.152 14.775 C 0.253 14.533 0.4 14.312 0.586 14.127 C 0.772 13.941 0.993 13.794 1.235 13.693 C 1.478 13.593 1.738 13.541 2.001 13.541 C 2.264 13.541 2.524 13.593 2.767 13.694 C 3.009 13.794 3.23 13.942 3.415 14.127 C 3.601 14.313 3.748 14.534 3.849 14.776 C 3.949 15.019 4.001 15.279 4.001 15.542 C 4.001 16.073 3.79 16.581 3.415 16.956 C 3.039 17.331 2.531 17.542 2 17.542 C 1.469 17.542 0.961 17.331 0.586 16.956 C 0.211 16.58 0 16.072 0 15.541 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 10.230 3)\"/>"},"IconDownloadMonoDownloadSave":{viewBox:"0 0 24 24",body:"<path d=\"M 5.563 13.72 C 5.773 13.93 6.063 14.04 6.343 14.04 C 6.623 14.04 6.903 13.93 7.123 13.72 L 12.352 8.48 C 12.783 8.05 12.783 7.35 12.352 6.92 C 11.922 6.49 11.223 6.49 10.793 6.92 L 7.443 10.27 L 7.443 1.1 C 7.443 0.49 6.953 0 6.343 0 C 5.733 0 5.243 0.49 5.243 1.1 L 5.243 10.28 L 1.883 6.93 C 1.453 6.5 0.752 6.5 0.322 6.93 C -0.108 7.36 -0.108 8.06 0.322 8.49 L 5.563 13.72 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.500 1.680) matrix(1 0 0 1 4.147 0)\"/><path d=\"M 19.88 0 C 19.27 0 18.78 0.49 18.78 1.1 L 18.78 5.31 C 18.78 6.03 18.2 6.61 17.48 6.61 L 3.5 6.61 C 2.78 6.61 2.2 6.03 2.2 5.31 L 2.2 1.1 C 2.2 0.49 1.71 0 1.1 0 C 0.49 0 0 0.49 0 1.1 L 0 5.31 C 0 7.24 1.57 8.81 3.5 8.81 L 17.48 8.81 C 19.41 8.81 20.98 7.24 20.98 5.31 L 20.98 1.1 C 20.98 0.49 20.49 0 19.88 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.500 1.680) matrix(1 0 0 1 0 11.410)\"/>"},"IconDutchpayMonoDutchpayPay":{viewBox:"0 0 24 24",body:"<path d=\"M 15.975 2.8 C 15.975 2.5 15.875 2.1 15.575 1.9 C 15.075 1.4 14.275 1.4 13.775 1.9 L 0.375 15.3 C -0.125 15.8 -0.125 16.6 0.375 17.1 C 0.575 17.4 0.875 17.5 1.275 17.5 C 1.675 17.5 1.975 17.4 2.175 17.1 L 15.575 3.8 C 15.775 3.5 15.975 3.2 15.975 2.8 Z M 1.075 3.2 C 1.275 3.2 1.475 3.1 1.675 3 L 2.575 2.4 L 2.575 7.8 C 2.575 8.5 3.075 9 3.775 9 C 4.475 9 4.975 8.5 4.975 7.8 L 4.975 1.3 C 4.975 0.5 4.475 0 3.575 0 C 3.075 0 2.775 0.1 2.275 0.4 L 0.675 1.4 C 0.275 1.6 0.175 1.9 0.175 2.3 C 0.175 2.8 0.575 3.2 1.075 3.2 Z M 16.475 10.3 C 15.775 10.3 15.375 10.7 15.375 11.5 L 15.375 14.9 L 12.475 10.9 C 12.175 10.5 11.775 10.3 11.375 10.3 C 10.675 10.3 10.275 10.7 10.275 11.4 L 10.275 17.7 C 10.275 18.4 10.675 18.9 11.375 18.9 C 12.075 18.9 12.475 18.5 12.475 17.7 L 12.475 14.2 L 15.375 18.2 C 15.675 18.6 15.975 18.8 16.475 18.8 C 17.175 18.8 17.575 18.4 17.575 17.7 L 17.575 11.5 C 17.575 10.7 17.175 10.3 16.475 10.3 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.319 2.432)\"/>"},"IconEarthMonoEarthGlobe":{viewBox:"0 0 24 24",body:"<path d=\"M 0 18.9 C 1.729 18.556 3.226 16.456 3.98 13.586 L 0 13.586 L 0 18.9 Z M 4.5 9.45 C 4.5 8.356 4.392 7.302 4.202 6.314 L 0 6.314 L 0 12.586 L 4.204 12.586 C 4.393 11.598 4.5 10.544 4.5 9.45 Z M 0 0 L 0 5.314 L 3.98 5.314 C 3.227 2.444 1.73 0.344 0 0 Z M 5.5 9.45 C 5.5 10.547 5.408 11.6 5.237 12.586 L 9.521 12.586 C 9.832 11.596 10.001 10.542 10.001 9.45 C 10.002 8.386 9.84 7.329 9.521 6.314 L 5.237 6.314 C 5.408 7.301 5.5 8.354 5.5 9.45 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.500) matrix(1 0 0 1 11 1.050)\"/><path d=\"M 15.18 6.364 L 19.296 6.364 C 17.686 2.626 13.968 0 9.648 0 C 12.168 0 14.28 2.59 15.18 6.364 Z M 4.115 6.364 C 5.015 2.59 7.128 0 9.648 0 C 5.328 0 1.609 2.626 0 6.364 L 4.116 6.364 L 4.115 6.364 Z M 9.148 19.95 L 9.148 14.636 L 5.168 14.636 C 5.923 17.506 7.42 19.606 9.148 19.95 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.500) matrix(1 0 0 1 0.852 0)\"/><path d=\"M 4.967 13.586 L 0.852 13.586 C 2.46 17.326 6.178 19.95 10.5 19.95 C 7.98 19.95 5.867 17.361 4.967 13.586 Z M 16.033 13.586 C 15.132 17.361 13.02 19.95 10.5 19.95 C 14.82 19.95 18.539 17.325 20.147 13.586 L 16.032 13.586 L 16.033 13.586 Z M 0.479 6.314 C 0.16 7.329 -0.001 8.386 0 9.45 C 0 10.543 0.167 11.596 0.479 12.586 L 4.762 12.586 C 4.585 11.55 4.498 10.501 4.5 9.45 C 4.5 8.353 4.591 7.301 4.762 6.314 L 0.479 6.314 Z M 9.999 0 C 8.27 0.344 6.773 2.444 6.019 5.314 L 9.999 5.314 L 9.999 0 Z M 9.999 6.314 L 5.796 6.314 C 5.4 8.386 5.4 10.514 5.796 12.586 L 10 12.586 L 10 6.314 L 9.999 6.314 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.500) matrix(1 0 0 1 0 1.050)\"/>"},"IconEducationMonoEducationGraduate":{viewBox:"0 0 24 24",body:"<path d=\"M 8.915 3.703 C 8.535 3.923 8.104 4.038 7.665 4.038 C 7.226 4.039 6.795 3.924 6.415 3.704 L 0 0 L 0 3.902 C 0 4.259 0.19 4.589 0.5 4.767 L 7.165 8.616 C 7.475 8.794 7.855 8.794 8.165 8.616 L 14.83 4.766 C 15.14 4.589 15.33 4.259 15.33 3.902 L 15.33 0 L 8.915 3.703 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.462 1.648) matrix(1 0 0 1 3.881 11.639)\"/><path d=\"M 22.591 6.224 L 12.045 0.134 C 11.893 0.046 11.72 0 11.545 0 C 11.369 0 11.197 0.046 11.045 0.134 L 0.5 6.224 C 0.348 6.311 0.222 6.438 0.134 6.59 C 0.046 6.742 0 6.914 0 7.09 C 0 7.265 0.046 7.437 0.134 7.589 C 0.222 7.742 0.348 7.868 0.5 7.956 L 11.047 14.044 C 11.199 14.131 11.371 14.178 11.547 14.178 C 11.723 14.178 11.895 14.131 12.047 14.044 L 20.445 9.196 L 20.445 13.485 L 21.945 13.485 L 21.945 8.329 L 22.593 7.955 C 22.745 7.867 22.871 7.741 22.959 7.588 C 23.047 7.436 23.093 7.264 23.093 7.089 C 23.093 6.913 23.047 6.741 22.959 6.589 C 22.871 6.437 22.745 6.31 22.593 6.223\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.462 1.648)\"/>"},"IconEmojiFireMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18 4.999 C 18.224 6.612 18.051 7.73 16.821 7.73 C 15.032 7.73 15.032 3.853 12.011 1.734 C 8.991 -0.485 6.866 0.019 6.753 0.121 C 9.214 2.038 7.872 5.108 6.194 5.915 C 4.628 6.722 2.819 5.637 3.714 3.217 C 1.353 5.263 0 7.727 0 11.001 C 0 16.507 4.516 21.001 9.997 21.001 C 16 21.001 20 16.001 20 11.001 C 20 9.001 19.472 7.001 18.001 5 L 18 4.999 Z M 9.997 19.933 C 7.778 19.933 6.063 18.218 6.063 15.999 C 6.063 12.772 9.997 10.553 9.997 10.553 C 9.997 10.553 13.931 12.772 13.931 15.999 C 13.931 18.116 12.216 19.933 9.997 19.933 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.999 1.000)\"/><path d=\"M 3.934 0 C 3.934 0 0 2.219 0 5.446 C 0 7.665 1.715 9.38 3.934 9.38 C 6.153 9.38 7.868 7.565 7.868 5.446 C 7.868 2.219 3.934 0 3.934 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.999 1.000) matrix(1 0 0 1 6.067 10.554)\"/>"},"IconEmojiMonoEmojiHappy":{viewBox:"0 0 24 24",body:"<path d=\"M 11 16.459 C 8.336 16.459 6.113 14.898 5.605 12.824 C 5.491 12.356 5.942 11.922 6.522 11.922 L 15.478 11.922 C 16.058 11.922 16.509 12.356 16.395 12.824 C 15.887 14.898 13.664 16.459 11 16.459 Z M 8.286 6.595 C 8.679 6.595 9.055 6.75 9.333 7.028 C 9.611 7.305 9.767 7.681 9.767 8.074 C 9.767 8.467 9.612 8.843 9.334 9.121 C 9.057 9.399 8.681 9.555 8.288 9.555 C 8.094 9.555 7.901 9.517 7.722 9.443 C 7.542 9.368 7.379 9.26 7.241 9.122 C 6.963 8.845 6.807 8.469 6.807 8.076 C 6.807 7.683 6.962 7.307 7.24 7.029 C 7.517 6.751 7.893 6.595 8.286 6.595 Z M 13.921 6.595 C 14.12 6.588 14.318 6.62 14.504 6.691 C 14.69 6.762 14.859 6.87 15.003 7.008 C 15.146 7.146 15.26 7.311 15.338 7.494 C 15.416 7.677 15.456 7.874 15.456 8.073 C 15.457 8.272 15.417 8.469 15.339 8.652 C 15.261 8.835 15.147 9.001 15.004 9.139 C 14.861 9.277 14.692 9.385 14.506 9.456 C 14.32 9.527 14.122 9.56 13.923 9.553 C 13.54 9.539 13.178 9.377 12.912 9.102 C 12.645 8.826 12.497 8.458 12.496 8.075 C 12.496 7.692 12.644 7.324 12.91 7.048 C 13.176 6.772 13.538 6.609 13.921 6.595 Z M 11 0 C 4.925 0 0 4.924 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.924 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.980)\"/>"},"IconEnterMonoEnterNext":{viewBox:"0 0 24 24",body:"<path d=\"M 18.48 1.09 C 18.48 0.48 17.99 0 17.38 0 L 17.37 0 C 16.76 0 16.27 0.5 16.28 1.11 L 16.32 9.69 C 16.32 10.09 16.17 10.47 15.88 10.75 C 15.6 11.03 15.22 11.19 14.82 11.19 L 3.76 11.19 L 7.69 7.26 C 8.12 6.83 8.12 6.13 7.69 5.7 C 7.26 5.27 6.57 5.27 6.13 5.7 L 0.32 11.51 C 0.11 11.72 0 12 0 12.29 C 0 12.58 0.12 12.86 0.32 13.07 L 6.13 18.88 C 6.34 19.09 6.63 19.2 6.91 19.2 C 7.19 19.2 7.47 19.09 7.69 18.88 C 8.12 18.45 8.12 17.75 7.69 17.33 L 3.76 13.4 L 14.83 13.4 C 15.82 13.4 16.75 13.01 17.45 12.31 C 18.15 11.61 18.53 10.68 18.53 9.69 L 18.48 1.09 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.230 2.910)\"/>"},"IconEnterRightMonoEnter":{viewBox:"0 0 24 24",body:"<path d=\"M 18.48 1.09 C 18.48 0.48 17.99 0 17.38 0 L 17.37 0 C 16.76 0 16.27 0.5 16.28 1.11 L 16.32 9.69 C 16.32 10.09 16.17 10.47 15.88 10.75 C 15.6 11.03 15.22 11.19 14.82 11.19 L 3.76 11.19 L 7.69 7.26 C 8.12 6.83 8.12 6.13 7.69 5.7 C 7.26 5.27 6.57 5.27 6.13 5.7 L 0.32 11.51 C 0.11 11.72 0 12 0 12.29 C 0 12.58 0.12 12.86 0.32 13.07 L 6.13 18.88 C 6.34 19.09 6.63 19.2 6.91 19.2 C 7.19 19.2 7.47 19.09 7.69 18.88 C 8.12 18.45 8.12 17.75 7.69 17.33 L 3.76 13.4 L 14.83 13.4 C 15.82 13.4 16.75 13.01 17.45 12.31 C 18.15 11.61 18.53 10.68 18.53 9.69 L 18.48 1.09 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(-1 0 0 1 21.730 2.400)\"/>"},"IconEnvelopeMonoLetter":{viewBox:"0 0 24 24",body:"<path d=\"M 16.681 14.507 L 16.681 13.507 L 1.319 13.507 L 1.319 14.507 L 1.319 15.507 L 16.681 15.507 L 16.681 14.507 Z M 1.319 14.507 L 1.319 13.507 C 1.143 13.507 1 13.364 1 13.188 L 0 13.188 L -1 13.188 C -1 14.468 0.039 15.507 1.319 15.507 L 1.319 14.507 Z M 0 13.188 L 1 13.188 L 1 1.319 L 0 1.319 L -1 1.319 L -1 13.188 L 0 13.188 Z M 0 1.319 L 1 1.319 C 1 1.143 1.143 1 1.319 1 L 1.319 0 L 1.319 -1 C 0.039 -1 -1 0.037 -1 1.319 L 0 1.319 Z M 1.319 0 L 1.319 1 L 16.681 1 L 16.681 0 L 16.681 -1 L 1.319 -1 L 1.319 0 Z M 16.681 0 L 16.681 1 C 16.858 1 17 1.142 17 1.319 L 18 1.319 L 19 1.319 C 19 0.038 17.962 -1 16.681 -1 L 16.681 0 Z M 18 1.319 L 17 1.319 L 17 13.188 L 18 13.188 L 19 13.188 L 19 1.319 L 18 1.319 Z M 18 13.188 L 17 13.188 C 17 13.364 16.857 13.507 16.681 13.507 L 16.681 14.507 L 16.681 15.507 C 17.963 15.507 19 14.468 19 13.188 L 18 13.188 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(-1 0 0 1 21 5)\"/><path d=\"M 0.643 -0.766 C 0.22 -1.121 -0.411 -1.066 -0.766 -0.643 C -1.121 -0.22 -1.066 0.411 -0.643 0.766 L 0 0 L 0.643 -0.766 Z M 8.702 7.307 L 8.059 8.073 C 8.431 8.385 8.973 8.385 9.345 8.073 L 8.702 7.307 Z M 18.048 0.766 C 18.471 0.411 18.526 -0.22 18.171 -0.643 C 17.816 -1.066 17.185 -1.121 16.762 -0.766 L 17.405 0 L 18.048 0.766 Z M 0 0 L -0.643 0.766 L 8.059 8.073 L 8.702 7.307 L 9.345 6.541 L 0.643 -0.766 L 0 0 Z M 8.702 7.307 L 9.345 8.073 L 18.048 0.766 L 17.405 0 L 16.762 -0.766 L 8.059 6.541 L 8.702 7.307 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(-1 0 0 1 21 5) matrix(1 0 0 1 0.298 0.484)\"/>"},"IconEqualMonoEqalSame":{viewBox:"0 0 24 24",body:"<path d=\"M 13.365 2.505 L 1.485 2.505 C 0.665 2.505 0 1.945 0 1.253 C 0 0.561 0.665 0 1.485 0 L 13.365 0 C 14.185 0 14.85 0.561 14.85 1.253 C 14.85 1.944 14.185 2.506 13.365 2.506 M 13.365 8.77 L 1.485 8.77 C 0.665 8.77 0 8.209 0 7.517 C 0 6.826 0.665 6.264 1.485 6.264 L 13.365 6.264 C 14.185 6.264 14.85 6.826 14.85 7.517 C 14.85 8.209 14.185 8.77 13.365 8.77 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.575 7.615)\"/>"},"IconExcelMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0.01 1.162 L 0 1.172 L 0 7 L 7 0 L 1.172 0 C 0.523 0 0.01 0.523 0.01 1.162 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 13 13)\"/><path d=\"M 18.818 0 L 1.182 0 C 0.528 0 0 0.528 0 1.182 L 0 18.829 C 0 19.483 0.528 20 1.172 20 L 11.177 20 L 11.177 14.122 C 11.177 12.496 12.496 11.177 14.121 11.177 L 20 11.177 L 20 1.182 C 20 0.528 19.472 0 18.818 0 Z M 5.918 5.604 L 7.889 8.497 C 7.95 8.878 7.661 8.986 7.33 8.986 L 6.584 8.986 C 6.263 8.97 6.205 8.953 5.999 8.586 L 4.983 6.721 L 4.97 6.706 L 4.957 6.721 L 3.941 8.586 C 3.735 8.953 3.677 8.97 3.356 8.986 L 2.61 8.986 C 2.279 8.986 1.99 8.878 2.051 8.497 L 4.022 5.604 L 4.023 5.603 L 3.985 5.559 L 2.085 2.739 C 1.935 2.522 2.207 2.222 2.587 2.222 L 3.333 2.222 C 3.664 2.222 3.705 2.265 3.871 2.537 L 4.955 4.463 L 4.97 4.481 L 4.985 4.463 L 6.069 2.537 C 6.235 2.265 6.276 2.222 6.607 2.222 L 7.353 2.222 C 7.733 2.222 8.005 2.522 7.856 2.739 L 5.955 5.559 L 5.917 5.603 L 5.918 5.604 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2)\"/>"},"IconExclamationCircleMonoExclamation":{viewBox:"0 0 24 24",body:"<path d=\"M 11 16.118 C 10.682 16.118 10.377 15.992 10.151 15.767 C 9.926 15.541 9.8 15.236 9.8 14.918 C 9.8 14.6 9.926 14.295 10.151 14.069 C 10.377 13.844 10.682 13.718 11 13.718 C 11.318 13.718 11.623 13.844 11.849 14.069 C 12.074 14.295 12.2 14.6 12.2 14.918 C 12.2 15.236 12.074 15.541 11.849 15.767 C 11.623 15.992 11.318 16.118 11 16.118 Z M 10 6.283 C 10 6.018 10.105 5.763 10.293 5.576 C 10.48 5.388 10.735 5.283 11 5.283 C 11.265 5.283 11.52 5.388 11.707 5.576 C 11.895 5.763 12 6.018 12 6.283 L 12 11.283 C 12 11.548 11.895 11.803 11.707 11.99 C 11.52 12.178 11.265 12.283 11 12.283 C 10.735 12.283 10.48 12.178 10.293 11.99 C 10.105 11.803 10 11.548 10 11.283 L 10 6.283 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.076 4.925 22 11 22 C 17.075 22 22 17.076 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconExitMono":{viewBox:"0 0 24 24",body:"<path d=\"M 5.26 2.604 C 5.26 4.043 4.083 5.209 2.63 5.209 C 1.179 5.209 0 4.043 0 2.604 C 0 1.166 1.179 0 2.63 0 C 4.083 0 5.26 1.166 5.26 2.604 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 0.499) matrix(1 0 0 1 14.027 0)\"/><path d=\"M 19.802 5.27 L 17.149 4.992 L 15.711 1.223 C 15.57 0.863 15.324 0.554 15.005 0.336 C 14.686 0.118 14.309 0.001 13.923 0 L 9.533 0 C 8.815 0 8.138 0.314 7.676 0.862 L 5.366 3.609 C 4.893 4.171 4.97 5.008 5.538 5.477 C 6.108 5.947 6.952 5.87 7.425 5.307 L 9.657 2.654 L 10.801 2.654 L 7.993 7.643 L 5.109 11.326 L 1.478 10.954 C 1.125 10.916 0.773 11.02 0.497 11.242 C 0.221 11.464 0.045 11.787 0.007 12.139 C -0.011 12.313 0.006 12.489 0.057 12.656 C 0.108 12.824 0.191 12.98 0.302 13.115 C 0.413 13.25 0.55 13.362 0.704 13.445 C 0.858 13.527 1.027 13.578 1.202 13.595 L 5.574 14.042 C 6.034 14.089 6.487 13.898 6.771 13.536 L 9.648 9.859 L 12.795 12.312 L 14.421 16.966 C 14.513 17.228 14.685 17.454 14.912 17.614 C 15.139 17.773 15.41 17.859 15.688 17.858 C 15.9 17.86 16.11 17.811 16.3 17.715 C 16.49 17.619 16.653 17.479 16.778 17.306 C 16.902 17.133 16.983 16.933 17.013 16.723 C 17.044 16.513 17.023 16.298 16.954 16.097 L 15.326 11.443 C 15.148 10.934 14.826 10.488 14.4 10.159 L 12.369 8.589 L 14.329 5.108 L 14.794 6.325 C 15.06 7.025 15.693 7.508 16.444 7.588 L 19.521 7.909 C 19.872 7.948 20.225 7.845 20.501 7.624 C 20.778 7.403 20.955 7.081 20.994 6.729 C 21.012 6.555 20.995 6.379 20.945 6.211 C 20.895 6.044 20.812 5.887 20.701 5.752 C 20.591 5.616 20.454 5.504 20.3 5.421 C 20.146 5.338 19.976 5.287 19.802 5.27 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 0.499) matrix(1 0 0 1 0 5.142)\"/>"},"IconEyeOffMonoEye":{viewBox:"0 0 24 24",body:"<path d=\"M 14.11 0.348 C 13.202 0.13 12.274 0 11.331 0 C 7.119 0 3.136 2.261 0.513 6.028 C -0.171 7.01 -0.171 8.343 0.513 9.325 C 1.153 10.244 1.876 11.069 2.661 11.798 L 14.11 0.348 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.669 2.002) matrix(1 0 0 1 0 2.322)\"/><path d=\"M 20.819 8.35 C 19.769 6.842 18.494 5.589 17.079 4.617 L 19.648 2.048 C 20.117 1.579 20.117 0.819 19.648 0.351 C 19.179 -0.117 18.419 -0.118 17.951 0.351 L 0.352 17.948 C -0.117 18.417 -0.117 19.177 0.352 19.645 C 0.586 19.879 0.894 19.997 1.201 19.997 C 1.508 19.997 1.815 19.88 2.05 19.645 L 5.094 16.601 C 6.643 17.292 8.3 17.674 10 17.674 C 14.213 17.674 18.196 15.413 20.819 11.646 C 21.502 10.665 21.502 9.332 20.819 8.35 Z M 9.999 13.972 C 9.34 13.972 8.725 13.801 8.18 13.514 L 13.515 8.179 C 13.802 8.724 13.973 9.338 13.973 9.997 C 13.973 12.19 12.19 13.972 9.999 13.972 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.669 2.002) matrix(1 0 0 1 1.331 0)\"/>"},"IconEyeOnLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.386 16.059 C 7.135 16.059 3.068 13.705 0.505 9.761 C -0.167 8.688 -0.167 7.372 0.496 6.312 C 3.068 2.354 7.136 0 11.386 0 C 15.627 0 19.686 2.344 22.249 6.272 C 23.042 7.354 23.035 8.741 22.228 9.817 C 19.704 13.705 15.637 16.059 11.386 16.059 Z M 11.386 2 C 7.816 2 4.375 4.014 2.183 7.388 C 1.939 7.779 1.939 8.282 2.192 8.686 C 4.375 12.046 7.815 14.06 11.386 14.06 C 14.957 14.06 18.398 12.046 20.589 8.672 C 20.907 8.244 20.907 7.817 20.628 7.443 C 20.614 7.425 20.602 7.406 20.589 7.388 C 18.396 4.014 14.956 2 11.386 2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.580 4.095)\"/><path d=\"M 4.911 9.822 C 2.203 9.822 0 7.619 0 4.911 C 0 2.249 2.249 0 4.911 0 C 7.573 0 9.822 2.249 9.822 4.911 C 9.822 7.619 7.619 9.822 4.911 9.822 Z M 4.911 2 C 3.36 2 2 3.36 2 4.911 C 2 6.516 3.306 7.822 4.911 7.822 C 6.516 7.822 7.822 6.516 7.822 4.911 C 7.822 3.361 6.462 2 4.911 2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.580 4.095) matrix(1 0 0 1 6.509 3.119)\"/>"},"IconEyeOnMonoEye":{viewBox:"0 0 24 24",body:"<path d=\"M 2.9 0 C 1.3 0 0 1.3 0 2.9 C 0 4.5 1.3 5.8 2.9 5.8 C 4.5 5.8 5.8 4.5 5.8 2.9 C 5.8 1.3 4.5 0 2.9 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.750 4.425) matrix(1 0 0 1 8.475 4.800)\"/><path d=\"M 11.375 12.7 C 8.575 12.7 6.375 10.4 6.375 7.7 C 6.375 5 8.675 2.7 11.375 2.7 C 14.075 2.7 16.375 5 16.375 7.7 C 16.375 10.4 14.175 12.7 11.375 12.7 Z M 22.375 6.4 C 19.775 2.4 15.675 0 11.375 0 C 7.075 0 2.975 2.4 0.375 6.4 C -0.125 7.2 -0.125 8.2 0.375 9 C 2.975 13 7.075 15.4 11.375 15.4 C 15.675 15.4 19.775 13 22.375 9 C 22.975 8.2 22.975 7.2 22.375 6.4 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.750 4.425)\"/>"},"IconF5MonoF5Refresh":{viewBox:"0 0 24 24",body:"<path d=\"M 12.077 13.045 C 10.681 13.045 9.619 12.288 9.619 11.471 C 9.619 11.075 9.878 10.744 10.29 10.744 C 10.533 10.744 10.722 10.836 10.914 11.065 C 11.265 11.496 11.631 11.699 12.093 11.699 C 12.763 11.699 13.24 11.247 13.24 10.577 C 13.24 9.942 12.783 9.505 12.143 9.505 C 11.828 9.505 11.493 9.627 11.188 9.845 C 10.934 10.044 10.757 10.105 10.554 10.105 C 10.056 10.105 9.685 9.754 9.721 9.241 L 9.889 6.773 C 9.924 6.23 10.26 5.955 10.894 5.955 L 13.778 5.955 C 14.266 5.955 14.541 6.204 14.541 6.631 C 14.541 7.052 14.271 7.286 13.778 7.286 L 11.229 7.286 L 11.117 8.789 L 11.204 8.789 C 11.447 8.469 11.996 8.261 12.596 8.261 C 13.936 8.261 14.84 9.17 14.84 10.531 C 14.84 12.05 13.753 13.045 12.077 13.045 Z M 8.232 7.306 L 5.841 7.306 L 5.841 8.972 L 7.973 8.972 C 8.375 8.972 8.639 9.236 8.639 9.627 C 8.639 10.018 8.37 10.282 7.973 10.282 L 5.841 10.282 L 5.841 12.04 C 5.841 12.619 5.546 12.943 5.018 12.943 C 4.474 12.943 4.16 12.608 4.16 12.04 L 4.16 6.92 C 4.16 6.3 4.5 5.961 5.13 5.961 L 8.232 5.961 C 8.619 5.961 8.898 6.245 8.898 6.641 C 8.902 6.729 8.887 6.817 8.854 6.9 C 8.822 6.982 8.773 7.057 8.711 7.119 C 8.648 7.182 8.573 7.231 8.491 7.263 C 8.409 7.295 8.32 7.31 8.232 7.306 Z M 17 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 17 C 0 17.53 0.211 18.039 0.586 18.414 C 0.961 18.789 1.47 19 2 19 L 17 19 C 17.53 19 18.039 18.789 18.414 18.414 C 18.789 18.039 19 17.53 19 17 L 19 2 C 19 1.47 18.789 0.961 18.414 0.586 C 18.039 0.211 17.53 0 17 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.500)\"/>"},"IconFactoryMonoPlant":{viewBox:"0 0 24 24",body:"<path d=\"M 0.312 0 L 2.412 0 C 2.592 0 2.712 0.12 2.712 0.3 L 2.712 1.02 C 2.712 1.2 2.592 1.32 2.412 1.32 L 0.312 1.32 C 0.132 1.32 0.012 1.2 0.012 1.02 L 0.012 0.3 C -0.048 0.12 0.132 0 0.312 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.560 4.080) matrix(1 0 0 1 2.628 0.060)\"/><path d=\"M 0.312 0 L 2.412 0 C 2.592 0 2.712 0.12 2.712 0.3 L 2.712 1.02 C 2.712 1.2 2.592 1.32 2.412 1.32 L 0.312 1.32 C 0.132 1.32 0.012 1.2 0.012 1.02 L 0.012 0.36 C -0.048 0.18 0.132 0 0.312 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.560 4.080) matrix(1 0 0 1 9.588 0)\"/><path d=\"M 14.82 4.519 C 14.82 4.219 14.64 3.859 14.34 3.739 L 8.04 0.139 C 7.8 0.019 7.5 0.079 7.38 0.319 L 7.38 0.499 L 7.38 3.979 L 0.72 0.079 C 0.48 -0.041 0.18 -0.041 0.06 0.199 C 0 0.319 0 0.379 0 0.439 L 0 11.539 C 0 12.079 0.48 12.499 1.02 12.499 L 13.92 12.499 C 14.46 12.499 14.94 12.019 14.94 11.479 L 14.82 4.519 Z M 6.72 6.619 C 6.72 6.499 6.84 6.379 6.96 6.379 L 7.86 6.379 C 7.98 6.379 8.1 6.499 8.1 6.619 L 8.1 7.519 C 8.1 7.639 7.98 7.759 7.86 7.759 L 6.96 7.759 C 6.84 7.759 6.72 7.639 6.72 7.519 L 6.72 6.619 Z M 4.86 7.519 C 4.86 7.639 4.74 7.759 4.62 7.759 L 3.66 7.759 C 3.54 7.759 3.42 7.639 3.42 7.519 L 3.42 6.619 C 3.42 6.499 3.54 6.379 3.66 6.379 L 4.62 6.379 C 4.74 6.379 4.86 6.499 4.86 6.619 L 4.86 7.519 Z M 8.7 10.579 L 8.7 12.559 L 6.18 12.559 L 6.18 10.579 C 6.18 10.279 6.42 10.039 6.72 10.039 L 8.1 10.039 C 8.46 10.039 8.7 10.279 8.7 10.579 Z M 11.4 7.519 C 11.4 7.639 11.28 7.759 11.16 7.759 L 10.2 7.759 C 10.08 7.759 9.96 7.639 9.96 7.519 L 9.96 6.619 C 9.96 6.499 10.08 6.379 10.2 6.379 L 11.16 6.379 C 11.28 6.379 11.4 6.499 11.4 6.619 L 11.4 7.519 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.560 4.080) matrix(1 0 0 1 0 3.281)\"/><path d=\"M 0 0 L 18.6 0 L 18.6 18.6 L 0 18.6 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.700 2.700)\"/><path d=\"M 2.04 0 L 0 0 L 0 2.88 L 2.04 4.02 L 2.04 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 14.460 5.100)\"/><path d=\"M 0 3.12 L 2.04 4.32 L 2.04 0 L 0 0 L 0 3.12 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.500 5.100)\"/>"},"IconFaxMonoFaxTel":{viewBox:"0 0 24 24",body:"<path d=\"M 2.775 0 C 2.039 0 1.333 0.292 0.813 0.813 C 0.292 1.333 0 2.039 0 2.775 L 0 14.2 C 0 14.936 0.293 15.642 0.813 16.162 C 1.333 16.682 2.039 16.975 2.775 16.975 L 4.76 16.975 L 4.76 0 L 2.775 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.500) matrix(1 0 0 1 0 4.030)\"/><path d=\"M 10.071 11.51 C 9.835 11.51 9.609 11.416 9.443 11.25 C 9.276 11.083 9.182 10.857 9.182 10.622 C 9.182 10.386 9.276 10.16 9.443 9.993 C 9.609 9.827 9.835 9.733 10.071 9.733 C 10.307 9.733 10.533 9.827 10.699 9.993 C 10.866 10.16 10.96 10.386 10.96 10.622 C 10.96 10.857 10.866 11.083 10.699 11.25 C 10.533 11.416 10.307 11.51 10.071 11.51 Z M 10.071 14.575 C 9.835 14.575 9.61 14.481 9.443 14.315 C 9.277 14.148 9.183 13.923 9.183 13.687 C 9.183 13.451 9.277 13.226 9.443 13.059 C 9.61 12.893 9.835 12.799 10.071 12.799 C 10.307 12.799 10.532 12.893 10.699 13.059 C 10.865 13.226 10.959 13.451 10.959 13.687 C 10.959 13.923 10.865 14.148 10.699 14.315 C 10.532 14.481 10.307 14.575 10.071 14.575 Z M 10.071 17.64 C 9.835 17.64 9.61 17.546 9.443 17.38 C 9.277 17.213 9.183 16.988 9.183 16.752 C 9.183 16.516 9.277 16.291 9.443 16.124 C 9.61 15.958 9.835 15.864 10.071 15.864 C 10.307 15.864 10.532 15.958 10.699 16.124 C 10.865 16.291 10.959 16.516 10.959 16.752 C 10.959 16.988 10.865 17.213 10.699 17.38 C 10.532 17.546 10.307 17.64 10.071 17.64 Z M 7.006 11.51 C 6.77 11.51 6.545 11.417 6.378 11.251 C 6.211 11.084 6.117 10.859 6.117 10.623 C 6.117 10.387 6.21 10.162 6.376 9.995 C 6.543 9.828 6.768 9.734 7.004 9.734 C 7.24 9.734 7.465 9.827 7.632 9.993 C 7.799 10.16 7.893 10.385 7.893 10.621 C 7.893 10.857 7.8 11.082 7.634 11.249 C 7.467 11.416 7.242 11.51 7.006 11.51 Z M 7.006 14.575 C 6.887 14.579 6.768 14.559 6.657 14.516 C 6.545 14.473 6.444 14.408 6.358 14.326 C 6.272 14.243 6.204 14.143 6.158 14.034 C 6.111 13.924 6.087 13.806 6.087 13.686 C 6.087 13.567 6.111 13.449 6.158 13.339 C 6.204 13.23 6.272 13.13 6.358 13.047 C 6.444 12.965 6.545 12.9 6.657 12.857 C 6.768 12.814 6.887 12.794 7.006 12.798 C 7.236 12.806 7.455 12.903 7.615 13.069 C 7.776 13.234 7.865 13.456 7.865 13.686 C 7.865 13.917 7.776 14.139 7.615 14.304 C 7.455 14.47 7.236 14.567 7.006 14.575 Z M 7.006 17.64 C 6.887 17.644 6.768 17.624 6.657 17.581 C 6.545 17.538 6.444 17.473 6.358 17.391 C 6.272 17.308 6.204 17.208 6.158 17.099 C 6.111 16.989 6.087 16.871 6.087 16.751 C 6.087 16.632 6.111 16.514 6.158 16.404 C 6.204 16.295 6.272 16.195 6.358 16.112 C 6.444 16.03 6.545 15.965 6.657 15.922 C 6.768 15.879 6.887 15.859 7.006 15.863 C 7.236 15.871 7.455 15.968 7.615 16.134 C 7.776 16.299 7.865 16.521 7.865 16.751 C 7.865 16.982 7.776 17.204 7.615 17.369 C 7.455 17.535 7.236 17.632 7.006 17.64 Z M 3.941 11.51 C 3.705 11.51 3.48 11.417 3.313 11.251 C 3.146 11.084 3.052 10.859 3.052 10.623 C 3.052 10.387 3.145 10.162 3.311 9.995 C 3.478 9.828 3.703 9.734 3.939 9.734 C 4.175 9.734 4.4 9.827 4.567 9.993 C 4.734 10.16 4.828 10.385 4.828 10.621 C 4.828 10.857 4.735 11.082 4.569 11.249 C 4.402 11.416 4.177 11.51 3.941 11.51 Z M 3.941 14.575 C 3.822 14.579 3.703 14.559 3.592 14.516 C 3.48 14.473 3.379 14.408 3.293 14.326 C 3.207 14.243 3.139 14.143 3.093 14.034 C 3.046 13.924 3.022 13.806 3.022 13.686 C 3.022 13.567 3.046 13.449 3.093 13.339 C 3.139 13.23 3.207 13.13 3.293 13.047 C 3.379 12.965 3.48 12.9 3.592 12.857 C 3.703 12.814 3.822 12.794 3.941 12.798 C 4.171 12.806 4.39 12.903 4.55 13.069 C 4.711 13.234 4.8 13.456 4.8 13.686 C 4.8 13.917 4.711 14.139 4.55 14.304 C 4.39 14.47 4.171 14.567 3.941 14.575 Z M 3.941 17.64 C 3.822 17.644 3.703 17.624 3.592 17.581 C 3.48 17.538 3.379 17.473 3.293 17.391 C 3.207 17.308 3.139 17.208 3.093 17.099 C 3.046 16.989 3.022 16.871 3.022 16.751 C 3.022 16.632 3.046 16.514 3.093 16.404 C 3.139 16.295 3.207 16.195 3.293 16.112 C 3.379 16.03 3.48 15.965 3.592 15.922 C 3.703 15.879 3.822 15.859 3.941 15.863 C 4.171 15.871 4.39 15.968 4.55 16.134 C 4.711 16.299 4.8 16.521 4.8 16.751 C 4.8 16.982 4.711 17.204 4.55 17.369 C 4.39 17.535 4.171 17.632 3.941 17.64 Z M 3.129 6.373 L 10.884 6.373 L 10.884 1.364 L 3.129 1.364 L 3.129 6.373 Z M 12.248 4.056 L 12.248 1.5 C 12.248 1.102 12.09 0.721 11.809 0.439 C 11.527 0.158 11.146 0 10.748 0 L 3.264 0 C 2.935 0 2.634 0.11 2.386 0.288 C 2.194 0.426 2.037 0.608 1.929 0.819 C 1.821 1.03 1.764 1.263 1.764 1.5 L 1.764 4.03 L 0 4.03 L 0 21.005 L 11.976 21.005 C 12.712 21.005 13.418 20.713 13.938 20.192 C 14.459 19.672 14.751 18.966 14.751 18.23 L 14.751 6.804 C 14.751 5.364 13.651 4.195 12.248 4.056 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.500) matrix(1 0 0 1 6.260 0)\"/>"},"IconFerrisWheelMonoFerris":{viewBox:"0 0 24 24",body:"<path d=\"M 13.154 6.496 C 13.164 7.366 13.002 8.23 12.676 9.038 C 12.351 9.845 11.868 10.58 11.256 11.199 C 10.644 11.818 9.916 12.31 9.113 12.646 C 8.309 12.981 7.448 13.154 6.577 13.154 C 5.706 13.154 4.845 12.981 4.041 12.646 C 3.238 12.31 2.51 11.818 1.898 11.199 C 1.286 10.58 0.803 9.845 0.478 9.038 C 0.152 8.23 -0.01 7.366 0.001 6.496 C 0.022 4.766 0.724 3.114 1.955 1.898 C 3.186 0.682 4.847 0 6.577 0 C 8.307 0 9.968 0.682 11.199 1.898 C 12.43 3.114 13.132 4.766 13.154 6.496 Z\" fill=\"rgba(176,184,193,0.3)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.007 1.181) matrix(1 0 0 1 3.415 3.497)\"/><path d=\"M 11.701 1.709 C 11.701 2.162 11.52 2.596 11.2 2.917 C 10.88 3.237 10.445 3.417 9.992 3.417 C 9.539 3.417 9.104 3.237 8.784 2.917 C 8.464 2.596 8.284 2.162 8.284 1.709 C 8.284 1.255 8.464 0.821 8.784 0.5 C 9.104 0.18 9.539 0 9.992 0 C 10.445 0 10.88 0.18 11.2 0.5 C 11.52 0.821 11.701 1.255 11.701 1.709 Z M 5.342 2.928 C 5.663 3.248 5.843 3.682 5.843 4.135 C 5.843 4.588 5.663 5.022 5.342 5.343 C 5.022 5.663 4.588 5.843 4.135 5.843 C 3.682 5.843 3.248 5.663 2.928 5.343 C 2.607 5.022 2.427 4.588 2.427 4.135 C 2.427 3.911 2.472 3.689 2.557 3.482 C 2.643 3.274 2.769 3.086 2.928 2.928 C 3.086 2.769 3.274 2.643 3.482 2.557 C 3.689 2.472 3.911 2.427 4.135 2.427 C 4.588 2.427 5.022 2.607 5.342 2.928 Z M 1.709 8.285 C 2.162 8.285 2.596 8.465 2.917 8.785 C 3.237 9.105 3.417 9.54 3.417 9.993 C 3.417 10.446 3.237 10.881 2.917 11.201 C 2.596 11.521 2.162 11.701 1.709 11.701 C 1.255 11.701 0.821 11.521 0.5 11.201 C 0.18 10.881 0 10.446 0 9.993 C 0 9.54 0.18 9.105 0.5 8.785 C 0.821 8.465 1.255 8.285 1.709 8.285 Z M 2.928 14.642 C 3.248 14.322 3.682 14.142 4.135 14.142 C 4.587 14.142 5.022 14.322 5.342 14.642 C 5.662 14.962 5.842 15.396 5.842 15.849 C 5.842 16.302 5.663 16.736 5.342 17.057 C 5.022 17.377 4.588 17.557 4.135 17.557 C 3.683 17.557 3.248 17.377 2.928 17.057 C 2.608 16.737 2.428 16.303 2.428 15.85 C 2.428 15.397 2.607 14.963 2.928 14.642 Z M 14.642 17.059 C 14.477 16.901 14.344 16.713 14.252 16.504 C 14.161 16.295 14.112 16.069 14.109 15.841 C 14.106 15.613 14.148 15.386 14.234 15.174 C 14.32 14.963 14.448 14.771 14.609 14.609 C 14.771 14.448 14.963 14.32 15.174 14.234 C 15.386 14.148 15.613 14.106 15.841 14.109 C 16.069 14.112 16.295 14.161 16.504 14.252 C 16.713 14.344 16.901 14.477 17.059 14.642 C 17.365 14.966 17.533 15.396 17.527 15.841 C 17.52 16.286 17.341 16.711 17.026 17.026 C 16.711 17.341 16.286 17.52 15.841 17.527 C 15.396 17.533 14.966 17.365 14.642 17.059 Z M 18.276 11.701 C 18.051 11.7 17.829 11.656 17.622 11.57 C 17.414 11.484 17.226 11.358 17.068 11.2 C 16.747 10.879 16.567 10.445 16.568 9.992 C 16.568 9.538 16.748 9.104 17.068 8.784 C 17.389 8.463 17.823 8.283 18.277 8.284 C 18.73 8.284 19.164 8.464 19.485 8.784 C 19.805 9.104 19.985 9.539 19.985 9.992 C 19.985 10.445 19.805 10.88 19.485 11.2 C 19.164 11.52 18.729 11.701 18.276 11.701 Z M 17.056 5.343 C 16.898 5.501 16.71 5.627 16.503 5.712 C 16.295 5.798 16.073 5.842 15.849 5.842 C 15.625 5.842 15.403 5.798 15.196 5.712 C 14.989 5.626 14.801 5.501 14.642 5.342 C 14.322 5.022 14.142 4.587 14.142 4.135 C 14.142 3.682 14.322 3.248 14.642 2.928 C 14.963 2.607 15.397 2.427 15.85 2.427 C 16.303 2.427 16.737 2.607 17.058 2.928 C 17.378 3.248 17.558 3.682 17.558 4.135 C 17.558 4.588 17.378 5.022 17.058 5.343 M 14.165 20.076 L 10.417 9.402 C 10.386 9.313 10.328 9.237 10.252 9.183 C 10.176 9.128 10.085 9.099 9.991 9.099 C 9.898 9.099 9.807 9.128 9.731 9.183 C 9.655 9.237 9.597 9.313 9.567 9.402 L 5.819 20.076 C 5.772 20.211 5.757 20.356 5.778 20.499 C 5.798 20.641 5.851 20.777 5.935 20.894 C 6.018 21.012 6.128 21.107 6.256 21.173 C 6.384 21.239 6.526 21.274 6.67 21.274 L 13.317 21.274 C 13.46 21.274 13.602 21.239 13.73 21.173 C 13.858 21.107 13.968 21.012 14.051 20.894 C 14.135 20.777 14.188 20.641 14.208 20.499 C 14.229 20.356 14.214 20.211 14.167 20.076\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.007 1.181)\"/>"},"IconFileImportMonoImport":{viewBox:"0 0 24 24",body:"<path d=\"M 0.88 4.128 L 3.76 4.128 C 4.09 4.128 4.26 3.728 4.02 3.488 L 0.64 0.108 C 0.41 -0.122 0 0.038 0 0.368 L 0 3.248 C 0 3.738 0.38 4.118 0.86 4.118 L 0.88 4.128 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.150 3.050) matrix(1 0 0 1 16.700 0.182)\"/><path d=\"M 0 1.68 C 0 0.75 0.75 0 1.68 0 L 8.08 0 C 8.59 0 9.01 0.42 9.01 0.93 L 9.01 4.69 C 9.01 5.21 9.44 5.64 9.96 5.64 L 13.72 5.64 C 14.23 5.64 14.65 6.06 14.65 6.57 L 14.65 16.67 C 14.65 17.6 13.89 18.36 12.96 18.36 L 1.69 18.36 C 0.76 18.36 0 17.6 0 16.67 L 0 14.28 C 0 13.77 0.42 13.35 0.93 13.35 C 1.44 13.35 1.86 13.77 1.86 14.28 L 1.86 16.13 C 1.86 16.34 2.03 16.5 2.23 16.5 L 12.41 16.5 C 12.62 16.5 12.78 16.33 12.78 16.13 L 12.78 7.88 C 12.78 7.67 12.61 7.51 12.41 7.51 L 9.95 7.51 C 8.4 7.51 7.14 6.25 7.14 4.7 L 7.14 2.24 C 7.14 2.03 6.97 1.87 6.77 1.87 L 2.23 1.87 C 2.02 1.87 1.86 2.04 1.86 2.24 L 1.86 3.94 C 1.86 4.45 1.44 4.87 0.93 4.87 C 0.42 4.87 0 4.45 0 3.94 L 0 1.68 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.150 3.050) matrix(1 0 0 1 6.370 0)\"/><path d=\"M 11.17 3.388 L 2.9 3.388 L 4.84 1.448 C 5.17 1.118 5.17 0.577 4.84 0.248 C 4.51 -0.083 3.97 -0.083 3.64 0.248 L 0.26 3.628 C 0.21 3.678 0.17 3.738 0.13 3.798 C 0.1 3.828 0.09 3.868 0.07 3.908 C 0.03 4.008 0 4.118 0 4.218 C 0 4.318 0.03 4.428 0.07 4.528 C 0.09 4.568 0.1 4.608 0.13 4.638 C 0.16 4.708 0.2 4.758 0.26 4.808 L 3.65 8.198 C 3.98 8.528 4.52 8.528 4.85 8.198 C 5.18 7.868 5.18 7.327 4.85 6.997 L 2.92 5.068 L 11.17 5.068 C 11.65 5.068 12.02 4.688 12.02 4.218 C 12.02 3.748 11.65 3.378 11.18 3.378 L 11.17 3.388 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.150 3.050) matrix(1 0 0 1 0 5.062)\"/>"},"IconFillColorMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.1 8.075 C 5.7 7.775 6.8 6.275 6.7 4.675 C 6.7 3.375 5.9 2.275 3.6 0.075 C 3.5 -0.025 3.2 -0.025 3.1 0.075 C 0.7 2.375 0 3.475 0 4.775 C 0 6.675 1.5 8.175 3.4 8.175 C 3.6 8.175 3.8 8.175 4.1 8.075 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.475) matrix(1 0 0 1 12.600 10.850)\"/><path d=\"M 7.1 15.925 C 6.4 15.925 5.7 15.625 5.1 15.125 L 0.8 10.825 C 0.3 10.325 0 9.625 0 8.825 C 0 8.025 0.3 7.425 0.8 6.825 L 6.8 0.825 C 7.9 -0.275 9.7 -0.275 10.8 0.825 L 15.1 5.125 C 16.2 6.225 16.2 8.025 15.1 9.125 L 9.1 15.125 C 8.5 15.625 7.8 15.925 7.1 15.925 Z M 8.8 2.025 C 8.6 2.025 8.4 2.125 8.2 2.225 L 2.2 8.225 C 2 8.325 2 8.625 2 8.825 C 2 9.025 2.1 9.225 2.2 9.425 L 6.5 13.725 C 6.8 14.025 7.3 14.025 7.6 13.725 L 13.6 7.725 C 13.9 7.425 13.9 6.925 13.6 6.625 L 9.3 2.325 C 9.2 2.125 9 2.025 8.8 2.025 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 2.475)\"/><path d=\"M 7 7 L 0 0 L 14 0 L 7 7 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.475) matrix(1 0 0 1 0.300 8.325)\"/>"},"IconFilterMonoFilterControl":{viewBox:"0 0 24 24",body:"<path d=\"M 12.371 2.2 C 12.617 2.208 12.851 2.312 13.023 2.489 C 13.194 2.666 13.29 2.903 13.29 3.149 C 13.29 3.396 13.194 3.633 13.023 3.81 C 12.851 3.987 12.617 4.091 12.371 4.099 C 12.125 4.091 11.891 3.987 11.719 3.81 C 11.548 3.633 11.452 3.396 11.452 3.149 C 11.452 2.903 11.548 2.666 11.719 2.489 C 11.891 2.312 12.125 2.208 12.371 2.2 Z M 1.1 4.249 L 9.43 4.249 C 9.653 4.85 10.054 5.368 10.58 5.734 C 11.105 6.1 11.73 6.297 12.371 6.299 C 13.011 6.297 13.636 6.1 14.161 5.734 C 14.687 5.367 15.088 4.849 15.311 4.249 L 18.1 4.249 C 18.392 4.249 18.672 4.133 18.878 3.927 C 19.084 3.721 19.2 3.441 19.2 3.149 C 19.2 2.857 19.084 2.577 18.878 2.371 C 18.672 2.165 18.392 2.049 18.1 2.049 L 15.311 2.049 C 15.088 1.449 14.687 0.931 14.161 0.565 C 13.636 0.199 13.011 0.002 12.371 0 C 11.731 0.002 11.106 0.199 10.58 0.565 C 10.055 0.931 9.654 1.449 9.43 2.049 L 1.1 2.049 C 0.808 2.049 0.528 2.165 0.322 2.371 C 0.116 2.577 0 2.857 0 3.149 C 0 3.441 0.116 3.721 0.322 3.927 C 0.528 4.133 0.808 4.249 1.1 4.249 Z M 18.1 8.499 L 1.1 8.499 C 0.808 8.499 0.528 8.615 0.322 8.821 C 0.116 9.027 0 9.307 0 9.599 C 0 9.891 0.116 10.171 0.322 10.377 C 0.528 10.583 0.808 10.699 1.1 10.699 L 18.1 10.699 C 18.392 10.699 18.672 10.583 18.878 10.377 C 19.084 10.171 19.2 9.891 19.2 9.599 C 19.2 9.307 19.084 9.027 18.878 8.821 C 18.672 8.615 18.392 8.499 18.1 8.499 Z M 6.829 17 C 6.585 16.989 6.354 16.884 6.186 16.707 C 6.017 16.53 5.923 16.295 5.923 16.051 C 5.923 15.807 6.017 15.572 6.186 15.395 C 6.354 15.218 6.585 15.113 6.829 15.102 C 7.075 15.11 7.309 15.214 7.481 15.391 C 7.652 15.568 7.748 15.805 7.748 16.052 C 7.748 16.298 7.652 16.535 7.481 16.712 C 7.309 16.889 7.075 16.992 6.829 17 Z M 18.1 14.95 L 9.77 14.95 C 9.547 14.349 9.146 13.831 8.62 13.465 C 8.095 13.099 7.47 12.902 6.829 12.9 C 6.189 12.902 5.564 13.099 5.039 13.465 C 4.513 13.832 4.112 14.35 3.889 14.95 L 1.1 14.95 C 0.808 14.95 0.528 15.066 0.322 15.272 C 0.116 15.478 0 15.758 0 16.05 C 0 16.342 0.116 16.622 0.322 16.828 C 0.528 17.034 0.808 17.15 1.1 17.15 L 3.889 17.15 C 4.112 17.75 4.513 18.268 5.039 18.635 C 5.564 19.001 6.189 19.198 6.829 19.2 C 7.47 19.198 8.094 19.001 8.62 18.635 C 9.145 18.268 9.547 17.75 9.77 17.15 L 18.1 17.15 C 18.392 17.15 18.672 17.034 18.878 16.828 C 19.084 16.622 19.2 16.342 19.2 16.05 C 19.2 15.758 19.084 15.478 18.878 15.272 C 18.672 15.066 18.392 14.95 18.1 14.95 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.400 2.400)\"/>"},"IconFilterTable2Mono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.623 0 C 17.361 0 17.96 0.599 17.96 1.338 C 17.96 1.674 17.833 1.997 17.606 2.244 L 11.12 9.269 L 11.12 15.541 C 11.12 15.813 10.996 16.07 10.783 16.239 L 10.687 16.305 L 8.013 17.909 C 7.591 18.162 7.043 18.025 6.79 17.603 C 6.707 17.465 6.663 17.307 6.663 17.146 L 6.663 9.078 L 0.355 2.243 C -0.146 1.7 -0.112 0.854 0.431 0.354 C 0.678 0.126 1.001 0 1.337 0 L 16.623 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.020 3.252)\"/>"},"IconFilterTableLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.154 1.353 L 17.154 1.352 L 17.154 1.353 L 18.154 1.353 Z M 17.796 2.269 L 17.061 1.59 L 17.061 1.591 L 17.796 2.269 Z M 11.239 9.371 L 10.504 8.693 C 10.334 8.877 10.239 9.12 10.239 9.371 L 11.239 9.371 Z M 10.898 16.417 L 11.466 17.24 C 11.485 17.227 11.503 17.213 11.521 17.199 L 10.898 16.417 Z M 10.801 16.484 L 11.315 17.341 C 11.334 17.33 11.352 17.319 11.369 17.307 L 10.801 16.484 Z M 8.098 18.106 L 8.612 18.964 L 8.612 18.963 L 8.098 18.106 Z M 6.862 17.796 L 7.72 17.282 L 7.719 17.282 L 6.862 17.796 Z M 6.734 9.178 L 7.734 9.178 C 7.734 8.927 7.639 8.685 7.469 8.5 L 6.734 9.178 Z M 0.358 2.268 L -0.377 2.946 L -0.377 2.946 L 0.358 2.268 Z M 0.435 0.358 L -0.242 -0.378 L -0.244 -0.377 L 0.435 0.358 Z M 16.803 0 L 16.803 1 C 16.996 1 17.154 1.158 17.154 1.352 L 18.154 1.353 L 19.154 1.354 C 19.156 0.054 18.101 -1 16.803 -1 L 16.803 0 Z M 18.154 1.353 L 17.154 1.353 C 17.154 1.442 17.12 1.526 17.061 1.59 L 17.796 2.269 L 18.53 2.948 C 18.931 2.514 19.154 1.944 19.154 1.353 L 18.154 1.353 Z M 17.796 2.269 L 17.061 1.591 L 10.504 8.693 L 11.239 9.371 L 11.974 10.049 L 18.531 2.947 L 17.796 2.269 Z M 11.239 9.371 L 10.239 9.371 L 10.239 15.711 L 11.239 15.711 L 12.239 15.711 L 12.239 9.371 L 11.239 9.371 Z M 11.239 15.711 L 10.239 15.711 C 10.239 15.68 10.254 15.652 10.275 15.635 L 10.898 16.417 L 11.521 17.199 C 11.974 16.838 12.239 16.292 12.239 15.711 L 11.239 15.711 Z M 10.898 16.417 L 10.33 15.594 L 10.233 15.661 L 10.801 16.484 L 11.369 17.307 L 11.466 17.24 L 10.898 16.417 Z M 10.801 16.484 L 10.286 15.627 L 7.583 17.249 L 8.098 18.106 L 8.612 18.963 L 11.315 17.341 L 10.801 16.484 Z M 8.098 18.106 L 7.584 17.248 C 7.631 17.22 7.692 17.236 7.72 17.282 L 6.862 17.796 L 6.004 18.31 C 6.544 19.21 7.71 19.504 8.612 18.964 L 8.098 18.106 Z M 6.862 17.796 L 7.719 17.282 C 7.729 17.297 7.734 17.316 7.734 17.334 L 6.734 17.334 L 5.734 17.334 C 5.734 17.678 5.827 18.015 6.004 18.31 L 6.862 17.796 Z M 6.734 17.334 L 7.734 17.334 L 7.734 9.178 L 6.734 9.178 L 5.734 9.178 L 5.734 17.334 L 6.734 17.334 Z M 6.734 9.178 L 7.469 8.5 L 1.093 1.59 L 0.358 2.268 L -0.377 2.946 L 5.999 9.856 L 6.734 9.178 Z M 0.358 2.268 L 1.093 1.59 C 0.961 1.447 0.97 1.225 1.113 1.093 L 0.435 0.358 L -0.244 -0.377 C -1.197 0.503 -1.258 1.991 -0.377 2.946 L 0.358 2.268 Z M 0.435 0.358 L 1.112 1.094 C 1.178 1.033 1.264 1 1.351 1 L 1.351 0 L 1.351 -1 C 0.76 -1 0.192 -0.777 -0.242 -0.378 L 0.435 0.358 Z M 1.351 0 L 1.351 1 L 16.803 1 L 16.803 0 L 16.803 -1 L 1.351 -1 L 1.351 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.923 3.503)\"/>"},"IconFlag1MonoFlag":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 1.5 0 C 2.328 0 3 0.672 3 1.5 C 3 1.817 2.902 2.111 2.734 2.354 C 8.074 7.387 12.48 4.472 17.948 9.25 C 15.264 8.539 12.581 10.321 9.815 12.193 L 9.34 12.515 C 7.098 14.029 4.799 15.513 2.401 15.7 L 2.4 18.803 C 2.4 19.3 1.997 19.703 1.5 19.703 C 1.003 19.703 0.6 19.3 0.6 18.803 L 0.6 2.7 C 0.236 2.426 0 1.991 0 1.5 C 0 0.672 0.672 0 1.5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6 2.256)\"/>"},"IconFlagMonoFlag":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 1.5 0 C 2.328 0 3 0.672 3 1.5 C 3 1.817 2.902 2.111 2.734 2.354 C 8.074 7.387 12.48 4.472 17.948 9.25 C 15.264 8.539 12.581 10.321 9.815 12.193 L 9.34 12.515 C 7.098 14.029 4.799 15.513 2.401 15.7 L 2.4 18.803 C 2.4 19.3 1.997 19.703 1.5 19.703 C 1.003 19.703 0.6 19.3 0.6 18.803 L 0.6 2.7 C 0.236 2.426 0 1.991 0 1.5 C 0 0.672 0.672 0 1.5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6 2.256)\"/>"},"IconFlashOffMonoFlash":{viewBox:"0 0 24 24",body:"<path d=\"M 0.419 11.697 C -0.196 12.443 0.334 13.567 1.299 13.567 L 5.946 13.567 L 4.645 20.647 C 4.432 21.806 5.899 22.489 6.649 21.581 L 11.039 16.264 L 3.156 8.382 L 0.419 11.697 Z M 18.054 17.167 L 13.803 12.917 L 15.96 10.304 C 16.575 9.559 16.045 8.434 15.078 8.434 L 10.433 8.434 L 11.733 1.354 C 11.947 0.194 10.479 -0.489 9.729 0.42 L 5.919 5.034 L 2.055 1.168 C 1.944 1.055 1.812 0.965 1.666 0.904 C 1.52 0.842 1.363 0.81 1.205 0.81 C 1.046 0.809 0.89 0.84 0.743 0.9 C 0.597 0.96 0.463 1.049 0.351 1.161 C 0.239 1.273 0.151 1.406 0.09 1.553 C 0.03 1.699 -0.001 1.856 0 2.015 C 0.001 2.173 0.033 2.33 0.094 2.476 C 0.156 2.622 0.245 2.754 0.358 2.865 L 16.358 18.865 C 16.47 18.977 16.602 19.066 16.747 19.127 C 16.893 19.187 17.049 19.219 17.207 19.219 C 17.365 19.219 17.521 19.187 17.667 19.127 C 17.812 19.066 17.944 18.977 18.055 18.865 C 18.28 18.64 18.407 18.335 18.407 18.017 C 18.407 17.698 18.28 17.393 18.055 17.168\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.811 1.000)\"/>"},"IconFlashOnMonoFlash":{viewBox:"0 0 24 24",body:"<path d=\"M 14.924 8.433 L 10.278 8.433 L 11.58 1.353 C 11.793 0.195 10.325 -0.489 9.574 0.42 L 0.264 11.697 C -0.351 12.442 0.179 13.567 1.146 13.567 L 5.791 13.567 L 4.49 20.646 C 4.277 21.805 5.745 22.489 6.495 21.58 L 15.805 10.303 C 16.421 9.558 15.89 8.433 14.924 8.433 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.966 1)\"/>"},"IconFlatGroupMonoGroup":{viewBox:"0 0 24 24",body:"<path d=\"M 18 0 L 4 0 C 1.792 0 0 1.792 0 4 L 0 18 C 0 20.208 1.792 22 4 22 L 18 22 C 20.208 22 22 20.208 22 18 L 22 4 C 22 1.792 20.208 0 18 0 Z M 6.5 3 C 8.433 3 10 4.567 10 6.5 C 10 8.433 8.433 10 6.5 10 C 4.567 10 3 8.433 3 6.5 C 3 4.567 4.567 3 6.5 3 Z M 9.83 18.395 C 9.69 18.463 9.538 18.5 9.383 18.5 L 4.618 18.5 C 4.067 18.5 3.618 18.052 3.618 17.5 C 3.618 17.345 3.655 17.192 3.723 17.053 L 6.105 12.29 C 6.352 11.797 6.953 11.595 7.447 11.843 C 7.64 11.94 7.797 12.097 7.893 12.29 L 10.275 17.053 C 10.522 17.548 10.322 18.148 9.828 18.395 L 9.83 18.395 Z M 15 19 C 13.067 19 11.5 17.433 11.5 15.5 C 11.5 13.567 13.067 12 15 12 C 16.933 12 18.5 13.567 18.5 15.5 C 18.5 17.433 16.933 19 15 19 Z M 18.5 8 C 18.5 9.105 17.605 10 16.5 10 L 13.5 10 C 12.395 10 11.5 9.105 11.5 8 L 11.5 5 C 11.5 3.895 12.395 3 13.5 3 L 16.5 3 C 17.605 3 18.5 3.895 18.5 5 L 18.5 8 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconFogMonoFogDust":{viewBox:"0 0 24 24",body:"<path d=\"M 14.249 4.078 C 12.383 4.079 10.839 3.548 9.411 3.058 C 7.021 2.235 4.96 1.525 1.573 3.19 C 1.444 3.254 1.304 3.291 1.161 3.3 C 1.018 3.309 0.875 3.29 0.739 3.244 C 0.604 3.198 0.478 3.125 0.371 3.031 C 0.263 2.936 0.175 2.821 0.112 2.692 C 0.049 2.564 0.011 2.424 0.002 2.281 C -0.007 2.138 0.012 1.994 0.058 1.859 C 0.105 1.723 0.177 1.598 0.272 1.49 C 0.366 1.383 0.481 1.295 0.61 1.231 C 4.81 -0.834 7.633 0.136 10.12 0.992 C 12.327 1.752 14.41 2.467 17.608 1.196 C 17.877 1.089 18.178 1.094 18.444 1.209 C 18.71 1.323 18.919 1.539 19.026 1.808 C 19.133 2.078 19.128 2.378 19.014 2.644 C 18.899 2.91 18.683 3.119 18.414 3.226 C 16.847 3.849 15.478 4.078 14.249 4.078 Z\" fill=\"rgba(176,184,193,0.4)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.449 3.413) matrix(1 0 0 1 0.000 0)\"/><path d=\"M 14.249 4.078 C 12.383 4.078 10.839 3.548 9.411 3.057 C 7.021 2.235 4.96 1.525 1.573 3.19 C 1.445 3.254 1.305 3.291 1.162 3.3 C 1.019 3.309 0.875 3.29 0.739 3.244 C 0.604 3.198 0.478 3.125 0.371 3.03 C 0.263 2.936 0.175 2.821 0.112 2.692 C 0.049 2.563 0.011 2.423 0.002 2.28 C -0.007 2.137 0.012 1.994 0.058 1.858 C 0.105 1.722 0.177 1.597 0.272 1.489 C 0.367 1.382 0.482 1.294 0.61 1.23 C 4.81 -0.834 7.633 0.136 10.12 0.992 C 12.327 1.751 14.41 2.467 17.608 1.196 C 17.877 1.09 18.178 1.094 18.444 1.209 C 18.71 1.323 18.919 1.539 19.026 1.808 C 19.133 2.077 19.128 2.378 19.014 2.643 C 18.899 2.909 18.683 3.119 18.414 3.225 C 16.847 3.849 15.478 4.078 14.249 4.078 Z\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.449 3.413) matrix(1 0 0 1 0 4.367)\"/><path d=\"M 14.249 4.078 C 12.383 4.078 10.839 3.548 9.411 3.057 C 7.021 2.235 4.96 1.525 1.573 3.19 C 1.445 3.253 1.305 3.291 1.162 3.3 C 1.019 3.309 0.875 3.29 0.739 3.244 C 0.604 3.197 0.478 3.125 0.371 3.03 C 0.263 2.935 0.175 2.82 0.112 2.692 C 0.049 2.563 0.011 2.423 0.002 2.28 C -0.007 2.137 0.012 1.993 0.058 1.858 C 0.105 1.722 0.177 1.597 0.272 1.489 C 0.367 1.381 0.482 1.293 0.61 1.23 C 4.81 -0.833 7.633 0.136 10.12 0.992 C 12.327 1.751 14.41 2.467 17.608 1.196 C 17.877 1.089 18.178 1.094 18.444 1.208 C 18.71 1.323 18.919 1.539 19.026 1.808 C 19.133 2.077 19.128 2.377 19.014 2.643 C 18.899 2.909 18.683 3.118 18.414 3.225 C 16.847 3.849 15.478 4.078 14.249 4.078 Z\" fill=\"rgba(176,184,193,0.8)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.449 3.413) matrix(1 0 0 1 0 8.733)\"/><path d=\"M 14.249 4.078 C 12.382 4.078 10.839 3.548 9.411 3.057 C 7.021 2.235 4.961 1.525 1.573 3.19 C 1.445 3.253 1.305 3.291 1.162 3.3 C 1.019 3.309 0.875 3.29 0.739 3.244 C 0.604 3.197 0.478 3.125 0.371 3.03 C 0.263 2.935 0.175 2.82 0.112 2.692 C 0.049 2.563 0.011 2.423 0.002 2.28 C -0.007 2.137 0.012 1.993 0.058 1.858 C 0.105 1.722 0.177 1.597 0.272 1.489 C 0.367 1.381 0.482 1.293 0.61 1.23 C 4.812 -0.834 7.633 0.137 10.12 0.992 C 12.326 1.751 14.409 2.467 17.608 1.196 C 17.876 1.098 18.17 1.108 18.43 1.225 C 18.69 1.341 18.894 1.554 18.999 1.818 C 19.104 2.083 19.102 2.378 18.993 2.641 C 18.883 2.903 18.676 3.113 18.414 3.225 C 16.847 3.849 15.478 4.078 14.249 4.078 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.449 3.413) matrix(1 0 0 1 0 13.099)\"/>"},"IconFolderCloudMonoFolder":{viewBox:"0 0 24 24",body:"<path d=\"M 9.941 2.912 L 7.612 0.583 C 7.24 0.21 6.735 0.001 6.208 0 L 1.988 0 C 1.461 0 0.955 0.21 0.582 0.583 C 0.209 0.956 0 1.462 0 1.989 L 0 2.912 L 9.941 2.912 Z M 11.504 9.964 C 12.26 8.764 13.414 7.867 14.764 7.43 C 16.113 6.993 17.574 7.043 18.89 7.572 L 18.89 5.9 C 18.889 5.374 18.68 4.869 18.308 4.497 C 17.936 4.124 17.431 3.914 16.905 3.913 L 0 3.913 L 0 15.837 C 0 16.935 0.891 17.825 1.988 17.825 L 8.375 17.825 C 7.562 16.964 7.108 15.825 7.106 14.641 C 7.107 13.449 7.563 12.302 8.38 11.433 C 9.197 10.564 10.314 10.039 11.504 9.965\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 3.087)\"/><path d=\"M 7.982 0 C 7.066 0.001 6.172 0.275 5.414 0.788 C 4.656 1.301 4.068 2.029 3.727 2.878 C 3.53 2.84 3.329 2.82 3.129 2.818 C 2.294 2.833 1.498 3.175 0.913 3.77 C 0.328 4.366 0 5.168 0 6.003 C 0 6.837 0.328 7.639 0.913 8.235 C 1.498 8.83 2.294 9.172 3.129 9.187 L 7.982 9.187 C 9.188 9.169 10.339 8.677 11.186 7.818 C 12.033 6.958 12.508 5.8 12.508 4.594 C 12.508 3.387 12.033 2.229 11.186 1.369 C 10.339 0.51 9.188 0.018 7.982 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 3.087) matrix(1 0 0 1 8.661 8.638)\"/>"},"IconFolderMonoFolderDoc":{viewBox:"0 0 24 24",body:"<path d=\"M 8.061 0.617 C 7.666 0.222 7.13 0 6.572 0 L 2.106 0 C 1.547 0 1.012 0.222 0.617 0.617 C 0.222 1.012 0 1.547 0 2.106 L 0 3.083 L 10.527 3.083 L 8.061 0.617 Z M 17.895 4.083 L 0 4.083 L 0 16.767 C 0 17.93 0.943 18.872 2.106 18.872 L 17.895 18.872 C 18.171 18.872 18.445 18.818 18.701 18.712 C 18.956 18.606 19.188 18.451 19.384 18.256 C 19.579 18.06 19.734 17.828 19.84 17.573 C 19.946 17.317 20 17.043 20 16.767 L 20 6.188 C 20 5.912 19.946 5.638 19.84 5.382 C 19.734 5.127 19.579 4.895 19.384 4.699 C 19.188 4.504 18.956 4.349 18.701 4.243 C 18.445 4.137 18.171 4.083 17.895 4.083 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.564)\"/>"},"IconFolderStarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 8.061 0.617 C 7.666 0.222 7.13 0 6.572 0 L 2.106 0 C 0.943 0 0 0.943 0 2.106 L 0 3.083 L 10.527 3.083 L 8.061 0.617 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.564)\"/><path d=\"M 17.897 0 L 0 0 L 0 12.684 C 0 13.847 0.943 14.789 2.106 14.789 L 17.895 14.789 C 19.057 14.789 19.999 13.848 20 12.686 L 20 2.105 C 20 0.943 19.059 0.001 17.897 0 Z M 13.83 6.73 L 12.144 8.374 L 12.542 10.695 C 12.586 10.952 12.316 11.148 12.085 11.027 L 10.001 9.931 L 7.917 11.028 C 7.686 11.149 7.416 10.953 7.46 10.696 L 7.857 8.374 L 6.171 6.73 C 5.984 6.548 6.087 6.231 6.345 6.193 L 8.676 5.854 L 9.719 3.742 C 9.834 3.508 10.168 3.508 10.283 3.742 L 11.326 5.854 L 13.656 6.193 C 13.914 6.231 14.017 6.548 13.83 6.73 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2.564) matrix(1 0 0 1 0 4.083)\"/>"},"IconFolkKnifeMonoFolk":{viewBox:"0 0 24 24",body:"<path d=\"M 16.939 2.793 L 16.939 0.689 C 16.938 0.597 16.913 0.508 16.866 0.429 C 16.819 0.351 16.752 0.286 16.671 0.242 C 16.591 0.199 16.5 0.177 16.409 0.18 C 16.317 0.183 16.228 0.211 16.151 0.26 C 11.954 2.882 10.874 9.152 10.604 11.691 C 10.59 11.83 10.605 11.97 10.648 12.103 C 10.692 12.236 10.763 12.358 10.856 12.461 C 10.95 12.565 11.065 12.648 11.192 12.704 C 11.32 12.761 11.458 12.789 11.598 12.789 L 14.178 12.793 L 13.9 20.859 C 13.893 21.063 13.926 21.267 13.999 21.457 C 14.072 21.648 14.183 21.822 14.325 21.969 C 14.467 22.116 14.637 22.233 14.825 22.313 C 15.013 22.393 15.215 22.434 15.419 22.434 C 15.623 22.434 15.825 22.393 16.013 22.313 C 16.201 22.233 16.371 22.116 16.513 21.969 C 16.655 21.822 16.766 21.648 16.839 21.457 C 16.912 21.267 16.945 21.063 16.938 20.859 L 16.938 2.793 L 16.939 2.793 Z M 8.592 0 C 8.327 0 8.072 0.105 7.885 0.293 C 7.697 0.48 7.592 0.735 7.592 1 L 7.592 5.163 C 7.592 5.225 7.579 5.283 7.577 5.344 L 5.796 5.344 L 5.796 1 C 5.796 0.735 5.691 0.48 5.503 0.293 C 5.316 0.105 5.061 0 4.796 0 C 4.531 0 4.276 0.105 4.089 0.293 C 3.901 0.48 3.796 0.735 3.796 1 L 3.796 5.344 L 2.015 5.344 C 2.013 5.283 2 5.225 2 5.163 L 2 1 C 2 0.735 1.895 0.48 1.707 0.293 C 1.52 0.105 1.265 0 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 5.163 C 0 7.734 1.577 9.89 3.689 10.46 L 3.277 20.861 C 3.272 21.064 3.307 21.266 3.381 21.455 C 3.455 21.643 3.566 21.816 3.708 21.961 C 3.85 22.106 4.019 22.222 4.206 22.301 C 4.393 22.379 4.594 22.42 4.797 22.42 C 4.999 22.42 5.2 22.379 5.387 22.301 C 5.574 22.222 5.743 22.106 5.885 21.961 C 6.027 21.816 6.138 21.643 6.212 21.455 C 6.286 21.266 6.321 21.064 6.316 20.861 L 5.904 10.46 C 8.015 9.89 9.592 7.734 9.592 5.163 L 9.592 1 C 9.592 0.735 9.487 0.48 9.299 0.293 C 9.112 0.105 8.857 0 8.592 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.796 1.019)\"/>"},"IconFoodMonoFoodRice":{viewBox:"0 0 24 24",body:"<path d=\"M 18.763 3.997 C 18.763 3.982 18.766 3.968 18.766 3.953 C 18.766 3.639 18.704 3.328 18.584 3.038 C 18.464 2.748 18.288 2.484 18.066 2.262 C 17.844 2.04 17.581 1.864 17.291 1.744 C 17.001 1.624 16.69 1.562 16.376 1.562 C 15.928 1.562 15.514 1.693 15.157 1.908 C 15.046 1.369 14.752 0.885 14.325 0.538 C 13.899 0.19 13.365 0 12.815 0 C 12.056 0 11.388 0.36 10.95 0.911 C 10.728 0.628 10.446 0.399 10.123 0.241 C 9.8 0.083 9.445 0.001 9.086 0 C 8.536 0 8.003 0.19 7.576 0.538 C 7.15 0.885 6.857 1.369 6.746 1.908 C 6.378 1.684 5.956 1.564 5.526 1.562 C 5.212 1.562 4.901 1.624 4.611 1.744 C 4.321 1.864 4.057 2.04 3.836 2.262 C 3.614 2.484 3.438 2.748 3.318 3.038 C 3.197 3.328 3.136 3.639 3.136 3.953 C 3.136 3.968 3.139 3.982 3.14 3.997 C 2.694 4.082 2.282 4.292 1.951 4.603 C 1.621 4.914 1.386 5.313 1.275 5.753 L 20.626 5.753 C 20.515 5.313 20.28 4.914 19.95 4.603 C 19.62 4.292 19.208 4.082 18.763 3.997 Z M 21.896 8.624 C 21.909 8.484 21.894 8.343 21.849 8.21 C 21.805 8.077 21.734 7.955 21.64 7.851 C 21.545 7.747 21.43 7.664 21.302 7.607 C 21.174 7.55 21.035 7.521 20.895 7.521 L 1.005 7.521 C 0.415 7.521 -0.053 8.035 0.005 8.624 C 0.425 12.857 3.25 16.377 7.091 17.818 L 6.993 17.818 L 6.993 19.248 C 6.993 19.513 7.098 19.768 7.286 19.955 C 7.473 20.143 7.728 20.248 7.993 20.248 L 13.825 20.248 C 14.09 20.248 14.344 20.143 14.532 19.955 C 14.72 19.768 14.825 19.513 14.825 19.248 L 14.825 17.818 L 14.809 17.818 C 18.649 16.377 21.475 12.857 21.896 8.624 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.057 1.876)\"/>"},"IconFootMonoFootprint":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 4.1 11.285 C 5 11.485 5.9 11.485 6.8 11.585 C 7.7 11.585 8.4 11.185 8.7 10.385 L 9.3 8.885 C 10.1 6.685 9.8 3.285 8.2 1.285 C 7.1 -0.015 5.1 -0.415 3.6 0.485 C 1.4 1.785 0 4.885 0 7.185 L 0.1 8.785 C 0.1 9.585 0.7 10.285 1.5 10.485 C 2.4 10.885 3.2 11.085 4.1 11.285 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.500 2) matrix(1 0 0 1 13.127 0) matrix(1 0 0 1 0.200 0)\"/><path d=\"M 6.7 0.951 C 5.8 0.951 4.9 0.851 4.1 0.651 C 3.2 0.451 2.4 0.251 1.5 0.051 C 0.8 -0.149 0 0.251 0 0.951 L 0 2.251 C 0 3.751 1 5.251 2.7 5.751 C 2.9 5.751 3 5.851 3.2 5.851 C 3.4 5.851 3.5 5.951 3.7 5.951 C 5.4 6.051 6.9 5.051 7.4 3.551 L 7.9 2.251 C 8 1.751 7.5 1.051 6.7 0.951 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.500 2) matrix(1 0 0 1 13.127 0) matrix(1 0 0 1 0 11.734)\"/><path d=\"M 5.627 11.285 C 4.727 11.485 3.827 11.485 2.927 11.585 C 2.027 11.585 1.327 11.185 1.027 10.385 L 0.427 8.885 C -0.373 6.685 -0.073 3.285 1.527 1.285 C 2.627 -0.015 4.627 -0.415 6.127 0.485 C 8.327 1.785 9.727 4.885 9.727 7.185 L 9.627 8.785 C 9.627 9.585 9.027 10.285 8.227 10.485 C 7.327 10.885 6.527 11.085 5.627 11.285 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.500 2) matrix(1 0 0 1 0 2.200)\"/><path d=\"M 1.213 0.951 C 2.113 0.951 3.013 0.851 3.813 0.651 C 4.713 0.451 5.513 0.251 6.413 0.051 C 7.113 -0.149 7.913 0.251 7.913 0.951 L 7.913 2.251 C 7.913 3.751 6.913 5.251 5.213 5.751 C 5.013 5.751 4.913 5.851 4.713 5.851 C 4.513 5.851 4.413 5.951 4.213 5.951 C 2.513 6.051 1.013 5.051 0.513 3.551 L 0.013 2.251 C -0.087 1.751 0.413 1.051 1.213 0.951 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.500 2) matrix(1 0 0 1 0 2.200) matrix(1 0 0 1 2.015 11.734)\"/>"},"IconFootprintMonoFoot":{viewBox:"0 0 24 24",body:"<path d=\"M 8 10.837 C 9.026 10.837 9.769 11.075 10.295 11.372 C 12.143 12.415 14.553 11.926 15.512 10.033 C 15.824 9.416 16 8.719 16 7.982 C 16 6.552 15.539 5.159 14.659 4.032 C 13.288 2.275 10.944 0 8 0 C 5.056 0 2.712 2.275 1.341 4.032 C 0.461 5.159 0 6.552 0 7.982 C 0 8.72 0.176 9.417 0.488 10.033 C 1.447 11.926 3.856 12.415 5.705 11.372 C 6.231 11.074 6.974 10.837 8 10.837 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.393 1.649) matrix(1 0 0 1 2.607 8.792)\"/><path d=\"M 3.2 6.4 C 4.967 6.4 6.4 4.967 6.4 3.2 C 6.4 1.433 4.967 0 3.2 0 C 1.433 0 0 1.433 0 3.2 C 0 4.967 1.433 6.4 3.2 6.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.393 1.649) matrix(1 0 0 1 7.407 0)\"/><path d=\"M 3.2 6.4 C 4.967 6.4 6.4 4.967 6.4 3.2 C 6.4 1.433 4.967 0 3.2 0 C 1.433 0 0 1.433 0 3.2 C 0 4.967 1.433 6.4 3.2 6.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.393 1.649) matrix(1 0 0 1 14.814 2.858)\"/><path d=\"M 3.2 6.4 C 4.967 6.4 6.4 4.967 6.4 3.2 C 6.4 1.433 4.967 0 3.2 0 C 1.433 0 0 1.433 0 3.2 C 0 4.967 1.433 6.4 3.2 6.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.393 1.649) matrix(1 0 0 1 0 2.858)\"/>"},"IconFourSquareMono4":{viewBox:"0 0 24 24",body:"<path d=\"M 7.063 8.202 L 1.139 8.202 C 0.51 8.202 0 7.692 0 7.063 L 0 1.139 C 0 0.51 0.51 0 1.139 0 L 7.062 0 C 7.691 0 8.201 0.51 8.201 1.139 L 8.201 7.062 C 8.202 7.691 7.693 8.202 7.063 8.202 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.874 2.824)\"/><path d=\"M 7.062 8.202 L 1.139 8.202 C 0.51 8.202 0 7.692 0 7.063 L 0 1.139 C 0 0.51 0.51 0 1.139 0 L 7.062 0 C 7.691 0 8.201 0.51 8.201 1.139 L 8.201 7.062 C 8.201 7.691 7.69 8.202 7.062 8.202 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.874 2.824) matrix(1 0 0 1 10.039 0.067)\"/><path d=\"M 7.063 8.201 L 1.139 8.201 C 0.51 8.201 0 7.691 0 7.062 L 0 1.139 C 0 0.51 0.51 0 1.139 0 L 7.062 0 C 7.691 0 8.201 0.51 8.201 1.139 L 8.201 7.062 C 8.202 7.69 7.693 8.201 7.063 8.201 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.874 2.824) matrix(1 0 0 1 0 10.025)\"/><path d=\"M 7.062 8.201 L 1.139 8.201 C 0.51 8.201 0 7.691 0 7.062 L 0 1.139 C 0 0.51 0.51 0 1.139 0 L 7.062 0 C 7.691 0 8.201 0.51 8.201 1.139 L 8.201 7.062 C 8.201 7.691 7.69 8.201 7.062 8.201 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.874 2.824) matrix(1 0 0 1 10.039 10.092)\"/><path d=\"M 24 24 L 0 24 L 0 0 L 24 0 L 24 24 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconFurnitureMonoFurnitureInterior":{viewBox:"0 0 24 24",body:"<path d=\"M 11.925 9.45 C 11.925 9.539 11.908 9.626 11.874 9.708 C 11.84 9.79 11.79 9.865 11.727 9.927 C 11.665 9.99 11.59 10.04 11.508 10.074 C 11.426 10.108 11.339 10.125 11.25 10.125 C 11.161 10.125 11.074 10.108 10.992 10.074 C 10.91 10.04 10.835 9.99 10.773 9.927 C 10.71 9.865 10.66 9.79 10.626 9.708 C 10.592 9.626 10.575 9.539 10.575 9.45 L 10.575 7.65 C 10.575 7.561 10.592 7.474 10.626 7.392 C 10.66 7.31 10.71 7.235 10.773 7.173 C 10.835 7.11 10.91 7.06 10.992 7.026 C 11.074 6.992 11.161 6.975 11.25 6.975 C 11.339 6.975 11.426 6.992 11.508 7.026 C 11.59 7.06 11.665 7.11 11.727 7.173 C 11.79 7.235 11.84 7.31 11.874 7.392 C 11.908 7.474 11.925 7.561 11.925 7.65 L 11.925 9.45 Z M 6.525 9.45 C 6.525 9.629 6.454 9.801 6.327 9.927 C 6.201 10.054 6.029 10.125 5.85 10.125 C 5.671 10.125 5.499 10.054 5.373 9.927 C 5.246 9.801 5.175 9.629 5.175 9.45 L 5.175 7.65 C 5.175 7.471 5.246 7.299 5.373 7.173 C 5.499 7.046 5.671 6.975 5.85 6.975 C 6.029 6.975 6.201 7.046 6.327 7.173 C 6.454 7.299 6.525 7.471 6.525 7.65 L 6.525 9.45 Z M 7.875 17.1 L 7.875 0 L 0.9 0 C 0.661 0 0.432 0.095 0.264 0.264 C 0.095 0.432 0 0.661 0 0.9 L 0 18.317 C 0 18.435 0.023 18.552 0.069 18.662 C 0.114 18.771 0.18 18.87 0.264 18.954 C 0.348 19.037 0.447 19.104 0.556 19.149 C 0.666 19.194 0.783 19.217 0.901 19.217 L 2.117 19.217 C 2.356 19.217 2.585 19.122 2.753 18.953 C 2.922 18.785 3.017 18.556 3.017 18.317 L 3.017 17.1 L 7.875 17.1 Z M 14.083 17.1 L 14.083 18.317 C 14.083 18.435 14.106 18.552 14.152 18.662 C 14.197 18.771 14.263 18.87 14.347 18.954 C 14.431 19.037 14.53 19.104 14.639 19.149 C 14.749 19.194 14.866 19.217 14.984 19.217 L 16.2 19.217 C 16.439 19.217 16.668 19.122 16.836 18.953 C 17.005 18.785 17.1 18.556 17.1 18.317 L 17.1 0.9 C 17.1 0.661 17.005 0.432 16.836 0.264 C 16.668 0.095 16.439 0 16.2 0 L 9.225 0 L 9.225 17.1 L 14.083 17.1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.450 3.067)\"/>"},"IconGameMonoGameJoy":{viewBox:"0 0 24 24",body:"<path d=\"M 17.029 5.854 C 16.678 5.854 16.341 5.714 16.092 5.466 C 15.844 5.217 15.704 4.88 15.704 4.529 C 15.704 4.178 15.844 3.841 16.092 3.592 C 16.341 3.344 16.678 3.204 17.029 3.204 C 17.38 3.204 17.717 3.344 17.966 3.592 C 18.214 3.841 18.354 4.178 18.354 4.529 C 18.354 4.88 18.214 5.217 17.966 5.466 C 17.717 5.714 17.38 5.854 17.029 5.854 Z M 14.239 8.645 C 13.887 8.645 13.55 8.505 13.301 8.256 C 13.052 8.008 12.913 7.67 12.913 7.319 C 12.913 6.967 13.052 6.629 13.301 6.381 C 13.55 6.132 13.887 5.992 14.239 5.992 C 14.591 5.992 14.928 6.132 15.177 6.381 C 15.426 6.629 15.566 6.967 15.566 7.319 C 15.566 7.67 15.426 8.008 15.177 8.256 C 14.928 8.505 14.591 8.645 14.239 8.645 Z M 10.156 6.674 L 8.116 6.674 L 8.116 8.714 L 6.616 8.714 L 6.616 6.674 L 4.575 6.674 L 4.575 5.174 L 6.616 5.174 L 6.616 3.133 L 8.116 3.133 L 8.116 5.174 L 10.156 5.174 L 10.156 6.674 Z M 22.896 13.059 L 21.154 4.238 L 21.151 4.228 L 21.148 4.206 L 21.145 4.206 C 20.652 1.857 18.539 0 16.136 0 L 6.863 0 C 4.461 0 2.347 1.857 1.855 4.206 L 1.851 4.206 L 1.848 4.228 L 1.845 4.238 L 0.103 13.059 C 0.037 13.336 0.003 13.62 0 13.905 C 0 14.399 0.097 14.888 0.286 15.345 C 0.476 15.801 0.753 16.216 1.102 16.565 C 1.452 16.915 1.866 17.192 2.323 17.381 C 2.78 17.57 3.269 17.667 3.763 17.667 C 5.183 17.667 6.404 16.873 7.046 15.712 L 9.298 11.937 L 13.702 11.937 L 15.954 15.712 C 16.595 16.873 17.816 17.667 19.236 17.667 C 19.73 17.667 20.22 17.57 20.676 17.381 C 21.133 17.192 21.548 16.915 21.897 16.566 C 22.247 16.216 22.524 15.801 22.713 15.345 C 22.902 14.888 23 14.399 23 13.905 C 23 13.613 22.959 13.332 22.896 13.059 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.500 3.166)\"/>"},"IconGasMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.4 7.3 C 16.4 6.9 16.1 6.6 15.7 6.5 L 15.7 1.6 C 16.1 1.5 16.4 1.2 16.4 0.8 C 16.4 0.4 16 0 15.6 0 L 0.8 0 C 0.4 0 0 0.4 0 0.8 C 0 1.2 0.3 1.5 0.7 1.6 L 0.7 6.5 C 0.3 6.6 0 7 0 7.3 C 0 7.7 0.3 8 0.7 8.1 L 0.7 12.9 C 0.3 13 0 13.3 0 13.7 C 0 14.1 0.3 14.4 0.7 14.5 L 0.7 19.5 C 0.3 19.6 0 19.9 0 20.3 C 0 20.7 0.4 21.1 0.8 21.1 L 15.6 21.1 C 16 21.1 16.4 20.7 16.4 20.3 C 16.4 19.9 16.1 19.6 15.7 19.5 L 15.7 14.5 C 16.1 14.5 16.4 14.2 16.4 13.7 C 16.4 13.3 16.1 13 15.7 12.9 L 15.7 8.1 C 16.1 8 16.4 7.7 16.4 7.3 Z M 8.2 14.6 C 6.2 14.6 4.7 13 4.7 11.1 C 4.7 9.9 5.3 8.7 6.1 7.7 C 5.8 8.7 6.4 9.1 6.9 8.7 C 7.5 8.4 8 7.2 7.1 6.4 C 7.1 6.4 7.9 6.2 9 7 C 10.1 7.8 10.1 9.4 10.7 9.4 C 11.1 9.4 11 9 10.9 8.4 C 11.4 9.2 11.8 10.2 11.8 11.1 C 11.7 13 10.2 14.6 8.2 14.6 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.800 1.500)\"/><path d=\"M 1.6 0 C 1.6 0 3.2 0.9 3.2 2.2 C 3.2 3 2.5 3.8 1.6 3.8 C 0.7 3.8 0 3.1 0 2.2 C 0 0.9 1.6 0 1.6 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.800 1.500) matrix(1 0 0 1 6.600 10.500)\"/>"},"IconGift2MonoPresent":{viewBox:"0 0 24 24",body:"<path d=\"M 6.5 0 L 4.674 0 L 0 0 L 0 17 L 6.5 17 C 7.605 17 8.5 16.105 8.5 15 L 8.5 2 C 8.5 0.895 7.605 0 6.5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 0.963) matrix(1 0 0 1 10.500 3.811)\"/><path d=\"M 2.652 0 L 2 0 C 0.895 0 0 0.895 0 2 L 0 15 C 0 16.105 0.895 17 2 17 L 8.5 17 L 8.5 0 L 3.825 0 L 2.652 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 0.963) matrix(1 0 0 1 0 3.811)\"/><path d=\"M 10.349 0.009 C 10.219 0.009 10.09 0.035 9.969 0.084 L 5.675 1.847 L 1.352 0.073 C 0.851 -0.132 0.279 0.107 0.073 0.608 C 0.025 0.725 0 0.851 0 0.978 L 0 3.811 L 4.675 3.811 L 4.675 20.811 L 6.675 20.811 L 6.675 3.811 L 11.349 3.811 L 11.349 1.009 C 11.349 0.457 10.901 0.009 10.349 0.009 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 0.963) matrix(1 0 0 1 3.825 0)\"/>"},"IconGiftMonoBoxGift":{viewBox:"0 0 24 24",body:"<path d=\"M 17 3.811 L 15.174 3.811 L 15.174 1.009 C 15.174 0.845 15.134 0.683 15.056 0.539 C 14.979 0.394 14.867 0.27 14.731 0.179 C 14.594 0.087 14.438 0.031 14.274 0.014 C 14.111 -0.002 13.946 0.022 13.794 0.084 L 9.5 1.847 L 5.177 0.073 C 5.028 0.012 4.867 -0.011 4.707 0.005 C 4.547 0.021 4.393 0.076 4.26 0.166 C 4.126 0.255 4.017 0.376 3.941 0.518 C 3.865 0.659 3.825 0.818 3.825 0.978 L 3.825 3.811 L 2 3.811 C 1.47 3.811 0.961 4.022 0.586 4.397 C 0.211 4.772 0 5.281 0 5.811 L 0 18.811 C 0 19.342 0.211 19.85 0.586 20.226 C 0.961 20.601 1.47 20.811 2 20.811 L 8.5 20.811 L 8.5 3.811 L 10.5 3.811 L 10.5 20.811 L 17 20.811 C 17.53 20.811 18.039 20.601 18.414 20.226 C 18.789 19.85 19 19.342 19 18.811 L 19 5.811 C 19 5.281 18.789 4.772 18.414 4.397 C 18.039 4.022 17.53 3.811 17 3.811 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 0.963)\"/>"},"IconGoldbarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.261 11.25 L 14.469 0.918 C 14.385 0.39 13.93 0 13.395 0 L 10.004 0 L 0 12.506 L 15.187 12.506 C 15.855 12.506 16.365 11.91 16.261 11.25 Z\" fill=\"rgb(208,212,218)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.000 5.747) matrix(1 0 0 1 5.725 0)\"/><path d=\"M 5.461 4.074 C 5.442 4.08 5.427 4.095 5.42 4.114 L 4.91 5.647 C 4.879 5.737 4.751 5.737 4.721 5.647 L 4.21 4.114 C 4.204 4.095 4.189 4.08 4.17 4.074 L 2.637 3.563 C 2.547 3.533 2.547 3.405 2.637 3.374 L 4.17 2.864 C 4.189 2.857 4.204 2.842 4.21 2.823 L 4.721 1.291 C 4.751 1.2 4.879 1.2 4.91 1.291 L 5.42 2.823 C 5.427 2.842 5.442 2.857 5.461 2.864 L 6.993 3.374 C 7.084 3.405 7.084 3.533 6.993 3.563 L 5.461 4.074 Z M 2.876 0 C 2.341 0 1.886 0.39 1.803 0.919 L 0.014 11.249 C -0.09 11.909 0.42 12.505 1.087 12.505 L 5.726 12.505 L 15.73 0 L 2.876 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.000 5.747) matrix(1 0 0 1 0 0.001)\"/>"},"IconGolfMonoSports":{viewBox:"0 0 24 24",body:"<path d=\"M 10.8 12.511 C 16.765 12.511 21.6 9.71 21.6 6.256 C 21.6 2.801 16.765 0 10.8 0 C 4.835 0 0 2.801 0 6.256 C 0 9.71 4.835 12.511 10.8 12.511 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.200 1.995) matrix(1 0 0 1 0 7.950)\"/><path d=\"M 2.108 2.442 C 3.273 2.442 4.217 1.895 4.217 1.221 C 4.217 0.547 3.273 0 2.108 0 C 0.944 0 0 0.547 0 1.221 C 0 1.895 0.944 2.442 2.108 2.442 Z\" fill=\"rgb(126,134,144)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.200 1.995) matrix(1 0 0 1 8.691 10.390)\"/><path d=\"M 4.42 1.871 L 0 0 L 0 4.846 L 4.42 2.974 C 4.528 2.928 4.62 2.851 4.685 2.753 C 4.749 2.655 4.784 2.54 4.784 2.423 C 4.784 2.305 4.749 2.191 4.685 2.093 C 4.62 1.995 4.528 1.918 4.42 1.871 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.200 1.995) matrix(1 0 0 1 11.176 0)\"/><path d=\"M 0.45 0 C 0.45 -0.249 0.249 -0.45 0 -0.45 C -0.249 -0.45 -0.45 -0.249 -0.45 0 L 0 0 L 0.45 0 Z M -0.45 10.199 C -0.45 10.448 -0.249 10.649 0 10.649 C 0.249 10.649 0.45 10.448 0.45 10.199 L 0 10.199 L -0.45 10.199 Z M 0 0 L -0.45 0 L -0.45 10.199 L 0 10.199 L 0.45 10.199 L 0.45 0 L 0 0 Z\" fill=\"rgb(126,134,144)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.200 1.995) matrix(1 0 0 1 10.800 0.211)\"/>"},"IconGovernmentMonoGovernmentBank":{viewBox:"0 0 24 24",body:"<path d=\"M 12.878 16.988 L 15.366 16.988 L 15.366 9.215 L 12.878 9.215 L 12.878 16.988 Z M 3.633 16.988 L 6.122 16.988 L 6.122 9.215 L 3.633 9.215 L 3.633 16.988 Z M 9.5 3.852 C 9.898 3.852 10.279 4.01 10.561 4.291 C 10.842 4.573 11 4.954 11 5.352 C 11 5.75 10.842 6.131 10.561 6.413 C 10.279 6.694 9.898 6.852 9.5 6.852 C 9.102 6.852 8.721 6.694 8.439 6.413 C 8.158 6.131 8 5.75 8 5.352 C 8 4.954 8.158 4.573 8.439 4.291 C 8.721 4.01 9.102 3.852 9.5 3.852 Z M 8.256 16.988 L 10.744 16.988 L 10.744 9.215 L 8.256 9.215 L 8.256 16.988 Z M 19 9.215 L 19 6.383 C 19 6.029 18.906 5.681 18.727 5.375 C 18.548 5.069 18.292 4.816 17.983 4.642 L 9.991 0.129 C 9.841 0.044 9.672 0 9.5 0 C 9.328 0 9.159 0.044 9.009 0.129 L 1.017 4.642 C 0.708 4.816 0.452 5.069 0.273 5.375 C 0.094 5.681 0 6.029 0 6.383 L 0 9.215 L 1.5 9.215 L 1.5 16.988 L 0.5 16.988 C 0.367 16.988 0.24 17.041 0.146 17.134 C 0.053 17.228 0 17.355 0 17.488 L 0 19.488 C 0 19.621 0.053 19.748 0.146 19.842 C 0.24 19.935 0.367 19.988 0.5 19.988 L 18.5 19.988 C 18.633 19.988 18.76 19.935 18.854 19.842 C 18.947 19.748 19 19.621 19 19.488 L 19 17.488 C 19 17.355 18.947 17.228 18.854 17.134 C 18.76 17.041 18.633 16.988 18.5 16.988 L 17.5 16.988 L 17.5 9.215 L 19 9.215 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1.580)\"/>"},"IconGovernmentSearchMonoGovernment":{viewBox:"0 0 24 24",body:"<path d=\"M 8 5.352 C 8 4.954 8.158 4.573 8.439 4.291 C 8.721 4.01 9.102 3.852 9.5 3.852 C 9.898 3.852 10.279 4.01 10.561 4.291 C 10.842 4.573 11 4.954 11 5.352 C 11 5.75 10.842 6.131 10.561 6.413 C 10.279 6.694 9.898 6.852 9.5 6.852 C 9.102 6.852 8.721 6.694 8.439 6.413 C 8.158 6.131 8 5.75 8 5.352 Z M 15 10.42 C 15.893 10.42 16.738 10.621 17.5 10.973 L 17.5 9.215 L 19 9.215 L 19 6.383 C 19 6.029 18.906 5.681 18.727 5.375 C 18.548 5.069 18.292 4.816 17.983 4.642 L 9.991 0.129 C 9.841 0.044 9.672 0 9.5 0 C 9.328 0 9.159 0.044 9.009 0.129 L 1.017 4.642 C 0.708 4.816 0.452 5.069 0.273 5.375 C 0.094 5.681 0 6.029 0 6.383 L 0 9.215 L 1.5 9.215 L 1.5 16.988 L 0.5 16.988 C 0.367 16.988 0.24 17.041 0.146 17.134 C 0.053 17.228 0 17.355 0 17.488 L 0 19.488 C 0 19.621 0.053 19.748 0.146 19.842 C 0.24 19.935 0.367 19.988 0.5 19.988 L 10.188 19.988 C 9.417 18.958 9 17.706 9 16.42 C 9 13.111 11.692 10.42 15 10.42 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 1.080)\"/><path d=\"M 7 4.5 C 7 5.878 5.879 7 4.5 7 C 3.837 6.999 3.202 6.736 2.733 6.267 C 2.264 5.798 2.001 5.163 2 4.5 C 2 3.122 3.122 2 4.5 2 C 5.879 2 7 3.122 7 4.5 Z M 8.3 6.886 C 8.755 6.173 8.998 5.346 9 4.5 C 9 2.019 6.981 0 4.5 0 C 3.307 0.001 2.163 0.476 1.319 1.319 C 0.476 2.163 0.001 3.307 0 4.5 C 0 6.98 2.019 9 4.5 9 C 5.378 9 6.192 8.737 6.886 8.3 L 9.293 10.707 L 10.707 9.293 L 8.3 6.886 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 1.080) matrix(1 0 0 1 10.500 11.920)\"/>"},"IconGraphBagMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0.202 1.4 L 1.802 4.1 L 7.802 4.1 L 9.402 1.4 C 9.802 0.7 9.302 0 8.602 0 L 0.902 0 C 0.202 0 -0.298 0.7 0.202 1.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.014 2) matrix(1 0 0 1 5.183 0)\"/><path d=\"M 8.786 0.069 C 4.386 0.469 0.586 4.169 0.086 8.669 C -0.214 10.969 0.286 13.169 1.386 14.969 C 1.786 15.869 2.686 16.369 3.686 16.369 L 16.186 16.369 C 17.186 16.369 18.086 15.869 18.586 14.969 C 19.486 13.469 19.986 11.769 19.986 9.969 C 19.986 4.069 14.886 -0.631 8.786 0.069 Z M 14.986 8.469 C 14.986 8.669 14.886 8.869 14.786 8.969 C 14.686 9.069 14.486 9.169 14.286 9.169 C 14.086 9.169 13.886 9.169 13.786 8.969 C 13.686 8.869 13.586 8.669 13.486 8.469 L 13.486 8.369 L 13.486 7.669 L 10.386 10.669 C 10.286 10.769 10.086 10.869 9.886 10.869 C 9.686 10.869 9.486 10.869 9.386 10.769 L 9.286 10.669 L 7.386 8.969 L 5.186 11.069 C 5.186 11.269 4.986 11.369 4.786 11.369 C 4.586 11.369 4.386 11.369 4.286 11.269 L 4.186 11.169 C 4.086 11.069 3.986 10.869 3.986 10.669 C 3.986 10.469 3.986 10.369 4.186 10.169 L 4.286 10.069 L 6.986 7.469 C 6.986 7.469 7.186 7.369 7.386 7.369 C 7.586 7.369 7.786 7.369 7.886 7.469 L 7.986 7.569 L 9.886 9.269 L 12.486 6.769 L 11.786 6.769 C 11.586 6.769 11.386 6.669 11.286 6.569 C 11.186 6.469 10.986 6.369 10.986 6.169 L 10.986 6.069 C 10.986 5.869 11.086 5.769 11.186 5.569 C 11.286 5.469 11.486 5.369 11.686 5.369 L 11.786 5.369 L 14.286 5.369 C 14.486 5.369 14.686 5.469 14.786 5.569 C 14.886 5.669 14.986 5.869 14.986 6.069 L 14.986 6.169 L 14.986 8.469 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.014 2) matrix(1 0 0 1 0 3.631)\"/>"},"IconGraphBarDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.263 18 L 17 18 C 17.265 18 17.52 17.895 17.707 17.707 C 17.895 17.52 18 17.265 18 17 L 18 10.474 C 18 10.209 17.895 9.954 17.707 9.767 C 17.52 9.579 17.265 9.474 17 9.474 L 14.263 9.474 C 13.998 9.474 13.743 9.579 13.556 9.767 C 13.368 9.954 13.263 10.209 13.263 10.474 L 13.263 17 C 13.263 17.265 13.368 17.52 13.556 17.707 C 13.743 17.895 13.998 18 14.263 18 Z M 7.631 18 L 10.368 18 C 10.633 18 10.888 17.895 11.075 17.707 C 11.263 17.52 11.368 17.265 11.368 17 L 11.368 5.737 C 11.368 5.472 11.263 5.217 11.075 5.03 C 10.888 4.842 10.633 4.737 10.368 4.737 L 7.631 4.737 C 7.366 4.737 7.111 4.842 6.924 5.03 C 6.736 5.217 6.631 5.472 6.631 5.737 L 6.631 17 C 6.631 17.265 6.736 17.52 6.924 17.707 C 7.111 17.895 7.366 18 7.631 18 Z M 1 18 L 3.737 18 C 4.002 18 4.257 17.895 4.444 17.707 C 4.632 17.52 4.737 17.265 4.737 17 L 4.737 1 C 4.737 0.735 4.632 0.48 4.444 0.293 C 4.257 0.105 4.002 0 3.737 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 17 C 0 17.265 0.105 17.52 0.293 17.707 C 0.48 17.895 0.735 18 1 18 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 3.250)\"/>"},"IconGraphBarMonoGraph":{viewBox:"0 0 24 24",body:"<path d=\"M 1 13.263 L 3.737 13.263 C 4.002 13.263 4.257 13.158 4.444 12.97 C 4.632 12.783 4.737 12.528 4.737 12.263 L 4.737 1 C 4.737 0.735 4.632 0.48 4.444 0.293 C 4.257 0.105 4.002 0 3.737 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 12.263 C 0 12.528 0.105 12.783 0.293 12.97 C 0.48 13.158 0.735 13.263 1 13.263 Z M 7.632 13.263 L 10.369 13.263 C 10.634 13.263 10.889 13.158 11.076 12.97 C 11.264 12.783 11.369 12.528 11.369 12.263 L 11.369 1 C 11.369 0.735 11.264 0.48 11.076 0.293 C 10.889 0.105 10.634 0 10.369 0 L 7.632 0 C 7.367 0 7.112 0.105 6.925 0.293 C 6.737 0.48 6.632 0.735 6.632 1 L 6.632 12.263 C 6.632 12.528 6.737 12.783 6.925 12.97 C 7.112 13.158 7.367 13.263 7.632 13.263 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 3.216) matrix(1 0 0 1 6.631 0)\"/><path d=\"M 14.263 18 L 17 18 C 17.265 18 17.52 17.895 17.707 17.707 C 17.895 17.52 18 17.265 18 17 L 18 9.474 L 13.263 9.474 L 13.263 17 C 13.263 17.265 13.368 17.52 13.556 17.707 C 13.743 17.895 13.998 18 14.263 18 Z M 7.631 18 L 10.368 18 C 10.633 18 10.888 17.895 11.075 17.707 C 11.263 17.52 11.368 17.265 11.368 17 L 11.368 5.737 L 6.631 5.737 L 6.631 17 C 6.631 17.265 6.736 17.52 6.924 17.707 C 7.111 17.895 7.366 18 7.631 18 Z M 1 18 L 3.737 18 C 4.002 18 4.257 17.895 4.444 17.707 C 4.632 17.52 4.737 17.265 4.737 17 L 4.737 1 C 4.737 0.735 4.632 0.48 4.444 0.293 C 4.257 0.105 4.002 0 3.737 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 17 C 0 17.265 0.105 17.52 0.293 17.707 C 0.48 17.895 0.735 18 1 18 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 3.216) matrix(1 0 0 1 0 0.034)\"/>"},"IconGraphBarSameMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.263 13.263 L 17 13.263 C 17.265 13.263 17.52 13.158 17.707 12.97 C 17.895 12.783 18 12.528 18 12.263 L 18 1 C 18 0.735 17.895 0.48 17.707 0.293 C 17.52 0.105 17.265 0 17 0 L 14.263 0 C 13.998 0 13.743 0.105 13.556 0.293 C 13.368 0.48 13.263 0.735 13.263 1 L 13.263 12.263 C 13.263 12.528 13.368 12.783 13.556 12.97 C 13.743 13.158 13.998 13.263 14.263 13.263 Z M 7.631 13.263 L 10.368 13.263 C 10.633 13.263 10.888 13.158 11.075 12.97 C 11.263 12.783 11.368 12.528 11.368 12.263 L 11.368 1 C 11.368 0.735 11.263 0.48 11.075 0.293 C 10.888 0.105 10.633 0 10.368 0 L 7.631 0 C 7.366 0 7.111 0.105 6.924 0.293 C 6.736 0.48 6.631 0.735 6.631 1 L 6.631 12.263 C 6.631 12.528 6.736 12.783 6.924 12.97 C 7.111 13.158 7.366 13.263 7.631 13.263 Z M 1 13.263 L 3.737 13.263 C 4.002 13.263 4.257 13.158 4.444 12.97 C 4.632 12.783 4.737 12.528 4.737 12.263 L 4.737 1 C 4.737 0.735 4.632 0.48 4.444 0.293 C 4.257 0.105 4.002 0 3.737 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 12.263 C 0 12.528 0.105 12.783 0.293 12.97 C 0.48 13.158 0.735 13.263 1 13.263 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 7.987)\"/>"},"IconGraphBarUpMono":{viewBox:"0 0 24 24",body:"<path d=\"M 3.737 18 L 1 18 C 0.735 18 0.48 17.895 0.293 17.707 C 0.105 17.52 0 17.265 0 17 L 0 10.474 C 0 10.209 0.105 9.954 0.293 9.767 C 0.48 9.579 0.735 9.474 1 9.474 L 3.737 9.474 C 4.002 9.474 4.257 9.579 4.444 9.767 C 4.632 9.954 4.737 10.209 4.737 10.474 L 4.737 17 C 4.737 17.265 4.632 17.52 4.444 17.707 C 4.257 17.895 4.002 18 3.737 18 Z M 10.369 18 L 7.632 18 C 7.367 18 7.112 17.895 6.925 17.707 C 6.737 17.52 6.632 17.265 6.632 17 L 6.632 5.737 C 6.632 5.472 6.737 5.217 6.925 5.03 C 7.112 4.842 7.367 4.737 7.632 4.737 L 10.369 4.737 C 10.634 4.737 10.889 4.842 11.076 5.03 C 11.264 5.217 11.369 5.472 11.369 5.737 L 11.369 17 C 11.369 17.265 11.264 17.52 11.076 17.707 C 10.889 17.895 10.634 18 10.369 18 Z M 17 18 L 14.263 18 C 13.998 18 13.743 17.895 13.556 17.707 C 13.368 17.52 13.263 17.265 13.263 17 L 13.263 1 C 13.263 0.735 13.368 0.48 13.556 0.293 C 13.743 0.105 13.998 0 14.263 0 L 17 0 C 17.265 0 17.52 0.105 17.707 0.293 C 17.895 0.48 18 0.735 18 1 L 18 17 C 18 17.265 17.895 17.52 17.707 17.707 C 17.52 17.895 17.265 18 17 18 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 3.250)\"/>"},"IconGraphCandleMonoGraph":{viewBox:"0 0 24 24",body:"<path d=\"M 1.2 7.8 C 1.2 7.137 0.663 6.6 0 6.6 C -0.663 6.6 -1.2 7.137 -1.2 7.8 L 0 7.8 L 1.2 7.8 Z M -1.2 13.64 C -1.2 14.303 -0.663 14.84 0 14.84 C 0.663 14.84 1.2 14.303 1.2 13.64 L 0 13.64 L -1.2 13.64 Z M 5.2 3.8 C 5.2 3.137 4.663 2.6 4 2.6 C 3.337 2.6 2.8 3.137 2.8 3.8 L 4 3.8 L 5.2 3.8 Z M 2.8 15.64 C 2.8 16.303 3.337 16.84 4 16.84 C 4.663 16.84 5.2 16.303 5.2 15.64 L 4 15.64 L 2.8 15.64 Z M 17.2 0.8 C 17.2 0.137 16.663 -0.4 16 -0.4 C 15.337 -0.4 14.8 0.137 14.8 0.8 L 16 0.8 L 17.2 0.8 Z M 14.8 10.73 C 14.8 11.393 15.337 11.93 16 11.93 C 16.663 11.93 17.2 11.393 17.2 10.73 L 16 10.73 L 14.8 10.73 Z M 9.2 0 C 9.2 -0.663 8.663 -1.2 8 -1.2 C 7.337 -1.2 6.8 -0.663 6.8 0 L 8 0 L 9.2 0 Z M 6.8 18.44 C 6.8 19.103 7.337 19.64 8 19.64 C 8.663 19.64 9.2 19.103 9.2 18.44 L 8 18.44 L 6.8 18.44 Z M 13.2 6 C 13.2 5.337 12.663 4.8 12 4.8 C 11.337 4.8 10.8 5.337 10.8 6 L 12 6 L 13.2 6 Z M 10.8 13.44 C 10.8 14.103 11.337 14.64 12 14.64 C 12.663 14.64 13.2 14.103 13.2 13.44 L 12 13.44 L 10.8 13.44 Z M 0 7.8 L -1.2 7.8 L -1.2 13.64 L 0 13.64 L 1.2 13.64 L 1.2 7.8 L 0 7.8 Z M 4 3.8 L 2.8 3.8 L 2.8 15.64 L 4 15.64 L 5.2 15.64 L 5.2 3.8 L 4 3.8 Z M 16 0.8 L 14.8 0.8 L 14.8 10.73 L 16 10.73 L 17.2 10.73 L 17.2 0.8 L 16 0.8 Z M 8 0 L 6.8 0 L 6.8 18.44 L 8 18.44 L 9.2 18.44 L 9.2 0 L 8 0 Z M 12 6 L 10.8 6 L 10.8 13.44 L 12 13.44 L 13.2 13.44 L 13.2 6 L 12 6 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 3.180)\"/>"},"IconGraphChartMonoUp":{viewBox:"0 0 24 24",body:"<path d=\"M 10.702 5.512 L 7.71 2.875 C 7.531 2.717 7.301 2.63 7.062 2.63 C 6.823 2.63 6.593 2.717 6.414 2.875 L 0.332 8.235 C 0.228 8.327 0.144 8.44 0.087 8.566 C 0.03 8.693 0 8.831 0 8.97 L 0 16.452 C 0 16.972 0.206 17.47 0.574 17.838 C 0.942 18.205 1.44 18.412 1.96 18.412 L 17.64 18.412 C 18.16 18.412 18.658 18.205 19.026 17.838 C 19.393 17.47 19.6 16.972 19.6 16.452 L 19.6 0.982 C 19.6 0.139 18.604 -0.311 17.972 0.247 L 11.998 5.512 C 11.819 5.669 11.589 5.757 11.35 5.757 C 11.111 5.757 10.881 5.669 10.702 5.512 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.200 2.794)\"/>"},"IconGraphCircleMonoGraph":{viewBox:"0 0 24 24",body:"<path d=\"M 1.472 0 C 0.504 1.671 -0.004 3.569 0 5.5 C 0 9.543 2.181 13.077 5.431 14.988 L 8.249 10.265 C 7.623 9.904 7.075 9.423 6.635 8.85 C 6.195 8.276 5.873 7.622 5.686 6.924 C 5.499 6.227 5.451 5.499 5.546 4.783 C 5.64 4.066 5.875 3.376 6.236 2.75 L 1.472 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.993) matrix(1 0 0 1 0 5.500)\"/><path d=\"M 0 20.488 C 1.688 21.481 3.611 22.003 5.569 22 C 11.644 22 16.569 17.075 16.569 11 C 16.569 4.925 11.644 0 5.569 0 L 5.569 5.5 C 6.412 5.5 7.245 5.695 8.001 6.068 C 8.757 6.441 9.418 6.984 9.931 7.653 C 10.444 8.322 10.797 9.101 10.961 9.928 C 11.125 10.755 11.097 11.609 10.879 12.424 C 10.661 13.239 10.258 13.992 9.702 14.626 C 9.146 15.26 8.451 15.758 7.672 16.081 C 6.893 16.404 6.05 16.543 5.208 16.488 C 4.366 16.433 3.549 16.185 2.818 15.764 L 0 20.488 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.993) matrix(1 0 0 1 5.431 0)\"/><path d=\"M 4.764 8.25 C 5.247 7.414 5.941 6.719 6.777 6.236 C 7.614 5.754 8.562 5.5 9.528 5.5 L 9.528 0 C 7.597 -0.001 5.699 0.507 4.027 1.473 C 2.354 2.438 0.965 3.827 0 5.5 L 4.764 8.25 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.993) matrix(1 0 0 1 1.472 0)\"/>"},"IconGraphCirclePieceMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11 11 L 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 8.996 21.456 7.123 20.519 5.504 L 11 11 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/><path d=\"M 9.519 5.504 C 7.617 2.217 4.071 0 0 0 L 0 11 L 9.519 5.504 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 11 0)\"/>"},"IconGraphCurveMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17.75 18.849 L 3.1 18.849 C 1.391 18.849 0 17.458 0 15.749 L 0 1.1 C 0 0.493 0.492 0 1.1 0 C 1.708 0 2.2 0.493 2.2 1.1 L 2.2 15.749 C 2.2 16.245 2.604 16.649 3.1 16.649 L 17.749 16.649 C 18.356 16.649 18.849 17.141 18.849 17.749 C 18.849 18.357 18.357 18.849 17.75 18.849 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.575 2.575)\"/><path d=\"M 11.547 12.646 C 5.18 12.646 0 7.466 0 1.1 C 0 0.493 0.492 0 1.1 0 C 1.708 0 2.2 0.493 2.2 1.1 C 2.2 6.254 6.393 10.447 11.548 10.447 C 12.155 10.447 12.648 10.939 12.648 11.547 C 12.648 12.155 12.154 12.646 11.547 12.646 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.575 2.575) matrix(1 0 0 1 4.330 1.874)\"/>"},"IconGraphDownMonoGraph":{viewBox:"0 0 24 24",body:"<path d=\"M 19.268 8.235 L 13.186 2.875 C 13.007 2.717 12.777 2.63 12.539 2.63 C 12.3 2.63 12.07 2.717 11.891 2.875 L 8.898 5.512 C 8.775 5.619 8.626 5.694 8.466 5.728 C 8.307 5.763 8.141 5.756 7.984 5.709 C 7.843 5.674 7.713 5.606 7.602 5.512 L 1.628 0.247 C 1.487 0.121 1.313 0.039 1.126 0.011 C 0.939 -0.017 0.748 0.01 0.577 0.089 C 0.404 0.166 0.257 0.291 0.155 0.45 C 0.052 0.609 -0.002 0.794 0 0.983 L 0 16.453 C 0 16.973 0.207 17.472 0.574 17.839 C 0.942 18.207 1.44 18.413 1.96 18.413 L 17.64 18.413 C 18.16 18.413 18.658 18.207 19.026 17.839 C 19.394 17.472 19.6 16.973 19.6 16.453 L 19.6 8.97 C 19.6 8.831 19.57 8.694 19.513 8.567 C 19.456 8.44 19.372 8.327 19.268 8.235 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.200 2.793)\"/>"},"IconGraphLineDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 21.2 13.511 C 20.893 13.511 20.586 13.394 20.351 13.159 L 13.422 6.23 L 9.826 9.826 C 9.601 10.051 9.296 10.178 8.978 10.178 C 8.659 10.178 8.354 10.051 8.129 9.826 L 0.351 2.049 C 0.126 1.824 0 1.518 0 1.2 C 0 0.882 0.126 0.576 0.351 0.351 C 0.576 0.126 0.882 0 1.2 0 C 1.518 0 1.824 0.126 2.049 0.351 L 8.978 7.281 L 12.574 3.684 C 13.024 3.235 13.821 3.235 14.271 3.684 L 22.049 11.463 C 22.217 11.631 22.332 11.845 22.378 12.078 C 22.425 12.31 22.401 12.552 22.31 12.771 C 22.219 12.991 22.065 13.178 21.867 13.31 C 21.67 13.442 21.438 13.512 21.2 13.511 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 5.244)\"/>"},"IconGraphLineUpMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.2 12.492 C 0.962 12.492 0.73 12.421 0.533 12.289 C 0.336 12.157 0.182 11.97 0.091 11.751 C 0.001 11.532 -0.023 11.29 0.023 11.058 C 0.069 10.825 0.183 10.611 0.351 10.443 L 8.129 2.665 C 8.354 2.44 8.659 2.314 8.977 2.314 C 9.295 2.314 9.6 2.44 9.826 2.665 L 14.422 7.262 L 21.351 0.332 C 21.577 0.116 21.88 -0.004 22.194 0 C 22.507 0.004 22.807 0.13 23.029 0.352 C 23.251 0.574 23.377 0.873 23.38 1.187 C 23.384 1.5 23.265 1.803 23.049 2.03 L 15.271 9.807 C 14.821 10.257 14.024 10.257 13.574 9.807 L 8.978 5.211 L 2.049 12.14 C 1.937 12.252 1.805 12.34 1.659 12.401 C 1.513 12.461 1.357 12.492 1.2 12.492 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.300 5.763)\"/>"},"IconGraphTrendMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17.75 18.85 L 3.1 18.85 C 1.391 18.85 0 17.459 0 15.75 L 0 1.1 C 0 0.493 0.493 0 1.1 0 C 1.707 0 2.2 0.493 2.2 1.1 L 2.2 15.75 C 2.2 16.246 2.604 16.65 3.1 16.65 L 17.75 16.65 C 18.357 16.65 18.85 17.142 18.85 17.75 C 18.85 18.358 18.358 18.85 17.75 18.85 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.575 2.575)\"/><path d=\"M 1.1 8.771 C 0.819 8.771 0.538 8.663 0.322 8.449 C -0.108 8.019 -0.108 7.323 0.322 6.893 L 5.377 1.837 C 5.789 1.425 6.521 1.425 6.933 1.837 L 9.693 4.599 L 13.97 0.322 C 14.401 -0.108 15.096 -0.108 15.526 0.322 C 15.955 0.752 15.956 1.448 15.526 1.878 L 10.47 6.933 C 10.04 7.361 9.344 7.362 8.913 6.932 L 6.155 4.172 L 1.878 8.449 C 1.663 8.662 1.382 8.771 1.1 8.771 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.575 2.575) matrix(1 0 0 1 3.002 5.130)\"/>"},"IconGraphUpLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9.828 5.06 L 7.08 2.638 C 6.74 2.338 6.23 2.338 5.89 2.638 L 0.304 7.56 C 0.111 7.732 0 7.977 0 8.236 L 0 15.107 C 0 16.101 0.806 16.907 1.8 16.907 L 16.2 16.907 C 17.194 16.907 18 16.101 18 15.107 L 18 0.9 C 18 0.403 17.597 0 17.1 0 C 16.881 0 16.669 0.08 16.505 0.225 L 11.019 5.06 C 10.678 5.36 10.168 5.36 9.828 5.06 Z\" fill=\"rgba(176,184,193,0.4)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 4.091) matrix(1 0 0 1 0 0.002)\"/><path d=\"M 16.505 0.226 L 11.018 5.062 C 10.678 5.361 10.169 5.361 9.829 5.062 L 7.081 2.639 C 6.741 2.339 6.231 2.339 5.891 2.639 L 0.305 7.561 C 0.111 7.733 0 7.979 0 8.237 L 0 10.586 L 5.89 5.394 C 6.23 5.094 6.74 5.094 7.08 5.394 L 9.828 7.815 C 10.168 8.114 10.677 8.114 11.017 7.815 L 18 1.662 L 18 0.9 C 18 0.127 17.086 -0.286 16.505 0.226 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 4.091)\"/>"},"IconGraphUpMonoGraph":{viewBox:"0 0 24 24",body:"<path d=\"M 10.702 5.51 L 7.71 2.873 C 7.531 2.715 7.301 2.628 7.062 2.628 C 6.823 2.628 6.593 2.715 6.414 2.873 L 0.332 8.233 C 0.228 8.325 0.144 8.438 0.087 8.565 C 0.03 8.691 0 8.829 0 8.968 L 0 16.45 C 0 16.97 0.206 17.468 0.574 17.836 C 0.942 18.203 1.44 18.41 1.96 18.41 L 17.64 18.41 C 18.16 18.41 18.658 18.203 19.026 17.836 C 19.393 17.468 19.6 16.97 19.6 16.45 L 19.6 0.98 C 19.6 0.791 19.546 0.607 19.443 0.448 C 19.341 0.29 19.195 0.164 19.023 0.087 C 18.851 0.009 18.661 -0.017 18.474 0.011 C 18.288 0.039 18.113 0.12 17.972 0.245 L 11.998 5.51 C 11.819 5.668 11.589 5.755 11.35 5.755 C 11.111 5.755 10.881 5.668 10.702 5.51 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.200 2.796)\"/>"},"IconHalfStarMonoStar":{viewBox:"0 0 24 24",body:"<path d=\"M 20.937 9.893 C 21.509 9.336 21.711 8.519 21.464 7.759 C 21.218 7 20.573 6.457 19.784 6.342 L 15 5.647 C 14.908 5.634 14.829 5.576 14.788 5.493 L 12.649 1.16 C 12.297 0.445 11.581 0 10.783 0 C 9.985 0 9.27 0.445 8.916 1.161 L 6.779 5.494 C 6.738 5.577 6.659 5.634 6.566 5.647 L 1.785 6.342 C 0.995 6.457 0.351 7 0.104 7.759 C -0.143 8.518 0.059 9.336 0.63 9.893 L 4.09 13.266 C 4.157 13.33 4.188 13.425 4.172 13.515 L 3.355 18.277 C 3.221 19.064 3.538 19.843 4.183 20.313 C 4.829 20.781 5.668 20.843 6.376 20.472 L 10.655 18.223 C 10.736 18.179 10.832 18.179 10.915 18.224 L 15.192 20.472 C 15.5 20.633 15.832 20.713 16.162 20.713 C 16.591 20.713 17.018 20.579 17.384 20.314 C 18.029 19.844 18.347 19.064 18.212 18.277 L 17.395 13.516 C 17.379 13.424 17.41 13.33 17.476 13.266 L 20.937 9.893 Z M 16.218 11.977 C 15.728 12.456 15.505 13.144 15.62 13.82 L 16.437 18.581 C 16.463 18.732 16.378 18.819 16.325 18.857 C 16.271 18.897 16.159 18.948 16.029 18.878 L 11.753 16.631 C 11.45 16.471 11.116 16.391 10.784 16.391 L 10.784 1.8 C 10.812 1.814 10.969 1.82 11.036 1.956 L 13.174 6.289 C 13.477 6.904 14.063 7.33 14.741 7.428 L 19.524 8.123 C 19.675 8.145 19.73 8.253 19.751 8.315 C 19.772 8.377 19.789 8.498 19.68 8.604 L 16.218 11.977 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.216 1.643)\"/>"},"IconHandOkMonoHand":{viewBox:"0 0 24 24",body:"<path d=\"M 4.138 19.831 C 5.038 20.531 6.138 20.931 7.238 21.331 C 11.138 22.431 15.238 19.831 15.938 15.831 L 17.938 4.331 C 18.138 3.431 17.438 2.531 16.538 2.431 C 15.638 2.331 14.838 2.931 14.738 3.831 L 14.438 5.331 L 14.438 8.731 C 14.438 8.831 14.338 9.031 14.138 9.031 C 14.038 9.031 13.838 8.931 13.838 8.831 L 13.738 1.731 C 13.738 0.931 13.138 0.231 12.338 0.031 C 11.338 -0.169 10.438 0.631 10.438 1.631 L 10.538 5.131 C 10.538 5.331 10.538 5.431 10.638 5.631 L 12.438 9.831 C 12.538 10.031 12.438 10.131 12.238 10.131 C 12.138 10.131 12.038 10.031 12.038 10.031 L 8.438 1.231 C 8.138 0.431 7.138 0.031 6.338 0.331 C 5.538 0.731 5.138 1.731 5.438 2.531 L 8.338 10.031 C 7.438 9.031 6.238 8.531 4.838 8.531 C 2.838 8.531 0.938 9.831 0.138 11.631 C -0.162 12.331 0.038 13.131 0.638 13.531 C 1.338 14.031 2.338 13.631 2.638 12.931 C 2.938 12.231 3.538 11.531 4.338 11.431 C 6.038 11.131 7.438 12.631 6.938 14.331 C 6.738 14.931 6.338 15.431 5.838 15.731 C 4.738 16.331 3.338 15.931 2.838 14.931 C 2.438 14.331 1.738 14.031 1.138 14.331 C 0.338 14.631 0.038 15.531 0.438 16.331 C 0.838 16.931 2.438 18.631 4.138 19.831 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6.002 1.999)\"/>"},"IconHanger2MonoHanger":{viewBox:"0 0 24 24",body:"<path d=\"M 22.497 15.7 L 12.997 9.7 L 12.997 8.5 C 12.997 8.3 13.197 8 13.297 7.9 L 13.397 7.9 C 14.997 7.2 15.897 5.8 15.897 4.1 C 15.897 1.8 14.097 0 11.797 0 C 9.497 0 7.797 1.8 7.797 4.1 C 7.797 4.7 8.297 5.2 8.897 5.2 C 9.497 5.2 9.997 4.7 9.997 4.1 C 9.997 3.1 10.897 2.2 11.897 2.2 C 12.897 2.2 13.797 3.1 13.797 4.1 C 13.797 5.2 12.997 5.7 12.597 5.9 C 11.597 6.3 10.797 7.4 10.797 8.5 L 10.797 9.7 L 1.197 15.7 C 0.197 16.3 -0.203 17.4 0.097 18.5 C 0.397 19.6 1.397 20.3 2.497 20.3 L 21.197 20.3 C 22.297 20.3 23.197 19.6 23.597 18.6 C 23.897 17.5 23.497 16.3 22.497 15.7 Z M 21.497 17.9 C 21.397 18.1 21.297 18.1 21.197 18.1 L 2.497 18.1 C 2.397 18.1 2.297 18.1 2.197 17.9 C 2.197 17.8 2.197 17.7 2.297 17.6 L 11.797 11.7 L 21.197 17.6 C 21.497 17.7 21.497 17.8 21.497 17.9 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.103 1.100)\"/>"},"IconHashtagMonoHashtagTag":{viewBox:"0 0 24 24",body:"<path d=\"M 19.2 7.451 C 19.9 7.451 20.4 6.951 20.4 6.251 C 20.4 5.551 19.9 5.051 19.2 5.051 L 16.8 5.051 L 17.7 1.551 C 17.9 0.951 17.5 0.251 16.8 0.051 C 16.2 -0.149 15.5 0.251 15.3 0.951 L 14.2 5.051 L 8.7 5.051 L 9.6 1.551 C 9.8 0.951 9.4 0.251 8.7 0.051 C 8.1 -0.149 7.4 0.251 7.2 0.951 L 6.4 5.051 L 2.4 5.051 C 1.7 5.051 1.2 5.651 1.2 6.251 C 1.2 6.851 1.7 7.451 2.4 7.451 L 5.7 7.451 L 4.2 12.951 L 1.2 12.951 C 0.5 12.951 0 13.451 0 14.151 C 0 14.851 0.5 15.351 1.2 15.351 L 3.6 15.351 L 2.7 18.851 C 2.5 19.451 2.9 20.151 3.6 20.351 L 3.9 20.351 C 4.4 20.351 4.9 19.951 5.1 19.451 L 6.2 15.351 L 11.7 15.351 L 10.8 18.851 C 10.6 19.451 11 20.151 11.7 20.351 L 12 20.351 C 12.5 20.351 13 19.951 13.2 19.451 L 14.3 15.351 L 18.3 15.351 C 19 15.351 19.5 14.851 19.5 14.151 C 19.5 13.451 19 12.951 18.3 12.951 L 15 12.951 L 16.5 7.451 L 19.2 7.451 Z M 12.2 13.051 L 6.7 13.051 L 8.2 7.451 L 13.7 7.451 L 12.2 13.051 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.800 1.749)\"/>"},"IconHeadphoneMonoHeadphoneCall":{viewBox:"0 0 24 24",body:"<path d=\"M 22.51 12.951 C 22.51 10.69 20.95 8.802 18.855 8.264 L 18.855 7.6 C 18.855 3.409 15.446 0 11.255 0 C 7.065 0 3.656 3.409 3.656 7.6 L 3.656 8.264 C 1.56 8.802 0 10.69 0 12.951 C 0.001 14.238 0.513 15.473 1.424 16.383 C 2.334 17.293 3.569 17.805 4.856 17.806 C 5.174 17.806 5.479 17.68 5.705 17.455 C 5.93 17.229 6.056 16.924 6.056 16.606 L 6.056 7.6 C 6.056 4.733 8.388 2.4 11.255 2.4 C 14.122 2.4 16.455 4.733 16.455 7.6 L 16.455 16.109 L 13.915 18.649 C 13.804 18.761 13.672 18.849 13.526 18.909 C 13.381 18.97 13.225 19 13.067 19 L 11.144 19 C 10.826 19 10.521 19.126 10.295 19.351 C 10.07 19.577 9.944 19.882 9.944 20.2 C 9.944 20.518 10.07 20.823 10.295 21.049 C 10.521 21.274 10.826 21.4 11.144 21.4 L 13.067 21.4 C 14.029 21.4 14.933 21.026 15.613 20.346 L 18.208 17.75 C 20.622 17.472 22.51 15.439 22.51 12.951 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.745 1.300)\"/>"},"IconHeartBrokenMonoHeart":{viewBox:"0 0 24 24",body:"<path d=\"M 16.05 0 C 14.039 0 12.725 0.914 11.91 1.835 L 12.18 2.235 C 12.422 2.592 12.552 3.014 12.552 3.445 C 12.552 3.876 12.422 4.298 12.18 4.655 L 10.861 6.609 C 10.82 6.669 10.799 6.74 10.799 6.812 C 10.799 6.884 10.82 6.955 10.861 7.015 L 12.18 8.969 C 12.422 9.326 12.552 9.748 12.552 10.179 C 12.552 10.61 12.422 11.032 12.18 11.389 L 10.861 13.343 C 10.82 13.403 10.799 13.474 10.799 13.546 C 10.799 13.618 10.82 13.689 10.861 13.749 L 12.18 15.703 C 12.417 16.053 12.545 16.466 12.548 16.888 C 12.552 17.311 12.431 17.726 12.2 18.08 C 14.432 16.573 18.681 13.388 20.565 9.839 C 23.181 4.914 20.109 0 16.05 0 Z M 9.856 18.35 L 10.688 17.116 C 10.728 17.056 10.75 16.985 10.75 16.913 C 10.75 16.841 10.728 16.77 10.688 16.71 L 9.368 14.756 C 9.125 14.399 8.996 13.977 8.996 13.546 C 8.996 13.115 9.125 12.693 9.368 12.336 L 10.688 10.381 C 10.728 10.321 10.75 10.251 10.75 10.179 C 10.75 10.106 10.728 10.036 10.688 9.976 L 9.368 8.021 C 9.125 7.664 8.996 7.243 8.996 6.812 C 8.996 6.38 9.125 5.959 9.368 5.602 L 10.688 3.647 C 10.728 3.587 10.75 3.517 10.75 3.445 C 10.75 3.372 10.728 3.302 10.688 3.242 L 10.091 2.357 C 10.048 2.317 9.996 2.295 9.96 2.247 C 9.189 1.207 7.797 0 5.485 0 C 1.425 0 -1.646 4.913 0.97 9.84 C 2.882 13.442 7.238 16.675 9.44 18.152 C 9.57 18.239 9.715 18.29 9.856 18.35 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.232 3.221)\"/>"},"IconHeartMonoHeartLove":{viewBox:"0 0 24 24",body:"<path d=\"M 9.672 18.306 C 10.338 18.746 11.197 18.746 11.862 18.306 C 13.977 16.91 18.582 13.573 20.566 9.839 C 23.181 4.913 20.11 0 16.05 0 C 13.736 0 12.344 1.209 11.574 2.248 C 11.25 2.693 10.627 2.792 10.181 2.468 C 10.096 2.407 10.022 2.332 9.961 2.248 C 9.191 1.209 7.799 0 5.485 0 C 1.425 0 -1.646 4.913 0.97 9.839 C 2.952 13.573 7.559 16.91 9.672 18.306 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.232 2.982)\"/>"},"IconHeartRealMonoHeart":{viewBox:"0 0 24 24",body:"<path d=\"M 14.773 0.001 C 14.38 0.001 14.023 0.046 13.687 0.115 C 13.192 0.314 12.768 0.656 12.468 1.097 C 12.168 1.538 12.007 2.059 12.005 2.592 L 12.005 4.154 C 13.125 4.581 14.09 5.337 14.771 6.324 C 15.452 7.31 15.818 8.48 15.82 9.679 C 15.82 10.837 14.877 11.779 13.719 11.779 C 13.164 11.778 12.632 11.559 12.239 11.168 C 11.846 10.776 11.623 10.246 11.619 9.691 C 11.24 10.592 10.604 11.361 9.79 11.902 C 8.976 12.443 8.021 12.732 7.044 12.733 C 5.884 12.733 4.944 11.791 4.944 10.633 C 4.944 9.475 5.884 8.533 7.044 8.533 C 7.246 8.532 7.439 8.452 7.581 8.309 C 7.724 8.167 7.804 7.974 7.804 7.772 L 7.804 2.592 C 7.804 1.992 7.89 1.409 8.041 0.84 C 7.339 0.359 6.42 0 5.227 0 C 1.56 0 -1.849 4.664 1.147 9.448 C 3.264 12.827 6.602 15.183 8.517 16.343 C 8.964 16.615 9.477 16.759 10 16.759 C 10.523 16.759 11.036 16.615 11.483 16.343 C 13.398 15.183 16.736 12.827 18.852 9.448 C 21.849 4.664 18.44 0.001 14.772 0.001\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 0.917) matrix(1 0 0 1 0 4.728)\"/><path d=\"M 11.364 2.411 C 11.052 2.235 10.724 2.09 10.384 1.977 L 10.548 1.057 C 10.59 0.822 10.536 0.58 10.399 0.384 C 10.262 0.188 10.053 0.055 9.818 0.014 C 9.583 -0.028 9.341 0.026 9.145 0.163 C 8.95 0.3 8.817 0.509 8.775 0.744 L 8.614 1.658 C 8.586 1.657 8.557 1.652 8.529 1.652 C 8.164 1.652 7.807 1.69 7.462 1.756 L 7.072 0.685 C 7.033 0.572 6.972 0.467 6.893 0.378 C 6.813 0.289 6.716 0.217 6.608 0.165 C 6.501 0.114 6.383 0.084 6.264 0.078 C 6.145 0.073 6.025 0.091 5.913 0.132 C 5.801 0.173 5.697 0.236 5.61 0.317 C 5.522 0.398 5.451 0.496 5.402 0.605 C 5.352 0.713 5.325 0.831 5.321 0.951 C 5.318 1.07 5.338 1.189 5.381 1.301 L 5.77 2.373 C 5.434 2.562 5.117 2.785 4.826 3.038 L 3.949 2.303 C 3.859 2.223 3.754 2.163 3.64 2.125 C 3.526 2.086 3.406 2.071 3.286 2.08 C 3.166 2.089 3.05 2.122 2.943 2.177 C 2.836 2.232 2.741 2.308 2.664 2.4 C 2.587 2.492 2.529 2.598 2.494 2.713 C 2.458 2.828 2.446 2.948 2.458 3.068 C 2.47 3.187 2.506 3.303 2.564 3.409 C 2.621 3.514 2.699 3.607 2.793 3.682 L 3.67 4.418 C 3.141 5.294 2.861 6.297 2.86 7.321 L 2.86 12.5 C 2.86 13.58 1.98 14.46 0.9 14.46 C 0.661 14.46 0.432 14.555 0.264 14.723 C 0.095 14.892 0 15.121 0 15.36 C 0 15.598 0.095 15.827 0.264 15.996 C 0.432 16.165 0.661 16.26 0.9 16.26 C 1.897 16.258 2.852 15.861 3.557 15.157 C 4.262 14.452 4.658 13.496 4.66 12.5 L 4.66 11.65 C 5.244 11.838 5.753 12.206 6.115 12.702 C 6.477 13.197 6.674 13.794 6.676 14.408 C 6.684 14.641 6.782 14.862 6.95 15.025 C 7.118 15.187 7.342 15.278 7.575 15.278 C 7.809 15.278 8.033 15.187 8.201 15.025 C 8.369 14.862 8.467 14.641 8.475 14.408 C 8.473 13.315 8.092 12.256 7.396 11.413 C 6.701 10.569 5.734 9.994 4.661 9.784 L 4.661 7.321 C 4.662 6.642 4.841 5.975 5.181 5.387 C 5.52 4.8 6.008 4.312 6.596 3.972 C 7.184 3.632 7.851 3.453 8.53 3.453 C 9.209 3.452 9.876 3.63 10.464 3.969 C 10.566 4.028 10.679 4.066 10.796 4.082 C 10.913 4.097 11.033 4.089 11.147 4.059 C 11.261 4.028 11.368 3.975 11.461 3.904 C 11.555 3.832 11.634 3.742 11.693 3.64 C 11.752 3.537 11.79 3.424 11.806 3.307 C 11.821 3.19 11.814 3.071 11.783 2.957 C 11.752 2.843 11.7 2.736 11.628 2.642 C 11.556 2.548 11.466 2.47 11.364 2.411 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 0.917) matrix(1 0 0 1 6.144 0)\"/>"},"IconHomeLineMonoHouse":{viewBox:"0 0 24 24",body:"<path d=\"M 17.4 21.45 L 11.8 21.45 L 11.8 15.45 L 8.9 15.45 L 8.9 21.45 L 3.3 21.45 C 1.5 21.45 0 19.95 0 18.15 L 0 9.15 C 0 8.25 0.4 7.45 1.1 6.85 L 9.1 0.45 C 9.8 -0.15 10.8 -0.15 11.5 0.45 L 19.6 6.85 C 20.3 7.45 20.7 8.25 20.7 9.15 L 20.7 18.15 C 20.7 19.95 19.2 21.45 17.4 21.45 Z M 13.8 19.45 L 17.4 19.45 C 18.1 19.45 18.7 18.85 18.7 18.15 L 18.7 9.15 C 18.7 8.85 18.6 8.65 18.4 8.45 L 10.3 2.05 L 2.2 8.45 C 2 8.65 1.9 8.85 1.9 9.15 L 1.9 18.15 C 1.9 18.85 2.5 19.45 3.2 19.45 L 6.8 19.45 L 6.8 15.45 C 6.8 14.35 7.7 13.45 8.8 13.45 L 11.7 13.45 C 12.8 13.45 13.7 14.35 13.7 15.45 L 13.7 19.45 L 13.8 19.45 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.700 1.250)\"/>"},"IconHomeMonoHomeFamily":{viewBox:"0 0 24 24",body:"<path d=\"M 18.894 6.935 L 10.447 0.218 C 10.27 0.077 10.051 0 9.825 0 C 9.599 0 9.38 0.077 9.203 0.218 L 0.755 6.935 C 0.52 7.122 0.329 7.36 0.199 7.631 C 0.068 7.902 0 8.199 0 8.5 L 0 17.918 C 0 18.554 0.253 19.165 0.703 19.615 C 1.153 20.065 1.763 20.318 2.4 20.318 L 7.825 20.318 L 7.825 15.566 C 7.825 15.3 7.93 15.046 8.118 14.858 C 8.305 14.671 8.56 14.566 8.825 14.566 L 10.825 14.566 C 11.09 14.566 11.345 14.671 11.532 14.858 C 11.72 15.046 11.825 15.3 11.825 15.566 L 11.825 20.318 L 17.249 20.318 C 17.886 20.318 18.496 20.065 18.946 19.615 C 19.396 19.165 19.649 18.554 19.649 17.918 L 19.649 8.501 C 19.649 8.2 19.581 7.903 19.45 7.632 C 19.32 7.361 19.129 7.122 18.894 6.935 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.175 1.269)\"/>"},"IconHorizontalLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 -1 C -0.552 -1 -1 -0.552 -1 0 C -1 0.552 -0.552 1 0 1 L 0 0 L 0 -1 Z M 7.003 1 C 7.555 1 8.003 0.552 8.003 0 C 8.003 -0.552 7.555 -1 7.003 -1 L 7.003 0 L 7.003 1 Z M 0 0 L 0 1 L 7.003 1 L 7.003 0 L 7.003 -1 L 0 -1 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.591 10.025) matrix(1 0 0 1 0 1.975)\"/><path d=\"M 0 -1 C -0.552 -1 -1 -0.552 -1 0 C -1 0.552 -0.552 1 0 1 L 0 0 L 0 -1 Z M 6.999 1 C 7.551 1 7.999 0.552 7.999 0 C 7.999 -0.552 7.551 -1 6.999 -1 L 6.999 0 L 6.999 1 Z M 0 0 L 0 1 L 6.999 1 L 6.999 0 L 6.999 -1 L 0 -1 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.591 10.025) matrix(1 0 0 1 11.819 1.975)\"/><path d=\"M 3.95 1.975 L 2.95 1.975 C 2.95 2.513 2.513 2.95 1.975 2.95 L 1.975 3.95 L 1.975 4.95 C 3.618 4.95 4.95 3.618 4.95 1.975 L 3.95 1.975 Z M 1.975 3.95 L 1.975 2.95 C 1.437 2.95 1 2.513 1 1.975 L 0 1.975 L -1 1.975 C -1 3.618 0.332 4.95 1.975 4.95 L 1.975 3.95 Z M 0 1.975 L 1 1.975 C 1 1.437 1.437 1 1.975 1 L 1.975 0 L 1.975 -1 C 0.332 -1 -1 0.332 -1 1.975 L 0 1.975 Z M 1.975 0 L 1.975 1 C 2.513 1 2.95 1.437 2.95 1.975 L 3.95 1.975 L 4.95 1.975 C 4.95 0.332 3.618 -1 1.975 -1 L 1.975 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.591 10.025) matrix(1 0 0 1 7.430 0)\"/>"},"IconHospitalMonoHospitalMedical":{viewBox:"0 0 24 24",body:"<path d=\"M 15.5 10.75 L 10.75 10.75 L 10.75 15.5 L 8.25 15.5 L 8.25 10.75 L 3.5 10.75 L 3.5 8.25 L 8.25 8.25 L 8.25 3.5 L 10.75 3.5 L 10.75 8.25 L 15.5 8.25 L 15.5 10.75 Z M 17 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 17 C 0 17.53 0.211 18.039 0.586 18.414 C 0.961 18.789 1.47 19 2 19 L 17 19 C 17.53 19 18.039 18.789 18.414 18.414 C 18.789 18.039 19 17.53 19 17 L 19 2 C 19 1.47 18.789 0.961 18.414 0.586 C 18.039 0.211 17.53 0 17 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.500)\"/>"},"IconInboxMonoInboxMailbox":{viewBox:"0 0 24 24",body:"<path d=\"M 5.45 9.473 C 5.597 9.473 5.742 9.514 5.867 9.59 C 5.993 9.667 6.095 9.777 6.162 9.908 L 7.481 12.477 C 7.498 12.51 7.523 12.537 7.555 12.556 C 7.586 12.575 7.622 12.585 7.659 12.585 L 11.981 12.585 C 12.018 12.585 12.055 12.574 12.087 12.555 C 12.119 12.535 12.144 12.507 12.161 12.473 L 13.401 9.923 C 13.467 9.788 13.569 9.674 13.696 9.595 C 13.824 9.515 13.971 9.473 14.121 9.473 L 19.57 9.473 L 17.422 1.481 C 17.307 1.056 17.056 0.681 16.707 0.413 C 16.358 0.146 15.93 0 15.49 0 L 4.082 0 C 3.177 0 2.386 0.608 2.15 1.481 L 0 9.473 L 5.45 9.473 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.619) matrix(1 0 0 1 0.214 0)\"/><path d=\"M 13.813 2.1 C 13.664 2.402 13.434 2.657 13.148 2.836 C 12.862 3.015 12.532 3.11 12.195 3.112 L 7.873 3.112 C 7.542 3.113 7.217 3.022 6.934 2.849 C 6.652 2.677 6.422 2.429 6.272 2.134 L 5.175 0 L 0 0 L 0 5.648 C 0 5.916 0.053 6.182 0.155 6.429 C 0.258 6.677 0.408 6.902 0.598 7.091 C 0.787 7.281 1.012 7.431 1.26 7.534 C 1.507 7.636 1.773 7.689 2.041 7.689 L 17.959 7.689 C 18.5 7.689 19.019 7.474 19.402 7.091 C 19.784 6.709 19.999 6.19 20 5.649 L 20 0 L 14.835 0 L 13.813 2.1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.619) matrix(1 0 0 1 0 11.073)\"/>"},"IconInfinityMonoInfinityInfinite":{viewBox:"0 0 24 24",body:"<path d=\"M 24 5.775 C 23.998 4.244 23.389 2.776 22.307 1.693 C 21.224 0.611 19.756 0.002 18.225 0 C 17.281 0 16.36 0.24 15.488 0.712 C 15.053 0.947 14.65 1.235 14.287 1.571 L 7.722 8.122 C 7.546 8.282 7.35 8.419 7.14 8.529 C 6.723 8.763 6.253 8.888 5.775 8.893 C 5.008 8.892 4.272 8.587 3.729 8.044 C 3.186 7.501 2.881 6.765 2.88 5.998 C 2.881 5.231 3.186 4.495 3.729 3.952 C 4.272 3.409 5.008 3.104 5.775 3.103 C 6.23 3.103 6.688 3.223 7.131 3.461 C 7.413 3.614 7.634 3.77 7.798 3.93 L 8.628 4.76 C 8.655 4.787 8.686 4.808 8.721 4.823 C 8.756 4.837 8.794 4.845 8.832 4.845 C 8.869 4.845 8.907 4.837 8.942 4.823 C 8.977 4.808 9.008 4.787 9.035 4.76 L 10.664 3.132 C 10.691 3.105 10.712 3.073 10.727 3.038 C 10.741 3.003 10.749 2.966 10.749 2.928 C 10.749 2.89 10.741 2.853 10.727 2.818 C 10.712 2.783 10.691 2.751 10.664 2.724 L 9.825 1.885 C 9.429 1.503 8.98 1.179 8.493 0.924 C 7.66 0.467 6.725 0.226 5.775 0.222 C 4.244 0.224 2.776 0.833 1.693 1.916 C 0.611 2.999 0.002 4.467 0 5.998 C 0.002 7.529 0.611 8.997 1.693 10.08 C 2.776 11.162 4.244 11.771 5.775 11.773 C 6.721 11.773 7.643 11.533 8.51 11.063 C 8.94 10.832 9.331 10.554 9.713 10.203 L 16.278 3.651 C 16.455 3.493 16.65 3.357 16.859 3.245 C 17.276 3.01 17.746 2.885 18.225 2.879 C 18.993 2.88 19.729 3.186 20.271 3.728 C 20.814 4.271 21.119 5.007 21.12 5.775 C 21.119 6.543 20.814 7.279 20.271 7.822 C 19.729 8.364 18.993 8.67 18.225 8.671 C 17.769 8.671 17.313 8.55 16.869 8.312 C 16.752 8.249 16.399 7.987 16.108 7.749 L 15.399 7.022 C 15.399 7.022 15.18 6.771 14.913 7.038 L 13.331 8.619 C 13.278 8.673 13.248 8.745 13.247 8.821 C 13.247 8.897 13.276 8.97 13.329 9.024 L 14.12 9.834 L 14.219 9.923 C 14.405 10.079 15.047 10.601 15.505 10.848 C 16.339 11.306 17.274 11.547 18.225 11.55 C 19.756 11.548 21.224 10.939 22.307 9.857 C 23.389 8.774 23.998 7.306 24 5.775 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0 6.114)\"/>"},"IconInfoCircleLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.4 0 C 0.627 0 0 0.627 0 1.4 C 0 2.173 0.627 2.8 1.4 2.8 C 2.173 2.8 2.8 2.173 2.8 1.4 C 2.8 0.627 2.173 0 1.4 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 0.900) matrix(1 0 0 1 9.700 5.700)\"/><path d=\"M 1 6.635 C 0.448 6.635 0 6.188 0 5.635 L 0 1 C 0 0.448 0.448 0 1 0 C 1.552 0 2 0.448 2 1 L 2 5.635 C 2 6.188 1.552 6.635 1 6.635 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 0.900) matrix(1 0 0 1 10.100 10.100)\"/><path d=\"M 11.1 22.2 C 4.979 22.2 0 17.22 0 11.1 C 0 4.979 4.979 0 11.1 0 C 17.22 0 22.2 4.979 22.2 11.1 C 22.2 17.22 17.22 22.2 11.1 22.2 Z M 11.1 2.2 C 6.192 2.2 2.2 6.192 2.2 11.1 C 2.2 16.007 6.192 20 11.1 20 C 16.007 20 20 16.007 20 11.1 C 20 6.192 16.007 2.2 11.1 2.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.900 0.900)\"/>"},"IconInfoCircleMono16":{viewBox:"0 0 24 24",body:"<path d=\"M 11 8.2 C 10.682 8.2 10.377 8.074 10.151 7.849 C 9.926 7.623 9.8 7.318 9.8 7 C 9.8 6.682 9.926 6.377 10.151 6.151 C 10.377 5.926 10.682 5.8 11 5.8 C 11.318 5.8 11.623 5.926 11.849 6.151 C 12.074 6.377 12.2 6.682 12.2 7 C 12.2 7.318 12.074 7.623 11.849 7.849 C 11.623 8.074 11.318 8.2 11 8.2 Z M 12 15.635 C 12 15.9 11.895 16.155 11.707 16.342 C 11.52 16.53 11.265 16.635 11 16.635 C 10.735 16.635 10.48 16.53 10.293 16.342 C 10.105 16.155 10 15.9 10 15.635 L 10 10.635 C 10 10.37 10.105 10.115 10.293 9.928 C 10.48 9.74 10.735 9.635 11 9.635 C 11.265 9.635 11.52 9.74 11.707 9.928 C 11.895 10.115 12 10.37 12 10.635 L 12 15.635 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconInfoCircleMonoInfo":{viewBox:"0 0 24 24",body:"<path d=\"M 11 8.2 C 10.682 8.2 10.377 8.074 10.151 7.849 C 9.926 7.623 9.8 7.318 9.8 7 C 9.8 6.682 9.926 6.377 10.151 6.151 C 10.377 5.926 10.682 5.8 11 5.8 C 11.318 5.8 11.623 5.926 11.849 6.151 C 12.074 6.377 12.2 6.682 12.2 7 C 12.2 7.318 12.074 7.623 11.849 7.849 C 11.623 8.074 11.318 8.2 11 8.2 Z M 12 15.635 C 12 15.9 11.895 16.155 11.707 16.342 C 11.52 16.53 11.265 16.635 11 16.635 C 10.735 16.635 10.48 16.53 10.293 16.342 C 10.105 16.155 10 15.9 10 15.635 L 10 10.635 C 10 10.37 10.105 10.115 10.293 9.928 C 10.48 9.74 10.735 9.635 11 9.635 C 11.265 9.635 11.52 9.74 11.707 9.928 C 11.895 10.115 12 10.37 12 10.635 L 12 15.635 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconInstargramMonoSns":{viewBox:"0 0 24 24",body:"<path d=\"M 1.125 0 C 1.748 0 2.251 0.505 2.251 1.126 C 2.251 1.747 1.748 2.252 1.125 2.252 C 0.502 2.252 0 1.747 0 1.126 C 0 0.505 0.503 0 1.125 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 14.296 3.466)\"/><path d=\"M 4.917 0 C 7.628 0 9.834 2.205 9.834 4.917 C 9.834 7.629 7.628 9.834 4.917 9.834 C 2.206 9.834 0 7.628 0 4.917 C 0 2.206 2.206 0 4.917 0 Z M 4.917 1.923 C 3.267 1.923 1.923 3.265 1.923 4.917 C 1.923 6.569 3.267 7.909 4.917 7.909 C 6.567 7.909 7.909 6.567 7.909 4.917 C 7.909 3.267 6.567 1.923 4.917 1.923 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 5.118 5.102)\"/><path d=\"M 14.345 0 C 17.463 0 20 2.537 20 5.655 L 20 14.344 C 20 17.462 17.463 19.999 14.345 19.999 L 5.655 19.999 C 2.537 19.999 0 17.462 0 14.344 L 0 5.655 C 0 2.537 2.537 0 5.655 0 L 14.345 0 Z M 14.345 1.923 L 5.655 1.923 C 3.597 1.923 1.925 3.597 1.925 5.655 L 1.925 14.344 C 1.925 16.402 3.598 18.076 5.655 18.076 L 14.344 18.076 C 16.402 18.076 18.076 16.402 18.076 14.344 L 18.076 5.655 C 18.076 3.597 16.403 1.923 14.345 1.923 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2)\"/>"},"IconIosMonoAppleIos":{viewBox:"0 0 24 24",body:"<path d=\"M 3.379 3.57 C 4.136 2.596 4.677 1.298 4.515 0 C 3.379 0.054 2.027 0.757 1.215 1.677 C 0.512 2.488 -0.137 3.84 0.025 5.085 C 1.323 5.193 2.568 4.49 3.379 3.57 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.962 0.833) matrix(1 0 0 1 8.969 0)\"/><path d=\"M 13.483 0.007 C 11.644 -0.101 10.076 1.035 9.21 1.035 C 8.345 1.035 6.992 0.061 5.532 0.061 C 3.638 0.116 1.907 1.143 0.934 2.874 C -1.014 6.282 0.393 11.313 2.34 14.072 C 3.26 15.424 4.396 16.939 5.856 16.884 C 7.263 16.83 7.804 15.965 9.481 15.965 C 11.158 15.965 11.644 16.884 13.159 16.83 C 14.674 16.776 15.647 15.478 16.567 14.071 C 17.649 12.503 18.082 10.988 18.082 10.934 C 18.027 10.88 15.106 9.798 15.106 6.444 C 15.052 3.631 17.378 2.279 17.487 2.225 C 16.242 0.278 14.187 0.061 13.483 0.007 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.962 0.833) matrix(1 0 0 1 0 5.348)\"/>"},"IconItMonoItTech":{viewBox:"0 0 24 24",body:"<path d=\"M 14.586 7 L 2.857 7 C 2.724 7 2.597 6.947 2.503 6.854 C 2.41 6.76 2.357 6.633 2.357 6.5 C 2.357 6.367 2.41 6.24 2.503 6.146 C 2.597 6.053 2.724 6 2.857 6 L 14.586 6 C 14.719 6 14.846 6.053 14.94 6.146 C 15.033 6.24 15.086 6.367 15.086 6.5 C 15.086 6.633 15.033 6.76 14.94 6.854 C 14.846 6.947 14.719 7 14.586 7 Z M 6.742 13 L 2.857 13 C 2.724 13 2.597 12.947 2.503 12.854 C 2.41 12.76 2.357 12.633 2.357 12.5 C 2.357 12.367 2.41 12.24 2.503 12.146 C 2.597 12.053 2.724 12 2.857 12 L 6.742 12 C 6.875 12 7.002 12.053 7.096 12.146 C 7.189 12.24 7.242 12.367 7.242 12.5 C 7.242 12.633 7.189 12.76 7.096 12.854 C 7.002 12.947 6.875 13 6.742 13 Z M 8.672 10 L 2.857 10 C 2.724 10 2.597 9.947 2.503 9.854 C 2.41 9.76 2.357 9.633 2.357 9.5 C 2.357 9.367 2.41 9.24 2.503 9.146 C 2.597 9.053 2.724 9 2.857 9 L 8.672 9 C 8.805 9 8.932 9.053 9.026 9.146 C 9.119 9.24 9.172 9.367 9.172 9.5 C 9.172 9.633 9.119 9.76 9.026 9.854 C 8.932 9.947 8.805 10 8.672 10 Z M 2.857 3 L 11.625 3 C 11.758 3 11.885 3.053 11.979 3.146 C 12.072 3.24 12.125 3.367 12.125 3.5 C 12.125 3.633 12.072 3.76 11.979 3.854 C 11.885 3.947 11.758 4 11.625 4 L 2.857 4 C 2.724 4 2.597 3.947 2.503 3.854 C 2.41 3.76 2.357 3.633 2.357 3.5 C 2.357 3.367 2.41 3.24 2.503 3.146 C 2.597 3.053 2.724 3 2.857 3 Z M 18.857 0 L 1.143 0 C 0.512 0 0 0.537 0 1.2 L 0 14.8 C 0 15.463 0.512 16 1.143 16 L 7.199 16.004 L 5.835 19.093 C 5.689 19.424 5.919 19.803 6.267 19.803 L 13.733 19.803 C 14.081 19.803 14.312 19.424 14.165 19.093 L 12.798 16.001 L 18.857 16 C 19.488 16 20 15.463 20 14.8 L 20 1.2 C 20 0.537 19.488 0 18.857 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.599)\"/>"},"IconItalicMonoItalic":{viewBox:"0 0 24 24",body:"<path d=\"M 10.6 0 L 3.8 0 C 3.1 0 2.6 0.5 2.6 1.2 C 2.6 1.9 3.1 2.4 3.8 2.4 L 5.8 2.4 L 3.6 14 L 1.2 14 C 0.5 14 0 14.5 0 15.2 C 0 15.9 0.5 16.4 1.2 16.4 L 8 16.4 C 8.7 16.4 9.2 15.9 9.2 15.2 C 9.2 14.5 8.7 14 8 14 L 6 14 L 8.2 2.4 L 10.6 2.4 C 11.3 2.4 11.8 1.9 11.8 1.2 C 11.8 0.5 11.3 0 10.6 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 6 4)\"/>"},"IconKeyMonoKeyAnswer":{viewBox:"0 0 24 24",body:"<path d=\"M 6.516 3.258 C 7.316 2.457 8.606 2.448 9.396 3.237 C 10.186 4.027 10.176 5.317 9.376 6.117 C 8.574 6.918 7.284 6.927 6.494 6.137 C 5.705 5.349 5.714 4.06 6.516 3.258 Z M 1.882 1.882 C -0.602 4.367 -0.631 8.367 1.818 10.816 C 4.266 13.264 8.266 13.236 10.75 10.751 C 13.235 8.266 13.264 4.267 10.815 1.818 C 8.366 -0.631 4.367 -0.602 1.882 1.882 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.508 2.500) matrix(1 0 0 1 6.359 0)\"/><path d=\"M 5.31 10.743 L 4.172 9.604 C 4.098 9.531 4.04 9.443 4 9.347 C 3.96 9.251 3.94 9.148 3.94 9.044 C 3.94 8.94 3.96 8.837 4 8.741 C 4.04 8.645 4.098 8.558 4.172 8.484 C 4.245 8.411 4.332 8.353 4.428 8.313 C 4.524 8.273 4.627 8.252 4.731 8.252 C 4.835 8.252 4.938 8.273 5.034 8.313 C 5.13 8.352 5.217 8.411 5.291 8.484 L 6.43 9.623 L 7.549 8.504 L 6.411 7.366 C 6.337 7.293 6.279 7.205 6.239 7.109 C 6.199 7.013 6.179 6.911 6.179 6.807 C 6.179 6.703 6.199 6.6 6.239 6.504 C 6.278 6.408 6.337 6.321 6.41 6.247 C 6.483 6.173 6.571 6.115 6.667 6.075 C 6.763 6.035 6.865 6.015 6.969 6.015 C 7.073 6.015 7.176 6.035 7.272 6.075 C 7.368 6.114 7.455 6.173 7.529 6.246 L 8.669 7.384 L 12.229 3.823 L 8.406 0 L 0.784 7.623 C 0.28 8.131 -0.001 8.817 0 9.533 C 0.002 10.248 0.286 10.933 0.792 11.439 C 1.298 11.945 1.983 12.229 2.698 12.231 C 3.414 12.232 4.1 11.951 4.608 11.447 L 5.31 10.743 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.508 2.500) matrix(1 0 0 1 0 6.762)\"/>"},"IconKeyboardArrowMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.062 0.062)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 4.262 5.958)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 6.696 5.958)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 9.129 5.958)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 11.563 5.958)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 14.046 5.958)\"/><path d=\"M 2.177 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 2.177 1.46 C 2.319 1.46 2.434 1.345 2.434 1.203 L 2.434 0.257 C 2.434 0.115 2.319 0 2.177 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 4.262 3.524)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 7.669 3.524)\"/><path d=\"M 1.203 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 1.203 1.46 C 1.345 1.46 1.46 1.345 1.46 1.203 L 1.46 0.257 C 1.46 0.115 1.345 0 1.203 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 10.103 3.524)\"/><path d=\"M 2.663 0 L 0.257 0 C 0.115 0 0 0.115 0 0.257 L 0 1.203 C 0 1.345 0.115 1.46 0.257 1.46 L 2.663 1.46 C 2.805 1.46 2.92 1.345 2.92 1.203 L 2.92 0.257 C 2.92 0.115 2.805 0 2.663 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 12.585 3.524)\"/><path d=\"M 11.317 1.5 L 0.75 1.5 C 0.336 1.5 0 1.164 0 0.75 C 0 0.336 0.336 0 0.75 0 L 11.316 0 C 11.73 0 12.066 0.336 12.066 0.75 C 12.066 1.164 11.731 1.5 11.317 1.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 3.829 8.682)\"/><path d=\"M 4.703 4.26 C 4.553 4.26 4.403 4.215 4.274 4.125 L 0.321 1.365 C -0.019 1.128 -0.102 0.66 0.135 0.32 C 0.371 -0.021 0.839 -0.101 1.179 0.134 L 4.703 2.594 L 8.226 0.134 C 8.569 -0.102 9.035 -0.019 9.271 0.32 C 9.508 0.66 9.424 1.128 9.085 1.365 L 5.132 4.125 C 5.003 4.215 4.853 4.26 4.703 4.26 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528) matrix(1 0 0 1 5.206 16.269)\"/><path d=\"M 17.019 13.375 L 2.75 13.375 C 1.234 13.375 0 12.142 0 10.625 L 0 2.75 C 0 1.233 1.234 0 2.75 0 L 17.019 0 C 18.536 0 19.769 1.233 19.769 2.75 L 19.769 10.625 C 19.769 12.142 18.536 13.375 17.019 13.375 Z M 2.75 1.5 C 2.061 1.5 1.5 2.061 1.5 2.75 L 1.5 10.625 C 1.5 11.314 2.061 11.875 2.75 11.875 L 17.019 11.875 C 17.708 11.875 18.269 11.314 18.269 10.625 L 18.269 2.75 C 18.269 2.061 17.708 1.5 17.019 1.5 L 2.75 1.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.116 1.528)\"/>"},"IconLanguageEnglishMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.726 16.539 L 10.06 1.213 C 9.76 0.476 9.054 0 8.26 0 C 7.466 0 6.759 0.477 6.464 1.204 L 2.475 10.854 C 2.465 10.876 2.456 10.899 2.447 10.922 L 0.114 16.564 C -0.202 17.33 0.161 18.207 0.927 18.523 C 1.115 18.601 1.309 18.637 1.5 18.637 C 2.089 18.637 2.647 18.288 2.887 17.71 L 4.848 12.967 L 11.902 12.967 L 13.975 17.736 C 14.306 18.496 15.187 18.843 15.95 18.513 C 16.709 18.182 17.057 17.298 16.727 16.538 L 16.726 16.539 Z M 6.087 9.967 L 8.285 4.651 L 10.597 9.967 L 6.088 9.967 L 6.087 9.967 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.570 2.683)\"/>"},"IconLanguageKoreanMono":{viewBox:"0 0 24 24",body:"<path d=\"M 7.13 0.001 L 1.5 0.001 C 0.671 0.001 0 0.672 0 1.501 C 0 2.33 0.671 3.001 1.5 3.001 L 6.928 3.001 C 6.541 5.009 5.224 8.54 0.782 10.965 C 0.055 11.361 -0.213 12.273 0.184 13 C 0.456 13.499 0.971 13.781 1.502 13.781 C 1.745 13.781 1.991 13.722 2.219 13.597 C 7.908 10.493 9.485 5.83 9.919 3.323 C 10.061 2.491 9.832 1.646 9.29 1.003 C 8.752 0.366 7.965 0 7.131 0 L 7.13 0.001 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.860 1.760) matrix(1 0 0 1 0 2.659)\"/><path d=\"M 5.229 7.6 L 3 7.6 L 3 1.5 C 3 0.671 2.328 0 1.5 0 C 0.672 0 0 0.671 0 1.5 L 0 18.94 C 0 19.768 0.672 20.44 1.5 20.44 C 2.328 20.44 3 19.768 3 18.94 L 3 10.6 L 5.229 10.6 C 6.057 10.6 6.729 9.929 6.729 9.1 C 6.729 8.271 6.057 7.6 5.229 7.6 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.860 1.760) matrix(1 0 0 1 11.551 0)\"/>"},"IconLetterMonoLetterEnvelope":{viewBox:"0 0 24 24",body:"<path d=\"M 20.317 0.26 C 20.137 0.095 19.902 0.002 19.658 0 L 0.658 0 C 0.414 0.002 0.18 0.095 0 0.26 L 10.158 8 L 20.318 0.26 L 20.317 0.26 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.495 4) matrix(1 0 0 1 0.342 0)\"/><path d=\"M 0.342 0 C 0.236 0.092 0.15 0.205 0.091 0.333 C 0.032 0.461 0.001 0.599 0 0.74 L 0 14.74 C 0 15.037 0.136 15.296 0.342 15.479 L 10.5 7.74 L 0.342 0 Z M 20.659 0 L 10.5 7.74 L 20.66 15.479 C 20.766 15.387 20.851 15.274 20.91 15.146 C 20.968 15.019 20.999 14.88 21 14.74 L 21 0.74 C 20.999 0.6 20.968 0.461 20.91 0.333 C 20.851 0.206 20.766 0.092 20.66 0\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.495 4) matrix(1 0 0 1 0 0.260)\"/><path d=\"M 0 7.74 C 0.177 7.897 0.403 8 0.658 8 L 19.658 8 C 19.902 7.998 20.137 7.905 20.317 7.74 L 10.158 0 L 0 7.74 Z\" fill=\"rgba(176,184,193,0.3)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.495 4) matrix(1 0 0 1 0.342 8)\"/>"},"IconLightningCircleMonoLight":{viewBox:"0 0 24 24",body:"<path d=\"M 15.746 11.501 L 9.842 17.771 C 9.344 18.299 8.465 17.844 8.609 17.132 L 9.504 12.712 L 6.541 11.677 C 6.427 11.637 6.325 11.57 6.244 11.481 C 6.164 11.392 6.106 11.284 6.078 11.167 C 6.049 11.05 6.05 10.928 6.081 10.812 C 6.112 10.695 6.171 10.588 6.254 10.501 L 12.157 4.23 C 12.655 3.702 13.534 4.157 13.391 4.869 L 12.495 9.29 L 15.458 10.324 C 15.572 10.364 15.674 10.431 15.755 10.52 C 15.836 10.609 15.893 10.717 15.922 10.834 C 15.95 10.951 15.949 11.074 15.919 11.19 C 15.888 11.306 15.829 11.413 15.746 11.501 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconLightningMonoLightLightning":{viewBox:"0 0 24 24",body:"<path d=\"M 14.826 9.974 L 10.153 8.342 L 11.565 1.37 C 11.792 0.246 10.405 -0.471 9.62 0.363 L 0.31 10.251 C 0.18 10.389 0.086 10.557 0.038 10.741 C -0.011 10.925 -0.013 11.117 0.032 11.302 C 0.077 11.486 0.168 11.656 0.295 11.797 C 0.423 11.938 0.584 12.044 0.763 12.107 L 5.435 13.739 L 4.025 20.711 C 3.796 21.834 5.183 22.551 5.969 21.718 L 15.28 11.828 C 15.845 11.228 15.604 10.245 14.826 9.974 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.205 0.960)\"/>"},"IconLightninigSquareMonoLight":{viewBox:"0 0 24 24",body:"<path d=\"M 13.941 8.617 L 7.927 15.901 C 7.751 16.115 7.405 15.954 7.456 15.681 L 8.29 11.14 C 8.297 11.101 8.296 11.061 8.286 11.023 C 8.276 10.985 8.258 10.95 8.232 10.919 C 8.207 10.889 8.176 10.865 8.14 10.848 C 8.104 10.832 8.065 10.823 8.026 10.823 L 5.276 10.823 C 5.225 10.823 5.175 10.809 5.132 10.781 C 5.089 10.754 5.054 10.715 5.032 10.669 C 5.011 10.623 5.002 10.571 5.009 10.521 C 5.015 10.47 5.036 10.422 5.068 10.383 L 11.082 3.098 C 11.258 2.885 11.604 3.046 11.553 3.318 L 10.719 7.86 C 10.712 7.899 10.714 7.939 10.724 7.977 C 10.734 8.015 10.752 8.05 10.777 8.08 C 10.802 8.111 10.834 8.135 10.869 8.152 C 10.905 8.169 10.944 8.178 10.983 8.178 L 13.733 8.178 C 13.961 8.178 14.086 8.442 13.941 8.617 Z M 17 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 17 C 0 17.53 0.211 18.039 0.586 18.414 C 0.961 18.789 1.47 19 2 19 L 17 19 C 17.53 19 18.039 18.789 18.414 18.414 C 18.789 18.039 19 17.53 19 17 L 19 2 C 19 1.47 18.789 0.961 18.414 0.586 C 18.039 0.211 17.53 0 17 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.495 2.500)\"/>"},"IconLinePencilMono":{viewBox:"0 0 24 24",body:"<path d=\"M 15.583 1.849 L 19.53 5.796 L 18.442 6.885 L 14.494 2.937 L 15.583 1.849 Z M 11.379 6.05 L 15.326 9.997 L 7.448 17.878 L 3.25 19.003 L 2.054 19.324 L 2.374 18.127 L 3.499 13.931 L 11.379 6.05 Z M 15.583 0 C 15.318 0 15.063 0.105 14.876 0.293 L 12.231 2.937 L 18.442 9.148 L 21.086 6.503 C 21.274 6.316 21.379 6.061 21.379 5.796 C 21.379 5.531 21.274 5.276 21.086 5.089 L 16.29 0.294 C 16.103 0.106 15.849 0 15.583 0 Z M 11.379 3.787 L 11.378 3.787 L 2.066 13.103 L 0.83 17.713 L 0.017 20.75 C -0.029 20.923 0.021 21.107 0.147 21.233 C 0.242 21.328 0.37 21.38 0.501 21.38 C 0.544 21.38 0.587 21.374 0.63 21.363 L 3.665 20.549 L 8.277 19.313 L 17.589 9.997 L 11.379 3.787 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.310 1.310)\"/>"},"IconLineSettingMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.417 21.267 L 8.81 21.267 C 7.975 21.267 7.258 20.736 7.068 19.977 L 6.724 18.686 C 6.623 18.335 6.345 17.98 5.965 17.726 C 5.676 17.535 5.254 17.477 4.886 17.581 L 3.467 17.937 C 2.692 18.127 1.842 17.741 1.488 17.032 L 0.21 14.821 C -0.157 14.091 -0.016 13.234 0.527 12.691 L 1.483 11.735 C 1.733 11.485 1.915 11.022 1.915 10.633 C 1.915 10.244 1.733 9.781 1.483 9.531 L 0.443 8.479 C -0.061 7.807 -0.143 6.971 0.239 6.397 L 1.512 4.187 C 1.842 3.525 2.693 3.135 3.466 3.33 L 4.856 3.677 C 5.26 3.79 5.619 3.735 6.017 3.508 C 6.345 3.287 6.623 2.931 6.728 2.565 L 7.174 1.223 C 7.345 0.53 8.061 0 8.897 0 L 11.504 0 C 12.34 0 13.057 0.53 13.246 1.29 L 13.59 2.58 C 13.691 2.931 13.969 3.287 14.35 3.54 C 14.638 3.731 15.06 3.788 15.429 3.684 L 16.748 3.333 C 17.532 3.135 18.385 3.524 18.74 4.234 L 20.092 6.425 C 20.472 7.177 20.331 8.033 19.788 8.576 L 18.833 9.532 C 18.583 9.782 18.401 10.246 18.401 10.634 C 18.401 11.13 18.504 11.407 18.746 11.649 L 19.682 12.67 C 20.28 13.175 20.427 14.007 20.043 14.774 L 18.715 17.08 C 18.386 17.743 17.537 18.136 16.761 17.938 L 15.37 17.59 C 14.974 17.476 14.552 17.535 14.263 17.727 C 13.882 17.981 13.604 18.336 13.499 18.703 L 13.155 19.991 C 12.969 20.736 12.253 21.267 11.417 21.267 Z M 5.264 15.726 C 5.865 15.726 6.467 15.898 6.963 16.228 C 7.705 16.722 8.236 17.425 8.459 18.207 L 8.811 19.526 L 11.417 19.465 L 11.765 18.222 C 11.993 17.424 12.524 16.721 13.265 16.227 C 13.995 15.741 14.954 15.599 15.836 15.85 L 17.198 16.19 L 18.431 13.968 L 17.457 12.905 C 16.889 12.329 16.6 11.593 16.6 10.719 C 16.6 9.759 16.968 8.849 17.559 8.258 L 18.514 7.302 L 17.168 5.107 L 15.907 5.419 C 15.046 5.668 14.083 5.525 13.351 5.038 C 12.61 4.544 12.079 3.841 11.855 3.059 L 11.503 1.74 L 8.897 1.8 L 8.447 3.096 C 8.235 3.841 7.704 4.544 6.962 5.038 C 6.085 5.541 5.237 5.658 4.391 5.414 L 3.03 5.075 L 1.81 7.269 C 1.819 7.293 1.833 7.324 1.854 7.358 L 2.754 8.257 C 3.346 8.85 3.714 9.76 3.714 10.633 C 3.714 11.506 3.347 12.416 2.755 13.008 L 1.799 13.964 L 3.072 16.179 L 4.421 15.843 C 4.694 15.765 4.979 15.726 5.264 15.726 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.803 1.367)\"/><path d=\"M 4.071 8.143 C 1.826 8.143 0 6.316 0 4.071 C 0 1.826 1.826 0 4.071 0 C 6.316 0 8.143 1.826 8.143 4.071 C 8.143 6.316 6.316 8.143 4.071 8.143 Z M 4.071 1.8 C 2.819 1.8 1.8 2.819 1.8 4.071 C 1.8 5.323 2.819 6.342 4.071 6.342 C 5.324 6.342 6.342 5.323 6.342 4.071 C 6.342 2.819 5.324 1.8 4.071 1.8 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.803 1.367) matrix(1 0 0 1 6.086 6.562)\"/>"},"IconLineStarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.162 20.713 C 15.832 20.713 15.5 20.633 15.192 20.472 L 10.915 18.224 C 10.832 18.179 10.736 18.179 10.655 18.223 L 6.376 20.472 C 5.668 20.843 4.829 20.781 4.183 20.313 C 3.538 19.843 3.221 19.064 3.355 18.277 L 4.172 13.515 C 4.188 13.425 4.157 13.33 4.09 13.266 L 0.63 9.893 C 0.059 9.336 -0.143 8.518 0.104 7.759 C 0.351 7 0.995 6.457 1.785 6.342 L 6.566 5.647 C 6.659 5.634 6.738 5.577 6.779 5.494 L 8.916 1.161 C 9.27 0.445 9.985 0 10.783 0 C 11.581 0 12.297 0.445 12.649 1.16 L 14.788 5.493 C 14.829 5.576 14.908 5.634 15 5.647 L 19.784 6.342 C 20.573 6.457 21.218 7 21.464 7.759 C 21.711 8.519 21.509 9.336 20.937 9.893 L 17.476 13.266 C 17.41 13.33 17.379 13.424 17.395 13.516 L 18.212 18.277 C 18.347 19.064 18.029 19.844 17.384 20.314 C 17.018 20.579 16.591 20.713 16.162 20.713 Z M 10.783 1.8 C 10.718 1.8 10.597 1.821 10.53 1.958 L 8.393 6.29 C 8.09 6.905 7.503 7.331 6.824 7.429 L 2.044 8.124 C 1.893 8.146 1.837 8.253 1.816 8.315 C 1.795 8.377 1.778 8.497 1.887 8.604 L 5.347 11.977 C 5.836 12.455 6.06 13.143 5.946 13.818 L 5.129 18.582 C 5.103 18.732 5.188 18.819 5.241 18.857 C 5.295 18.895 5.403 18.951 5.539 18.878 L 9.815 16.63 C 10.42 16.311 11.146 16.311 11.753 16.631 L 16.029 18.878 C 16.159 18.948 16.271 18.897 16.325 18.857 C 16.378 18.819 16.463 18.732 16.437 18.581 L 15.62 13.82 C 15.505 13.144 15.728 12.456 16.218 11.977 L 19.68 8.604 C 19.789 8.498 19.772 8.377 19.751 8.315 C 19.73 8.253 19.675 8.145 19.524 8.123 L 14.741 7.428 C 14.063 7.33 13.477 6.904 13.174 6.289 L 11.036 1.956 C 10.969 1.82 10.81 1.814 10.783 1.8 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.216 1.643)\"/>"},"IconLineThreeDotsMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 2 C 0 0.89 0.9 0 2 0 C 3.11 0 4 0.9 4 2 C 4 3.11 3.1 4 2 4 C 0.9 4 0 3.1 0 2 Z M 22.57 3.42 L 8.08 3.42 C 7.29 3.42 6.66 2.78 6.66 2 C 6.66 1.21 7.3 0.58 8.08 0.58 L 22.57 0.58 C 23.36 0.58 23.99 1.22 23.99 2 C 23.99 2.79 23.35 3.42 22.57 3.42 Z M 0 9.13 C 0 8.02 0.9 7.13 2 7.13 C 3.11 7.13 4 8.03 4 9.13 C 4 10.24 3.1 11.13 2 11.13 C 0.9 11.13 0 10.24 0 9.13 Z M 22.57 10.55 L 8.08 10.55 C 7.29 10.55 6.66 9.91 6.66 9.13 C 6.66 8.34 7.3 7.71 8.08 7.71 L 22.57 7.71 C 23.36 7.71 23.99 8.35 23.99 9.13 C 23.99 9.92 23.35 10.55 22.57 10.55 Z M 0 16.26 C 0 15.15 0.9 14.26 2 14.26 C 3.11 14.26 4 15.16 4 16.26 C 4 17.37 3.1 18.26 2 18.26 C 0.89 18.26 0 17.36 0 16.26 Z M 22.57 17.69 L 8.08 17.69 C 7.29 17.69 6.66 17.05 6.66 16.27 C 6.66 15.48 7.3 14.85 8.08 14.85 L 22.57 14.85 C 23.36 14.85 23.99 15.49 23.99 16.27 C 23.99 17.06 23.35 17.69 22.57 17.69 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0 2.870)\"/>"},"IconLineThreeMonoThree":{viewBox:"0 0 24 24",body:"<path d=\"M 1.2 2.4 L 17.2 2.4 C 17.518 2.4 17.823 2.274 18.049 2.049 C 18.274 1.823 18.4 1.518 18.4 1.2 C 18.4 0.882 18.274 0.577 18.049 0.351 C 17.823 0.126 17.518 0 17.2 0 L 1.2 0 C 0.882 0 0.577 0.126 0.351 0.351 C 0.126 0.577 0 0.882 0 1.2 C 0 1.518 0.126 1.823 0.351 2.049 C 0.577 2.274 0.882 2.4 1.2 2.4 Z M 17.2 7 L 1.2 7 C 0.882 7 0.577 7.126 0.351 7.351 C 0.126 7.577 0 7.882 0 8.2 C 0 8.518 0.126 8.823 0.351 9.049 C 0.577 9.274 0.882 9.4 1.2 9.4 L 17.2 9.4 C 17.518 9.4 17.823 9.274 18.049 9.049 C 18.274 8.823 18.4 8.518 18.4 8.2 C 18.4 7.882 18.274 7.577 18.049 7.351 C 17.823 7.126 17.518 7 17.2 7 Z M 17.2 14 L 1.2 14 C 1.042 14 0.886 14.031 0.741 14.091 C 0.595 14.152 0.463 14.24 0.351 14.351 C 0.24 14.463 0.152 14.595 0.091 14.741 C 0.031 14.886 0 15.042 0 15.2 C 0 15.358 0.031 15.514 0.091 15.659 C 0.152 15.805 0.24 15.937 0.351 16.049 C 0.463 16.16 0.595 16.248 0.741 16.309 C 0.886 16.369 1.042 16.4 1.2 16.4 L 17.2 16.4 C 17.358 16.4 17.514 16.369 17.659 16.309 C 17.805 16.248 17.937 16.16 18.049 16.049 C 18.16 15.937 18.248 15.805 18.309 15.659 C 18.369 15.514 18.4 15.358 18.4 15.2 C 18.4 15.042 18.369 14.886 18.309 14.741 C 18.248 14.595 18.16 14.463 18.049 14.351 C 17.937 14.24 17.805 14.152 17.659 14.091 C 17.514 14.031 17.358 14 17.2 14 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.918 3.800)\"/>"},"IconLineThreePlusMono":{viewBox:"0 0 24 24",body:"<path d=\"M 7.327 0 L 1.201 0 C 0.538 0 0.001 0.537 0 1.199 C 0 1.862 0.536 2.399 1.199 2.4 L 6.775 2.4 C 6.794 2.153 6.822 1.899 6.868 1.63 C 6.964 1.064 7.118 0.52 7.327 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.917 3.800) matrix(1 0 0 1 0 7)\"/><path d=\"M 16.858 2.4 L 17.2 2.4 C 17.863 2.4 18.4 1.863 18.4 1.2 C 18.4 0.537 17.863 0 17.2 0 L 1.2 0 C 0.537 0 0 0.537 0 1.2 C 0 1.863 0.537 2.4 1.2 2.4 L 12.425 2.4 C 13.133 2.193 13.87 2.072 14.625 2.072 C 15.401 2.072 16.149 2.19 16.858 2.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.917 3.800) matrix(1 0 0 1 0.001 0)\"/><path d=\"M 2.2 0 C 1.445 0 0.708 0.121 0 0.328 L 4.433 0.328 C 3.724 0.118 2.976 0 2.2 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.917 3.800) matrix(1 0 0 1 12.426 2.072)\"/><path d=\"M 8.331 0.67 C 8.17 0.456 8.044 0.226 7.907 0 L 1.201 0 C 0.538 0 0.001 0.537 0 1.199 C 0 1.862 0.536 2.399 1.199 2.4 L 10.126 2.4 C 9.454 1.928 8.844 1.352 8.331 0.67 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.917 3.800) matrix(1 0 0 1 0.001 13.999)\"/><path d=\"M 6.458 0 C 4.253 0 2.308 1.107 1.143 2.794 C 0.619 3.553 0.258 4.43 0.098 5.377 C 0.039 5.729 0 6.088 0 6.457 C 0 7.911 0.486 9.248 1.297 10.327 C 2.459 11.875 4.295 12.883 6.374 12.91 C 6.402 12.91 6.429 12.914 6.457 12.914 C 6.485 12.914 6.512 12.91 6.54 12.91 C 7.809 12.894 8.987 12.512 9.978 11.865 C 11.744 10.712 12.914 8.723 12.914 6.457 C 12.914 2.891 10.024 0 6.458 0 Z M 9.687 7.264 L 7.266 7.264 L 7.266 9.685 C 7.266 9.953 7.126 10.18 6.925 10.326 C 6.792 10.423 6.637 10.492 6.459 10.492 C 6.281 10.492 6.126 10.423 5.993 10.326 C 5.792 10.18 5.652 9.953 5.652 9.685 L 5.652 7.264 L 3.231 7.264 C 2.785 7.264 2.424 6.902 2.424 6.457 C 2.424 6.012 2.786 5.65 3.231 5.65 L 5.652 5.65 L 5.652 3.229 C 5.652 3.065 5.713 2.921 5.797 2.794 C 5.941 2.574 6.178 2.422 6.459 2.422 C 6.74 2.422 6.977 2.576 7.121 2.794 C 7.205 2.921 7.266 3.065 7.266 3.229 L 7.266 5.65 L 9.687 5.65 C 10.133 5.65 10.494 6.012 10.494 6.457 C 10.494 6.902 10.132 7.264 9.687 7.264 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.917 3.800) matrix(1 0 0 1 8.168 3.490)\"/>"},"IconLineThreeSearchMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.25 2.5 L 17.25 2.5 C 17.94 2.5 18.5 1.94 18.5 1.25 C 18.5 0.56 17.94 0 17.25 0 L 1.25 0 C 0.56 0 0 0.56 0 1.25 C 0 1.94 0.56 2.5 1.25 2.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.750 3.750)\"/><path d=\"M 1.25 0 C 0.56 0 0 0.56 0 1.25 C 0 1.94 0.56 2.5 1.25 2.5 L 5.678 2.5 C 5.845 1.598 6.177 0.756 6.64 0 L 1.25 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.750 3.750) matrix(1 0 0 1 0 7)\"/><path d=\"M 6.267 0 L 1.25 0 C 0.56 0 0 0.56 0 1.25 C 0 1.94 0.56 2.5 1.25 2.5 L 8.194 2.5 C 7.384 1.819 6.726 0.966 6.267 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.750 3.750) matrix(1 0 0 1 0 14)\"/><path d=\"M 12.901 13.999 C 12.62 13.999 12.338 13.892 12.124 13.677 L 8.857 10.411 C 7.951 11.02 6.861 11.376 5.689 11.376 C 2.552 11.376 0 8.824 0 5.688 C 0 2.552 2.552 0 5.689 0 C 8.826 0 11.378 2.552 11.378 5.688 C 11.378 6.86 11.023 7.95 10.412 8.856 L 13.678 12.123 C 14.108 12.552 14.108 13.249 13.678 13.678 C 13.464 13.893 13.182 13.999 12.901 13.999 Z M 5.689 2.198 C 3.765 2.198 2.2 3.763 2.2 5.687 C 2.2 7.611 3.765 9.176 5.689 9.176 C 7.613 9.176 9.179 7.611 9.179 5.687 C 9.179 3.763 7.613 2.198 5.689 2.198 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.750 3.750) matrix(1 0 0 1 7.249 5.156)\"/>"},"IconLinkCircleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 12 0 C 5.373 0 0 5.373 0 12 C 0 18.627 5.373 24 12 24 C 18.627 24 24 18.627 24 12 C 24 5.373 18.627 0 12 0 Z M 12.788 16.237 L 11.59 17.435 C 10.897 18.127 9.988 18.473 9.078 18.473 C 8.611 18.473 8.149 18.383 7.718 18.204 C 7.287 18.026 6.895 17.764 6.566 17.434 C 5.895 16.763 5.525 15.871 5.525 14.922 C 5.524 14.455 5.615 13.993 5.794 13.562 C 5.973 13.131 6.235 12.739 6.566 12.41 L 8.667 10.309 C 9.053 9.924 9.523 9.633 10.04 9.458 C 10.557 9.283 11.107 9.23 11.648 9.302 C 12.189 9.374 12.706 9.569 13.159 9.873 C 13.612 10.177 13.99 10.58 14.262 11.053 C 14.304 11.126 14.331 11.207 14.342 11.29 C 14.353 11.374 14.347 11.458 14.325 11.54 C 14.303 11.621 14.265 11.698 14.214 11.764 C 14.162 11.831 14.098 11.887 14.025 11.929 C 13.952 11.971 13.871 11.998 13.788 12.009 C 13.705 12.02 13.62 12.014 13.538 11.992 C 13.457 11.97 13.38 11.932 13.314 11.881 C 13.247 11.829 13.191 11.765 13.149 11.692 C 12.975 11.39 12.734 11.132 12.444 10.938 C 12.154 10.744 11.824 10.619 11.479 10.573 C 11.133 10.527 10.782 10.561 10.452 10.673 C 10.122 10.785 9.822 10.971 9.575 11.217 L 7.474 13.318 C 7.045 13.746 6.809 14.316 6.809 14.922 C 6.809 15.22 6.867 15.516 6.981 15.791 C 7.095 16.067 7.263 16.317 7.474 16.527 C 7.9 16.952 8.477 17.19 9.079 17.19 C 9.681 17.19 10.258 16.952 10.684 16.527 L 11.882 15.329 C 12.004 15.216 12.165 15.155 12.331 15.158 C 12.497 15.161 12.656 15.228 12.773 15.346 C 12.891 15.464 12.958 15.622 12.961 15.788 C 12.964 15.954 12.901 16.115 12.788 16.237 Z M 18.206 10.438 C 18.027 10.87 17.765 11.261 17.434 11.591 L 15.333 13.691 C 15.004 14.022 14.612 14.284 14.181 14.463 C 13.75 14.642 13.287 14.733 12.821 14.732 C 12.354 14.733 11.892 14.642 11.461 14.463 C 11.03 14.284 10.638 14.022 10.309 13.691 C 10.086 13.468 9.895 13.218 9.739 12.948 C 9.654 12.8 9.632 12.625 9.676 12.461 C 9.72 12.297 9.828 12.157 9.976 12.072 C 10.124 11.987 10.299 11.965 10.463 12.009 C 10.627 12.053 10.767 12.161 10.852 12.309 C 10.952 12.483 11.075 12.642 11.217 12.784 C 12.074 13.642 13.57 13.642 14.427 12.784 L 16.528 10.683 C 16.739 10.473 16.907 10.223 17.021 9.947 C 17.135 9.672 17.193 9.376 17.193 9.078 C 17.193 8.78 17.135 8.484 17.021 8.209 C 16.907 7.934 16.739 7.683 16.528 7.473 C 16.102 7.048 15.525 6.809 14.923 6.809 C 14.321 6.809 13.744 7.048 13.318 7.473 L 12.12 8.67 C 11.998 8.783 11.837 8.845 11.671 8.842 C 11.505 8.839 11.346 8.772 11.229 8.654 C 11.112 8.536 11.044 8.378 11.041 8.212 C 11.038 8.046 11.099 7.885 11.213 7.763 L 12.411 6.566 C 13.078 5.901 13.981 5.527 14.923 5.527 C 15.865 5.527 16.769 5.901 17.435 6.566 C 17.766 6.895 18.028 7.286 18.207 7.717 C 18.386 8.148 18.477 8.611 18.476 9.077 C 18.477 9.544 18.386 10.007 18.207 10.438 L 18.206 10.438 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconLinkMonoLinkClip":{viewBox:"0 0 24 24",body:"<path d=\"M 13.338 1.781 C 12.195 0.641 10.646 0 9.031 0 C 7.416 0 5.867 0.641 4.724 1.781 L 2.671 3.833 C 2.477 4.042 2.372 4.318 2.377 4.603 C 2.382 4.888 2.498 5.16 2.699 5.361 C 2.901 5.563 3.173 5.678 3.458 5.683 C 3.743 5.689 4.018 5.583 4.227 5.389 L 6.28 3.337 C 7.01 2.609 8 2.199 9.031 2.199 C 10.063 2.199 11.052 2.609 11.782 3.337 C 12.145 3.698 12.432 4.126 12.628 4.598 C 12.823 5.071 12.924 5.577 12.922 6.088 C 12.924 6.599 12.824 7.106 12.628 7.578 C 12.432 8.05 12.145 8.479 11.782 8.839 L 8.181 12.44 C 6.712 13.91 4.149 13.91 2.679 12.44 C 2.436 12.198 2.226 11.924 2.054 11.626 C 1.909 11.373 1.669 11.188 1.387 11.112 C 1.106 11.036 0.805 11.075 0.552 11.22 C 0.299 11.365 0.114 11.605 0.038 11.887 C -0.038 12.169 0.001 12.469 0.146 12.722 C 0.413 13.185 0.741 13.614 1.123 13.996 C 1.688 14.563 2.359 15.013 3.098 15.319 C 3.837 15.626 4.63 15.782 5.43 15.78 C 6.23 15.782 7.023 15.626 7.762 15.319 C 8.502 15.013 9.173 14.563 9.737 13.996 L 13.338 10.396 C 13.906 9.832 14.356 9.16 14.662 8.42 C 14.968 7.681 15.124 6.888 15.122 6.087 C 15.124 5.287 14.968 4.494 14.662 3.755 C 14.355 3.016 13.906 2.345 13.338 1.781 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.900 0.903) matrix(1 0 0 1 7.078 0)\"/><path d=\"M 10.895 10.386 L 8.842 12.439 C 8.112 13.167 7.122 13.576 6.091 13.576 C 5.06 13.576 4.07 13.167 3.34 12.439 C 2.978 12.079 2.69 11.65 2.495 11.178 C 2.299 10.706 2.199 10.199 2.2 9.688 C 2.2 8.649 2.605 7.672 3.34 6.938 L 6.941 3.336 C 7.364 2.914 7.878 2.595 8.444 2.404 C 9.01 2.212 9.613 2.153 10.205 2.232 C 10.798 2.311 11.364 2.525 11.86 2.857 C 12.357 3.19 12.77 3.632 13.068 4.15 C 13.14 4.275 13.236 4.385 13.35 4.474 C 13.465 4.562 13.595 4.627 13.735 4.664 C 13.874 4.702 14.02 4.712 14.163 4.693 C 14.307 4.675 14.445 4.628 14.57 4.556 C 14.695 4.484 14.805 4.388 14.893 4.274 C 14.982 4.159 15.046 4.029 15.084 3.889 C 15.122 3.75 15.132 3.604 15.113 3.461 C 15.095 3.318 15.048 3.179 14.976 3.054 C 14.509 2.244 13.862 1.552 13.085 1.031 C 12.308 0.511 11.422 0.176 10.495 0.053 C 9.567 -0.07 8.624 0.022 7.738 0.321 C 6.853 0.621 6.047 1.12 5.385 1.78 L 1.784 5.381 C 1.217 5.946 0.767 6.617 0.461 7.356 C 0.155 8.095 -0.002 8.888 0 9.688 C 0 11.315 0.634 12.845 1.784 13.995 C 2.349 14.561 3.02 15.01 3.76 15.316 C 4.499 15.621 5.291 15.778 6.091 15.776 C 7.651 15.776 9.21 15.182 10.398 13.996 L 12.451 11.943 C 12.645 11.734 12.75 11.458 12.745 11.174 C 12.74 10.889 12.625 10.617 12.423 10.415 C 12.221 10.214 11.95 10.098 11.665 10.093 C 11.38 10.088 11.104 10.192 10.895 10.386 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.900 0.903) matrix(1 0 0 1 0 6.419)\"/>"},"IconLinkPcMonoLink":{viewBox:"0 0 24 24",body:"<path d=\"M 1.526 1.249 C 1.252 1.523 1.252 1.966 1.526 2.239 C 1.799 2.512 2.242 2.512 2.515 2.239 L 2.021 1.744 L 1.526 1.249 Z M 2.688 1.077 L 2.193 0.582 L 2.193 0.582 L 2.688 1.077 Z M 7.884 1.077 L 7.389 1.571 L 7.389 1.572 L 7.884 1.077 Z M 7.884 6.273 L 7.389 5.777 L 7.389 5.778 L 7.884 6.273 Z M 5.196 8.961 L 4.701 8.466 L 4.701 8.466 L 5.196 8.961 Z M 0.495 8.466 C 0.222 8.192 -0.221 8.192 -0.495 8.465 C -0.768 8.739 -0.768 9.182 -0.495 9.455 L 0 8.961 L 0.495 8.466 Z M 2.021 1.744 L 2.515 2.239 L 3.183 1.572 L 2.688 1.077 L 2.193 0.582 L 1.526 1.249 L 2.021 1.744 Z M 2.688 1.077 L 3.183 1.572 C 4.345 0.409 6.228 0.41 7.389 1.571 L 7.884 1.077 L 8.379 0.582 C 6.672 -1.127 3.902 -1.127 2.193 0.582 L 2.688 1.077 Z M 7.884 1.077 L 7.389 1.572 C 8.551 2.734 8.551 4.617 7.389 5.777 L 7.884 6.273 L 8.379 6.768 C 10.088 5.06 10.088 2.29 8.379 0.582 L 7.884 1.077 Z M 7.884 6.273 L 7.389 5.778 L 4.701 8.466 L 5.196 8.961 L 5.691 9.456 L 8.379 6.768 L 7.884 6.273 Z M 5.196 8.961 L 4.701 8.466 C 3.539 9.628 1.656 9.628 0.495 8.466 L 0 8.961 L -0.495 9.455 C 1.212 11.165 3.982 11.164 5.691 9.456 L 5.196 8.961 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.586 4.508) matrix(1 0 0 1 5.868 0)\"/><path d=\"M 7.435 8.788 C 7.708 8.515 7.708 8.072 7.435 7.798 C 7.162 7.525 6.719 7.525 6.445 7.798 L 6.94 8.293 L 7.435 8.788 Z M 6.273 8.961 L 6.768 9.456 L 6.768 9.456 L 6.273 8.961 Z M 1.077 8.961 L 1.572 8.466 L 1.572 8.466 L 1.077 8.961 Z M 1.077 3.765 L 1.571 4.26 L 1.572 4.26 L 1.077 3.765 Z M 8.465 1.571 C 8.739 1.845 9.182 1.845 9.455 1.572 C 9.729 1.299 9.729 0.855 9.456 0.582 L 8.961 1.077 L 8.465 1.571 Z M 6.94 8.293 L 6.445 7.798 L 5.778 8.466 L 6.273 8.961 L 6.768 9.456 L 7.435 8.788 L 6.94 8.293 Z M 6.273 8.961 L 5.778 8.466 C 4.615 9.628 2.732 9.628 1.572 8.466 L 1.077 8.961 L 0.581 9.455 C 2.289 11.165 5.059 11.164 6.768 9.456 L 6.273 8.961 Z M 1.077 8.961 L 1.572 8.466 C 0.409 7.303 0.41 5.42 1.571 4.26 L 1.077 3.765 L 0.582 3.269 C -1.127 4.977 -1.127 7.747 0.582 9.456 L 1.077 8.961 Z M 1.077 3.765 L 1.572 4.26 L 4.26 1.572 L 3.765 1.077 L 3.27 0.582 L 0.582 3.27 L 1.077 3.765 Z M 3.765 1.077 L 4.26 1.572 C 5.422 0.409 7.305 0.41 8.465 1.571 L 8.961 1.077 L 9.456 0.582 C 7.748 -1.127 4.978 -1.127 3.27 0.582 L 3.765 1.077 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.586 4.508) matrix(1 0 0 1 0 4.947)\"/>"},"IconLoanBagMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.24 4.5 L 14.285 4.5 L 16.085 1.5 C 16.485 0.8 15.985 0 15.185 0 L 6.685 0 C 5.885 0 5.385 0.8 5.885 1.5 L 7.685 4.5 L 7.818 4.5 C 3.777 5.737 0.607 9.251 0.085 13.6 C -0.215 16.1 0.285 18.5 1.485 20.5 C 1.985 21.4 2.985 22 4.085 22 L 17.885 22 C 18.985 22 19.985 21.4 20.485 20.5 C 21.485 18.9 21.985 17 21.985 15 C 21.985 10.055 18.74 5.871 14.24 4.5 Z M 5.752 13.883 L 5.752 13.366 C 5.752 11.233 7.485 9.499 9.619 9.499 L 13.552 9.499 L 13.269 9.216 C 13.019 8.966 13.019 8.583 13.269 8.333 C 13.519 8.083 13.902 8.083 14.152 8.333 L 15.419 9.616 C 15.569 9.733 15.669 9.916 15.669 10.116 C 15.669 10.299 15.602 10.449 15.486 10.566 L 14.136 11.916 C 14.019 12.033 13.869 12.099 13.703 12.099 C 13.553 12.099 13.386 12.032 13.27 11.916 C 13.02 11.666 13.02 11.283 13.27 11.033 L 13.57 10.733 L 9.62 10.733 C 8.168 10.733 6.985 11.917 6.985 13.367 L 6.985 13.9 C 6.985 14.233 6.718 14.517 6.368 14.5 C 6.035 14.5 5.752 14.233 5.752 13.883 Z M 16.218 14.033 C 16.218 16.166 14.485 17.9 12.351 17.9 L 8.418 17.9 L 8.701 18.183 C 8.951 18.433 8.951 18.816 8.701 19.066 C 8.585 19.183 8.435 19.25 8.268 19.25 C 8.118 19.25 7.951 19.183 7.835 19.067 L 6.535 17.767 C 6.385 17.65 6.302 17.484 6.302 17.284 C 6.302 17.117 6.369 16.951 6.485 16.834 L 7.835 15.484 C 8.085 15.234 8.468 15.234 8.718 15.484 C 8.968 15.734 8.968 16.117 8.718 16.367 L 8.418 16.667 L 12.351 16.667 C 13.801 16.667 14.984 15.484 14.984 14.034 L 14.984 13.5 C 14.984 13.167 15.251 12.883 15.601 12.883 C 15.951 12.883 16.218 13.166 16.218 13.516 L 16.218 14.033 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.015 0.800)\"/>"},"IconLockMonoLockSecret":{viewBox:"0 0 24 24",body:"<path d=\"M 9.9 12.755 L 9.9 14.954 C 9.9 15.193 9.805 15.422 9.636 15.59 C 9.468 15.759 9.239 15.854 9 15.854 C 8.761 15.854 8.532 15.759 8.364 15.59 C 8.195 15.422 8.1 15.193 8.1 14.954 L 8.1 12.755 C 7.827 12.598 7.6 12.372 7.442 12.1 C 7.284 11.828 7.201 11.519 7.2 11.204 C 7.211 10.734 7.406 10.287 7.742 9.959 C 8.078 9.63 8.529 9.446 9 9.446 C 9.47 9.446 9.921 9.63 10.257 9.959 C 10.593 10.287 10.788 10.734 10.799 11.204 C 10.799 11.869 10.435 12.443 9.9 12.755 Z M 5.82 5.179 C 5.821 4.336 6.156 3.528 6.753 2.932 C 7.349 2.336 8.157 2.001 9 2 C 9.843 2.001 10.651 2.336 11.247 2.932 C 11.843 3.528 12.178 4.336 12.179 5.179 L 5.82 5.179 Z M 15.599 5.179 L 14.179 5.179 C 14.178 3.806 13.632 2.489 12.661 1.518 C 11.69 0.547 10.373 0.001 9 0 C 7.627 0.001 6.31 0.547 5.339 1.518 C 4.368 2.489 3.822 3.806 3.82 5.179 L 2.4 5.179 C 1.763 5.179 1.153 5.432 0.703 5.882 C 0.253 6.332 0 6.942 0 7.579 L 0 17.779 C 0 18.416 0.253 19.026 0.703 19.476 C 1.153 19.926 1.763 20.179 2.4 20.179 L 15.599 20.179 C 15.914 20.179 16.226 20.117 16.518 19.997 C 16.809 19.876 17.074 19.699 17.297 19.476 C 17.52 19.254 17.697 18.989 17.817 18.698 C 17.938 18.406 18 18.094 18 17.779 L 18 7.579 C 18 7.264 17.938 6.952 17.817 6.66 C 17.697 6.369 17.52 6.104 17.297 5.882 C 17.074 5.659 16.809 5.482 16.518 5.361 C 16.226 5.241 15.914 5.179 15.599 5.179 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 1.320)\"/>"},"IconLoudspeakerMonoLoudspeakerSpeaker":{viewBox:"0 0 24 24",body:"<path d=\"M 14.629 0.111 L 4.147 5.498 L 1.033 5.498 C 0.463 5.498 0 5.961 0 6.531 L 0 13.391 C 0 13.961 0.463 14.424 1.033 14.424 L 4.147 14.424 L 14.629 19.811 C 14.781 19.889 14.952 19.927 15.123 19.92 C 15.294 19.914 15.461 19.864 15.607 19.774 C 15.754 19.685 15.874 19.56 15.958 19.41 C 16.042 19.261 16.086 19.092 16.086 18.921 L 16.086 1.001 C 16.086 0.829 16.042 0.661 15.958 0.511 C 15.874 0.361 15.754 0.236 15.607 0.147 C 15.461 0.057 15.294 0.007 15.123 0.001 C 14.952 -0.006 14.781 0.032 14.629 0.111 Z M 19.348 7.128 L 17.392 7.128 L 17.392 12.794 L 19.347 12.794 C 20.071 12.794 20.657 12.207 20.657 11.483 L 20.657 8.44 C 20.657 7.715 20.072 7.128 19.348 7.128 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.888 2.039)\"/>"},"IconMachineMonoMachineSetting":{viewBox:"0 0 24 24",body:"<path d=\"M 10.322 14.667 C 9.84 14.667 9.364 14.572 8.919 14.388 C 8.474 14.204 8.07 13.934 7.729 13.593 C 7.389 13.253 7.119 12.848 6.934 12.404 C 6.75 11.959 6.655 11.482 6.655 11 C 6.655 10.519 6.75 10.042 6.934 9.597 C 7.119 9.153 7.389 8.748 7.729 8.408 C 8.07 8.067 8.474 7.797 8.919 7.613 C 9.364 7.429 9.84 7.334 10.322 7.334 C 11.294 7.334 12.227 7.72 12.914 8.408 C 13.602 9.095 13.988 10.028 13.988 11 C 13.988 11.973 13.602 12.906 12.914 13.593 C 12.227 14.281 11.294 14.667 10.322 14.667 Z M 19.355 12.952 C 18.852 12.431 18.571 11.735 18.572 11.011 L 18.572 10.99 C 18.571 10.266 18.852 9.57 19.355 9.049 L 20.294 8.079 C 20.68 7.679 20.754 7.071 20.477 6.59 L 19.219 4.412 C 19.084 4.178 18.876 3.993 18.627 3.888 C 18.378 3.782 18.101 3.76 17.839 3.826 L 16.524 4.154 C 15.818 4.331 15.07 4.224 14.442 3.857 L 14.424 3.847 C 13.805 3.487 13.349 2.902 13.153 2.213 L 12.777 0.904 C 12.703 0.644 12.546 0.415 12.33 0.251 C 12.114 0.088 11.85 0 11.58 0 L 9.064 0 C 8.509 0 8.019 0.369 7.867 0.904 L 7.462 2.313 C 7.284 2.943 6.866 3.477 6.298 3.802 C 6.239 3.835 6.181 3.869 6.124 3.904 C 5.554 4.243 4.872 4.343 4.229 4.182 L 2.804 3.826 C 2.541 3.76 2.265 3.782 2.016 3.888 C 1.767 3.993 1.559 4.177 1.424 4.411 L 0.167 6.59 C 0.032 6.824 -0.024 7.096 0.009 7.365 C 0.042 7.634 0.162 7.884 0.35 8.079 L 1.289 9.049 C 1.792 9.57 2.073 10.266 2.073 10.989 L 2.073 11.011 C 2.073 11.735 1.792 12.431 1.289 12.952 L 0.786 13.472 C 0.472 13.796 0.273 14.214 0.217 14.662 C 0.162 15.11 0.254 15.563 0.48 15.954 L 1.425 17.589 C 1.703 18.071 2.265 18.31 2.805 18.175 L 4.23 17.819 C 4.873 17.658 5.555 17.758 6.125 18.097 C 6.182 18.132 6.24 18.166 6.299 18.199 C 6.868 18.521 7.283 19.058 7.463 19.688 L 7.867 21.097 C 8.019 21.632 8.509 22 9.064 22 L 11.58 22 C 12.135 22 12.625 21.632 12.777 21.097 L 13.181 19.688 C 13.361 19.058 13.776 18.521 14.345 18.199 C 14.404 18.166 14.462 18.132 14.519 18.097 C 15.089 17.758 15.77 17.658 16.414 17.819 L 17.839 18.175 C 18.101 18.241 18.378 18.219 18.627 18.113 C 18.876 18.008 19.083 17.824 19.219 17.59 L 20.477 15.411 C 20.612 15.177 20.667 14.905 20.634 14.636 C 20.601 14.367 20.482 14.117 20.294 13.922 L 19.354 12.952 L 19.355 12.952 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.678 1)\"/>"},"IconMagnetMonoMagnet":{viewBox:"0 0 24 24",body:"<path d=\"M 6.734 0.098 C 2.803 0.71 0 4.264 0 8.242 L 0 17.452 C 0 18.475 0.829 19.304 1.852 19.304 L 1.852 19.309 L 4.701 19.309 L 4.701 19.304 C 5.806 19.304 6.701 18.409 6.701 17.304 L 6.701 8.103 C 6.701 7.427 7.272 6.855 7.949 6.855 L 8.052 6.855 C 8.728 6.855 9.3 7.426 9.3 8.103 L 9.3 17.452 C 9.3 18.475 10.129 19.304 11.152 19.304 L 11.152 19.309 L 14.241 19.309 L 14.241 19.304 C 15.213 19.304 16.001 18.516 16.001 17.544 L 16.001 8 C 16.001 3.184 11.689 -0.673 6.735 0.099 L 6.734 0.098 Z M 2.3 14.718 L 4.401 14.718 C 4.567 14.718 4.701 14.852 4.701 15.018 L 4.701 17.108 C 4.701 17.218 4.611 17.308 4.501 17.308 L 2.3 17.308 C 2.134 17.308 2 17.174 2 17.008 L 2 15.018 C 2 14.852 2.134 14.718 2.3 14.718 Z M 13.7 17.308 L 11.599 17.308 C 11.433 17.308 11.299 17.174 11.299 17.008 L 11.299 15.018 C 11.299 14.852 11.433 14.718 11.599 14.718 L 13.7 14.718 C 13.866 14.718 14 14.852 14 15.018 L 14 17.008 C 14 17.174 13.866 17.308 13.7 17.308 Z M 13.7 12.82 L 11.599 12.82 C 11.433 12.82 11.299 12.686 11.299 12.52 L 11.299 8.102 C 11.299 6.316 9.837 4.854 8.051 4.854 L 7.948 4.854 C 6.162 4.854 4.7 6.315 4.7 8.102 L 4.7 12.52 C 4.7 12.686 4.566 12.82 4.4 12.82 L 2.299 12.82 C 2.133 12.82 1.999 12.686 1.999 12.52 L 1.999 8.209 C 1.999 5.16 4.185 2.439 7.209 2.051 C 10.868 1.581 13.999 4.432 13.999 8 L 13.999 12.521 C 13.999 12.687 13.865 12.821 13.699 12.821 L 13.7 12.82 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2.346)\"/>"},"IconMailMonoLetter":{viewBox:"0 0 24 24",body:"<path d=\"M 19.536 1.87 L 10.766 8.27 C 10.316 8.6 9.656 8.6 9.196 8.27 L 0.436 1.87 C -0.434 1.23 0.086 0 1.216 0 L 18.746 0 C 19.886 0 20.406 1.24 19.526 1.87 L 19.536 1.87 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.014 4)\"/><path d=\"M 9.31 6.296 L 0.8 0.096 C 0.47 -0.144 0 0.096 0 0.506 L 0 9.796 C 0 11.076 1.04 12.116 2.32 12.116 L 17.68 12.116 C 18.96 12.116 20 11.076 20 9.796 L 20 0.506 C 20 0.096 19.53 -0.144 19.2 0.096 L 10.69 6.296 C 10.29 6.626 9.71 6.626 9.3 6.296 L 9.31 6.296 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 8.404)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconManMonoManPerson":{viewBox:"0 0 24 24",body:"<path d=\"M 16.432 15.263 L 13.754 14.109 C 12.637 14.917 11.263 15.377 9.727 15.377 C 8.191 15.377 6.817 14.917 5.7 14.109 L 3.022 15.263 C 2.125 15.649 1.36 16.29 0.823 17.106 C 0.286 17.923 0 18.878 0 19.855 L 0 21 C 0 21.552 0.449 22 1 22 L 18.453 22 C 18.718 22 18.973 21.895 19.16 21.707 C 19.348 21.52 19.453 21.265 19.453 21 L 19.453 19.855 C 19.453 18.878 19.167 17.923 18.63 17.107 C 18.093 16.29 17.329 15.65 16.432 15.263 Z M 7.525 3.224 C 7.576 3.144 7.649 3.08 7.735 3.04 C 7.82 3 7.916 2.985 8.01 2.997 C 8.104 3.009 8.193 3.048 8.266 3.108 C 8.339 3.169 8.393 3.249 8.422 3.339 C 8.42 3.323 8.664 3.712 9.889 4.492 C 11.362 5.427 13.535 5.986 15.704 5.987 C 15.62 2.662 13.624 0 9.727 0 C 5.83 0 3.835 2.662 3.751 5.987 C 5.743 5.979 7.507 3.252 7.525 3.224 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.273 1)\"/><path d=\"M 9.15 4.998 C 9.047 4.998 8.944 4.977 8.848 4.938 C 8.752 4.898 8.665 4.84 8.592 4.766 C 8.519 4.693 8.46 4.606 8.421 4.51 C 8.381 4.414 8.361 4.311 8.361 4.208 C 8.361 4.104 8.381 4.001 8.421 3.905 C 8.461 3.809 8.519 3.722 8.593 3.649 C 8.666 3.576 8.753 3.518 8.849 3.478 C 8.945 3.438 9.048 3.418 9.151 3.418 C 9.361 3.418 9.562 3.501 9.71 3.65 C 9.858 3.798 9.941 3.999 9.941 4.208 C 9.941 4.418 9.857 4.619 9.709 4.767 C 9.561 4.915 9.36 4.998 9.15 4.998 Z M 5.146 4.998 C 5.043 4.998 4.94 4.977 4.844 4.937 C 4.748 4.898 4.661 4.839 4.588 4.766 C 4.515 4.692 4.457 4.605 4.417 4.509 C 4.378 4.413 4.357 4.311 4.357 4.207 C 4.357 4.103 4.378 4.001 4.418 3.905 C 4.458 3.809 4.516 3.722 4.589 3.649 C 4.663 3.575 4.75 3.517 4.846 3.478 C 4.942 3.438 5.045 3.418 5.148 3.418 C 5.358 3.418 5.559 3.502 5.707 3.65 C 5.855 3.798 5.938 3.999 5.937 4.209 C 5.937 4.419 5.854 4.619 5.705 4.767 C 5.557 4.915 5.356 4.998 5.146 4.998 Z M 13.138 2.676 L 13.133 2.676 C 10.745 2.676 8.426 2.075 6.773 1.024 C 6.112 0.604 5.679 0.266 5.397 0 C 4.684 0.923 3.08 2.676 1.163 2.676 L 1.158 2.676 C 0.452 2.74 -0.064 3.444 0.006 4.249 C 0.078 5.057 0.71 5.662 1.419 5.6 C 1.429 5.6 1.438 5.595 1.448 5.595 C 2.173 8.193 4.254 10.066 7.148 10.066 C 10.042 10.066 12.123 8.193 12.848 5.594 C 12.858 5.596 12.867 5.6 12.878 5.601 C 13.587 5.662 14.218 5.057 14.29 4.249 C 14.36 3.443 13.844 2.741 13.138 2.676 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.273 1) matrix(1 0 0 1 2.579 4.311)\"/>"},"IconMapMonoMapLocation":{viewBox:"0 0 24 24",body:"<path d=\"M 20.925 5.616 L 17.488 0.806 C 17.204 0.412 16.793 0.128 16.323 0.003 L 16.269 0.068 C 15.374 1.128 14.236 2.318 12.686 3.816 C 12.118 4.366 11.357 4.673 10.566 4.671 C 9.776 4.673 9.016 4.367 8.447 3.817 C 6.865 2.287 5.709 1.074 4.807 0 C 4.334 0.123 3.918 0.408 3.632 0.805 L 0.195 5.616 C 0.083 5.773 0.017 5.958 0.003 6.15 C -0.011 6.343 0.028 6.535 0.117 6.707 C 0.205 6.878 0.339 7.022 0.503 7.123 C 0.668 7.223 0.857 7.276 1.05 7.276 L 20.07 7.276 C 20.924 7.276 21.42 6.311 20.924 5.616\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.435 1.500) matrix(1 0 0 1 0 13.724)\"/><path d=\"M 6.8 4.802 C 7.066 4.796 7.331 4.843 7.579 4.94 C 7.827 5.038 8.053 5.184 8.243 5.371 C 8.434 5.557 8.585 5.779 8.689 6.025 C 8.792 6.27 8.846 6.534 8.846 6.8 C 8.846 7.067 8.793 7.33 8.69 7.576 C 8.586 7.822 8.435 8.044 8.245 8.23 C 8.054 8.417 7.829 8.563 7.581 8.661 C 7.333 8.759 7.068 8.807 6.802 8.801 C 6.272 8.801 5.763 8.59 5.388 8.215 C 5.012 7.84 4.802 7.332 4.802 6.801 C 4.801 6.271 5.012 5.762 5.387 5.387 C 5.762 5.012 6.271 4.801 6.801 4.801 M 6.073 16.103 C 6.269 16.29 6.531 16.395 6.802 16.395 C 7.074 16.395 7.335 16.29 7.531 16.102 C 12.149 11.64 13.603 9.402 13.603 6.802 C 13.603 2.398 9.416 -1.029 4.806 0.284 C 1.896 1.114 0 3.776 0 6.802 C 0 9.404 1.455 11.641 6.073 16.102\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.435 1.500) matrix(1 0 0 1 3.765 0)\"/>"},"IconMaskMonoMaskFace":{viewBox:"0 0 24 24",body:"<path d=\"M 20.979 9.199 L 20.979 5.206 C 21.809 5.327 22.458 6.171 22.458 7.202 C 22.458 8.234 21.809 9.078 20.979 9.199 Z M 1.5 7.202 C 1.5 6.171 2.149 5.327 2.979 5.206 L 2.979 9.199 C 2.149 9.078 1.5 8.234 1.5 7.202 Z M 23.958 7.202 C 23.958 5.337 22.637 3.821 20.979 3.704 L 20.979 2.496 C 20.981 2.024 20.816 1.567 20.512 1.206 C 20.208 0.845 19.786 0.604 19.321 0.525 C 17.851 0.282 15.404 0 11.979 0 C 8.554 0 6.107 0.282 4.637 0.525 C 4.172 0.604 3.75 0.845 3.446 1.206 C 3.142 1.567 2.977 2.024 2.979 2.496 L 2.979 3.704 C 1.321 3.821 0 5.337 0 7.202 C 0 9.101 1.368 10.644 3.069 10.711 C 3.247 11.71 3.729 12.629 4.449 13.344 C 7.234 16.085 11.979 18 11.979 18 C 11.979 18 16.724 16.085 19.509 13.344 C 20.229 12.629 20.711 11.71 20.889 10.711 C 22.59 10.644 23.958 9.101 23.958 7.202 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.021 3)\"/>"},"IconMedalCheckMonoCheck":{viewBox:"0 0 24 24",body:"<path d=\"M 13.93 7.749 L 8.33 13.349 L 4.657 9.676 C 4.5 9.505 4.415 9.28 4.42 9.048 C 4.425 8.816 4.52 8.595 4.684 8.431 C 4.848 8.266 5.069 8.172 5.301 8.167 C 5.534 8.162 5.759 8.247 5.93 8.403 L 8.33 10.803 L 12.657 6.476 C 12.74 6.393 12.84 6.327 12.949 6.281 C 13.058 6.236 13.175 6.213 13.293 6.213 C 13.412 6.213 13.529 6.236 13.638 6.281 C 13.747 6.327 13.846 6.393 13.93 6.476 C 14.013 6.56 14.08 6.659 14.125 6.768 C 14.17 6.878 14.193 6.995 14.193 7.113 C 14.193 7.231 14.17 7.348 14.125 7.457 C 14.08 7.567 14.013 7.666 13.93 7.749 Z M 18.44 9.646 C 18.534 9.553 18.586 9.425 18.586 9.293 C 18.586 9.16 18.534 9.033 18.44 8.939 L 16.99 7.489 C 16.928 7.427 16.883 7.35 16.86 7.265 C 16.838 7.18 16.838 7.091 16.861 7.006 L 17.391 5.026 C 17.425 4.898 17.407 4.762 17.341 4.647 C 17.274 4.532 17.165 4.449 17.037 4.414 L 15.057 3.884 C 14.972 3.862 14.894 3.817 14.832 3.754 C 14.77 3.692 14.725 3.614 14.703 3.529 L 14.173 1.549 C 14.138 1.421 14.054 1.312 13.94 1.246 C 13.825 1.179 13.688 1.161 13.56 1.195 L 11.579 1.726 C 11.494 1.749 11.405 1.749 11.32 1.726 C 11.236 1.703 11.159 1.659 11.097 1.596 L 9.647 0.146 C 9.553 0.053 9.426 0 9.293 0 C 9.161 0 9.034 0.053 8.94 0.146 L 7.49 1.597 C 7.428 1.659 7.35 1.704 7.266 1.727 C 7.181 1.75 7.092 1.75 7.007 1.727 L 5.027 1.195 C 4.963 1.178 4.897 1.174 4.832 1.182 C 4.767 1.191 4.704 1.212 4.647 1.245 C 4.59 1.278 4.54 1.322 4.5 1.374 C 4.46 1.426 4.431 1.486 4.414 1.549 L 3.883 3.529 C 3.86 3.614 3.816 3.692 3.754 3.754 C 3.692 3.816 3.615 3.861 3.53 3.883 L 1.549 4.414 C 1.421 4.449 1.312 4.533 1.246 4.647 C 1.18 4.762 1.162 4.898 1.196 5.026 L 1.726 7.006 C 1.749 7.091 1.749 7.18 1.726 7.265 C 1.704 7.35 1.659 7.427 1.597 7.489 L 0.147 8.939 C 0.1 8.986 0.063 9.041 0.038 9.102 C 0.013 9.162 0 9.227 0 9.293 C 0 9.359 0.013 9.424 0.038 9.484 C 0.063 9.545 0.1 9.6 0.147 9.646 L 1.597 11.096 C 1.659 11.159 1.704 11.236 1.726 11.321 C 1.749 11.406 1.749 11.495 1.726 11.58 L 1.196 13.56 C 1.162 13.688 1.18 13.825 1.246 13.939 C 1.312 14.054 1.421 14.138 1.549 14.172 L 3.53 14.703 C 3.615 14.726 3.692 14.771 3.754 14.833 C 3.816 14.895 3.86 14.973 3.883 15.057 L 4.413 17.037 C 4.43 17.102 4.461 17.162 4.502 17.214 C 4.543 17.266 4.594 17.31 4.652 17.342 L 2.791 22.359 L 7.974 22.359 L 9.293 18.801 L 10.614 22.359 L 15.796 22.359 L 13.935 17.342 C 13.993 17.31 14.044 17.267 14.085 17.214 C 14.126 17.162 14.156 17.102 14.173 17.037 L 14.703 15.057 C 14.725 14.972 14.77 14.895 14.832 14.833 C 14.894 14.771 14.972 14.726 15.057 14.703 L 17.037 14.173 C 17.1 14.156 17.16 14.127 17.212 14.087 C 17.264 14.047 17.308 13.997 17.341 13.94 C 17.374 13.883 17.395 13.821 17.404 13.755 C 17.412 13.69 17.408 13.624 17.391 13.56 L 16.861 11.58 C 16.838 11.496 16.838 11.406 16.86 11.322 C 16.883 11.237 16.928 11.159 16.99 11.097 L 18.44 9.647 L 18.44 9.646 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.707 0.924)\"/>"},"IconMedalMonoMedalPrize":{viewBox:"0 0 24 24",body:"<path d=\"M 12.498 5.404 L 14.503 0 L 9.32 0 L 8 3.559 L 6.681 0 L 1.498 0 L 3.502 5.404 C 4.883 4.657 6.429 4.266 8 4.268 C 9.627 4.268 11.158 4.68 12.498 5.404 Z M 16 13.768 C 16 15.89 15.157 17.925 13.657 19.425 C 12.157 20.925 10.122 21.768 8 21.768 C 5.878 21.768 3.843 20.925 2.343 19.425 C 0.843 17.925 0 15.89 0 13.768 C 0 11.646 0.843 9.611 2.343 8.111 C 3.843 6.611 5.878 5.768 8 5.768 C 10.122 5.768 12.157 6.611 13.657 8.111 C 15.157 9.611 16 11.646 16 13.768 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4 1.232)\"/>"},"IconMemoLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.997 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 19 C 0 19.552 0.448 20 1 20 L 12.497 20 L 12.497 15 C 12.497 13.622 13.619 12.5 14.997 12.5 L 19.997 12.5 L 19.997 1 C 19.997 0.448 19.549 0 18.997 0 Z M 12.999 8.2 L 4.099 8.2 C 3.699 8.2 3.299 7.9 3.299 7.4 C 3.299 6.9 3.599 6.6 4.099 6.6 L 12.999 6.6 C 13.399 6.6 13.799 6.9 13.799 7.4 C 13.799 7.9 13.399 8.2 12.999 8.2 Z M 12.999 5.2 L 4.099 5.2 C 3.699 5.2 3.299 4.9 3.299 4.4 C 3.299 3.9 3.599 3.6 4.099 3.6 L 12.999 3.6 C 13.399 3.6 13.799 3.9 13.799 4.4 C 13.799 4.9 13.399 5.2 12.999 5.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.003 2)\"/><path d=\"M 0 1 L 0 6 L 6 0 L 1 0 C 0.448 0 0 0.448 0 1 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.003 2) matrix(1 0 0 1 13.997 14)\"/>"},"IconMicMonoMicVoice":{viewBox:"0 0 24 24",body:"<path d=\"M 4.5 0 C 3.307 0 2.162 0.474 1.318 1.318 C 0.474 2.162 0 3.307 0 4.5 L 0 10.703 C 0 11.896 0.474 13.041 1.318 13.885 C 2.162 14.729 3.307 15.203 4.5 15.203 C 5.693 15.203 6.838 14.729 7.682 13.885 C 8.526 13.041 9 11.896 9 10.703 L 9 4.5 C 9 3.307 8.526 2.162 7.682 1.318 C 6.838 0.474 5.693 0 4.5 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.400 0.612) matrix(1 0 0 1 4.100 0)\"/><path d=\"M 17.201 1 C 17.201 0.735 17.096 0.48 16.908 0.293 C 16.721 0.105 16.466 0 16.201 0 C 15.936 0 15.681 0.105 15.494 0.293 C 15.306 0.48 15.201 0.735 15.201 1 C 15.199 2.75 14.503 4.428 13.266 5.666 C 12.028 6.903 10.35 7.599 8.6 7.601 C 6.85 7.599 5.173 6.903 3.935 5.666 C 2.698 4.428 2.002 2.751 2 1.001 C 2 0.736 1.895 0.481 1.707 0.294 C 1.52 0.106 1.265 0.001 1 0.001 C 0.735 0.001 0.48 0.106 0.293 0.294 C 0.105 0.481 0 0.736 0 1.001 C 0 5.404 3.328 9.041 7.6 9.538 L 7.6 12.685 C 7.6 12.95 7.705 13.205 7.893 13.392 C 8.08 13.58 8.335 13.685 8.6 13.685 C 8.865 13.685 9.12 13.58 9.307 13.392 C 9.495 13.205 9.6 12.95 9.6 12.685 L 9.6 9.538 C 13.873 9.04 17.201 5.404 17.201 1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.400 0.612) matrix(1 0 0 1 0 9.703)\"/>"},"IconMinusCircleMonoMinus":{viewBox:"0 0 24 24",body:"<path d=\"M 15.492 12.061 L 6.492 12.061 C 6.35 12.065 6.209 12.041 6.076 11.99 C 5.944 11.938 5.823 11.861 5.721 11.762 C 5.619 11.663 5.538 11.545 5.482 11.414 C 5.427 11.283 5.398 11.143 5.398 11 C 5.398 10.858 5.427 10.718 5.482 10.587 C 5.538 10.456 5.619 10.338 5.721 10.239 C 5.823 10.14 5.944 10.063 6.076 10.011 C 6.209 9.96 6.35 9.936 6.492 9.94 L 15.492 9.94 C 15.768 9.948 16.029 10.064 16.221 10.262 C 16.413 10.46 16.52 10.725 16.52 11 C 16.52 11.276 16.413 11.541 16.221 11.739 C 16.029 11.937 15.768 12.053 15.492 12.061 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.076 4.925 22 11 22 C 17.075 22 22 17.076 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconMinusMonoMinusDelete":{viewBox:"0 0 24 24",body:"<path d=\"M 17.2 2.4 L 1.2 2.4 C 0.882 2.4 0.577 2.274 0.351 2.049 C 0.126 1.823 0 1.518 0 1.2 C 0 0.882 0.126 0.577 0.351 0.351 C 0.577 0.126 0.882 0 1.2 0 L 17.2 0 C 17.518 0 17.823 0.126 18.049 0.351 C 18.274 0.577 18.4 0.882 18.4 1.2 C 18.4 1.518 18.274 1.823 18.049 2.049 C 17.823 2.274 17.518 2.4 17.2 2.4 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.918 10.800)\"/>"},"IconMinusSquareFillMono":{viewBox:"0 0 40 40",body:"<path d=\"M 0 7.833 L 7.833 7.833 L 7.833 0 C 7.833 4.333 4.333 7.833 0 7.833 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 32.167 32.167)\"/><path d=\"M 0 0 L 0 7.667 L 7.833 7.667 C 3.5 7.667 0 4.167 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0 32.333)\"/><path d=\"M 32 0 L 7.833 0 C 3.5 0 0 3.5 0 7.833 L 0 32.333 C 0 36.5 3.5 40 7.833 40 L 32.167 40 C 36.5 40 40 36.5 40 32.167 L 40 7.833 C 39.667 3.5 36.167 0 32 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/><path d=\"M 19.512 2.845 C 19.2 3.157 18.775 3.333 18.333 3.333 L 1.667 3.333 C 1.225 3.333 0.8 3.158 0.488 2.845 C 0.175 2.532 0 2.108 0 1.667 C 0 1.225 0.175 0.8 0.488 0.488 C 0.8 0.175 1.225 0 1.667 0 L 18.333 0 C 18.775 0 19.2 0.175 19.512 0.488 C 19.823 0.802 20 1.225 20 1.667 C 20 2.108 19.825 2.532 19.512 2.845 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 9.987 18.333)\"/>"},"IconMinusSquareMonoMinus":{viewBox:"0 0 24 24",body:"<path d=\"M 0 4.7 L 4.7 4.7 L 4.7 0 C 4.7 2.6 2.6 4.7 0 4.7 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 19.300 19.300)\"/><path d=\"M 0 0 L 0 4.6 L 4.7 4.6 C 2.1 4.6 0 2.5 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0 19.400)\"/><path d=\"M 19.2 0 L 4.7 0 C 2.1 0 0 2.1 0 4.7 L 0 19.4 C 0 21.9 2.1 24 4.7 24 L 19.3 24 C 21.9 24 24 21.9 24 19.3 L 24 4.7 C 23.8 2.1 21.7 0 19.2 0 Z M 17.699 12.707 C 17.512 12.894 17.257 13 16.992 13 L 6.992 13 C 6.727 13 6.472 12.895 6.285 12.707 C 6.097 12.519 5.992 12.265 5.992 12 C 5.992 11.735 6.097 11.48 6.285 11.293 C 6.472 11.105 6.727 11 6.992 11 L 16.992 11 C 17.257 11 17.512 11.105 17.699 11.293 C 17.886 11.481 17.992 11.735 17.992 12 C 17.992 12.265 17.887 12.519 17.699 12.707 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconMoneyBagCoinMono":{viewBox:"0 0 24 24",body:"<path d=\"M 12.686 16.6 C 12.686 13.3 15.386 10.7 18.586 10.7 C 19.286 10.7 19.886 10.8 20.486 11 C 19.386 7.8 16.886 5.3 13.686 4.3 L 15.486 1.5 C 15.886 0.9 15.386 0 14.686 0 L 6.386 0 C 5.686 0 5.186 0.8 5.586 1.5 L 7.386 4.3 C 3.586 5.5 0.686 8.9 0.086 12.9 C -0.214 15.3 0.286 17.6 1.386 19.5 C 1.886 20.4 2.886 21 3.886 21 L 14.686 21 C 13.386 19.9 12.686 18.3 12.686 16.6 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.014 1.300)\"/><path d=\"M 4.4 0 C 2 0 0 2 0 4.4 C 0 6.8 2 8.8 4.4 8.8 C 6.8 8.8 8.8 6.8 8.8 4.4 C 8.8 2 6.8 0 4.4 0 Z M 6.8 5.1 L 2 5.1 L 2 3.6 L 6.8 3.6 L 6.8 5.1 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.014 1.300) matrix(1 0 0 1 14.186 12.200)\"/>"},"IconMoneyBagDollarMono":{viewBox:"0 0 24 24",body:"<path d=\"M 13.987 0.001 C 14.714 0.001 15.169 0.728 14.805 1.365 L 13.078 4.092 C 17.169 5.365 20.078 9.183 20.078 13.637 C 20.078 15.455 19.533 17.182 18.714 18.637 C 18.259 19.455 17.35 20.001 16.35 20.001 L 3.805 20.001 C 2.805 20.001 1.896 19.456 1.35 18.546 C 0.259 16.728 -0.195 14.546 0.077 12.273 C 0.532 8.455 3.35 5.273 6.986 4.091 L 5.35 1.364 C 4.986 0.819 5.441 0 6.168 0 L 13.986 0 L 13.987 0.001 Z M 10.078 6.101 C 9.664 6.101 9.328 6.438 9.328 6.852 L 9.328 7.492 C 9.005 7.547 8.688 7.635 8.383 7.755 C 7.257 8.204 6.592 9.208 6.728 10.251 C 6.789 10.716 7.203 12.262 9.988 12.596 C 11.349 12.76 11.891 13.264 11.941 13.647 C 11.986 13.993 11.688 14.367 11.217 14.555 C 9.245 15.342 7.966 13.798 7.904 13.721 C 7.648 13.395 7.176 13.339 6.85 13.596 C 6.524 13.852 6.468 14.324 6.725 14.65 C 7.157 15.201 8.09 15.951 9.328 16.193 L 9.328 16.853 C 9.328 17.267 9.664 17.603 10.078 17.603 C 10.492 17.603 10.827 17.267 10.828 16.853 L 10.828 16.21 C 11.151 16.157 11.468 16.069 11.773 15.949 C 12.898 15.499 13.564 14.496 13.428 13.453 C 13.367 12.988 12.953 11.442 10.167 11.108 C 8.806 10.945 8.265 10.441 8.215 10.059 C 8.17 9.712 8.467 9.338 8.939 9.15 C 10.426 8.556 11.517 9.276 12.034 9.757 C 12.337 10.039 12.812 10.022 13.094 9.719 C 13.376 9.416 13.359 8.941 13.056 8.659 C 12.678 8.307 11.898 7.715 10.829 7.504 L 10.829 6.853 C 10.829 6.439 10.494 6.103 10.08 6.102 C 10.08 6.102 10.079 6.101 10.078 6.101 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.918 1.999)\"/>"},"IconMoneyBagFullMono":{viewBox:"0 0 24 24",body:"<path d=\"M 13.086 4.1 L 14.786 1.4 C 15.186 0.7 14.686 0 13.986 0 L 6.186 0 C 5.486 0 4.986 0.8 5.386 1.4 L 6.986 4.1 C 3.386 5.3 0.486 8.5 0.086 12.3 C -0.214 14.6 0.286 16.8 1.386 18.6 C 1.886 19.5 2.786 20 3.786 20 L 16.386 20 C 17.386 20 18.286 19.5 18.786 18.6 C 19.586 17.1 20.186 15.4 20.186 13.6 C 20.086 9.2 17.186 5.4 13.086 4.1 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.914 2)\"/>"},"IconMoneyBagHomeMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.586 9.5 L 20.286 10.7 C 19.186 7.7 16.686 5.3 13.586 4.3 L 15.386 1.5 C 15.786 0.9 15.286 0 14.586 0 L 6.386 0 C 5.686 0 5.186 0.8 5.586 1.5 L 7.386 4.3 C 3.586 5.5 0.686 8.9 0.086 12.9 C -0.214 15.3 0.286 17.6 1.386 19.5 C 1.886 20.4 2.886 21 3.886 21 L 11.186 21 C 11.086 20.7 10.986 20.3 10.986 19.9 L 10.986 14.2 C 10.986 13.5 11.286 12.9 11.886 12.5 L 16.386 9.4 C 16.986 9 17.986 9 18.586 9.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.014 1.300)\"/><path d=\"M 9.8 3.175 L 5.3 0.075 C 5.1 -0.025 4.9 -0.025 4.7 0.075 L 0.2 3.175 C 0.1 3.275 0 3.475 0 3.575 L 0 9.275 C 0 9.875 0.5 10.375 1.1 10.375 L 4.2 10.375 L 4.2 7.775 L 5.8 7.775 L 5.8 10.375 L 8.9 10.375 C 9.5 10.375 10 9.875 10 9.275 L 10 3.575 C 10 3.375 9.9 3.275 9.8 3.175 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.014 1.300) matrix(1 0 0 1 12.486 10.625)\"/>"},"IconMoneyBagMonoMoney":{viewBox:"0 0 24 24",body:"<path d=\"M 13.077 4.091 L 14.804 1.364 C 15.168 0.728 14.713 0 13.986 0 L 6.168 0 C 5.441 0 4.986 0.818 5.35 1.364 L 6.986 4.091 C 3.35 5.273 0.531 8.455 0.077 12.273 C -0.196 14.546 0.259 16.728 1.35 18.546 C 1.895 19.455 2.805 20.001 3.805 20.001 L 16.35 20.001 C 17.35 20.001 18.259 19.456 18.714 18.637 C 19.532 17.182 20.078 15.455 20.078 13.637 C 20.078 9.182 17.169 5.364 13.078 4.092 L 13.077 4.091 Z M 15.532 13.182 L 13.623 13.182 L 12.987 15.637 C 12.896 16.001 12.532 16.273 12.078 16.273 C 11.624 16.273 11.351 16 11.169 15.637 L 10.078 11.546 L 8.987 15.637 C 8.896 16.001 8.532 16.273 8.078 16.273 C 7.624 16.273 7.351 16 7.169 15.637 L 6.533 13.182 L 4.624 13.182 C 4.26 13.182 3.897 12.818 3.897 12.455 C 3.897 12.092 4.261 11.728 4.624 11.728 L 6.079 11.728 L 5.534 9.546 C 5.443 9.182 5.625 8.728 6.079 8.637 C 6.443 8.546 6.897 8.728 6.988 9.182 L 8.17 13.364 L 9.17 9.273 C 9.261 8.909 9.625 8.637 10.079 8.637 C 10.533 8.637 10.806 8.91 10.988 9.273 L 12.079 13.364 L 13.261 9.182 C 13.352 8.818 13.806 8.546 14.17 8.637 C 14.534 8.728 14.806 9.182 14.715 9.546 L 14.079 11.728 L 15.534 11.728 C 15.898 11.728 16.261 12.092 16.261 12.455 C 16.261 12.818 15.897 13.182 15.534 13.182 L 15.532 13.182 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.919 2)\"/>"},"IconMoneyBagSearchMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.5 4.4 C 5 3.9 5.2 3.3 5.2 2.6 C 5.2 1.1 4 0 2.6 0 C 1.2 0 0 1.2 0 2.6 C 0 4 1.2 5.2 2.6 5.2 C 3.4 5.2 4 4.9 4.5 4.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.914 2) matrix(1 0 0 1 6.686 8.700)\"/><path d=\"M 13.086 4.1 L 14.786 1.4 C 15.186 0.7 14.686 0 13.986 0 L 6.186 0 C 5.486 0 4.986 0.8 5.386 1.4 L 6.986 4.1 C 3.386 5.3 0.486 8.5 0.086 12.3 C -0.214 14.6 0.286 16.8 1.386 18.6 C 1.886 19.5 2.786 20 3.786 20 L 16.386 20 C 17.386 20 18.286 19.5 18.786 18.6 C 19.586 17.1 20.186 15.4 20.186 13.6 C 20.086 9.2 17.186 5.4 13.086 4.1 Z M 15.186 17.1 C 14.986 17.3 14.786 17.3 14.686 17.3 C 14.486 17.3 14.286 17.2 14.186 17.1 L 11.686 14.6 C 11.086 15.1 10.186 15.3 9.286 15.3 C 6.986 15.3 5.186 13.5 5.186 11.2 C 5.186 8.9 6.986 7.1 9.286 7.1 C 11.586 7.1 13.386 8.9 13.386 11.2 C 13.386 12.1 13.086 12.8 12.686 13.6 L 15.186 16.1 C 15.486 16.3 15.486 16.8 15.186 17.1 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.914 2)\"/>"},"IconMoneyMonoMoneyBill":{viewBox:"0 0 24 24",body:"<path d=\"M 17 8.8 L 14.913 8.8 L 14.172 11.492 C 14.115 11.705 13.989 11.893 13.813 12.027 C 13.638 12.161 13.423 12.233 13.202 12.231 C 12.981 12.233 12.767 12.161 12.591 12.027 C 12.416 11.893 12.29 11.705 12.233 11.492 L 11 7.014 L 9.768 11.492 C 9.711 11.705 9.585 11.893 9.41 12.027 C 9.234 12.161 9.02 12.232 8.799 12.231 C 8.578 12.233 8.363 12.161 8.187 12.027 C 8.012 11.894 7.885 11.706 7.828 11.493 L 7.087 8.8 L 5 8.8 C 4.788 8.8 4.584 8.716 4.434 8.566 C 4.284 8.416 4.2 8.212 4.2 8 C 4.2 7.788 4.284 7.584 4.434 7.434 C 4.584 7.284 4.788 7.2 5 7.2 L 6.646 7.2 L 5.981 4.781 C 5.949 4.679 5.939 4.571 5.95 4.464 C 5.96 4.358 5.992 4.254 6.044 4.16 C 6.095 4.067 6.165 3.984 6.249 3.917 C 6.333 3.851 6.43 3.802 6.533 3.774 C 6.637 3.745 6.745 3.738 6.851 3.752 C 6.957 3.766 7.059 3.801 7.152 3.856 C 7.244 3.91 7.324 3.983 7.388 4.069 C 7.452 4.155 7.498 4.253 7.523 4.357 L 8.798 8.986 L 10.03 4.508 C 10.087 4.295 10.213 4.107 10.389 3.973 C 10.564 3.839 10.779 3.767 11 3.769 C 11.458 3.769 11.848 4.066 11.97 4.508 L 13.202 8.986 L 14.477 4.357 C 14.533 4.152 14.668 3.978 14.853 3.874 C 14.944 3.822 15.045 3.788 15.149 3.775 C 15.253 3.762 15.359 3.77 15.461 3.798 C 15.562 3.825 15.657 3.873 15.74 3.937 C 15.823 4.002 15.892 4.082 15.944 4.173 C 15.996 4.265 16.029 4.365 16.042 4.47 C 16.055 4.574 16.048 4.68 16.02 4.781 L 15.354 7.2 L 17 7.2 C 17.105 7.2 17.209 7.221 17.306 7.261 C 17.403 7.301 17.491 7.36 17.566 7.434 C 17.64 7.509 17.699 7.597 17.739 7.694 C 17.779 7.791 17.8 7.895 17.8 8 C 17.8 8.105 17.779 8.209 17.739 8.306 C 17.699 8.403 17.64 8.491 17.566 8.566 C 17.491 8.64 17.403 8.699 17.306 8.739 C 17.209 8.779 17.105 8.8 17 8.8 Z M 21 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 15 C 0 15.265 0.105 15.52 0.293 15.707 C 0.48 15.895 0.735 16 1 16 L 21 16 C 21.265 16 21.52 15.895 21.707 15.707 C 21.895 15.52 22 15.265 22 15 L 22 1 C 22 0.735 21.895 0.48 21.707 0.293 C 21.52 0.105 21.265 0 21 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 4)\"/>"},"IconMoneyOutMono":{viewBox:"0 0 24 24",body:"<path d=\"M 15.9 11.354 L 13.813 11.354 L 13.072 14.046 C 13.015 14.259 12.889 14.447 12.713 14.581 C 12.538 14.715 12.323 14.787 12.102 14.785 C 11.881 14.787 11.667 14.715 11.491 14.581 C 11.316 14.447 11.19 14.259 11.133 14.046 L 9.9 9.568 L 8.668 14.046 C 8.611 14.259 8.485 14.447 8.31 14.581 C 8.134 14.715 7.92 14.786 7.699 14.785 C 7.478 14.787 7.263 14.715 7.087 14.581 C 6.912 14.448 6.785 14.26 6.728 14.047 L 5.987 11.354 L 3.9 11.354 C 3.688 11.354 3.484 11.27 3.334 11.12 C 3.184 10.97 3.1 10.766 3.1 10.554 C 3.1 10.342 3.184 10.138 3.334 9.988 C 3.484 9.838 3.688 9.754 3.9 9.754 L 5.546 9.754 L 4.881 7.335 C 4.849 7.233 4.839 7.125 4.85 7.018 C 4.86 6.912 4.892 6.808 4.944 6.714 C 4.995 6.621 5.065 6.538 5.149 6.471 C 5.233 6.405 5.33 6.356 5.433 6.328 C 5.537 6.299 5.645 6.292 5.751 6.306 C 5.857 6.32 5.959 6.355 6.052 6.41 C 6.144 6.464 6.224 6.537 6.288 6.623 C 6.352 6.709 6.398 6.807 6.423 6.911 L 7.698 11.54 L 8.93 7.062 C 8.987 6.849 9.113 6.661 9.289 6.527 C 9.464 6.393 9.679 6.321 9.9 6.323 C 10.358 6.323 10.748 6.62 10.87 7.062 L 12.102 11.54 L 13.377 6.911 C 13.433 6.706 13.568 6.532 13.753 6.428 C 13.844 6.376 13.945 6.342 14.049 6.329 C 14.153 6.316 14.259 6.324 14.361 6.351 C 14.462 6.379 14.557 6.427 14.64 6.491 C 14.723 6.556 14.792 6.636 14.844 6.727 C 14.896 6.819 14.929 6.919 14.942 7.024 C 14.955 7.128 14.948 7.234 14.92 7.335 L 14.254 9.754 L 15.9 9.754 C 16.112 9.754 16.316 9.838 16.466 9.988 C 16.616 10.138 16.7 10.342 16.7 10.554 C 16.7 10.766 16.616 10.97 16.466 11.12 C 16.316 11.27 16.112 11.354 15.9 11.354 Z M 18.9 0 L 0.9 0 C 0.661 0 0.432 0.095 0.264 0.264 C 0.095 0.432 0 0.661 0 0.9 C 0 1.139 0.095 1.368 0.264 1.536 C 0.432 1.705 0.661 1.8 0.9 1.8 L 0.9 18.9 C 0.9 19.165 1.005 19.42 1.193 19.607 C 1.38 19.795 1.635 19.9 1.9 19.9 L 17.9 19.9 C 18.165 19.9 18.42 19.795 18.607 19.607 C 18.795 19.42 18.9 19.165 18.9 18.9 L 18.9 1.8 C 19.139 1.8 19.368 1.705 19.536 1.536 C 19.705 1.368 19.8 1.139 19.8 0.9 C 19.8 0.661 19.705 0.432 19.536 0.264 C 19.368 0.095 19.139 0 18.9 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.100 1.946)\"/>"},"IconMoneyTwoMonoMoney":{viewBox:"0 0 24 24",body:"<path d=\"M 20 13 L 3 13 C 2.448 13 2 12.551 2 12 L 2 1 C 2 0.735 1.895 0.48 1.707 0.293 C 1.52 0.105 1.265 0 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 12 C 0 13.654 1.346 15 3 15 L 20 15 C 20.265 15 20.52 14.895 20.707 14.707 C 20.895 14.52 21 14.265 21 14 C 21 13.735 20.895 13.48 20.707 13.293 C 20.52 13.105 20.265 13 20 13 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.500 3.500) matrix(1 0 0 1 0 2)\"/><path d=\"M 15.5 7.7 L 13.562 7.7 L 12.875 10.193 C 12.825 10.381 12.714 10.547 12.559 10.665 C 12.404 10.784 12.214 10.847 12.019 10.845 C 11.824 10.847 11.634 10.783 11.479 10.665 C 11.324 10.547 11.212 10.381 11.162 10.193 L 10 5.971 L 8.838 10.193 C 8.788 10.381 8.676 10.547 8.521 10.665 C 8.366 10.783 8.176 10.847 7.981 10.845 C 7.786 10.847 7.596 10.784 7.441 10.665 C 7.286 10.547 7.175 10.381 7.125 10.193 L 6.438 7.7 L 4.5 7.7 C 4.314 7.7 4.136 7.626 4.005 7.495 C 3.874 7.364 3.8 7.186 3.8 7 C 3.8 6.814 3.874 6.636 4.005 6.505 C 4.136 6.374 4.314 6.3 4.5 6.3 L 6.053 6.3 L 5.432 4.041 C 5.404 3.951 5.395 3.857 5.404 3.764 C 5.414 3.671 5.442 3.58 5.487 3.498 C 5.532 3.416 5.593 3.344 5.666 3.286 C 5.74 3.227 5.824 3.185 5.915 3.16 C 6.005 3.135 6.1 3.128 6.192 3.14 C 6.285 3.153 6.375 3.184 6.456 3.231 C 6.536 3.279 6.607 3.342 6.663 3.417 C 6.719 3.492 6.759 3.578 6.781 3.669 L 7.981 8.03 L 9.144 3.808 C 9.194 3.62 9.305 3.453 9.46 3.335 C 9.615 3.217 9.805 3.153 10 3.155 C 10.405 3.155 10.749 3.417 10.856 3.808 L 12.019 8.03 L 13.22 3.669 C 13.242 3.578 13.282 3.492 13.338 3.417 C 13.394 3.342 13.465 3.279 13.545 3.231 C 13.626 3.184 13.716 3.153 13.809 3.14 C 13.901 3.128 13.996 3.135 14.086 3.16 C 14.177 3.185 14.261 3.227 14.335 3.286 C 14.408 3.344 14.469 3.416 14.514 3.498 C 14.559 3.58 14.587 3.671 14.597 3.764 C 14.606 3.857 14.597 3.951 14.569 4.041 L 13.947 6.3 L 15.5 6.3 C 15.686 6.3 15.864 6.374 15.995 6.505 C 16.126 6.636 16.2 6.814 16.2 7 C 16.2 7.186 16.126 7.364 15.995 7.495 C 15.864 7.626 15.686 7.7 15.5 7.7 Z M 19 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 13 C 0 13.265 0.105 13.52 0.293 13.707 C 0.48 13.895 0.735 14 1 14 L 19 14 C 19.265 14 19.52 13.895 19.707 13.707 C 19.895 13.52 20 13.265 20 13 L 20 1 C 20 0.735 19.895 0.48 19.707 0.293 C 19.52 0.105 19.265 0 19 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.500 3.500) matrix(1 0 0 1 3 0)\"/>"},"IconMoonMonoMoonNight":{viewBox:"0 0 24 24",body:"<path d=\"M 6.264 0.635 C 5.844 2.185 5.774 3.875 6.174 5.635 C 7.044 9.465 10.114 12.525 13.944 13.405 C 15.704 13.805 17.394 13.735 18.944 13.315 C 19.364 13.205 19.724 13.645 19.524 14.025 C 17.604 17.685 13.574 20.065 9.044 19.505 C 4.414 18.935 0.654 15.175 0.084 10.545 C -0.486 6.005 1.894 1.975 5.554 0.055 C 5.641 0.011 5.738 -0.007 5.835 0.003 C 5.932 0.013 6.024 0.051 6.099 0.113 C 6.175 0.174 6.23 0.257 6.26 0.349 C 6.289 0.442 6.291 0.542 6.264 0.635 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.606 1.825)\"/>"},"IconMotorcycleMonoMotorcycleBike":{viewBox:"0 0 24 24",body:"<path d=\"M 19.741 11.446 L 19.741 6.498 C 19.741 5.703 19.425 4.94 18.863 4.377 C 18.3 3.814 17.537 3.498 16.742 3.498 C 16.612 3.498 16.483 3.524 16.363 3.574 C 16.242 3.623 16.133 3.696 16.041 3.789 C 15.949 3.881 15.876 3.99 15.826 4.11 C 15.776 4.231 15.751 4.36 15.751 4.49 L 15.751 13.798 L 11.79 13.798 C 11.672 12.819 11.311 11.885 10.74 11.082 C 10.169 10.278 9.406 9.63 8.521 9.196 C 8.684 9.148 8.828 9.049 8.931 8.913 C 9.033 8.778 9.09 8.612 9.091 8.442 L 9.091 7.812 C 9.091 7.6 9.007 7.396 8.857 7.246 C 8.707 7.096 8.503 7.012 8.291 7.012 L 3.498 7.012 C 3.393 7.012 3.289 7.032 3.192 7.073 C 3.094 7.113 3.006 7.172 2.932 7.246 C 2.857 7.32 2.798 7.408 2.758 7.506 C 2.718 7.603 2.697 7.707 2.697 7.812 L 2.697 8.442 C 2.697 8.814 2.957 9.112 3.301 9.202 C 2.312 9.689 1.479 10.443 0.896 11.378 C 0.313 12.314 0.003 13.394 0.001 14.496 L 0 14.498 L 0 15.298 C 0 15.431 0.053 15.558 0.146 15.652 C 0.24 15.745 0.367 15.798 0.5 15.798 L 1.569 15.798 C 1.569 17.6 3.011 19.061 4.789 19.061 C 6.566 19.061 8.008 17.6 8.008 15.798 L 16.521 15.798 C 16.521 17.6 17.963 19.061 19.741 19.061 C 21.519 19.061 22.961 17.6 22.961 15.798 L 23.499 15.798 C 23.809 15.798 24.036 15.518 23.995 15.212 C 23.713 13.085 21.916 11.446 19.741 11.446 Z M 15.739 2.599 L 17.42 2.599 C 17.708 3.246 18.354 3.699 19.108 3.699 L 19.724 3.699 L 19.724 0 L 19.108 0 C 18.354 0 17.708 0.453 17.42 1.099 L 15.74 1.099 C 15.541 1.099 15.35 1.178 15.21 1.319 C 15.069 1.459 14.99 1.65 14.99 1.849 C 14.99 2.048 15.069 2.239 15.21 2.379 C 15.35 2.52 15.541 2.599 15.74 2.599\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.004 2.156)\"/>"},"IconMovieMonoMovieFilm":{viewBox:"0 0 24 24",body:"<path d=\"M 17 5.5 L 19 5.5 L 19 3.5 L 17 3.5 L 17 5.5 Z M 17 9.5 L 19 9.5 L 19 7.5 L 17 7.5 L 17 9.5 Z M 17 13.5 L 19 13.5 L 19 11.5 L 17 11.5 L 17 13.5 Z M 13.321 8.933 L 9.013 11.421 C 8.937 11.465 8.851 11.488 8.763 11.488 C 8.675 11.488 8.589 11.465 8.513 11.421 C 8.437 11.377 8.373 11.313 8.33 11.237 C 8.286 11.161 8.263 11.075 8.263 10.987 L 8.263 6.013 C 8.263 5.925 8.286 5.839 8.33 5.763 C 8.373 5.687 8.437 5.623 8.513 5.579 C 8.589 5.535 8.675 5.512 8.763 5.512 C 8.851 5.512 8.937 5.535 9.013 5.579 L 13.321 8.067 C 13.397 8.111 13.46 8.174 13.504 8.25 C 13.548 8.326 13.571 8.412 13.571 8.5 C 13.571 8.588 13.548 8.674 13.504 8.75 C 13.46 8.826 13.397 8.889 13.321 8.933 Z M 2 5.5 L 4 5.5 L 4 3.5 L 2 3.5 L 2 5.5 Z M 2 9.5 L 4 9.5 L 4 7.5 L 2 7.5 L 2 9.5 Z M 2 13.5 L 4 13.5 L 4 11.5 L 2 11.5 L 2 13.5 Z M 19 0 L 2 0 C 0.896 0 0 0.865 0 1.932 L 0 15.068 C 0 16.135 0.896 17 2 17 L 19 17 C 20.104 17 21 16.135 21 15.068 L 21 1.932 C 21 0.865 20.104 0 19 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 3.500)\"/>"},"IconNavigationMenuMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.102 2.116 L 15.798 2.116 C 16.09 2.116 16.371 2.005 16.577 1.806 C 16.784 1.608 16.9 1.339 16.9 1.058 C 16.9 0.777 16.784 0.508 16.577 0.31 C 16.371 0.111 16.09 0 15.798 0 L 1.102 0 C 0.81 0 0.53 0.111 0.323 0.31 C 0.116 0.508 0 0.777 0 1.058 C 0 1.339 0.116 1.608 0.323 1.806 C 0.53 2.005 0.81 2.116 1.102 2.116 Z M 15.798 6.172 L 1.102 6.172 C 0.81 6.172 0.53 6.284 0.323 6.482 C 0.116 6.681 0 6.95 0 7.23 C 0 7.511 0.116 7.78 0.323 7.978 C 0.53 8.177 0.81 8.288 1.102 8.288 L 15.798 8.288 C 16.09 8.288 16.371 8.177 16.577 7.978 C 16.784 7.78 16.9 7.511 16.9 7.23 C 16.9 6.95 16.784 6.681 16.577 6.482 C 16.371 6.284 16.09 6.172 15.798 6.172 Z M 15.798 12.344 L 1.102 12.344 C 0.957 12.344 0.814 12.372 0.68 12.425 C 0.547 12.478 0.425 12.556 0.323 12.654 C 0.22 12.753 0.139 12.869 0.084 12.998 C 0.029 13.126 0 13.263 0 13.402 C 0 13.541 0.029 13.679 0.084 13.807 C 0.139 13.936 0.22 14.052 0.323 14.151 C 0.425 14.249 0.547 14.327 0.68 14.38 C 0.814 14.433 0.957 14.461 1.102 14.461 L 15.798 14.461 C 15.943 14.461 16.086 14.433 16.22 14.38 C 16.353 14.327 16.475 14.249 16.577 14.151 C 16.68 14.052 16.761 13.936 16.816 13.807 C 16.872 13.679 16.9 13.541 16.9 13.402 C 16.9 13.263 16.872 13.126 16.816 12.998 C 16.761 12.869 16.68 12.753 16.577 12.654 C 16.475 12.556 16.353 12.478 16.22 12.425 C 16.086 12.372 15.943 12.344 15.798 12.344 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.668 4.530)\"/>"},"IconNavigationXMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9.395 7.7 L 15.046 2.049 C 15.158 1.938 15.246 1.806 15.306 1.66 C 15.367 1.514 15.398 1.358 15.398 1.201 C 15.398 1.043 15.367 0.887 15.307 0.741 C 15.246 0.596 15.158 0.463 15.047 0.352 C 14.935 0.24 14.803 0.152 14.657 0.092 C 14.512 0.031 14.356 0 14.198 0 C 14.04 0 13.884 0.031 13.739 0.091 C 13.593 0.152 13.461 0.24 13.349 0.351 L 7.698 6.003 L 2.046 0.351 C 1.818 0.139 1.517 0.023 1.206 0.028 C 0.894 0.034 0.597 0.16 0.377 0.38 C 0.157 0.6 0.031 0.898 0.026 1.209 C 0.02 1.521 0.136 1.822 0.349 2.049 L 6.001 7.7 L 0.349 13.351 C 0.182 13.519 0.069 13.733 0.023 13.966 C -0.023 14.198 0.001 14.439 0.092 14.658 C 0.182 14.877 0.336 15.065 0.533 15.197 C 0.73 15.329 0.961 15.4 1.198 15.4 C 1.505 15.4 1.812 15.283 2.046 15.049 L 7.698 9.397 L 13.349 15.049 C 13.46 15.161 13.593 15.25 13.738 15.31 C 13.884 15.37 14.04 15.402 14.198 15.402 C 14.355 15.402 14.511 15.37 14.657 15.31 C 14.803 15.25 14.935 15.161 15.046 15.049 C 15.158 14.938 15.246 14.805 15.307 14.66 C 15.367 14.514 15.398 14.358 15.398 14.2 C 15.398 14.043 15.367 13.886 15.307 13.741 C 15.246 13.595 15.158 13.463 15.046 13.351 L 9.395 7.7 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.420 4.300)\"/>"},"IconNewsMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 23.397 0 L 23.397 23.397 L 0 23.397 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.301 0.301)\"/><path d=\"M 3.328 19.029 L 17.394 19.029 C 18.386 19.029 19.146 18.765 19.677 18.238 C 20.208 17.711 20.472 16.956 20.472 15.973 L 20.472 3.061 C 20.472 2.075 20.207 1.319 19.677 0.791 C 19.147 0.264 18.386 0 17.394 0 L 7.203 0 C 6.209 0 5.447 0.264 4.918 0.791 C 4.389 1.318 4.125 2.075 4.125 3.061 L 4.125 17.494 C 4.125 17.893 4.065 18.214 3.944 18.455 C 3.823 18.696 3.618 18.889 3.328 19.029 Z M 8.583 14.524 C 8.25 14.524 7.987 14.428 7.796 14.235 C 7.605 14.042 7.509 13.781 7.509 13.45 L 7.509 11.489 C 7.509 11.158 7.605 10.898 7.796 10.707 C 7.987 10.516 8.249 10.42 8.583 10.42 L 10.475 10.42 C 10.808 10.42 11.071 10.516 11.262 10.707 C 11.453 10.898 11.549 11.159 11.549 11.489 L 11.549 13.45 C 11.549 13.781 11.453 14.042 11.262 14.235 C 11.071 14.428 10.809 14.524 10.475 14.524 L 8.583 14.524 Z M 8.186 5.85 C 7.999 5.85 7.841 5.785 7.712 5.654 C 7.583 5.523 7.518 5.364 7.518 5.178 C 7.518 4.997 7.582 4.843 7.71 4.717 C 7.838 4.591 7.997 4.527 8.186 4.527 L 16.416 4.527 C 16.603 4.527 16.76 4.59 16.888 4.717 C 17.016 4.844 17.08 4.997 17.08 5.178 C 17.08 5.365 17.015 5.524 16.886 5.654 C 16.757 5.784 16.6 5.85 16.416 5.85 L 8.186 5.85 Z M 8.186 8.713 C 7.996 8.713 7.838 8.65 7.71 8.523 C 7.582 8.397 7.518 8.24 7.518 8.053 C 7.518 7.869 7.583 7.712 7.712 7.583 C 7.841 7.454 7.999 7.389 8.186 7.389 L 16.416 7.389 C 16.6 7.389 16.757 7.454 16.886 7.583 C 17.015 7.712 17.08 7.869 17.08 8.053 C 17.08 8.24 17.016 8.396 16.888 8.523 C 16.76 8.649 16.603 8.713 16.416 8.713 L 8.186 8.713 Z M 13.213 11.575 C 13.026 11.575 12.869 11.512 12.741 11.387 C 12.613 11.262 12.549 11.11 12.549 10.932 C 12.549 10.739 12.612 10.579 12.739 10.451 C 12.865 10.323 13.024 10.259 13.213 10.259 L 16.416 10.259 C 16.6 10.259 16.755 10.323 16.882 10.451 C 17.009 10.579 17.072 10.739 17.072 10.932 C 17.072 11.11 17.009 11.262 16.882 11.387 C 16.755 11.512 16.6 11.575 16.416 11.575 L 13.213 11.575 Z M 13.213 14.399 C 13.023 14.399 12.865 14.336 12.739 14.209 C 12.613 14.083 12.549 13.929 12.549 13.748 C 12.549 13.558 12.613 13.4 12.741 13.272 C 12.869 13.144 13.026 13.08 13.213 13.08 L 16.416 13.08 C 16.6 13.08 16.755 13.144 16.882 13.272 C 17.009 13.4 17.072 13.559 17.072 13.748 C 17.072 13.929 17.009 14.083 16.882 14.209 C 16.755 14.335 16.6 14.399 16.416 14.399 L 13.213 14.399 Z M 0 8.838 L 0 16.304 C 0 16.591 0.063 16.826 0.19 17.009 C 0.316 17.191 0.475 17.326 0.666 17.412 C 0.857 17.498 1.046 17.541 1.233 17.541 C 1.423 17.538 1.612 17.494 1.8 17.41 C 1.988 17.325 2.146 17.192 2.272 17.009 C 2.398 16.827 2.462 16.592 2.462 16.304 L 2.462 6.402 L 2.255 6.402 C 1.87 6.402 1.506 6.493 1.162 6.676 C 0.818 6.859 0.539 7.131 0.324 7.493 C 0.109 7.855 0 8.303 0 8.838 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.764 2.446)\"/>"},"IconOMonoOCircle":{viewBox:"0 0 24 24",body:"<path d=\"M 8.613 2.3 C 6.939 2.302 5.335 2.968 4.152 4.151 C 2.968 5.335 2.303 6.939 2.301 8.613 C 2.303 10.286 2.969 11.891 4.152 13.074 C 5.335 14.257 6.94 14.923 8.613 14.925 C 10.286 14.923 11.891 14.257 13.074 13.074 C 14.257 11.891 14.923 10.286 14.925 8.613 C 14.923 6.939 14.258 5.335 13.074 4.151 C 11.891 2.968 10.287 2.302 8.613 2.3 Z M 8.613 17.226 C 3.864 17.226 0 13.362 0 8.613 C 0 3.864 3.864 0 8.613 0 C 13.362 0 17.225 3.864 17.225 8.613 C 17.225 13.362 13.362 17.226 8.613 17.226 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.500 3.500)\"/>"},"IconOilMonoOilCar":{viewBox:"0 0 24 24",body:"<path d=\"M 13.4 0 L 7.743 0 C 6.947 0 6.184 0.316 5.622 0.879 L 0.879 5.622 C 0.316 6.185 0 6.948 0 7.743 L 0 18 C 0 19.657 1.343 21 3 21 L 13.4 21 C 15.057 21 16.4 19.657 16.4 18 L 16.4 3 C 16.4 1.343 15.057 0 13.4 0 Z M 9.68 14.588 C 9.68 16.172 8.439 17.533 6.735 17.533 C 5.031 17.533 3.79 16.292 3.79 14.588 C 3.79 13.347 5.596 10.966 6.393 9.948 C 6.569 9.716 6.884 9.707 7.069 9.948 C 7.745 10.856 9.672 13.338 9.672 14.588 L 9.681 14.588 L 9.68 14.588 Z M 14 4.39 C 14 4.942 13.552 5.39 13 5.39 L 8.5 5.39 C 7.948 5.39 7.5 4.942 7.5 4.39 L 7.5 3.39 C 7.5 2.838 7.948 2.39 8.5 2.39 L 13 2.39 C 13.552 2.39 14 2.838 14 3.39 L 14 4.39 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.169 -0.129) matrix(1 0 0 1 1.631 1.629)\"/><path d=\"M 3.279 0.177 C 3.094 -0.064 2.779 -0.055 2.603 0.177 C 1.806 1.195 0 3.576 0 4.817 C 0 6.521 1.241 7.762 2.945 7.762 C 4.649 7.762 5.89 6.401 5.89 4.817 L 5.882 4.817 C 5.882 3.567 3.955 1.085 3.279 0.177 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.169 -0.129) matrix(1 0 0 1 5.421 11.400)\"/><path d=\"M 4.817 0 L 0.983 0 C 0.44 0 0 0.44 0 0.983 L 0 2.017 C 0 2.56 0.44 3 0.983 3 L 4.817 3 C 5.36 3 5.8 2.56 5.8 2.017 L 5.8 0.983 C 5.8 0.44 5.36 0 4.817 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.169 -0.129) matrix(0.707 -0.707 0.707 0.707 0 4.102)\"/>"},"IconOnOffMono":{viewBox:"0 0 24 24",body:"<path d=\"M 9 16.958 C 4.037 16.958 0 12.953 0 8.029 C 0 4.719 1.831 1.697 4.778 0.142 C 5.334 -0.154 6.031 0.056 6.328 0.611 C 6.625 1.166 6.413 1.854 5.854 2.149 C 3.657 3.309 2.292 5.562 2.292 8.029 C 2.292 11.699 5.301 14.684 9 14.684 C 12.699 14.684 15.708 11.699 15.708 8.029 C 15.708 5.555 14.337 3.3 12.132 2.142 C 11.573 1.848 11.359 1.159 11.655 0.606 C 11.951 0.051 12.646 -0.161 13.204 0.132 C 16.162 1.685 18 4.711 18 8.029 C 18 12.953 13.963 16.958 9 16.958 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 2) matrix(1 0 0 1 0 2.042)\"/><path d=\"M 1.146 6.746 C 0.513 6.746 0 6.237 0 5.609 L 0 1.137 C 0 0.509 0.513 0 1.146 0 C 1.779 0 2.292 0.509 2.292 1.137 L 2.292 5.609 C 2.292 6.237 1.779 6.746 1.146 6.746 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 2) matrix(1 0 0 1 7.854 0)\"/>"},"IconOpenChatMono":{viewBox:"0 0 24 24",body:"<path d=\"M 10.598 14.572 L 13.436 15.802 C 13.72 15.896 14.005 15.706 13.909 15.422 L 13.626 12.868 C 15.234 11.544 16.086 9.556 16.086 7.475 C 16.086 3.312 12.49 0 8.043 0 C 3.596 0 0 3.312 0 7.475 C 0 11.638 3.596 14.949 8.043 14.949 C 8.989 14.949 9.747 14.856 10.598 14.572 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.053 4.040) matrix(1 0 0 1 5.808 0)\"/><path d=\"M 4.483 2.46 C 4.483 1.609 4.578 0.757 4.862 0 C 2.307 0.378 0.32 2.27 0.036 4.731 C -0.153 6.245 0.415 7.76 1.361 8.894 L 0.982 10.692 C 0.982 10.882 1.077 11.072 1.361 10.976 L 3.537 10.314 C 4.105 10.599 4.673 10.692 5.335 10.787 C 6.755 10.977 8.079 10.599 9.215 9.935 C 6.375 8.516 4.483 5.677 4.483 2.46 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.053 4.040) matrix(1 0 0 1 0 4.920)\"/>"},"IconOpenMonoOpenExit":{viewBox:"0 0 24 24",body:"<path d=\"M 18.223 11.68 C 17.616 11.68 17.123 12.172 17.123 12.78 L 17.123 15.823 C 17.123 16.539 16.54 17.123 15.823 17.123 L 3.5 17.123 C 2.783 17.123 2.2 16.539 2.2 15.823 L 2.2 3.5 C 2.2 2.783 2.783 2.2 3.5 2.2 L 6.54 2.2 C 7.148 2.2 7.64 1.708 7.64 1.1 C 7.64 0.492 7.148 0 6.54 0 L 3.5 0 C 1.571 0 0 1.57 0 3.5 L 0 15.823 C 0 17.753 1.571 19.323 3.5 19.323 L 15.823 19.323 C 17.753 19.323 19.323 17.753 19.323 15.823 L 19.323 12.78 C 19.323 12.172 18.831 11.68 18.223 11.68 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.338 2.337) matrix(1 0 0 1 0 0.002)\"/><path d=\"M 10.248 0.304 C 10.018 0.08 9.715 -0.015 9.417 0.002 L 2.07 0.002 C 1.462 0.002 0.97 0.494 0.97 1.102 C 0.97 1.71 1.462 2.202 2.07 2.202 L 6.814 2.202 L 0.322 8.694 C 0.115 8.9 -0.001 9.18 0 9.472 C 0 10.079 0.493 10.572 1.1 10.572 L 1.101 10.572 C 1.393 10.572 1.672 10.457 1.878 10.25 L 8.37 3.757 L 8.37 8.502 C 8.37 9.11 8.862 9.602 9.47 9.602 C 10.078 9.602 10.57 9.11 10.57 8.502 L 10.57 1.131 C 10.581 0.832 10.479 0.53 10.247 0.304 L 10.248 0.304 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.338 2.337) matrix(1 0 0 1 8.753 0)\"/>"},"IconOutMonoOutExit":{viewBox:"0 0 24 24",body:"<path d=\"M 0 -1.1 C -0.608 -1.1 -1.1 -0.608 -1.1 0 C -1.1 0.608 -0.608 1.1 0 1.1 L 0 0 L 0 -1.1 Z M 11.729 1.1 C 12.337 1.1 12.829 0.608 12.829 0 C 12.829 -0.608 12.337 -1.1 11.729 -1.1 L 11.729 0 L 11.729 1.1 Z M 0 0 L 0 1.1 L 11.729 1.1 L 11.729 0 L 11.729 -1.1 L 0 -1.1 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 3.620) matrix(1 0 0 1 0 8.392)\"/><path d=\"M 6.011 0.778 C 6.44 0.348 6.44 -0.348 6.011 -0.778 C 5.581 -1.207 4.885 -1.207 4.455 -0.778 L 5.233 0 L 6.011 0.778 Z M 0 5.231 L -0.778 4.453 C -0.984 4.659 -1.1 4.939 -1.1 5.231 C -1.1 5.523 -0.984 5.803 -0.778 6.009 L 0 5.231 Z M 4.455 11.242 C 4.885 11.671 5.581 11.671 6.011 11.242 C 6.44 10.812 6.44 10.116 6.011 9.686 L 5.233 10.464 L 4.455 11.242 Z M 5.233 0 L 4.455 -0.778 L -0.778 4.453 L 0 5.231 L 0.778 6.009 L 6.011 0.778 L 5.233 0 Z M 0 5.231 L -0.778 6.009 L 4.455 11.242 L 5.233 10.464 L 6.011 9.686 L 0.778 4.453 L 0 5.231 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 3.620) matrix(1 0 0 1 0 3.160)\"/><path d=\"M -1.1 4.094 C -1.1 4.702 -0.608 5.194 0 5.194 C 0.608 5.194 1.1 4.702 1.1 4.094 L 0 4.094 L -1.1 4.094 Z M 2.4 0 L 2.4 -1.1 L 2.4 0 Z M 9.248 14.385 L 10.348 14.385 L 10.348 14.385 L 9.248 14.385 Z M 6.848 16.784 L 6.848 15.684 L 6.848 15.684 L 6.848 16.784 Z M 2.4 16.784 L 2.4 17.884 L 2.4 16.784 Z M 0 14.384 L -1.1 14.384 L 0 14.384 Z M 1.1 12.694 C 1.1 12.086 0.608 11.594 0 11.594 C -0.608 11.594 -1.1 12.086 -1.1 12.694 L 0 12.694 L 1.1 12.694 Z M 0 4.094 L 1.1 4.094 L 1.1 2.4 L 0 2.4 L -1.1 2.4 L -1.1 4.094 L 0 4.094 Z M 0 2.4 L 1.1 2.4 C 1.1 2.055 1.237 1.725 1.481 1.481 L 0.703 0.703 L -0.075 -0.075 C -0.731 0.582 -1.1 1.472 -1.1 2.4 L 0 2.4 Z M 0.703 0.703 L 1.481 1.481 C 1.725 1.237 2.055 1.1 2.4 1.1 L 2.4 0 L 2.4 -1.1 C 1.472 -1.1 0.582 -0.731 -0.075 -0.075 L 0.703 0.703 Z M 2.4 0 L 2.4 1.1 L 6.848 1.1 L 6.848 0 L 6.848 -1.1 L 2.4 -1.1 L 2.4 0 Z M 6.848 0 L 6.848 1.1 C 7.193 1.1 7.523 1.237 7.767 1.481 L 8.545 0.703 L 9.323 -0.075 C 8.666 -0.731 7.776 -1.1 6.848 -1.1 L 6.848 0 Z M 8.545 0.703 L 7.767 1.481 C 8.011 1.725 8.148 2.055 8.148 2.4 L 9.248 2.4 L 10.348 2.4 C 10.348 1.472 9.979 0.582 9.323 -0.075 L 8.545 0.703 Z M 9.248 2.4 L 8.148 2.4 L 8.148 14.385 L 9.248 14.385 L 10.348 14.385 L 10.348 2.4 L 9.248 2.4 Z M 9.248 14.385 L 8.148 14.385 C 8.148 14.729 8.011 15.06 7.767 15.303 L 8.545 16.081 L 9.322 16.859 C 9.979 16.203 10.348 15.313 10.348 14.385 L 9.248 14.385 Z M 8.545 16.081 L 7.767 15.303 C 7.523 15.547 7.193 15.684 6.848 15.684 L 6.848 16.784 L 6.848 17.884 C 7.776 17.884 8.666 17.515 9.322 16.859 L 8.545 16.081 Z M 6.848 16.784 L 6.848 15.684 L 2.4 15.684 L 2.4 16.784 L 2.4 17.884 L 6.848 17.884 L 6.848 16.784 Z M 2.4 16.784 L 2.4 15.684 C 2.055 15.684 1.725 15.547 1.481 15.303 L 0.703 16.081 L -0.075 16.859 C 0.582 17.515 1.472 17.884 2.4 17.884 L 2.4 16.784 Z M 0.703 16.081 L 1.481 15.303 C 1.237 15.059 1.1 14.729 1.1 14.384 L 0 14.384 L -1.1 14.384 C -1.1 15.312 -0.731 16.202 -0.075 16.859 L 0.703 16.081 Z M 0 14.384 L 1.1 14.384 L 1.1 12.694 L 0 12.694 L -1.1 12.694 L -1.1 14.384 L 0 14.384 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 3.620) matrix(1 0 0 1 9.637 0)\"/>"},"IconPalmtreeMonoVacationPalm":{viewBox:"0 0 24 24",body:"<path d=\"M 20.644 1.017 L 17.287 2.954 C 18.746 2.897 20.183 3.323 21.375 4.166 C 22.567 5.009 23.447 6.222 23.88 7.616 L 18.068 6.851 C 19.259 7.695 20.138 8.907 20.569 10.301 C 21.001 11.695 20.961 13.192 20.456 14.561 L 13.314 7.418 L 14.43 21.282 C 14.437 21.37 14.425 21.457 14.397 21.54 C 14.368 21.623 14.322 21.699 14.263 21.764 C 14.203 21.828 14.131 21.88 14.051 21.915 C 13.97 21.95 13.884 21.969 13.796 21.969 L 10.084 21.969 C 9.996 21.969 9.909 21.951 9.829 21.915 C 9.749 21.88 9.676 21.829 9.617 21.764 C 9.557 21.7 9.512 21.623 9.483 21.541 C 9.454 21.458 9.443 21.37 9.45 21.282 L 10.566 7.416 L 3.424 14.56 C 3.002 13.416 2.904 12.179 3.139 10.983 C 3.374 9.787 3.934 8.679 4.758 7.78 L 4.955 7.575 C 5.225 7.305 5.512 7.064 5.812 6.851 L 0 7.616 C 0.433 6.222 1.313 5.009 2.505 4.166 C 3.697 3.323 5.134 2.897 6.593 2.954 L 3.237 1.017 C 4.101 0.406 5.121 0.056 6.178 0.007 C 7.235 -0.042 8.283 0.212 9.2 0.74 C 9.965 1.181 10.613 1.799 11.089 2.542 C 11.566 3.285 11.858 4.131 11.941 5.01 C 12.023 4.131 12.314 3.285 12.791 2.542 C 13.267 1.799 13.915 1.181 14.68 0.74 C 15.597 0.212 16.645 -0.043 17.702 0.006 C 18.759 0.055 19.78 0.406 20.644 1.017 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.120 1.190)\"/>"},"IconPaperPlaneFillMono":{viewBox:"0 0 40 40",body:"<path d=\"M 20 0 C 8.954 0 0 8.954 0 20 C 0 31.046 8.954 40 20 40 C 31.046 40 40 31.046 40 20 C 40 8.954 31.046 0 20 0 Z M 28.942 12.976 L 23.267 29.996 C 22.877 31.168 21.318 31.392 20.613 30.379 L 17.352 25.69 C 16.937 25.093 17.01 24.285 17.524 23.772 L 21.124 20.172 C 21.475 19.82 21.475 19.25 21.124 18.898 C 20.772 18.547 20.202 18.547 19.85 18.898 L 16.249 22.499 C 15.736 23.013 14.928 23.084 14.332 22.669 L 9.645 19.409 C 8.63 18.704 8.855 17.145 10.025 16.755 L 27.045 11.08 C 28.218 10.688 29.334 11.805 28.942 12.976 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconPaperPlaneMonoPlane":{viewBox:"0 0 24 24",body:"<path d=\"M 18.592 0.083 L 1.056 5.93 C -0.149 6.332 -0.381 7.939 0.664 8.664 L 5.493 12.025 C 6.107 12.452 6.939 12.378 7.468 11.849 L 11.178 8.139 C 11.54 7.777 12.128 7.776 12.49 8.139 C 12.852 8.501 12.853 9.089 12.49 9.451 L 8.781 13.16 C 8.251 13.689 8.176 14.522 8.604 15.136 L 11.964 19.967 C 12.69 21.011 14.297 20.78 14.698 19.573 L 20.547 2.037 C 20.951 0.829 19.801 -0.319 18.592 0.083 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.597 1.370)\"/>"},"IconPauseMonoPauseMusic":{viewBox:"0 0 24 24",body:"<path d=\"M 4 0 C 4.265 0 4.52 0.105 4.707 0.293 C 4.895 0.48 5 0.735 5 1 L 5 18 C 5 18.265 4.895 18.52 4.707 18.707 C 4.52 18.895 4.265 19 4 19 L 1 19 C 0.735 19 0.48 18.895 0.293 18.707 C 0.105 18.52 0 18.265 0 18 L 0 1 C 0 0.735 0.105 0.48 0.293 0.293 C 0.48 0.105 0.735 0 1 0 L 4 0 Z M 13.779 0 C 14.044 0 14.299 0.105 14.486 0.293 C 14.674 0.48 14.779 0.735 14.779 1 L 14.779 18 C 14.779 18.265 14.674 18.52 14.486 18.707 C 14.299 18.895 14.044 19 13.779 19 L 10.779 19 C 10.514 19 10.259 18.895 10.072 18.707 C 9.884 18.52 9.779 18.265 9.779 18 L 9.779 1 C 9.779 0.735 9.884 0.48 10.072 0.293 C 10.259 0.105 10.514 0 10.779 0 L 13.779 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.500 2.500)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconPawPrintsMonoPaw":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 8.493 4.467 L 8.493 4.167 C 8.433 2.427 7.353 0.867 5.733 0.207 C 4.053 -0.333 2.193 0.207 1.053 1.527 L 0.873 1.767 C -0.807 3.627 0.093 5.727 2.253 6.507 L 4.353 7.287 C 6.573 8.067 8.613 6.987 8.493 4.467 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(1 0 0 1 11.284 4.224)\"/><path d=\"M 1.38 2.64 C 2.142 2.64 2.76 2.049 2.76 1.32 C 2.76 0.591 2.142 0 1.38 0 C 0.618 0 0 0.591 0 1.32 C 0 2.049 0.618 2.64 1.38 2.64 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.340 -0.940 0.940 0.340 19.809 7.114)\"/><path d=\"M 1.38 2.64 C 2.142 2.64 2.76 2.049 2.76 1.32 C 2.76 0.591 2.142 0 1.38 0 C 0.618 0 0 0.591 0 1.32 C 0 2.049 0.618 2.64 1.38 2.64 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.340 -0.940 0.940 0.340 10.729 3.831)\"/><path d=\"M 1.5 2.76 C 2.328 2.76 3 2.142 3 1.38 C 3 0.618 2.328 0 1.5 0 C 0.672 0 0 0.618 0 1.38 C 0 2.142 0.672 2.76 1.5 2.76 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.340 -0.940 0.940 0.340 14.209 2.821)\"/><path d=\"M 1.5 2.76 C 2.328 2.76 3 2.142 3 1.38 C 3 0.618 2.328 0 1.5 0 C 0.672 0 0 0.618 0 1.38 C 0 2.142 0.672 2.76 1.5 2.76 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.340 -0.940 0.940 0.340 17.698 4.112)\"/><path d=\"M 0.005 4.467 L 0.005 4.167 C 0.065 2.427 1.085 0.867 2.765 0.207 C 4.445 -0.333 6.305 0.207 7.445 1.527 L 7.625 1.707 C 9.305 3.567 8.405 5.667 6.245 6.447 L 4.145 7.227 C 1.925 8.127 -0.115 7.047 0.005 4.467 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(1 0 0 1 3.452 13.704)\"/><path d=\"M 1.32 2.76 C 2.049 2.76 2.64 2.142 2.64 1.38 C 2.64 0.618 2.049 0 1.32 0 C 0.591 0 0 0.618 0 1.38 C 0 2.142 0.591 2.76 1.32 2.76 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.940 -0.340 0.340 0.940 0 14.927)\"/><path d=\"M 1.32 2.76 C 2.049 2.76 2.64 2.142 2.64 1.38 C 2.64 0.618 2.049 0 1.32 0 C 0.591 0 0 0.618 0 1.38 C 0 2.142 0.591 2.76 1.32 2.76 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.940 -0.340 0.340 0.940 9.072 11.683)\"/><path d=\"M 1.38 3 C 2.142 3 2.76 2.328 2.76 1.5 C 2.76 0.672 2.142 0 1.38 0 C 0.618 0 0 0.672 0 1.5 C 0 2.328 0.618 3 1.38 3 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.940 -0.340 0.340 0.940 5.427 10.451)\"/><path d=\"M 1.38 3 C 2.142 3 2.76 2.328 2.76 1.5 C 2.76 0.672 2.142 0 1.38 0 C 0.618 0 0 0.672 0 1.5 C 0 2.328 0.618 3 1.38 3 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.443 0.968) matrix(0.940 -0.340 0.340 0.940 1.943 11.703)\"/>"},"IconPencilMonoPencilPen":{viewBox:"0 0 24 24",body:"<path d=\"M 11.128 4.04 L 2.066 13.102 L 0.83 17.712 L 0.017 20.749 C -0.006 20.834 -0.006 20.923 0.017 21.008 C 0.04 21.093 0.085 21.17 0.147 21.232 C 0.209 21.294 0.286 21.339 0.371 21.362 C 0.456 21.385 0.545 21.385 0.63 21.362 L 3.665 20.548 L 8.276 19.312 L 8.277 19.312 L 17.339 10.25 L 11.129 4.04 L 11.128 4.04 Z M 21.086 5.09 L 16.29 0.293 C 16.197 0.2 16.087 0.127 15.966 0.076 C 15.844 0.026 15.714 0 15.583 0 C 15.452 0 15.321 0.026 15.2 0.076 C 15.079 0.127 14.969 0.2 14.876 0.293 L 12.401 2.767 L 18.612 8.978 L 21.086 6.503 C 21.179 6.41 21.253 6.3 21.303 6.179 C 21.353 6.058 21.379 5.928 21.379 5.796 C 21.379 5.665 21.353 5.535 21.303 5.414 C 21.253 5.292 21.179 5.182 21.086 5.089\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.207 1.414)\"/>"},"IconPercentCircleMonoPercent":{viewBox:"0 0 24 24",body:"<path d=\"M 6.594 5.874 C 6.493 5.87 6.393 5.887 6.299 5.923 C 6.206 5.959 6.12 6.013 6.048 6.083 C 5.976 6.153 5.918 6.236 5.879 6.329 C 5.84 6.421 5.82 6.52 5.82 6.621 C 5.82 6.721 5.84 6.821 5.879 6.913 C 5.919 7.005 5.976 7.089 6.049 7.158 C 6.121 7.228 6.207 7.282 6.3 7.318 C 6.394 7.354 6.494 7.371 6.595 7.367 C 6.788 7.36 6.971 7.278 7.105 7.138 C 7.239 6.999 7.314 6.813 7.314 6.62 C 7.314 6.426 7.238 6.241 7.104 6.102 C 6.97 5.962 6.787 5.881 6.594 5.874 Z M 1.494 0.774 C 1.497 0.673 1.48 0.573 1.445 0.48 C 1.409 0.386 1.354 0.3 1.284 0.228 C 1.215 0.156 1.131 0.099 1.039 0.059 C 0.946 0.02 0.847 0 0.746 0 C 0.646 0 0.547 0.02 0.454 0.06 C 0.362 0.099 0.279 0.157 0.209 0.229 C 0.139 0.301 0.085 0.387 0.049 0.481 C 0.013 0.574 -0.003 0.674 0.001 0.775 C 0.008 0.968 0.089 1.151 0.229 1.285 C 0.368 1.419 0.554 1.494 0.747 1.494 C 0.94 1.494 1.126 1.419 1.265 1.285 C 1.405 1.151 1.486 0.968 1.494 0.775\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 7.329 7.249)\"/><path d=\"M 13.923 16.214 C 13.301 16.213 12.705 15.966 12.265 15.526 C 11.825 15.086 11.578 14.49 11.577 13.868 C 11.578 13.246 11.825 12.65 12.265 12.21 C 12.705 11.771 13.301 11.524 13.923 11.523 C 14.545 11.524 15.141 11.771 15.581 12.211 C 16.02 12.65 16.268 13.246 16.269 13.868 C 16.268 14.49 16.021 15.086 15.581 15.526 C 15.141 15.966 14.545 16.213 13.923 16.214 Z M 7.994 15.083 C 7.92 15.157 7.831 15.216 7.734 15.256 C 7.637 15.296 7.533 15.317 7.428 15.317 C 7.323 15.317 7.219 15.296 7.122 15.256 C 7.025 15.216 6.937 15.157 6.863 15.083 C 6.788 15.008 6.729 14.92 6.689 14.823 C 6.649 14.726 6.628 14.622 6.628 14.517 C 6.628 14.412 6.649 14.308 6.689 14.21 C 6.73 14.113 6.789 14.025 6.863 13.951 L 14.006 6.808 C 14.159 6.673 14.358 6.601 14.562 6.608 C 14.766 6.614 14.96 6.698 15.104 6.842 C 15.248 6.986 15.332 7.18 15.338 7.384 C 15.345 7.588 15.273 7.787 15.138 7.94 L 7.994 15.083 Z M 5.732 8.023 C 5.733 7.401 5.98 6.805 6.42 6.365 C 6.859 5.926 7.455 5.678 8.077 5.677 C 8.699 5.678 9.295 5.925 9.735 6.365 C 10.175 6.805 10.423 7.401 10.424 8.023 C 10.423 8.645 10.176 9.242 9.736 9.681 C 9.296 10.121 8.699 10.368 8.077 10.369 C 7.455 10.368 6.859 10.121 6.419 9.681 C 5.98 9.241 5.733 8.645 5.732 8.023 Z M 11 0 C 4.925 0 0 4.924 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.924 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconPercentSmallMono":{viewBox:"0 0 24 24",body:"<path d=\"M 13.509 9.208 C 15.629 9.208 17.386 10.844 17.386 12.903 C 17.386 14.962 15.629 16.598 13.509 16.598 C 11.389 16.598 9.632 14.962 9.632 12.903 C 9.632 10.844 11.389 9.208 13.509 9.208 Z M 16.417 0.969 C 16.902 1.454 16.902 2.241 16.417 2.726 L 2.908 15.629 C 2.666 15.871 2.302 15.992 1.999 15.992 C 1.696 15.992 1.333 15.871 1.09 15.629 C 0.605 15.144 0.605 14.357 1.09 13.872 L 14.599 0.969 C 15.144 0.484 15.932 0.484 16.477 0.969 L 16.416 0.969 L 16.417 0.969 Z M 13.509 11.691 C 12.843 11.691 12.297 12.236 12.297 12.842 C 12.297 13.448 12.842 13.993 13.509 13.993 C 14.176 13.993 14.721 13.448 14.721 12.842 C 14.721 12.236 14.176 11.691 13.509 11.691 Z M 3.877 0 C 5.997 0 7.754 1.636 7.754 3.695 C 7.754 5.754 5.997 7.39 3.877 7.39 C 1.757 7.39 0 5.754 0 3.695 C 0 1.636 1.757 0 3.877 0 Z M 3.877 2.544 C 3.211 2.544 2.665 3.089 2.665 3.695 C 2.665 4.301 3.21 4.846 3.877 4.846 C 4.544 4.846 5.089 4.301 5.089 3.695 C 5.089 3.089 4.544 2.544 3.877 2.544 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.307 3.701)\"/>"},"IconPharmacyMonoPharmacyMedicine":{viewBox:"0 0 24 24",body:"<path d=\"M 15.5 13.73 L 12.25 13.73 L 12.25 16.98 L 9.75 16.98 L 9.75 13.73 L 6.5 13.73 L 6.5 11.23 L 9.75 11.23 L 9.75 7.98 L 12.25 7.98 L 12.25 11.23 L 15.5 11.23 L 15.5 13.73 Z M 22 8.878 L 22 6.48 C 22 6.215 21.895 5.961 21.707 5.773 C 21.52 5.586 21.265 5.48 21 5.48 L 8.999 5.48 L 6.412 1 C 6.147 0.541 5.71 0.206 5.197 0.068 C 4.685 -0.069 4.139 0.003 3.679 0.268 C 3.22 0.533 2.885 0.97 2.747 1.482 C 2.61 1.995 2.682 2.541 2.947 3 L 4.379 5.48 L 1 5.48 C 0.735 5.48 0.48 5.586 0.293 5.773 C 0.105 5.961 0 6.215 0 6.48 L 0 8.878 L 0.008 8.878 C 0.008 13.168 2.469 16.875 6.051 18.688 L 6.051 20.604 C 6.051 20.87 6.156 21.124 6.344 21.312 C 6.531 21.499 6.786 21.604 7.051 21.604 L 14.883 21.604 C 15.148 21.604 15.403 21.499 15.59 21.312 C 15.778 21.124 15.883 20.87 15.883 20.604 L 15.883 18.728 C 19.51 16.928 22.008 13.2 22.008 8.878 L 22 8.878 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.996 0.699)\"/>"},"IconPhoneAlarmMonoPhone":{viewBox:"0 0 24 24",body:"<path d=\"M 16 2 C 16 0.9 15.1 0 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 3 L 16 3 L 16 2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2)\"/><path d=\"M 7.8 1.2 L 8.4 0.2 L 8.4 0 L 0 0 L 0 1 C 0 2.1 0.9 3 2 3 L 7.5 3 C 7.5 2.8 7.4 2.7 7.4 2.5 C 7.4 2 7.5 1.6 7.8 1.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 0 17)\"/><path d=\"M 8.3 11.2 C 8.3 7.5 11.3 4.5 15 4.5 L 15.6 4.5 C 15.7 4.5 15.8 4.5 16 4.6 L 16 0 L 0 0 L 0 14 L 8.3 14 L 8.3 11.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 0 3)\"/><path d=\"M 11.3 9.6 L 10.4 8.1 L 10.4 4.8 C 10.4 2.4 8.6 0.2 6.2 0 C 6 0 5.9 0 5.7 0 C 3.1 0 1 2.1 1 4.7 L 1 8.2 L 0.1 9.7 C 0.1 9.8 0 9.9 0 10 C 0 10.3 0.2 10.5 0.5 10.5 L 4 10.5 C 4 11.4 4.7 12.1 5.6 12.1 C 6.5 12.1 7.2 11.4 7.2 10.5 L 10.7 10.5 C 10.8 10.5 10.9 10.5 11 10.4 C 11.4 10.2 11.5 9.9 11.3 9.6 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 9.200 9.600)\"/>"},"IconPhoneMobileMono":{viewBox:"0 0 24 24",body:"<path d=\"M 16.01 2.001 C 16.01 0.896 15.114 0 14.009 0 L 2.001 0 C 0.896 0 0 0.896 0 2.001 L 0 2.998 L 16.009 2.998 L 16.01 2.001 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.995 1.984)\"/><path d=\"M 0 0.997 C 0 2.102 0.896 2.998 2.001 2.998 L 14.008 2.998 C 15.113 2.998 16.009 2.102 16.009 0.997 L 16.009 0 L 0 0 L 0 0.997 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.995 1.984) matrix(1 0 0 1 0 17.006)\"/><path d=\"M 0 0 L 0 14.008 L 16.01 14.008 L 16.01 0 L 0 0 Z M 8.005 11.351 C 7.431 11.351 6.939 10.859 6.939 10.285 C 6.939 9.711 7.431 9.219 8.005 9.219 C 8.579 9.219 9.072 9.711 9.072 10.285 C 9.071 10.859 8.579 11.351 8.005 11.351 Z M 11.122 8.399 C 10.958 8.563 10.712 8.727 10.466 8.727 C 10.22 8.727 10.056 8.645 9.892 8.481 C 8.826 7.578 7.185 7.578 6.119 8.481 C 5.709 8.809 5.217 8.809 4.889 8.399 C 4.561 7.989 4.561 7.497 4.971 7.169 C 5.791 6.431 6.939 6.021 8.006 6.021 C 9.073 6.021 10.221 6.431 11.041 7.169 C 11.45 7.496 11.45 8.07 11.122 8.399 Z M 13.5 6.102 C 13.336 6.266 13.09 6.348 12.844 6.348 C 12.598 6.348 12.434 6.266 12.27 6.102 C 11.122 5.036 9.645 4.462 8.005 4.462 C 6.365 4.462 4.97 5.036 3.74 6.102 C 3.412 6.43 2.838 6.43 2.51 6.02 C 2.182 5.692 2.182 5.118 2.592 4.79 C 4.068 3.395 5.955 2.657 8.005 2.657 C 10.056 2.657 11.942 3.395 13.419 4.79 C 13.829 5.118 13.829 5.692 13.5 6.102 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.995 1.984) matrix(1 0 0 1 0 2.998)\"/>"},"IconPhoneMonoPhoneHandphone":{viewBox:"0 0 24 24",body:"<path d=\"M 16 2 C 16 0.9 15.1 0 14 0 L 2 0 C 0.9 0 0 0.9 0 2 L 0 3 L 16 3 L 16 2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2)\"/><path d=\"M 0 1 C 0 2.1 0.9 3 2 3 L 14 3 C 15.1 3 16 2.1 16 1 L 16 0 L 0 0 L 0 1 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2) matrix(1 0 0 1 0 17)\"/><path d=\"M 0 0 L 16 0 L 16 14 L 0 14 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 2) matrix(1 0 0 1 0 3)\"/>"},"IconPhoneVerticalMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17.8 8.649 C 17.8 7.549 16.9 6.649 15.8 6.649 L 2 6.649 C 0.9 6.649 0 7.549 0 8.649 L 0 17.649 C 0 18.749 0.9 19.649 2 19.649 L 15.8 19.649 C 16.91 19.649 17.8 18.749 17.8 17.649 L 17.8 8.649 Z M 21.8 7.539 C 21.8 4.289 19.15 1.639 15.9 1.639 L 15.26 1.639 L 15.26 0.719 C 15.26 0.169 14.67 -0.171 14.2 0.089 L 14.11 0.139 L 11.62 1.959 C 11.26 2.219 11.23 2.739 11.54 3.049 L 11.62 3.119 L 14.11 4.939 C 14.56 5.269 15.17 4.989 15.24 4.459 L 15.25 4.359 L 15.25 3.439 L 15.89 3.439 C 18.15 3.439 19.99 5.279 19.99 7.539 L 19.99 9.289 C 19.99 9.789 20.39 10.189 20.89 10.189 C 21.39 10.189 21.79 9.789 21.79 9.289 L 21.79 7.539 L 21.8 7.539 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.200 0.001)\"/>"},"IconPictureMonoImagePicture":{viewBox:"0 0 24 24",body:"<path d=\"M 13.753 8.418 C 13.515 8.424 13.278 8.381 13.056 8.294 C 12.834 8.207 12.632 8.076 12.462 7.909 C 12.291 7.743 12.156 7.544 12.063 7.324 C 11.971 7.104 11.923 6.868 11.923 6.63 C 11.923 6.392 11.971 6.156 12.064 5.936 C 12.156 5.716 12.292 5.517 12.462 5.351 C 12.633 5.184 12.835 5.054 13.057 4.967 C 13.279 4.879 13.516 4.837 13.754 4.843 C 14.221 4.854 14.665 5.047 14.991 5.382 C 15.317 5.716 15.499 6.164 15.499 6.631 C 15.499 7.098 15.316 7.546 14.99 7.88 C 14.664 8.214 14.22 8.407 13.753 8.418 Z M 12.029 14.53 L 6.005 14.53 C 5.793 14.53 5.584 14.473 5.401 14.365 C 5.219 14.257 5.068 14.102 4.966 13.915 C 4.864 13.729 4.815 13.519 4.822 13.306 C 4.83 13.094 4.894 12.888 5.009 12.709 L 8.022 8.014 C 8.129 7.847 8.276 7.71 8.45 7.614 C 8.624 7.519 8.819 7.469 9.017 7.469 C 9.216 7.469 9.411 7.519 9.585 7.614 C 9.759 7.71 9.906 7.847 10.013 8.014 L 13.024 12.709 C 13.139 12.888 13.203 13.094 13.211 13.306 C 13.218 13.518 13.169 13.728 13.067 13.915 C 12.965 14.101 12.815 14.257 12.632 14.365 C 12.45 14.473 12.241 14.53 12.029 14.53 Z M 17.037 0 L 2.463 0 C 1.81 0 1.183 0.259 0.721 0.721 C 0.259 1.183 0 1.81 0 2.463 L 0 17.037 C 0 17.69 0.259 18.317 0.721 18.779 C 1.183 19.241 1.81 19.5 2.463 19.5 L 17.037 19.5 C 17.69 19.5 18.317 19.241 18.779 18.779 C 19.241 18.317 19.5 17.69 19.5 17.037 L 19.5 2.463 C 19.5 1.81 19.241 1.183 18.779 0.721 C 18.317 0.259 17.69 0 17.037 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.250 2.250)\"/>"},"IconPiggybankMonoPigBank":{viewBox:"0 0 24 24",body:"<path d=\"M 14.834 2.948 C 14.796 3.039 14.74 3.121 14.67 3.191 C 14.6 3.26 14.517 3.315 14.426 3.352 C 14.335 3.39 14.237 3.408 14.139 3.408 C 14.04 3.407 13.943 3.387 13.852 3.349 C 12.434 2.765 10.844 2.765 9.426 3.349 C 9.335 3.387 9.238 3.407 9.139 3.408 C 9.041 3.408 8.943 3.389 8.852 3.352 C 8.761 3.315 8.678 3.26 8.608 3.191 C 8.538 3.121 8.482 3.039 8.444 2.948 C 8.406 2.857 8.386 2.76 8.385 2.661 C 8.385 2.563 8.404 2.465 8.441 2.374 C 8.478 2.283 8.533 2.2 8.602 2.13 C 8.672 2.06 8.754 2.004 8.845 1.966 C 10.635 1.227 12.644 1.227 14.434 1.966 C 14.617 2.043 14.762 2.19 14.837 2.374 C 14.912 2.558 14.911 2.765 14.834 2.948 Z M 5.142 7.936 C 4.877 7.936 4.622 7.831 4.435 7.643 C 4.247 7.456 4.142 7.201 4.142 6.936 C 4.142 6.671 4.247 6.416 4.435 6.229 C 4.622 6.041 4.877 5.936 5.142 5.936 C 5.407 5.936 5.662 6.041 5.849 6.229 C 6.037 6.416 6.142 6.671 6.142 6.936 C 6.142 7.201 6.037 7.456 5.849 7.643 C 5.662 7.831 5.407 7.936 5.142 7.936 Z M 23 6.188 C 22.735 6.188 22.48 6.293 22.293 6.481 C 22.105 6.668 22 6.923 22 7.188 C 22 7.339 21.939 7.484 21.832 7.591 C 21.725 7.698 21.58 7.759 21.429 7.759 C 21.403 7.759 21.382 7.772 21.357 7.774 C 20.794 3.398 16.661 0 11.639 0 C 9.735 0 7.965 0.496 6.462 1.34 L 2.024 1.34 C 2.024 2.594 2.486 3.694 3.209 4.338 C 2.57 5.304 2.144 6.396 1.96 7.54 L 1.004 7.543 C 0.737 7.544 0.482 7.651 0.293 7.84 C 0.105 8.029 0 8.285 0 8.552 L 0 9.73 C 0 10.416 0.353 11.055 0.933 11.422 L 3.052 12.758 C 3.07 12.784 3.092 12.807 3.11 12.833 C 3.23 13.177 4.043 15.464 5.484 17.908 C 5.663 18.211 5.994 18.395 6.346 18.395 L 8.605 18.395 L 9.191 16.274 C 9.975 16.41 10.792 16.488 11.639 16.488 C 12.485 16.488 13.303 16.41 14.086 16.274 L 14.672 18.395 L 16.939 18.395 C 17.109 18.396 17.277 18.354 17.426 18.271 C 17.574 18.189 17.7 18.07 17.789 17.925 C 19.107 15.775 20.565 13.184 21.153 10.769 C 21.246 10.44 21.321 10.101 21.366 9.747 C 21.388 9.748 21.406 9.759 21.429 9.759 C 22.111 9.758 22.764 9.487 23.246 9.005 C 23.728 8.523 23.999 7.87 24 7.188 C 24 6.923 23.895 6.668 23.707 6.481 C 23.52 6.293 23.265 6.188 23 6.188 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0 2.802)\"/>"},"IconPillMonoPharmacyMedicine":{viewBox:"0 0 24 24",body:"<path d=\"M 15.344 7.15 L 19.342 11.147 C 19.889 11.684 20.324 12.323 20.622 13.028 C 20.92 13.733 21.075 14.491 21.079 15.256 C 21.082 16.022 20.934 16.781 20.643 17.489 C 20.351 18.197 19.923 18.84 19.381 19.381 C 18.84 19.923 18.197 20.351 17.489 20.643 C 16.781 20.934 16.022 21.082 15.256 21.079 C 14.491 21.075 13.733 20.92 13.028 20.622 C 12.323 20.324 11.684 19.889 11.147 19.342 L 7.149 15.344 L 15.344 7.15 Z M 1.736 9.931 C 1.19 9.395 0.755 8.756 0.457 8.051 C 0.159 7.345 0.004 6.588 0 5.822 C -0.004 5.057 0.145 4.298 0.436 3.59 C 0.727 2.882 1.156 2.239 1.697 1.697 C 2.239 1.156 2.882 0.727 3.59 0.436 C 4.298 0.145 5.057 -0.004 5.822 0 C 6.588 0.004 7.345 0.159 8.051 0.457 C 8.756 0.755 9.395 1.19 9.931 1.736 L 13.929 5.734 L 5.734 13.929 L 1.736 9.931 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.461 1.460)\"/>"},"IconPinLocationFillMono":{viewBox:"0 0 40 40",body:"<path d=\"M 11.849 0.376 C 4.682 2.042 -0.318 8.709 0.016 15.876 C 0.182 21.542 3.682 26.709 14.182 36.709 C 14.849 37.376 15.849 37.376 16.516 36.709 C 27.349 26.376 30.682 21.209 30.682 15.209 C 30.682 5.709 21.849 -1.791 11.849 0.376 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.651 1.291)\"/>"},"IconPinLocationMonoMap":{viewBox:"0 0 24 24",body:"<path d=\"M 9.227 11.942 C 8.866 11.949 8.508 11.884 8.172 11.75 C 7.837 11.617 7.532 11.418 7.274 11.166 C 7.017 10.913 6.812 10.612 6.672 10.279 C 6.533 9.946 6.461 9.589 6.461 9.228 C 6.461 8.867 6.533 8.51 6.672 8.178 C 6.812 7.845 7.017 7.544 7.274 7.291 C 7.532 7.038 7.837 6.839 8.172 6.706 C 8.508 6.573 8.866 6.508 9.227 6.515 C 9.937 6.528 10.614 6.82 11.112 7.328 C 11.61 7.835 11.889 8.518 11.889 9.228 C 11.889 9.939 11.61 10.621 11.112 11.129 C 10.614 11.636 9.937 11.928 9.227 11.942 Z M 7.103 0.237 C 2.833 1.19 -0.161 5.209 0.007 9.581 C 0.139 13.015 2.246 16.087 8.515 22.114 C 8.911 22.494 9.545 22.496 9.942 22.115 C 16.426 15.882 18.458 12.81 18.458 9.228 C 18.458 3.438 13.125 -1.107 7.103 0.238\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.773 0.800)\"/>"},"IconPinMonoPinFix":{viewBox:"0 0 24 24",body:"<path d=\"M 18.67 4.808 L 10.58 0.138 C 10.424 0.047 10.247 0 10.066 0 C 9.886 0 9.709 0.047 9.552 0.138 C 9.396 0.228 9.266 0.357 9.176 0.514 C 9.085 0.67 9.038 0.847 9.037 1.028 L 9.037 2.468 C 9.038 3.37 8.8 4.256 8.349 5.038 C 7.898 5.82 7.249 6.468 6.467 6.92 L 0.514 10.358 C 0.358 10.448 0.228 10.578 0.138 10.734 C 0.048 10.89 0 11.068 0 11.248 C 0 11.429 0.048 11.606 0.138 11.762 C 0.228 11.919 0.358 12.048 0.514 12.139 L 5.909 15.253 C 5.862 15.308 5.805 15.349 5.769 15.413 L 2.313 21.398 C 2.161 21.673 2.123 21.997 2.207 22.3 C 2.291 22.603 2.491 22.861 2.763 23.018 C 3.036 23.175 3.359 23.219 3.663 23.141 C 3.968 23.062 4.229 22.867 4.391 22.598 L 7.847 16.614 C 7.884 16.549 7.891 16.479 7.914 16.412 L 13.31 19.526 C 13.467 19.616 13.644 19.663 13.824 19.663 C 14.005 19.663 14.182 19.616 14.338 19.526 C 14.495 19.435 14.624 19.306 14.715 19.149 C 14.805 18.993 14.852 18.816 14.852 18.636 L 14.852 11.762 C 14.852 9.925 15.831 8.228 17.422 7.31 L 18.67 6.59 C 18.827 6.499 18.957 6.37 19.048 6.213 C 19.138 6.057 19.186 5.879 19.186 5.699 C 19.186 5.518 19.138 5.34 19.048 5.184 C 18.957 5.028 18.827 4.898 18.67 4.808 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.409 0.502)\"/>"},"IconPlaneMonoPlaneTrip":{viewBox:"0 0 24 24",body:"<path d=\"M 20.115 0.824 C 19.6 0.309 18.904 0.013 18.175 0 C 17.446 -0.012 16.741 0.259 16.208 0.756 L 13.284 3.68 L 3.271 1.98 C 2.956 1.926 2.633 1.949 2.328 2.046 C 2.024 2.142 1.747 2.311 1.521 2.536 L 0.857 3.201 C 0.802 3.257 0.76 3.324 0.735 3.399 C 0.711 3.473 0.704 3.552 0.716 3.63 C 0.728 3.707 0.757 3.781 0.803 3.845 C 0.848 3.908 0.908 3.961 0.977 3.997 L 8.837 8.127 L 5.779 11.185 L 3.081 11.185 C 2.551 11.185 2.043 11.396 1.667 11.771 L 0.146 13.291 C 0.08 13.357 0.035 13.44 0.013 13.53 C -0.008 13.62 -0.004 13.715 0.026 13.803 C 0.055 13.891 0.108 13.969 0.18 14.028 C 0.251 14.088 0.337 14.126 0.429 14.139 L 5.633 14.883 C 5.74 14.899 5.839 14.948 5.915 15.025 C 5.991 15.101 6.041 15.2 6.056 15.307 L 6.801 20.511 C 6.814 20.603 6.853 20.689 6.912 20.761 C 6.972 20.832 7.05 20.885 7.138 20.915 C 7.226 20.944 7.32 20.948 7.41 20.927 C 7.501 20.906 7.583 20.86 7.649 20.794 L 9.169 19.274 C 9.355 19.089 9.503 18.868 9.603 18.625 C 9.704 18.382 9.756 18.122 9.756 17.859 L 9.756 15.16 L 12.815 12.1 L 16.942 19.961 C 16.978 20.031 17.031 20.09 17.094 20.136 C 17.158 20.181 17.232 20.211 17.309 20.223 C 17.387 20.235 17.466 20.228 17.54 20.204 C 17.615 20.179 17.683 20.138 17.738 20.082 L 18.403 19.418 C 18.629 19.192 18.797 18.915 18.894 18.611 C 18.991 18.307 19.014 17.983 18.961 17.668 L 17.258 7.658 L 20.184 4.731 C 20.681 4.198 20.952 3.493 20.939 2.764 C 20.926 2.035 20.631 1.339 20.115 0.824 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.031 2.030)\"/>"},"IconPlayMonoPlayMusic":{viewBox:"0 0 24 24",body:"<path d=\"M 15.214 10.743 L 1.546 19.648 C 1.395 19.747 1.22 19.802 1.04 19.81 C 0.86 19.817 0.682 19.775 0.523 19.69 C 0.365 19.604 0.233 19.477 0.141 19.322 C 0.049 19.167 0 18.99 0 18.81 L 0 1 C 0 0.82 0.049 0.643 0.141 0.488 C 0.233 0.334 0.365 0.207 0.523 0.121 C 0.682 0.035 0.86 -0.006 1.04 0.001 C 1.22 0.008 1.395 0.064 1.546 0.162 L 15.214 9.067 C 15.353 9.158 15.468 9.282 15.547 9.429 C 15.627 9.575 15.668 9.739 15.668 9.905 C 15.668 10.072 15.627 10.235 15.547 10.382 C 15.468 10.528 15.353 10.652 15.214 10.743 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.500 2.345)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconPlusCircleMonoPlus":{viewBox:"0 0 24 24",body:"<path d=\"M 15.492 12 L 11.992 12 L 11.992 15.5 C 11.992 15.765 11.887 16.02 11.699 16.207 C 11.512 16.395 11.257 16.5 10.992 16.5 C 10.727 16.5 10.472 16.395 10.285 16.207 C 10.097 16.02 9.992 15.765 9.992 15.5 L 9.992 12 L 6.492 12 C 6.227 12 5.972 11.895 5.785 11.707 C 5.597 11.52 5.492 11.265 5.492 11 C 5.492 10.735 5.597 10.48 5.785 10.293 C 5.972 10.105 6.227 10 6.492 10 L 9.992 10 L 9.992 6.5 C 9.992 6.235 10.097 5.98 10.285 5.793 C 10.472 5.605 10.727 5.5 10.992 5.5 C 11.257 5.5 11.512 5.605 11.699 5.793 C 11.887 5.98 11.992 6.235 11.992 6.5 L 11.992 10 L 15.492 10 C 15.757 10 16.012 10.105 16.199 10.293 C 16.387 10.48 16.492 10.735 16.492 11 C 16.492 11.265 16.387 11.52 16.199 11.707 C 16.012 11.895 15.757 12 15.492 12 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconPlusMonoPlusAdd":{viewBox:"0 0 24 24",body:"<path d=\"M 17.6 8.2 L 10.6 8.2 L 10.6 1.2 C 10.6 0.882 10.474 0.577 10.249 0.351 C 10.023 0.126 9.718 0 9.4 0 C 9.082 0 8.777 0.126 8.551 0.351 C 8.326 0.577 8.2 0.882 8.2 1.2 L 8.2 8.2 L 1.2 8.2 C 0.882 8.2 0.577 8.326 0.351 8.551 C 0.126 8.777 0 9.082 0 9.4 C 0 9.718 0.126 10.023 0.351 10.249 C 0.577 10.474 0.882 10.6 1.2 10.6 L 8.2 10.6 L 8.2 17.6 C 8.2 17.918 8.326 18.223 8.551 18.449 C 8.777 18.674 9.082 18.8 9.4 18.8 C 9.718 18.8 10.023 18.674 10.249 18.449 C 10.474 18.223 10.6 17.918 10.6 17.6 L 10.6 10.6 L 17.6 10.6 C 17.918 10.6 18.223 10.474 18.449 10.249 C 18.674 10.023 18.8 9.718 18.8 9.4 C 18.8 9.082 18.674 8.777 18.449 8.551 C 18.223 8.326 17.918 8.2 17.6 8.2 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.718 2.600)\"/>"},"IconPointCircleMonoPoint":{viewBox:"0 0 24 24",body:"<path d=\"M 11.2 0 C 5.014 0 0 5.014 0 11.2 C 0 17.386 5.014 22.4 11.2 22.4 C 17.386 22.4 22.4 17.386 22.4 11.2 C 22.4 5.014 17.386 0 11.2 0 Z M 12.583 13.489 L 10.266 13.489 L 10.266 16.15 C 10.266 16.779 9.756 17.291 9.125 17.291 C 8.494 17.291 7.984 16.781 7.984 16.15 L 7.984 6.816 C 7.984 6.187 8.494 5.675 9.125 5.675 L 12.582 5.675 C 14.735 5.675 16.487 7.428 16.487 9.582 C 16.488 11.737 14.736 13.489 12.583 13.489 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.800 0.800)\"/><path d=\"M 2.317 0 L 0 0 L 0 3.249 L 2.317 3.249 C 3.212 3.249 3.941 2.52 3.941 1.624 C 3.941 0.729 3.212 0 2.317 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.800 0.800) matrix(1 0 0 1 10.266 7.958)\"/>"},"IconPrinterMonoPrinterPrint":{viewBox:"0 0 24 24",body:"<path d=\"M 11.8 4.3 L 0 4.3 L 0 0.9 C 0 0.4 0.4 0 0.9 0 L 10.9 0 C 11.4 0 11.8 0.4 11.8 0.9 L 11.8 4.3 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 2.100) matrix(1 0 0 1 3.900 0)\"/><path d=\"M 11.019 7 L 0.619 7 C 0.219 7 -0.081 6.7 0.019 6.3 L 0.619 0.6 C 0.619 0.3 0.919 0 1.219 0 L 10.419 0 C 10.719 0 11.019 0.2 11.019 0.6 L 11.619 6.3 C 11.719 6.7 11.419 7 11.019 7 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 2.100) matrix(1 0 0 1 3.981 12.800)\"/><path d=\"M 17.8 0 L 1.8 0 C 0.8 0 0 0.8 0 1.8 L 0 7.9 C 0 8.9 0.8 9.7 1.8 9.7 L 2.9 9.7 L 3.1 7.9 C 3.2 6.8 4.1 6 5.2 6 L 14.4 6 C 15.5 6 16.4 6.8 16.5 7.9 L 16.7 9.7 L 17.8 9.7 C 18.8 9.7 19.6 8.9 19.6 7.9 L 19.6 1.7 C 19.6 0.8 18.8 0 17.8 0 Z M 4.8 3 L 2.5 3 C 2.1 3 1.8 2.6 1.8 2.2 C 1.8 1.8 2.1 1.5 2.5 1.5 L 4.8 1.5 C 5.2 1.5 5.5 1.8 5.5 2.2 C 5.5 2.7 5.2 3 4.8 3 Z M 17.1 3 C 16.7 3 16.4 2.7 16.4 2.3 C 16.4 1.9 16.7 1.6 17.1 1.6 C 17.5 1.6 17.8 1.9 17.8 2.3 C 17.8 2.7 17.5 3 17.1 3 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 2.100) matrix(1 0 0 1 0 5.500)\"/>"},"IconProgressMonoProgressLoading":{viewBox:"0 0 24 24",body:"<path d=\"M 10.6 0 C 10.308 0 10.028 0.116 9.822 0.322 C 9.616 0.528 9.5 0.808 9.5 1.1 L 9.5 4.142 C 9.5 4.434 9.616 4.714 9.822 4.92 C 10.028 5.126 10.308 5.242 10.6 5.242 C 10.892 5.242 11.172 5.126 11.378 4.92 C 11.584 4.714 11.7 4.434 11.7 4.142 L 11.7 1.1 C 11.7 0.956 11.672 0.813 11.616 0.679 C 11.561 0.546 11.48 0.424 11.378 0.322 C 11.276 0.22 11.154 0.139 11.021 0.084 C 10.887 0.028 10.744 0 10.6 0 Z M 5.256 6.811 C 5.358 6.914 5.479 6.995 5.613 7.05 C 5.746 7.106 5.889 7.135 6.034 7.135 C 6.179 7.135 6.322 7.106 6.455 7.05 C 6.589 6.995 6.71 6.914 6.812 6.811 C 7.018 6.605 7.133 6.325 7.133 6.033 C 7.133 5.742 7.018 5.462 6.812 5.256 L 4.66 3.105 C 4.45 2.916 4.176 2.815 3.894 2.822 C 3.612 2.829 3.343 2.944 3.144 3.144 C 2.944 3.343 2.829 3.612 2.822 3.894 C 2.815 4.176 2.916 4.45 3.105 4.66 L 5.255 6.81 L 5.256 6.811 Z M 5.242 10.601 C 5.242 10.309 5.126 10.029 4.92 9.823 C 4.714 9.617 4.434 9.501 4.142 9.501 L 1.1 9.501 C 0.808 9.501 0.528 9.617 0.322 9.823 C 0.116 10.029 0 10.309 0 10.601 C 0 10.893 0.116 11.173 0.322 11.379 C 0.528 11.585 0.808 11.701 1.1 11.701 L 4.142 11.701 C 4.434 11.701 4.714 11.585 4.92 11.379 C 5.126 11.173 5.242 10.893 5.242 10.601 Z M 5.256 14.389 L 3.105 16.539 C 2.899 16.745 2.783 17.025 2.783 17.317 C 2.783 17.609 2.899 17.889 3.105 18.095 C 3.311 18.301 3.591 18.417 3.883 18.417 C 4.175 18.417 4.455 18.301 4.661 18.095 L 6.811 15.945 C 7.002 15.736 7.106 15.461 7.1 15.178 C 7.093 14.894 6.978 14.624 6.778 14.423 C 6.577 14.223 6.307 14.107 6.024 14.101 C 5.74 14.095 5.465 14.198 5.256 14.389 Z M 10.6 15.958 C 10.308 15.958 10.028 16.074 9.822 16.28 C 9.616 16.486 9.5 16.766 9.5 17.058 L 9.5 20.1 C 9.5 20.392 9.616 20.672 9.822 20.878 C 10.028 21.084 10.308 21.2 10.6 21.2 C 10.892 21.2 11.172 21.084 11.378 20.878 C 11.584 20.672 11.7 20.392 11.7 20.1 L 11.7 17.058 C 11.7 16.766 11.584 16.486 11.378 16.28 C 11.172 16.074 10.892 15.958 10.6 15.958 Z M 15.944 14.389 C 15.842 14.287 15.721 14.206 15.587 14.15 C 15.454 14.095 15.31 14.067 15.166 14.067 C 15.022 14.067 14.878 14.095 14.745 14.15 C 14.611 14.206 14.49 14.287 14.388 14.389 C 14.286 14.491 14.205 14.612 14.149 14.746 C 14.094 14.879 14.066 15.023 14.066 15.167 C 14.066 15.311 14.094 15.455 14.149 15.588 C 14.205 15.722 14.286 15.843 14.388 15.945 L 16.539 18.095 C 16.641 18.197 16.762 18.279 16.896 18.334 C 17.029 18.39 17.172 18.418 17.317 18.418 C 17.462 18.418 17.605 18.39 17.738 18.334 C 17.872 18.279 17.993 18.197 18.095 18.095 C 18.197 17.993 18.278 17.872 18.334 17.738 C 18.389 17.605 18.417 17.461 18.417 17.317 C 18.417 17.173 18.389 17.029 18.334 16.896 C 18.278 16.762 18.197 16.641 18.095 16.539 L 15.944 14.389 Z M 20.1 9.5 L 17.058 9.5 C 16.766 9.5 16.486 9.616 16.28 9.822 C 16.074 10.028 15.958 10.308 15.958 10.6 C 15.958 10.892 16.074 11.172 16.28 11.378 C 16.486 11.584 16.766 11.7 17.058 11.7 L 20.1 11.7 C 20.392 11.7 20.672 11.584 20.878 11.378 C 21.084 11.172 21.2 10.892 21.2 10.6 C 21.2 10.308 21.084 10.028 20.878 9.822 C 20.672 9.616 20.392 9.5 20.1 9.5 Z M 15.166 7.134 C 15.447 7.134 15.729 7.027 15.944 6.812 L 18.095 4.661 C 18.289 4.452 18.394 4.176 18.389 3.891 C 18.384 3.606 18.268 3.335 18.067 3.133 C 17.865 2.932 17.594 2.816 17.309 2.811 C 17.024 2.806 16.748 2.911 16.539 3.105 L 14.389 5.255 C 14.235 5.409 14.131 5.605 14.088 5.818 C 14.046 6.032 14.067 6.253 14.151 6.454 C 14.234 6.655 14.375 6.827 14.555 6.948 C 14.736 7.069 14.948 7.134 15.166 7.134 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.400 1.400)\"/>"},"IconProhibitionSignMonoX":{viewBox:"0 0 24 24",body:"<path d=\"M 10 2.4 C 14.191 2.4 17.6 5.809 17.6 10 C 17.6 14.191 14.191 17.6 10 17.6 C 5.809 17.6 2.4 14.191 2.4 10 C 2.4 5.809 5.809 2.4 10 2.4 Z M 10 0 C 4.477 0 0 4.477 0 10 C 0 15.523 4.477 20 10 20 C 15.523 20 20 15.523 20 10 C 20 4.477 15.523 0 10 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.906 2)\"/><path d=\"M 12.251 13.451 C 11.944 13.451 11.637 13.334 11.402 13.099 L 0.352 2.048 C -0.117 1.579 -0.117 0.819 0.352 0.351 C 0.821 -0.117 1.581 -0.118 2.049 0.351 L 13.1 11.402 C 13.569 11.871 13.569 12.631 13.1 13.099 C 12.866 13.333 12.558 13.451 12.251 13.451 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.906 2) matrix(1 0 0 1 3.368 3.275)\"/>"},"IconQrCodeMonoQr":{viewBox:"0 0 24 24",body:"<path d=\"M 7.7 0 L 1 0 C 0.5 0 0 0.4 0 1 L 0 7.6 C 0 8.1 0.4 8.6 1 8.6 L 7.6 8.6 C 8.1 8.6 8.6 8.2 8.6 7.6 L 8.6 1 C 8.6 0.4 8.2 0 7.7 0 Z M 6.7 6.6 L 2 6.6 L 2 1.9 L 6.7 1.9 L 6.7 6.6 Z M 7.7 10.5 L 1 10.5 C 0.5 10.5 0 10.9 0 11.5 L 0 18.1 C 0 18.6 0.4 19.1 1 19.1 L 7.6 19.1 C 8.1 19.1 8.6 18.7 8.6 18.1 L 8.6 11.5 C 8.6 10.9 8.2 10.5 7.7 10.5 Z M 6.7 17.1 L 2 17.1 L 2 12.4 L 6.7 12.4 L 6.7 17.1 Z M 18.1 0 L 11.4 0 C 10.9 0 10.4 0.4 10.4 1 L 10.4 7.6 C 10.4 8.1 10.8 8.6 11.4 8.6 L 18.1 8.6 C 18.6 8.6 19.1 8.2 19.1 7.6 L 19.1 1 C 19.1 0.4 18.7 0 18.1 0 Z M 17.2 6.6 L 12.4 6.6 L 12.4 1.9 L 17.2 1.9 L 17.2 6.6 Z M 18.6 16.2 L 16.2 16.2 L 16.2 18.5 C 16.2 18.8 16.4 19 16.7 19 L 18.6 19 C 18.9 19 19.1 18.8 19.1 18.5 L 19.1 16.6 C 19.1 16.4 18.9 16.2 18.6 16.2 Z M 13.4 16.2 L 11 16.2 C 10.7 16.2 10.5 16.4 10.5 16.7 L 10.5 18.5 C 10.5 18.8 10.7 19 11 19 L 12.9 19 C 13.2 19 13.4 18.8 13.4 18.5 L 13.4 16.2 L 16.2 16.2 L 16.2 13.3 L 13.4 13.3 L 13.4 16.2 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.400 2.500)\"/><path d=\"M 7.6 10 L 10 10 L 10 7.6 C 10 7.3 9.8 7.1 9.5 7.1 L 7.6 7.1 C 7.3 7.1 7.1 7.3 7.1 7.6 L 7.1 9.5 C 7.2 9.8 7.4 10 7.6 10 Z M 15.2 7.2 L 13.3 7.2 C 13 7.2 12.8 7.4 12.8 7.7 L 12.8 10.1 L 15.2 10.1 C 15.5 10.1 15.7 9.9 15.7 9.6 L 15.7 7.7 C 15.7 7.4 15.5 7.2 15.2 7.2 Z M 0 0 L 1.9 0 L 1.9 1.9 L 0 1.9 L 0 0 Z M 0 10.5 L 1.9 10.5 L 1.9 12.4 L 0 12.4 L 0 10.5 Z M 10.5 0 L 12.4 0 L 12.4 1.9 L 10.5 1.9 L 10.5 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.400 2.500) matrix(1 0 0 1 3.400 3.300)\"/>"},"IconQrMonoQr":{viewBox:"0 0 24 24",body:"<path d=\"M -1 4.25 C -1 4.802 -0.552 5.25 0 5.25 C 0.552 5.25 1 4.802 1 4.25 L 0 4.25 L -1 4.25 Z M 4.25 1 C 4.802 1 5.25 0.552 5.25 0 C 5.25 -0.552 4.802 -1 4.25 -1 L 4.25 0 L 4.25 1 Z M 0 4.25 L 1 4.25 L 1 1.275 L 0 1.275 L -1 1.275 L -1 4.25 L 0 4.25 Z M 0 1.275 L 1 1.275 C 1 1.123 1.123 1 1.275 1 L 1.275 0 L 1.275 -1 C 0.019 -1 -1 0.019 -1 1.275 L 0 1.275 Z M 1.275 0 L 1.275 1 L 4.25 1 L 4.25 0 L 4.25 -1 L 1.275 -1 L 1.275 0 Z\" fill=\"rgb(149,159,169)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.500 3.500)\"/><path d=\"M 4.25 5.25 C 4.802 5.25 5.25 4.802 5.25 4.25 C 5.25 3.698 4.802 3.25 4.25 3.25 L 4.25 4.25 L 4.25 5.25 Z M 1 0 C 1 -0.552 0.552 -1 0 -1 C -0.552 -1 -1 -0.552 -1 0 L 0 0 L 1 0 Z M 4.25 4.25 L 4.25 3.25 L 1.275 3.25 L 1.275 4.25 L 1.275 5.25 L 4.25 5.25 L 4.25 4.25 Z M 1.275 4.25 L 1.275 3.25 C 1.123 3.25 1 3.127 1 2.975 L 0 2.975 L -1 2.975 C -1 4.231 0.019 5.25 1.275 5.25 L 1.275 4.25 Z M 0 2.975 L 1 2.975 L 1 0 L 0 0 L -1 0 L -1 2.975 L 0 2.975 Z\" fill=\"rgb(149,159,169)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.500 16.250)\"/><path d=\"M 3.25 4.25 C 3.25 4.802 3.698 5.25 4.25 5.25 C 4.802 5.25 5.25 4.802 5.25 4.25 L 4.25 4.25 L 3.25 4.25 Z M 0 -1 C -0.552 -1 -1 -0.552 -1 0 C -1 0.552 -0.552 1 0 1 L 0 0 L 0 -1 Z M 4.25 4.25 L 5.25 4.25 L 5.25 1.275 L 4.25 1.275 L 3.25 1.275 L 3.25 4.25 L 4.25 4.25 Z M 4.25 1.275 L 5.25 1.275 C 5.25 0.019 4.231 -1 2.975 -1 L 2.975 0 L 2.975 1 C 3.127 1 3.25 1.123 3.25 1.275 L 4.25 1.275 Z M 2.975 0 L 2.975 -1 L 0 -1 L 0 0 L 0 1 L 2.975 1 L 2.975 0 Z\" fill=\"rgb(149,159,169)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 16.250 3.500)\"/><path d=\"M 0 3.25 C -0.552 3.25 -1 3.698 -1 4.25 C -1 4.802 -0.552 5.25 0 5.25 L 0 4.25 L 0 3.25 Z M 5.25 0 C 5.25 -0.552 4.802 -1 4.25 -1 C 3.698 -1 3.25 -0.552 3.25 0 L 4.25 0 L 5.25 0 Z M 0 4.25 L 0 5.25 L 2.975 5.25 L 2.975 4.25 L 2.975 3.25 L 0 3.25 L 0 4.25 Z M 2.975 4.25 L 2.975 5.25 C 4.231 5.25 5.25 4.231 5.25 2.975 L 4.25 2.975 L 3.25 2.975 C 3.25 3.127 3.127 3.25 2.975 3.25 L 2.975 4.25 Z M 4.25 2.975 L 5.25 2.975 L 5.25 0 L 4.25 0 L 3.25 0 L 3.25 2.975 L 4.25 2.975 Z\" fill=\"rgb(149,159,169)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 16.250 16.250)\"/><path d=\"M 0 0 L 2.834 0 L 2.834 2.834 L 0 2.834 L 0 0 Z\" fill=\"rgb(151,161,171)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.749 7.748) matrix(1 0 0 1 2.835 2.836)\"/><path d=\"M 0.59 0 L 2.243 0 C 2.569 0 2.834 0.265 2.834 0.591 L 2.834 2.244 C 2.834 2.57 2.569 2.835 2.243 2.835 L 0 2.835 L 0 0.592 C 0 0.266 0.265 0.001 0.591 0.001 L 0.59 0 Z\" fill=\"rgb(151,161,171)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.749 7.748) matrix(1 0 0 1 5.668 0.001)\"/><path d=\"M 0.59 0.001 L 2.243 0.001 C 2.569 0.001 2.834 0.266 2.834 0.592 L 2.834 2.835 L 0.591 2.835 C 0.265 2.835 0 2.57 0 2.244 L 0 0.591 C 0 0.265 0.265 0 0.591 0 L 0.59 0.001 Z\" fill=\"rgb(151,161,171)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.749 7.748) matrix(1 0 0 1 0.002 0)\"/><path d=\"M 0.001 0 L 2.244 0 C 2.57 0 2.835 0.265 2.835 0.591 L 2.835 2.244 C 2.835 2.57 2.57 2.835 2.244 2.835 L 0.591 2.835 C 0.265 2.835 0 2.57 0 2.244 L 0 0.001 L 0.001 0 Z\" fill=\"rgb(151,161,171)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.749 7.748) matrix(1 0 0 1 5.666 5.669)\"/><path d=\"M 0.592 0.001 L 2.835 0.001 L 2.835 2.244 C 2.835 2.57 2.57 2.835 2.244 2.835 L 0.591 2.835 C 0.265 2.835 0 2.57 0 2.244 L 0 0.591 C 0 0.265 0.265 0 0.591 0 L 0.592 0.001 Z\" fill=\"rgb(151,161,171)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 7.749 7.748) matrix(1 0 0 1 0 5.668)\"/>"},"IconQuestionCircleMonoQuestion":{viewBox:"0 0 24 24",body:"<path d=\"M 13.82 8.75 C 13.55 9.93 12.73 10.45 12.14 10.83 C 11.52 11.22 11.31 11.39 11.31 11.95 C 11.31 12.42 10.93 12.8 10.46 12.8 C 9.99 12.8 9.61 12.42 9.61 11.95 C 9.61 10.43 10.54 9.83 11.23 9.4 C 11.77 9.05 12.06 8.85 12.17 8.37 C 12.27 7.95 12.19 7.58 11.94 7.27 C 11.62 6.86 11.04 6.6 10.47 6.6 C 9.54 6.6 8.79 7.35 8.79 8.28 C 8.79 8.75 8.41 9.13 7.94 9.13 C 7.47 9.13 7.09 8.75 7.09 8.28 C 7.09 6.41 8.61 4.9 10.47 4.9 C 11.56 4.9 12.63 5.4 13.28 6.21 C 13.85 6.93 14.05 7.83 13.83 8.75 M 10.48 16.08 C 9.85 16.08 9.34 15.57 9.34 14.94 C 9.34 14.31 9.85 13.8 10.48 13.8 C 11.11 13.8 11.62 14.31 11.62 14.94 C 11.62 15.57 11.11 16.08 10.48 16.08 Z M 10.42 0 C 4.66 0 0 4.66 0 10.41 C 0 16.16 4.66 20.82 10.41 20.82 C 16.16 20.82 20.82 16.16 20.82 10.41 C 20.82 4.66 16.16 0 10.41 0\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.590 1.590)\"/>"},"IconQuestionMonoQuestionQuestionmark":{viewBox:"0 0 24 24",body:"<path d=\"M 2.798 14.074 C 2.798 13.032 3.638 12.224 4.713 12.224 C 5.787 12.224 6.628 13.032 6.628 14.074 C 6.628 15.117 5.788 15.926 4.713 15.926 C 3.638 15.926 2.798 15.117 2.798 14.074 Z M 5.053 0 C 8.011 0 10 1.67 10 4.17 C 10 5.713 9.309 6.852 7.777 7.766 C 6.404 8.596 6.021 9.117 6.021 10.117 L 6.021 10.819 L 3.224 10.819 L 3.202 10.117 C 3.128 8.341 3.638 7.415 5.053 6.565 C 6.426 5.723 6.798 5.235 6.798 4.266 C 6.798 3.298 6.011 2.639 4.862 2.639 C 3.692 2.639 2.915 3.372 2.852 4.511 L 0 4.511 C 0.043 1.713 1.979 0 5.053 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 7 4)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\"/>"},"IconQuotationMono":{viewBox:"0 0 24 24",body:"<path d=\"M 1.2 16.4 C 0.537 16.4 0 15.863 0 15.2 L 0 1.2 C 0 0.537 0.538 0 1.2 0 C 1.862 0 2.4 0.538 2.4 1.2 L 2.4 15.2 C 2.4 15.863 1.863 16.4 1.2 16.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.230 3.800)\"/><path d=\"M 12.178 2.4 L 1.2 2.4 C 0.537 2.4 0 1.862 0 1.2 C 0 0.538 0.538 0 1.2 0 L 12.178 0 C 12.841 0 13.378 0.538 13.378 1.2 C 13.378 1.862 12.841 2.4 12.178 2.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.230 3.800) matrix(1 0 0 1 4.162 7)\"/><path d=\"M 9.45 2.4 L 1.2 2.4 C 0.537 2.4 0 1.863 0 1.2 C 0 0.537 0.538 0 1.2 0 L 9.45 0 C 10.113 0 10.65 0.537 10.65 1.2 C 10.65 1.863 10.113 2.4 9.45 2.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.230 3.800) matrix(1 0 0 1 4.163 12.809)\"/><path d=\"M 10.764 2.4 L 1.2 2.4 C 0.537 2.4 0 1.862 0 1.2 C 0 0.538 0.538 0 1.2 0 L 10.764 0 C 11.427 0 11.964 0.538 11.964 1.2 C 11.964 1.862 11.427 2.4 10.764 2.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.230 3.800) matrix(1 0 0 1 4.162 1.192)\"/>"},"IconRainbowMonoLgbt":{viewBox:"0 0 24 24",body:"<path d=\"M 22 3.25 L 22 0 C 10.1 0.55 0.533 10.117 0 22.017 L 3.25 22.017 C 3.783 11.917 11.9 3.8 22 3.25 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.833) matrix(1 0 0 1 -1 -0.833) matrix(1 0 0 1 1 0.950)\"/><path d=\"M 0 17.3 L 3.35 17.3 C 3.867 9.833 9.833 3.85 17.283 3.317 L 17.283 0 C 7.983 0.533 0.533 8 0 17.3 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.833) matrix(1 0 0 1 0 0.117) matrix(1 0 0 1 4.717 4.717)\"/><path d=\"M 0 12.383 L 3.55 12.383 C 4.05 7.767 7.717 4.1 12.317 3.6 L 12.317 0 C 5.767 0.533 0.517 5.8 0 12.383 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.833) matrix(1 0 0 1 0 0.117) matrix(1 0 0 1 9.667 9.633)\"/><path d=\"M 22 3.25 L 22 0 C 10.1 0.55 0.533 10.117 0 22.017 L 3.25 22.017 C 3.783 11.917 11.9 3.8 22 3.25 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 0.833) matrix(1 0 0 1 0 0.117)\"/>"},"IconRandomDiceMonoDice":{viewBox:"0 0 24 24",body:"<path d=\"M 9.069 0.23 L 1.069 4.437 C 0.412 4.783 0 5.464 0 6.207 L 0 15.032 C 0 15.74 0.375 16.396 0.986 16.756 L 8.986 21.461 C 9.612 21.83 10.388 21.83 11.014 21.461 L 19.014 16.756 C 19.625 16.396 20 15.74 20 15.032 L 20 6.207 C 20 5.464 19.588 4.783 18.931 4.437 L 10.931 0.23 C 10.348 -0.077 9.652 -0.077 9.069 0.23 Z M 11.882 4.999 C 11.882 5.649 11.039 6.176 10 6.176 C 8.96 6.176 8.117 5.649 8.117 4.999 C 8.117 4.349 8.96 3.823 10 3.823 C 11.039 3.823 11.882 4.349 11.882 4.999 Z M 3.832 12.488 C 3.382 12.747 2.688 12.388 2.281 11.685 C 1.875 10.981 1.911 10.2 2.361 9.94 C 2.811 9.68 3.506 10.04 3.912 10.743 C 4.318 11.447 4.282 12.228 3.832 12.488 Z M 17.954 11.096 C 17.548 11.8 16.853 12.159 16.403 11.899 C 15.953 11.639 15.917 10.858 16.323 10.155 C 16.729 9.452 17.424 9.092 17.874 9.352 C 18.324 9.612 18.36 10.393 17.954 11.096 Z M 14.344 15.076 C 14.795 15.336 15.489 14.976 15.895 14.273 C 16.301 13.569 16.265 12.789 15.815 12.529 C 15.365 12.269 14.671 12.628 14.265 13.332 C 13.859 14.035 13.894 14.816 14.344 15.076 Z M 13.836 17.449 C 13.43 18.153 12.736 18.512 12.286 18.252 C 11.835 17.992 11.8 17.211 12.206 16.508 C 12.612 15.805 13.306 15.445 13.756 15.705 C 14.206 15.965 14.242 16.746 13.836 17.449 Z M 6.891 17.899 C 6.441 18.159 5.746 17.8 5.34 17.096 C 4.934 16.393 4.97 15.612 5.42 15.352 C 5.87 15.092 6.564 15.452 6.971 16.155 C 7.377 16.859 7.341 17.639 6.891 17.899 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 1.121)\"/>"},"IconReceiptMonoReceiptCheck":{viewBox:"0 0 24 24",body:"<path d=\"M 17.4 0 L 16.9 0 L 1.5 0 L 1 0 C 0.4 0 0 0.5 0 1 L 0 19 C 0 19.4 0.2 19.7 0.5 19.9 L 1.7 20.7 C 2.1 20.9 2.5 20.9 2.9 20.7 L 4 20 C 4.4 19.8 4.8 19.8 5.2 20 L 6.3 20.7 C 6.7 20.9 7.1 20.9 7.5 20.7 L 8.6 20 C 9 19.8 9.4 19.8 9.8 20 L 10.9 20.7 C 11.3 20.9 11.7 20.9 12.1 20.7 L 13.2 20 C 13.6 19.8 14 19.8 14.4 20 L 15.5 20.7 C 15.9 20.9 16.3 20.9 16.7 20.7 L 17.9 19.9 C 18.2 19.7 18.4 19.4 18.4 19 L 18.4 1 C 18.4 0.5 18 0 17.4 0 Z M 15.2 10.9 L 13.1 10.9 L 12.4 13.6 C 12.2 14 11.9 14.3 11.4 14.3 C 10.9 14.3 10.5 14 10.4 13.6 L 9.2 9.1 L 8 13.6 C 7.8 14 7.5 14.3 7 14.3 C 6.5 14.3 6.1 14 6 13.6 L 5.3 10.9 L 3.2 10.9 C 2.8 10.9 2.4 10.5 2.4 10.1 C 2.4 9.7 2.8 9.3 3.2 9.3 L 4.8 9.3 L 4.1 6.9 C 4 6.5 4.3 6 4.7 5.9 C 5.1 5.8 5.6 6.1 5.7 6.5 L 7 11.1 L 8.2 6.6 C 8.4 6.2 8.7 5.9 9.2 5.9 C 9.7 5.9 10.1 6.2 10.2 6.6 L 11.3 11.1 L 12.6 6.5 C 12.7 6 13.2 5.8 13.6 5.9 C 14.1 6 14.3 6.5 14.2 6.9 L 13.6 9.3 L 15.2 9.3 C 15.6 9.3 16 9.7 16 10.1 C 16 10.5 15.6 10.9 15.2 10.9 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.800 1.400)\"/>"},"IconRectangleMonoRectangle":{viewBox:"0 0 24 24",body:"<path d=\"M 18.226 14.783 L 18.226 5.171 C 19.233 4.786 19.954 3.817 19.954 2.677 C 19.954 1.201 18.753 0 17.276 0 C 16.137 0 15.168 0.719 14.782 1.725 L 5.171 1.725 C 4.786 0.719 3.817 0 2.677 0 C 1.201 0 0 1.201 0 2.677 C 0 3.817 0.719 4.786 1.726 5.171 L 1.726 14.783 C 0.72 15.168 0 16.137 0 17.277 C 0 18.753 1.201 19.954 2.677 19.954 C 3.818 19.954 4.787 19.233 5.172 18.225 L 14.781 18.225 C 15.166 19.233 16.135 19.954 17.276 19.954 C 18.753 19.954 19.954 18.753 19.954 17.277 C 19.954 16.137 19.234 15.168 18.226 14.783 Z M 16.678 1.988 C 16.84 1.847 17.045 1.754 17.276 1.754 C 17.786 1.754 18.2 2.168 18.2 2.677 C 18.2 2.908 18.106 3.114 17.965 3.276 C 17.796 3.47 17.554 3.6 17.276 3.6 C 16.767 3.6 16.353 3.186 16.353 2.677 C 16.353 2.399 16.483 2.157 16.678 1.988 Z M 2.677 1.754 C 2.908 1.754 3.112 1.847 3.274 1.988 C 3.469 2.157 3.599 2.399 3.599 2.677 C 3.599 3.186 3.185 3.6 2.676 3.6 C 2.398 3.6 2.156 3.47 1.987 3.275 C 1.846 3.113 1.753 2.908 1.753 2.677 C 1.753 2.168 2.168 1.754 2.677 1.754 Z M 3.277 17.964 C 3.115 18.106 2.909 18.2 2.677 18.2 C 2.168 18.2 1.754 17.786 1.754 17.277 C 1.754 17.046 1.848 16.84 1.989 16.678 C 2.158 16.484 2.4 16.354 2.677 16.354 C 3.186 16.354 3.6 16.768 3.6 17.277 C 3.6 17.554 3.471 17.795 3.277 17.964 Z M 14.798 16.274 L 5.155 16.274 C 4.883 15.604 4.348 15.071 3.678 14.799 L 3.678 5.156 C 4.35 4.884 4.884 4.349 5.156 3.677 L 14.797 3.677 C 15.069 4.348 15.603 4.883 16.274 5.155 L 16.274 14.799 C 15.604 15.071 15.07 15.604 14.798 16.274 Z M 17.276 18.2 C 17.044 18.2 16.838 18.106 16.675 17.964 C 16.481 17.795 16.353 17.554 16.353 17.277 C 16.353 16.768 16.767 16.354 17.276 16.354 C 17.553 16.354 17.794 16.483 17.964 16.676 C 18.106 16.838 18.2 17.045 18.2 17.277 C 18.2 17.786 17.786 18.2 17.276 18.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.023 2.023)\"/>"},"IconRefreshClockMono":{viewBox:"0 0 24 24",body:"<path d=\"M 6.264 16.827 C 6.646 16.281 7.4 16.15 7.946 16.534 C 11.035 18.704 15.218 18.339 17.893 15.664 C 20.92 12.637 20.92 7.712 17.893 4.684 C 14.866 1.657 9.941 1.657 6.914 4.684 C 5.538 6.06 4.751 7.862 4.657 9.792 L 6.069 9.792 C 6.885 9.792 7.356 10.719 6.873 11.378 L 4.338 14.837 C 3.94 15.38 3.127 15.381 2.73 14.836 L 0.195 11.378 C -0.288 10.719 0.183 9.792 0.999 9.791 L 2.241 9.791 C 2.337 7.217 3.373 4.807 5.205 2.976 C 9.173 -0.992 15.632 -0.992 19.6 2.976 C 23.568 6.944 23.569 13.403 19.6 17.371 C 16.093 20.878 10.609 21.356 6.557 18.509 C 6.011 18.126 5.88 17.373 6.264 16.827 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.588 1.913)\"/><path d=\"M 1.25 0 C 1.94 0 2.5 0.56 2.5 1.25 L 2.5 5.588 L 5.238 8.326 C 5.726 8.814 5.726 9.606 5.238 10.094 C 4.75 10.582 3.958 10.582 3.47 10.094 L 0.366 6.99 C 0.132 6.755 0 6.438 0 6.106 L 0 1.25 C 0 0.56 0.56 0 1.25 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.588 1.913) matrix(1 0 0 1 11.077 4.590)\"/>"},"IconRefreshMonoRefreshRe":{viewBox:"0 0 24 24",body:"<path d=\"M 19.104 10.477 C 18.791 10.422 18.468 10.495 18.208 10.678 C 17.948 10.861 17.771 11.14 17.716 11.453 C 17.405 13.242 16.471 14.863 15.08 16.03 C 13.689 17.197 11.931 17.835 10.115 17.831 C 5.861 17.831 2.4 14.37 2.4 10.115 C 2.4 5.861 5.861 2.4 10.115 2.4 C 12.049 2.4 13.868 3.114 15.29 4.404 L 14.298 5.396 C 14.168 5.525 14.077 5.688 14.034 5.866 C 13.991 6.044 13.999 6.231 14.056 6.405 C 14.113 6.579 14.217 6.734 14.356 6.852 C 14.496 6.971 14.666 7.048 14.847 7.076 L 19.059 7.726 C 19.213 7.75 19.37 7.737 19.518 7.688 C 19.666 7.64 19.8 7.557 19.91 7.447 C 20.02 7.337 20.103 7.202 20.151 7.054 C 20.199 6.906 20.212 6.749 20.188 6.595 L 19.539 2.384 C 19.511 2.203 19.434 2.033 19.315 1.894 C 19.197 1.754 19.042 1.65 18.868 1.593 C 18.694 1.536 18.507 1.529 18.329 1.571 C 18.151 1.614 17.988 1.705 17.859 1.834 L 16.987 2.707 C 15.123 0.965 12.666 -0.003 10.115 0 C 4.538 0 0 4.538 0 10.115 C 0 15.693 4.538 20.23 10.115 20.23 C 15.043 20.23 19.233 16.712 20.08 11.865 C 20.135 11.552 20.062 11.229 19.879 10.969 C 19.696 10.709 19.417 10.532 19.104 10.477 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.863 1.885)\"/>"},"IconRefreshUndoMonoRefresh":{viewBox:"0 0 24 24",body:"<path d=\"M 1.095 10.475 C 1.747 10.36 2.369 10.798 2.483 11.451 C 3.129 15.147 6.325 17.829 10.084 17.829 C 14.338 17.829 17.799 14.368 17.799 10.114 C 17.799 5.86 14.338 2.399 10.084 2.399 C 8.15 2.399 6.332 3.113 4.91 4.403 L 5.902 5.395 C 6.476 5.968 6.154 6.951 5.353 7.074 L 1.142 7.724 C 0.48 7.826 -0.09 7.256 0.012 6.594 L 0.661 2.383 C 0.785 1.582 1.767 1.26 2.341 1.834 L 3.214 2.707 C 5.09 0.965 7.511 0 10.086 0 C 15.663 0 20.201 4.538 20.201 10.115 C 20.201 15.693 15.663 20.23 10.086 20.23 C 5.158 20.23 0.968 16.712 0.121 11.865 C 0.007 11.212 0.444 10.591 1.097 10.477 L 1.095 10.475 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.865 1.887)\"/>"},"IconRepeatMonoRepeatLoop":{viewBox:"0 0 24 24",body:"<path d=\"M 2.4 11.082 L 2.4 10.072 C 2.4 7.282 4.67 5.012 7.46 5.012 L 15.05 5.012 L 14.49 5.572 C 14.265 5.798 14.138 6.103 14.138 6.422 C 14.138 6.741 14.265 7.047 14.49 7.272 C 14.715 7.498 15.021 7.624 15.34 7.624 C 15.659 7.624 15.965 7.498 16.19 7.272 L 18.8 4.662 C 19.02 4.432 19.15 4.132 19.15 3.812 C 19.15 3.492 19.02 3.192 18.8 2.962 L 16.19 0.352 C 16.078 0.24 15.946 0.152 15.8 0.092 C 15.654 0.031 15.498 0 15.34 0 C 15.182 0 15.026 0.031 14.88 0.092 C 14.734 0.152 14.602 0.24 14.49 0.352 C 14.265 0.578 14.138 0.883 14.138 1.202 C 14.138 1.521 14.265 1.827 14.49 2.052 L 15.05 2.612 L 7.46 2.612 C 3.35 2.612 0 5.962 0 10.072 L 0 11.082 C 0 11.742 0.54 12.282 1.2 12.282 C 1.86 12.282 2.4 11.752 2.4 11.082 Z M 19 9.142 C 18.34 9.142 17.8 9.682 17.8 10.342 L 17.8 11.352 C 17.8 14.142 15.53 16.412 12.74 16.412 L 5.15 16.412 L 5.71 15.852 C 5.935 15.627 6.062 15.321 6.062 15.002 C 6.062 14.683 5.935 14.378 5.71 14.152 C 5.485 13.927 5.179 13.8 4.86 13.8 C 4.541 13.8 4.235 13.927 4.01 14.152 L 1.4 16.762 C 1.17 16.982 1.05 17.292 1.05 17.612 C 1.05 17.932 1.18 18.232 1.4 18.462 L 4.01 21.072 C 4.236 21.297 4.541 21.423 4.86 21.423 C 5.179 21.423 5.484 21.297 5.71 21.072 C 6.18 20.602 6.18 19.842 5.71 19.372 L 5.15 18.812 L 12.74 18.812 C 16.85 18.812 20.2 15.462 20.2 11.352 L 20.2 10.342 C 20.2 9.672 19.66 9.142 19 9.142 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.900 1.288)\"/>"},"IconRoadMonoRoadTraffic":{viewBox:"0 0 24 24",body:"<path d=\"M 9.177 5.5 L 11.177 5.5 L 11.177 2.5 L 9.177 2.5 L 9.177 5.5 Z M 9.177 11.5 L 11.177 11.5 L 11.177 8.5 L 9.177 8.5 L 9.177 11.5 Z M 9.177 17.5 L 11.177 17.5 L 11.177 14.5 L 9.177 14.5 L 9.177 17.5 Z M 20.332 17.703 L 17.932 1.703 C 17.861 1.23 17.622 0.797 17.259 0.485 C 16.897 0.172 16.434 0 15.955 0 L 4.4 0 C 3.409 0 2.569 0.724 2.42 1.703 L 0.022 17.703 C -0.021 17.987 -0.001 18.278 0.078 18.554 C 0.158 18.831 0.296 19.087 0.484 19.305 C 0.672 19.523 0.904 19.698 1.166 19.818 C 1.427 19.938 1.711 20 1.999 20 L 18.355 20 C 18.643 20 18.927 19.938 19.189 19.818 C 19.45 19.698 19.683 19.523 19.87 19.305 C 20.058 19.087 20.196 18.831 20.276 18.554 C 20.356 18.278 20.375 17.987 20.332 17.703 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.823 2)\"/>"},"IconRobotMonoRobotAi":{viewBox:"0 0 24 24",body:"<path d=\"M 14.657 12.014 C 14.467 12.019 14.278 11.986 14.101 11.917 C 13.925 11.847 13.763 11.743 13.627 11.611 C 13.491 11.478 13.383 11.32 13.309 11.145 C 13.236 10.97 13.198 10.782 13.198 10.592 C 13.198 10.402 13.236 10.214 13.31 10.039 C 13.384 9.864 13.492 9.706 13.628 9.573 C 13.764 9.441 13.925 9.337 14.102 9.268 C 14.279 9.199 14.468 9.166 14.658 9.171 C 15.028 9.181 15.38 9.335 15.639 9.601 C 15.897 9.866 16.042 10.222 16.042 10.593 C 16.042 10.964 15.897 11.32 15.638 11.585 C 15.38 11.85 15.027 12.004 14.657 12.014 Z M 13.276 15.592 L 9.276 15.592 C 9.011 15.592 8.756 15.487 8.569 15.299 C 8.381 15.112 8.276 14.857 8.276 14.592 C 8.276 14.327 8.381 14.072 8.569 13.885 C 8.756 13.697 9.011 13.592 9.276 13.592 L 13.276 13.592 C 13.541 13.592 13.796 13.697 13.983 13.885 C 14.171 14.072 14.276 14.327 14.276 14.592 C 14.276 14.857 14.171 15.112 13.983 15.299 C 13.796 15.487 13.541 15.592 13.276 15.592 Z M 6.474 10.592 C 6.474 10.215 6.624 9.854 6.89 9.588 C 7.156 9.321 7.518 9.172 7.894 9.172 C 8.271 9.172 8.633 9.321 8.899 9.588 C 9.165 9.854 9.315 10.215 9.315 10.592 C 9.315 10.969 9.165 11.33 8.899 11.596 C 8.633 11.863 8.271 12.012 7.894 12.012 C 7.518 12.012 7.156 11.863 6.89 11.596 C 6.624 11.33 6.474 10.969 6.474 10.592 Z M 21.457 8.711 L 20.276 8.711 L 20.276 5.401 C 20.276 5.086 20.214 4.774 20.094 4.482 C 19.973 4.191 19.796 3.926 19.573 3.703 C 19.351 3.48 19.086 3.303 18.795 3.183 C 18.503 3.062 18.191 3 17.876 3 L 12.329 3 L 12.329 1 C 12.329 0.735 12.224 0.48 12.036 0.293 C 11.849 0.105 11.594 0 11.329 0 C 11.064 0 10.809 0.105 10.622 0.293 C 10.434 0.48 10.329 0.735 10.329 1 L 10.329 3 L 4.677 3 C 4.362 3 4.049 3.062 3.758 3.182 C 3.467 3.303 3.202 3.48 2.979 3.703 C 2.756 3.926 2.579 4.191 2.458 4.482 C 2.338 4.773 2.276 5.086 2.276 5.401 L 2.276 8.711 L 1.2 8.711 C 0.882 8.711 0.577 8.837 0.351 9.062 C 0.126 9.288 0 9.593 0 9.911 L 0 14.09 C 0 14.408 0.127 14.713 0.352 14.938 C 0.577 15.163 0.882 15.289 1.2 15.289 L 2.276 15.289 L 2.276 18.6 C 2.276 18.915 2.338 19.227 2.459 19.519 C 2.579 19.81 2.756 20.075 2.979 20.297 C 3.202 20.52 3.467 20.697 3.758 20.818 C 4.05 20.938 4.362 21 4.677 21 L 17.876 21 C 18.513 21 19.123 20.747 19.573 20.297 C 20.023 19.847 20.276 19.237 20.276 18.6 L 20.276 15.289 L 21.457 15.289 C 21.775 15.289 22.08 15.163 22.305 14.938 C 22.53 14.713 22.657 14.408 22.657 14.09 L 22.657 9.911 C 22.657 9.593 22.531 9.288 22.306 9.062 C 22.08 8.837 21.775 8.711 21.457 8.711 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.724 1)\"/>"},"IconRotateMono":{viewBox:"0 0 24 24",body:"<path d=\"M 19.033 5.923 L 17.872 6.342 C 17.236 4.767 16.231 3.406 14.95 2.345 C 14.938 2.335 14.926 2.326 14.915 2.317 C 14.712 2.15 14.505 1.99 14.288 1.839 C 14.252 1.814 14.214 1.792 14.178 1.767 C 13.978 1.632 13.777 1.498 13.566 1.377 C 13.453 1.311 13.333 1.255 13.217 1.193 C 13.078 1.12 12.944 1.04 12.8 0.973 C 12.796 0.971 12.791 0.97 12.787 0.968 C 12.783 0.966 12.779 0.963 12.774 0.961 C 12.469 0.818 12.159 0.694 11.846 0.583 C 11.84 0.581 11.834 0.58 11.829 0.578 C 7.587 -0.92 2.828 0.553 0.199 4.301 C 0.153 4.366 0.138 4.441 0.107 4.512 C -0.12 5.025 0.016 5.638 0.493 5.972 L 0.49 5.972 C 1.031 6.354 1.781 6.222 2.161 5.679 C 4.162 2.827 7.781 1.704 11.012 2.836 C 11.028 2.842 11.044 2.846 11.061 2.851 C 11.277 2.927 11.491 3.017 11.704 3.114 C 11.72 3.121 11.736 3.127 11.752 3.134 C 13.561 3.983 14.879 5.452 15.59 7.168 L 14.296 7.635 C 13.533 7.91 13.407 8.937 14.08 9.388 L 16.152 10.781 L 17.616 11.765 C 17.868 11.934 18.161 11.965 18.424 11.894 C 18.741 11.809 19.016 11.573 19.119 11.222 L 20.32 7.134 C 20.548 6.356 19.797 5.648 19.033 5.923 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.094 1.879) matrix(1 0 0 1 3.381 0)\"/><path d=\"M 18.2 6.251 C 16.199 9.103 12.579 10.226 9.347 9.093 C 9.331 9.088 9.316 9.084 9.3 9.078 C 9.082 9.001 8.867 8.911 8.654 8.814 C 8.639 8.807 8.624 8.802 8.61 8.796 C 6.801 7.947 5.483 6.478 4.772 4.762 L 6.066 4.295 C 6.829 4.02 6.955 2.993 6.282 2.542 L 4.21 1.149 L 2.746 0.165 C 2.494 -0.004 2.202 -0.035 1.938 0.036 C 1.621 0.121 1.346 0.357 1.243 0.708 L 0.041 4.794 C -0.187 5.572 0.565 6.28 1.329 6.005 L 2.49 5.586 C 3.126 7.161 4.13 8.521 5.411 9.583 C 5.424 9.594 5.437 9.604 5.45 9.614 C 5.652 9.78 5.858 9.94 6.074 10.09 C 6.111 10.116 6.15 10.139 6.187 10.164 C 6.386 10.299 6.586 10.431 6.796 10.552 C 6.911 10.619 7.033 10.677 7.151 10.739 C 7.288 10.811 7.421 10.89 7.562 10.956 C 7.566 10.958 7.571 10.959 7.576 10.962 C 7.58 10.964 7.584 10.967 7.589 10.969 C 7.894 11.112 8.204 11.236 8.517 11.347 C 8.523 11.349 8.529 11.35 8.534 11.352 C 12.776 12.849 17.535 11.377 20.164 7.63 C 20.21 7.565 20.225 7.49 20.256 7.419 C 20.483 6.906 20.347 6.293 19.87 5.958 L 19.873 5.958 C 19.332 5.576 18.582 5.708 18.202 6.251 L 18.2 6.251 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.094 1.879) matrix(1 0 0 1 0 8.318)\"/><path d=\"M 4.935 0 L 0.804 0 C 0.36 0 0 0.36 0 0.804 L 0 7.343 C 0 7.787 0.36 8.147 0.804 8.147 L 4.935 8.147 C 5.379 8.147 5.739 7.787 5.739 7.343 L 5.739 0.804 C 5.739 0.36 5.379 0 4.935 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.094 1.879) matrix(0.866 -0.500 0.500 0.866 7.384 8.028)\"/>"},"IconSafeBoxMonoSafe":{viewBox:"0 0 24 24",body:"<path d=\"M 18.75 0 L 7.412 0 C 7.914 0.487 8.313 1.07 8.586 1.714 C 8.859 2.358 9 3.05 9 3.75 L 9 5.75 L 22.5 5.75 L 22.5 3.75 C 22.5 2.755 22.105 1.802 21.402 1.098 C 20.698 0.395 19.745 0 18.75 0 Z M 15.25 9.75 C 15.58 9.749 15.901 9.856 16.164 10.057 C 16.426 10.257 16.615 10.538 16.7 10.857 C 16.786 11.176 16.764 11.514 16.637 11.819 C 16.51 12.124 16.286 12.378 16 12.542 L 16 13.5 C 16 13.699 15.921 13.89 15.78 14.03 C 15.64 14.171 15.449 14.25 15.25 14.25 C 15.051 14.25 14.86 14.171 14.72 14.03 C 14.579 13.89 14.5 13.699 14.5 13.5 L 14.5 12.542 C 14.273 12.411 14.083 12.223 13.952 11.997 C 13.82 11.77 13.751 11.512 13.75 11.25 C 13.75 10.852 13.908 10.471 14.189 10.189 C 14.471 9.908 14.852 9.75 15.25 9.75 Z M 9 16.5 L 22.5 16.5 L 22.5 7.25 L 9 7.25 L 9 16.5 Z M 7.5 3.75 C 7.5 2.755 7.105 1.802 6.402 1.098 C 5.698 0.395 4.745 0 3.75 0 C 2.755 0 1.802 0.395 1.098 1.098 C 0.395 1.802 0 2.755 0 3.75 L 0 5.75 L 7.5 5.75 L 7.5 3.75 Z M 0 16.5 L 7.5 16.5 L 7.5 7.25 L 0 7.25 L 0 16.5 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.751 3.750)\"/>"},"IconScanMonoScanCode":{viewBox:"0 0 24 24",body:"<path d=\"M 21.1 8 L 1.1 8 C 0.808 8 0.528 8.116 0.322 8.322 C 0.116 8.528 0 8.808 0 9.1 C 0 9.392 0.116 9.672 0.322 9.878 C 0.528 10.084 0.808 10.2 1.1 10.2 L 21.1 10.2 C 21.392 10.2 21.672 10.084 21.878 9.878 C 22.084 9.672 22.2 9.392 22.2 9.1 C 22.2 8.808 22.084 8.528 21.878 8.322 C 21.672 8.116 21.392 8 21.1 8 Z M 3.1 6.2 C 3.392 6.2 3.672 6.084 3.878 5.878 C 4.084 5.672 4.2 5.392 4.2 5.1 L 4.2 2.3 C 4.2 2.273 4.211 2.248 4.229 2.229 C 4.248 2.211 4.273 2.2 4.3 2.2 L 7.1 2.2 C 7.392 2.2 7.672 2.084 7.878 1.878 C 8.084 1.672 8.2 1.392 8.2 1.1 C 8.2 0.808 8.084 0.528 7.878 0.322 C 7.672 0.116 7.392 0 7.1 0 L 4.3 0 C 3.69 0.001 3.106 0.243 2.675 0.675 C 2.243 1.106 2.001 1.69 2 2.3 L 2 5.1 C 2 5.392 2.116 5.672 2.322 5.878 C 2.528 6.084 2.808 6.2 3.1 6.2 Z M 7.1 16 L 4.3 16 C 4.287 16 4.274 15.997 4.262 15.992 C 4.25 15.987 4.239 15.98 4.229 15.971 C 4.22 15.961 4.213 15.95 4.208 15.938 C 4.203 15.926 4.2 15.913 4.2 15.9 L 4.2 13.1 C 4.2 12.808 4.084 12.528 3.878 12.322 C 3.672 12.116 3.392 12 3.1 12 C 2.808 12 2.528 12.116 2.322 12.322 C 2.116 12.528 2 12.808 2 13.1 L 2 15.9 C 2 17.168 3.032 18.2 4.3 18.2 L 7.1 18.2 C 7.392 18.2 7.672 18.084 7.878 17.878 C 8.084 17.672 8.2 17.392 8.2 17.1 C 8.2 16.808 8.084 16.528 7.878 16.322 C 7.672 16.116 7.392 16 7.1 16 Z M 15.1 2.2 L 17.9 2.2 C 17.927 2.2 17.952 2.211 17.971 2.229 C 17.989 2.248 18 2.273 18 2.3 L 18 5.1 C 18 5.392 18.116 5.672 18.322 5.878 C 18.528 6.084 18.808 6.2 19.1 6.2 C 19.392 6.2 19.672 6.084 19.878 5.878 C 20.084 5.672 20.2 5.392 20.2 5.1 L 20.2 2.3 C 20.2 1.032 19.168 0 17.9 0 L 15.1 0 C 14.808 0 14.528 0.116 14.322 0.322 C 14.116 0.528 14 0.808 14 1.1 C 14 1.392 14.116 1.672 14.322 1.878 C 14.528 2.084 14.808 2.2 15.1 2.2 Z M 19.1 12 C 18.956 12 18.813 12.028 18.679 12.084 C 18.546 12.139 18.424 12.22 18.322 12.322 C 18.22 12.424 18.139 12.546 18.084 12.679 C 18.028 12.813 18 12.956 18 13.1 L 18 15.9 C 18 15.913 17.997 15.926 17.992 15.938 C 17.987 15.95 17.98 15.961 17.971 15.971 C 17.961 15.98 17.95 15.987 17.938 15.992 C 17.926 15.997 17.913 16 17.9 16 L 15.1 16 C 14.808 16 14.528 16.116 14.322 16.322 C 14.116 16.528 14 16.808 14 17.1 C 14 17.392 14.116 17.672 14.322 17.878 C 14.528 18.084 14.808 18.2 15.1 18.2 L 17.9 18.2 C 19.168 18.2 20.2 17.168 20.2 15.9 L 20.2 13.1 C 20.2 12.808 20.084 12.528 19.878 12.322 C 19.672 12.116 19.392 12 19.1 12 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.900 2.900)\"/>"},"IconScooterMonoScooterKickboard":{viewBox:"0 0 24 24",body:"<path d=\"M 20.307 12.812 L 19.156 10.21 C 19.154 10.204 19.153 10.198 19.15 10.192 L 18.849 9.516 L 18.498 8.722 L 18.497 8.725 L 14.861 0.566 C 14.679 0.158 14.248 -0.057 13.826 0.013 L 9.617 0.013 C 9.119 0.013 8.717 0.416 8.717 0.913 C 8.717 1.411 9.119 1.813 9.617 1.813 L 13.315 1.813 L 17.375 10.928 L 15.24 15.13 L 7.475 15.13 C 7.084 13.553 5.581 12.373 3.788 12.373 C 1.699 12.373 0 13.973 0 15.94 C 0 16.455 0.38 16.877 0.874 16.953 C 1.18 18.409 2.473 19.507 4.019 19.507 C 5.573 19.507 6.873 18.398 7.17 16.93 L 17.075 16.93 C 17.114 16.93 17.152 16.923 17.191 16.918 C 17.581 18.254 18.803 19.238 20.263 19.238 C 22.036 19.238 23.479 17.796 23.479 16.023 C 23.479 14.265 22.06 12.836 20.307 12.812 Z M 4.019 17.707 C 3.238 17.707 2.603 17.071 2.603 16.291 C 2.603 15.511 3.238 14.876 4.019 14.876 C 4.799 14.876 5.434 15.511 5.434 16.291 C 5.434 17.071 4.799 17.707 4.019 17.707 Z M 20.263 17.439 C 19.483 17.439 18.848 16.804 18.848 16.024 C 18.848 15.244 19.483 14.608 20.263 14.608 C 21.043 14.608 21.679 15.244 21.679 16.024 C 21.679 16.804 21.044 17.439 20.263 17.439 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.236 2.230)\"/>"},"IconSearchBoldMonoSearch":{viewBox:"0 0 24 24.329",body:"<path d=\"M 0 0 L 24.329 0 L 24.329 24.329 L 0 24.329 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 -0.164 0)\"/><path d=\"M 21.906 19.994 L 16.92 15.008 C 18.092 13.44 18.796 11.502 18.796 9.398 C 18.796 4.216 14.58 0 9.397 0 C 4.214 0 0 4.215 0 9.398 C 0 14.581 4.215 18.797 9.398 18.797 C 11.502 18.797 13.44 18.093 15.008 16.921 L 19.994 21.906 C 20.258 22.17 20.603 22.302 20.95 22.302 C 21.296 22.302 21.642 22.17 21.906 21.906 C 22.434 21.377 22.434 20.523 21.906 19.994 Z M 2.705 9.398 C 2.705 5.708 5.707 2.706 9.397 2.706 C 13.087 2.706 16.09 5.708 16.09 9.398 C 16.09 11.236 15.345 12.903 14.141 14.113 C 14.136 14.118 14.128 14.12 14.123 14.125 C 14.118 14.13 14.116 14.138 14.111 14.144 C 12.901 15.347 11.234 16.091 9.397 16.091 C 5.707 16.091 2.705 13.089 2.705 9.398 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.850 1.014)\"/>"},"IconSearchMinusMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.743 11.552 L 11.022 10.859 L 11.022 10.859 L 11.743 11.552 Z M 13.647 6.824 L 12.647 6.824 C 12.647 8.391 12.029 9.812 11.022 10.859 L 11.743 11.552 L 12.464 12.245 C 13.815 10.84 14.647 8.929 14.647 6.824 L 13.647 6.824 Z M 11.743 11.552 L 11.022 10.859 C 9.962 11.963 8.473 12.648 6.823 12.648 L 6.823 13.648 L 6.823 14.648 C 9.039 14.648 11.042 13.725 12.464 12.245 L 11.743 11.552 Z M 6.823 13.648 L 6.823 12.648 C 3.607 12.648 1 10.041 1 6.824 L 0 6.824 L -1 6.824 C -1 11.145 2.503 14.648 6.823 14.648 L 6.823 13.648 Z M 0 6.824 L 1 6.824 C 1 3.607 3.607 1 6.823 1 L 6.823 0 L 6.823 -1 C 2.503 -1 -1 2.503 -1 6.824 L 0 6.824 Z M 6.823 0 L 6.823 1 C 10.039 1 12.647 3.607 12.647 6.824 L 13.647 6.824 L 14.647 6.824 C 14.647 2.503 11.143 -1 6.823 -1 L 6.823 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4)\"/><path d=\"M 3.645 5.059 C 4.035 5.45 4.669 5.45 5.059 5.059 C 5.45 4.669 5.45 4.035 5.059 3.645 L 4.352 4.352 L 3.645 5.059 Z M 0.707 -0.707 C 0.317 -1.098 -0.317 -1.098 -0.707 -0.707 C -1.098 -0.317 -1.098 0.317 -0.707 0.707 L 0 0 L 0.707 -0.707 Z M 4.352 4.352 L 5.059 3.645 L 0.707 -0.707 L 0 0 L -0.707 0.707 L 3.645 5.059 L 4.352 4.352 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4) matrix(1 0 0 1 4.386 6.948) matrix(1 0 0 1 7.262 4.700)\"/><path d=\"M 0 -1 C -0.552 -1 -1 -0.552 -1 0 C -1 0.552 -0.552 1 0 1 L 0 0 L 0 -1 Z M 4.861 1 C 5.413 1 5.861 0.552 5.861 0 C 5.861 -0.552 5.413 -1 4.861 -1 L 4.861 0 L 4.861 1 Z M 0 0 L 0 1 L 4.861 1 L 4.861 0 L 4.861 -1 L 0 -1 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4) matrix(1 0 0 1 4.386 6.948)\"/>"},"IconSearchMono12":{viewBox:"0 0 24 24",body:"<path d=\"M 8.921 0 C 13.839 0 17.841 4.002 17.841 8.921 C 17.841 10.697 17.312 12.397 16.342 13.849 L 16.29 13.92 L 20.51 18.139 C 21.109 18.74 21.159 19.682 20.659 20.339 L 20.509 20.511 C 20.19 20.829 19.765 21.001 19.324 21.001 C 18.883 21.001 18.457 20.829 18.138 20.511 L 13.918 16.292 L 13.849 16.344 C 12.542 17.216 11.034 17.732 9.451 17.827 L 8.921 17.842 C 4.002 17.842 0 13.84 0 8.922 C 0 4.143 3.776 0.231 8.501 0.01 L 8.921 0 Z M 8.921 3.354 C 5.85 3.354 3.353 5.852 3.353 8.922 C 3.353 11.991 5.851 14.488 8.921 14.488 C 11.989 14.488 14.487 11.99 14.487 8.921 C 14.487 5.852 11.989 3.354 8.921 3.354 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.500 1.500)\"/>"},"IconSearchMonoSearchFind":{viewBox:"0 0 24 24",body:"<path d=\"M 14.79 7.395 L 13.774 7.395 C 13.774 10.918 10.918 13.774 7.395 13.774 L 7.395 14.79 L 7.395 15.806 C 12.04 15.806 15.806 12.04 15.806 7.395 L 14.79 7.395 Z M 7.395 14.79 L 7.395 13.774 C 3.872 13.774 1.016 10.918 1.016 7.395 L 0 7.395 L -1.016 7.395 C -1.016 12.04 2.75 15.806 7.395 15.806 L 7.395 14.79 Z M 0 7.395 L 1.016 7.395 C 1.016 3.872 3.872 1.016 7.395 1.016 L 7.395 0 L 7.395 -1.016 C 2.75 -1.016 -1.016 2.75 -1.016 7.395 L 0 7.395 Z M 7.395 0 L 7.395 1.016 C 10.918 1.016 13.774 3.872 13.774 7.395 L 14.79 7.395 L 15.806 7.395 C 15.806 2.75 12.04 -1.016 7.395 -1.016 L 7.395 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.994 2.993)\"/><path d=\"M 0.707 -0.707 C 0.317 -1.098 -0.317 -1.098 -0.707 -0.707 C -1.098 -0.317 -1.098 0.317 -0.707 0.707 L 0 0 L 0.707 -0.707 Z M 4.81 6.224 C 5.2 6.615 5.834 6.615 6.224 6.224 C 6.615 5.834 6.615 5.2 6.224 4.81 L 5.517 5.517 L 4.81 6.224 Z M 0 0 L -0.707 0.707 L 4.81 6.224 L 5.517 5.517 L 6.224 4.81 L 0.707 -0.707 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.994 2.993) matrix(1 0 0 1 12.646 12.645)\"/>"},"IconSearchPlusMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.743 11.552 L 11.022 10.859 L 11.022 10.859 L 11.743 11.552 Z M 13.647 6.824 L 12.647 6.824 C 12.647 8.391 12.029 9.812 11.022 10.859 L 11.743 11.552 L 12.464 12.245 C 13.815 10.84 14.647 8.929 14.647 6.824 L 13.647 6.824 Z M 11.743 11.552 L 11.022 10.859 C 9.962 11.963 8.473 12.648 6.823 12.648 L 6.823 13.648 L 6.823 14.648 C 9.039 14.648 11.042 13.725 12.464 12.245 L 11.743 11.552 Z M 6.823 13.648 L 6.823 12.648 C 3.607 12.648 1 10.041 1 6.824 L 0 6.824 L -1 6.824 C -1 11.145 2.503 14.648 6.823 14.648 L 6.823 13.648 Z M 0 6.824 L 1 6.824 C 1 3.607 3.607 1 6.823 1 L 6.823 0 L 6.823 -1 C 2.503 -1 -1 2.503 -1 6.824 L 0 6.824 Z M 6.823 0 L 6.823 1 C 10.04 1 12.647 3.607 12.647 6.824 L 13.647 6.824 L 14.647 6.824 C 14.647 2.503 11.144 -1 6.823 -1 L 6.823 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4)\"/><path d=\"M 3.645 5.059 C 4.035 5.45 4.669 5.45 5.059 5.059 C 5.45 4.669 5.45 4.035 5.059 3.645 L 4.352 4.352 L 3.645 5.059 Z M 0.707 -0.707 C 0.317 -1.098 -0.317 -1.098 -0.707 -0.707 C -1.098 -0.317 -1.098 0.317 -0.707 0.707 L 0 0 L 0.707 -0.707 Z M 4.352 4.352 L 5.059 3.645 L 0.707 -0.707 L 0 0 L -0.707 0.707 L 3.645 5.059 L 4.352 4.352 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4) matrix(1 0 0 1 4.386 4.652) matrix(1 0 0 1 7.262 6.997)\"/><path d=\"M 0 -1 C -0.552 -1 -1 -0.552 -1 0 C -1 0.552 -0.552 1 0 1 L 0 0 L 0 -1 Z M 4.861 1 C 5.413 1 5.861 0.552 5.861 0 C 5.861 -0.552 5.413 -1 4.861 -1 L 4.861 0 L 4.861 1 Z M 0 0 L 0 1 L 4.861 1 L 4.861 0 L 4.861 -1 L 0 -1 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4) matrix(1 0 0 1 4.386 4.652) matrix(1 0 0 1 0 2.296)\"/><path d=\"M 1 0 C 1 -0.552 0.552 -1 0 -1 C -0.552 -1 -1 -0.552 -1 0 L 0 0 L 1 0 Z M -1 4.861 C -1 5.413 -0.552 5.861 0 5.861 C 0.552 5.861 1 5.413 1 4.861 L 0 4.861 L -1 4.861 Z M 0 0 L -1 0 L -1 4.861 L 0 4.861 L 1 4.861 L 1 0 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4 4) matrix(1 0 0 1 4.386 4.652) matrix(1 0 0 1 2.584 0)\"/>"},"IconSettingMonoSettingWheel":{viewBox:"0 0 24 24",body:"<path d=\"M 10.322 14.667 C 9.84 14.667 9.364 14.572 8.919 14.388 C 8.474 14.204 8.07 13.934 7.729 13.593 C 7.389 13.253 7.119 12.848 6.934 12.404 C 6.75 11.959 6.655 11.482 6.655 11 C 6.655 10.519 6.75 10.042 6.934 9.597 C 7.119 9.153 7.389 8.748 7.729 8.408 C 8.07 8.067 8.474 7.797 8.919 7.613 C 9.364 7.429 9.84 7.334 10.322 7.334 C 11.294 7.334 12.227 7.72 12.914 8.408 C 13.602 9.095 13.988 10.028 13.988 11 C 13.988 11.973 13.602 12.906 12.914 13.593 C 12.227 14.281 11.294 14.667 10.322 14.667 Z M 19.355 12.952 C 18.852 12.431 18.571 11.735 18.572 11.011 L 18.572 10.99 C 18.571 10.266 18.852 9.57 19.355 9.049 L 20.294 8.079 C 20.68 7.679 20.754 7.071 20.477 6.59 L 19.219 4.412 C 19.084 4.178 18.876 3.993 18.627 3.888 C 18.378 3.782 18.101 3.76 17.839 3.826 L 16.524 4.154 C 15.818 4.331 15.07 4.224 14.442 3.857 L 14.424 3.847 C 13.805 3.487 13.349 2.902 13.153 2.213 L 12.777 0.904 C 12.703 0.644 12.546 0.415 12.33 0.251 C 12.114 0.088 11.85 0 11.58 0 L 9.064 0 C 8.509 0 8.019 0.369 7.867 0.904 L 7.462 2.313 C 7.284 2.943 6.866 3.477 6.298 3.802 C 6.239 3.835 6.181 3.869 6.124 3.904 C 5.554 4.243 4.872 4.343 4.229 4.182 L 2.804 3.826 C 2.541 3.76 2.265 3.782 2.016 3.888 C 1.767 3.993 1.559 4.177 1.424 4.411 L 0.167 6.59 C 0.032 6.824 -0.024 7.096 0.009 7.365 C 0.042 7.634 0.162 7.884 0.35 8.079 L 1.289 9.049 C 1.792 9.57 2.073 10.266 2.073 10.989 L 2.073 11.011 C 2.073 11.735 1.792 12.431 1.289 12.952 L 0.786 13.472 C 0.472 13.796 0.273 14.214 0.217 14.662 C 0.162 15.11 0.254 15.563 0.48 15.954 L 1.425 17.589 C 1.703 18.071 2.265 18.31 2.805 18.175 L 4.23 17.819 C 4.873 17.658 5.555 17.758 6.125 18.097 C 6.182 18.132 6.24 18.166 6.299 18.199 C 6.868 18.521 7.283 19.058 7.463 19.688 L 7.867 21.097 C 8.019 21.632 8.509 22 9.064 22 L 11.58 22 C 12.135 22 12.625 21.632 12.777 21.097 L 13.181 19.688 C 13.361 19.058 13.776 18.521 14.345 18.199 C 14.404 18.166 14.462 18.132 14.519 18.097 C 15.089 17.758 15.77 17.658 16.414 17.819 L 17.839 18.175 C 18.101 18.241 18.378 18.219 18.627 18.113 C 18.876 18.008 19.083 17.824 19.219 17.59 L 20.477 15.411 C 20.612 15.177 20.667 14.905 20.634 14.636 C 20.601 14.367 20.482 14.117 20.294 13.922 L 19.354 12.952 L 19.355 12.952 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.678 1)\"/>"},"IconShapesMonoShapeCircle":{viewBox:"0 0 24 24",body:"<path d=\"M 7.8 3.9 C 7.8 4.934 7.389 5.926 6.658 6.658 C 5.926 7.389 4.934 7.8 3.9 7.8 C 2.866 7.8 1.874 7.389 1.142 6.658 C 0.411 5.926 0 4.934 0 3.9 C 0 2.866 0.411 1.874 1.142 1.142 C 1.874 0.411 2.866 0 3.9 0 C 4.934 0 5.926 0.411 6.658 1.142 C 7.389 1.874 7.8 2.866 7.8 3.9 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.120 3.256) matrix(1 0 0 1 0.187 0)\"/><path d=\"M 6 7 L 1 7 C 0.735 7 0.48 6.895 0.293 6.707 C 0.105 6.52 0 6.265 0 6 L 0 1 C 0 0.735 0.105 0.48 0.293 0.293 C 0.48 0.105 0.735 0 1 0 L 6 0 C 6.265 0 6.52 0.105 6.707 0.293 C 6.895 0.48 7 0.735 7 1 L 7 6 C 7 6.265 6.895 6.52 6.707 6.707 C 6.52 6.895 6.265 7 6 7 Z\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.120 3.256) matrix(1 0 0 1 10.362 0.400)\"/><path d=\"M 0 3.9 C 0 3.388 0.101 2.881 0.297 2.408 C 0.493 1.934 0.78 1.504 1.142 1.142 C 1.504 0.78 1.934 0.493 2.408 0.297 C 2.881 0.101 3.388 0 3.9 0 C 4.412 0 4.919 0.101 5.392 0.297 C 5.866 0.493 6.296 0.78 6.658 1.142 C 7.02 1.504 7.307 1.934 7.503 2.408 C 7.699 2.881 7.8 3.388 7.8 3.9 C 7.8 4.934 7.389 5.926 6.658 6.658 C 5.926 7.389 4.934 7.8 3.9 7.8 C 2.866 7.8 1.874 7.389 1.142 6.658 C 0.411 5.926 0 4.934 0 3.9 Z\" fill=\"rgba(176,184,193,0.3)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.120 3.256) matrix(1 0 0 1 9.961 9.687)\"/><path d=\"M 3.221 0.5 L 0.134 5.847 C 0.046 5.999 0 6.171 0 6.347 C 0 6.522 0.046 6.695 0.134 6.847 C 0.221 6.999 0.347 7.125 0.499 7.213 C 0.651 7.3 0.824 7.347 0.999 7.347 L 7.174 7.347 C 7.35 7.347 7.522 7.301 7.674 7.213 C 7.826 7.125 7.952 6.999 8.04 6.847 C 8.128 6.695 8.174 6.522 8.174 6.347 C 8.174 6.171 8.128 5.999 8.04 5.847 L 4.953 0.5 C 4.865 0.348 4.739 0.222 4.587 0.134 C 4.435 0.046 4.263 0 4.087 0 C 3.911 0 3.739 0.046 3.587 0.134 C 3.435 0.222 3.309 0.348 3.221 0.5 Z\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.120 3.256) matrix(1 0 0 1 0 10.053)\"/>"},"IconShareDotsMonoShare":{viewBox:"0 0 24 24",body:"<path d=\"M 1.094 6.541 C 0.694 6.541 0.294 6.341 0.094 5.941 C -0.106 5.441 -0.006 4.741 0.594 4.441 L 7.994 0.141 C 8.494 -0.159 9.194 0.041 9.494 0.541 C 9.794 1.041 9.594 1.741 9.094 2.041 L 1.694 6.341 C 1.494 6.441 1.294 6.541 1.094 6.541 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.300 1.400) matrix(1 0 0 1 4.906 3.859)\"/><path d=\"M 8.441 6.441 C 8.241 6.441 8.041 6.441 7.941 6.341 L 0.541 2.041 C 0.041 1.741 -0.159 1.041 0.141 0.541 C 0.441 0.041 1.141 -0.159 1.641 0.141 L 9.041 4.441 C 9.541 4.741 9.741 5.441 9.441 5.941 C 9.241 6.241 8.841 6.441 8.441 6.441 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.300 1.400) matrix(1 0 0 1 4.959 10.859)\"/><path d=\"M 3.7 7.4 C 1.7 7.4 0 5.7 0 3.7 C 0 1.7 1.7 0 3.7 0 C 5.7 0 7.4 1.7 7.4 3.7 C 7.4 5.7 5.7 7.4 3.7 7.4 Z M 3.7 2.2 C 2.9 2.2 2.2 2.9 2.2 3.7 C 2.2 4.5 2.9 5.2 3.7 5.2 C 4.5 5.2 5.2 4.5 5.2 3.7 C 5.2 2.9 4.5 2.2 3.7 2.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.300 1.400) matrix(1 0 0 1 12 0)\"/><path d=\"M 3.7 7.4 C 1.7 7.4 0 5.7 0 3.7 C 0 1.7 1.7 0 3.7 0 C 5.7 0 7.4 1.7 7.4 3.7 C 7.4 5.7 5.7 7.4 3.7 7.4 Z M 3.7 2.2 C 2.9 2.2 2.2 2.9 2.2 3.7 C 2.2 4.5 2.9 5.2 3.7 5.2 C 4.5 5.2 5.2 4.5 5.2 3.7 C 5.2 2.9 4.5 2.2 3.7 2.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.300 1.400) matrix(1 0 0 1 12 13.800)\"/><path d=\"M 3.7 7.5 C 1.7 7.5 0 5.8 0 3.8 C 0 1.8 1.7 0 3.7 0 C 5.7 0 7.4 1.7 7.4 3.7 C 7.4 5.7 5.8 7.5 3.7 7.5 Z M 3.7 2.2 C 2.9 2.2 2.2 2.9 2.2 3.7 C 2.2 4.5 2.9 5.2 3.7 5.2 C 4.5 5.2 5.2 4.5 5.2 3.7 C 5.2 2.9 4.6 2.2 3.7 2.2 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.300 1.400) matrix(1 0 0 1 0 6.800)\"/>"},"IconShareMonoShareExternal":{viewBox:"0 0 24 24",body:"<path d=\"M 1.85 7.109 L 5.204 3.754 L 5.204 12.935 C 5.204 13.227 5.32 13.507 5.527 13.713 C 5.733 13.92 6.013 14.036 6.305 14.036 C 6.597 14.036 6.877 13.92 7.083 13.713 C 7.289 13.507 7.405 13.227 7.405 12.935 L 7.405 3.755 L 10.76 7.109 C 10.862 7.212 10.983 7.293 11.117 7.349 C 11.25 7.405 11.393 7.433 11.538 7.433 C 11.682 7.433 11.826 7.405 11.959 7.349 C 12.093 7.293 12.214 7.212 12.315 7.109 C 12.418 7.007 12.499 6.886 12.554 6.752 C 12.609 6.619 12.638 6.476 12.638 6.331 C 12.638 6.187 12.609 6.044 12.554 5.91 C 12.499 5.777 12.418 5.655 12.315 5.553 L 7.082 0.32 C 6.876 0.115 6.596 0 6.305 0 C 6.014 0 5.734 0.115 5.527 0.32 L 0.294 5.553 C 0.1 5.762 -0.005 6.038 0 6.323 C 0.005 6.608 0.121 6.88 0.322 7.081 C 0.524 7.283 0.796 7.398 1.081 7.403 C 1.366 7.409 1.642 7.303 1.85 7.109 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.496 2.102) matrix(1 0 0 1 3.187 0)\"/><path d=\"M 17.885 0.001 C 17.278 0.001 16.784 0.494 16.784 1.101 L 16.784 5.308 C 16.784 6.025 16.201 6.608 15.485 6.608 L 3.5 6.608 C 2.783 6.608 2.2 6.025 2.2 5.308 L 2.2 1.1 C 2.2 0.808 2.084 0.528 1.878 0.322 C 1.672 0.116 1.392 0 1.1 0 C 0.808 0 0.528 0.116 0.322 0.322 C 0.116 0.528 0 0.808 0 1.1 L 0 5.308 C 0 7.238 1.57 8.808 3.5 8.808 L 15.485 8.808 C 17.414 8.808 18.985 7.238 18.985 5.308 L 18.985 1.1 C 18.985 0.808 18.869 0.528 18.663 0.322 C 18.457 0.116 18.177 0 17.885 0\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.496 2.102) matrix(1 0 0 1 0 10.990)\"/>"},"IconShieldCheckMonoShield":{viewBox:"0 0 24 24",body:"<path d=\"M 18.8 3.675 L 10.1 0.075 C 9.9 -0.025 9.6 -0.025 9.3 0.075 L 0.6 3.675 C 0.2 3.775 0 4.175 0 4.575 L 0 12.875 C 0 16.675 4.8 20.375 9.3 22.675 C 9.6 22.775 9.9 22.775 10.2 22.675 C 14.7 20.375 19.5 16.675 19.5 12.875 L 19.5 4.575 C 19.4 4.175 19.2 3.775 18.8 3.675 Z M 15.1 9.175 L 9.3 14.975 C 9.1 15.175 8.8 15.275 8.6 15.275 C 8.4 15.275 8.1 15.175 7.9 14.975 L 4.3 11.375 C 3.9 10.975 3.9 10.275 4.3 9.875 C 4.7 9.475 5.4 9.475 5.8 9.875 L 8.6 12.675 L 13.7 7.675 C 14.1 7.275 14.8 7.275 15.2 7.675 C 15.6 8.075 15.6 8.775 15.1 9.175 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.300 0.625)\"/>"},"IconShieldMonoShieldProtect":{viewBox:"0 0 24 24",body:"<path d=\"M 9.73 0.001 L 0.648 3.731 C 0.456 3.81 0.292 3.943 0.177 4.116 C 0.061 4.288 0 4.491 0 4.698 L 0 10.456 L 9.73 10.456 L 9.73 0.001 Z\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.162 0.500)\"/><path d=\"M 0 0 L 0 2.547 C 0 6.471 5.129 10.283 9.73 12.545 L 9.73 0 L 0 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.162 0.500) matrix(1 0 0 1 0 10.456)\"/><path d=\"M 0 12.545 C 4.602 10.283 9.731 6.471 9.731 2.547 L 9.731 0 L 0.001 0 L 0.001 12.544 L 0 12.545 Z\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.162 0.500) matrix(1 0 0 1 9.730 10.456)\"/><path d=\"M 0 0 L 0 10.455 L 9.731 10.455 L 9.731 4.697 C 9.731 4.273 9.475 3.891 9.083 3.73 L 0 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.162 0.500) matrix(1 0 0 1 9.730 0.001)\"/>"},"IconShieldUserMonoShield":{viewBox:"0 0 24 24",body:"<path d=\"M 18.842 3.66 L 10.111 0.075 C 9.868 -0.025 9.595 -0.025 9.351 0.075 L 0.62 3.66 C 0.245 3.814 0 4.179 0 4.585 L 0 12.92 C 0 16.717 4.803 20.41 9.283 22.694 C 9.565 22.838 9.897 22.838 10.178 22.694 C 14.658 20.41 19.461 16.717 19.461 12.92 L 19.461 4.585 C 19.462 4.18 19.217 3.814 18.842 3.66 Z M 9.731 5.898 C 10.948 5.898 11.934 6.884 11.934 8.101 C 11.934 9.318 10.948 10.303 9.731 10.303 C 8.514 10.303 7.528 9.317 7.528 8.1 C 7.528 6.883 8.514 5.898 9.731 5.898 Z M 9.731 15.904 C 7.754 15.904 4.836 15.626 4.836 14.583 C 4.836 13.54 6.207 11.297 9.731 11.297 C 13.255 11.297 14.626 13.54 14.626 14.583 C 14.626 15.626 11.708 15.904 9.731 15.904 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.269 0.599)\"/>"},"IconShipMonoShipVessel":{viewBox:"0 0 24 24",body:"<path d=\"M 6.085 3.412 C 6.177 3.372 6.274 3.343 6.373 3.325 C 6.419 3.315 6.466 3.308 6.513 3.304 C 6.609 3.292 6.707 3.292 6.803 3.303 C 6.853 3.308 6.902 3.315 6.951 3.326 C 7.049 3.344 7.145 3.373 7.237 3.413 C 7.263 3.424 7.289 3.429 7.314 3.441 L 13.319 6.351 L 13.319 3.694 C 13.319 3.447 13.221 3.21 13.046 3.035 C 12.871 2.86 12.634 2.761 12.387 2.761 L 10.184 2.761 L 10.184 0.987 C 10.184 0.725 10.08 0.474 9.895 0.289 C 9.71 0.104 9.459 0 9.197 0 L 4.122 0 C 3.992 0 3.864 0.026 3.744 0.075 C 3.625 0.125 3.516 0.197 3.424 0.289 C 3.333 0.381 3.26 0.49 3.211 0.609 C 3.161 0.729 3.136 0.857 3.136 0.987 L 3.136 2.761 L 0.933 2.761 C 0.686 2.761 0.448 2.859 0.273 3.034 C 0.098 3.209 0 3.447 0 3.694 L 0 6.351 L 6.006 3.441 C 6.031 3.429 6.059 3.423 6.085 3.412 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.136 1.877) matrix(1 0 0 1 4.153 0)\"/><path d=\"M 21.063 4.967 L 10.813 0 L 0.565 4.967 C 0.354 5.069 0.185 5.241 0.089 5.455 C -0.008 5.668 -0.026 5.908 0.037 6.134 L 2.424 14.72 C 2.482 14.931 2.608 15.116 2.782 15.248 C 2.956 15.381 3.169 15.452 3.388 15.452 L 18.24 15.452 C 18.458 15.452 18.671 15.381 18.845 15.248 C 19.018 15.116 19.144 14.931 19.203 14.72 L 21.59 6.134 C 21.652 5.909 21.634 5.668 21.538 5.455 C 21.441 5.242 21.273 5.069 21.063 4.967 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.136 1.877) matrix(1 0 0 1 0 4.790)\"/>"},"IconShoesMonoShoesShoe":{viewBox:"0 0 24 24",body:"<path d=\"M 1.044 12.3 C 2.444 13.533 4.777 13.133 6.794 12.017 L 23.377 2.45 C 23.86 2.167 24.027 1.55 23.744 1.05 L 23.144 0 C 15.91 4.283 7.894 9.117 6.527 9.35 C 4.627 9.683 4.16 6.567 1.044 6.233 C -0.34 9.033 -0.356 11.05 1.044 12.3 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.056 2.162) matrix(1 0 0 1 0 6.622)\"/><path d=\"M 5.483 15.988 C 6.867 15.755 14.867 10.922 22.1 6.638 L 18.567 0.505 C 18.283 0.022 17.667 -0.145 17.167 0.138 L 15.933 1.888 C 14.5 3.922 11.983 4.622 9.817 3.905 C 9.05 3.655 8.333 3.238 7.717 2.638 C 7.333 2.272 6.767 2.105 6.283 2.272 C 6.133 2.322 6 2.472 5.933 2.588 L 4.867 4.438 L 6.633 5.455 C 7.167 5.755 7.383 6.422 7.1 6.955 C 6.8 7.505 6.117 7.705 5.567 7.388 L 3.767 6.338 L 2.75 8.072 L 4.55 9.105 C 4.967 9.338 5.183 9.922 5.033 10.388 L 5.017 10.438 C 4.783 11.138 4.083 11.405 3.45 11.038 L 1.65 10.005 L 0.017 12.838 L 0 12.855 C 3.117 13.205 3.567 16.305 5.483 15.988 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.056 2.162) matrix(1 0 0 1 1.044 0)\"/>"},"IconShoppingBagMonoShop":{viewBox:"0 0 24 24",body:"<path d=\"M 20.4 19.2 L 18.7 6.6 C 18.7 5.8 17.9 5.2 17.1 5.2 L 15.8 5.2 C 15.7 2.3 13.4 0 10.4 0 L 9.8 0 C 6.9 0 4.6 2.3 4.4 5.2 L 3.3 5.2 C 2.5 5.2 1.8 5.8 1.7 6.6 L 0 19.2 C 0 20.1 0.6 21 1.6 21 L 18.7 21 C 19.7 21 20.4 20.2 20.3 19.2 L 20.4 19.2 Z M 10 1.9 L 10.7 1.9 C 12.6 1.9 14 3.3 14.1 5.2 L 6.7 5.2 C 6.7 3.4 8.2 1.9 10.1 1.9 L 10 1.9 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.700 0)\"/>"},"IconShoppingcartMono":{viewBox:"0 0 24 24",body:"<path d=\"M 2.25 0 C 1.01 0 0 1.004 0 2.25 C 0 3.496 1.009 4.5 2.25 4.5 C 3.491 4.5 4.5 3.491 4.5 2.25 C 4.5 1.009 3.49 0 2.25 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.149 1.601) matrix(1 0 0 1 14.781 15.298)\"/><path d=\"M 2.25 0 C 1.004 0 0 1.004 0 2.25 C 0 3.496 1.004 4.5 2.25 4.5 C 3.496 4.5 4.5 3.491 4.5 2.25 C 4.5 1.009 3.49 0 2.25 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.149 1.601) matrix(1 0 0 1 6.833 15.298)\"/><path d=\"M 21.557 3.514 C 21.348 3.253 21.036 3.105 20.702 3.105 L 6.076 3.105 L 5.906 2.373 C 5.612 0.997 4.379 0 2.973 0 L 1 0 C 0.447 0 0 0.447 0 1 C 0 1.553 0.447 2 1 2 L 2.974 2 C 3.442 2 3.853 2.332 3.955 2.808 L 6.097 12.546 C 6.316 13.506 7.158 14.177 8.144 14.177 L 17.971 14.177 C 18.956 14.177 19.798 13.506 20.018 12.545 L 21.778 4.439 C 21.847 4.111 21.768 3.774 21.557 3.514 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.149 1.601)\"/>"},"IconShuffleMonoMix":{viewBox:"0 0 24 24",body:"<path d=\"M 22.365 3.324 L 17.622 0.109 C 17.528 0.044 17.418 0.007 17.304 0.001 C 17.19 -0.005 17.076 0.02 16.975 0.073 C 16.874 0.127 16.79 0.207 16.731 0.305 C 16.672 0.402 16.641 0.514 16.641 0.629 L 16.641 1.938 L 14.448 1.938 C 13.382 1.938 12.359 2.364 11.608 3.121 L 3.38 11.418 C 3.098 11.702 2.715 11.862 2.315 11.862 L 0.25 11.862 C 0.112 11.862 0 11.974 0 12.112 L 0 15.312 C 0 15.45 0.112 15.562 0.25 15.562 L 2.815 15.562 C 3.881 15.562 4.904 15.136 5.655 14.378 L 13.883 6.081 C 14.165 5.797 14.548 5.638 14.948 5.638 L 16.641 5.638 L 16.641 7.059 C 16.641 7.173 16.672 7.285 16.731 7.383 C 16.79 7.481 16.874 7.561 16.975 7.614 C 17.076 7.668 17.19 7.693 17.304 7.686 C 17.418 7.68 17.528 7.643 17.622 7.579 L 22.365 4.364 C 22.45 4.306 22.52 4.229 22.568 4.138 C 22.616 4.047 22.641 3.946 22.641 3.844 C 22.641 3.741 22.616 3.64 22.568 3.549 C 22.52 3.459 22.45 3.381 22.365 3.324 Z M 6.012 2.794 L 7.986 4.785 L 5.381 7.412 L 3.737 5.755 C 3.455 5.471 3.072 5.311 2.672 5.311 L 0.25 5.311 C 0.112 5.311 0 5.199 0 5.061 L 0 1.861 C 0 1.723 0.112 1.611 0.25 1.611 L 3.172 1.611 C 4.238 1.611 5.261 2.037 6.012 2.794 Z M 12.563 9.401 L 9.958 12.028 L 11.965 14.052 C 12.716 14.809 13.739 15.235 14.805 15.235 L 16.641 15.235 L 16.641 16.551 C 16.641 16.665 16.672 16.777 16.731 16.875 C 16.79 16.973 16.874 17.053 16.975 17.106 C 17.076 17.16 17.19 17.185 17.304 17.178 C 17.418 17.172 17.528 17.135 17.622 17.071 L 22.365 13.856 C 22.45 13.798 22.52 13.721 22.568 13.63 C 22.616 13.539 22.641 13.438 22.641 13.336 C 22.641 13.233 22.616 13.132 22.568 13.041 C 22.52 12.951 22.45 12.873 22.365 12.816 L 17.622 9.601 C 17.528 9.537 17.418 9.499 17.304 9.493 C 17.19 9.487 17.076 9.512 16.975 9.565 C 16.874 9.619 16.79 9.699 16.731 9.797 C 16.672 9.894 16.641 10.007 16.641 10.121 L 16.641 11.535 L 15.305 11.535 C 14.905 11.535 14.522 11.376 14.24 11.092 L 12.563 9.401 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.679 3.410)\"/>"},"IconSimplebinMono":{viewBox:"0 0 24 24",body:"<path d=\"M 18.15 0 L 1.15 0 C 0.515 0 0 0.515 0 1.15 C 0 1.785 0.515 2.3 1.15 2.3 L 18.15 2.3 C 18.785 2.3 19.3 1.785 19.3 1.15 C 19.3 0.515 18.785 0 18.15 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 1.253) matrix(1 0 0 1 0 3.868)\"/><path d=\"M 6.648 0 L 1.352 0 C 0.605 0 0 0.515 0 1.15 C 0 1.785 0.605 2.3 1.352 2.3 L 6.648 2.3 C 7.395 2.3 8 1.785 8 1.15 C 8 0.515 7.395 0 6.648 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 1.253) matrix(1 0 0 1 5.650 0)\"/><path d=\"M 14.384 2.3 L 13.896 14.049 C 13.88 14.424 13.572 14.72 13.197 14.72 L 3.595 14.72 C 3.22 14.72 2.911 14.424 2.896 14.05 L 2.4 2.3 L 14.384 2.3 Z M 16.783 0 L 0 0 L 0.626 14.817 C 0.678 16.048 1.691 17.02 2.924 17.02 L 13.868 17.02 C 15.101 17.02 16.115 16.048 16.166 14.816 L 16.783 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.350 1.253) matrix(1 0 0 1 1.259 3.868)\"/>"},"IconSirenMonoSirenWarning":{viewBox:"0 0 24 24",body:"<path d=\"M 20.584 18.554 C 20.487 17.996 20.002 17.587 19.434 17.587 L 18.852 17.587 L 18.852 8.352 L 18.848 8.101 C 18.716 3.604 15.029 0 10.5 0 C 5.888 0 2.147 3.739 2.147 8.353 L 2.147 17.588 L 1.565 17.588 C 0.998 17.588 0.513 17.996 0.415 18.555 L 0 20.946 L 21 20.946 L 20.584 18.554 Z M 9.6 5.693 C 9.6 5.197 10.003 4.793 10.5 4.793 C 10.998 4.793 11.4 5.197 11.4 5.693 L 11.4 9.409 C 11.4 9.907 10.998 10.311 10.5 10.311 C 10.003 10.311 9.6 9.907 9.6 9.409 L 9.6 5.693 Z M 10.501 11.812 C 11.153 11.812 11.684 12.341 11.684 12.995 C 11.684 13.648 11.154 14.178 10.501 14.178 C 9.846 14.178 9.316 13.648 9.316 12.995 C 9.316 12.342 9.846 11.812 10.501 11.812 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.500 1.527)\"/>"},"IconSnowMonoSnowSonwflake":{viewBox:"0 0 24 24",body:"<path d=\"M 18.64 11.254 L 15.605 12.242 L 11.622 9.895 L 15.605 7.547 L 18.64 8.535 C 18.749 8.57 18.865 8.584 18.979 8.575 C 19.094 8.566 19.206 8.535 19.309 8.483 C 19.412 8.43 19.503 8.359 19.578 8.271 C 19.653 8.184 19.71 8.082 19.746 7.973 C 19.781 7.863 19.795 7.748 19.786 7.633 C 19.777 7.518 19.746 7.406 19.694 7.303 C 19.641 7.2 19.57 7.109 19.482 7.034 C 19.395 6.959 19.293 6.902 19.184 6.867 L 16.463 5.981 L 16.858 2.94 C 16.888 2.709 16.825 2.476 16.683 2.291 C 16.541 2.107 16.331 1.987 16.101 1.957 C 15.87 1.927 15.637 1.99 15.452 2.131 C 15.268 2.273 15.148 2.483 15.118 2.714 L 14.685 6.052 L 10.772 8.359 L 10.772 3.702 L 13.165 1.526 C 13.337 1.369 13.439 1.151 13.45 0.918 C 13.461 0.686 13.38 0.459 13.223 0.287 C 13.067 0.115 12.848 0.012 12.616 0.001 C 12.384 -0.01 12.157 0.072 11.985 0.229 L 9.895 2.129 L 7.804 0.229 C 7.718 0.151 7.619 0.091 7.51 0.052 C 7.402 0.013 7.287 -0.004 7.172 0.001 C 7.057 0.006 6.944 0.034 6.84 0.083 C 6.736 0.132 6.642 0.201 6.565 0.287 C 6.487 0.372 6.427 0.471 6.388 0.58 C 6.349 0.688 6.332 0.803 6.337 0.918 C 6.342 1.033 6.37 1.146 6.419 1.25 C 6.468 1.354 6.537 1.448 6.623 1.526 L 9.017 3.702 L 9.017 8.359 L 5.104 6.052 L 4.672 2.714 C 4.642 2.483 4.521 2.273 4.337 2.131 C 4.153 1.99 3.919 1.927 3.689 1.957 C 3.458 1.987 3.248 2.107 3.106 2.291 C 2.965 2.476 2.902 2.709 2.932 2.94 L 3.326 5.981 L 0.606 6.867 C 0.394 6.946 0.222 7.104 0.124 7.308 C 0.026 7.512 0.01 7.745 0.08 7.96 C 0.15 8.175 0.3 8.354 0.499 8.461 C 0.698 8.568 0.931 8.595 1.149 8.535 L 4.185 7.547 L 8.167 9.895 L 4.185 12.242 L 1.149 11.254 C 1.039 11.218 0.924 11.204 0.809 11.213 C 0.694 11.222 0.582 11.254 0.479 11.306 C 0.377 11.358 0.285 11.43 0.21 11.518 C 0.136 11.605 0.079 11.707 0.043 11.816 C 0.007 11.926 -0.006 12.041 0.003 12.156 C 0.012 12.271 0.043 12.383 0.095 12.485 C 0.148 12.588 0.22 12.679 0.307 12.754 C 0.395 12.829 0.496 12.886 0.606 12.922 L 3.326 13.809 L 2.932 16.85 C 2.915 16.973 2.926 17.099 2.962 17.218 C 2.998 17.338 3.06 17.448 3.142 17.542 C 3.224 17.636 3.326 17.711 3.44 17.762 C 3.553 17.813 3.677 17.84 3.802 17.84 C 4.015 17.84 4.221 17.762 4.381 17.621 C 4.541 17.481 4.645 17.286 4.672 17.075 L 5.104 13.737 L 9.017 11.43 L 9.017 16.087 L 6.623 18.263 C 6.45 18.419 6.348 18.637 6.336 18.87 C 6.325 19.102 6.407 19.329 6.564 19.502 C 6.72 19.674 6.939 19.777 7.171 19.788 C 7.403 19.799 7.63 19.717 7.803 19.561 L 9.895 17.66 L 11.985 19.561 C 12.07 19.638 12.169 19.698 12.278 19.737 C 12.386 19.776 12.501 19.793 12.616 19.787 C 12.731 19.782 12.844 19.754 12.948 19.705 C 13.052 19.655 13.146 19.586 13.223 19.501 C 13.3 19.416 13.36 19.316 13.399 19.208 C 13.438 19.099 13.455 18.984 13.45 18.869 C 13.444 18.754 13.416 18.642 13.367 18.538 C 13.318 18.433 13.249 18.34 13.164 18.263 L 10.772 16.087 L 10.772 11.43 L 14.685 13.737 L 15.118 17.075 C 15.132 17.189 15.169 17.299 15.227 17.399 C 15.284 17.499 15.361 17.586 15.452 17.657 C 15.543 17.727 15.647 17.779 15.759 17.809 C 15.87 17.839 15.986 17.847 16.1 17.832 C 16.214 17.817 16.325 17.78 16.424 17.723 C 16.524 17.665 16.612 17.589 16.682 17.498 C 16.753 17.406 16.804 17.302 16.834 17.191 C 16.864 17.08 16.872 16.964 16.858 16.85 L 16.463 13.809 L 19.183 12.922 C 19.292 12.886 19.394 12.829 19.481 12.754 C 19.569 12.679 19.641 12.588 19.693 12.485 C 19.745 12.383 19.777 12.271 19.785 12.156 C 19.794 12.041 19.781 11.926 19.745 11.816 C 19.709 11.707 19.653 11.605 19.578 11.518 C 19.503 11.43 19.411 11.358 19.309 11.306 C 19.206 11.254 19.094 11.222 18.979 11.213 C 18.865 11.204 18.749 11.218 18.64 11.254 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.622 0.155) matrix(1 0 0 1 0.489 1.950)\"/><path d=\"M 10.383 4.079 L 11.26 3.281 L 11.26 0.877 C 11.26 0.645 11.168 0.422 11.003 0.257 C 10.839 0.092 10.616 0 10.383 0 C 10.15 0 9.927 0.092 9.762 0.257 C 9.598 0.422 9.505 0.645 9.505 0.877 L 9.505 3.281 L 10.383 4.079 Z M 3.813 7.931 L 3.676 6.871 L 1.323 5.483 C 1.224 5.424 1.114 5.385 1 5.369 C 0.886 5.353 0.77 5.36 0.658 5.388 C 0.547 5.417 0.442 5.468 0.35 5.537 C 0.258 5.606 0.18 5.693 0.122 5.792 C 0.063 5.891 0.025 6.001 0.009 6.115 C -0.007 6.229 -0.001 6.345 0.028 6.457 C 0.056 6.568 0.107 6.673 0.176 6.765 C 0.245 6.857 0.332 6.935 0.431 6.994 L 2.658 8.307 L 3.813 7.931 Z M 3.813 15.758 L 2.657 15.381 L 0.431 16.694 C 0.231 16.813 0.086 17.006 0.028 17.231 C -0.03 17.456 0.004 17.695 0.122 17.896 C 0.241 18.096 0.434 18.241 0.659 18.299 C 0.884 18.357 1.123 18.323 1.323 18.205 L 3.676 16.817 L 3.813 15.758 Z M 10.383 19.609 L 9.505 20.407 L 9.505 22.81 C 9.501 22.928 9.521 23.046 9.563 23.155 C 9.606 23.265 9.67 23.366 9.752 23.45 C 9.833 23.535 9.932 23.602 10.04 23.648 C 10.148 23.694 10.265 23.718 10.383 23.718 C 10.501 23.718 10.617 23.694 10.726 23.648 C 10.834 23.602 10.932 23.535 11.014 23.45 C 11.096 23.366 11.16 23.265 11.202 23.155 C 11.245 23.046 11.264 22.928 11.26 22.81 L 11.26 20.407 L 10.383 19.609 Z M 20.324 16.694 L 18.105 15.381 L 16.951 15.757 L 17.089 16.819 L 19.43 18.205 C 19.63 18.313 19.864 18.34 20.083 18.279 C 20.302 18.219 20.489 18.076 20.605 17.88 C 20.721 17.685 20.756 17.452 20.704 17.231 C 20.652 17.01 20.515 16.817 20.324 16.694 Z M 20.633 5.792 C 20.575 5.692 20.497 5.606 20.405 5.536 C 20.313 5.467 20.208 5.417 20.096 5.388 C 19.985 5.36 19.868 5.353 19.754 5.37 C 19.64 5.386 19.53 5.425 19.431 5.484 L 17.088 6.87 L 16.95 7.93 L 18.105 8.307 L 20.323 6.994 C 20.423 6.935 20.509 6.857 20.579 6.765 C 20.648 6.673 20.698 6.568 20.727 6.457 C 20.756 6.345 20.762 6.229 20.746 6.115 C 20.73 6 20.692 5.891 20.633 5.792 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.622 0.155)\"/>"},"IconSofaMonoSofaChair":{viewBox:"0 0 24 24",body:"<path d=\"M 3.73 7.637 L 3.73 10.881 L 12.353 10.881 L 12.353 7.637 C 12.354 6.725 12.717 5.851 13.362 5.207 C 14.007 4.563 14.881 4.201 15.793 4.2 L 16.084 4.2 L 16.084 4.109 C 16.084 3.019 15.651 1.974 14.88 1.203 C 14.109 0.433 13.064 0 11.974 0 L 4.11 0 C 3.02 0 1.975 0.433 1.204 1.203 C 0.433 1.974 0 3.019 0 4.109 L 0 4.2 L 0.293 4.2 C 1.204 4.201 2.078 4.564 2.722 5.208 C 3.366 5.852 3.729 6.726 3.73 7.637 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.600 2.175) matrix(1 0 0 1 3.361 0)\"/><path d=\"M 22.764 1.584 C 22.612 0.648 21.968 0 21.018 0 L 19.448 0 C 19.396 0 19.349 0.01 19.299 0.015 C 19.25 0.011 19.201 0 19.153 0 C 18.899 0 18.647 0.05 18.411 0.147 C 18.176 0.244 17.962 0.387 17.782 0.567 C 17.602 0.747 17.459 0.96 17.362 1.195 C 17.264 1.431 17.214 1.682 17.214 1.937 L 17.214 6.223 C 17.214 6.283 17.202 6.343 17.18 6.398 C 17.157 6.454 17.123 6.504 17.081 6.546 C 17.038 6.589 16.988 6.623 16.932 6.645 C 16.877 6.668 16.817 6.68 16.757 6.68 L 6.048 6.68 C 5.988 6.68 5.929 6.668 5.873 6.645 C 5.818 6.623 5.767 6.589 5.725 6.546 C 5.682 6.504 5.648 6.454 5.626 6.398 C 5.603 6.343 5.591 6.283 5.591 6.223 L 5.591 1.937 C 5.591 0.867 4.724 0 3.655 0 C 3.603 0 3.556 0.01 3.506 0.015 C 3.456 0.011 3.41 0 3.359 0 L 1.787 0 C 0.837 0 0.188 0.648 0.035 1.585 C -0.135 2.632 0.319 3.555 1.271 3.765 C 1.39 3.792 1.496 3.858 1.571 3.953 C 1.647 4.048 1.689 4.165 1.689 4.287 L 1.716 6.123 L 1.716 10.53 C 1.716 11.115 2.191 11.59 2.777 11.59 L 3.361 11.59 L 3.361 12.949 C 3.361 13.214 3.466 13.469 3.654 13.656 C 3.841 13.844 4.096 13.949 4.361 13.949 L 6.331 13.949 C 6.596 13.949 6.851 13.844 7.038 13.656 C 7.226 13.469 7.331 13.214 7.331 12.949 L 7.331 11.589 L 15.476 11.589 L 15.476 12.949 C 15.476 13.214 15.581 13.469 15.769 13.656 C 15.956 13.844 16.211 13.949 16.476 13.949 L 18.446 13.949 C 18.997 13.949 19.446 13.501 19.446 12.949 L 19.446 11.589 L 20.029 11.589 C 20.31 11.589 20.58 11.477 20.779 11.279 C 20.977 11.08 21.089 10.81 21.089 10.529 L 21.089 6.124 L 21.119 4.288 C 21.119 4.167 21.16 4.049 21.236 3.955 C 21.311 3.86 21.417 3.794 21.535 3.767 C 22.487 3.556 22.935 2.633 22.765 1.586\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.600 2.175) matrix(1 0 0 1 0 5.701)\"/>"},"IconSoundOffMonoSound":{viewBox:"0 0 24 24",body:"<path d=\"M -0.707 4.293 C -1.098 4.683 -1.098 5.317 -0.707 5.707 C -0.317 6.098 0.317 6.098 0.707 5.707 L 0 5 L -0.707 4.293 Z M 5.707 0.707 C 6.098 0.317 6.098 -0.317 5.707 -0.707 C 5.317 -1.098 4.683 -1.098 4.293 -0.707 L 5 0 L 5.707 0.707 Z M 0.707 -0.707 C 0.317 -1.098 -0.317 -1.098 -0.707 -0.707 C -1.098 -0.317 -1.098 0.317 -0.707 0.707 L 0 0 L 0.707 -0.707 Z M 4.293 5.707 C 4.683 6.098 5.317 6.098 5.707 5.707 C 6.098 5.317 6.098 4.683 5.707 4.293 L 5 5 L 4.293 5.707 Z M 0 5 L 0.707 5.707 L 5.707 0.707 L 5 0 L 4.293 -0.707 L -0.707 4.293 L 0 5 Z M 0 0 L -0.707 0.707 L 4.293 5.707 L 5 5 L 5.707 4.293 L 0.707 -0.707 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 18 9.500)\"/><path d=\"M 4.62 13.517 L 0.93 13.517 C 0.42 13.517 0 13.097 0 12.587 L 0 6.427 C 0 5.917 0.42 5.497 0.93 5.497 L 4.62 5.497 L 4.62 13.517 Z M 4.62 13.517 L 4.62 5.497 L 12.77 0.177 C 13.49 -0.293 14.44 0.227 14.44 1.077 L 14.44 17.917 C 14.44 18.777 13.49 19.287 12.77 18.817 L 4.62 13.517 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.780 2.493)\"/>"},"IconSoundOnMonoSound":{viewBox:"0 0 24 24",body:"<path d=\"M 4.62 13.517 L 0.93 13.517 C 0.42 13.517 0 13.097 0 12.587 L 0 6.427 C 0 5.917 0.42 5.497 0.93 5.497 L 4.62 5.497 L 4.62 13.517 Z M 4.62 13.517 L 4.62 5.497 L 12.77 0.177 C 13.49 -0.293 14.44 0.227 14.44 1.077 L 14.44 17.917 C 14.44 18.777 13.49 19.287 12.77 18.817 L 4.62 13.517 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.780 2.493)\"/><path d=\"M 3.23 -0.649 C 2.872 -1.069 2.24 -1.119 1.821 -0.76 C 1.401 -0.402 1.351 0.23 1.71 0.649 L 2.47 0 L 3.23 -0.649 Z M 1.712 10.347 C 1.352 10.766 1.399 11.397 1.817 11.758 C 2.236 12.118 2.867 12.071 3.228 11.653 L 2.47 11 L 1.712 10.347 Z M 0.781 2.075 C 0.436 1.644 -0.193 1.574 -0.625 1.919 C -1.056 2.264 -1.126 2.893 -0.781 3.325 L 0 2.7 L 0.781 2.075 Z M -0.776 7.669 C -1.124 8.097 -1.059 8.727 -0.631 9.076 C -0.203 9.424 0.427 9.359 0.776 8.931 L 0 8.3 L -0.776 7.669 Z M 2.47 0 L 1.71 0.649 C 2.786 1.91 3.46 3.61 3.46 5.5 L 4.46 5.5 L 5.46 5.5 C 5.46 3.13 4.614 0.97 3.23 -0.649 L 2.47 0 Z M 4.46 5.5 L 3.46 5.5 C 3.46 7.394 2.794 9.091 1.712 10.347 L 2.47 11 L 3.228 11.653 C 4.626 10.029 5.46 7.866 5.46 5.5 L 4.46 5.5 Z M 0 2.7 L -0.781 3.325 C -0.32 3.901 -0.03 4.662 -0.03 5.5 L 0.97 5.5 L 1.97 5.5 C 1.97 4.198 1.52 2.999 0.781 2.075 L 0 2.7 Z M 0.97 5.5 L -0.03 5.5 C -0.03 6.345 -0.314 7.101 -0.776 7.669 L 0 8.3 L 0.776 8.931 C 1.534 7.999 1.97 6.795 1.97 5.5 L 0.97 5.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 17.770 6.550)\"/>"},"IconSpaceMonoSpacePlanet":{viewBox:"0 0 24 24",body:"<path d=\"M 5.685 15.411 C 3.664 15.761 2.153 15.533 1.741 14.819 L 1.74 14.819 C 1.356 14.152 1.817 12.827 3.11 11.227 C 3.31 12.004 3.608 12.769 4.029 13.497 C 4.141 13.693 4.267 13.875 4.391 14.057 C 4.74 14.034 5.087 13.993 5.431 13.933 C 7.637 13.552 10.311 12.499 12.959 10.97 C 16.757 8.777 18.946 6.538 19.919 5.097 C 19.826 4.893 19.724 4.694 19.615 4.499 C 19.203 3.789 18.696 3.14 18.107 2.569 C 20.14 2.248 21.517 2.511 21.904 3.178 C 22.692 4.544 19.956 8.663 13.71 12.268 C 10.912 13.885 8.062 15 5.685 15.411 Z M 23.289 2.377 C 22.287 0.643 19.603 0.494 16.449 1.284 C 15.073 0.457 13.502 0.014 11.897 0 C 10.292 -0.014 8.713 0.402 7.323 1.205 C 5.933 2.007 4.783 3.167 3.992 4.563 C 3.202 5.96 2.8 7.543 2.827 9.148 C 0.566 11.485 -0.648 13.884 0.355 15.618 C 0.945 16.642 2.205 17.172 3.979 17.172 C 4.581 17.172 5.243 17.111 5.957 16.988 C 6.363 16.918 6.785 16.823 7.211 16.716 C 9.921 18.33 13.396 18.48 16.321 16.791 C 19.249 15.1 20.859 12.011 20.811 8.854 C 23.076 6.514 24.291 4.113 23.289 2.377 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.178 3.002)\"/>"},"IconSpoonChopsticksMonoChopsticks":{viewBox:"0 0 24 24",body:"<path d=\"M 16.304 22.225 C 16.043 22.225 15.792 22.122 15.605 21.939 C 15.418 21.756 15.31 21.507 15.305 21.246 L 14.883 1.138 C 14.88 1.007 14.904 0.876 14.951 0.754 C 14.999 0.631 15.071 0.52 15.162 0.425 C 15.253 0.33 15.361 0.254 15.482 0.202 C 15.602 0.149 15.732 0.121 15.863 0.118 C 15.994 0.115 16.125 0.137 16.248 0.185 C 16.37 0.232 16.482 0.303 16.577 0.394 C 16.672 0.485 16.748 0.594 16.8 0.714 C 16.853 0.835 16.881 0.965 16.883 1.096 L 17.304 21.204 C 17.307 21.335 17.284 21.466 17.236 21.588 C 17.188 21.711 17.117 21.823 17.026 21.917 C 16.935 22.012 16.826 22.088 16.706 22.141 C 16.586 22.194 16.456 22.222 16.325 22.225 L 16.305 22.225 L 16.304 22.225 Z M 12.019 22.225 L 11.998 22.225 C 11.733 22.219 11.481 22.109 11.297 21.918 C 11.114 21.726 11.014 21.47 11.019 21.205 L 11.441 1.096 C 11.441 0.963 11.467 0.831 11.518 0.708 C 11.57 0.585 11.645 0.473 11.74 0.38 C 11.836 0.286 11.948 0.213 12.072 0.164 C 12.196 0.115 12.329 0.091 12.462 0.094 C 12.595 0.096 12.727 0.126 12.848 0.18 C 12.97 0.234 13.08 0.313 13.171 0.41 C 13.262 0.507 13.333 0.622 13.379 0.747 C 13.425 0.872 13.446 1.005 13.44 1.138 L 13.019 21.246 C 13.014 21.508 12.906 21.757 12.719 21.94 C 12.532 22.123 12.281 22.226 12.019 22.226 M 9.314 5.227 C 9.314 2.34 7.229 0 4.657 0 C 2.085 0 0 2.34 0 5.227 C 0 7.713 1.549 9.784 3.621 10.314 L 3.134 20.677 C 3.134 21.081 3.294 21.468 3.58 21.754 C 3.866 22.04 4.253 22.2 4.657 22.2 C 5.061 22.2 5.448 22.04 5.734 21.754 C 6.02 21.468 6.18 21.081 6.18 20.677 L 5.693 10.314 C 7.765 9.784 9.314 7.713 9.314 5.227 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.930 0.880)\"/>"},"IconSportsMonoBallBaseball":{viewBox:"0 0 24 24",body:"<path d=\"M 17.99 17.856 C 17.828 18.003 17.614 18.08 17.396 18.07 C 17.177 18.059 16.971 17.963 16.824 17.801 C 16.529 17.476 16.264 17.125 16.032 16.753 C 15.974 16.662 15.935 16.559 15.916 16.453 C 15.898 16.346 15.901 16.237 15.925 16.131 C 15.948 16.026 15.993 15.926 16.055 15.837 C 16.118 15.749 16.197 15.674 16.289 15.616 C 16.38 15.558 16.482 15.518 16.589 15.5 C 16.696 15.481 16.805 15.484 16.911 15.508 C 17.017 15.532 17.116 15.577 17.205 15.639 C 17.293 15.702 17.368 15.781 17.426 15.873 C 17.616 16.173 17.825 16.449 18.045 16.69 C 18.192 16.852 18.269 17.066 18.259 17.284 C 18.248 17.503 18.152 17.709 17.99 17.856 Z M 15.621 14.442 C 15.436 14.442 15.256 14.379 15.111 14.264 C 14.966 14.149 14.863 13.989 14.82 13.809 C 14.722 13.4 14.647 12.987 14.594 12.57 C 14.58 12.463 14.588 12.354 14.616 12.249 C 14.645 12.145 14.693 12.047 14.76 11.961 C 14.826 11.875 14.908 11.804 15.002 11.75 C 15.096 11.696 15.2 11.661 15.308 11.648 C 15.415 11.634 15.524 11.641 15.628 11.67 C 15.733 11.698 15.831 11.747 15.917 11.813 C 16.002 11.879 16.074 11.962 16.128 12.056 C 16.182 12.15 16.216 12.254 16.23 12.361 C 16.276 12.726 16.343 13.081 16.425 13.424 C 16.454 13.545 16.456 13.672 16.429 13.794 C 16.402 13.916 16.348 14.031 16.271 14.129 C 16.193 14.227 16.095 14.306 15.982 14.36 C 15.869 14.415 15.746 14.442 15.621 14.442 Z M 14.814 8.204 C 14.835 8.095 14.878 7.991 14.941 7.899 C 15.003 7.806 15.083 7.728 15.177 7.667 C 15.27 7.607 15.375 7.566 15.485 7.547 C 15.595 7.528 15.707 7.532 15.816 7.557 C 15.924 7.583 16.026 7.63 16.116 7.697 C 16.205 7.763 16.28 7.846 16.337 7.942 C 16.393 8.038 16.43 8.145 16.444 8.255 C 16.458 8.366 16.45 8.478 16.42 8.585 C 16.336 8.936 16.272 9.292 16.227 9.65 C 16.213 9.757 16.179 9.861 16.125 9.955 C 16.071 10.049 15.999 10.132 15.914 10.198 C 15.828 10.265 15.73 10.313 15.626 10.342 C 15.521 10.371 15.412 10.378 15.305 10.365 C 15.197 10.351 15.093 10.316 14.999 10.262 C 14.905 10.209 14.823 10.137 14.756 10.051 C 14.69 9.966 14.641 9.868 14.613 9.763 C 14.584 9.659 14.576 9.549 14.59 9.442 C 14.645 9.016 14.72 8.604 14.814 8.204 Z M 16.021 5.258 C 16.261 4.877 16.526 4.524 16.81 4.209 C 16.883 4.129 16.97 4.063 17.068 4.017 C 17.166 3.97 17.272 3.943 17.38 3.938 C 17.489 3.932 17.597 3.948 17.699 3.984 C 17.801 4.021 17.895 4.077 17.976 4.149 C 18.056 4.222 18.121 4.31 18.168 4.408 C 18.214 4.506 18.241 4.612 18.247 4.72 C 18.252 4.828 18.236 4.936 18.2 5.039 C 18.164 5.141 18.108 5.235 18.035 5.315 C 17.815 5.559 17.607 5.835 17.42 6.135 C 17.303 6.32 17.118 6.452 16.905 6.501 C 16.692 6.55 16.468 6.512 16.282 6.396 C 16.097 6.28 15.965 6.094 15.916 5.881 C 15.867 5.668 15.905 5.444 16.021 5.258 Z M 6.693 10.37 C 6.476 10.397 6.257 10.336 6.084 10.202 C 5.911 10.068 5.799 9.87 5.772 9.653 C 5.726 9.288 5.662 8.933 5.582 8.589 C 5.557 8.484 5.553 8.374 5.571 8.268 C 5.588 8.161 5.626 8.058 5.683 7.966 C 5.74 7.874 5.814 7.794 5.902 7.731 C 5.99 7.668 6.089 7.622 6.194 7.597 C 6.3 7.573 6.409 7.569 6.516 7.586 C 6.623 7.603 6.725 7.642 6.817 7.698 C 6.909 7.755 6.989 7.83 7.052 7.918 C 7.116 8.005 7.161 8.105 7.186 8.21 C 7.282 8.609 7.357 9.024 7.41 9.449 C 7.437 9.666 7.376 9.885 7.242 10.058 C 7.108 10.231 6.91 10.343 6.693 10.37 Z M 7.179 13.815 C 7.154 13.92 7.108 14.02 7.045 14.107 C 6.981 14.195 6.901 14.269 6.808 14.326 C 6.716 14.382 6.613 14.42 6.506 14.437 C 6.4 14.454 6.29 14.449 6.185 14.424 C 6.08 14.399 5.98 14.353 5.893 14.29 C 5.805 14.226 5.731 14.146 5.674 14.053 C 5.617 13.961 5.579 13.859 5.562 13.752 C 5.545 13.645 5.55 13.535 5.575 13.43 C 5.658 13.086 5.723 12.732 5.769 12.367 C 5.779 12.257 5.812 12.15 5.864 12.052 C 5.917 11.955 5.989 11.869 6.075 11.8 C 6.162 11.731 6.261 11.68 6.368 11.65 C 6.474 11.62 6.586 11.611 6.695 11.625 C 6.805 11.639 6.911 11.675 7.007 11.731 C 7.102 11.787 7.186 11.861 7.252 11.949 C 7.319 12.038 7.367 12.139 7.393 12.247 C 7.42 12.354 7.424 12.466 7.407 12.575 C 7.351 13.001 7.275 13.415 7.179 13.815 Z M 5.966 16.758 C 5.732 17.13 5.466 17.48 5.171 17.805 C 5.098 17.886 5.01 17.951 4.912 17.997 C 4.814 18.043 4.708 18.07 4.6 18.075 C 4.491 18.08 4.383 18.063 4.281 18.026 C 4.179 17.989 4.086 17.932 4.006 17.858 C 3.926 17.785 3.861 17.697 3.815 17.599 C 3.769 17.501 3.743 17.395 3.738 17.286 C 3.733 17.178 3.749 17.07 3.786 16.968 C 3.823 16.866 3.88 16.773 3.953 16.693 C 4.175 16.451 4.382 16.177 4.572 15.877 C 4.63 15.785 4.705 15.706 4.794 15.644 C 4.882 15.581 4.982 15.537 5.088 15.513 C 5.193 15.489 5.303 15.487 5.409 15.505 C 5.516 15.523 5.618 15.563 5.709 15.621 C 5.801 15.678 5.88 15.754 5.943 15.842 C 6.005 15.931 6.05 16.031 6.073 16.136 C 6.097 16.242 6.1 16.351 6.082 16.458 C 6.063 16.564 6.024 16.666 5.966 16.758 Z M 4.026 4.154 C 4.188 4.007 4.402 3.931 4.621 3.942 C 4.839 3.953 5.044 4.051 5.191 4.213 C 5.476 4.528 5.742 4.881 5.981 5.263 C 6.058 5.388 6.101 5.531 6.105 5.678 C 6.109 5.825 6.073 5.97 6.002 6.099 C 5.931 6.228 5.827 6.335 5.7 6.41 C 5.574 6.485 5.43 6.525 5.283 6.526 C 5.143 6.526 5.005 6.491 4.883 6.423 C 4.76 6.356 4.657 6.258 4.583 6.139 C 4.401 5.849 4.195 5.575 3.967 5.32 C 3.894 5.24 3.838 5.146 3.802 5.044 C 3.765 4.941 3.749 4.833 3.755 4.725 C 3.76 4.616 3.787 4.51 3.834 4.412 C 3.88 4.314 3.946 4.227 4.026 4.154 Z M 11 0 C 4.925 0 0 4.924 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.924 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconStampMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17.821 0 L 13.59 0 C 13.59 0.001 13.589 0.003 13.589 0.004 L 6.05 0.004 L 6.05 0 L 1.819 0 C 0.813 0 0 0.855 0 1.907 L 0 3.717 C 0 4.147 0.333 4.497 0.744 4.497 L 18.895 4.497 C 19.306 4.497 19.64 4.147 19.64 3.717 L 19.64 1.907 C 19.64 0.855 18.825 0 17.821 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 0 13.620)\"/><path d=\"M 0 0 L 17.405 0 L 17.405 1.232 C 17.405 1.631 17.123 1.953 16.775 1.953 L 0.629 1.953 C 0.283 1.953 0 1.631 0 1.232 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 1.118 18.114)\"/><path d=\"M 2.759 0.157 C 1.358 0.531 0.014 1.588 0 4.577 C -0.018 8.475 0.997 9.448 1.474 10.98 C 1.543 11.199 1.275 11.43 1.141 11.615 C 0.803 12.078 0.098 12.798 0.18 13.62 L 7.72 13.62 C 7.803 12.798 7.098 12.078 6.76 11.615 C 6.626 11.43 6.36 11.199 6.427 10.98 C 6.905 9.448 7.918 8.435 7.9 4.577 C 7.886 1.588 6.543 0.531 5.142 0.157 C 4.752 0.052 4.351 0 3.95 0 C 3.549 0 3.149 0.052 2.759 0.157 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 5.869 0)\"/>"},"IconStarCircleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.2 0 C 5.014 0 0 5.014 0 11.2 C 0 17.386 5.014 22.4 11.2 22.4 C 17.386 22.4 22.4 17.386 22.4 11.2 C 22.4 5.014 17.386 0 11.2 0 Z M 17.003 10.244 L 14.895 12.299 C 14.726 12.465 14.648 12.703 14.688 12.936 L 15.186 15.838 C 15.287 16.426 14.669 16.875 14.141 16.598 L 11.535 15.228 C 11.325 15.118 11.075 15.118 10.865 15.228 L 8.259 16.598 C 7.731 16.876 7.113 16.426 7.214 15.838 L 7.712 12.936 C 7.752 12.703 7.675 12.464 7.505 12.299 L 5.396 10.244 C 4.969 9.828 5.205 9.102 5.795 9.016 L 8.709 8.592 C 8.944 8.557 9.147 8.411 9.252 8.198 L 10.554 5.558 C 10.818 5.022 11.582 5.022 11.846 5.558 L 13.149 8.198 C 13.254 8.41 13.457 8.557 13.692 8.592 L 16.605 9.016 C 17.196 9.102 17.432 9.827 17.004 10.244 L 17.003 10.244 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.800 0.839)\"/>"},"IconStarMonoStarPopular":{viewBox:"0 0 24 24",body:"<path d=\"M 11.907 0.717 L 14.234 5.432 C 14.421 5.811 14.783 6.074 15.202 6.135 L 20.405 6.891 C 21.459 7.044 21.881 8.341 21.117 9.084 L 17.352 12.754 C 17.202 12.9 17.091 13.079 17.026 13.277 C 16.962 13.476 16.947 13.687 16.982 13.892 L 17.871 19.074 C 18.051 20.125 16.949 20.925 16.006 20.43 L 11.352 17.983 C 11.167 17.886 10.962 17.835 10.754 17.835 C 10.545 17.835 10.34 17.886 10.156 17.983 L 5.502 20.43 C 4.558 20.925 3.456 20.125 3.636 19.074 L 4.525 13.892 C 4.56 13.687 4.544 13.476 4.48 13.277 C 4.415 13.079 4.304 12.9 4.155 12.754 L 0.39 9.084 C -0.373 8.341 0.048 7.044 1.103 6.891 L 6.305 6.135 C 6.724 6.074 7.087 5.811 7.274 5.432 L 9.6 0.717 C 10.072 -0.239 11.435 -0.239 11.907 0.717 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.247 1.210)\"/>"},"IconStarYellowmono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 C 0.459 0 0.918 0.239 1.154 0.717 L 3.481 5.432 C 3.668 5.811 4.03 6.074 4.449 6.135 L 9.652 6.891 C 10.706 7.044 11.128 8.341 10.364 9.084 L 6.599 12.754 C 6.45 12.9 6.338 13.079 6.274 13.277 C 6.209 13.475 6.194 13.686 6.229 13.892 L 7.118 19.074 C 7.298 20.125 6.196 20.925 5.253 20.43 L 0.599 17.983 C 0.415 17.886 0.209 17.835 0.001 17.835 L 0.001 0 L 0 0 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.246 1.210) matrix(1 0 0 1 10.754 0)\"/><path d=\"M 10.754 0 C 10.295 0 9.836 0.239 9.6 0.717 L 7.275 5.432 C 7.087 5.811 6.725 6.074 6.305 6.135 L 1.102 6.891 C 0.048 7.044 -0.373 8.34 0.39 9.084 L 4.156 12.754 C 4.305 12.9 4.417 13.079 4.481 13.277 C 4.545 13.475 4.561 13.686 4.526 13.892 L 3.636 19.074 C 3.456 20.124 4.558 20.926 5.502 20.43 L 10.155 17.983 C 10.34 17.886 10.545 17.835 10.754 17.835 L 10.754 0 Z\" fill=\"rgb(255,209,88)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.246 1.210)\"/>"},"IconStethoscopeMonoStethoscopeDoctor":{viewBox:"0 0 24 24",body:"<path d=\"M 20.176 8.849 C 20.176 8.398 20.055 7.956 19.824 7.568 C 19.594 7.181 19.263 6.863 18.866 6.648 C 18.47 6.434 18.023 6.33 17.572 6.349 C 17.122 6.368 16.685 6.508 16.308 6.754 C 15.93 7.001 15.627 7.345 15.429 7.751 C 15.231 8.156 15.147 8.607 15.185 9.056 C 15.223 9.505 15.381 9.936 15.644 10.302 C 15.906 10.669 16.263 10.958 16.676 11.138 L 16.676 13.812 C 16.674 15.059 16.179 16.254 15.297 17.135 C 14.416 18.017 13.221 18.512 11.974 18.514 C 10.891 18.512 9.841 18.137 9.002 17.452 C 8.163 16.767 7.585 15.814 7.367 14.753 C 10.529 14.322 12.974 11.611 12.974 8.333 L 12.974 5.609 L 12.975 2 C 12.975 0.897 12.077 0 10.975 0 L 10.669 0 C 9.566 0 8.669 0.897 8.669 2 L 8.669 2.76 C 8.669 4.145 9.663 5.299 10.974 5.555 L 10.974 8.333 C 10.973 9.522 10.5 10.663 9.659 11.504 C 8.818 12.345 7.677 12.818 6.488 12.82 C 5.298 12.819 4.157 12.346 3.316 11.505 C 2.475 10.663 2.001 9.523 2 8.333 L 2 5.55 C 2.651 5.416 3.236 5.061 3.656 4.546 C 4.076 4.031 4.305 3.387 4.306 2.722 L 4.306 2 C 4.306 0.897 3.408 0 2.306 0 L 2.001 0 C 0.898 0 0.001 0.897 0.001 2 L 0.001 2.466 L 0 2.466 L 0 8.333 C 0 11.518 2.309 14.168 5.34 14.712 C 5.782 17.982 8.585 20.514 11.974 20.514 C 13.751 20.512 15.455 19.805 16.711 18.549 C 17.967 17.293 18.674 15.589 18.676 13.812 L 18.676 11.138 C 19.121 10.944 19.501 10.624 19.767 10.217 C 20.033 9.81 20.176 9.335 20.176 8.849 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.412 1.743)\"/>"},"IconStopMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.67 0 L 1.726 0 C 1.268 0 0.829 0.182 0.506 0.506 C 0.182 0.829 0 1.268 0 1.726 L 0 14.67 C 0 15.128 0.182 15.567 0.506 15.89 C 0.829 16.214 1.268 16.396 1.726 16.396 L 14.67 16.396 C 15.128 16.396 15.567 16.214 15.89 15.89 C 16.214 15.567 16.396 15.128 16.396 14.67 L 16.396 1.726 C 16.396 1.268 16.214 0.829 15.89 0.506 C 15.567 0.182 15.128 0 14.67 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.802 3.803)\"/>"},"IconStoreMonoStoreShop":{viewBox:"0 0 24 24",body:"<path d=\"M 19 0 L 1 0 C 0.735 0 0.48 0.105 0.293 0.293 C 0.105 0.48 0 0.735 0 1 L 0 2.667 L 20 2.667 L 20 1 C 20 0.735 19.895 0.48 19.707 0.293 C 19.52 0.105 19.265 0 19 0 Z M 1.176 16.688 C 1.176 17.324 1.429 17.935 1.879 18.385 C 2.328 18.835 2.939 19.088 3.575 19.088 L 8 19.088 L 8 15.334 C 8 15.069 8.105 14.814 8.293 14.627 C 8.48 14.439 8.735 14.334 9 14.334 L 11 14.334 C 11.265 14.334 11.52 14.439 11.707 14.627 C 11.895 14.814 12 15.069 12 15.334 L 12 19.087 L 16.425 19.087 C 17.061 19.087 17.672 18.834 18.121 18.384 C 18.571 17.934 18.824 17.323 18.824 16.687 L 18.824 8.5 L 1.176 8.5 L 1.176 16.688 Z M 0 6 C 0 6.265 0.105 6.52 0.293 6.707 C 0.48 6.895 0.735 7 1 7 L 19 7 C 19.265 7 19.52 6.895 19.707 6.707 C 19.895 6.52 20 6.265 20 6 L 20 4.333 L 0 4.333 L 0 6 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.500)\"/>"},"IconSubtitleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 17.344 2.5 L 1.25 2.5 C 0.56 2.5 0 1.94 0 1.25 C 0 0.56 0.56 0 1.25 0 L 17.344 0 C 18.034 0 18.594 0.56 18.594 1.25 C 18.594 1.94 18.034 2.5 17.344 2.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.703 3.750)\"/><path d=\"M 10.13 2.5 L 1.25 2.5 C 0.56 2.5 0 1.94 0 1.25 C 0 0.56 0.56 0 1.25 0 L 10.13 0 C 10.82 0 11.38 0.56 11.38 1.25 C 11.38 1.94 10.82 2.5 10.13 2.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.703 3.750) matrix(1 0 0 1 0 4.667)\"/><path d=\"M 6.313 2.5 L 1.25 2.5 C 0.56 2.5 0 1.94 0 1.25 C 0 0.56 0.56 0 1.25 0 L 6.312 0 C 7.002 0 7.562 0.56 7.562 1.25 C 7.562 1.94 7.003 2.5 6.313 2.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.703 3.750) matrix(1 0 0 1 0 9.333)\"/><path d=\"M 13.489 2.5 L 1.25 2.5 C 0.56 2.5 0 1.94 0 1.25 C 0 0.56 0.56 0 1.25 0 L 13.489 0 C 14.179 0 14.739 0.56 14.739 1.25 C 14.739 1.94 14.179 2.5 13.489 2.5 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.703 3.750) matrix(1 0 0 1 0 14)\"/>"},"IconSubwayMonoSubwayTrain":{viewBox:"0 0 24 24",body:"<path d=\"M 4.178 13.703 C 4.356 13.703 4.531 13.738 4.696 13.806 C 4.86 13.874 5.009 13.973 5.135 14.099 C 5.26 14.224 5.36 14.373 5.428 14.537 C 5.496 14.702 5.531 14.877 5.531 15.055 C 5.531 15.233 5.496 15.408 5.428 15.573 C 5.36 15.737 5.261 15.886 5.135 16.012 C 5.01 16.137 4.861 16.237 4.697 16.305 C 4.532 16.373 4.357 16.408 4.179 16.408 C 3.82 16.408 3.476 16.266 3.222 16.012 C 2.969 15.759 2.826 15.415 2.826 15.056 C 2.826 14.697 2.968 14.353 3.222 14.099 C 3.475 13.846 3.819 13.703 4.178 13.703 Z M 13.823 13.703 C 14.181 13.703 14.525 13.845 14.778 14.099 C 15.032 14.352 15.174 14.696 15.174 15.054 C 15.174 15.412 15.032 15.756 14.778 16.009 C 14.525 16.263 14.181 16.405 13.823 16.405 C 13.465 16.405 13.121 16.263 12.868 16.009 C 12.614 15.756 12.472 15.412 12.472 15.054 C 12.472 14.696 12.614 14.352 12.868 14.099 C 13.121 13.845 13.465 13.703 13.823 13.703 Z M 0 17.536 C 0 17.854 0.126 18.159 0.351 18.385 C 0.463 18.496 0.595 18.584 0.741 18.645 C 0.886 18.705 1.042 18.736 1.2 18.736 L 4.513 18.736 L 3.374 20.302 C 3.32 20.377 3.287 20.465 3.28 20.557 C 3.273 20.649 3.291 20.741 3.333 20.823 C 3.375 20.905 3.439 20.974 3.518 21.023 C 3.596 21.071 3.687 21.096 3.779 21.096 L 14.222 21.096 C 14.314 21.096 14.405 21.07 14.483 21.022 C 14.562 20.974 14.625 20.905 14.667 20.823 C 14.709 20.741 14.727 20.648 14.72 20.557 C 14.713 20.465 14.68 20.377 14.626 20.302 L 13.488 18.736 L 16.8 18.736 C 17.118 18.736 17.423 18.61 17.649 18.385 C 17.874 18.159 18 17.854 18 17.536 L 18 11.24 L 0 11.24 L 0 17.536 Z M 16.8 0 L 1.2 0 C 0.882 0 0.577 0.126 0.351 0.351 C 0.126 0.577 0 0.882 0 1.2 L 0 9.739 L 18 9.739 L 18 1.2 C 18 0.882 17.874 0.577 17.649 0.351 C 17.423 0.126 17.118 0 16.8 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 1.510)\"/>"},"IconSun2MonoSun":{viewBox:"0 0 24 24",body:"<path d=\"M 1.26 3.965 C 0.564 3.965 0 3.402 0 2.705 L 0 1.26 C 0 0.564 0.564 0 1.26 0 C 1.956 0 2.52 0.563 2.52 1.26 L 2.52 2.705 C 2.52 3.401 1.956 3.965 1.26 3.965 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 10.416 19.388)\"/><path d=\"M 1.26 3.947 C 0.564 3.947 0 3.384 0 2.687 L 0 1.26 C 0 0.564 0.564 0 1.26 0 C 1.956 0 2.52 0.563 2.52 1.26 L 2.52 2.687 C 2.52 3.383 1.956 3.947 1.26 3.947 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 10.416 0)\"/><path d=\"M 6.024 12.048 C 9.351 12.048 12.048 9.351 12.048 6.024 C 12.048 2.697 9.351 0 6.024 0 C 2.697 0 0 2.697 0 6.024 C 0 9.351 2.697 12.048 6.024 12.048 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 5.652 5.649)\"/><path d=\"M 3.173 3.173 C 2.681 3.665 1.884 3.666 1.391 3.173 L 0.369 2.151 C -0.123 1.659 -0.123 0.861 0.369 0.369 C 0.861 -0.123 1.658 -0.124 2.151 0.369 L 3.173 1.391 C 3.665 1.883 3.665 2.681 3.173 3.173 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 16.760 16.760)\"/><path d=\"M 3.16 3.16 C 2.668 3.652 1.871 3.653 1.378 3.16 L 0.369 2.151 C -0.123 1.659 -0.123 0.861 0.369 0.369 C 0.861 -0.123 1.658 -0.124 2.151 0.369 L 3.16 1.378 C 3.652 1.87 3.652 2.668 3.16 3.16 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 3.050 3.050)\"/><path d=\"M 0.369 3.173 C -0.123 2.681 -0.124 1.884 0.369 1.391 L 1.391 0.369 C 1.883 -0.123 2.681 -0.123 3.173 0.369 C 3.665 0.861 3.666 1.658 3.173 2.151 L 2.151 3.173 C 1.659 3.665 0.861 3.665 0.369 3.173 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 3.050 16.760)\"/><path d=\"M 0.369 3.16 C -0.123 2.668 -0.124 1.871 0.369 1.378 L 1.378 0.369 C 1.87 -0.123 2.668 -0.123 3.16 0.369 C 3.652 0.861 3.653 1.658 3.16 2.151 L 2.151 3.16 C 1.659 3.652 0.861 3.652 0.369 3.16 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 16.773 3.050)\"/><path d=\"M 3.965 1.26 C 3.965 1.956 3.402 2.52 2.705 2.52 L 1.26 2.52 C 0.564 2.52 0 1.956 0 1.26 C 0 0.564 0.563 0 1.26 0 L 2.705 0 C 3.401 0 3.965 0.564 3.965 1.26 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 19.388 10.416)\"/><path d=\"M 3.947 1.26 C 3.947 1.956 3.384 2.52 2.687 2.52 L 1.26 2.52 C 0.564 2.52 0 1.956 0 1.26 C 0 0.564 0.563 0 1.26 0 L 2.687 0 C 3.383 0 3.947 0.564 3.947 1.26 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.324 0.324) matrix(1 0 0 1 0 10.416)\"/>"},"IconSunriseMonoSunSunrise":{viewBox:"0 0 24 24",body:"<path d=\"M 24 24 L 0 24 L 0 0 L 24 0 L 24 24 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 24 24 L 0 24 L 0 0 L 24 0 L 24 24 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 11.76 3.59 C 11.06 3.59 10.5 3.03 10.5 2.33 L 10.5 1.26 C 10.5 0.56 11.06 0 11.76 0 C 12.46 0 13.02 0.56 13.02 1.26 L 13.02 2.32 C 13.02 3.02 12.46 3.59 11.76 3.59 Z M 18.43 6.35 C 18.181 6.349 17.938 6.275 17.732 6.136 C 17.525 5.998 17.364 5.801 17.269 5.571 C 17.174 5.342 17.149 5.089 17.197 4.845 C 17.245 4.601 17.365 4.376 17.54 4.2 L 18.29 3.45 C 18.78 2.96 19.58 2.96 20.07 3.45 C 20.56 3.94 20.56 4.74 20.07 5.23 L 19.32 5.98 C 19.08 6.23 18.75 6.35 18.43 6.35 Z M 5.09 6.35 C 4.77 6.35 4.44 6.23 4.2 5.98 L 3.44 5.23 C 2.95 4.74 2.95 3.94 3.44 3.45 C 3.93 2.96 4.73 2.96 5.22 3.45 L 5.97 4.2 C 6.46 4.69 6.46 5.49 5.97 5.98 C 5.73 6.23 5.41 6.35 5.09 6.35 Z M 22.26 13.02 L 21.19 13.02 C 20.49 13.02 19.93 12.46 19.93 11.76 C 19.93 11.06 20.49 10.5 21.19 10.5 L 22.26 10.5 C 22.96 10.5 23.52 11.06 23.52 11.76 C 23.52 12.46 22.96 13.02 22.26 13.02 Z M 2.32 13.02 L 1.26 13.02 C 0.56 13.02 0 12.46 0 11.76 C 0 11.06 0.56 10.5 1.26 10.5 L 2.32 10.5 C 3.02 10.5 3.58 11.06 3.58 11.76 C 3.58 12.46 3.02 13.02 2.32 13.02 Z M 22.26 17.68 L 1.26 17.68 C 0.56 17.68 0 17.12 0 16.42 C 0 15.72 0.56 15.16 1.26 15.16 L 22.26 15.16 C 22.96 15.16 23.52 15.72 23.52 16.42 C 23.52 17.12 22.96 17.68 22.26 17.68 Z M 18.83 11.69 C 18.831 10.704 18.626 9.729 18.228 8.827 C 17.83 7.924 17.248 7.116 16.519 6.452 C 15.79 5.788 14.93 5.284 13.994 4.973 C 13.059 4.661 12.068 4.549 11.087 4.643 C 10.105 4.736 9.154 5.035 8.295 5.518 C 7.435 6.001 6.687 6.659 6.096 7.449 C 5.506 8.239 5.088 9.143 4.868 10.104 C 4.648 11.066 4.632 12.062 4.82 13.03 L 18.71 13.03 C 18.79 12.6 18.83 12.15 18.83 11.69 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.240 2.160)\"/>"},"IconSyncCircleMonoSync":{viewBox:"0 0 24 24",body:"<path d=\"M 18.023 11.306 L 16.403 13.516 C 16.357 13.58 16.296 13.632 16.226 13.668 C 16.156 13.703 16.078 13.722 15.999 13.722 C 15.921 13.722 15.843 13.703 15.773 13.668 C 15.703 13.632 15.642 13.58 15.596 13.516 L 13.977 11.306 C 13.922 11.232 13.889 11.143 13.882 11.051 C 13.874 10.959 13.892 10.867 13.934 10.784 C 13.976 10.702 14.039 10.632 14.118 10.584 C 14.197 10.536 14.288 10.51 14.38 10.51 L 15.168 10.51 C 15.091 9.861 14.864 9.239 14.504 8.693 C 14.145 8.147 13.663 7.693 13.097 7.366 C 12.458 7.002 11.735 6.811 11 6.811 C 10.265 6.811 9.542 7.002 8.903 7.366 C 8.719 7.472 8.501 7.501 8.296 7.447 C 8.091 7.392 7.916 7.258 7.81 7.075 C 7.703 6.891 7.674 6.672 7.729 6.467 C 7.783 6.262 7.917 6.087 8.101 5.981 C 9.866 4.959 12.132 4.959 13.899 5.981 C 14.779 6.491 15.509 7.221 16.019 8.101 C 16.447 8.841 16.695 9.666 16.767 10.51 L 17.62 10.51 C 17.712 10.51 17.803 10.536 17.882 10.584 C 17.961 10.632 18.024 10.702 18.066 10.784 C 18.108 10.867 18.126 10.959 18.118 11.051 C 18.111 11.143 18.078 11.232 18.023 11.306 Z M 13.899 16.019 C 13.018 16.529 12.018 16.799 11 16.8 C 9.983 16.798 8.984 16.529 8.103 16.02 C 7.222 15.511 6.49 14.78 5.981 13.899 C 5.557 13.161 5.301 12.338 5.232 11.49 L 4.444 11.49 C 4.352 11.49 4.261 11.464 4.183 11.416 C 4.104 11.368 4.04 11.298 3.999 11.216 C 3.957 11.134 3.939 11.042 3.946 10.95 C 3.954 10.858 3.987 10.769 4.041 10.695 L 5.596 8.572 C 5.642 8.508 5.703 8.456 5.773 8.42 C 5.843 8.385 5.921 8.366 6 8.366 C 6.078 8.366 6.156 8.385 6.226 8.42 C 6.296 8.456 6.357 8.508 6.403 8.572 L 7.959 10.695 C 8.013 10.77 8.046 10.858 8.054 10.95 C 8.061 11.042 8.043 11.134 8.001 11.217 C 7.959 11.299 7.895 11.368 7.817 11.416 C 7.738 11.465 7.647 11.49 7.555 11.49 L 6.833 11.49 C 6.91 12.139 7.136 12.761 7.496 13.307 C 7.855 13.853 8.337 14.308 8.903 14.635 C 9.542 14.998 10.265 15.189 11 15.189 C 11.735 15.189 12.458 14.998 13.097 14.635 C 13.188 14.579 13.289 14.543 13.395 14.527 C 13.5 14.511 13.607 14.516 13.711 14.542 C 13.814 14.569 13.911 14.615 13.996 14.68 C 14.081 14.744 14.153 14.824 14.206 14.917 C 14.259 15.009 14.294 15.111 14.307 15.217 C 14.321 15.322 14.313 15.43 14.285 15.532 C 14.256 15.635 14.207 15.731 14.141 15.815 C 14.075 15.898 13.992 15.968 13.899 16.019 Z M 11 0 C 4.924 0 0 4.925 0 11 C 0 17.075 4.924 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.015 0.835)\"/>"},"IconSyncMonoSyncLink":{viewBox:"0 0 24 24",body:"<path d=\"M 23.68 8.677 L 21.643 5.897 C 21.531 5.745 21.385 5.622 21.217 5.536 C 21.049 5.451 20.863 5.407 20.675 5.407 C 20.486 5.407 20.3 5.451 20.132 5.536 C 19.964 5.622 19.818 5.745 19.707 5.897 L 17.67 8.677 C 17.09 9.47 17.656 10.587 18.638 10.587 L 19.518 10.587 C 19.386 11.762 18.979 12.889 18.332 13.879 C 17.684 14.868 16.812 15.691 15.788 16.281 C 13.487 17.615 10.538 17.615 8.235 16.281 C 7.982 16.138 7.684 16.101 7.404 16.177 C 7.124 16.253 6.885 16.436 6.74 16.687 C 6.595 16.938 6.554 17.237 6.628 17.517 C 6.701 17.798 6.883 18.038 7.133 18.185 C 8.616 19.045 10.299 19.498 12.013 19.499 C 13.726 19.498 15.408 19.045 16.891 18.186 C 18.372 17.329 19.603 16.098 20.461 14.616 C 21.17 13.381 21.599 12.006 21.719 10.587 L 22.712 10.587 C 22.933 10.587 23.151 10.525 23.34 10.409 C 23.529 10.293 23.682 10.127 23.783 9.929 C 23.883 9.731 23.926 9.509 23.908 9.288 C 23.89 9.067 23.811 8.856 23.68 8.677 Z M 5.497 8.89 L 4.505 8.89 C 4.621 7.857 4.949 6.86 5.467 5.959 C 6.132 4.812 7.087 3.858 8.235 3.193 C 10.537 1.861 13.486 1.861 15.789 3.193 C 16.041 3.34 16.342 3.379 16.623 3.304 C 16.905 3.229 17.146 3.045 17.292 2.792 C 17.438 2.539 17.478 2.239 17.403 1.957 C 17.327 1.675 17.143 1.435 16.891 1.289 C 13.919 -0.429 10.104 -0.429 7.133 1.289 C 5.652 2.147 4.421 3.377 3.563 4.858 C 2.855 6.094 2.425 7.47 2.305 8.889 L 1.201 8.889 C 0.979 8.888 0.761 8.95 0.572 9.066 C 0.383 9.182 0.23 9.348 0.13 9.546 C 0.029 9.744 -0.014 9.966 0.004 10.187 C 0.022 10.408 0.101 10.62 0.233 10.799 L 2.381 13.731 C 2.492 13.883 2.638 14.006 2.806 14.092 C 2.974 14.177 3.16 14.221 3.349 14.221 C 3.537 14.221 3.723 14.177 3.891 14.092 C 4.059 14.006 4.205 13.883 4.317 13.731 L 6.465 10.799 C 6.596 10.62 6.675 10.408 6.693 10.187 C 6.711 9.966 6.668 9.744 6.568 9.546 C 6.467 9.348 6.314 9.182 6.125 9.066 C 5.936 8.95 5.718 8.888 5.497 8.889\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.043 2.263)\"/>"},"IconSyringeMonoSyringeVaccine":{viewBox:"0 0 24 24",body:"<path d=\"M 16.441 9.141 L 11.941 6.541 L 13.341 4.041 L 14.541 4.741 C 14.741 4.841 14.941 4.941 15.141 4.941 C 15.541 4.941 15.941 4.741 16.141 4.341 C 16.441 3.741 16.241 3.041 15.741 2.741 L 13.541 1.441 L 11.341 0.141 C 10.741 -0.159 10.041 0.041 9.741 0.541 C 9.441 1.141 9.641 1.841 10.141 2.141 L 11.241 2.841 L 9.841 5.241 L 5.341 2.641 C 4.741 2.341 3.941 2.541 3.641 3.141 C 3.341 3.641 3.541 4.441 4.141 4.741 L 5.141 5.341 L 1.241 12.141 C 0.841 12.841 0.741 13.741 1.041 14.541 L 2.141 17.441 L 2.441 18.041 L 0.141 21.941 C -0.159 22.541 0.041 23.241 0.541 23.541 C 0.741 23.641 0.941 23.741 1.141 23.741 C 1.541 23.741 1.941 23.541 2.141 23.141 L 4.441 19.241 L 5.041 19.241 L 8.141 18.741 C 8.941 18.641 9.741 18.141 10.141 17.341 L 14.041 10.541 L 15.041 11.141 C 15.241 11.241 15.441 11.341 15.641 11.341 C 16.041 11.341 16.441 11.141 16.641 10.741 C 17.241 10.141 17.041 9.441 16.441 9.141 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.659 0.159)\"/>"},"IconTableAllMonoTable":{viewBox:"0 0 24 24",body:"<path d=\"M 1.5 0 L 5 0 C 5.552 0 6 0.448 6 1 L 6 4 C 6 4.552 5.552 5 5 5 L 1.5 5 C 0.672 5 0 4.328 0 3.5 L 0 1.5 C 0 0.672 0.672 0 1.5 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 4)\"/><path d=\"M 5 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 4 C 0 4.552 0.448 5 1 5 L 5 5 C 5.552 5 6 4.552 6 4 L 6 1 C 6 0.448 5.552 0 5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 6.800 0)\"/><path d=\"M 1 0 L 4.5 0 C 5.328 0 6 0.672 6 1.5 L 6 3.5 C 6 4.328 5.328 5 4.5 5 L 1 5 C 0.448 5 0 4.552 0 4 L 0 1 C 0 0.448 0.448 0 1 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 13.600 0)\"/><path d=\"M 5 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 4 C 0 4.552 0.448 5 1 5 L 5 5 C 5.552 5 6 4.552 6 4 L 6 1 C 6 0.448 5.552 0 5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 0 5.800)\"/><path d=\"M 5 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 4 C 0 4.552 0.448 5 1 5 L 5 5 C 5.552 5 6 4.552 6 4 L 6 1 C 6 0.448 5.552 0 5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 6.800 5.800)\"/><path d=\"M 5 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 4 C 0 4.552 0.448 5 1 5 L 5 5 C 5.552 5 6 4.552 6 4 L 6 1 C 6 0.448 5.552 0 5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 13.600 5.800)\"/><path d=\"M 1.5 0 L 5 0 C 5.552 0 6 0.448 6 1 L 6 4 C 6 4.552 5.552 5 5 5 L 1.5 5 C 0.672 5 0 4.328 0 3.5 L 0 1.5 C 0 0.672 0.672 0 1.5 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 0 11.600)\"/><path d=\"M 5 0 L 1 0 C 0.448 0 0 0.448 0 1 L 0 4 C 0 4.552 0.448 5 1 5 L 5 5 C 5.552 5 6 4.552 6 4 L 6 1 C 6 0.448 5.552 0 5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 6.800 11.600)\"/><path d=\"M 1 0 L 4.5 0 C 5.328 0 6 0.672 6 1.5 L 6 3.5 C 6 4.328 5.328 5 4.5 5 L 1 5 C 0.448 5 0 4.552 0 4 L 0 1 C 0 0.448 0.448 0 1 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 4) matrix(1 0 0 1 13.600 11.600)\"/>"},"IconTagMono":{viewBox:"0 0 24 24",body:"<path d=\"M 10.133 0.333 C 9.907 0.12 9.613 0 9.32 0 L 4.773 0 L 1.6 0 C 0.72 0 0 0.72 0 1.6 L 0 4.773 L 0 9.32 C 0 9.627 0.12 9.92 0.333 10.133 L 10.413 20.213 C 10.987 20.787 11.933 20.787 12.507 20.213 L 20.213 12.507 C 20.787 11.933 20.787 10.987 20.213 10.413 L 10.133 0.333 Z M 5.333 5.333 C 4.6 6.067 3.427 6.067 2.693 5.333 C 1.96 4.6 1.96 3.413 2.693 2.693 C 3.427 1.973 4.6 1.96 5.333 2.693 C 6.067 3.427 6.053 4.6 5.333 5.333 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.440 2.453)\"/>"},"IconTaxiFrontMono":{viewBox:"0 0 24 24",body:"<path d=\"M 13.668 3.584 C 13.377 2.516 12.406 1.837 11.241 1.837 L 10.358 1.837 L 10.358 0.8 C 10.358 0.358 10 0 9.558 0 L 5.158 0 C 4.716 0 4.358 0.358 4.358 0.8 L 4.358 1.837 L 3.475 1.837 C 2.407 1.837 1.437 2.516 1.048 3.584 L 0 6.79 L 14.716 6.79 L 13.668 3.584 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 2.642 0)\"/><path d=\"M 18.056 0 L 2.038 0 C 0.874 0 0 0.97 0 2.038 L 0 10.358 C 0 10.91 0.448 11.358 1 11.358 L 3.466 11.358 C 4.018 11.358 4.466 10.91 4.466 10.358 L 4.466 9.028 L 15.534 9.028 L 15.534 10.358 C 15.534 10.91 15.982 11.358 16.534 11.358 L 18.999 11.358 C 19.551 11.358 19.999 10.91 19.999 10.358 L 19.999 2.038 C 19.999 0.873 19.126 -0.001 18.056 0 Z M 16.019 3.851 L 3.981 3.851 C 3.592 3.851 3.204 3.462 3.204 3.074 C 3.204 2.686 3.495 2.297 3.981 2.297 L 16.116 2.297 C 16.505 2.297 16.893 2.686 16.893 3.074 C 16.893 3.462 16.505 3.851 16.019 3.851 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 2) matrix(1 0 0 1 0 8.634)\"/>"},"IconTemporaryStorageMono":{viewBox:"0 0 24 24",body:"<path d=\"M 7.017 9.265 L 7.017 0.441 C 7.017 0.197 6.82 0 6.576 0 L 2.317 0 C 2.073 0 1.876 0.197 1.876 0.441 L 1.876 9.265 L 0.442 9.265 C 0.049 9.265 -0.148 9.74 0.13 10.018 L 4.135 14.022 C 4.307 14.195 4.586 14.195 4.758 14.022 L 8.763 10.018 C 9.04 9.74 8.844 9.265 8.451 9.265 L 7.017 9.265 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 6.793 0)\"/><path d=\"M 3.449 0.895 L 1.176 0.029 C 0.962 -0.052 0.724 0.043 0.624 0.248 C 0.463 0.574 0.274 0.905 0.075 1.206 C -0.051 1.396 -0.015 1.649 0.162 1.793 L 2.043 3.325 C 2.242 3.487 2.536 3.446 2.684 3.237 C 3.071 2.691 3.409 2.108 3.692 1.495 C 3.8 1.262 3.689 0.986 3.449 0.895 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 17.333 13.857)\"/><path d=\"M 2.043 0.1 L 0.16 1.651 C -0.016 1.795 -0.051 2.049 0.076 2.238 C 0.275 2.534 0.463 2.856 0.623 3.177 C 0.725 3.38 0.962 3.475 1.175 3.394 L 3.449 2.528 C 3.689 2.436 3.8 2.16 3.692 1.927 C 3.409 1.315 3.072 0.733 2.685 0.188 C 2.537 -0.022 2.241 -0.063 2.043 0.1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 17.333 4.193)\"/><path d=\"M 0.192 0.391 C 0.155 0.741 0.094 1.089 0.012 1.425 C -0.04 1.642 0.08 1.863 0.29 1.939 L 2.579 2.772 C 2.823 2.861 3.09 2.722 3.158 2.471 C 3.33 1.831 3.447 1.161 3.503 0.48 C 3.524 0.222 3.321 0 3.062 0 L 0.629 0 C 0.405 0 0.215 0.168 0.192 0.391 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 18.496 11.155)\"/><path d=\"M 16.4 15.721 C 14.97 17.094 12.971 17.902 10.825 17.849 C 6.681 17.747 3.311 14.271 3.306 10.125 C 3.303 7.318 4.723 4.812 6.965 3.46 C 7.099 3.379 7.184 3.236 7.183 3.078 L 7.188 0.441 C 7.187 0.126 6.865 -0.089 6.576 0.036 C 2.726 1.698 0.084 5.455 0.002 9.901 C -0.107 15.796 4.519 20.799 10.406 21.118 C 13.704 21.297 16.686 19.981 18.815 17.837 C 18.998 17.653 18.988 17.352 18.788 17.185 L 16.985 15.704 C 16.814 15.56 16.561 15.566 16.4 15.721 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 0 0.620)\"/><path d=\"M 0.176 3.007 C 0.473 3.235 0.768 3.504 1.035 3.769 C 1.197 3.93 1.455 3.944 1.631 3.796 L 3.511 2.219 C 3.703 2.058 3.723 1.769 3.554 1.584 C 3.06 1.043 2.473 0.502 1.87 0.078 C 1.656 -0.073 1.356 0.003 1.233 0.235 L 0.052 2.447 C -0.051 2.639 0.003 2.874 0.176 3.007 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 15.313 1.393)\"/><path d=\"M 0.012 1.374 C 0.094 1.713 0.155 2.07 0.192 2.425 C 0.216 2.65 0.408 2.819 0.635 2.816 L 3.069 2.783 C 3.326 2.78 3.525 2.559 3.504 2.303 C 3.448 1.625 3.331 0.965 3.159 0.328 C 3.091 0.078 2.824 -0.062 2.581 0.027 L 0.29 0.861 C 0.08 0.937 -0.04 1.157 0.012 1.374 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1) matrix(1 0 0 1 18.495 7.518)\"/>"},"IconTerminalMonoHardware":{viewBox:"0 0 24 24",body:"<path d=\"M 19.249 3.039 C 18.915 2.46 19.011 1.728 19.484 1.256 L 18.759 0 L 0 10.831 L 0.725 12.086 L 1.92 14.157 C 2.634 15.395 3.955 16.157 5.384 16.157 L 21.859 16.157 L 23.433 10.284 L 19.249 3.039 Z M 19.15 14.327 C 18.598 14.327 18.15 13.879 18.15 13.327 C 18.15 12.775 18.598 12.327 19.15 12.327 C 19.702 12.327 20.15 12.775 20.15 13.327 C 20.15 13.879 19.702 14.327 19.15 14.327 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.139 3.334)\"/>"},"IconTextLineMonoText":{viewBox:"0 0 24 24",body:"<path d=\"M 9 0 L 1.2 0 C 0.537 0 0 0.538 0 1.2 L 0 2.3 C 0 2.963 0.538 3.5 1.2 3.5 C 1.829 3.5 2.345 3.016 2.396 2.4 L 3.9 2.4 L 3.9 8.1 C 3.237 8.1 2.7 8.637 2.7 9.3 C 2.7 9.963 3.238 10.5 3.9 10.5 L 6.3 10.5 C 6.963 10.5 7.5 9.963 7.5 9.3 C 7.5 8.637 6.963 8.1 6.3 8.1 L 6.3 2.4 L 7.804 2.4 C 7.855 3.016 8.371 3.5 9 3.5 C 9.663 3.5 10.2 2.962 10.2 2.3 L 10.2 1.2 C 10.2 0.537 9.663 0 9 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.700 2.800) matrix(1 0 0 1 4.300 4.300)\"/><path d=\"M 15.9 0 L 2.9 0 C 1.274 0 0 1.274 0 2.9 L 0 15.9 C 0 17.553 1.247 18.8 2.9 18.8 L 15.9 18.8 C 17.526 18.8 18.8 17.526 18.8 15.9 L 18.8 2.9 C 18.8 1.274 17.526 0 15.9 0 Z M 16.4 15.9 C 16.4 16.267 16.101 16.4 15.9 16.4 L 2.9 16.4 C 2.564 16.4 2.4 16.237 2.4 15.9 L 2.4 2.9 C 2.4 2.533 2.699 2.4 2.9 2.4 L 15.9 2.4 C 16.267 2.4 16.4 2.699 16.4 2.9 L 16.4 15.9 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.700 2.800)\"/>"},"IconTextMonoText":{viewBox:"0 0 24 24",body:"<path d=\"M 17 0 C 17.53 0 18.039 0.211 18.414 0.586 C 18.789 0.961 19 1.47 19 2 L 19 17 C 19 17.53 18.789 18.039 18.414 18.414 C 18.039 18.789 17.53 19 17 19 L 2 19 C 1.47 19 0.961 18.789 0.586 18.414 C 0.211 18.039 0 17.53 0 17 L 0 2 C 0 1.47 0.211 0.961 0.586 0.586 C 0.961 0.211 1.47 0 2 0 L 17 0 Z M 13.354 4.843 L 5.647 4.843 L 5.547 4.849 C 5.354 4.873 5.176 4.967 5.047 5.114 C 4.918 5.26 4.847 5.448 4.847 5.643 L 4.847 6.726 L 4.853 6.826 C 4.877 7.019 4.971 7.197 5.118 7.326 C 5.264 7.455 5.452 7.526 5.647 7.526 L 5.747 7.52 C 5.94 7.496 6.118 7.402 6.247 7.255 C 6.376 7.109 6.447 6.921 6.447 6.726 L 6.447 6.443 L 8.7 6.443 L 8.7 12.873 L 8.324 12.873 L 8.224 12.88 C 8.022 12.905 7.836 13.006 7.706 13.163 C 7.576 13.32 7.511 13.521 7.523 13.724 C 7.536 13.928 7.626 14.119 7.775 14.258 C 7.924 14.397 8.12 14.475 8.324 14.474 L 10.676 14.474 L 10.776 14.467 C 10.977 14.44 11.16 14.338 11.289 14.182 C 11.417 14.025 11.482 13.826 11.469 13.624 C 11.456 13.422 11.367 13.232 11.22 13.093 C 11.073 12.954 10.879 12.875 10.676 12.874 L 10.3 12.873 L 10.3 6.443 L 12.554 6.443 L 12.554 6.726 L 12.56 6.826 C 12.585 7.028 12.686 7.214 12.843 7.344 C 13 7.474 13.201 7.539 13.404 7.527 C 13.608 7.514 13.799 7.424 13.938 7.275 C 14.077 7.126 14.155 6.93 14.154 6.726 L 14.154 5.643 L 14.147 5.543 C 14.123 5.35 14.029 5.172 13.883 5.043 C 13.737 4.914 13.549 4.843 13.354 4.843 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.500)\"/>"},"IconThumbDownMonoThumb":{viewBox:"0 0 24 24",body:"<path d=\"M 3.834 11.796 L 3.834 0 L 1.904 0 C 0.852 0 0 0.853 0 1.905 L 0 9.892 C 0 10.944 0.852 11.796 1.904 11.796 L 3.834 11.796 Z M 17.363 14.003 C 17.594 14.003 17.824 13.975 18.049 13.919 C 19.581 13.54 20.515 11.991 20.136 10.46 L 18.266 2.896 C 17.846 1.195 16.32 0 14.568 0 L 5.334 0 L 5.334 11.796 L 5.345 11.796 L 9.581 19.132 C 9.891 19.67 10.465 20.001 11.086 20.001 C 12.045 20 12.822 19.223 12.821 18.264 L 12.821 14.003 L 17.363 14.003 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.050 2.795)\"/>"},"IconThumbUpMonoThumb":{viewBox:"0 0 24 24",body:"<path d=\"M 1.904 8.205 C 1.399 8.205 0.915 8.406 0.558 8.763 C 0.201 9.12 0 9.604 0 10.109 L 0 18.096 C 0 19.148 0.852 20.001 1.904 20.001 L 3.834 20.001 L 3.834 8.205 L 1.904 8.205 Z M 17.363 5.998 L 12.821 5.998 L 12.821 1.737 C 12.821 1.355 12.695 0.983 12.463 0.68 C 12.23 0.376 11.904 0.158 11.534 0.059 C 11.165 -0.04 10.773 -0.014 10.42 0.132 C 10.067 0.279 9.772 0.538 9.581 0.869 L 5.345 8.205 L 5.334 8.205 L 5.334 20.001 L 14.568 20.001 C 15.419 20.001 16.246 19.716 16.917 19.191 C 17.587 18.666 18.062 17.932 18.266 17.105 L 20.136 9.541 C 20.24 9.12 20.247 8.681 20.156 8.257 C 20.066 7.833 19.88 7.436 19.612 7.094 C 19.345 6.753 19.004 6.477 18.614 6.287 C 18.224 6.097 17.797 5.998 17.363 5.998 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3.050 0.999)\"/>"},"IconTicketMonoTicketGift":{viewBox:"0 0 24 24",body:"<path d=\"M 19.415 8 C 19.415 6.903 20.304 6.014 21.4 6.014 L 21.4 1.501 C 21.4 0.672 20.728 0 19.899 0 L 1.501 0 C 0.672 0 0 0.672 0 1.501 L 0 6.014 C 1.097 5.979 2.014 6.84 2.049 7.937 C 2.084 9.034 1.223 9.951 0.126 9.986 C 0.084 9.987 0.042 9.987 0 9.986 L 0 14.499 C 0 15.328 0.672 16 1.501 16 L 19.9 16 C 20.729 16 21.401 15.328 21.401 14.499 L 21.401 9.986 C 20.304 9.986 19.415 9.097 19.415 8 Z M 14.529 7.115 L 12.843 8.759 L 13.241 11.08 C 13.285 11.337 13.015 11.533 12.784 11.412 L 10.7 10.316 L 8.616 11.413 C 8.385 11.534 8.115 11.338 8.159 11.081 L 8.556 8.759 L 6.87 7.115 C 6.683 6.933 6.786 6.616 7.044 6.578 L 9.375 6.239 L 10.418 4.127 C 10.533 3.893 10.867 3.893 10.982 4.127 L 12.025 6.239 L 14.355 6.578 C 14.613 6.616 14.716 6.933 14.529 7.115 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.300 4)\"/>"},"IconTissueMonoTissuePaper":{viewBox:"0 0 24 24",body:"<path d=\"M 13.558 18.857 L 13.558 7.692 C 13.558 3.444 11.836 0 9.712 0 L 0 0 C 1.49 1.511 2.451 4.322 2.451 7.692 L 2.451 18.857 L 13.558 18.857 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.571) matrix(1 0 0 1 6.442 0)\"/><path d=\"M 3.846 9.744 C 3.28 9.744 2.821 8.826 2.821 7.693 C 2.821 6.559 3.28 5.641 3.846 5.641 C 4.412 5.641 4.872 6.559 4.872 7.693 C 4.872 8.826 4.412 9.744 3.846 9.744 Z M 3.846 0 C 1.722 0 0 3.444 0 7.693 C 0 11.941 1.722 15.385 3.846 15.385 C 5.971 15.385 7.693 11.941 7.693 7.693 C 7.693 3.444 5.971 0 3.846 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2 2.571)\"/>"},"IconTmoneyMonoTmoney":{viewBox:"0 0 24 24",body:"<path d=\"M 17 0 L 2 0 C 0.895 0 0 0.895 0 2 L 0 17 C 0 18.105 0.895 19 2 19 L 17 19 C 18.105 19 19 18.105 19 17 L 19 2 C 19 0.895 18.105 0 17 0 Z M 10.572 13.324 C 10.572 13.915 10.091 14.401 9.498 14.401 C 8.906 14.401 8.426 13.916 8.426 13.324 L 8.426 7.564 C 8.426 7.019 8 6.751 7.597 6.751 L 5.917 6.751 C 5.326 6.751 4.845 6.266 4.845 5.674 C 4.845 5.081 5.326 4.6 5.917 4.6 L 7.648 4.6 C 9.561 4.6 10.572 5.608 10.572 7.516 L 10.572 13.324 Z M 13.078 6.75 L 11.4 6.75 C 11.231 6.75 11.058 6.798 10.915 6.895 C 10.805 6.003 10.448 5.324 9.87 4.872 C 10.279 4.693 10.775 4.6 11.353 4.6 L 13.078 4.6 C 13.675 4.6 14.156 5.081 14.156 5.674 C 14.155 6.266 13.675 6.75 13.078 6.75 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.500 2.500)\"/>"},"IconToothMonoToothDentist":{viewBox:"0 0 24 24",body:"<path d=\"M 12.831 4.083 C 12.765 4.123 11.201 5.093 9.147 5.093 C 7.061 5.093 5.707 4.09 5.65 4.047 C 5.491 3.928 5.386 3.75 5.358 3.553 C 5.33 3.356 5.381 3.156 5.5 2.997 C 5.62 2.838 5.797 2.733 5.994 2.705 C 6.191 2.677 6.391 2.728 6.55 2.847 C 6.572 2.863 7.594 3.594 9.147 3.594 C 10.754 3.594 12.022 2.82 12.035 2.812 C 12.204 2.708 12.408 2.674 12.601 2.719 C 12.794 2.764 12.962 2.884 13.067 3.052 C 13.173 3.22 13.207 3.423 13.162 3.616 C 13.118 3.809 12.999 3.977 12.831 4.082 M 18.211 3.176 C 16.747 -0.165 13.276 -0.392 11.836 0.346 C 11.826 0.353 11.813 0.359 11.803 0.364 C 11.062 0.739 10.243 0.933 9.412 0.93 C 8.581 0.927 7.763 0.727 7.024 0.347 C 5.584 -0.393 2.114 -0.165 0.651 3.176 C -0.679 6.216 0.289 8.848 1.235 10.842 L 1.232 10.84 C 2.639 13.854 2.458 14.835 3.076 17.203 C 3.804 20 4.966 21.273 4.966 21.273 L 4.971 21.271 C 5.256 21.764 5.815 22.077 6.444 21.983 C 7.164 21.875 7.669 21.203 7.672 20.476 C 7.678 16.926 8.119 16.114 8.558 15.186 C 8.637 15.021 8.76 14.882 8.915 14.784 C 9.069 14.687 9.248 14.635 9.431 14.635 C 9.614 14.635 9.793 14.687 9.947 14.784 C 10.101 14.882 10.225 15.021 10.303 15.186 C 10.743 16.114 11.184 16.926 11.188 20.476 C 11.191 21.204 11.698 21.875 12.418 21.983 C 12.707 22.027 13.002 21.983 13.265 21.856 C 13.528 21.729 13.746 21.525 13.89 21.271 L 13.895 21.273 C 13.895 21.273 15.057 20 15.786 17.203 C 16.403 14.835 16.222 13.853 17.628 10.84 L 17.625 10.842 C 18.571 8.848 19.539 6.216 18.209 3.176\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.569 1.000)\"/>"},"IconTossbankMonoBankToss":{viewBox:"0 0 24 24",body:"<path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/><path d=\"M 18.93 4.73 L 11.04 0.27 C 10.4 -0.09 9.61 -0.09 8.97 0.27 L 1.07 4.73 C 0.41 5.1 0 5.8 0 6.56 L 0 18.78 C 0 19.94 0.94 20.89 2.11 20.89 L 17.9 20.89 C 19.06 20.89 20.01 19.95 20.01 18.78 L 20.01 6.56 C 20 5.8 19.59 5.1 18.93 4.73 Z M 10.73 16.88 L 7.19 16.88 C 6.938 16.88 6.696 16.78 6.518 16.602 C 6.34 16.424 6.24 16.182 6.24 15.93 L 6.24 6.84 C 6.24 6.31 6.67 5.89 7.19 5.89 L 10.28 5.89 C 12.71 5.89 14.16 6.92 14.16 8.78 C 14.16 9.84 13.44 10.9 12.12 11.14 C 13.67 11.32 14.6 12.38 14.6 13.75 C 14.6 15.73 13.24 16.88 10.73 16.88 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 1.210)\"/><path d=\"M 2.05 4.45 L 0 4.45 L 0 7.19 L 2.05 7.19 C 3.1 7.19 3.61 6.6 3.61 5.82 C 3.61 5.04 3.12 4.45 2.05 4.45 Z M 3.17 1.25 C 3.17 0.45 2.62 0 1.59 0 L 0 0 L 0 2.55 L 1.59 2.55 C 2.66 2.55 3.17 2.03 3.17 1.25 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 1.210) matrix(1 0 0 1 8.600 7.790)\"/>"},"IconTrainMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.999 2.668 C 14.933 2.668 14.869 2.674 14.807 2.686 C 14.872 2.673 14.94 2.666 15.009 2.666 L 16.003 2.666 C 14.127 0.999 12.018 0 10.318 0 L 9.419 0 L 6.31 0 L 0.6 0 C 0.269 0 0 0.269 0 0.6 L 0 2.666 L 1.264 2.666 C 1.843 2.666 2.312 3.135 2.312 3.714 L 2.312 6.93 C 2.312 7.509 1.844 7.978 1.265 7.978 L 0 7.978 L 0 11.951 L 0 11.952 L 0 14.044 C 0 14.375 0.269 14.644 0.6 14.644 L 19.109 14.644 C 20.224 14.644 20.737 13.681 20.737 12.592 C 20.737 12.445 20.726 12.302 20.716 12.158 C 20.711 12.09 20.706 12.02 20.702 11.951 L 20.701 11.951 C 20.623 10.551 20.291 9.22 19.783 7.979 L 19.783 7.978 L 19.772 7.978 C 19.75 7.924 19.73 7.87 19.709 7.816 C 19.668 7.711 19.628 7.606 19.581 7.504 C 18.709 5.591 17.42 3.936 15.992 2.668 L 14.999 2.668 Z M 4.056 7.978 L 9.319 7.978 C 9.898 7.978 10.367 7.509 10.367 6.93 L 10.367 3.714 C 10.367 3.135 9.898 2.666 9.319 2.666 L 4.056 2.666 C 3.477 2.666 3.008 3.135 3.008 3.714 L 3.008 6.93 C 3.008 7.509 3.477 7.978 4.056 7.978 Z M 14.748 3.274 C 16.193 4.488 17.124 5.884 17.869 7.518 C 17.971 7.741 17.793 7.993 17.548 7.993 L 12.969 7.98 C 12.417 7.98 11.969 7.532 11.969 6.98 L 11.969 3.668 C 11.969 3.116 12.417 2.668 12.969 2.668 C 13.615 2.668 14.254 2.859 14.748 3.274 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.631 3.482)\"/><path d=\"M 20.531 0 L 0.6 0 C 0.269 0 0 0.269 0 0.6 L 0 1.099 C 0 1.43 0.269 1.699 0.6 1.699 L 20.531 1.699 C 21.001 1.699 21.381 1.319 21.381 0.849 C 21.381 0.379 21.001 0 20.531 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.631 3.482) matrix(1 0 0 1 0 15.848)\"/>"},"IconTransferMonoMoneyWon":{viewBox:"0 0 24 24",body:"<path d=\"M 19.25 3.064 C 15.45 -0.936 9.15 -1.036 5.35 2.864 L 0.45 8.464 C -0.15 9.164 -0.15 10.164 0.45 10.964 L 5.35 16.564 C 9.15 20.364 15.45 20.364 19.25 16.364 C 22.75 12.764 22.75 6.664 19.25 3.064 Z M 17.75 10.864 L 15.85 10.864 L 15.15 13.264 C 15.05 13.264 15.05 13.264 15.05 13.264 C 15.05 13.564 14.65 13.864 14.15 13.864 C 13.65 13.864 13.35 13.564 13.25 13.264 C 13.25 13.264 13.25 13.197 13.25 13.064 L 12.25 9.064 L 11.15 13.064 C 11.15 13.364 10.75 13.664 10.25 13.664 C 9.75 13.664 9.45 13.364 9.35 13.064 C 9.283 13.064 9.25 12.997 9.25 12.864 L 8.65 10.464 L 6.75 10.464 C 6.35 10.464 5.95 10.064 5.95 9.664 C 5.95 9.264 6.35 8.864 6.75 8.864 L 8.25 8.864 L 7.65 6.664 C 7.65 6.164 7.85 5.764 8.25 5.664 C 8.65 5.664 9.15 5.864 9.25 6.164 L 10.25 10.264 L 11.35 6.264 L 11.35 6.164 C 11.45 5.864 11.75 5.564 12.25 5.564 C 12.75 5.564 13.05 5.864 13.15 6.164 C 13.217 6.23 13.25 6.297 13.25 6.364 L 14.25 10.364 L 14.45 9.664 C 14.45 9.464 14.45 9.364 14.45 9.264 L 15.25 6.264 C 15.35 5.764 15.75 5.564 16.25 5.664 C 16.75 5.764 16.95 6.264 16.85 6.664 L 16.25 8.864 L 17.65 8.864 C 18.05 8.864 18.45 9.264 18.55 9.864 C 18.55 10.264 18.15 10.664 17.75 10.664 L 17.75 10.864 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.050 2.236)\"/>"},"IconTranslateEnglishMono":{viewBox:"0 0 24 24",body:"<path d=\"M 0 3.359 L 2.37 3.359 L 1.188 0 L 0 3.359 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 13.696 8.779)\"/><path d=\"M 16.086 7.475 C 16.086 3.312 12.49 0 8.043 0 C 3.596 0 0 3.312 0 7.475 C 0 11.638 3.596 14.949 8.043 14.949 C 8.989 14.949 9.747 14.856 10.598 14.572 L 13.436 15.802 C 13.72 15.896 14.005 15.706 13.909 15.422 L 13.626 12.868 C 15.234 11.544 16.086 9.556 16.086 7.475 Z M 10.97 11.508 L 10.964 11.508 C 10.626 11.508 10.324 11.294 10.213 10.975 L 9.718 9.559 L 6.319 9.559 L 5.819 10.977 C 5.707 11.295 5.406 11.508 5.068 11.508 C 4.514 11.508 4.13 10.956 4.321 10.437 L 6.708 3.962 C 6.911 3.411 7.436 3.045 8.023 3.045 C 8.61 3.045 9.136 3.412 9.338 3.963 L 11.717 10.437 C 11.908 10.957 11.523 11.507 10.97 11.507 L 10.97 11.508 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 6.861 4.040)\"/><path d=\"M 4.483 2.46 C 4.483 1.609 4.578 0.757 4.862 0 C 2.307 0.378 0.32 2.27 0.036 4.731 C -0.153 6.245 0.415 7.76 1.361 8.894 L 0.982 10.692 C 0.982 10.882 1.077 11.072 1.361 10.976 L 3.537 10.314 C 4.105 10.599 4.673 10.692 5.335 10.787 C 6.755 10.977 8.079 10.599 9.215 9.935 C 6.375 8.516 4.483 5.677 4.483 2.46 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.053 9.050) matrix(1 0 0 1 -0.000 0)\"/>"},"IconTreeMonoForest":{viewBox:"0 0 24 24",body:"<path d=\"M 17.754 14.605 L 13.735 9.593 L 14.778 9.593 C 15.785 9.593 16.344 8.428 15.714 7.642 L 9.946 0.449 C 9.466 -0.15 8.554 -0.15 8.074 0.449 L 2.306 7.642 C 1.676 8.427 2.235 9.593 3.242 9.593 L 4.285 9.593 L 0.266 14.605 C -0.364 15.391 0.195 16.556 1.202 16.556 L 7.342 16.556 L 7.342 20.797 C 7.342 21.119 7.603 21.381 7.926 21.381 L 10.094 21.381 C 10.416 21.381 10.678 21.12 10.678 20.797 L 10.678 16.556 L 16.818 16.556 C 17.825 16.555 18.384 15.39 17.754 14.605 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.990 1.260)\"/>"},"IconTrendLineMonoLine":{viewBox:"0 0 24 24",body:"<path d=\"M 0 9.941 L 0.79 10.763 L 11.126 0.822 L 10.336 0 L 9.546 -0.822 L -0.79 9.119 L 0 9.941 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.864 4.105) matrix(1 0 0 1 2.980 2.947)\"/><path d=\"M 3.9 1.916 L 2.909 1.916 C 2.909 2.411 2.496 2.841 1.95 2.841 L 1.95 3.832 L 1.95 4.823 C 3.558 4.823 4.891 3.538 4.891 1.916 L 3.9 1.916 Z M 1.95 3.832 L 1.95 2.841 C 1.404 2.841 0.991 2.411 0.991 1.916 L 0 1.916 L -0.991 1.916 C -0.991 3.538 0.342 4.823 1.95 4.823 L 1.95 3.832 Z M 0 1.916 L 0.991 1.916 C 0.991 1.421 1.404 0.991 1.95 0.991 L 1.95 0 L 1.95 -0.991 C 0.342 -0.991 -0.991 0.294 -0.991 1.916 L 0 1.916 Z M 1.95 0 L 1.95 0.991 C 2.496 0.991 2.909 1.421 2.909 1.916 L 3.9 1.916 L 4.891 1.916 C 4.891 0.294 3.558 -0.991 1.95 -0.991 L 1.95 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.864 4.105) matrix(1 0 0 1 0 11.958)\"/><path d=\"M 3.9 1.916 L 2.909 1.916 C 2.909 2.411 2.496 2.841 1.95 2.841 L 1.95 3.832 L 1.95 4.823 C 3.558 4.823 4.891 3.538 4.891 1.916 L 3.9 1.916 Z M 1.95 3.832 L 1.95 2.841 C 1.404 2.841 0.991 2.411 0.991 1.916 L 0 1.916 L -0.991 1.916 C -0.991 3.538 0.342 4.823 1.95 4.823 L 1.95 3.832 Z M 0 1.916 L 0.991 1.916 C 0.991 1.421 1.404 0.991 1.95 0.991 L 1.95 0 L 1.95 -0.991 C 0.342 -0.991 -0.991 0.294 -0.991 1.916 L 0 1.916 Z M 1.95 0 L 1.95 0.991 C 2.496 0.991 2.909 1.421 2.909 1.916 L 3.9 1.916 L 4.891 1.916 C 4.891 0.294 3.558 -0.991 1.95 -0.991 L 1.95 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 3.864 4.105) matrix(1 0 0 1 12.372 0)\"/>"},"IconTrophyMonoTrophyPrize":{viewBox:"0 0 24 24",body:"<path d=\"M 19.594 2.934 L 17.294 2.934 L 17.294 0.5 C 17.294 0.367 17.241 0.24 17.148 0.146 C 17.054 0.053 16.927 0 16.794 0 L 3.3 0 C 3.167 0 3.04 0.053 2.946 0.146 C 2.853 0.24 2.8 0.367 2.8 0.5 L 2.8 2.934 L 0.5 2.934 C 0.367 2.934 0.24 2.987 0.146 3.08 C 0.053 3.174 0 3.301 0 3.434 L 0 4.804 C 0 6.486 0.807 8.113 2.242 8.991 C 2.64 9.234 3.036 9.39 3.427 9.481 C 4.429 11.83 6.555 13.588 9.148 13.924 L 9.148 17 L 6.407 17 C 6.302 17 6.2 17.033 6.115 17.095 C 6.03 17.156 5.966 17.243 5.933 17.342 L 5.047 20 L 15.047 20 L 14.161 17.342 C 14.128 17.242 14.064 17.156 13.979 17.095 C 13.894 17.033 13.792 17 13.687 17 L 10.948 17 L 10.948 13.942 C 12.231 13.78 13.447 13.278 14.47 12.489 C 15.494 11.699 16.287 10.65 16.769 9.45 C 17.127 9.355 17.489 9.213 17.853 8.991 C 19.287 8.113 20.094 6.486 20.094 4.804 L 20.094 3.434 C 20.094 3.301 20.041 3.174 19.948 3.08 C 19.854 2.987 19.727 2.934 19.594 2.934 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.953 2)\"/>"},"IconTruckMonoTruckMove":{viewBox:"0 0 24 24",body:"<path d=\"M 14 0 L 1 0 C 0.4 0 0 0.4 0 1 L 0 14.6 C 0 15.2 0.4 15.6 1 15.6 L 2.3 15.6 C 2.3 17 3.4 18.1 4.8 18.1 C 6.2 18.1 7.3 17 7.3 15.6 L 14 15.6 C 14.6 15.6 15 15.2 15 14.6 L 15 1 C 15 0.5 14.6 0 14 0 Z M 5.8 15.6 C 5.8 16.2 5.4 16.6 4.8 16.6 C 4.2 16.6 3.8 16.1 3.8 15.6 C 3.8 15.3 3.9 15.1 4.1 14.9 C 4.2 14.8 4.3 14.7 4.4 14.7 C 4.5 14.6 4.6 14.6 4.8 14.6 C 4.9 14.6 5.1 14.6 5.2 14.7 C 5.3 14.7 5.4 14.8 5.5 14.9 C 5.7 15.1 5.8 15.4 5.8 15.6 Z M 20.6 4.4 C 20.4 4 20 3.7 19.5 3.7 L 16 3.7 L 16 9.2 L 22.8 9.2 L 20.6 4.4 Z M 23.4 10.4 L 23.3 10.2 L 16 10.2 L 16 15.6 L 17.1 15.6 C 17.1 17 18.2 18.1 19.6 18.1 C 21 18.1 22.1 17 22.1 15.6 L 22.6 15.6 C 23.2 15.6 23.6 15.2 23.6 14.6 L 23.6 11.4 C 23.6 11 23.5 10.7 23.4 10.4 Z M 19.6 16.7 C 19 16.7 18.6 16.2 18.6 15.7 C 18.6 15.2 19 14.7 19.6 14.7 C 20.2 14.7 20.6 15.2 20.6 15.7 C 20.6 16.2 20.1 16.7 19.6 16.7 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.200 2.900)\"/>"},"IconTwinkleDoubleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 19.603 11.153 L 16.074 10.362 C 15.6 10.205 15.183 9.911 14.876 9.517 C 14.569 9.123 14.386 8.647 14.35 8.149 L 13.715 3.754 C 13.697 3.633 13.637 3.523 13.544 3.443 C 13.452 3.363 13.334 3.319 13.212 3.319 C 13.09 3.319 12.972 3.363 12.88 3.443 C 12.788 3.523 12.727 3.633 12.709 3.754 L 12.074 8.149 C 12.038 8.647 11.855 9.124 11.548 9.518 C 11.241 9.912 10.824 10.206 10.349 10.363 L 6.822 11.154 C 6.709 11.179 6.608 11.242 6.536 11.332 C 6.464 11.422 6.424 11.534 6.424 11.65 C 6.424 11.766 6.463 11.878 6.536 11.968 C 6.608 12.058 6.709 12.121 6.822 12.146 L 10.349 12.937 C 10.824 13.093 11.241 13.387 11.548 13.782 C 11.855 14.176 12.038 14.653 12.074 15.151 L 12.709 19.546 C 12.727 19.667 12.787 19.777 12.88 19.857 C 12.972 19.937 13.09 19.98 13.212 19.98 C 13.334 19.98 13.452 19.936 13.544 19.857 C 13.636 19.777 13.697 19.667 13.715 19.546 L 14.35 15.151 C 14.386 14.653 14.569 14.176 14.876 13.782 C 15.183 13.388 15.6 13.094 16.075 12.937 L 19.604 12.146 C 19.717 12.121 19.818 12.058 19.89 11.968 C 19.961 11.878 20 11.766 20 11.65 C 20 11.534 19.961 11.422 19.888 11.332 C 19.816 11.242 19.715 11.179 19.602 11.154 L 19.603 11.153 Z M 8.639 5.039 L 6.373 4.53 C 6.096 4.435 5.853 4.261 5.675 4.028 C 5.496 3.795 5.391 3.515 5.372 3.223 L 4.964 0.398 C 4.948 0.288 4.892 0.186 4.807 0.113 C 4.722 0.04 4.614 0 4.502 0 C 4.39 0 4.282 0.04 4.197 0.113 C 4.112 0.186 4.056 0.288 4.04 0.398 L 3.632 3.223 C 3.613 3.515 3.508 3.795 3.33 4.028 C 3.152 4.261 2.909 4.435 2.632 4.53 L 0.365 5.039 C 0.261 5.062 0.169 5.119 0.102 5.202 C 0.036 5.285 0 5.388 0 5.494 C 0 5.6 0.036 5.703 0.103 5.786 C 0.169 5.869 0.261 5.927 0.365 5.95 L 2.632 6.458 C 2.909 6.553 3.152 6.727 3.33 6.96 C 3.508 7.193 3.613 7.473 3.632 7.765 L 4.04 10.589 C 4.056 10.7 4.112 10.801 4.197 10.874 C 4.282 10.947 4.39 10.988 4.502 10.988 C 4.614 10.988 4.722 10.948 4.807 10.874 C 4.892 10.801 4.947 10.7 4.964 10.589 L 5.372 7.765 C 5.391 7.473 5.496 7.193 5.674 6.96 C 5.852 6.727 6.095 6.553 6.372 6.458 L 8.639 5.95 C 8.743 5.927 8.835 5.869 8.902 5.786 C 8.968 5.703 9.005 5.6 9.005 5.494 C 9.005 5.388 8.969 5.285 8.902 5.202 C 8.835 5.119 8.743 5.062 8.639 5.039 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0 -8) matrix(1 0 0 1 2 10.010)\"/>"},"IconTwinkleMono":{viewBox:"0 0 24 24",body:"<path d=\"M 20.931 6.937 L 17.805 6.237 C 17.385 6.098 17.015 5.838 16.743 5.489 C 16.471 5.14 16.309 4.718 16.277 4.277 L 15.714 0.384 C 15.699 0.278 15.645 0.18 15.563 0.109 C 15.481 0.039 15.377 0 15.269 0 C 15.161 0 15.057 0.039 14.975 0.109 C 14.893 0.18 14.84 0.278 14.824 0.384 L 14.262 4.277 C 14.23 4.718 14.068 5.14 13.796 5.489 C 13.524 5.839 13.154 6.099 12.734 6.238 L 9.61 6.938 C 9.51 6.961 9.421 7.016 9.357 7.096 C 9.293 7.176 9.258 7.275 9.258 7.377 C 9.258 7.48 9.293 7.579 9.357 7.659 C 9.421 7.739 9.51 7.794 9.61 7.817 L 12.733 8.517 C 13.154 8.656 13.524 8.916 13.796 9.265 C 14.068 9.615 14.23 10.037 14.262 10.478 L 14.824 14.371 C 14.84 14.478 14.893 14.576 14.975 14.646 C 15.057 14.717 15.161 14.755 15.269 14.755 C 15.377 14.755 15.481 14.717 15.563 14.646 C 15.645 14.576 15.699 14.478 15.714 14.371 L 16.277 10.478 C 16.309 10.037 16.471 9.615 16.743 9.266 C 17.015 8.917 17.384 8.656 17.805 8.517 L 20.931 7.817 C 21.031 7.794 21.12 7.739 21.184 7.659 C 21.248 7.579 21.283 7.48 21.283 7.377 C 21.283 7.275 21.248 7.176 21.184 7.096 C 21.12 7.016 21.031 6.961 20.931 6.938 L 20.931 6.937 Z M 11.182 14.155 L 8.998 13.665 C 8.731 13.574 8.496 13.405 8.325 13.181 C 8.153 12.957 8.052 12.687 8.034 12.405 L 7.64 9.683 C 7.624 9.576 7.571 9.478 7.489 9.408 C 7.407 9.337 7.303 9.298 7.195 9.298 C 7.087 9.298 6.982 9.337 6.901 9.408 C 6.819 9.478 6.765 9.576 6.75 9.683 L 6.356 12.405 C 6.338 12.687 6.237 12.957 6.065 13.181 C 5.894 13.405 5.66 13.574 5.392 13.665 L 3.207 14.155 C 3.107 14.177 3.018 14.233 2.954 14.313 C 2.89 14.393 2.855 14.492 2.855 14.594 C 2.855 14.697 2.89 14.796 2.954 14.876 C 3.018 14.956 3.107 15.011 3.207 15.033 L 5.392 15.523 C 5.659 15.614 5.893 15.783 6.065 16.007 C 6.237 16.231 6.338 16.501 6.356 16.783 L 6.75 19.505 C 6.765 19.612 6.819 19.71 6.901 19.78 C 6.982 19.851 7.087 19.89 7.195 19.89 C 7.303 19.89 7.407 19.851 7.489 19.78 C 7.571 19.71 7.624 19.612 7.64 19.505 L 8.034 16.783 C 8.052 16.501 8.153 16.231 8.325 16.007 C 8.496 15.783 8.731 15.614 8.998 15.523 L 11.182 15.033 C 11.282 15.011 11.372 14.956 11.436 14.876 C 11.5 14.796 11.534 14.697 11.534 14.594 C 11.534 14.492 11.5 14.393 11.436 14.313 C 11.372 14.233 11.282 14.177 11.182 14.155 Z M 3.56 8.811 C 3.668 8.812 3.773 8.773 3.855 8.702 C 3.936 8.631 3.99 8.533 4.005 8.426 L 4.32 6.248 C 4.332 6.041 4.406 5.842 4.531 5.676 C 4.655 5.511 4.827 5.385 5.022 5.316 L 6.77 4.924 C 6.87 4.901 6.959 4.846 7.022 4.766 C 7.086 4.686 7.121 4.587 7.121 4.485 C 7.121 4.383 7.086 4.284 7.022 4.204 C 6.959 4.124 6.87 4.069 6.77 4.046 L 5.022 3.654 C 4.827 3.585 4.656 3.46 4.531 3.294 C 4.406 3.129 4.333 2.93 4.32 2.723 L 4.005 0.545 C 3.99 0.438 3.936 0.34 3.854 0.27 C 3.772 0.199 3.668 0.16 3.56 0.16 C 3.452 0.16 3.348 0.199 3.266 0.27 C 3.184 0.34 3.131 0.438 3.115 0.545 L 2.8 2.723 C 2.788 2.93 2.715 3.128 2.59 3.294 C 2.465 3.46 2.294 3.585 2.098 3.654 L 0.351 4.046 C 0.251 4.069 0.162 4.124 0.098 4.204 C 0.035 4.284 0 4.383 0 4.485 C 0 4.587 0.035 4.686 0.098 4.766 C 0.162 4.846 0.251 4.901 0.351 4.924 L 2.098 5.316 C 2.294 5.386 2.465 5.511 2.59 5.677 C 2.715 5.843 2.788 6.042 2.8 6.249 L 3.115 8.426 C 3.13 8.533 3.184 8.631 3.266 8.702 C 3.347 8.773 3.452 8.812 3.56 8.811 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1.750 2.563)\"/>"},"IconTwinkleSingleMonoStar":{viewBox:"0 0 24 24",body:"<path d=\"M 11.025 3.825 L 10.025 0.525 C 9.925 -0.175 9.025 -0.175 8.725 0.525 L 7.525 4.125 C 6.925 5.925 5.625 7.225 3.825 7.825 L 0.525 8.825 C -0.175 8.925 -0.175 9.825 0.525 10.125 L 4.125 11.325 C 5.925 11.925 7.225 13.225 7.825 15.025 L 8.825 18.325 C 8.925 19.025 9.825 19.025 10.125 18.325 L 11.325 14.925 C 11.925 13.125 13.225 11.825 15.025 11.225 L 18.325 10.225 C 19.025 9.925 19.025 9.025 18.025 8.625 L 14.725 7.625 C 13.025 6.925 11.625 5.525 11.025 3.825 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.575 2.575)\"/>"},"IconUmbrellaMonoUmbrellaInsurance":{viewBox:"0 0 24 24",body:"<path d=\"M 10.95 0 C 5.247 0 0.558 4.34 0.005 9.897 C -0.009 10.037 0.007 10.178 0.051 10.311 C 0.095 10.444 0.167 10.566 0.261 10.67 C 0.355 10.774 0.47 10.857 0.598 10.914 C 0.727 10.971 0.865 11 1.006 11 L 10.207 11 L 10.207 17.547 C 10.199 17.789 10.097 18.018 9.923 18.187 C 9.749 18.355 9.516 18.449 9.274 18.449 C 9.032 18.449 8.799 18.355 8.625 18.187 C 8.451 18.018 8.35 17.789 8.342 17.547 C 8.33 17.29 8.22 17.046 8.034 16.868 C 7.847 16.69 7.599 16.591 7.342 16.591 C 7.084 16.591 6.836 16.69 6.65 16.868 C 6.464 17.046 6.353 17.29 6.342 17.547 C 6.342 18.324 6.652 19.07 7.201 19.619 C 7.751 20.169 8.496 20.478 9.274 20.479 C 10.051 20.478 10.797 20.169 11.346 19.619 C 11.896 19.07 12.206 18.324 12.207 17.547 L 12.207 11 L 20.894 11 C 21.487 11 21.954 10.487 21.895 9.897 C 21.343 4.34 16.653 0 10.95 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.050 2.260)\"/>"},"IconUnderlineMonoUnderLine":{viewBox:"0 0 24 24",body:"<path d=\"M 12.4 2.4 L 1.2 2.4 C 0.5 2.4 0 1.9 0 1.2 C 0 0.5 0.5 0 1.2 0 L 12.4 0 C 13.1 0 13.6 0.5 13.6 1.2 C 13.6 1.9 13.1 2.4 12.4 2.4 Z\" fill=\"rgb(172,180,189)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.200 3.200) matrix(1 0 0 1 0 14.800)\"/><path d=\"M 0 8.8 L 0 1.1 C 0 0.4 0.4 0 1.2 0 C 1.9 0 2.4 0.4 2.4 1.1 L 2.4 8.6 C 2.4 10.5 3.8 11.8 6.2 11.8 C 8.6 11.8 10 10.5 10 8.6 L 10 1.1 C 10 0.4 10.4 0 11.2 0 C 11.9 0 12.4 0.4 12.4 1.1 L 12.4 8.8 C 12.4 11.7 10 13.7 6.2 13.7 C 2.3 13.7 0 11.7 0 8.8 Z\" fill=\"rgb(172,180,189)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 5.200 3.200) matrix(1 0 0 1 0.500 0) matrix(1 0 0 1 0.100 0)\"/><path d=\"M 6.3 13.8 C 4.4 13.8 2.8 13.3 1.7 12.4 C 0.6 11.5 0 10.3 0 8.8 L 0 1.1 C 0 0.4 0.5 0 1.2 0 C 2 0 2.4 0.4 2.4 1.1 L 2.4 8.6 C 2.4 10.6 3.8 11.8 6.2 11.8 C 8.5 11.8 10 10.6 10 8.6 L 10 1.1 C 10 0.4 10.5 0 11.2 0 C 12 0 12.4 0.4 12.4 1.1 L 12.4 8.8 C 12.4 10.2 11.8 11.5 10.7 12.4 C 9.7 13.3 8.1 13.8 6.3 13.8 Z M 1.2 0.1 C 0.5 0.1 0.1 0.5 0.1 1.1 L 0.1 8.8 C 0.1 11.7 2.5 13.6 6.2 13.6 C 9.9 13.6 12.4 11.7 12.4 8.8 L 12.4 1.1 C 12.4 0.5 12 0.1 11.3 0.1 C 10.6 0.1 10.2 0.5 10.2 1.1 L 10.2 8.6 C 10.2 10.6 8.7 11.9 6.3 11.9 C 3.9 11.9 2.4 10.6 2.4 8.6 L 2.4 1.1 C 2.4 0.5 1.9 0.1 1.2 0.1 Z\" fill=\"rgb(171,181,191)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.200 3.200) matrix(1 0 0 1 0.500 0)\"/><path d=\"M 0 8.8 L 0 1.1 C 0 0.4 0.4 0 1.2 0 C 1.9 0 2.4 0.4 2.4 1.1 L 2.4 8.6 C 2.4 10.5 3.8 11.8 6.2 11.8 C 8.6 11.8 10 10.5 10 8.6 L 10 1.1 C 10 0.4 10.4 0 11.2 0 C 11.9 0 12.4 0.4 12.4 1.1 L 12.4 8.8 C 12.4 11.7 10 13.7 6.2 13.7 C 2.3 13.7 0 11.7 0 8.8 Z\" fill=\"rgb(172,180,189)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 5.200 3.200) matrix(1 0 0 1 0.500 0) matrix(1 0 0 1 0.100 0)\"/><path d=\"M 6.3 13.8 C 4.4 13.8 2.8 13.3 1.7 12.4 C 0.6 11.5 0 10.3 0 8.8 L 0 1.1 C 0 0.4 0.5 0 1.2 0 C 2 0 2.4 0.4 2.4 1.1 L 2.4 8.6 C 2.4 10.6 3.8 11.8 6.2 11.8 C 8.5 11.8 10 10.6 10 8.6 L 10 1.1 C 10 0.4 10.5 0 11.2 0 C 12 0 12.4 0.4 12.4 1.1 L 12.4 8.8 C 12.4 10.2 11.8 11.5 10.7 12.4 C 9.7 13.3 8.1 13.8 6.3 13.8 Z M 1.2 0.1 C 0.5 0.1 0.1 0.5 0.1 1.1 L 0.1 8.8 C 0.1 11.7 2.5 13.6 6.2 13.6 C 9.9 13.6 12.4 11.7 12.4 8.8 L 12.4 1.1 C 12.4 0.5 12 0.1 11.3 0.1 C 10.6 0.1 10.2 0.5 10.2 1.1 L 10.2 8.6 C 10.2 10.6 8.7 11.9 6.3 11.9 C 3.9 11.9 2.4 10.6 2.4 8.6 L 2.4 1.1 C 2.4 0.5 1.9 0.1 1.2 0.1 Z\" fill=\"rgb(171,181,191)\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5.200 3.200) matrix(1 0 0 1 0.500 0)\"/>"},"IconUnionMonoOr":{viewBox:"0 0 24 24",body:"<path d=\"M 6.212 12.424 C 9.643 12.424 12.424 9.643 12.424 6.212 C 12.424 2.781 9.643 0 6.212 0 C 2.781 0 0 2.781 0 6.212 C 0 9.643 2.781 12.424 6.212 12.424 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 6)\"/><path d=\"M 6.212 12.424 C 9.643 12.424 12.424 9.643 12.424 6.212 C 12.424 2.781 9.643 0 6.212 0 C 2.781 0 0 2.781 0 6.212 C 0 9.643 2.781 12.424 6.212 12.424 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2 6) matrix(1 0 0 1 7.906 0)\"/>"},"IconUnlockMonoLock":{viewBox:"0 0 24 24",body:"<path d=\"M 9.9 15.489 L 9.9 17.688 C 9.9 17.927 9.805 18.156 9.636 18.324 C 9.468 18.493 9.239 18.588 9 18.588 C 8.761 18.588 8.532 18.493 8.364 18.324 C 8.195 18.156 8.1 17.927 8.1 17.688 L 8.1 15.488 C 7.827 15.332 7.6 15.106 7.442 14.834 C 7.284 14.562 7.201 14.253 7.2 13.938 C 7.2 13.461 7.39 13.003 7.727 12.665 C 8.065 12.328 8.523 12.138 9 12.138 C 9.477 12.138 9.935 12.328 10.273 12.665 C 10.61 13.003 10.8 13.461 10.8 13.938 C 10.8 14.604 10.436 15.177 9.9 15.488 M 15.6 8.616 L 5.82 8.616 L 5.82 5.18 C 5.821 4.337 6.157 3.528 6.753 2.932 C 7.349 2.336 8.158 2.001 9.001 2 C 9.844 2.001 10.652 2.336 11.248 2.933 C 11.844 3.529 12.178 4.337 12.179 5.18 L 12.179 5.58 L 14.179 5.58 L 14.179 5.18 C 14.178 3.807 13.632 2.49 12.661 1.519 C 11.69 0.548 10.374 0.002 9.001 0 C 7.627 0.001 6.311 0.547 5.339 1.519 C 4.368 2.49 3.822 3.806 3.82 5.18 L 3.82 8.616 L 2.4 8.616 C 1.075 8.616 0 9.536 0 10.671 L 0 19.404 C 0 20.54 1.075 21.459 2.4 21.459 L 15.6 21.459 C 16.926 21.459 18 20.539 18 19.404 L 18 10.67 C 18 9.535 16.926 8.615 15.6 8.615\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 3 1)\"/>"},"IconUnpinMonoPinSlash":{viewBox:"0 0 24 24",body:"<path d=\"M 0.813 -0.813 C 0.364 -1.262 -0.364 -1.262 -0.813 -0.813 C -1.262 -0.364 -1.262 0.364 -0.813 0.813 L 0 0 L 0.813 -0.813 Z M 15.187 16.813 C 15.636 17.262 16.364 17.262 16.813 16.813 C 17.262 16.364 17.262 15.636 16.813 15.187 L 16 16 L 15.187 16.813 Z M 0 0 L -0.813 0.813 L 15.187 16.813 L 16 16 L 16.813 15.187 L 0.813 -0.813 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 5 3)\"/><path d=\"M 10.58 0.138 L 18.67 4.808 C 18.827 4.898 18.957 5.028 19.048 5.184 C 19.138 5.34 19.186 5.518 19.186 5.699 C 19.186 5.879 19.138 6.057 19.048 6.213 C 18.957 6.37 18.827 6.499 18.67 6.59 L 17.422 7.31 C 15.831 8.228 14.852 9.925 14.852 11.762 L 14.852 12.416 L 14.852 16.354 L 5.802 7.304 L 6.467 6.92 C 7.091 6.56 7.629 6.074 8.051 5.496 C 8.158 5.349 8.258 5.196 8.349 5.038 C 8.8 4.256 9.038 3.37 9.037 2.468 L 9.037 1.028 C 9.038 0.847 9.085 0.67 9.176 0.514 C 9.266 0.357 9.396 0.228 9.552 0.138 C 9.709 0.047 9.886 0 10.066 0 C 10.247 0 10.424 0.047 10.58 0.138 Z M 4.024 8.331 L 0.514 10.358 C 0.358 10.448 0.228 10.578 0.138 10.734 C 0.048 10.89 0 11.067 0 11.248 C 0 11.429 0.048 11.606 0.138 11.762 C 0.228 11.919 0.358 12.048 0.514 12.139 L 5.909 15.253 C 5.893 15.272 5.875 15.29 5.857 15.307 C 5.825 15.339 5.793 15.371 5.769 15.413 L 2.313 21.398 C 2.161 21.673 2.123 21.997 2.207 22.3 C 2.291 22.603 2.491 22.86 2.763 23.018 C 3.036 23.175 3.359 23.219 3.663 23.14 C 3.968 23.062 4.229 22.867 4.391 22.598 L 7.847 16.614 C 7.871 16.571 7.883 16.527 7.894 16.482 C 7.9 16.459 7.906 16.435 7.914 16.412 L 13.31 19.526 C 13.467 19.616 13.644 19.663 13.824 19.663 C 14.005 19.663 14.182 19.616 14.338 19.526 C 14.495 19.435 14.624 19.306 14.715 19.149 C 14.73 19.122 14.745 19.094 14.758 19.065 L 4.024 8.331 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.408 0.504)\"/>"},"IconUserBlockedMonoUser":{viewBox:"0 0 24 24",body:"<path d=\"M 18.979 7.252 L 20.463 5.767 C 20.55 5.684 20.619 5.585 20.666 5.475 C 20.714 5.365 20.739 5.247 20.741 5.127 C 20.742 5.007 20.719 4.888 20.674 4.777 C 20.629 4.666 20.562 4.565 20.477 4.481 C 20.393 4.396 20.292 4.329 20.181 4.284 C 20.07 4.238 19.951 4.216 19.831 4.217 C 19.712 4.218 19.593 4.243 19.483 4.291 C 19.373 4.338 19.274 4.408 19.191 4.494 L 17.706 5.979 L 16.221 4.494 C 16.05 4.337 15.825 4.252 15.593 4.257 C 15.36 4.262 15.139 4.357 14.975 4.521 C 14.811 4.685 14.716 4.906 14.711 5.139 C 14.706 5.371 14.791 5.596 14.948 5.767 L 16.433 7.252 L 14.948 8.737 C 14.864 8.821 14.798 8.92 14.753 9.029 C 14.708 9.138 14.684 9.255 14.684 9.373 C 14.684 9.492 14.708 9.609 14.753 9.718 C 14.798 9.827 14.864 9.926 14.948 10.01 C 15.032 10.094 15.131 10.16 15.24 10.205 C 15.349 10.25 15.466 10.274 15.585 10.274 C 15.703 10.274 15.82 10.25 15.929 10.205 C 16.038 10.16 16.137 10.094 16.221 10.01 L 17.706 8.525 L 19.191 10.01 C 19.361 10.173 19.588 10.262 19.823 10.26 C 20.059 10.257 20.284 10.163 20.45 9.996 C 20.616 9.83 20.711 9.605 20.713 9.369 C 20.716 9.134 20.626 8.907 20.463 8.737 L 18.979 7.252 Z M 8.706 8.708 C 9.861 8.708 10.968 8.249 11.785 7.433 C 12.601 6.616 13.06 5.509 13.06 4.354 C 13.06 3.199 12.601 2.092 11.785 1.275 C 10.968 0.459 9.861 0 8.706 0 C 7.551 0 6.444 0.459 5.627 1.275 C 4.811 2.092 4.352 3.199 4.352 4.354 C 4.352 5.509 4.811 6.616 5.627 7.433 C 6.444 8.249 7.551 8.708 8.706 8.708 Z M 8.706 10.04 C 2.437 10.04 0 14.029 0 15.885 C 0 17.74 5.189 18.234 8.706 18.234 C 12.223 18.234 17.412 17.74 17.412 15.884 C 17.412 14.029 14.975 10.04 8.706 10.04 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.294 2.748)\"/>"},"IconUserCheckMonoUser":{viewBox:"0 0 24 24",body:"<path d=\"M 22.142 5.707 C 22.058 5.623 21.959 5.557 21.85 5.512 C 21.741 5.467 21.624 5.443 21.505 5.443 C 21.387 5.443 21.27 5.467 21.161 5.512 C 21.052 5.557 20.953 5.623 20.869 5.707 L 17.688 8.889 L 16.142 7.343 C 15.973 7.174 15.744 7.079 15.505 7.079 C 15.267 7.079 15.038 7.174 14.869 7.343 C 14.7 7.512 14.605 7.741 14.605 7.979 C 14.605 8.218 14.7 8.447 14.869 8.616 L 17.687 11.434 L 22.141 6.98 C 22.225 6.896 22.291 6.797 22.336 6.688 C 22.381 6.579 22.405 6.462 22.405 6.344 C 22.405 6.225 22.381 6.108 22.336 5.999 C 22.291 5.89 22.225 5.791 22.141 5.707 M 8.706 8.708 C 9.861 8.708 10.968 8.249 11.785 7.433 C 12.601 6.616 13.06 5.509 13.06 4.354 C 13.06 3.199 12.601 2.092 11.785 1.275 C 10.968 0.459 9.861 0 8.706 0 C 7.551 0 6.444 0.459 5.627 1.275 C 4.811 2.092 4.352 3.199 4.352 4.354 C 4.352 5.509 4.811 6.616 5.627 7.433 C 6.444 8.249 7.551 8.708 8.706 8.708 Z M 8.706 10.04 C 2.437 10.04 0 14.029 0 15.885 C 0 17.74 5.189 18.234 8.706 18.234 C 12.223 18.234 17.412 17.74 17.412 15.884 C 17.412 14.029 14.975 10.04 8.706 10.04 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.294 2.748)\"/>"},"IconUserMonoUserPersona":{viewBox:"0 0 24 24",body:"<path d=\"M 14.686 4.895 C 14.686 5.537 14.56 6.174 14.314 6.768 C 14.068 7.362 13.707 7.901 13.253 8.356 C 12.798 8.811 12.259 9.171 11.665 9.417 C 11.071 9.663 10.434 9.79 9.792 9.79 C 8.493 9.79 7.248 9.275 6.33 8.357 C 5.412 7.439 4.896 6.194 4.896 4.896 C 4.896 4.253 5.022 3.616 5.268 3.022 C 5.514 2.428 5.875 1.889 6.329 1.434 C 7.247 0.516 8.492 0 9.79 0 C 11.089 0 12.334 0.515 13.252 1.433 C 14.17 2.351 14.686 3.596 14.686 4.895 Z M 9.791 11.287 C 2.742 11.287 0 15.774 0 17.861 C 0 19.947 5.837 20.503 9.791 20.503 C 13.745 20.503 19.582 19.947 19.582 17.861 C 19.582 15.774 16.84 11.287 9.791 11.287 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.201 1.750)\"/>"},"IconUserPlusMonoUser":{viewBox:"0 0 24 24",body:"<path d=\"M 21.706 7.352 L 19.606 7.352 L 19.606 5.252 C 19.598 5.019 19.5 4.797 19.332 4.635 C 19.164 4.473 18.94 4.382 18.706 4.382 C 18.473 4.382 18.249 4.473 18.081 4.635 C 17.913 4.797 17.815 5.019 17.807 5.252 L 17.807 7.352 L 15.706 7.352 C 15.467 7.352 15.238 7.447 15.07 7.616 C 14.901 7.784 14.806 8.013 14.806 8.252 C 14.806 8.491 14.901 8.72 15.07 8.888 C 15.238 9.057 15.467 9.152 15.706 9.152 L 17.807 9.152 L 17.807 11.252 C 17.803 11.373 17.823 11.493 17.867 11.606 C 17.91 11.718 17.976 11.821 18.06 11.908 C 18.144 11.994 18.244 12.063 18.355 12.111 C 18.466 12.158 18.586 12.182 18.706 12.182 C 18.827 12.182 18.947 12.158 19.058 12.111 C 19.169 12.063 19.269 11.994 19.353 11.908 C 19.437 11.821 19.503 11.718 19.546 11.606 C 19.59 11.493 19.61 11.373 19.606 11.252 L 19.606 9.152 L 21.706 9.152 C 21.945 9.152 22.174 9.057 22.342 8.888 C 22.511 8.72 22.606 8.491 22.606 8.252 C 22.606 8.013 22.511 7.784 22.342 7.616 C 22.174 7.447 21.945 7.352 21.706 7.352 Z M 8.706 8.708 C 9.861 8.708 10.968 8.249 11.785 7.433 C 12.601 6.616 13.06 5.509 13.06 4.354 C 13.06 3.199 12.601 2.092 11.785 1.275 C 10.968 0.459 9.861 0 8.706 0 C 7.551 0 6.444 0.459 5.627 1.275 C 4.811 2.092 4.352 3.199 4.352 4.354 C 4.352 5.509 4.811 6.616 5.627 7.433 C 6.444 8.249 7.551 8.708 8.706 8.708 Z M 8.706 10.04 C 2.437 10.04 0 14.029 0 15.885 C 0 17.74 5.189 18.234 8.706 18.234 C 12.223 18.234 17.412 17.74 17.412 15.884 C 17.412 14.029 14.975 10.04 8.706 10.04 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.294 2.748)\"/>"},"IconUserSquareMonoUser":{viewBox:"0 0 24 24",body:"<path d=\"M 9.492 15.392 C 7.27 15.392 3.992 15.08 3.992 13.908 C 3.992 12.736 5.532 10.216 9.492 10.216 C 13.452 10.216 14.992 12.736 14.992 13.908 C 14.992 15.08 11.714 15.392 9.492 15.392 Z M 9.492 3.616 C 10.221 3.616 10.921 3.906 11.437 4.421 C 11.952 4.937 12.242 5.637 12.242 6.366 C 12.242 7.095 11.952 7.795 11.437 8.311 C 10.921 8.826 10.221 9.116 9.492 9.116 C 8.763 9.116 8.063 8.826 7.547 8.311 C 7.032 7.795 6.742 7.095 6.742 6.366 C 6.742 5.637 7.032 4.937 7.547 4.421 C 8.063 3.906 8.763 3.616 9.492 3.616 Z M 17 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 17 C 0 17.53 0.211 18.039 0.586 18.414 C 0.961 18.789 1.47 19 2 19 L 17 19 C 17.53 19 18.039 18.789 18.414 18.414 C 18.789 18.039 19 17.53 19 17 L 19 2 C 19 1.47 18.789 0.961 18.414 0.586 C 18.039 0.211 17.53 0 17 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 2.500)\"/>"},"IconUserTwoMonoUser":{viewBox:"0 0 24 24",body:"<path d=\"M 7 7.5 C 7.492 7.5 7.98 7.403 8.435 7.215 C 8.89 7.026 9.303 6.75 9.652 6.402 C 10 6.053 10.276 5.64 10.465 5.185 C 10.653 4.73 10.75 4.242 10.75 3.75 C 10.75 3.258 10.653 2.77 10.465 2.315 C 10.276 1.86 10 1.447 9.652 1.098 C 9.303 0.75 8.89 0.474 8.435 0.285 C 7.98 0.097 7.492 0 7 0 C 6.005 0 5.052 0.395 4.348 1.098 C 3.645 1.802 3.25 2.755 3.25 3.75 C 3.25 4.745 3.645 5.698 4.348 6.402 C 5.052 7.105 6.005 7.5 7 7.5 Z M 7.5 13.681 C 7.5 12.417 8.271 10.546 9.98 9.129 C 9.137 8.832 8.152 8.646 7 8.646 C 1.96 8.646 0 12.084 0 13.681 C 0 15.281 4.173 15.705 7 15.705 C 7.471 15.705 7.98 15.692 8.501 15.665 C 7.84 15.138 7.5 14.478 7.5 13.681 Z\" fill=\"rgba(176,184,193,0.6)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.500 4.147)\"/><path d=\"M 7 8.647 C 1.96 8.647 0 12.084 0 13.682 C 0 15.28 4.173 15.706 7 15.706 C 9.827 15.706 14 15.28 14 13.682 C 14 12.084 12.04 8.647 7 8.647 Z M 7 7.5 C 7.492 7.5 7.98 7.403 8.435 7.215 C 8.89 7.026 9.303 6.75 9.652 6.402 C 10 6.053 10.276 5.64 10.465 5.185 C 10.653 4.73 10.75 4.242 10.75 3.75 C 10.75 3.258 10.653 2.77 10.465 2.315 C 10.276 1.86 10 1.447 9.652 1.098 C 9.303 0.75 8.89 0.474 8.435 0.285 C 7.98 0.097 7.492 0 7 0 C 6.005 0 5.052 0.395 4.348 1.098 C 3.645 1.802 3.25 2.755 3.25 3.75 C 3.25 4.745 3.645 5.698 4.348 6.402 C 5.052 7.105 6.005 7.5 7 7.5 Z\" fill=\"rgb(176,184,193)\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.500 4.147) matrix(1 0 0 1 9 0)\"/>"},"IconVideoMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11 0 C 4.9 0 0 4.9 0 11 C 0 17.1 4.9 22 11 22 C 17.1 22 22 17.1 22 11 C 22 4.9 17.1 0 11 0 Z M 15.6 11.4 L 8.5 15.5 C 8.2 15.7 7.7 15.5 7.7 15.1 L 7.7 6.9 C 7.7 6.5 8.1 6.3 8.5 6.5 L 15.6 10.6 C 15.9 10.8 15.9 11.2 15.6 11.4 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconVirusMonoVirusCovid":{viewBox:"0 0 24 24",body:"<path d=\"M 7.914 16.191 C 7.455 15.926 6.909 15.854 6.397 15.992 C 5.884 16.129 5.448 16.464 5.182 16.923 C 4.917 17.383 4.846 17.929 4.983 18.441 C 5.12 18.953 5.456 19.39 5.915 19.655 C 6.374 19.92 6.92 19.992 7.433 19.855 C 7.945 19.718 8.382 19.382 8.647 18.923 C 8.912 18.464 8.984 17.918 8.847 17.405 C 8.71 16.893 8.374 16.456 7.915 16.191 M 20.963 10.931 C 20.818 10.879 20.668 10.841 20.515 10.818 C 20.461 10.808 20.408 10.806 20.355 10.801 C 20.123 10.774 19.887 10.784 19.658 10.831 C 19.578 10.846 19.498 10.861 19.42 10.884 C 19.385 10.894 19.351 10.909 19.316 10.92 C 18.848 11.078 18.437 11.372 18.135 11.763 L 17.787 11.637 L 16.388 11.127 C 16.456 10.791 16.493 10.443 16.493 10.086 C 16.493 9.769 16.455 9.461 16.4 9.16 C 16.389 9.1 16.38 9.038 16.367 8.978 C 16.245 8.441 16.037 7.928 15.751 7.458 C 15.61 7.222 15.45 6.998 15.272 6.788 C 15.048 6.521 14.798 6.278 14.525 6.061 L 14.524 6.06 L 15.73 3.972 C 15.819 3.985 15.908 4 16.002 4 C 16.413 4.001 16.815 3.874 17.152 3.639 C 17.489 3.403 17.745 3.069 17.885 2.682 C 18.026 2.295 18.043 1.875 17.936 1.477 C 17.828 1.08 17.601 0.726 17.285 0.463 C 16.969 0.2 16.579 0.04 16.169 0.007 C 15.759 -0.027 15.348 0.067 14.994 0.275 C 14.639 0.483 14.357 0.795 14.186 1.169 C 14.015 1.544 13.964 1.962 14.039 2.366 C 14.051 2.428 14.07 2.486 14.087 2.546 C 14.102 2.595 14.114 2.644 14.132 2.692 C 14.205 2.882 14.305 3.061 14.43 3.222 L 14.056 3.87 L 13.232 5.298 L 13.231 5.298 C 12.314 4.929 11.31 4.835 10.34 5.027 C 10.218 5.051 10.105 5.095 9.985 5.127 C 9.794 5.18 9.603 5.229 9.422 5.302 C 9.273 5.362 9.134 5.441 8.991 5.514 C 8.859 5.582 8.724 5.648 8.598 5.728 C 8.436 5.828 8.288 5.946 8.139 6.064 C 8.052 6.134 7.963 6.202 7.881 6.277 C 7.72 6.424 7.569 6.582 7.428 6.749 C 7.378 6.809 7.328 6.867 7.28 6.928 C 6.935 7.375 6.663 7.875 6.477 8.408 L 6.457 8.473 C 6.362 8.754 6.293 9.043 6.25 9.336 L 3.844 9.336 C 3.774 9.169 3.682 9.013 3.57 8.871 C 3.551 8.846 3.53 8.823 3.51 8.798 C 3.398 8.662 3.268 8.541 3.123 8.44 L 3.122 8.439 C 2.941 8.319 2.742 8.229 2.533 8.172 C 2.359 8.12 2.178 8.093 1.996 8.09 C 1.467 8.09 0.959 8.3 0.585 8.675 C 0.21 9.049 0 9.557 0 10.086 C 0 10.615 0.21 11.123 0.585 11.497 C 0.959 11.872 1.467 12.082 1.996 12.082 C 2.22 12.079 2.441 12.039 2.651 11.962 C 2.818 11.906 2.979 11.832 3.122 11.734 L 3.124 11.732 C 3.27 11.632 3.396 11.508 3.51 11.374 C 3.53 11.35 3.551 11.327 3.57 11.301 C 3.68 11.159 3.776 11.005 3.844 10.836 L 6.25 10.836 C 6.293 11.134 6.364 11.42 6.457 11.7 L 6.477 11.763 C 6.581 12.064 6.713 12.355 6.871 12.632 C 6.994 12.847 7.129 13.05 7.28 13.244 C 7.328 13.306 7.378 13.364 7.428 13.423 C 7.57 13.59 7.719 13.748 7.881 13.896 C 7.963 13.971 8.051 14.038 8.139 14.109 C 8.287 14.227 8.436 14.344 8.598 14.446 C 8.724 14.526 8.859 14.59 8.991 14.66 C 9.134 14.733 9.272 14.81 9.422 14.87 C 9.604 14.944 9.794 14.993 9.985 15.045 C 10.105 15.077 10.218 15.121 10.34 15.145 C 10.662 15.209 10.993 15.245 11.333 15.245 C 11.732 15.241 12.13 15.191 12.518 15.095 C 12.734 15.044 12.944 14.979 13.15 14.9 C 13.252 14.862 13.354 14.825 13.453 14.78 C 13.887 14.581 14.29 14.322 14.65 14.009 C 15.139 13.594 15.547 13.093 15.852 12.529 L 16.114 12.624 L 17.622 13.173 C 17.601 13.673 17.73 14.16 17.984 14.578 C 18.004 14.61 18.021 14.643 18.041 14.673 C 18.086 14.742 18.137 14.803 18.19 14.867 C 18.277 14.976 18.374 15.077 18.48 15.167 C 18.55 15.229 18.626 15.285 18.704 15.337 C 18.748 15.367 18.79 15.401 18.836 15.427 C 18.967 15.505 19.105 15.575 19.253 15.629 C 19.873 15.845 20.554 15.809 21.148 15.527 C 21.741 15.245 22.2 14.741 22.425 14.123 C 22.65 13.506 22.622 12.825 22.349 12.227 C 22.075 11.63 21.577 11.164 20.963 10.931 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.696 1.654) matrix(1 0 0 1 0 0.760)\"/><path d=\"M 4.109 5.141 C 4.424 4.961 4.701 4.722 4.923 4.435 C 5.146 4.148 5.309 3.821 5.404 3.471 C 5.499 3.121 5.524 2.755 5.477 2.396 C 5.43 2.036 5.313 1.689 5.132 1.375 C 4.95 1.061 4.709 0.786 4.42 0.565 C 4.132 0.345 3.804 0.184 3.453 0.091 C 3.102 -0.001 2.737 -0.024 2.377 0.025 C 2.018 0.074 1.672 0.194 1.359 0.378 C 0.733 0.745 0.277 1.345 0.091 2.047 C -0.094 2.749 0.005 3.496 0.368 4.125 C 0.732 4.754 1.329 5.214 2.029 5.404 C 2.73 5.594 3.478 5.5 4.109 5.141 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.696 1.654) matrix(1 0 0 1 3.930 0)\"/>"},"IconVoteBoxMono":{viewBox:"0 0 24 24",body:"<path d=\"M 20.078 9.7 C 20.078 9.6 20.078 9.5 19.978 9.4 L 17.778 4.5 C 17.278 3.5 16.278 2.9 15.278 2.9 L 14.278 2.9 L 14.278 1.4 L 14.278 0.7 C 14.278 0.3 13.978 0 13.578 0 L 6.678 0 C 6.278 0 5.978 0.3 5.978 0.7 L 5.978 1.4 L 5.978 2.9 L 4.978 2.9 C 4.278 2.9 3.578 3.1 3.078 3.6 C 2.778 3.8 2.578 4.1 2.378 4.5 L 0.078 9.4 C -0.122 10 0.078 10.6 0.478 11.1 C 0.878 11.6 1.478 11.9 2.078 11.9 L 18.078 11.9 C 18.678 11.9 19.278 11.6 19.678 11.1 C 19.978 10.7 20.078 10.3 20.078 9.8 L 20.078 9.7 C 20.078 9.8 20.078 9.8 20.078 9.7 Z M 15.378 7.1 C 15.378 7.8 14.878 8.3 14.178 8.3 L 5.978 8.3 C 5.278 8.3 4.778 7.8 4.778 7.1 C 4.778 6.4 5.278 5.9 5.978 5.9 L 5.978 7.1 L 14.178 7.1 L 14.178 5.8 C 14.878 5.8 15.378 6.3 15.378 7.1 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.922 1.500)\"/><path d=\"M 18.5 0.6 L 1.5 0.6 C 0.9 0.6 0.4 0.4 0 0 L 0 6.5 C 0 7.6 0.9 8.4 2 8.4 L 18 8.4 C 19.1 8.4 19.9 7.6 20 6.5 L 20 0 C 19.6 0.3 19.1 0.6 18.5 0.6 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.922 1.500) matrix(1 0 0 1 0.078 12.700)\"/>"},"IconWarningCircleMonoExclamation":{viewBox:"0 0 24 24",body:"<path d=\"M 11 16.692 C 10.682 16.692 10.377 16.566 10.151 16.341 C 9.926 16.115 9.8 15.81 9.8 15.492 C 9.8 15.174 9.926 14.869 10.151 14.643 C 10.377 14.418 10.682 14.292 11 14.292 C 11.318 14.292 11.623 14.418 11.849 14.643 C 12.074 14.869 12.2 15.174 12.2 15.492 C 12.2 15.81 12.074 16.115 11.849 16.341 C 11.623 16.566 11.318 16.692 11 16.692 Z M 10 6.709 C 10 6.444 10.105 6.189 10.293 6.002 C 10.48 5.814 10.735 5.709 11 5.709 C 11.265 5.709 11.52 5.814 11.707 6.002 C 11.895 6.189 12 6.444 12 6.709 L 12 11.709 C 12 11.974 11.895 12.229 11.707 12.416 C 11.52 12.604 11.265 12.709 11 12.709 C 10.735 12.709 10.48 12.604 10.293 12.416 C 10.105 12.229 10 11.974 10 11.709 L 10 6.709 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconWarningTriangleMonoExclamation":{viewBox:"0 0 24 24",body:"<path d=\"M 11.239 16.879 C 11.081 16.879 10.925 16.848 10.78 16.788 C 10.634 16.727 10.502 16.639 10.39 16.528 C 10.279 16.416 10.191 16.284 10.13 16.138 C 10.07 15.993 10.039 15.837 10.039 15.679 C 10.039 15.521 10.07 15.365 10.13 15.22 C 10.191 15.074 10.279 14.942 10.39 14.83 C 10.502 14.719 10.634 14.631 10.78 14.57 C 10.925 14.51 11.081 14.479 11.239 14.479 C 11.557 14.479 11.862 14.605 12.087 14.83 C 12.312 15.056 12.439 15.361 12.439 15.679 C 12.439 15.997 12.312 16.302 12.087 16.528 C 11.862 16.753 11.557 16.879 11.239 16.879 Z M 10.239 6.896 C 10.239 6.631 10.344 6.376 10.532 6.189 C 10.719 6.001 10.974 5.896 11.239 5.896 C 11.504 5.896 11.758 6.001 11.946 6.189 C 12.134 6.376 12.239 6.631 12.239 6.896 L 12.239 11.896 C 12.239 12.161 12.134 12.416 11.946 12.603 C 11.758 12.791 11.504 12.896 11.239 12.896 C 10.974 12.896 10.719 12.791 10.532 12.603 C 10.344 12.416 10.239 12.161 10.239 11.896 L 10.239 6.896 Z M 22.153 16.503 L 13.318 1.2 C 12.394 -0.4 10.084 -0.4 9.16 1.2 L 0.325 16.503 C -0.598 18.103 0.555 20.103 2.404 20.103 L 20.074 20.103 C 21.922 20.103 23.076 18.103 22.153 16.503 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.761 2.312)\"/>"},"IconWashingMachineMonoWashing":{viewBox:"0 0 24 24",body:"<path d=\"M 3.78 0.001 C 3.287 -0.008 2.796 0.083 2.338 0.266 C 1.88 0.449 1.463 0.722 1.111 1.068 C 0.759 1.414 0.48 1.827 0.289 2.282 C 0.098 2.737 0 3.225 0 3.719 C 0 4.213 0.098 4.701 0.289 5.156 C 0.48 5.611 0.759 6.024 1.111 6.37 C 1.463 6.716 1.88 6.989 2.338 7.172 C 2.796 7.355 3.287 7.446 3.78 7.437 C 4.756 7.421 5.686 7.023 6.37 6.327 C 7.055 5.631 7.438 4.695 7.438 3.719 C 7.438 2.743 7.055 1.807 6.37 1.111 C 5.686 0.415 4.756 0.017 3.78 0.001 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1) matrix(1 0 0 1 5.720 8.856)\"/><path d=\"M 15.5 4.154 C 15.194 4.154 14.9 4.032 14.684 3.816 C 14.468 3.6 14.346 3.306 14.346 3 C 14.346 2.694 14.468 2.4 14.684 2.184 C 14.9 1.968 15.194 1.846 15.5 1.846 C 15.806 1.846 16.1 1.968 16.316 2.184 C 16.532 2.4 16.654 2.694 16.654 3 C 16.654 3.306 16.532 3.6 16.316 3.816 C 16.1 4.032 15.806 4.154 15.5 4.154 Z M 9.5 18.193 C 8.762 18.193 8.031 18.048 7.35 17.765 C 6.668 17.483 6.048 17.069 5.526 16.547 C 5.005 16.025 4.591 15.406 4.308 14.724 C 4.026 14.042 3.88 13.311 3.88 12.573 C 3.88 11.836 4.026 11.105 4.308 10.423 C 4.591 9.741 5.005 9.122 5.526 8.6 C 6.048 8.078 6.668 7.664 7.35 7.382 C 8.031 7.099 8.762 6.954 9.5 6.954 C 10.99 6.954 12.42 7.546 13.474 8.6 C 14.527 9.654 15.119 11.083 15.119 12.573 C 15.119 14.064 14.527 15.493 13.474 16.547 C 12.42 17.601 10.99 18.193 9.5 18.193 Z M 11.974 1.845 C 12.126 1.845 12.276 1.875 12.416 1.933 C 12.556 1.991 12.683 2.076 12.791 2.184 C 12.898 2.291 12.983 2.418 13.041 2.558 C 13.099 2.699 13.129 2.849 13.128 3.001 C 13.128 3.152 13.098 3.302 13.04 3.442 C 12.982 3.583 12.897 3.71 12.79 3.817 C 12.683 3.924 12.555 4.009 12.415 4.067 C 12.275 4.125 12.125 4.155 11.973 4.155 C 11.821 4.155 11.671 4.125 11.531 4.067 C 11.391 4.009 11.264 3.924 11.156 3.816 C 10.94 3.6 10.818 3.306 10.818 3 C 10.819 2.693 10.94 2.399 11.157 2.183 C 11.374 1.966 11.668 1.845 11.974 1.845 Z M 17 0 L 2 0 C 1.47 0 0.961 0.211 0.586 0.586 C 0.211 0.961 0 1.47 0 2 L 0 20 C 0 20.53 0.211 21.039 0.586 21.414 C 0.961 21.789 1.47 22 2 22 L 17 22 C 17.53 22 18.039 21.789 18.414 21.414 C 18.789 21.039 19 20.53 19 20 L 19 2 C 19 1.47 18.789 0.961 18.414 0.586 C 18.039 0.211 17.53 0 17 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.500 1)\"/>"},"IconWaterdropMono":{viewBox:"0 0 24 24",body:"<path d=\"M 11.556 22.554 C 15.902 21.585 18.947 17.495 18.775 13.046 C 18.642 9.55 16.497 6.422 10.119 0.29 C 9.712 -0.097 9.073 -0.097 8.666 0.29 C 2.067 6.633 0 9.759 0 13.403 C 0.003 18.597 4.215 22.805 9.409 22.803 C 10.132 22.803 10.852 22.719 11.556 22.554 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 2.609 0.599)\"/>"},"IconWideArrowDownMono":{viewBox:"0 0 24 24",body:"<path d=\"M 14.563 1.028 C 15.109 0.762 15.335 0.103 15.068 -0.443 C 14.802 -0.989 14.143 -1.215 13.597 -0.948 L 14.08 0.04 L 14.563 1.028 Z M 7.08 3.46 L 6.597 4.448 C 6.902 4.597 7.258 4.597 7.563 4.448 L 7.08 3.46 Z M 0.483 -0.988 C -0.063 -1.255 -0.722 -1.029 -0.988 -0.483 C -1.255 0.063 -1.029 0.722 -0.483 0.988 L 0 0 L 0.483 -0.988 Z M 14.08 0.04 L 13.597 -0.948 L 6.597 2.472 L 7.08 3.46 L 7.563 4.448 L 14.563 1.028 L 14.08 0.04 Z M 7.08 3.46 L 7.563 2.472 L 0.483 -0.988 L 0 0 L -0.483 0.988 L 6.597 4.448 L 7.08 3.46 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.960 10.270)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconWideArrowMonoArrow":{viewBox:"0 0 24 24",body:"<path d=\"M -0.483 2.432 C -1.029 2.698 -1.255 3.357 -0.988 3.903 C -0.722 4.449 -0.063 4.675 0.483 4.408 L 0 3.42 L -0.483 2.432 Z M 7 0 L 7.483 -0.988 C 7.178 -1.137 6.822 -1.137 6.517 -0.988 L 7 0 Z M 13.597 4.448 C 14.143 4.715 14.802 4.489 15.068 3.943 C 15.335 3.397 15.109 2.738 14.563 2.472 L 14.08 3.46 L 13.597 4.448 Z M 0 3.42 L 0.483 4.408 L 7.483 0.988 L 7 0 L 6.517 -0.988 L -0.483 2.432 L 0 3.42 Z M 7 0 L 6.517 0.988 L 13.597 4.448 L 14.08 3.46 L 14.563 2.472 L 7.483 -0.988 L 7 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 4.960 10.270)\"/><path d=\"M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\"/>"},"IconWifiMonoWifiNetwork":{viewBox:"0 0 24 24",body:"<path d=\"M 9.861 15.41 C 9.861 15.607 9.9 15.802 9.976 15.984 C 10.051 16.166 10.162 16.332 10.301 16.471 C 10.441 16.61 10.607 16.721 10.789 16.796 C 10.971 16.871 11.166 16.91 11.363 16.91 C 11.56 16.91 11.755 16.871 11.937 16.795 C 12.12 16.72 12.285 16.609 12.424 16.47 C 12.564 16.33 12.674 16.165 12.749 15.983 C 12.825 15.8 12.863 15.605 12.863 15.408 C 12.863 15.01 12.705 14.628 12.423 14.347 C 12.142 14.065 11.76 13.907 11.362 13.908 C 10.964 13.908 10.582 14.066 10.3 14.348 C 10.019 14.629 9.861 15.011 9.861 15.409 M 21.473 6.548 C 21.162 6.548 20.852 6.433 20.61 6.202 C 18.121 3.82 14.807 2.494 11.361 2.5 C 7.916 2.494 4.602 3.82 2.113 6.202 C 1.873 6.431 1.552 6.555 1.221 6.547 C 0.889 6.54 0.575 6.4 0.346 6.161 C 0.117 5.921 -0.007 5.6 0 5.268 C 0.008 4.937 0.147 4.622 0.387 4.393 C 3.341 1.567 7.273 -0.008 11.361 0 C 15.467 0 19.365 1.56 22.334 4.393 C 22.515 4.565 22.64 4.788 22.693 5.032 C 22.746 5.276 22.725 5.53 22.633 5.762 C 22.54 5.994 22.38 6.193 22.173 6.333 C 21.966 6.473 21.723 6.548 21.473 6.548 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.639 3.450)\"/><path d=\"M 14.738 5.156 C 14.433 5.156 14.127 5.045 13.886 4.82 C 12.288 3.327 10.182 2.497 7.994 2.5 C 5.807 2.498 3.701 3.327 2.102 4.82 C 1.86 5.046 1.537 5.166 1.206 5.154 C 0.874 5.143 0.561 5 0.335 4.757 C 0.109 4.514 -0.011 4.192 0.001 3.86 C 0.013 3.529 0.156 3.216 0.398 2.99 C 2.459 1.065 5.174 -0.004 7.994 0 C 10.823 0 13.521 1.063 15.59 2.99 C 15.774 3.161 15.902 3.384 15.957 3.629 C 16.013 3.874 15.993 4.13 15.901 4.363 C 15.809 4.597 15.649 4.798 15.441 4.939 C 15.234 5.08 14.989 5.156 14.738 5.156 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.639 3.450) matrix(1 0 0 1 3.367 4.760)\"/><path d=\"M 8.137 3.791 C 7.845 3.791 7.552 3.689 7.315 3.481 C 5.869 2.217 3.537 2.217 2.092 3.481 C 1.969 3.593 1.825 3.68 1.668 3.735 C 1.512 3.791 1.345 3.815 1.179 3.806 C 1.013 3.796 0.851 3.754 0.702 3.681 C 0.552 3.608 0.419 3.506 0.309 3.381 C 0.2 3.256 0.116 3.11 0.064 2.952 C 0.011 2.794 -0.009 2.628 0.004 2.462 C 0.016 2.296 0.062 2.135 0.138 1.987 C 0.214 1.839 0.319 1.707 0.446 1.6 C 1.624 0.569 3.137 0 4.703 0 C 6.27 0 7.783 0.569 8.961 1.6 C 9.152 1.768 9.288 1.99 9.349 2.237 C 9.411 2.483 9.396 2.743 9.307 2.981 C 9.217 3.219 9.057 3.424 8.848 3.568 C 8.639 3.713 8.391 3.791 8.137 3.791 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.639 3.450) matrix(1 0 0 1 6.658 9.434)\"/>"},"IconWifiSlashMonoWifi":{viewBox:"0 0 24 24",body:"<path d=\"M 2.113 6.203 C 4.602 3.821 7.916 2.495 11.361 2.501 C 11.817 2.501 12.27 2.526 12.72 2.571 L 14.883 0.408 C 13.737 0.149 12.56 0 11.361 0 C 7.273 -0.008 3.341 1.567 0.387 4.393 C -0.113 4.87 -0.13 5.66 0.346 6.16 C 0.822 6.66 1.613 6.68 2.113 6.203 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.639 1.801) matrix(1 0 0 1 0 1.743)\"/><path d=\"M 1.5 0 C 0.671 0 -0.001 0.673 0 1.501 C 0 2.331 0.673 3.003 1.502 3.002 C 2.331 3.002 3.003 2.329 3.002 1.5 C 3.002 0.671 2.329 -0.001 1.5 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.639 1.801) matrix(1 0 0 1 9.861 15.652)\"/><path d=\"M 21.174 6.137 C 20.261 5.266 19.251 4.534 18.183 3.915 L 20.05 2.048 C 20.519 1.579 20.519 0.819 20.05 0.351 C 19.581 -0.117 18.821 -0.118 18.353 0.351 L 12.039 6.665 L 9.675 9.029 L 0.352 18.35 C -0.117 18.819 -0.117 19.579 0.352 20.047 C 0.586 20.281 0.894 20.399 1.201 20.399 C 1.508 20.399 1.815 20.282 2.05 20.047 L 7.212 14.885 C 7.347 14.831 7.477 14.762 7.591 14.658 C 9.036 13.394 11.368 13.394 12.814 14.658 C 13.051 14.866 13.344 14.968 13.636 14.968 C 13.996 14.968 14.339 14.812 14.576 14.541 C 15.031 14.022 14.979 13.232 14.46 12.777 C 13.419 11.865 12.156 11.367 10.863 11.235 L 12.718 9.38 C 13.967 9.76 15.125 10.417 16.095 11.323 C 16.336 11.548 16.642 11.659 16.947 11.659 C 17.293 11.659 17.624 11.515 17.861 11.261 C 18.332 10.756 18.304 9.964 17.799 9.493 C 16.865 8.623 15.8 7.939 14.656 7.442 L 16.344 5.754 C 17.468 6.334 18.522 7.055 19.452 7.945 C 19.694 8.176 20.004 8.291 20.315 8.291 C 20.656 8.291 20.983 8.151 21.219 7.903 C 21.695 7.403 21.676 6.612 21.176 6.136 L 21.174 6.137 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.639 1.801) matrix(1 0 0 1 1.160 0)\"/><path d=\"M 0.336 4.717 C 0.807 5.222 1.598 5.251 2.103 4.78 C 2.45 4.456 2.824 4.17 3.214 3.91 L 7.124 0 C 4.621 0.193 2.246 1.224 0.398 2.95 C -0.107 3.421 -0.135 4.212 0.336 4.717 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 0.639 1.801) matrix(1 0 0 1 3.366 6.544)\"/>"},"IconWonMonoWon":{viewBox:"0 0 24 24",body:"<path d=\"M 17.468 4.993 L 16.228 4.993 L 17.239 1.638 C 17.44 0.972 17.062 0.269 16.396 0.068 C 15.728 -0.135 15.027 0.245 14.827 0.911 L 12.797 7.648 L 10.519 0.859 C 10.347 0.347 9.868 0.001 9.327 0 L 9.325 0 C 8.785 0 8.305 0.343 8.132 0.854 L 5.84 7.602 L 3.908 0.926 C 3.714 0.258 3.017 -0.127 2.347 0.066 C 1.679 0.26 1.294 0.959 1.487 1.627 L 2.461 4.992 L 1.26 4.992 C 0.564 4.992 0 5.556 0 6.252 C 0 6.948 0.564 7.512 1.26 7.512 L 3.19 7.512 L 4.533 12.153 C 4.686 12.681 5.164 13.049 5.715 13.062 L 5.744 13.062 C 6.283 13.062 6.763 12.719 6.937 12.208 L 9.318 5.199 L 11.668 12.202 C 11.842 12.723 12.326 13.055 12.882 13.061 C 13.431 13.052 13.91 12.69 14.069 12.165 L 15.471 7.513 L 17.471 7.513 C 18.167 7.513 18.731 6.95 18.731 6.253 C 18.731 5.556 18.168 4.993 17.471 4.993 L 17.468 4.993 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.635 5.936)\"/>"},"IconXCircleLineMono":{viewBox:"0 0 24 24",body:"<path d=\"M 4.667 4.667 C 8.4 0.933 14.356 0.933 18.089 4.667 C 21.822 8.4 21.822 14.356 18.089 18.089 C 14.356 21.822 8.4 21.822 4.667 18.089 C 1.022 14.444 1.022 8.4 4.667 4.667 Z M 19.511 3.333 C 15.067 -1.111 7.778 -1.111 3.333 3.333 C -1.111 7.778 -1.111 15.067 3.333 19.511 C 7.778 23.956 15.067 23.956 19.511 19.511 C 24.044 15.067 24.044 7.778 19.511 3.333 Z M 7.156 15.689 C 6.8 15.333 6.8 14.711 7.156 14.267 L 10 11.422 L 7.156 8.578 C 6.8 8.222 6.8 7.6 7.156 7.156 C 7.511 6.711 8.133 6.8 8.578 7.156 L 11.422 10 L 14.267 7.156 C 14.622 6.8 15.244 6.8 15.689 7.156 C 16.044 7.511 16.044 8.133 15.689 8.578 L 12.844 11.422 L 15.689 14.267 C 16.044 14.622 16.044 15.244 15.689 15.689 C 15.333 16.044 14.711 16.044 14.267 15.689 L 11.422 12.844 L 8.578 15.689 C 8.133 16.044 7.511 16.044 7.156 15.689 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 0.578 0.578)\"/>"},"IconXCircleMonoX":{viewBox:"0 0 24 24",body:"<path d=\"M 15.207 13.793 C 15.3 13.886 15.373 13.996 15.424 14.117 C 15.474 14.239 15.5 14.369 15.5 14.5 C 15.5 14.631 15.474 14.761 15.424 14.883 C 15.373 15.004 15.3 15.114 15.207 15.207 C 15.114 15.3 15.004 15.373 14.883 15.424 C 14.761 15.474 14.631 15.5 14.5 15.5 C 14.369 15.5 14.239 15.474 14.117 15.424 C 13.996 15.373 13.886 15.3 13.793 15.207 L 11 12.414 L 8.207 15.207 C 8.114 15.3 8.004 15.374 7.883 15.425 C 7.762 15.475 7.631 15.501 7.5 15.501 C 7.369 15.501 7.238 15.475 7.117 15.425 C 6.996 15.374 6.886 15.3 6.793 15.207 C 6.7 15.114 6.626 15.004 6.576 14.883 C 6.526 14.761 6.5 14.631 6.5 14.5 C 6.5 14.369 6.526 14.239 6.576 14.117 C 6.626 13.996 6.7 13.886 6.793 13.793 L 9.586 11 L 6.793 8.207 C 6.7 8.114 6.627 8.004 6.576 7.883 C 6.526 7.761 6.5 7.631 6.5 7.5 C 6.5 7.369 6.526 7.239 6.576 7.117 C 6.627 6.996 6.7 6.886 6.793 6.793 C 6.886 6.7 6.996 6.627 7.117 6.576 C 7.239 6.526 7.369 6.5 7.5 6.5 C 7.631 6.5 7.761 6.526 7.883 6.576 C 8.004 6.627 8.114 6.7 8.207 6.793 L 11 9.586 L 13.793 6.793 C 13.886 6.7 13.996 6.627 14.117 6.576 C 14.239 6.526 14.369 6.5 14.5 6.5 C 14.631 6.5 14.761 6.526 14.883 6.576 C 15.004 6.627 15.114 6.7 15.207 6.793 C 15.3 6.886 15.373 6.996 15.424 7.117 C 15.474 7.239 15.5 7.369 15.5 7.5 C 15.5 7.631 15.474 7.761 15.424 7.883 C 15.373 8.004 15.3 8.114 15.207 8.207 L 12.414 11 L 15.207 13.793 Z M 11 0 C 4.925 0 0 4.925 0 11 C 0 17.075 4.925 22 11 22 C 17.075 22 22 17.075 22 11 C 22 4.925 17.075 0 11 0 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1 1)\"/>"},"IconXMonoXDelete":{viewBox:"0 0 24 24",body:"<path d=\"M 9.395 7.7 L 15.046 2.049 C 15.158 1.938 15.246 1.806 15.306 1.66 C 15.367 1.514 15.398 1.358 15.398 1.201 C 15.398 1.043 15.367 0.887 15.307 0.741 C 15.246 0.596 15.158 0.463 15.047 0.352 C 14.935 0.24 14.803 0.152 14.657 0.092 C 14.512 0.031 14.356 0 14.198 0 C 14.04 0 13.884 0.031 13.739 0.091 C 13.593 0.152 13.461 0.24 13.349 0.351 L 7.698 6.003 L 2.046 0.351 C 1.818 0.139 1.517 0.023 1.206 0.028 C 0.894 0.034 0.597 0.16 0.377 0.38 C 0.157 0.6 0.031 0.898 0.026 1.209 C 0.02 1.521 0.136 1.822 0.349 2.049 L 6.001 7.7 L 0.349 13.351 C 0.182 13.52 0.069 13.733 0.023 13.966 C -0.023 14.198 0.001 14.439 0.092 14.658 C 0.182 14.877 0.336 15.065 0.533 15.197 C 0.73 15.329 0.961 15.4 1.198 15.4 C 1.505 15.4 1.812 15.283 2.046 15.049 L 7.698 9.397 L 13.349 15.049 C 13.46 15.161 13.593 15.25 13.738 15.31 C 13.884 15.37 14.04 15.402 14.198 15.402 C 14.355 15.402 14.511 15.37 14.657 15.31 C 14.803 15.25 14.935 15.161 15.046 15.049 C 15.158 14.938 15.246 14.806 15.307 14.66 C 15.367 14.514 15.398 14.358 15.398 14.2 C 15.398 14.043 15.367 13.886 15.307 13.741 C 15.246 13.595 15.158 13.463 15.046 13.351 L 9.395 7.7 Z\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 4.420 4.300)\"/>"},"IconXThickMonoX":{viewBox:"0 0 24 24",body:"<path d=\"M 13.15 9.75 L 18.75 4.15 C 19.75 3.15 19.75 1.65 18.75 0.75 C 17.85 -0.25 16.35 -0.25 15.35 0.75 L 9.75 6.35 L 4.15 0.75 C 3.15 -0.25 1.65 -0.25 0.75 0.75 C -0.25 1.65 -0.25 3.15 0.75 4.15 L 6.35 9.75 L 0.75 15.35 C -0.25 16.35 -0.25 17.85 0.75 18.75 C 1.25 19.25 1.85 19.45 2.45 19.45 C 3.05 19.45 3.65 19.25 4.15 18.75 L 9.75 13.15 L 15.35 18.75 C 15.85 19.25 16.45 19.45 17.05 19.45 C 17.65 19.45 18.25 19.25 18.75 18.75 C 19.65 17.85 19.65 16.25 18.75 15.35 L 13.15 9.75 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.250 2.250)\"/>"},"IconYachtMonoYachtShip":{viewBox:"0 0 24 24",body:"<path d=\"M 6.393 21.611 L 13.789 21.611 C 13.947 21.611 14.102 21.574 14.243 21.502 C 14.384 21.431 14.505 21.327 14.598 21.199 L 17.102 17.755 C 17.156 17.681 17.189 17.593 17.196 17.501 C 17.203 17.409 17.185 17.317 17.143 17.235 C 17.101 17.152 17.038 17.083 16.959 17.035 C 16.881 16.987 16.79 16.961 16.698 16.961 L 3.484 16.961 C 3.392 16.961 3.301 16.987 3.223 17.035 C 3.144 17.083 3.08 17.152 3.038 17.234 C 2.996 17.316 2.978 17.408 2.985 17.5 C 2.992 17.592 3.025 17.681 3.079 17.755 L 5.583 21.199 C 5.676 21.327 5.797 21.431 5.938 21.502 C 6.079 21.574 6.235 21.611 6.393 21.611 Z M 21.167 13.637 L 9.852 0.353 C 9.249 -0.355 8.091 0.073 8.091 1.001 L 8.091 4.286 L 0.265 13.473 C -0.344 14.187 0.164 15.286 1.103 15.286 L 20.406 15.286 C 20.597 15.286 20.784 15.232 20.945 15.129 C 21.106 15.026 21.234 14.879 21.314 14.706 C 21.394 14.533 21.423 14.34 21.397 14.151 C 21.371 13.962 21.292 13.784 21.168 13.638\" fill=\"currentColor\" fill-rule=\"evenodd\" transform=\"matrix(1 0 0 1 1.296 1.194)\"/>"},"IconZoomInMonoZoom":{viewBox:"0 0 24 24",body:"<path d=\"M 2.4 6.9 L 0 6.9 L 0 3.2 C 0 1.4 1.4 0 3.2 0 L 7 0 L 7 2.4 L 3.2 2.4 C 2.8 2.4 2.4 2.8 2.4 3.2 L 2.4 6.9 Z M 6.9 19.6 L 3.2 19.6 C 1.4 19.6 0 18.2 0 16.4 L 0 12.6 L 2.4 12.6 L 2.4 16.4 C 2.4 16.8 2.8 17.2 3.2 17.2 L 7 17.2 L 7 19.6 L 6.9 19.6 Z M 16.4 19.6 L 12.6 19.6 L 12.6 17.2 L 16.4 17.2 C 16.8 17.2 17.2 16.8 17.2 16.4 L 17.2 12.6 L 19.6 12.6 L 19.6 16.4 C 19.6 18.2 18.2 19.6 16.4 19.6 Z M 19.6 6.9 L 17.2 6.9 L 17.2 3.2 C 17.2 2.8 16.8 2.4 16.4 2.4 L 12.6 2.4 L 12.6 0 L 16.4 0 C 18.2 0 19.6 1.4 19.6 3.2 L 19.6 6.9 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 2.200)\"/>"},"IconZoomOutMonoZoom":{viewBox:"0 0 24 24",body:"<path d=\"M 4.5 0 L 6.9 0 L 6.9 3.8 C 6.9 5.6 5.5 7 3.7 7 L 0 7 L 0 4.5 L 3.8 4.5 C 4.2 4.5 4.6 4.1 4.6 3.7 L 4.6 0 L 4.5 0 Z M 0 12.7 L 3.8 12.7 C 5.6 12.7 7 14.1 7 15.9 L 7 19.7 L 4.5 19.7 L 4.5 15.9 C 4.5 15.5 4.1 15.1 3.7 15.1 L 0 15.1 L 0 12.7 Z M 15.9 12.7 L 19.7 12.7 L 19.7 15.1 L 15.9 15.1 C 15.5 15.1 15.1 15.5 15.1 15.9 L 15.1 19.7 L 12.7 19.7 L 12.7 15.9 C 12.7 14.1 14.1 12.7 15.9 12.7 Z M 12.7 0 L 15.1 0 L 15.1 3.8 C 15.1 4.2 15.5 4.6 15.9 4.6 L 19.7 4.6 L 19.7 7 L 15.9 7 C 14.1 7 12.7 5.6 12.7 3.8 L 12.7 0 Z\" fill=\"currentColor\" fill-rule=\"nonzero\" transform=\"matrix(1 0 0 1 2.200 2.200)\"/>"}};}catch{}
+Object.assign(__ds_scope, { __ds_default_assets_icons_icon_data_imae2q });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "assets/icons/icon-data.js", error: String((e && e.message) || e) }); }
+
+__ds_scope.__ds_default_assets_icons_icon_data_imae2q$nab192 = __ds_scope.__ds_default_assets_icons_icon_data_imae2q;
+
+// assets/icons/Icon.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function Icon({
+  name,
+  size,
+  ...rest
+}) {
+  const d = __ds_scope.__ds_default_assets_icons_icon_data_imae2q$nab192[name];
+  if (!d) return null;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: size,
+    height: size,
+    viewBox: d.viewBox,
+    fill: "none"
+    // body strings are emitter-controlled <path> markup — geometry,
+    // numeric fills and transforms only; no .fig-authored text reaches them.
+    ,
+    dangerouslySetInnerHTML: {
+      __html: d.body
+    }
+  }, rest));
+}
+Object.assign(__ds_scope, { Icon, __ds_default_assets_icons_Icon_2pj96j: Icon });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "assets/icons/Icon.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/Bar.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const COLORS = {
+  blue: 'var(--base-blue-blue-500)',
+  green: 'var(--base-green-green-500)',
+  red: 'var(--base-red-red-500)',
+  yellow: 'var(--base-yellow-yellow-500)',
+  orange: 'var(--base-orange-orange-500)',
+  grey: 'var(--base-grey-grey-300)',
+  white: 'rgb(255,255,255)'
+};
+
+/** A single Bar Chart column. Value snaps to the source's 0–100 in tens. */
+function Bar({
+  value = 50,
+  color = 'blue',
+  muted = false,
+  width = 16,
+  height = 120,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      width,
+      height,
+      display: 'flex',
+      alignItems: 'flex-end',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: '100%',
+      height: `${Math.max(4, Math.min(100, value))}%`,
+      borderRadius: 6,
+      background: muted ? 'var(--base-grey-grey-200)' : COLORS[color] || COLORS.blue,
+      transition: 'height .3s cubic-bezier(.25,.1,.25,1)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { Bar });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/Bar.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/BarChart.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const COLORS = {
+  blue: 'var(--base-blue-blue-500)',
+  green: 'var(--base-green-green-500)',
+  red: 'var(--base-red-red-500)',
+  yellow: 'var(--base-yellow-yellow-500)',
+  orange: 'var(--base-orange-orange-500)',
+  grey: 'var(--base-grey-grey-300)',
+  white: 'rgb(255,255,255)'
+};
+
+/** Rounded vertical bar chart, 1–12 bars, one optional highlighted bar. */
+function BarChart({
+  values = [],
+  color = 'blue',
+  highlight = null,
+  height = 120,
+  labels,
+  style,
+  ...rest
+}) {
+  const max = Math.max(100, ...values);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      padding: '0 var(--tds-side-padding-m)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'flex-end',
+      gap: 8,
+      height
+    }
+  }, values.map((v, i) => {
+    const on = highlight === null || highlight === i;
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        flex: 1,
+        height: `${Math.max(4, v / max * 100)}%`,
+        borderRadius: 6,
+        background: on ? COLORS[color] || COLORS.blue : 'var(--base-grey-grey-200)',
+        transition: 'height .3s cubic-bezier(.25,.1,.25,1)'
+      }
+    });
+  })), labels && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8,
+      marginTop: 8
+    }
+  }, labels.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    style: {
+      flex: 1,
+      textAlign: 'center',
+      fontFamily: 'var(--tds-font-body)',
+      fontSize: 12,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, l))));
+}
+Object.assign(__ds_scope, { BarChart });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/BarChart.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/BoardRow.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Expandable FAQ / notice row. */
+function BoardRow({
+  question,
+  answer,
+  opened = false,
+  onToggle,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    onClick: onToggle,
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'flex-start',
+      gap: 16,
+      padding: '16px 16px 16px var(--tds-side-padding-m)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8,
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-brand)'
+    }
+  }, "Q"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 17,
+      lineHeight: 1.35,
+      color: 'var(--base-grey-grey-900)',
+      textWrap: 'pretty'
+    }
+  }, question)), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      position: 'relative',
+      display: 'inline-block',
+      flexShrink: 0,
+      transform: opened ? 'rotate(-90deg)' : 'rotate(90deg)',
+      transition: 'transform .2s ease'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "6.4",
+    height: "10.9",
+    viewBox: "0 0 6.4 10.9",
+    fill: "var(--semantic-icon-quaternary)",
+    style: {
+      position: 'absolute',
+      left: 8.8,
+      top: 6.5
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  })))), opened && answer && /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      gap: 8,
+      padding: '0 var(--tds-side-padding-m) 20px'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-quaternary)'
+    }
+  }, "A"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.6,
+      color: 'var(--semantic-text-secondary)',
+      textWrap: 'pretty'
+    }
+  }, answer)));
+}
+Object.assign(__ds_scope, { BoardRow });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/BoardRow.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/BottomInfo.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Grey legal / disclosure block at the bottom of a screen. */
+function BottomInfo({
+  items = [],
+  size = 'M',
+  gradient = true,
+  style,
+  ...rest
+}) {
+  const fs = size === 'L' ? 15 : 13;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      padding: '24px 0',
+      background: 'var(--semantic-background-lower)'
+    }
+  }, items.map((it, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      gap: 8,
+      padding: '0 var(--tds-side-padding-m) 8px'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 16,
+      textAlign: 'center',
+      flexShrink: 0,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: fs,
+      lineHeight: '19.5px',
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, "\u2022"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: fs,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-secondary)',
+      textWrap: 'pretty'
+    }
+  }, it)))), gradient && /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: 160,
+      background: 'linear-gradient(180deg, var(--semantic-background-lower) 0%, rgba(242,244,246,0) 100%)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { BottomInfo });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/BottomInfo.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/GridList.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Grid of small icon+label tiles (2, 3 or 4 columns). */
+function GridList({
+  items = [],
+  columns = 3,
+  onSelect,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'grid',
+      gridTemplateColumns: `repeat(${columns}, 1fr)`,
+      gap: 8,
+      padding: '8px var(--tds-side-padding-m)',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), items.map((it, i) => /*#__PURE__*/React.createElement("button", {
+    key: i,
+    type: "button",
+    onClick: () => onSelect && onSelect(it, i),
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 6,
+      minHeight: 74,
+      padding: '12px 8px',
+      border: 0,
+      cursor: 'pointer',
+      borderRadius: 9,
+      background: 'rgba(0,23,51,0.02)'
+    }
+  }, it.icon && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 28,
+      height: 28,
+      display: 'inline-flex'
+    }
+  }, it.icon), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 14,
+      lineHeight: 1.15,
+      textAlign: 'center',
+      color: 'var(--base-grey-grey-900)'
+    }
+  }, it.label))));
+}
+Object.assign(__ds_scope, { GridList });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/GridList.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/GridListItem.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** A single tile of a Grid List. */
+function GridListItem({
+  label,
+  icon,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 6,
+      minHeight: 74,
+      padding: '12px 8px',
+      border: 0,
+      cursor: 'pointer',
+      borderRadius: 9,
+      background: 'rgba(0,23,51,0.02)',
+      ...style
+    }
+  }, rest), icon && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 28,
+      height: 28,
+      display: 'inline-flex'
+    }
+  }, icon), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 14,
+      lineHeight: 1.15,
+      textAlign: 'center',
+      color: 'var(--base-grey-grey-900)'
+    }
+  }, label));
+}
+Object.assign(__ds_scope, { GridListItem });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/GridListItem.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/BankPicker.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Bank / securities-firm selection grid. */
+function BankPicker({
+  items = [],
+  columns = 3,
+  value,
+  onSelect,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'grid',
+      gridTemplateColumns: `repeat(${columns}, 1fr)`,
+      gap: 8,
+      padding: '8px var(--tds-side-padding-m)',
+      ...style
+    }
+  }, rest), items.map((it, i) => /*#__PURE__*/React.createElement(__ds_scope.GridListItem, {
+    key: i,
+    label: it.label,
+    icon: it.icon,
+    onClick: () => onSelect && onSelect(it, i),
+    style: value === it.label ? {
+      background: 'var(--semantic-fill-brand-weak)',
+      boxShadow: 'inset 0 0 0 1.5px var(--semantic-fill-brand)'
+    } : undefined
+  })));
+}
+Object.assign(__ds_scope, { BankPicker });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/BankPicker.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/ListRow.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const PAD = {
+  S: 8,
+  M: 12,
+  L: 16,
+  XL: 20
+};
+const MARGIN = {
+  none: 0,
+  S: 16,
+  M: 24
+};
+
+/** The workhorse list row: left accessory, title/description, right accessory. */
+function ListRow({
+  title,
+  description,
+  subText,
+  leftAccessory,
+  rightAccessory,
+  rightText,
+  verticalPadding = 'M',
+  sideMargin = 'M',
+  onClick,
+  style,
+  ...rest
+}) {
+  const py = PAD[verticalPadding] ?? 12;
+  const px = MARGIN[sideMargin] ?? 24;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      minHeight: 44,
+      padding: `${py}px ${px}px`,
+      background: 'var(--semantic-background-default)',
+      cursor: onClick ? 'pointer' : 'default',
+      overflow: 'hidden',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+      flex: 1,
+      minWidth: 0
+    }
+  }, leftAccessory && /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 30,
+      height: 30,
+      flexShrink: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, leftAccessory), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+      minWidth: 0,
+      flex: 1
+    }
+  }, subText && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, subText), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap'
+    }
+  }, title), description && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, description))), (rightText || rightAccessory) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 4,
+      flexShrink: 0,
+      marginLeft: 12
+    }
+  }, rightText && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, rightText), rightAccessory));
+}
+Object.assign(__ds_scope, { ListRow });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/ListRow.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/ListRowText.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** The centre text block of a List Row: 1–3 lines, title above or below the description. */
+function ListRowText({
+  title,
+  description,
+  subText,
+  mainTextPosition = 'top',
+  titleWeight = 590,
+  titleStyle,
+  style,
+  ...rest
+}) {
+  const t = /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: titleWeight,
+      fontSize: titleStyle === 'small' ? 15 : 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }
+  }, title);
+  const d = description && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, description);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+      minWidth: 0,
+      ...style
+    }
+  }, rest), subText && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, subText), mainTextPosition === 'bottom' ? /*#__PURE__*/React.createElement(React.Fragment, null, d, t) : /*#__PURE__*/React.createElement(React.Fragment, null, t, d));
+}
+Object.assign(__ds_scope, { ListRowText });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/ListRowText.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/Post.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const H = {
+  h1: {
+    fs: 28,
+    pt: 24
+  },
+  h2: {
+    fs: 22,
+    pt: 16
+  },
+  h3: {
+    fs: 20,
+    pt: 16
+  },
+  h4: {
+    fs: 17,
+    pt: 12
+  }
+};
+const P = {
+  M: 17,
+  S: 15,
+  XS: 13
+};
+
+/** Long-form article blocks: headings, paragraphs, ordered/unordered lists. */
+function Post({
+  blocks = [],
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), blocks.map((b, i) => {
+    if (H[b.type]) {
+      const h = H[b.type];
+      return /*#__PURE__*/React.createElement("div", {
+        key: i,
+        style: {
+          boxSizing: 'border-box',
+          padding: `${h.pt}px var(--tds-side-padding-m) 24px`,
+          fontFamily: 'var(--tds-font-body)',
+          fontWeight: 700,
+          fontSize: h.fs,
+          lineHeight: 1.35,
+          color: 'var(--semantic-text-secondary)',
+          textWrap: 'pretty'
+        }
+      }, b.text);
+    }
+    if (b.type === 'paragraph') {
+      return /*#__PURE__*/React.createElement("div", {
+        key: i,
+        style: {
+          boxSizing: 'border-box',
+          padding: '0 var(--tds-side-padding-m) 16px',
+          fontFamily: 'var(--tds-font-body)',
+          fontWeight: 400,
+          fontSize: P[b.size || 'M'],
+          lineHeight: 1.6,
+          color: 'var(--semantic-text-secondary)',
+          textWrap: 'pretty'
+        }
+      }, b.text);
+    }
+    const ordered = b.type === 'ordered';
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        boxSizing: 'border-box',
+        padding: '0 var(--tds-side-padding-m) 16px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8
+      }
+    }, (b.items || []).map((it, j) => /*#__PURE__*/React.createElement("div", {
+      key: j,
+      style: {
+        display: 'flex',
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        width: ordered ? 24 : 16,
+        textAlign: ordered ? 'right' : 'center',
+        flexShrink: 0,
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 400,
+        fontSize: P[b.size || 'M'],
+        lineHeight: 1.5,
+        color: 'var(--semantic-text-secondary)'
+      }
+    }, ordered ? `${j + 1}.` : '•'), /*#__PURE__*/React.createElement("span", {
+      style: {
+        flex: 1,
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 400,
+        fontSize: P[b.size || 'M'],
+        lineHeight: 1.5,
+        color: 'var(--semantic-text-secondary)',
+        textWrap: 'pretty'
+      }
+    }, it))));
+  }));
+}
+Object.assign(__ds_scope, { Post });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/Post.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/ProgressStepper.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Horizontal step indicator, 3–5 steps. */
+function ProgressStepper({
+  steps = 3,
+  current = 0,
+  labels,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      padding: '12px var(--tds-side-padding-m)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center'
+    }
+  }, Array.from({
+    length: steps
+  }).map((_, i) => {
+    const done = i <= current;
+    return /*#__PURE__*/React.createElement(React.Fragment, {
+      key: i
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 24,
+        height: 24,
+        borderRadius: '50%',
+        flexShrink: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: done ? 'var(--semantic-fill-brand)' : 'var(--base-grey-grey-200)',
+        color: done ? '#fff' : 'var(--semantic-text-quaternary)',
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 590,
+        fontSize: 13
+      }
+    }, i + 1), i < steps - 1 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        height: 2,
+        background: i < current ? 'var(--semantic-fill-brand)' : 'var(--base-grey-grey-200)'
+      }
+    }));
+  })), labels && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginTop: 8
+    }
+  }, labels.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontSize: 12,
+      lineHeight: 1.35,
+      color: i <= current ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)'
+    }
+  }, l))));
+}
+Object.assign(__ds_scope, { ProgressStepper });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/ProgressStepper.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/Rating.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  XS: 14,
+  S: 18,
+  M: 24,
+  L: 30,
+  XL: 36
+};
+const Star = ({
+  size,
+  fill
+}) => /*#__PURE__*/React.createElement("svg", {
+  width: size,
+  height: size,
+  viewBox: "0 0 24 24",
+  fill: fill
+}, /*#__PURE__*/React.createElement("path", {
+  d: "M 12 1.6 L 15.05 8.03 L 21.9 8.95 L 16.9 13.87 L 18.13 20.8 L 12 17.5 L 5.87 20.8 L 7.1 13.87 L 2.1 8.95 L 8.95 8.03 Z"
+}));
+
+/** Star rating — read-only display or interactive control. */
+function Rating({
+  value = 0,
+  size = 'M',
+  kind = 'full',
+  readOnly = true,
+  disabled = false,
+  onChange,
+  style,
+  ...rest
+}) {
+  const d = SIZES[size] || 24;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 4,
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'inline-flex'
+    }
+  }, [0, 1, 2, 3, 4].map(i => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    onClick: () => !readOnly && !disabled && onChange && onChange(i + 1),
+    style: {
+      cursor: readOnly ? 'default' : 'pointer',
+      display: 'inline-flex'
+    }
+  }, /*#__PURE__*/React.createElement(Star, {
+    size: d,
+    fill: i < Math.round(value) ? 'var(--base-yellow-yellow-500)' : 'var(--base-grey-grey-200)'
+  })))), kind === 'full' && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 20,
+      lineHeight: '29px',
+      color: 'var(--semantic-text-primary)'
+    }
+  }, value));
+}
+Object.assign(__ds_scope, { Rating });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/Rating.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/RightAccessory.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const Chevron = ({
+  dir = 'right',
+  color = 'var(--semantic-icon-quaternary)'
+}) => {
+  const rot = {
+    right: 'none',
+    down: 'rotate(90deg)',
+    up: 'rotate(-90deg)'
+  }[dir];
+  return /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      position: 'relative',
+      display: 'inline-block',
+      transform: rot,
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "6.4",
+    height: "10.9",
+    viewBox: "0 0 6.4 10.9",
+    fill: color,
+    style: {
+      position: 'absolute',
+      left: 8.8,
+      top: 6.5
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  })));
+};
+
+/** Trailing slot of a list row: value text, chevron, or a supplied control. */
+function RightAccessory({
+  text,
+  subText,
+  arrow = 'none',
+  align = 'right',
+  children,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 2,
+      flexShrink: 0,
+      ...style
+    }
+  }, rest), (text || subText) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: align === 'right' ? 'flex-end' : 'flex-start'
+    }
+  }, text && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, text), subText && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-quaternary)'
+    }
+  }, subText)), children, arrow !== 'none' && /*#__PURE__*/React.createElement(Chevron, {
+    dir: arrow
+  }));
+}
+Object.assign(__ds_scope, { RightAccessory });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/RightAccessory.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/StarIcon.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const FILLS = {
+  filled: 'var(--base-yellow-yellow-500)',
+  empty: 'var(--base-grey-grey-200)',
+  disabled: 'var(--base-grey-grey-100)'
+};
+
+/** One rating star: filled, half, empty or disabled. */
+function StarIcon({
+  state = 'filled',
+  size = 24,
+  style,
+  ...rest
+}) {
+  const d = 'M 12 1.6 L 15.05 8.03 L 21.9 8.95 L 16.9 13.87 L 18.13 20.8 L 12 17.5 L 5.87 20.8 L 7.1 13.87 L 2.1 8.95 L 8.95 8.03 Z';
+  const id = React.useId();
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    style: style
+  }, rest), state === 'half' && /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
+    id: id
+  }, /*#__PURE__*/React.createElement("stop", {
+    offset: "50%",
+    stopColor: "var(--base-yellow-yellow-500)"
+  }), /*#__PURE__*/React.createElement("stop", {
+    offset: "50%",
+    stopColor: "var(--base-grey-grey-200)"
+  }))), /*#__PURE__*/React.createElement("path", {
+    d: d,
+    fill: state === 'half' ? `url(#${id})` : FILLS[state] || FILLS.filled
+  }));
+}
+Object.assign(__ds_scope, { StarIcon });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/StarIcon.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/StepIcon.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Numbered or icon marker on a Stepper rail. */
+function StepIcon({
+  num,
+  icon,
+  theme = 'light',
+  size = 'M',
+  style,
+  ...rest
+}) {
+  const d = size === 'S' ? 20 : 24;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      width: d,
+      height: d,
+      borderRadius: '50%',
+      flexShrink: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: theme === 'dark' ? 'var(--base-grey-grey-800)' : 'var(--semantic-fill-neutral-weak)',
+      color: theme === 'dark' ? 'rgb(255,255,255)' : 'var(--semantic-text-tertiary)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: size === 'S' ? 11 : 13,
+      lineHeight: 1,
+      ...style
+    }
+  }, rest), icon || num);
+}
+Object.assign(__ds_scope, { StepIcon });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/StepIcon.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/Stepper.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Vertical numbered / icon step list. */
+function Stepper({
+  steps = [],
+  variant = 'number',
+  theme = 'light',
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      padding: '0 var(--tds-side-padding-m)',
+      ...style
+    }
+  }, rest), steps.map((s, i) => {
+    const last = i === steps.length - 1;
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: 'flex',
+        gap: 12
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        flexShrink: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 24,
+        height: 24,
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: theme === 'dark' ? 'var(--base-grey-grey-800)' : 'var(--semantic-fill-neutral-weak)',
+        color: theme === 'dark' ? '#fff' : 'var(--semantic-text-tertiary)',
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 590,
+        fontSize: 13
+      }
+    }, variant === 'number' ? i + 1 : s.icon), !last && /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        width: 2,
+        minHeight: 20,
+        background: 'var(--base-grey-grey-200)',
+        margin: '4px 0'
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      style: {
+        paddingBottom: last ? 0 : 16,
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 590,
+        fontSize: 17,
+        lineHeight: 1.35,
+        color: 'var(--semantic-text-primary)'
+      }
+    }, s.title), s.description && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 2,
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 400,
+        fontSize: 15,
+        lineHeight: 1.5,
+        color: 'var(--semantic-text-tertiary)'
+      }
+    }, s.description)));
+  }));
+}
+Object.assign(__ds_scope, { Stepper });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/Stepper.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/StepperRow.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** One row of a Stepper: marker, connecting rail, text. */
+function StepperRow({
+  num,
+  icon,
+  title,
+  description,
+  last = false,
+  theme = 'light',
+  typography = 'M',
+  style,
+  ...rest
+}) {
+  const fs = {
+    S: 15,
+    M: 17,
+    L: 20
+  }[typography] || 17;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      gap: 12,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(__ds_scope.StepIcon, {
+    num: num,
+    icon: icon,
+    theme: theme
+  }), !last && /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      width: 2,
+      minHeight: 20,
+      margin: '4px 0',
+      background: 'var(--base-grey-grey-200)'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      paddingBottom: last ? 0 : 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: fs,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, title), description && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 2,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, description)));
+}
+Object.assign(__ds_scope, { StepperRow });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/StepperRow.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/TableRow.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Two-column label/value row for detail tables. */
+function TableRow({
+  left,
+  right,
+  align = 'space-between',
+  leftRatio = 50,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      width: '100%',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      flex: align === 'space-between' ? `0 0 ${leftRatio}%` : '0 0 auto',
+      display: 'flex',
+      alignItems: 'center',
+      padding: '10px 8px 10px var(--tds-side-padding-m)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: 16,
+      lineHeight: 1.35,
+      color: 'var(--base-grey-grey-900)'
+    }
+  }, left)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+      padding: '10px var(--tds-side-padding-m) 10px 8px'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1,
+      textAlign: 'right',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 16,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, right)));
+}
+Object.assign(__ds_scope, { TableRow });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/TableRow.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/Top.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Page hero: optional resource, subtext-top, title, subtext-bottom, right item, lower CTA. */
+function Top({
+  title,
+  subTextTop,
+  subTextBottom,
+  resource,
+  rightItem,
+  lowerCTA,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      padding: '8px var(--tds-side-padding-m) 16px',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), resource && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, resource), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 4,
+      flex: 1
+    }
+  }, subTextTop && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: '19.5px',
+      color: 'var(--base-grey-grey-700)'
+    }
+  }, subTextTop), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: 24,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)',
+      textWrap: 'pretty'
+    }
+  }, title), subTextBottom && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 17,
+      lineHeight: '25.5px',
+      color: 'var(--base-grey-grey-700)'
+    }
+  }, subTextBottom)), rightItem), lowerCTA && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8,
+      marginTop: 16
+    }
+  }, lowerCTA));
+}
+Object.assign(__ds_scope, { Top });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/Top.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Asset.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  16: 16,
+  20: 20,
+  24: 24,
+  28: 28,
+  30: 30,
+  36: 36,
+  40: 40,
+  48: 48,
+  56: 56,
+  64: 64,
+  72: 72
+};
+const SHAPE_RADIUS = {
+  circle: '50%',
+  squircle: 0.28,
+  card: 0.22,
+  square: 0
+};
+
+/** Icon or image inside an optional shaped background — the TDS "Asset" primitive. */
+function Asset({
+  children,
+  src,
+  alt = '',
+  size = 40,
+  shape = 'circle',
+  background = true,
+  style,
+  ...rest
+}) {
+  const d = SIZES[size] || size;
+  const r = shape === 'circle' ? '50%' : `${Math.round(d * (SHAPE_RADIUS[shape] ?? 0))}px`;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      width: d,
+      height: d,
+      borderRadius: r,
+      overflow: 'hidden',
+      flexShrink: 0,
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: background ? 'var(--asset-background-default)' : 'transparent',
+      color: 'var(--semantic-icon-secondary)',
+      ...style
+    }
+  }, rest), src ? /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: alt,
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
+    }
+  }) : children);
+}
+Object.assign(__ds_scope, { Asset });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Asset.jsx", error: String((e && e.message) || e) }); }
+
+// components/content/LeftAccessory.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Left slot of a list row: icon, image, or a short text marker. */
+function LeftAccessory({
+  type = 'icon',
+  children,
+  src,
+  text,
+  size = 30,
+  shape = 'circle',
+  align = 'center',
+  style,
+  ...rest
+}) {
+  if (type === 'text') {
+    return /*#__PURE__*/React.createElement("div", _extends({
+      style: {
+        display: 'flex',
+        alignItems: align === 'top' ? 'flex-start' : 'center',
+        minWidth: 24,
+        ...style
+      }
+    }, rest), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 590,
+        fontSize: 15,
+        lineHeight: 1.35,
+        color: 'var(--semantic-text-tertiary)'
+      }
+    }, text));
+  }
+  return /*#__PURE__*/React.createElement(__ds_scope.Asset, _extends({
+    size: size,
+    shape: shape,
+    src: type === 'image' ? src : undefined,
+    background: type !== 'image',
+    style: style
+  }, rest), children);
+}
+Object.assign(__ds_scope, { LeftAccessory });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/content/LeftAccessory.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Badge.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  XS: {
+    h: 21,
+    r: 9,
+    fs: 10,
+    fw: 590,
+    py: 3,
+    px: 7,
+    lh: 1.5
+  },
+  S: {
+    h: 24,
+    r: 11,
+    fs: 12,
+    fw: 700,
+    py: 3,
+    px: 7,
+    lh: '18px'
+  },
+  M: {
+    h: 26,
+    r: 12,
+    fs: 13,
+    fw: 700,
+    py: 3,
+    px: 7,
+    lh: '19.5px'
+  },
+  L: {
+    h: 29,
+    r: 13,
+    fs: 14,
+    fw: 700,
+    py: 4,
+    px: 8,
+    lh: '21px'
+  }
+};
+const COLORS = {
+  blue: {
+    fill: 'var(--base-blue-blue-500)',
+    weakBg: 'rgba(49,130,246,0.16)',
+    weakFg: 'var(--base-blue-blue-600)'
+  },
+  red: {
+    fill: 'var(--base-red-red-500)',
+    weakBg: 'rgba(240,68,82,0.16)',
+    weakFg: 'var(--base-red-red-600)'
+  },
+  green: {
+    fill: 'var(--base-green-green-500)',
+    weakBg: 'rgba(2,162,98,0.16)',
+    weakFg: 'var(--base-green-green-700)'
+  },
+  yellow: {
+    fill: 'var(--base-yellow-yellow-500)',
+    weakBg: 'rgba(255,179,49,0.16)',
+    weakFg: 'var(--base-yellow-yellow-900)'
+  },
+  teal: {
+    fill: 'var(--base-teal-teal-500)',
+    weakBg: 'rgba(0,163,171,0.16)',
+    weakFg: 'var(--base-teal-teal-700)'
+  },
+  grey: {
+    fill: 'var(--base-grey-grey-600)',
+    weakBg: 'var(--semantic-fill-neutral-weak)',
+    weakFg: 'var(--semantic-text-tertiary)'
+  }
+};
+
+/** Small status/label pill. */
+function Badge({
+  children,
+  size = 'M',
+  color = 'blue',
+  variant = 'fill',
+  style,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.M;
+  const c = COLORS[color] || COLORS.blue;
+  const weak = variant === 'weak';
+  return /*#__PURE__*/React.createElement("span", _extends({
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxSizing: 'border-box',
+      height: s.h,
+      borderRadius: s.r,
+      padding: `${s.py}px ${s.px}px`,
+      overflow: 'hidden',
+      background: weak ? c.weakBg : c.fill,
+      color: weak ? c.weakFg : 'var(--semantic-text-on-fill)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: s.fw,
+      fontSize: s.fs,
+      lineHeight: s.lh,
+      whiteSpace: 'nowrap',
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { Badge });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Badge.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Border.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Horizontal rule / section divider. */
+function Border({
+  height = 'default',
+  inset = true,
+  style,
+  ...rest
+}) {
+  const thick = height === 'thick';
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      width: '100%',
+      paddingLeft: inset && !thick ? 'var(--tds-side-padding-m)' : 0,
+      background: thick ? 'var(--semantic-background-lower)' : 'transparent',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: thick ? 12 : 1,
+      background: thick ? 'var(--semantic-background-lower)' : 'rgba(2,32,71,0.05)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { Border });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Border.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Button.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  S: {
+    height: 32,
+    radius: 8,
+    fontSize: 13,
+    padX: 10
+  },
+  M: {
+    height: 38,
+    radius: 10,
+    fontSize: 15,
+    padX: 16
+  },
+  L: {
+    height: 48,
+    radius: 14,
+    fontSize: 17,
+    padX: 16
+  },
+  XL: {
+    height: 56,
+    radius: 16,
+    fontSize: 17,
+    padX: 28
+  }
+};
+const COLORS = {
+  brand: {
+    fill: 'var(--semantic-fill-brand)',
+    on: 'var(--semantic-text-on-fill)',
+    weakBg: 'var(--semantic-fill-brand-weak)',
+    weakFg: 'var(--semantic-text-brand)'
+  },
+  neutral: {
+    fill: 'var(--semantic-fill-neutral)',
+    on: 'var(--semantic-text-on-fill)',
+    weakBg: 'var(--semantic-fill-neutral-weak)',
+    weakFg: 'var(--semantic-text-primary)'
+  },
+  danger: {
+    fill: 'var(--semantic-fill-danger)',
+    on: 'var(--semantic-text-on-fill)',
+    weakBg: 'var(--semantic-fill-danger-weak)',
+    weakFg: 'var(--semantic-text-danger)'
+  },
+  inverse: {
+    fill: 'var(--semantic-fill-inverse)',
+    on: 'var(--semantic-text-brand)',
+    weakBg: 'var(--semantic-fill-inverse-weak)',
+    weakFg: 'var(--semantic-fill-inverse)'
+  }
+};
+
+/** Primary action button. Fill / Weak variants across four sizes. */
+function Button({
+  children,
+  size = 'L',
+  color = 'brand',
+  variant = 'fill',
+  disabled = false,
+  loading = false,
+  fullWidth = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.L;
+  const c = COLORS[color] || COLORS.brand;
+  const weak = variant === 'weak';
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    disabled: disabled,
+    onClick: onClick,
+    style: {
+      position: 'relative',
+      boxSizing: 'border-box',
+      border: 0,
+      cursor: disabled ? 'default' : 'pointer',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 10,
+      minHeight: s.height,
+      height: s.height,
+      padding: `2px ${s.padX}px`,
+      width: fullWidth ? '100%' : undefined,
+      borderRadius: s.radius,
+      overflow: 'hidden',
+      background: weak ? c.weakBg : c.fill,
+      color: weak ? c.weakFg : c.on,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: s.fontSize,
+      lineHeight: 1.252,
+      opacity: disabled ? 0.3 : 1,
+      transition: 'filter .15s ease, opacity .15s ease',
+      ...style
+    },
+    onMouseDown: e => {
+      if (!disabled) e.currentTarget.style.filter = 'brightness(0.86)';
+    },
+    onMouseUp: e => {
+      e.currentTarget.style.filter = 'none';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.filter = 'none';
+    }
+  }, rest), loading ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 18,
+      height: 18,
+      borderRadius: '50%',
+      border: '2px solid currentColor',
+      borderTopColor: 'transparent',
+      animation: 'tds-spin .7s linear infinite'
+    }
+  }) : children, /*#__PURE__*/React.createElement("style", null, '@keyframes tds-spin{to{transform:rotate(360deg)}}'));
+}
+Object.assign(__ds_scope, { Button });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Button.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Chip.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  S: {
+    h: 32,
+    fs: 13,
+    px: 12
+  },
+  M: {
+    h: 38,
+    fs: 15,
+    px: 14
+  }
+};
+
+/** Filter / selection chip. Pill or Square, Fill or Weak, with optional red dot. */
+function Chip({
+  children,
+  size = 'M',
+  shape = 'pill',
+  variant = 'fill',
+  selected = false,
+  leading,
+  tailing,
+  redDot = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.M;
+  const radius = shape === 'pill' ? 999 : 12;
+  const bg = selected ? variant === 'weak' ? 'var(--semantic-fill-brand-weak)' : 'var(--semantic-fill-neutral)' : 'var(--semantic-fill-neutral-weak)';
+  const fg = selected ? variant === 'weak' ? 'var(--semantic-text-brand)' : 'var(--semantic-text-on-fill)' : 'var(--semantic-text-secondary)';
+  return /*#__PURE__*/React.createElement("span", _extends({
+    style: {
+      position: 'relative',
+      display: 'inline-flex',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 4,
+      minHeight: s.h,
+      height: s.h,
+      minWidth: 64,
+      padding: `2px ${s.px}px`,
+      border: 0,
+      cursor: 'pointer',
+      borderRadius: radius,
+      overflow: 'hidden',
+      background: bg,
+      color: fg,
+      boxShadow: selected ? 'none' : 'inset 0 0 0 0.66px rgba(0,23,51,0.02)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: s.fs,
+      lineHeight: 1.252,
+      whiteSpace: 'nowrap'
+    }
+  }, leading && /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: 'inline-flex',
+      width: 18,
+      height: 18
+    }
+  }, leading), children, tailing && /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: 'inline-flex',
+      width: 16,
+      height: 16
+    }
+  }, tailing)), redDot && /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: 'absolute',
+      right: 1,
+      top: 2,
+      width: 8,
+      height: 8,
+      borderRadius: '50%',
+      background: 'var(--base-red-red-500)',
+      boxShadow: 'inset 0 0 0 1.5px var(--semantic-background-default)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { Chip });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Chip.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/ChipAccessory.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Leading or tailing slot inside a Chip: icon, profile disc, chevron or close X. */
+function ChipAccessory({
+  kind = 'icon',
+  side = 'leading',
+  size = 'M',
+  children,
+  src,
+  style,
+  ...rest
+}) {
+  const d = side === 'leading' ? size === 'S' ? 16 : 18 : size === 'S' ? 14 : 16;
+  const color = 'var(--semantic-icon-tertiary)';
+  const base = {
+    width: d,
+    height: d,
+    flexShrink: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color,
+    ...style
+  };
+  if (kind === 'profile') return /*#__PURE__*/React.createElement("span", _extends({
+    style: {
+      ...base,
+      borderRadius: '50%',
+      overflow: 'hidden',
+      background: 'var(--asset-background-default)'
+    }
+  }, rest), src ? /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: "",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
+    }
+  }) : children);
+  if (kind === 'downChevron') return /*#__PURE__*/React.createElement("span", _extends({
+    style: base
+  }, rest), /*#__PURE__*/React.createElement("svg", {
+    width: d,
+    height: d,
+    viewBox: "0 0 16 16",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.9",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 4 6.2 L 8 10.2 L 12 6.2"
+  })));
+  if (kind === 'close') return /*#__PURE__*/React.createElement("span", _extends({
+    style: base
+  }, rest), /*#__PURE__*/React.createElement("svg", {
+    width: d,
+    height: d,
+    viewBox: "0 0 16 16",
+    stroke: "currentColor",
+    strokeWidth: "1.9",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "4",
+    x2: "12",
+    y2: "12"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "12",
+    y1: "4",
+    x2: "4",
+    y2: "12"
+  })));
+  return /*#__PURE__*/React.createElement("span", _extends({
+    style: base
+  }, rest), children);
+}
+Object.assign(__ds_scope, { ChipAccessory });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/ChipAccessory.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/IconButton.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/* Source geometry — note TDS names these inversely to the pixel size. */
+const SIZES = {
+  L: {
+    box: 32,
+    icon: 16,
+    radius: 11,
+    inset: 8
+  },
+  M: {
+    box: 38,
+    icon: 20,
+    radius: 13,
+    inset: 9
+  },
+  S: {
+    box: 48,
+    icon: 24,
+    radius: 16,
+    inset: 12
+  }
+};
+
+/** Square tappable container for a single glyph. */
+function IconButton({
+  children,
+  size = 'M',
+  variant = 'fill',
+  disabled = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.M;
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    disabled: disabled,
+    onClick: onClick,
+    style: {
+      position: 'relative',
+      width: s.box,
+      height: s.box,
+      padding: 0,
+      border: 0,
+      overflow: 'hidden',
+      borderRadius: s.radius,
+      cursor: disabled ? 'default' : 'pointer',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: variant === 'fill' ? 'var(--semantic-fill-neutral-weak)' : 'transparent',
+      boxShadow: variant === 'border' ? 'inset 0 0 0 1px rgba(0,27,55,0.1)' : 'none',
+      color: 'var(--semantic-icon-secondary)',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: s.icon,
+      height: s.icon,
+      display: 'inline-flex'
+    }
+  }, children));
+}
+Object.assign(__ds_scope, { IconButton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/IconButton.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/TextButton.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  S: 13,
+  M: 17,
+  L: 20
+};
+
+/** Inline text action — Clear, Arrow or Underline appearance. */
+function TextButton({
+  children,
+  size = 'M',
+  color = 'brand',
+  appearance = 'clear',
+  disabled = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  const fs = SIZES[size] || SIZES.M;
+  const fg = color === 'brand' ? 'var(--semantic-text-brand)' : 'var(--semantic-text-tertiary)';
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    disabled: disabled,
+    onClick: onClick,
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 0,
+      border: 0,
+      background: 'none',
+      padding: 0,
+      cursor: disabled ? 'default' : 'pointer',
+      color: fg,
+      opacity: disabled ? 0.3 : 1,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: fs,
+      lineHeight: 1.252,
+      textDecoration: appearance === 'underline' ? 'underline' : 'none',
+      textUnderlineOffset: 2,
+      ...style
+    }
+  }, rest), children, appearance === 'arrow' && /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: 'relative',
+      width: 24,
+      height: 24,
+      flexShrink: 0,
+      display: 'inline-block'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "6.4",
+    height: "10.9",
+    viewBox: "0 0 6.4 10.9",
+    fill: color === 'brand' ? 'var(--semantic-fill-brand)' : 'currentColor',
+    style: {
+      position: 'absolute',
+      left: 8.8,
+      top: 6.5
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  }))));
+}
+Object.assign(__ds_scope, { TextButton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/TextButton.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Title.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  XS: 15,
+  S: 17,
+  M: 17,
+  L: 20
+};
+
+/** Section title primitive shared by List Header, Bottom Sheet and Top. */
+function Title({
+  children,
+  size = 'M',
+  variant = 'clear',
+  accessory,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 4,
+      cursor: onClick ? 'pointer' : 'default',
+      ...style
+    },
+    onClick: onClick
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: SIZES[size] || 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)',
+      textDecoration: variant === 'underlined' ? 'underline' : 'none',
+      textUnderlineOffset: 3
+    }
+  }, children), (variant === 'selector' || accessory) && (accessory || /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 20,
+      height: 20,
+      position: 'relative',
+      display: 'inline-block',
+      transform: 'rotate(90deg)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "6.4",
+    height: "10.9",
+    viewBox: "0 0 6.4 10.9",
+    fill: "var(--semantic-icon-quaternary)",
+    style: {
+      position: 'absolute',
+      left: 6.8,
+      top: 4.5
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  })))));
+}
+Object.assign(__ds_scope, { Title });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Title.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/BottomSheet.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Bottom-anchored sheet with grab handle, title and button area. */
+function BottomSheet({
+  title,
+  subTitle,
+  children,
+  primaryLabel,
+  secondaryLabel,
+  onPrimary,
+  onSecondary,
+  dim = true,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      position: 'relative',
+      width: 375,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      padding: 10,
+      ...style
+    }
+  }, rest), dim && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      inset: 0,
+      background: 'var(--semantic-background-dim)'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'relative',
+      alignSelf: 'stretch',
+      boxSizing: 'border-box',
+      paddingBottom: 20,
+      borderRadius: 28,
+      background: 'var(--semantic-background-floated)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      height: 20,
+      padding: '16px 10px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 48,
+      height: 4,
+      borderRadius: 40,
+      background: 'var(--base-grey-grey-200)'
+    }
+  })), title && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '12px 24px 4px',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: 20,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, title), subTitle && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 24px 8px',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.6,
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, subTitle), /*#__PURE__*/React.createElement("div", null, children), (primaryLabel || secondaryLabel) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8,
+      padding: '17px 20px 0'
+    }
+  }, secondaryLabel && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onSecondary,
+    style: sheetBtn('var(--semantic-fill-neutral-weak)', 'var(--semantic-text-secondary)')
+  }, secondaryLabel), primaryLabel && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onPrimary,
+    style: sheetBtn('var(--semantic-fill-brand)', 'var(--semantic-text-on-fill)')
+  }, primaryLabel))));
+}
+function sheetBtn(bg, fg) {
+  return {
+    flex: 1,
+    minHeight: 56,
+    border: 0,
+    borderRadius: 16,
+    cursor: 'pointer',
+    background: bg,
+    color: fg,
+    fontFamily: 'var(--tds-font-body)',
+    fontWeight: 590,
+    fontSize: 17
+  };
+}
+Object.assign(__ds_scope, { BottomSheet });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/BottomSheet.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Bubble.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Speech bubble with a curved tail — used in guides and chat-like copy. */
+function Bubble({
+  children,
+  side = 'left',
+  style,
+  ...rest
+}) {
+  const tail = /*#__PURE__*/React.createElement("svg", {
+    width: "15.306",
+    height: "17.338",
+    viewBox: "0 0 15.306 17.338",
+    fill: "var(--base-grey-grey-200)",
+    style: {
+      transform: side === 'right' ? 'scaleX(-1)' : 'none',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1.184 17.338 C -0.112 17.338 -0.465 15.798 0.736 15.369 C 3.856 14.268 5.976 11.575 6 8.608 L 6 0 L 8.413 0 L 8.413 0.908 C 8.413 5.507 10.827 9.75 14.854 12.442 C 15.16 12.646 15.337 12.973 15.301 13.309 C 15.278 13.646 15.066 13.952 14.724 14.125 C 10.709 16.175 5.976 17.317 1.184 17.338 Z",
+    fillRule: "nonzero"
+  }));
+  const body = /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      borderRadius: 16,
+      background: 'var(--base-grey-grey-200)',
+      padding: side === 'left' ? '12px 14px 12px 19px' : '12px 19px 12px 14px',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: '25.5px',
+      color: 'var(--semantic-text-primary)'
+    }
+  }, children);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'inline-flex',
+      alignItems: 'flex-end',
+      gap: -10,
+      ...style
+    }
+  }, rest), side === 'left' ? /*#__PURE__*/React.createElement(React.Fragment, null, tail, body) : /*#__PURE__*/React.createElement(React.Fragment, null, body, tail));
+}
+Object.assign(__ds_scope, { Bubble });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Bubble.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/ButtonArea.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const PADDING = {
+  dialog: '0 14px 14px',
+  sheet: '17px 20px 0',
+  cta: '0 20px'
+};
+
+/** Shared button footer for Dialog, Bottom Sheet and Bottom CTA. */
+function ButtonArea({
+  children,
+  context = 'sheet',
+  direction = 'horizontal',
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: direction === 'vertical' ? 'column' : 'row',
+      gap: direction === 'vertical' ? 8 : 8,
+      padding: PADDING[context] || PADDING.sheet,
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { ButtonArea });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/ButtonArea.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Dialog.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Modal alert or confirm. 311px card, radius 24. */
+function Dialog({
+  title,
+  description,
+  kind = 'confirm',
+  confirmLabel = '확인',
+  cancelLabel = '취소',
+  onConfirm,
+  onCancel,
+  dim = true,
+  style,
+  ...rest
+}) {
+  const card = /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      width: 311,
+      maxWidth: 320,
+      overflow: 'hidden',
+      borderRadius: 24,
+      background: 'var(--semantic-background-floated)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      alignSelf: 'stretch',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 8,
+      padding: 22
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: 20,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, title), description && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.6,
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, description)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      alignSelf: 'stretch',
+      display: 'flex',
+      gap: 8,
+      padding: '0 14px 14px'
+    }
+  }, kind === 'confirm' && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onCancel,
+    style: btn('var(--semantic-fill-neutral-weak)', 'var(--semantic-text-secondary)')
+  }, cancelLabel), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onConfirm,
+    style: btn('var(--semantic-fill-brand)', 'var(--semantic-text-on-fill)')
+  }, confirmLabel)));
+  if (!dim) return card;
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      inset: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'var(--semantic-background-dim)'
+    }
+  }, card);
+}
+function btn(bg, fg) {
+  return {
+    flex: 1,
+    minHeight: 56,
+    border: 0,
+    borderRadius: 16,
+    cursor: 'pointer',
+    background: bg,
+    color: fg,
+    fontFamily: 'var(--tds-font-body)',
+    fontWeight: 590,
+    fontSize: 17,
+    lineHeight: 1.252
+  };
+}
+Object.assign(__ds_scope, { Dialog });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Dialog.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Loader.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  S: 28,
+  M: 40,
+  L: 56
+};
+const COLORS = {
+  brand: 'var(--semantic-fill-brand)',
+  neutral: 'var(--semantic-fill-neutral)',
+  inverse: 'var(--semantic-fill-inverse)'
+};
+
+/** Pulsing disc loader with an optional label underneath. */
+function Loader({
+  size = 'M',
+  color = 'brand',
+  label,
+  style,
+  ...rest
+}) {
+  const d = SIZES[size] || 40;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'inline-flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: 14,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      width: d,
+      height: d,
+      padding: 2
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      background: COLORS[color] || COLORS.brand,
+      animation: 'tds-pulse 1s cubic-bezier(.45,0,.55,1) infinite'
+    }
+  })), label && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: '22.5px',
+      color: 'var(--semantic-text-primary)',
+      whiteSpace: 'nowrap'
+    }
+  }, label), /*#__PURE__*/React.createElement("style", null, '@keyframes tds-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.62);opacity:.55}}'));
+}
+Object.assign(__ds_scope, { Loader });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Loader.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Menu.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Floating action menu — translucent, blurred, hairline-inset card. */
+function Menu({
+  title,
+  items = [],
+  onSelect,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      minWidth: 180,
+      maxWidth: 264,
+      overflow: 'hidden',
+      borderRadius: 20,
+      padding: '10px 4px',
+      background: 'rgba(253,253,254,0.89)',
+      backdropFilter: 'blur(22px)',
+      WebkitBackdropFilter: 'blur(22px)',
+      boxShadow: 'var(--tds-hairline-inset), var(--tds-shadow-floating)',
+      ...style
+    }
+  }, rest), title && /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      padding: '6px 16px 4px',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 13,
+      lineHeight: '19.5px',
+      color: 'var(--semantic-text-quaternary)'
+    }
+  }, title), items.map((it, i) => /*#__PURE__*/React.createElement("button", {
+    key: i,
+    type: "button",
+    onClick: () => onSelect && onSelect(it, i),
+    style: {
+      boxSizing: 'border-box',
+      width: '100%',
+      height: 44,
+      border: 0,
+      borderRadius: 12,
+      cursor: 'pointer',
+      background: it.selected ? 'var(--semantic-fill-neutral-weak)' : 'transparent',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '0 12px',
+      textAlign: 'left',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: it.danger ? 'var(--semantic-text-danger)' : 'var(--semantic-text-primary)'
+    }
+  }, it.icon && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      display: 'inline-flex',
+      flexShrink: 0
+    }
+  }, it.icon), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1
+    }
+  }, it.label))));
+}
+Object.assign(__ds_scope, { Menu });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Menu.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/MenuItem.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** One row of a floating Menu. */
+function MenuItem({
+  children,
+  icon,
+  selected = false,
+  danger = false,
+  pressed = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      width: '100%',
+      height: 44,
+      border: 0,
+      borderRadius: 12,
+      cursor: 'pointer',
+      textAlign: 'left',
+      background: pressed || selected ? 'var(--semantic-fill-neutral-weak)' : 'transparent',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '0 12px',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: danger ? 'var(--semantic-text-danger)' : 'var(--semantic-text-primary)',
+      ...style
+    }
+  }, rest), icon && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      display: 'inline-flex',
+      flexShrink: 0
+    }
+  }, icon), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1
+    }
+  }, children), selected && /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "var(--semantic-icon-brand)",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 5 12.4 L 10 17.2 L 19 7.2"
+  })));
+}
+Object.assign(__ds_scope, { MenuItem });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/MenuItem.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/ProgressBar.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const H = {
+  S: 3,
+  M: 5,
+  L: 8
+};
+const C = {
+  brand: 'var(--semantic-fill-brand)',
+  neutral: 'var(--semantic-fill-neutral)',
+  success: 'var(--semantic-fill-success)',
+  danger: 'var(--semantic-fill-danger)'
+};
+
+/** Determinate progress track. */
+function ProgressBar({
+  value = 0,
+  size = 'M',
+  color = 'brand',
+  style,
+  ...rest
+}) {
+  const h = H[size] || 5;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      width: '100%',
+      height: h,
+      borderRadius: h / 2,
+      background: 'var(--base-grey-grey-200)',
+      overflow: 'hidden',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: `${Math.max(0, Math.min(100, value))}%`,
+      height: h,
+      borderRadius: h / 2,
+      background: C[color] || C.brand,
+      transition: 'width .3s cubic-bezier(.25,.1,.25,1)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { ProgressBar });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/ProgressBar.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Result.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Full-screen success / failure / empty state. */
+function Result({
+  asset,
+  title,
+  description,
+  children,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 16,
+      padding: '48px var(--tds-side-padding-m)',
+      textAlign: 'center',
+      ...style
+    }
+  }, rest), asset && /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 88,
+      height: 88,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, asset), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: 22,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, title), description && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.6,
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, description)), children);
+}
+Object.assign(__ds_scope, { Result });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Result.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/SelectionRow.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Selectable row inside a Bottom Sheet body. */
+function SelectionRow({
+  title,
+  description,
+  leftAccessory,
+  selected = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+      minHeight: 56,
+      padding: '12px var(--tds-side-padding-m)',
+      cursor: 'pointer',
+      background: selected ? 'var(--semantic-fill-neutral-weak)' : 'transparent',
+      ...style
+    }
+  }, rest), leftAccessory && /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 30,
+      height: 30,
+      flexShrink: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, leftAccessory), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: selected ? 700 : 590,
+      fontSize: 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, title), description && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, description)), selected && /*#__PURE__*/React.createElement("svg", {
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "var(--semantic-icon-brand)",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    style: {
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 5 12.4 L 10 17.2 L 19 7.2"
+  })));
+}
+Object.assign(__ds_scope, { SelectionRow });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/SelectionRow.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/SheetBody.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Scrolling body region of a Bottom Sheet. */
+function SheetBody({
+  children,
+  kind = 'list',
+  style,
+  ...rest
+}) {
+  const pad = kind === 'paragraph' ? '4px var(--tds-side-padding-m) 12px' : kind === 'asset' ? '12px 0 20px' : '0';
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      maxHeight: 420,
+      overflowY: 'auto',
+      padding: pad,
+      display: kind === 'asset' ? 'flex' : 'block',
+      justifyContent: 'center',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 15,
+      lineHeight: 1.6,
+      color: 'var(--semantic-text-secondary)',
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { SheetBody });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/SheetBody.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Toast.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Floating blurred capsule confirming a completed action. */
+function Toast({
+  children,
+  leading,
+  action,
+  onAction,
+  position = 'bottom',
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 12,
+      minHeight: 59,
+      padding: '14px 15px 14px 16px',
+      borderRadius: 9999,
+      background: 'rgba(3,24,50,0.46)',
+      backdropFilter: 'blur(30px)',
+      WebkitBackdropFilter: 'blur(30px)',
+      ...style
+    }
+  }, rest), leading && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      flexShrink: 0,
+      display: 'inline-flex',
+      color: 'rgba(253,253,254,0.89)'
+    }
+  }, leading), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 15,
+      lineHeight: 1.35,
+      color: 'rgba(253,253,254,0.89)',
+      whiteSpace: 'nowrap'
+    }
+  }, children), action && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onAction,
+    style: {
+      boxSizing: 'border-box',
+      minHeight: 31,
+      padding: '2px 12px',
+      border: 0,
+      borderRadius: 100,
+      cursor: 'pointer',
+      background: 'rgba(0,25,54,0.31)',
+      color: 'rgba(253,253,254,0.89)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 13,
+      lineHeight: 1.15,
+      whiteSpace: 'nowrap'
+    }
+  }, action));
+}
+Object.assign(__ds_scope, { Toast });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Toast.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Tooltip.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  S: {
+    fs: 13,
+    py: 10,
+    px: 14,
+    r: 14
+  },
+  M: {
+    fs: 15,
+    py: 12,
+    px: 16,
+    r: 16
+  },
+  L: {
+    fs: 17,
+    py: 14,
+    px: 18,
+    r: 18
+  }
+};
+const Tail = ({
+  flip
+}) => /*#__PURE__*/React.createElement("svg", {
+  width: "38.418",
+  height: "11.438",
+  viewBox: "0 0 38.418 11.438",
+  fill: "var(--semantic-background-floated)",
+  style: {
+    display: 'block',
+    transform: flip ? 'rotate(180deg)' : 'none'
+  }
+}, /*#__PURE__*/React.createElement("path", {
+  d: "M 30.922 2.63 L 20.459 11 C 19.729 11.584 18.69 11.584 17.96 11 L 7.496 2.63 C 5.368 0.928 2.725 0 0 0 L 38.418 0 C 35.693 0 33.05 0.928 30.922 2.63 Z",
+  fillRule: "nonzero"
+}));
+
+/** Pointed coach-mark bubble. */
+function Tooltip({
+  children,
+  size = 'M',
+  placement = 'bottom',
+  align = 'center',
+  style,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.M;
+  const body = /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 8,
+      padding: `${s.py}px ${s.px}px`,
+      borderRadius: s.r,
+      background: 'var(--semantic-background-floated)',
+      boxShadow: 'var(--tds-shadow-floating)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: s.fs,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-primary)',
+      maxWidth: 247,
+      textAlign: align
+    }
+  }, children);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'inline-flex',
+      flexDirection: 'column',
+      alignItems: align === 'left' ? 'flex-start' : align === 'right' ? 'flex-end' : 'center',
+      ...style
+    }
+  }, rest), placement === 'top' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Tail, {
+    flip: true
+  }), body), placement === 'bottom' && /*#__PURE__*/React.createElement(React.Fragment, null, body, /*#__PURE__*/React.createElement(Tail, null)));
+}
+Object.assign(__ds_scope, { Tooltip });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Tooltip.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Checkbox.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  XS: 16,
+  S: 20,
+  M: 24,
+  L: 28
+};
+
+/** Circle or Line checkmark. TDS has no square checkbox. */
+function Checkbox({
+  checked = false,
+  variant = 'circle',
+  size = 'M',
+  disabled = false,
+  onChange,
+  style,
+  ...rest
+}) {
+  const d = SIZES[size] || 24;
+  const active = 'var(--semantic-fill-brand)';
+  const idle = 'var(--semantic-icon-quaternary)';
+  return /*#__PURE__*/React.createElement("span", _extends({
+    role: "checkbox",
+    "aria-checked": checked,
+    tabIndex: disabled ? -1 : 0,
+    onClick: () => !disabled && onChange && onChange(!checked),
+    style: {
+      display: 'inline-flex',
+      width: d,
+      height: d,
+      cursor: disabled ? 'default' : 'pointer',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("svg", {
+    width: d,
+    height: d,
+    viewBox: "0 0 24 24"
+  }, variant === 'circle' && (checked ? /*#__PURE__*/React.createElement("path", {
+    fill: active,
+    fillRule: "evenodd",
+    d: "M 12 0 C 5.37 0 0 5.37 0 12 C 0 18.63 5.37 24 12 24 C 18.63 24 24 18.63 24 12 C 24 5.37 18.63 0 12 0 Z M 17.68 10.05 L 11.59 16.14 C 11.39 16.34 11.11 16.46 10.82 16.46 C 10.53 16.46 10.25 16.34 10.05 16.14 L 6.32 12.41 C 5.89 11.98 5.89 11.29 6.32 10.87 C 6.75 10.44 7.44 10.44 7.86 10.87 L 10.82 13.83 L 16.14 8.51 C 16.57 8.08 17.26 8.08 17.68 8.51 C 18.11 8.94 18.11 9.63 17.68 10.05 Z"
+  }) : /*#__PURE__*/React.createElement("path", {
+    fill: idle,
+    fillRule: "evenodd",
+    d: "M 12 0 C 5.37 0 0 5.37 0 12 C 0 18.63 5.37 24 12 24 C 18.63 24 24 18.63 24 12 C 24 5.37 18.63 0 12 0 Z M 17.68 10.05 L 11.59 16.14 C 11.39 16.34 11.11 16.46 10.82 16.46 C 10.53 16.46 10.25 16.34 10.05 16.14 L 6.32 12.41 C 5.89 11.98 5.89 11.29 6.32 10.87 C 6.75 10.44 7.44 10.44 7.86 10.87 L 10.82 13.83 L 16.14 8.51 C 16.57 8.08 17.26 8.08 17.68 8.51 C 18.11 8.94 18.11 9.63 17.68 10.05 Z"
+  })), variant === 'line' && /*#__PURE__*/React.createElement("path", {
+    fill: "none",
+    stroke: checked ? active : idle,
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M 5 12.4 L 10 17.2 L 19 7.2"
+  })));
+}
+Object.assign(__ds_scope, { Checkbox });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Checkbox.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/ClearButton.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Circular ✕ that clears a field's value. */
+function ClearButton({
+  size = 20,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    "aria-label": "\uC9C0\uC6B0\uAE30",
+    style: {
+      width: size,
+      height: size,
+      padding: 0,
+      border: 0,
+      borderRadius: '50%',
+      cursor: 'pointer',
+      flexShrink: 0,
+      background: 'var(--semantic-icon-quaternary)',
+      color: 'var(--semantic-background-default)',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("svg", {
+    width: size * 0.5,
+    height: size * 0.5,
+    viewBox: "0 0 10 10",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "2",
+    y1: "2",
+    x2: "8",
+    y2: "8"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "8",
+    y1: "2",
+    x2: "2",
+    y2: "8"
+  })));
+}
+Object.assign(__ds_scope, { ClearButton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/ClearButton.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/FieldPrefix.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Static unit or country-code affix inside a field. */
+function FieldPrefix({
+  children,
+  side = 'suffix',
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("span", _extends({
+    style: {
+      flexShrink: 0,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: 'var(--semantic-text-tertiary)',
+      paddingRight: side === 'prefix' ? 4 : 0,
+      paddingLeft: side === 'suffix' ? 4 : 0,
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { FieldPrefix });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/FieldPrefix.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Keyboard.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/* Resolve project-root-relative assets from the bundle's own script URL, so the
+   component works at any page depth and needs no path prop. */
+function tdsAsset(rel) {
+  if (typeof document === 'undefined') return rel;
+  const tag = document.querySelector('script[src*="_ds_bundle.js"]');
+  if (!tag) return rel;
+  try {
+    return new URL(rel, new URL(tag.getAttribute('src'), document.baseURI)).href;
+  } catch {
+    return rel;
+  }
+}
+
+/** iOS system keyboard — the 375×292 bitmap the source file ships. */
+function Keyboard({
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      position: 'relative',
+      width: '100%',
+      height: 292,
+      flexShrink: 0,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("img", {
+    src: tdsAsset('assets/images/keyboard-ios.png'),
+    alt: "",
+    style: {
+      position: 'absolute',
+      inset: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
+    }
+  }));
+}
+Object.assign(__ds_scope, { Keyboard });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Keyboard.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Keypad.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
+
+/** Numeric keypad — 3×4 grid of 120×63 keys. */
+function Keypad({
+  onKey,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), KEYS.map((k, i) => /*#__PURE__*/React.createElement("button", {
+    key: i,
+    type: "button",
+    disabled: !k,
+    onClick: () => k && onKey && onKey(k),
+    style: {
+      height: 63,
+      border: 0,
+      background: 'transparent',
+      cursor: k ? 'pointer' : 'default',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 30,
+      lineHeight: '40px',
+      color: 'var(--base-grey-grey-700)'
+    }
+  }, k)));
+}
+Object.assign(__ds_scope, { Keypad });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Keypad.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/KeypadButton.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** One key of the numeric Keypad. */
+function KeypadButton({
+  children,
+  kind = 'num',
+  pressed = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      width: 120,
+      height: 63,
+      border: 0,
+      cursor: 'pointer',
+      background: pressed ? 'var(--semantic-fill-pressed)' : 'transparent',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: kind === 'num' ? 30 : 24,
+      lineHeight: '40px',
+      color: 'var(--base-grey-grey-700)',
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { KeypadButton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/KeypadButton.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/NumberField.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** White elevated value field — the centre of the Numeric Spinner. */
+function NumberField({
+  value = 0,
+  size = 'M',
+  style,
+  ...rest
+}) {
+  const fs = {
+    XS: 13,
+    S: 15,
+    M: 17,
+    L: 20
+  }[size] || 17;
+  const r = {
+    XS: 10,
+    S: 12,
+    M: 14,
+    L: 16
+  }[size] || 14;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      minWidth: 49,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0 2px',
+      borderRadius: r,
+      background: 'var(--semantic-background-default)',
+      boxShadow: 'var(--tds-shadow-weak)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: fs,
+      color: 'var(--base-grey-grey-800)',
+      ...style
+    }
+  }, rest), value);
+}
+Object.assign(__ds_scope, { NumberField });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/NumberField.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/NumericSpinner.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SIZES = {
+  XS: {
+    h: 34,
+    btn: 26,
+    fs: 13,
+    r: 10
+  },
+  S: {
+    h: 42,
+    btn: 30,
+    fs: 15,
+    r: 12
+  },
+  M: {
+    h: 50,
+    btn: 36,
+    fs: 17,
+    r: 14
+  },
+  L: {
+    h: 58,
+    btn: 42,
+    fs: 20,
+    r: 16
+  }
+};
+
+/** −/＋ stepper around a numeric field. */
+function NumericSpinner({
+  value = 0,
+  min = 0,
+  max = 99,
+  size = 'M',
+  disabled = false,
+  onChange,
+  style,
+  ...rest
+}) {
+  const s = SIZES[size] || SIZES.M;
+  const step = d => !disabled && onChange && onChange(Math.min(max, Math.max(min, value + d)));
+  const btn = (label, d, off) => /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => step(d),
+    disabled: disabled || off,
+    style: {
+      width: s.btn,
+      height: s.btn,
+      border: 0,
+      background: 'transparent',
+      cursor: off ? 'default' : 'pointer',
+      color: off ? 'var(--semantic-icon-quaternary)' : 'var(--semantic-icon-secondary)',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: s.fs,
+      lineHeight: 1
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 16 16",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "2.5",
+    y1: "8",
+    x2: "13.5",
+    y2: "8"
+  }), label === '+' && /*#__PURE__*/React.createElement("line", {
+    x1: "8",
+    y1: "2.5",
+    x2: "8",
+    y2: "13.5"
+  })));
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: s.h,
+      padding: '5px 3px',
+      borderRadius: s.r,
+      background: 'var(--semantic-fill-neutral-weak)',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), btn('−', -1, value <= min), /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 49,
+      alignSelf: 'stretch',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0 2px',
+      borderRadius: s.r,
+      background: 'var(--semantic-background-default)',
+      boxShadow: 'var(--tds-shadow-weak)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: s.fs,
+      color: 'var(--base-grey-grey-800)'
+    }
+  }, value), btn('+', 1, value >= max));
+}
+Object.assign(__ds_scope, { NumericSpinner });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/NumericSpinner.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/PasswordField.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Text field with a masked value and a show/hide toggle. */
+function PasswordField({
+  label,
+  value = '',
+  placeholder = '',
+  helpText,
+  error = false,
+  disabled = false,
+  variant = 'line',
+  onChange,
+  style,
+  ...rest
+}) {
+  const [show, setShow] = React.useState(false);
+  const [focused, setFocused] = React.useState(false);
+  const borderColor = error ? 'var(--semantic-fill-danger)' : focused ? 'var(--semantic-fill-brand)' : 'rgba(0,27,55,0.1)';
+  const box = variant === 'box';
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      padding: '16px 0',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), label && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+      boxSizing: 'border-box',
+      minHeight: box ? 52 : 34,
+      padding: box ? '0 16px' : '0 0 4px 0',
+      borderRadius: box ? 'var(--tds-radius-m)' : 0,
+      background: box ? 'var(--semantic-background-lower)' : 'transparent',
+      border: box ? 'none' : `2px solid ${borderColor}`
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: show ? 'text' : 'password',
+    value: value,
+    placeholder: placeholder,
+    disabled: disabled,
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false),
+    onChange: e => onChange && onChange(e.target.value),
+    style: {
+      flex: 1,
+      minWidth: 0,
+      border: 0,
+      outline: 'none',
+      background: 'transparent',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: 'var(--semantic-text-primary)'
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => setShow(!show),
+    "aria-label": show ? '숨기기' : '보기',
+    style: {
+      width: 24,
+      height: 24,
+      border: 0,
+      background: 'none',
+      cursor: 'pointer',
+      color: 'var(--semantic-icon-quaternary)',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 2 12 C 4.5 7 8 5 12 5 C 16 5 19.5 7 22 12 C 19.5 17 16 19 12 19 C 8 19 4.5 17 2 12 Z"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "12",
+    cy: "12",
+    r: "3"
+  }), !show && /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "20",
+    x2: "20",
+    y2: "4"
+  }))))), helpText && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.5,
+      color: error ? 'var(--semantic-text-danger)' : 'var(--semantic-text-tertiary)'
+    }
+  }, helpText));
+}
+Object.assign(__ds_scope, { PasswordField });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/PasswordField.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/SearchField.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Grey capsule search input with the standard 24px search glyph. */
+function SearchField({
+  value = '',
+  placeholder = '검색어를 입력해주세요',
+  onChange,
+  onClear,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '14px 16px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+      minHeight: 44,
+      height: 44,
+      padding: '8px 16px 8px 10px',
+      borderRadius: 12,
+      background: 'var(--semantic-background-lower)',
+      overflow: 'hidden'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      display: 'inline-flex',
+      color: 'var(--semantic-text-tertiary)',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "IconSearchMonoSearchFind",
+    size: 24
+  })), /*#__PURE__*/React.createElement("input", {
+    value: value,
+    placeholder: placeholder,
+    onChange: e => onChange && onChange(e.target.value),
+    style: {
+      flex: 1,
+      minWidth: 0,
+      border: 0,
+      outline: 'none',
+      background: 'transparent',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: 'var(--semantic-text-primary)'
+    }
+  }), value && /*#__PURE__*/React.createElement("span", {
+    onClick: onClear,
+    style: {
+      width: 20,
+      height: 20,
+      display: 'inline-flex',
+      cursor: 'pointer',
+      color: 'var(--semantic-icon-quaternary)',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "IconXCircleMonoX",
+    size: 20
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: 16,
+      background: 'linear-gradient(180deg, var(--semantic-background-default) 0%, rgba(255,255,255,0) 100%)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { SearchField });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/SearchField.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/SelectorField.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Read-only field that opens a picker — the "Selector" field type. */
+function SelectorField({
+  label,
+  value,
+  placeholder = '선택해주세요',
+  helpText,
+  error = false,
+  disabled = false,
+  variant = 'line',
+  onClick,
+  style,
+  ...rest
+}) {
+  const box = variant === 'box';
+  const empty = !value;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      padding: '16px 0',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), label && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: () => !disabled && onClick && onClick(),
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+      boxSizing: 'border-box',
+      cursor: disabled ? 'default' : 'pointer',
+      minHeight: box ? 52 : 34,
+      padding: box ? '0 16px' : '0 0 4px 0',
+      borderRadius: box ? 'var(--tds-radius-m)' : 0,
+      background: box ? 'var(--semantic-background-lower)' : 'transparent',
+      border: box ? 'none' : `2px solid ${error ? 'var(--semantic-fill-danger)' : 'rgba(0,27,55,0.1)'}`
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: empty ? 'var(--semantic-text-quaternary)' : 'var(--semantic-text-primary)'
+    }
+  }, value || placeholder), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      position: 'relative',
+      display: 'inline-block',
+      flexShrink: 0,
+      transform: 'rotate(90deg)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "6.4",
+    height: "10.9",
+    viewBox: "0 0 6.4 10.9",
+    fill: "var(--semantic-icon-quaternary)",
+    style: {
+      position: 'absolute',
+      left: 8.8,
+      top: 6.5
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  }))))), helpText && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.5,
+      color: error ? 'var(--semantic-text-danger)' : 'var(--semantic-text-tertiary)'
+    }
+  }, helpText));
+}
+Object.assign(__ds_scope, { SelectorField });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/SelectorField.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Slider.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const TRACK = {
+  blue: 'var(--semantic-fill-brand)',
+  red: 'var(--base-red-red-500)',
+  black: 'var(--base-grey-grey-800)'
+};
+
+/** Continuous value slider with a 20px shadowed knob. */
+function Slider({
+  value = 40,
+  min = 0,
+  max = 100,
+  color = 'blue',
+  labels,
+  tooltip = false,
+  onChange,
+  style,
+  ...rest
+}) {
+  const pct = Math.max(0, Math.min(100, (value - min) / (max - min) * 100));
+  const fill = TRACK[color] || TRACK.blue;
+  const ref = React.useRef(null);
+  const set = clientX => {
+    const el = ref.current;
+    if (!el || !onChange) return;
+    const r = el.getBoundingClientRect();
+    onChange(Math.round(min + (clientX - r.left) / r.width * (max - min)));
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      padding: '10px var(--tds-side-padding-m)',
+      ...style
+    }
+  }, rest), tooltip && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'relative',
+      height: 34,
+      marginBottom: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: `${pct}%`,
+      transform: 'translateX(-50%)',
+      padding: '6px 10px',
+      borderRadius: 10,
+      background: 'var(--base-grey-grey-800)',
+      color: '#fff',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 13,
+      whiteSpace: 'nowrap'
+    }
+  }, value)), /*#__PURE__*/React.createElement("div", {
+    ref: ref,
+    onPointerDown: e => {
+      e.currentTarget.setPointerCapture(e.pointerId);
+      set(e.clientX);
+    },
+    onPointerMove: e => {
+      if (e.buttons) set(e.clientX);
+    },
+    style: {
+      position: 'relative',
+      height: 5,
+      borderRadius: 2.5,
+      background: 'var(--base-grey-grey-200)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      height: 5,
+      width: `${pct}%`,
+      minWidth: 20,
+      borderRadius: 2.5,
+      background: fill
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: `${pct}%`,
+      top: -8,
+      width: 20,
+      height: 20,
+      marginLeft: -10,
+      borderRadius: '50%',
+      background: fill,
+      boxShadow: 'var(--tds-shadow-medium)'
+    }
+  })), labels && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginTop: 10,
+      fontFamily: 'var(--tds-font-body)',
+      fontSize: 13,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, labels.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    key: i
+  }, l))));
+}
+Object.assign(__ds_scope, { Slider });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Slider.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/SliderKnob.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const C = {
+  blue: 'var(--semantic-fill-brand)',
+  red: 'var(--base-red-red-500)',
+  black: 'var(--base-grey-grey-800)'
+};
+
+/** The 20px draggable handle of a Slider. */
+function SliderKnob({
+  color = 'blue',
+  size = 20,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      width: size,
+      height: size,
+      borderRadius: '50%',
+      background: C[color] || C.blue,
+      boxShadow: 'var(--tds-shadow-medium)',
+      ...style
+    }
+  }, rest));
+}
+Object.assign(__ds_scope, { SliderKnob });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/SliderKnob.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/SliderTooltip.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Dark value bubble that tracks a Slider knob. */
+function SliderTooltip({
+  children,
+  placement = 'top',
+  style,
+  ...rest
+}) {
+  const bubble = /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '6px 10px',
+      borderRadius: 10,
+      background: 'var(--base-grey-grey-800)',
+      color: 'rgb(255,255,255)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 13,
+      lineHeight: 1.35,
+      whiteSpace: 'nowrap'
+    }
+  }, children);
+  const tail = /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 0,
+      height: 0,
+      borderLeft: '5px solid transparent',
+      borderRight: '5px solid transparent',
+      [placement === 'top' ? 'borderTop' : 'borderBottom']: '5px solid var(--base-grey-grey-800)'
+    }
+  });
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'inline-flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      ...style
+    }
+  }, rest), placement === 'top' ? /*#__PURE__*/React.createElement(React.Fragment, null, bubble, tail) : /*#__PURE__*/React.createElement(React.Fragment, null, tail, bubble));
+}
+Object.assign(__ds_scope, { SliderTooltip });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/SliderTooltip.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/StepButton.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** The −/＋ button of a Numeric Spinner. */
+function StepButton({
+  kind = 'plus',
+  size = 'M',
+  disabled = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  const d = {
+    S: 30,
+    M: 36,
+    L: 42
+  }[size] || 36;
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    disabled: disabled,
+    "aria-label": kind === 'plus' ? '더하기' : '빼기',
+    style: {
+      width: d,
+      height: d,
+      border: 0,
+      background: 'transparent',
+      cursor: disabled ? 'default' : 'pointer',
+      color: disabled ? 'var(--semantic-icon-quaternary)' : 'var(--semantic-icon-secondary)',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("svg", {
+    width: d * 0.44,
+    height: d * 0.44,
+    viewBox: "0 0 16 16",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "2.5",
+    y1: "8",
+    x2: "13.5",
+    y2: "8"
+  }), kind === 'plus' && /*#__PURE__*/React.createElement("line", {
+    x1: "8",
+    y1: "2.5",
+    x2: "8",
+    y2: "13.5"
+  })));
+}
+Object.assign(__ds_scope, { StepButton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/StepButton.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Switch.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** 50×30 toggle with a 24px handle. */
+function Switch({
+  checked = false,
+  disabled = false,
+  onChange,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("span", _extends({
+    role: "switch",
+    "aria-checked": checked,
+    tabIndex: disabled ? -1 : 0,
+    onClick: () => !disabled && onChange && onChange(!checked),
+    style: {
+      position: 'relative',
+      display: 'inline-block',
+      width: 50,
+      height: 30,
+      borderRadius: 1000,
+      background: checked ? 'var(--semantic-fill-brand)' : 'var(--base-grey-grey-300)',
+      cursor: disabled ? 'default' : 'pointer',
+      opacity: disabled ? 0.3 : 1,
+      transition: 'background .18s cubic-bezier(.25,.1,.25,1)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: 'absolute',
+      top: 3,
+      left: checked ? 23 : 3,
+      width: 24,
+      height: 24,
+      borderRadius: '50%',
+      background: 'rgb(255,255,255)',
+      transition: 'left .18s cubic-bezier(.25,.1,.25,1)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { Switch });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Switch.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/TextArea.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Multi-line text input on the box surface. */
+function TextArea({
+  label,
+  value = '',
+  placeholder = '',
+  helpText,
+  error = false,
+  disabled = false,
+  rows = 4,
+  maxLength,
+  onChange,
+  style,
+  ...rest
+}) {
+  const [focused, setFocused] = React.useState(false);
+  const ring = error ? 'var(--semantic-fill-danger)' : focused ? 'var(--semantic-fill-brand)' : 'transparent';
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      padding: '16px 0',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), label && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)'
+    }
+  }, /*#__PURE__*/React.createElement("textarea", {
+    rows: rows,
+    value: value,
+    placeholder: placeholder,
+    disabled: disabled,
+    maxLength: maxLength,
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false),
+    onChange: e => onChange && onChange(e.target.value),
+    style: {
+      boxSizing: 'border-box',
+      width: '100%',
+      resize: 'none',
+      border: 0,
+      outline: 'none',
+      padding: '14px 16px',
+      borderRadius: 'var(--tds-radius-m)',
+      background: 'var(--semantic-background-lower)',
+      boxShadow: `inset 0 0 0 2px ${ring}`,
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.5,
+      color: 'var(--semantic-text-primary)'
+    }
+  })), (helpText || maxLength) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: 8,
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.5,
+      color: error ? 'var(--semantic-text-danger)' : 'var(--semantic-text-tertiary)'
+    }
+  }, /*#__PURE__*/React.createElement("span", null, helpText), maxLength && /*#__PURE__*/React.createElement("span", null, String(value).length, "/", maxLength)));
+}
+Object.assign(__ds_scope, { TextArea });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/TextArea.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/TextField.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Labelled text input. Line (2px underline) or Box variant. */
+function TextField({
+  label,
+  value = '',
+  placeholder = '',
+  helpText,
+  error = false,
+  disabled = false,
+  variant = 'line',
+  type = 'text',
+  suffix,
+  onChange,
+  style,
+  ...rest
+}) {
+  const [focused, setFocused] = React.useState(false);
+  const borderColor = error ? 'var(--semantic-fill-danger)' : focused ? 'var(--semantic-fill-brand)' : 'rgba(0,27,55,0.1)';
+  const box = variant === 'box';
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      padding: '16px 0',
+      opacity: disabled ? 0.3 : 1,
+      ...style
+    }
+  }, rest), label && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 13,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+      boxSizing: 'border-box',
+      minHeight: box ? 52 : 34,
+      padding: box ? '0 16px' : '0 0 4px 0',
+      borderRadius: box ? 'var(--tds-radius-m)' : 0,
+      background: box ? 'var(--semantic-background-lower)' : 'transparent',
+      border: box ? 'none' : `2px solid ${borderColor}`,
+      boxShadow: box && focused ? `inset 0 0 0 2px ${borderColor}` : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: type,
+    value: value,
+    placeholder: placeholder,
+    disabled: disabled,
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false),
+    onChange: e => onChange && onChange(e.target.value),
+    style: {
+      flex: 1,
+      minWidth: 0,
+      border: 0,
+      outline: 'none',
+      background: 'transparent',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: 'var(--semantic-text-primary)'
+    }
+  }), suffix)), helpText && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-m)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 13,
+      lineHeight: 1.5,
+      color: error ? 'var(--semantic-text-danger)' : 'var(--semantic-text-tertiary)'
+    }
+  }, helpText));
+}
+Object.assign(__ds_scope, { TextField });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/TextField.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/BottomCTA.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Screen-bottom action area: optional upper item + one or two buttons. */
+function BottomCTA({
+  children,
+  upperItem,
+  lowerItem,
+  direction = 'horizontal',
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      width: '100%',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), upperItem && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 var(--tds-side-padding-cta) 12px'
+    }
+  }, upperItem), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: direction === 'vertical' ? 'column' : 'row',
+      gap: 10,
+      padding: '0 var(--tds-side-padding-cta)'
+    }
+  }, children), lowerItem && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '12px var(--tds-side-padding-cta) 0'
+    }
+  }, lowerItem));
+}
+Object.assign(__ds_scope, { BottomCTA });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/BottomCTA.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/HeaderAccessory.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Tailing accessory of a List Header: text, icon or both. */
+function HeaderAccessory({
+  text,
+  icon,
+  size = 'M',
+  onClick,
+  style,
+  ...rest
+}) {
+  const fs = size === 'S' ? 13 : 15;
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 2,
+      border: 0,
+      background: 'none',
+      padding: 0,
+      cursor: onClick ? 'pointer' : 'default',
+      color: 'var(--semantic-text-tertiary)',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: fs,
+      lineHeight: 1.35,
+      whiteSpace: 'nowrap',
+      ...style
+    }
+  }, rest), text, icon || onClick && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 18,
+      height: 18,
+      position: 'relative',
+      display: 'inline-block'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "5",
+    height: "8.5",
+    viewBox: "0 0 6.4 10.9",
+    fill: "var(--semantic-icon-quaternary)",
+    style: {
+      position: 'absolute',
+      left: 6.5,
+      top: 4.7
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  }))));
+}
+Object.assign(__ds_scope, { HeaderAccessory });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/HeaderAccessory.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/HomeIndicator.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** iOS home indicator bar. */
+function HomeIndicator({
+  theme = 'light',
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      height: 34,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 134,
+      height: 5,
+      borderRadius: 100,
+      background: theme === 'dark' ? 'rgba(255,255,255,0.6)' : 'rgba(0,12,30,0.8)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { HomeIndicator });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/HomeIndicator.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/ListFooter.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** "더보기" row closing a truncated list. */
+function ListFooter({
+  children = '더보기',
+  color = 'grey',
+  icon = 'expand',
+  onClick,
+  style,
+  ...rest
+}) {
+  const fg = color === 'blue' ? 'var(--semantic-text-brand)' : 'var(--semantic-text-tertiary)';
+  const rot = icon === 'collapse' ? 'rotate(-90deg)' : icon === 'expand' ? 'rotate(90deg)' : 'none';
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 0,
+      width: '100%',
+      minHeight: 60,
+      height: 60,
+      padding: '2px var(--tds-side-padding-m)',
+      border: 0,
+      cursor: 'pointer',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 17,
+      lineHeight: 1.252,
+      color: fg,
+      whiteSpace: 'nowrap'
+    }
+  }, children), icon !== 'none' && /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      position: 'relative',
+      display: 'inline-block',
+      transform: rot
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "6.4",
+    height: "10.9",
+    viewBox: "0 0 6.4 10.9",
+    fill: "var(--semantic-icon-quaternary)",
+    style: {
+      position: 'absolute',
+      left: 8.8,
+      top: 6.5
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  }))));
+}
+Object.assign(__ds_scope, { ListFooter });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/ListFooter.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/ListHeader.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const TITLE = {
+  XS: 15,
+  S: 17,
+  M: 17,
+  L: 20
+};
+
+/** Section header above a list. */
+function ListHeader({
+  title,
+  subText,
+  subTextPosition = 'upper',
+  accessory,
+  size = 'M',
+  style,
+  ...rest
+}) {
+  const sub = subText && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 400,
+      fontSize: 12,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-tertiary)'
+    }
+  }, subText);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 4,
+      padding: '24px var(--tds-side-padding-m) 8px',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), subTextPosition === 'upper' && sub, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 700,
+      fontSize: TITLE[size] || 17,
+      lineHeight: 1.35,
+      color: 'var(--semantic-text-primary)'
+    }
+  }, title), accessory), subTextPosition === 'lower' && sub);
+}
+Object.assign(__ds_scope, { ListHeader });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/ListHeader.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/Navigation.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Apps-in-Toss navigation bar: back button, service pill, blurred icon capsules. */
+function Navigation({
+  title = '서비스 이름',
+  logoSrc,
+  showBack = true,
+  theme = 'light',
+  dynamicIcon,
+  onBack,
+  onMore,
+  onClose,
+  style,
+  ...rest
+}) {
+  const fg = theme === 'dark' ? 'rgb(255,255,255)' : 'rgb(25,31,40)';
+  const iconFg = theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,19,43,0.58)';
+  const capsule = {
+    display: 'flex',
+    alignItems: 'center',
+    height: 34,
+    borderRadius: 99,
+    background: theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,23,51,0.02)',
+    backdropFilter: 'blur(40px)',
+    WebkitBackdropFilter: 'blur(40px)'
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      height: 44,
+      width: '100%',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      flex: 1,
+      alignSelf: 'stretch',
+      paddingRight: 4
+    }
+  }, showBack && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onBack,
+    "aria-label": "\uB4A4\uB85C",
+    style: {
+      width: 44,
+      alignSelf: 'stretch',
+      border: 0,
+      background: 'none',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "10",
+    height: "17",
+    viewBox: "0 0 6.4 10.9",
+    fill: fg,
+    style: {
+      transform: 'scaleX(-1)'
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 1 0 C 0.8 0 0.5 0.1 0.4 0.3 C 0 0.7 0 1.2 0.4 1.6 L 4.2 5.4 L 0.3 9.3 C -0.1 9.7 -0.1 10.2 0.3 10.6 C 0.7 11 1.2 11 1.6 10.6 L 6.1 6.1 C 6.5 5.7 6.5 5.2 6.1 4.8 L 1.6 0.3 C 1.4 0.2 1.2 0 1 0 Z",
+    fillRule: "evenodd"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...capsule,
+      background: 'transparent',
+      gap: 6,
+      paddingRight: 10,
+      maxWidth: 176
+    }
+  }, logoSrc && /*#__PURE__*/React.createElement("img", {
+    src: logoSrc,
+    alt: "",
+    style: {
+      width: 18,
+      height: 18,
+      borderRadius: 6,
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 15,
+      lineHeight: '22.5px',
+      color: fg,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }
+  }, title))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 4,
+      paddingRight: 10,
+      flexShrink: 0
+    }
+  }, dynamicIcon && /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...capsule,
+      width: 44,
+      justifyContent: 'center',
+      color: iconFg
+    }
+  }, dynamicIcon), /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...capsule,
+      padding: '0 2px'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onMore,
+    "aria-label": "\uB354\uBCF4\uAE30",
+    style: navIconBtn(iconFg)
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 20 20",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: "4",
+    cy: "10",
+    r: "1.7"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "10",
+    cy: "10",
+    r: "1.7"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "16",
+    cy: "10",
+    r: "1.7"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 1,
+      height: 16,
+      borderRadius: 1,
+      background: 'rgba(0,27,55,0.1)'
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onClose,
+    "aria-label": "\uB2EB\uAE30",
+    style: navIconBtn(iconFg)
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 20 20",
+    stroke: "currentColor",
+    strokeWidth: "1.9",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "4",
+    x2: "16",
+    y2: "16"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "16",
+    y1: "4",
+    x2: "4",
+    y2: "16"
+  }))))));
+}
+function navIconBtn(color) {
+  return {
+    width: 44,
+    height: 34,
+    border: 0,
+    background: 'none',
+    cursor: 'pointer',
+    color,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+}
+Object.assign(__ds_scope, { Navigation });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Navigation.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/NavigationAndroid.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * Android Apps-in-Toss navigation bar. Structurally the same bar as iOS —
+ * service pill, blurred capsules — at 54px with a 48×48 back button.
+ */
+function NavigationAndroid({
+  title = '서비스 이름',
+  logoSrc,
+  showBack = true,
+  theme = 'light',
+  dynamicIcon,
+  onBack,
+  onMore,
+  onClose,
+  style,
+  ...rest
+}) {
+  const fg = theme === 'dark' ? 'rgb(255,255,255)' : 'rgb(25,31,40)';
+  const iconFg = theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,19,43,0.58)';
+  const capsule = {
+    display: 'flex',
+    alignItems: 'center',
+    height: 34,
+    borderRadius: 99,
+    background: theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,23,51,0.02)',
+    backdropFilter: 'blur(40px)',
+    WebkitBackdropFilter: 'blur(40px)'
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      height: 54,
+      width: '100%',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      flex: 1,
+      alignSelf: 'stretch',
+      padding: '0 4px'
+    }
+  }, showBack && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onBack,
+    "aria-label": "\uB4A4\uB85C",
+    style: {
+      width: 48,
+      height: 48,
+      flexShrink: 0,
+      border: 0,
+      background: 'none',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: fg,
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 20 12 L 4 12 M 11 5 L 4 12 L 11 19"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...capsule,
+      background: 'transparent',
+      gap: 6,
+      paddingRight: 10,
+      maxWidth: 168
+    }
+  }, logoSrc && /*#__PURE__*/React.createElement("img", {
+    src: logoSrc,
+    alt: "",
+    style: {
+      width: 18,
+      height: 18,
+      borderRadius: 6,
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: 15,
+      lineHeight: '22.5px',
+      color: fg,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }
+  }, title))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 4,
+      paddingRight: 10,
+      flexShrink: 0
+    }
+  }, dynamicIcon && /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...capsule,
+      width: 44,
+      justifyContent: 'center',
+      color: iconFg
+    }
+  }, dynamicIcon), /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...capsule,
+      padding: '0 2px'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onMore,
+    "aria-label": "\uB354\uBCF4\uAE30",
+    style: androidIconBtn(iconFg)
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 20 20",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: "4",
+    cy: "10",
+    r: "1.7"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "10",
+    cy: "10",
+    r: "1.7"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "16",
+    cy: "10",
+    r: "1.7"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 1,
+      height: 16,
+      borderRadius: 1,
+      background: 'rgba(0,27,55,0.1)'
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: onClose,
+    "aria-label": "\uB2EB\uAE30",
+    style: androidIconBtn(iconFg)
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 20 20",
+    stroke: "currentColor",
+    strokeWidth: "1.9",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "4",
+    x2: "16",
+    y2: "16"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "16",
+    y1: "4",
+    x2: "4",
+    y2: "16"
+  }))))));
+}
+function androidIconBtn(color) {
+  return {
+    width: 44,
+    height: 34,
+    border: 0,
+    background: 'none',
+    cursor: 'pointer',
+    color,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+}
+Object.assign(__ds_scope, { NavigationAndroid });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/NavigationAndroid.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/SegmentedControl.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Grey track with a white elevated selected pill. */
+function SegmentedControl({
+  items = [],
+  value = 0,
+  size = 'L',
+  onChange,
+  style,
+  ...rest
+}) {
+  const h = size === 'S' ? 40 : 48;
+  const inner = size === 'S' ? 34 : 40;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      boxSizing: 'border-box',
+      padding: '0 var(--tds-side-padding-m)',
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      height: h,
+      padding: '4px 5px',
+      borderRadius: 14,
+      background: 'var(--semantic-fill-neutral-weak)'
+    }
+  }, items.map((label, i) => {
+    const on = i === value;
+    return /*#__PURE__*/React.createElement("button", {
+      key: i,
+      type: "button",
+      onClick: () => onChange && onChange(i),
+      style: {
+        boxSizing: 'border-box',
+        flex: 1,
+        minHeight: inner,
+        height: inner,
+        padding: 8,
+        border: 0,
+        cursor: 'pointer',
+        borderRadius: 10,
+        background: on ? 'var(--semantic-background-floated)' : 'transparent',
+        boxShadow: on ? 'var(--tds-shadow-tiny)' : 'none',
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 590,
+        fontSize: size === 'S' ? 15 : 17,
+        lineHeight: 1.252,
+        color: on ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)',
+        transition: 'background .15s ease'
+      }
+    }, label);
+  })));
+}
+Object.assign(__ds_scope, { SegmentedControl });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/SegmentedControl.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/SegmentedItem.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** One segment of a Segmented Control. */
+function SegmentedItem({
+  children,
+  selected = false,
+  size = 'M',
+  onClick,
+  style,
+  ...rest
+}) {
+  const h = size === 'S' ? 34 : 40;
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      boxSizing: 'border-box',
+      flex: 1,
+      minHeight: h,
+      height: h,
+      padding: 8,
+      border: 0,
+      cursor: 'pointer',
+      borderRadius: 10,
+      background: selected ? 'var(--semantic-background-floated)' : 'transparent',
+      boxShadow: selected ? 'var(--tds-shadow-tiny)' : 'none',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 590,
+      fontSize: size === 'S' ? 15 : 17,
+      lineHeight: 1.252,
+      color: selected ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)',
+      transition: 'background .15s ease',
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { SegmentedItem });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/SegmentedItem.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/Tab.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Underline tab strip. */
+function Tab({
+  items = [],
+  value = 0,
+  alignment = 'fixed',
+  size = 'L',
+  onChange,
+  style,
+  ...rest
+}) {
+  const fs = size === 'S' ? 15 : 17;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      width: '100%',
+      overflowX: alignment === 'fluid' ? 'auto' : 'visible',
+      borderBottom: '1px solid rgba(2,32,71,0.05)',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), items.map((label, i) => {
+    const on = i === value;
+    return /*#__PURE__*/React.createElement("button", {
+      key: i,
+      type: "button",
+      onClick: () => onChange && onChange(i),
+      style: {
+        position: 'relative',
+        boxSizing: 'border-box',
+        flex: alignment === 'fixed' ? 1 : '0 0 auto',
+        minHeight: 51,
+        padding: 8,
+        border: 0,
+        background: 'none',
+        cursor: 'pointer',
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: on ? 700 : 510,
+        fontSize: fs,
+        lineHeight: 1.252,
+        color: on ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)',
+        whiteSpace: 'nowrap'
+      }
+    }, label, on && /*#__PURE__*/React.createElement("span", {
+      style: {
+        position: 'absolute',
+        left: 8,
+        right: 8,
+        bottom: -1,
+        height: 2,
+        borderRadius: 10,
+        background: 'var(--base-grey-grey-800)'
+      }
+    }));
+  }));
+}
+Object.assign(__ds_scope, { Tab });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Tab.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/TabBar.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Bottom tab bar. */
+function TabBar({
+  items = [],
+  value = 0,
+  onChange,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      justifyContent: 'space-around',
+      width: '100%',
+      background: 'var(--semantic-background-default)',
+      ...style
+    }
+  }, rest), items.map((it, i) => {
+    const on = i === value;
+    return /*#__PURE__*/React.createElement("button", {
+      key: i,
+      type: "button",
+      onClick: () => onChange && onChange(i),
+      style: {
+        boxSizing: 'border-box',
+        flex: 1,
+        minWidth: 46,
+        height: 43,
+        padding: '1px 6px',
+        border: 0,
+        background: 'none',
+        cursor: 'pointer',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 3,
+        position: 'relative'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        width: 24,
+        height: 24,
+        display: 'inline-flex',
+        color: on ? 'var(--semantic-icon-primary)' : 'var(--semantic-icon-quaternary)'
+      }
+    }, it.icon), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: 'var(--tds-font-body)',
+        fontWeight: 510,
+        fontSize: 11,
+        lineHeight: '13.2px',
+        color: on ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '100%'
+      }
+    }, it.label), it.redDot && /*#__PURE__*/React.createElement("span", {
+      style: {
+        position: 'absolute',
+        top: 1,
+        right: '50%',
+        marginRight: -14,
+        width: 6,
+        height: 6,
+        borderRadius: '50%',
+        background: 'var(--base-red-red-500)'
+      }
+    }));
+  }));
+}
+Object.assign(__ds_scope, { TabBar });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/TabBar.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/TabBarItem.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** One bottom-tab-bar entry. */
+function TabBarItem({
+  label,
+  icon,
+  selected = false,
+  redDot = false,
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      position: 'relative',
+      boxSizing: 'border-box',
+      minWidth: 46,
+      height: 43,
+      padding: '1px 6px',
+      border: 0,
+      background: 'none',
+      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: 3,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 24,
+      height: 24,
+      display: 'inline-flex',
+      color: selected ? 'var(--semantic-icon-primary)' : 'var(--semantic-icon-quaternary)'
+    }
+  }, icon), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: 510,
+      fontSize: 11,
+      lineHeight: '13.2px',
+      color: selected ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '100%'
+    }
+  }, label), redDot && /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: 'absolute',
+      top: 1,
+      right: '50%',
+      marginRight: -14,
+      width: 6,
+      height: 6,
+      borderRadius: '50%',
+      background: 'var(--base-red-red-500)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { TabBarItem });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/TabBarItem.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/TabItem.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** One underline tab. */
+function TabItem({
+  children,
+  selected = false,
+  size = 'L',
+  onClick,
+  style,
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    onClick: onClick,
+    style: {
+      position: 'relative',
+      boxSizing: 'border-box',
+      minHeight: 51,
+      padding: 8,
+      border: 0,
+      background: 'none',
+      cursor: 'pointer',
+      fontFamily: 'var(--tds-font-body)',
+      fontWeight: selected ? 700 : 510,
+      fontSize: size === 'S' ? 15 : 17,
+      lineHeight: 1.252,
+      color: selected ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)',
+      whiteSpace: 'nowrap',
+      ...style
+    }
+  }, rest), children, selected && /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: 'absolute',
+      left: 8,
+      right: 8,
+      bottom: 0,
+      height: 2,
+      borderRadius: 10,
+      background: 'var(--base-grey-grey-800)'
+    }
+  }));
+}
+Object.assign(__ds_scope, { TabItem });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/TabItem.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/statusbar-glyphs.js
+try { (() => {
+const GLYPHS = {
+  "status-time": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2228.426%22%20height%3D%2211.089%22%20viewBox%3D%220%200%2028.426%2011.089%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M%203.867%2011.089%20C%206.555%2011.089%208.152%208.987%208.152%205.427%20C%208.152%204.087%207.896%202.959%207.405%202.087%20C%206.694%200.732%205.471%200%203.926%200%20C%201.626%200%200%201.545%200%203.713%20C%200%205.75%201.465%207.229%203.479%207.229%20C%204.717%207.229%205.72%206.65%206.218%205.647%20L%206.24%205.647%20C%206.24%205.647%206.27%205.647%206.277%205.647%20C%206.292%205.647%206.343%205.647%206.343%205.647%20C%206.343%208.064%205.427%209.507%203.882%209.507%20C%202.974%209.507%202.271%209.009%202.029%208.21%20L%200.146%208.21%20C%200.461%209.946%201.934%2011.089%203.867%2011.089%20Z%20M%203.933%205.728%20C%202.717%205.728%201.853%204.863%201.853%203.655%20C%201.853%202.476%202.761%201.575%203.94%201.575%20C%205.12%201.575%206.028%202.49%206.028%203.684%20C%206.028%204.863%205.142%205.728%203.933%205.728%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20d%3D%22M%2011.243%2010.986%20C%2011.939%2010.986%2012.415%2010.488%2012.415%209.829%20C%2012.415%209.163%2011.939%208.672%2011.243%208.672%20C%2010.554%208.672%2010.071%209.163%2010.071%209.829%20C%2010.071%2010.488%2010.554%2010.986%2011.243%2010.986%20Z%20M%2011.243%205.493%20C%2011.939%205.493%2012.415%205.002%2012.415%204.343%20C%2012.415%203.677%2011.939%203.186%2011.243%203.186%20C%2010.554%203.186%2010.071%203.677%2010.071%204.343%20C%2010.071%205.002%2010.554%205.493%2011.243%205.493%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20d%3D%22M%2019.271%2010.833%20L%2021.08%2010.833%20L%2021.08%208.862%20L%2022.508%208.862%20L%2022.508%207.266%20L%2021.08%207.266%20L%2021.08%200.264%20L%2018.414%200.264%20C%2016.546%203.076%2015.059%205.427%2014.107%207.178%20L%2014.107%208.862%20L%2019.271%208.862%20L%2019.271%2010.833%20Z%20M%2015.858%207.2%20C%2017.088%205.032%2018.187%203.296%2019.197%201.802%20L%2019.3%201.802%20L%2019.3%207.31%20L%2015.858%207.31%20L%2015.858%207.2%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20d%3D%22M%2026.537%2010.833%20L%2028.426%2010.833%20L%2028.426%200.264%20L%2026.544%200.264%20L%2023.783%202.197%20L%2023.783%204.014%20L%2026.412%202.168%20L%2026.537%202.168%20L%2026.537%2010.833%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E",
+  "status-wifi": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2215.272%22%20height%3D%2210.966%22%20viewBox%3D%220%200%2015.272%2010.966%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M%207.637%202.277%20C%209.852%202.277%2011.984%203.129%2013.59%204.656%20C%2013.711%204.774%2013.904%204.772%2014.023%204.652%20L%2015.179%203.486%20C%2015.239%203.425%2015.273%203.343%2015.272%203.257%20C%2015.272%203.172%2015.237%203.09%2015.176%203.03%20C%2010.961%20-1.01%204.311%20-1.01%200.096%203.03%20C%200.035%203.09%200.001%203.171%200%203.257%20C%20-0.001%203.343%200.033%203.425%200.093%203.486%20L%201.25%204.652%20C%201.369%204.772%201.562%204.774%201.683%204.656%20C%203.289%203.129%205.42%202.277%207.637%202.277%20Z%20M%207.637%206.073%20C%208.854%206.073%2010.028%206.525%2010.931%207.343%20C%2011.053%207.459%2011.245%207.456%2011.364%207.337%20L%2012.519%206.17%20C%2012.579%206.109%2012.613%206.026%2012.612%205.94%20C%2012.611%205.854%2012.576%205.771%2012.514%205.711%20C%209.766%203.155%205.51%203.155%202.762%205.711%20C%202.7%205.771%202.664%205.854%202.663%205.94%20C%202.662%206.026%202.696%206.109%202.757%206.17%20L%203.912%207.337%20C%204.031%207.456%204.223%207.459%204.345%207.343%20C%205.247%206.526%206.42%206.073%207.637%206.073%20Z%20M%209.95%208.627%20C%209.951%208.713%209.917%208.797%209.856%208.857%20L%207.858%2010.873%20C%207.8%2010.932%207.72%2010.966%207.637%2010.966%20C%207.553%2010.966%207.473%2010.932%207.415%2010.873%20L%205.417%208.857%20C%205.356%208.797%205.322%208.713%205.323%208.627%20C%205.325%208.54%205.363%208.458%205.427%208.4%20C%206.703%207.321%208.571%207.321%209.846%208.4%20C%209.91%208.458%209.948%208.54%209.95%208.627%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E",
+  "status-signal": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2217%22%20height%3D%2210.667%22%20viewBox%3D%220%200%2017%2010.667%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M%2016%200%20L%2015%200%20C%2014.448%200%2014%200.448%2014%201%20L%2014%209.667%20C%2014%2010.219%2014.448%2010.667%2015%2010.667%20L%2016%2010.667%20C%2016.552%2010.667%2017%2010.219%2017%209.667%20L%2017%201%20C%2017%200.448%2016.552%200%2016%200%20Z%20M%2010.333%202.333%20L%2011.333%202.333%20C%2011.886%202.333%2012.333%202.781%2012.333%203.333%20L%2012.333%209.667%20C%2012.333%2010.219%2011.886%2010.667%2011.333%2010.667%20L%2010.333%2010.667%20C%209.781%2010.667%209.333%2010.219%209.333%209.667%20L%209.333%203.333%20C%209.333%202.781%209.781%202.333%2010.333%202.333%20Z%20M%206.667%204.667%20L%205.667%204.667%20C%205.114%204.667%204.667%205.114%204.667%205.667%20L%204.667%209.667%20C%204.667%2010.219%205.114%2010.667%205.667%2010.667%20L%206.667%2010.667%20C%207.219%2010.667%207.667%2010.219%207.667%209.667%20L%207.667%205.667%20C%207.667%205.114%207.219%204.667%206.667%204.667%20Z%20M%202%206.667%20L%201%206.667%20C%200.448%206.667%200%207.114%200%207.667%20L%200%209.667%20C%200%2010.219%200.448%2010.667%201%2010.667%20L%202%2010.667%20C%202.552%2010.667%203%2010.219%203%209.667%20L%203%207.667%20C%203%207.114%202.552%206.667%202%206.667%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E",
+  "status-time-dark": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2228.426%22%20height%3D%2211.089%22%20viewBox%3D%220%200%2028.426%2011.089%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M%203.867%2011.089%20C%206.555%2011.089%208.152%208.987%208.152%205.427%20C%208.152%204.087%207.896%202.959%207.405%202.087%20C%206.694%200.732%205.471%200%203.926%200%20C%201.626%200%200%201.545%200%203.713%20C%200%205.75%201.465%207.229%203.479%207.229%20C%204.717%207.229%205.72%206.65%206.218%205.647%20L%206.24%205.647%20C%206.24%205.647%206.27%205.647%206.277%205.647%20C%206.292%205.647%206.343%205.647%206.343%205.647%20C%206.343%208.064%205.427%209.507%203.882%209.507%20C%202.974%209.507%202.271%209.009%202.029%208.21%20L%200.146%208.21%20C%200.461%209.946%201.934%2011.089%203.867%2011.089%20Z%20M%203.933%205.728%20C%202.717%205.728%201.853%204.863%201.853%203.655%20C%201.853%202.476%202.761%201.575%203.94%201.575%20C%205.12%201.575%206.028%202.49%206.028%203.684%20C%206.028%204.863%205.142%205.728%203.933%205.728%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20d%3D%22M%2011.243%2010.986%20C%2011.939%2010.986%2012.415%2010.488%2012.415%209.829%20C%2012.415%209.163%2011.939%208.672%2011.243%208.672%20C%2010.554%208.672%2010.071%209.163%2010.071%209.829%20C%2010.071%2010.488%2010.554%2010.986%2011.243%2010.986%20Z%20M%2011.243%205.493%20C%2011.939%205.493%2012.415%205.002%2012.415%204.343%20C%2012.415%203.677%2011.939%203.186%2011.243%203.186%20C%2010.554%203.186%2010.071%203.677%2010.071%204.343%20C%2010.071%205.002%2010.554%205.493%2011.243%205.493%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20d%3D%22M%2019.271%2010.833%20L%2021.08%2010.833%20L%2021.08%208.862%20L%2022.508%208.862%20L%2022.508%207.266%20L%2021.08%207.266%20L%2021.08%200.264%20L%2018.414%200.264%20C%2016.546%203.076%2015.059%205.427%2014.107%207.178%20L%2014.107%208.862%20L%2019.271%208.862%20L%2019.271%2010.833%20Z%20M%2015.858%207.2%20C%2017.088%205.032%2018.187%203.296%2019.197%201.802%20L%2019.3%201.802%20L%2019.3%207.31%20L%2015.858%207.31%20L%2015.858%207.2%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20d%3D%22M%2026.537%2010.833%20L%2028.426%2010.833%20L%2028.426%200.264%20L%2026.544%200.264%20L%2023.783%202.197%20L%2023.783%204.014%20L%2026.412%202.168%20L%2026.537%202.168%20L%2026.537%2010.833%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E",
+  "status-wifi-dark": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2215.272%22%20height%3D%2210.966%22%20viewBox%3D%220%200%2015.272%2010.966%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M%207.637%202.277%20C%209.852%202.277%2011.984%203.129%2013.59%204.656%20C%2013.711%204.774%2013.904%204.772%2014.023%204.652%20L%2015.179%203.486%20C%2015.239%203.425%2015.273%203.343%2015.272%203.257%20C%2015.272%203.172%2015.237%203.09%2015.176%203.03%20C%2010.961%20-1.01%204.311%20-1.01%200.096%203.03%20C%200.035%203.09%200.001%203.171%200%203.257%20C%20-0.001%203.343%200.033%203.425%200.093%203.486%20L%201.25%204.652%20C%201.369%204.772%201.562%204.774%201.683%204.656%20C%203.289%203.129%205.42%202.277%207.637%202.277%20Z%20M%207.637%206.073%20C%208.854%206.073%2010.028%206.525%2010.931%207.343%20C%2011.053%207.459%2011.245%207.456%2011.364%207.337%20L%2012.519%206.17%20C%2012.579%206.109%2012.613%206.026%2012.612%205.94%20C%2012.611%205.854%2012.576%205.771%2012.514%205.711%20C%209.766%203.155%205.51%203.155%202.762%205.711%20C%202.7%205.771%202.664%205.854%202.663%205.94%20C%202.662%206.026%202.696%206.109%202.757%206.17%20L%203.912%207.337%20C%204.031%207.456%204.223%207.459%204.345%207.343%20C%205.247%206.526%206.42%206.073%207.637%206.073%20Z%20M%209.95%208.627%20C%209.951%208.713%209.917%208.797%209.856%208.857%20L%207.858%2010.873%20C%207.8%2010.932%207.72%2010.966%207.637%2010.966%20C%207.553%2010.966%207.473%2010.932%207.415%2010.873%20L%205.417%208.857%20C%205.356%208.797%205.322%208.713%205.323%208.627%20C%205.325%208.54%205.363%208.458%205.427%208.4%20C%206.703%207.321%208.571%207.321%209.846%208.4%20C%209.91%208.458%209.948%208.54%209.95%208.627%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E",
+  "status-signal-dark": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2217%22%20height%3D%2210.667%22%20viewBox%3D%220%200%2017%2010.667%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M%2016%200%20L%2015%200%20C%2014.448%200%2014%200.448%2014%201%20L%2014%209.667%20C%2014%2010.219%2014.448%2010.667%2015%2010.667%20L%2016%2010.667%20C%2016.552%2010.667%2017%2010.219%2017%209.667%20L%2017%201%20C%2017%200.448%2016.552%200%2016%200%20Z%20M%2010.333%202.333%20L%2011.333%202.333%20C%2011.886%202.333%2012.333%202.781%2012.333%203.333%20L%2012.333%209.667%20C%2012.333%2010.219%2011.886%2010.667%2011.333%2010.667%20L%2010.333%2010.667%20C%209.781%2010.667%209.333%2010.219%209.333%209.667%20L%209.333%203.333%20C%209.333%202.781%209.781%202.333%2010.333%202.333%20Z%20M%206.667%204.667%20L%205.667%204.667%20C%205.114%204.667%204.667%205.114%204.667%205.667%20L%204.667%209.667%20C%204.667%2010.219%205.114%2010.667%205.667%2010.667%20L%206.667%2010.667%20C%207.219%2010.667%207.667%2010.219%207.667%209.667%20L%207.667%205.667%20C%207.667%205.114%207.219%204.667%206.667%204.667%20Z%20M%202%206.667%20L%201%206.667%20C%200.448%206.667%200%207.114%200%207.667%20L%200%209.667%20C%200%2010.219%200.448%2010.667%201%2010.667%20L%202%2010.667%20C%202.552%2010.667%203%2010.219%203%209.667%20L%203%207.667%20C%203%207.114%202.552%206.667%202%206.667%20Z%22%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E"
+};
+Object.assign(__ds_scope, { GLYPHS });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/statusbar-glyphs.js", error: String((e && e.message) || e) }); }
+
+// components/navigation/StatusBar.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/* GLYPHS holds the verbatim contents of the status-bar SVGs extracted from the
+   source .fig (assets/images/status-*.svg) as data URIs, so the component has no
+   path to resolve and cannot break when embedded at an arbitrary page depth. */
+const A = {
+  light: {
+    time: __ds_scope.GLYPHS['status-time'],
+    wifi: __ds_scope.GLYPHS['status-wifi'],
+    signal: __ds_scope.GLYPHS['status-signal'],
+    ink: 'rgb(0,0,0)'
+  },
+  dark: {
+    time: __ds_scope.GLYPHS['status-time-dark'],
+    wifi: __ds_scope.GLYPHS['status-wifi-dark'],
+    signal: __ds_scope.GLYPHS['status-signal-dark'],
+    ink: 'rgb(255,255,255)'
+  }
+};
+
+/** Device status bar. iOS uses the glyphs extracted from the source file. */
+function StatusBar({
+  os = 'ios',
+  theme = 'light',
+  style,
+  ...rest
+}) {
+  const a = A[theme] || A.light;
+  if (os === 'android') {
+    /* Android Status Bar — 360×24, 8 %-black plate, 46×10 status mask at x306 y7. No clock. */
+    return /*#__PURE__*/React.createElement("div", _extends({
+      style: {
+        position: 'relative',
+        width: '100%',
+        height: 24,
+        background: 'rgba(33,33,33,0.08)',
+        flexShrink: 0,
+        ...style
+      }
+    }, rest), /*#__PURE__*/React.createElement("svg", {
+      width: "46",
+      height: "10",
+      viewBox: "0 0 46 10",
+      fill: theme === 'dark' ? 'rgba(255,255,255,0.38)' : 'rgba(0,0,0,0.38)',
+      style: {
+        position: 'absolute',
+        right: 8,
+        top: 7
+      }
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M 10 0 L 0 0 L 0 10 L 10 10 L 10 0 Z M 18 5 C 18 2.239 20.239 0 23 0 C 25.761 0 28 2.239 28 5 C 28 7.761 25.761 10 23 10 C 20.239 10 18 7.761 18 5 Z M 40 10 L 46 0 L 34 0 L 40 10 Z",
+      fillRule: "evenodd"
+    })));
+  }
+
+  /* iOS Status bar (iPhone X or newer) — 375×50 */
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: {
+      position: 'relative',
+      width: '100%',
+      height: 50,
+      overflow: 'hidden',
+      flexShrink: 0,
+      ...style
+    }
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 21,
+      top: 12,
+      width: 54,
+      height: 21,
+      borderRadius: 32
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: a.time,
+    alt: "9:41",
+    style: {
+      position: 'absolute',
+      left: 12.453,
+      top: 5.167,
+      width: 28.426,
+      height: 11.089
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      right: 14.672,
+      top: 17.331,
+      width: 66.661,
+      height: 11.336
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: a.signal,
+    alt: "",
+    style: {
+      position: 'absolute',
+      left: 0,
+      top: 0.336,
+      width: 17,
+      height: 10.667
+    }
+  }), /*#__PURE__*/React.createElement("img", {
+    src: a.wifi,
+    alt: "",
+    style: {
+      position: 'absolute',
+      left: 22.027,
+      top: 0,
+      width: 15.272,
+      height: 10.966
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 42.333,
+      top: 0.003,
+      width: 24.328,
+      height: 11.333
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      width: 22,
+      height: 11.333,
+      borderRadius: 2.6666667461395264,
+      boxShadow: `inset 0 0 0 1px ${a.ink}`,
+      opacity: 0.35
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 2,
+      top: 2,
+      width: 18,
+      height: 7.333,
+      borderRadius: 1.3333333730697632,
+      background: a.ink
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 23.1,
+      top: 3.9,
+      width: 1.228,
+      height: 3.6,
+      borderRadius: 1,
+      background: a.ink,
+      opacity: 0.4
+    }
+  }))));
+}
+Object.assign(__ds_scope, { StatusBar });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/StatusBar.jsx", error: String((e && e.message) || e) }); }
+
+// ui_kits/apps_in_toss/DetailScreen.jsx
+try { (() => {
+const {
+  Top,
+  TableRow,
+  BoardRow,
+  Post,
+  BottomInfo,
+  ListHeader,
+  Border,
+  Rating,
+  Tooltip
+} = window.TDSMobileDesignSystem_7852d9;
+function DetailScreen() {
+  const [open, setOpen] = React.useState(0);
+  const faq = [{
+    q: '이자는 언제 들어오나요?',
+    a: '매달 셋째 주 금요일에 지급돼요.'
+  }, {
+    q: '중도 해지하면 어떻게 되나요?',
+    a: '약정 이자 대신 중도해지 이율이 적용돼요.'
+  }];
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Top, {
+    subTextTop: "\uD1A0\uC2A4\uBC45\uD06C",
+    title: "\uC790\uC720\uC801\uAE08",
+    subTextBottom: "\uB9E4\uB2EC \uC6D0\uD558\uB294 \uB9CC\uD07C \uBAA8\uC544\uC694"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 24px 16px'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    size: "S",
+    placement: "bottom"
+  }, "\uCCAB \uB2EC\uC740 \uC774\uC790\uB97C \uB450 \uBC30\uB85C \uB4DC\uB824\uC694")), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uC0C1\uD488 \uC815\uBCF4"
+  }), /*#__PURE__*/React.createElement(TableRow, {
+    left: "\uC774\uC790\uC728",
+    right: "\uC5F0 2.3%"
+  }), /*#__PURE__*/React.createElement(TableRow, {
+    left: "\uAC00\uC785\uAE30\uAC04",
+    right: "12\uAC1C\uC6D4"
+  }), /*#__PURE__*/React.createElement(TableRow, {
+    left: "\uCD5C\uC18C \uAE08\uC561",
+    right: "1,000\uC6D0"
+  }), /*#__PURE__*/React.createElement(TableRow, {
+    left: "\uC608\uAE08\uC790\uBCF4\uD638",
+    right: "5,000\uB9CC\uC6D0\uAE4C\uC9C0"
+  }), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uACE0\uAC1D \uB9CC\uC871\uB3C4",
+    accessory: /*#__PURE__*/React.createElement(Rating, {
+      value: 4,
+      size: "S",
+      kind: "compact"
+    })
+  }), /*#__PURE__*/React.createElement(Post, {
+    blocks: [{
+      type: 'h3',
+      text: '이런 분께 추천해요'
+    }, {
+      type: 'unordered',
+      items: ['매달 조금씩 모으고 싶은 분', '중도 인출 없이 목표를 지키고 싶은 분']
+    }, {
+      type: 'paragraph',
+      text: '가입 후에도 납입 금액을 언제든 바꿀 수 있어요.',
+      size: 'S'
+    }]
+  }), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uC790\uC8FC \uBB3B\uB294 \uC9C8\uBB38"
+  }), faq.map((r, i) => /*#__PURE__*/React.createElement(BoardRow, {
+    key: i,
+    question: r.q,
+    answer: r.a,
+    opened: open === i,
+    onToggle: () => setOpen(open === i ? -1 : i)
+  })), /*#__PURE__*/React.createElement(BottomInfo, {
+    items: ['예금자보호법에 따라 보호됩니다.', '세부 조건은 상품설명서를 확인해주세요.', '이 광고는 준법감시인 심의를 거쳤어요.']
+  }));
+}
+Object.assign(window, {
+  DetailScreen
+});
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/apps_in_toss/DetailScreen.jsx", error: String((e && e.message) || e) }); }
+
+// ui_kits/apps_in_toss/HomeScreen.jsx
+try { (() => {
+const {
+  Top,
+  ListRow,
+  GridList,
+  BarChart,
+  ListHeader,
+  ListFooter,
+  Border,
+  Icon,
+  Badge,
+  Chip,
+  Button
+} = window.TDSMobileDesignSystem_7852d9;
+function HomeScreen({
+  go,
+  toast
+}) {
+  const [filter, setFilter] = React.useState(0);
+  const filters = ['전체', '입금', '출금'];
+  const tx = [{
+    t: '스타벅스 강남점',
+    d: '오늘 · 카드',
+    a: '-5,800원',
+    i: 'IconCoffeeMonoCoffeeStarbucks'
+  }, {
+    t: '김토스',
+    d: '어제 · 이체',
+    a: '+120,000원',
+    i: 'IconTransferMonoMoneyWon'
+  }, {
+    t: '지하철',
+    d: '어제 · 교통',
+    a: '-1,450원',
+    i: 'IconSubwayMonoSubwayTrain'
+  }];
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Top, {
+    subTextTop: "\uD1A0\uC2A4\uBC45\uD06C \uD1B5\uC7A5",
+    title: "1,204,000\uC6D0",
+    subTextBottom: "\uC774\uC790 \uBC1B\uB294 \uB0A0\uAE4C\uC9C0 12\uC77C",
+    rightItem: /*#__PURE__*/React.createElement(Badge, {
+      size: "S",
+      color: "blue",
+      variant: "weak"
+    }, "\uC5F0 2.3%"),
+    lowerCTA: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Button, {
+      size: "M",
+      variant: "weak",
+      color: "neutral",
+      onClick: () => toast('계좌번호가 복사되었습니다'),
+      style: {
+        flex: 1
+      }
+    }, "\uACC4\uC88C\uBCF5\uC0AC"), /*#__PURE__*/React.createElement(Button, {
+      size: "M",
+      onClick: () => go('transfer'),
+      style: {
+        flex: 1
+      }
+    }, "\uC1A1\uAE08"))
+  }), /*#__PURE__*/React.createElement(GridList, {
+    columns: 4,
+    items: [{
+      label: '송금',
+      icon: /*#__PURE__*/React.createElement(Icon, {
+        name: "IconTransferMonoMoneyWon",
+        size: 28
+      })
+    }, {
+      label: '카드',
+      icon: /*#__PURE__*/React.createElement(Icon, {
+        name: "IconCardMonoCard",
+        size: 28
+      })
+    }, {
+      label: '적금',
+      icon: /*#__PURE__*/React.createElement(Icon, {
+        name: "IconMoneyBagMonoMoney",
+        size: 28
+      })
+    }, {
+      label: '대출',
+      icon: /*#__PURE__*/React.createElement(Icon, {
+        name: "IconLoanBagMono",
+        size: 28
+      })
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: 8
+    }
+  }), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uC774\uBC88 \uB2EC \uC18C\uBE44",
+    subText: "8\uC6D4"
+  }), /*#__PURE__*/React.createElement(BarChart, {
+    values: [30, 55, 40, 90, 60, 75],
+    highlight: 5,
+    labels: ['3월', '4월', '5월', '6월', '7월', '8월']
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: 16
+    }
+  }), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uAC70\uB798 \uB0B4\uC5ED",
+    accessory: /*#__PURE__*/React.createElement("span", {
+      style: {
+        display: 'inline-flex',
+        gap: 6
+      }
+    }, filters.map((x, i) => /*#__PURE__*/React.createElement(Chip, {
+      key: i,
+      size: "S",
+      selected: i === filter,
+      onClick: () => setFilter(i)
+    }, x)))
+  }), tx.map((r, i) => /*#__PURE__*/React.createElement(ListRow, {
+    key: i,
+    onClick: () => go('detail'),
+    leftAccessory: /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: 'var(--semantic-icon-secondary)'
+      }
+    }, /*#__PURE__*/React.createElement(Icon, {
+      name: r.i,
+      size: 30
+    })),
+    title: r.t,
+    description: r.d,
+    rightText: r.a
+  })), /*#__PURE__*/React.createElement(ListFooter, {
+    onClick: () => go('detail')
+  }, "\uB354\uBCF4\uAE30"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: 24
+    }
+  }));
+}
+Object.assign(window, {
+  HomeScreen
+});
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/apps_in_toss/HomeScreen.jsx", error: String((e && e.message) || e) }); }
+
+// ui_kits/apps_in_toss/SettingsScreen.jsx
+try { (() => {
+const {
+  Top,
+  ListRow,
+  Switch,
+  SegmentedControl,
+  Checkbox,
+  ListHeader,
+  Border,
+  Badge,
+  Icon,
+  TextButton,
+  Loader
+} = window.TDSMobileDesignSystem_7852d9;
+function SettingsScreen({
+  onMenu
+}) {
+  const [push, setPush] = React.useState(true);
+  const [face, setFace] = React.useState(false);
+  const [theme, setTheme] = React.useState(0);
+  const [agree, setAgree] = React.useState(true);
+  const [busy, setBusy] = React.useState(false);
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Top, {
+    title: "\uC124\uC815",
+    rightItem: /*#__PURE__*/React.createElement(TextButton, {
+      size: "S",
+      onClick: onMenu
+    }, "\uC815\uB82C")
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '0 0 12px'
+    }
+  }, /*#__PURE__*/React.createElement(SegmentedControl, {
+    items: ['라이트', '다크', '시스템'],
+    value: theme,
+    onChange: setTheme,
+    size: "S"
+  })), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uC54C\uB9BC"
+  }), /*#__PURE__*/React.createElement(ListRow, {
+    title: "\uD478\uC2DC \uC54C\uB9BC",
+    description: "\uAC70\uB798 \uB0B4\uC5ED\uACFC \uD61C\uD0DD \uC18C\uC2DD",
+    rightAccessory: /*#__PURE__*/React.createElement(Switch, {
+      checked: push,
+      onChange: setPush
+    })
+  }), /*#__PURE__*/React.createElement(ListRow, {
+    title: "\uB9C8\uCF00\uD305 \uC218\uC2E0",
+    rightAccessory: /*#__PURE__*/React.createElement(Switch, {
+      checked: false
+    })
+  }), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uBCF4\uC548"
+  }), /*#__PURE__*/React.createElement(ListRow, {
+    title: "\uC5BC\uAD74 \uC778\uC99D",
+    rightAccessory: /*#__PURE__*/React.createElement(Switch, {
+      checked: face,
+      onChange: setFace
+    })
+  }), /*#__PURE__*/React.createElement(ListRow, {
+    title: "\uBE44\uBC00\uBC88\uD638 \uBCC0\uACBD",
+    rightAccessory: /*#__PURE__*/React.createElement(Icon, {
+      name: "IconArrowRightMonoArrow",
+      size: 24,
+      style: {
+        color: 'var(--semantic-icon-quaternary)'
+      }
+    })
+  }), /*#__PURE__*/React.createElement(ListRow, {
+    title: "\uAE30\uAE30 \uAD00\uB9AC",
+    rightText: "3\uB300",
+    rightAccessory: /*#__PURE__*/React.createElement(Badge, {
+      size: "XS",
+      color: "red"
+    }, "!")
+  }), /*#__PURE__*/React.createElement(Border, {
+    height: "thick"
+  }), /*#__PURE__*/React.createElement(ListHeader, {
+    title: "\uC57D\uAD00"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+      padding: '12px 24px'
+    }
+  }, /*#__PURE__*/React.createElement(Checkbox, {
+    checked: agree,
+    onChange: setAgree
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      font: '400 15px/1.5 var(--tds-font-body)',
+      color: 'var(--semantic-text-secondary)'
+    }
+  }, "\uC804\uCCB4 \uC57D\uAD00\uC5D0 \uB3D9\uC758\uD574\uC694")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: '24px 0 32px'
+    }
+  }, busy ? /*#__PURE__*/React.createElement(Loader, {
+    size: "S",
+    label: "\uB3D9\uAE30\uD654 \uC911\uC774\uC5D0\uC694"
+  }) : /*#__PURE__*/React.createElement(TextButton, {
+    appearance: "arrow",
+    color: "neutral",
+    onClick: () => {
+      setBusy(true);
+      setTimeout(() => setBusy(false), 1600);
+    }
+  }, "\uB370\uC774\uD130 \uB3D9\uAE30\uD654")));
+}
+Object.assign(window, {
+  SettingsScreen
+});
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/apps_in_toss/SettingsScreen.jsx", error: String((e && e.message) || e) }); }
+
+// ui_kits/apps_in_toss/TransferScreen.jsx
+try { (() => {
+const {
+  Top,
+  Keypad,
+  BottomCTA,
+  Button,
+  ListRow,
+  Icon,
+  Border,
+  ProgressStepper
+} = window.TDSMobileDesignSystem_7852d9;
+function TransferScreen({
+  go,
+  openSheet,
+  account
+}) {
+  const [amount, setAmount] = React.useState('');
+  const pretty = amount ? Number(amount).toLocaleString('ko-KR') + '원' : '얼마를 보낼까요?';
+  const key = k => setAmount(a => k === '⌫' ? a.slice(0, -1) : (a + k).replace(/^0+/, '').slice(0, 9));
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%'
+    }
+  }, /*#__PURE__*/React.createElement(ProgressStepper, {
+    steps: 3,
+    current: 1,
+    labels: ['받는 사람', '금액', '확인']
+  }), /*#__PURE__*/React.createElement(Top, {
+    title: /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: amount ? 'var(--semantic-text-primary)' : 'var(--semantic-text-quaternary)'
+      }
+    }, pretty),
+    subTextBottom: `${account} · 잔액 1,204,000원`
+  }), /*#__PURE__*/React.createElement(Border, null), /*#__PURE__*/React.createElement(ListRow, {
+    onClick: openSheet,
+    leftAccessory: /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: 'var(--semantic-icon-secondary)'
+      }
+    }, /*#__PURE__*/React.createElement(Icon, {
+      name: "IconBankToss",
+      size: 30
+    })),
+    title: "\uAE40\uD1A0\uC2A4",
+    description: "\uD1A0\uC2A4\uBC45\uD06C 1002-345-678901",
+    rightAccessory: /*#__PURE__*/React.createElement(Icon, {
+      name: "IconArrowRightMonoArrow",
+      size: 24,
+      style: {
+        color: 'var(--semantic-icon-quaternary)'
+      }
+    })
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }), /*#__PURE__*/React.createElement(Keypad, {
+    onKey: key
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement(BottomCTA, null, /*#__PURE__*/React.createElement(Button, {
+    size: "XL",
+    fullWidth: true,
+    disabled: !amount,
+    onClick: () => go('done')
+  }, "\uBCF4\uB0B4\uAE30"))));
+}
+Object.assign(window, {
+  TransferScreen
+});
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/apps_in_toss/TransferScreen.jsx", error: String((e && e.message) || e) }); }
+
+if (__ds_scope.__ds_default_assets_icons_icon_data_imae2q$nab192 === undefined) __ds_scope.__ds_default_assets_icons_icon_data_imae2q$nab192 = __ds_scope.__ds_default_assets_icons_icon_data_imae2q;
+
+__ds_ns.Icon = __ds_scope.Icon;
+
+__ds_ns.BankPicker = __ds_scope.BankPicker;
+
+__ds_ns.Bar = __ds_scope.Bar;
+
+__ds_ns.BarChart = __ds_scope.BarChart;
+
+__ds_ns.BoardRow = __ds_scope.BoardRow;
+
+__ds_ns.BottomInfo = __ds_scope.BottomInfo;
+
+__ds_ns.GridList = __ds_scope.GridList;
+
+__ds_ns.GridListItem = __ds_scope.GridListItem;
+
+__ds_ns.LeftAccessory = __ds_scope.LeftAccessory;
+
+__ds_ns.ListRow = __ds_scope.ListRow;
+
+__ds_ns.ListRowText = __ds_scope.ListRowText;
+
+__ds_ns.Post = __ds_scope.Post;
+
+__ds_ns.ProgressStepper = __ds_scope.ProgressStepper;
+
+__ds_ns.Rating = __ds_scope.Rating;
+
+__ds_ns.RightAccessory = __ds_scope.RightAccessory;
+
+__ds_ns.StarIcon = __ds_scope.StarIcon;
+
+__ds_ns.StepIcon = __ds_scope.StepIcon;
+
+__ds_ns.Stepper = __ds_scope.Stepper;
+
+__ds_ns.StepperRow = __ds_scope.StepperRow;
+
+__ds_ns.TableRow = __ds_scope.TableRow;
+
+__ds_ns.Top = __ds_scope.Top;
+
+__ds_ns.Asset = __ds_scope.Asset;
+
+__ds_ns.Badge = __ds_scope.Badge;
+
+__ds_ns.Border = __ds_scope.Border;
+
+__ds_ns.Button = __ds_scope.Button;
+
+__ds_ns.Chip = __ds_scope.Chip;
+
+__ds_ns.ChipAccessory = __ds_scope.ChipAccessory;
+
+__ds_ns.IconButton = __ds_scope.IconButton;
+
+__ds_ns.TextButton = __ds_scope.TextButton;
+
+__ds_ns.Title = __ds_scope.Title;
+
+__ds_ns.BottomSheet = __ds_scope.BottomSheet;
+
+__ds_ns.Bubble = __ds_scope.Bubble;
+
+__ds_ns.ButtonArea = __ds_scope.ButtonArea;
+
+__ds_ns.Dialog = __ds_scope.Dialog;
+
+__ds_ns.Loader = __ds_scope.Loader;
+
+__ds_ns.Menu = __ds_scope.Menu;
+
+__ds_ns.MenuItem = __ds_scope.MenuItem;
+
+__ds_ns.ProgressBar = __ds_scope.ProgressBar;
+
+__ds_ns.Result = __ds_scope.Result;
+
+__ds_ns.SelectionRow = __ds_scope.SelectionRow;
+
+__ds_ns.SheetBody = __ds_scope.SheetBody;
+
+__ds_ns.Toast = __ds_scope.Toast;
+
+__ds_ns.Tooltip = __ds_scope.Tooltip;
+
+__ds_ns.Checkbox = __ds_scope.Checkbox;
+
+__ds_ns.ClearButton = __ds_scope.ClearButton;
+
+__ds_ns.FieldPrefix = __ds_scope.FieldPrefix;
+
+__ds_ns.Keyboard = __ds_scope.Keyboard;
+
+__ds_ns.Keypad = __ds_scope.Keypad;
+
+__ds_ns.KeypadButton = __ds_scope.KeypadButton;
+
+__ds_ns.NumberField = __ds_scope.NumberField;
+
+__ds_ns.NumericSpinner = __ds_scope.NumericSpinner;
+
+__ds_ns.PasswordField = __ds_scope.PasswordField;
+
+__ds_ns.SearchField = __ds_scope.SearchField;
+
+__ds_ns.SelectorField = __ds_scope.SelectorField;
+
+__ds_ns.Slider = __ds_scope.Slider;
+
+__ds_ns.SliderKnob = __ds_scope.SliderKnob;
+
+__ds_ns.SliderTooltip = __ds_scope.SliderTooltip;
+
+__ds_ns.StepButton = __ds_scope.StepButton;
+
+__ds_ns.Switch = __ds_scope.Switch;
+
+__ds_ns.TextArea = __ds_scope.TextArea;
+
+__ds_ns.TextField = __ds_scope.TextField;
+
+__ds_ns.BottomCTA = __ds_scope.BottomCTA;
+
+__ds_ns.HeaderAccessory = __ds_scope.HeaderAccessory;
+
+__ds_ns.HomeIndicator = __ds_scope.HomeIndicator;
+
+__ds_ns.ListFooter = __ds_scope.ListFooter;
+
+__ds_ns.ListHeader = __ds_scope.ListHeader;
+
+__ds_ns.Navigation = __ds_scope.Navigation;
+
+__ds_ns.NavigationAndroid = __ds_scope.NavigationAndroid;
+
+__ds_ns.SegmentedControl = __ds_scope.SegmentedControl;
+
+__ds_ns.SegmentedItem = __ds_scope.SegmentedItem;
+
+__ds_ns.StatusBar = __ds_scope.StatusBar;
+
+__ds_ns.Tab = __ds_scope.Tab;
+
+__ds_ns.TabBar = __ds_scope.TabBar;
+
+__ds_ns.TabBarItem = __ds_scope.TabBarItem;
+
+__ds_ns.TabItem = __ds_scope.TabItem;
+
+__ds_ns.GLYPHS = __ds_scope.GLYPHS;
+
+})();

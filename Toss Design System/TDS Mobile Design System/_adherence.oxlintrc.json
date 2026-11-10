@@ -1,0 +1,2409 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "assets/icons/**",
+              "components/content/**",
+              "components/core/**",
+              "components/feedback/**",
+              "components/forms/**",
+              "components/navigation/**",
+              "ui_kits/apps_in_toss/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Noto Sans KR))/i]",
+        "message": "Font not provided by the design system. Available: Noto Sans KR."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Asset'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|src|alt|size|shape|background|key|ref|className|style|children)$/]",
+        "message": "<Asset> doesn't accept that prop. Declared props: children, src, alt, size, shape, background."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Asset'] > JSXAttribute[name.name='shape'] > Literal[value!=/^(?:circle|squircle|card|square)$/]",
+        "message": "<Asset> shape must be one of 'circle' | 'squircle' | 'card' | 'square'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|color|variant|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: children, size, color, variant."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L)$/]",
+        "message": "<Badge> size must be one of 'XS' | 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:blue|red|green|yellow|teal|grey)$/]",
+        "message": "<Badge> color must be one of 'blue' | 'red' | 'green' | 'yellow' | 'teal' | 'grey'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:fill|weak)$/]",
+        "message": "<Badge> variant must be one of 'fill' | 'weak'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BankPickerItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|key|ref|className|style|children)$/]",
+        "message": "<BankPickerItem> doesn't accept that prop. Declared props: label, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Bar'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|color|muted|width|height|key|ref|className|style|children)$/]",
+        "message": "<Bar> doesn't accept that prop. Declared props: value, color, muted, width, height."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Bar'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:blue|green|red|yellow|orange|grey|white)$/]",
+        "message": "<Bar> color must be one of 'blue' | 'green' | 'red' | 'yellow' | 'orange' | 'grey' | 'white'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BarChart'] > JSXAttribute > JSXIdentifier[name!=/^(?:values|color|highlight|height|labels|key|ref|className|style|children)$/]",
+        "message": "<BarChart> doesn't accept that prop. Declared props: values, color, highlight, height, labels."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BarChart'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:blue|green|red|yellow|orange|grey|white)$/]",
+        "message": "<BarChart> color must be one of 'blue' | 'green' | 'red' | 'yellow' | 'orange' | 'grey' | 'white'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BoardRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:question|answer|opened|onToggle|key|ref|className|style|children)$/]",
+        "message": "<BoardRow> doesn't accept that prop. Declared props: question, answer, opened, onToggle."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Border'] > JSXAttribute > JSXIdentifier[name!=/^(?:height|inset|key|ref|className|style|children)$/]",
+        "message": "<Border> doesn't accept that prop. Declared props: height, inset."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Border'] > JSXAttribute[name.name='height'] > Literal[value!=/^(?:default|thick)$/]",
+        "message": "<Border> height must be one of 'default' | 'thick'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BottomCTA'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|upperItem|lowerItem|direction|key|ref|className|style|children)$/]",
+        "message": "<BottomCTA> doesn't accept that prop. Declared props: children, upperItem, lowerItem, direction."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BottomCTA'] > JSXAttribute[name.name='direction'] > Literal[value!=/^(?:horizontal|vertical)$/]",
+        "message": "<BottomCTA> direction must be one of 'horizontal' | 'vertical'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BottomInfo'] > JSXAttribute > JSXIdentifier[name!=/^(?:items|size|gradient|key|ref|className|style|children)$/]",
+        "message": "<BottomInfo> doesn't accept that prop. Declared props: items, size, gradient."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BottomInfo'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:M|L)$/]",
+        "message": "<BottomInfo> size must be one of 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BottomSheet'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subTitle|children|primaryLabel|secondaryLabel|onPrimary|onSecondary|dim|key|ref|className|style|children)$/]",
+        "message": "<BottomSheet> doesn't accept that prop. Declared props: title, subTitle, children, primaryLabel, secondaryLabel, onPrimary, onSecondary, dim."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Bubble'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|side|key|ref|className|style|children)$/]",
+        "message": "<Bubble> doesn't accept that prop. Declared props: children, side."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Bubble'] > JSXAttribute[name.name='side'] > Literal[value!=/^(?:left|right)$/]",
+        "message": "<Bubble> side must be one of 'left' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|color|variant|disabled|loading|fullWidth|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: children, size, color, variant, disabled, loading, fullWidth."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M|L|XL)$/]",
+        "message": "<Button> size must be one of 'S' | 'M' | 'L' | 'XL'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:brand|neutral|danger|inverse)$/]",
+        "message": "<Button> color must be one of 'brand' | 'neutral' | 'danger' | 'inverse'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:fill|weak)$/]",
+        "message": "<Button> variant must be one of 'fill' | 'weak'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ButtonArea'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|context|direction|key|ref|className|style|children)$/]",
+        "message": "<ButtonArea> doesn't accept that prop. Declared props: children, context, direction."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ButtonArea'] > JSXAttribute[name.name='context'] > Literal[value!=/^(?:dialog|sheet|cta)$/]",
+        "message": "<ButtonArea> context must be one of 'dialog' | 'sheet' | 'cta'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ButtonArea'] > JSXAttribute[name.name='direction'] > Literal[value!=/^(?:horizontal|vertical)$/]",
+        "message": "<ButtonArea> direction must be one of 'horizontal' | 'vertical'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Checkbox'] > JSXAttribute > JSXIdentifier[name!=/^(?:checked|variant|size|disabled|onChange|key|ref|className|style|children)$/]",
+        "message": "<Checkbox> doesn't accept that prop. Declared props: checked, variant, size, disabled, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Checkbox'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:circle|line)$/]",
+        "message": "<Checkbox> variant must be one of 'circle' | 'line'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Checkbox'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L)$/]",
+        "message": "<Checkbox> size must be one of 'XS' | 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Chip'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|shape|variant|selected|leading|tailing|redDot|onClick|key|ref|className|style|children)$/]",
+        "message": "<Chip> doesn't accept that prop. Declared props: children, size, shape, variant, selected, leading, tailing, redDot, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Chip'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M)$/]",
+        "message": "<Chip> size must be one of 'S' | 'M'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Chip'] > JSXAttribute[name.name='shape'] > Literal[value!=/^(?:pill|square)$/]",
+        "message": "<Chip> shape must be one of 'pill' | 'square'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Chip'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:fill|weak)$/]",
+        "message": "<Chip> variant must be one of 'fill' | 'weak'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ChipAccessory'] > JSXAttribute > JSXIdentifier[name!=/^(?:kind|side|size|children|src|key|ref|className|style|children)$/]",
+        "message": "<ChipAccessory> doesn't accept that prop. Declared props: kind, side, size, children, src."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ChipAccessory'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:icon|profile|downChevron|close)$/]",
+        "message": "<ChipAccessory> kind must be one of 'icon' | 'profile' | 'downChevron' | 'close'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ChipAccessory'] > JSXAttribute[name.name='side'] > Literal[value!=/^(?:leading|tailing)$/]",
+        "message": "<ChipAccessory> side must be one of 'leading' | 'tailing'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ChipAccessory'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M)$/]",
+        "message": "<ChipAccessory> size must be one of 'S' | 'M'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ClearButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|key|ref|className|style|children)$/]",
+        "message": "<ClearButton> doesn't accept that prop. Declared props: size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Dialog'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|description|kind|confirmLabel|cancelLabel|onConfirm|onCancel|dim|key|ref|className|style|children)$/]",
+        "message": "<Dialog> doesn't accept that prop. Declared props: title, description, kind, confirmLabel, cancelLabel, onConfirm, onCancel, dim."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Dialog'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:alert|confirm)$/]",
+        "message": "<Dialog> kind must be one of 'alert' | 'confirm'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FieldPrefix'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|side|key|ref|className|style|children)$/]",
+        "message": "<FieldPrefix> doesn't accept that prop. Declared props: children, side."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FieldPrefix'] > JSXAttribute[name.name='side'] > Literal[value!=/^(?:prefix|suffix)$/]",
+        "message": "<FieldPrefix> side must be one of 'prefix' | 'suffix'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GridListItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|key|ref|className|style|children)$/]",
+        "message": "<GridListItem> doesn't accept that prop. Declared props: label, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GridListItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|onClick|key|ref|className|style|children)$/]",
+        "message": "<GridListItem> doesn't accept that prop. Declared props: label, icon, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='HeaderAccessory'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|icon|size|key|ref|className|style|children)$/]",
+        "message": "<HeaderAccessory> doesn't accept that prop. Declared props: text, icon, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='HeaderAccessory'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M)$/]",
+        "message": "<HeaderAccessory> size must be one of 'S' | 'M'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='HomeIndicator'] > JSXAttribute > JSXIdentifier[name!=/^(?:theme|key|ref|className|style|children)$/]",
+        "message": "<HomeIndicator> doesn't accept that prop. Declared props: theme."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='HomeIndicator'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<HomeIndicator> theme must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|key|ref|className|style|children)$/]",
+        "message": "<Icon> doesn't accept that prop. Declared props: name, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='IconButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|variant|disabled|key|ref|className|style|children)$/]",
+        "message": "<IconButton> doesn't accept that prop. Declared props: children, size, variant, disabled."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='IconButton'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:L|M|S)$/]",
+        "message": "<IconButton> size must be one of 'L' | 'M' | 'S'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='IconButton'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:fill|border|clear)$/]",
+        "message": "<IconButton> variant must be one of 'fill' | 'border' | 'clear'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Keypad'] > JSXAttribute > JSXIdentifier[name!=/^(?:onKey|key|ref|className|style|children)$/]",
+        "message": "<Keypad> doesn't accept that prop. Declared props: onKey."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='KeypadButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|kind|pressed|key|ref|className|style|children)$/]",
+        "message": "<KeypadButton> doesn't accept that prop. Declared props: children, kind, pressed."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='KeypadButton'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:num|icon)$/]",
+        "message": "<KeypadButton> kind must be one of 'num' | 'icon'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LeftAccessory'] > JSXAttribute > JSXIdentifier[name!=/^(?:type|children|src|text|size|shape|align|key|ref|className|style|children)$/]",
+        "message": "<LeftAccessory> doesn't accept that prop. Declared props: type, children, src, text, size, shape, align."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LeftAccessory'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:icon|image|text)$/]",
+        "message": "<LeftAccessory> type must be one of 'icon' | 'image' | 'text'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LeftAccessory'] > JSXAttribute[name.name='shape'] > Literal[value!=/^(?:circle|squircle|card|square)$/]",
+        "message": "<LeftAccessory> shape must be one of 'circle' | 'squircle' | 'card' | 'square'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LeftAccessory'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:center|top)$/]",
+        "message": "<LeftAccessory> align must be one of 'center' | 'top'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListFooter'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|color|icon|onClick|key|ref|className|style|children)$/]",
+        "message": "<ListFooter> doesn't accept that prop. Declared props: children, color, icon, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListFooter'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:grey|blue)$/]",
+        "message": "<ListFooter> color must be one of 'grey' | 'blue'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListFooter'] > JSXAttribute[name.name='icon'] > Literal[value!=/^(?:expand|collapse|move|plus|none)$/]",
+        "message": "<ListFooter> icon must be one of 'expand' | 'collapse' | 'move' | 'plus' | 'none'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subText|subTextPosition|accessory|size|key|ref|className|style|children)$/]",
+        "message": "<ListHeader> doesn't accept that prop. Declared props: title, subText, subTextPosition, accessory, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListHeader'] > JSXAttribute[name.name='subTextPosition'] > Literal[value!=/^(?:upper|lower)$/]",
+        "message": "<ListHeader> subTextPosition must be one of 'upper' | 'lower'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListHeader'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L)$/]",
+        "message": "<ListHeader> size must be one of 'XS' | 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|description|subText|leftAccessory|rightAccessory|rightText|verticalPadding|sideMargin|onClick|key|ref|className|style|children)$/]",
+        "message": "<ListRow> doesn't accept that prop. Declared props: title, description, subText, leftAccessory, rightAccessory, rightText, verticalPadding, sideMargin, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListRow'] > JSXAttribute[name.name='verticalPadding'] > Literal[value!=/^(?:S|M|L|XL)$/]",
+        "message": "<ListRow> verticalPadding must be one of 'S' | 'M' | 'L' | 'XL'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListRow'] > JSXAttribute[name.name='sideMargin'] > Literal[value!=/^(?:none|S|M)$/]",
+        "message": "<ListRow> sideMargin must be one of 'none' | 'S' | 'M'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListRowText'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|description|subText|mainTextPosition|titleWeight|titleStyle|key|ref|className|style|children)$/]",
+        "message": "<ListRowText> doesn't accept that prop. Declared props: title, description, subText, mainTextPosition, titleWeight, titleStyle."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListRowText'] > JSXAttribute[name.name='mainTextPosition'] > Literal[value!=/^(?:top|bottom)$/]",
+        "message": "<ListRowText> mainTextPosition must be one of 'top' | 'bottom'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ListRowText'] > JSXAttribute[name.name='titleStyle'] > Literal[value!=/^(?:default|small)$/]",
+        "message": "<ListRowText> titleStyle must be one of 'default' | 'small'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Loader'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|color|label|key|ref|className|style|children)$/]",
+        "message": "<Loader> doesn't accept that prop. Declared props: size, color, label."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Loader'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M|L)$/]",
+        "message": "<Loader> size must be one of 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Loader'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:brand|neutral|inverse)$/]",
+        "message": "<Loader> color must be one of 'brand' | 'neutral' | 'inverse'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|selected|danger|key|ref|className|style|children)$/]",
+        "message": "<MenuItem> doesn't accept that prop. Declared props: label, icon, selected, danger."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|icon|selected|danger|pressed|key|ref|className|style|children)$/]",
+        "message": "<MenuItem> doesn't accept that prop. Declared props: children, icon, selected, danger, pressed."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Navigation'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|logoSrc|showBack|theme|dynamicIcon|onBack|onMore|onClose|key|ref|className|style|children)$/]",
+        "message": "<Navigation> doesn't accept that prop. Declared props: title, logoSrc, showBack, theme, dynamicIcon, onBack, onMore, onClose."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Navigation'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<Navigation> theme must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NavigationAndroid'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|logoSrc|showBack|theme|dynamicIcon|onBack|onMore|onClose|key|ref|className|style|children)$/]",
+        "message": "<NavigationAndroid> doesn't accept that prop. Declared props: title, logoSrc, showBack, theme, dynamicIcon, onBack, onMore, onClose."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NavigationAndroid'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<NavigationAndroid> theme must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NumberField'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|size|key|ref|className|style|children)$/]",
+        "message": "<NumberField> doesn't accept that prop. Declared props: value, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NumberField'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L)$/]",
+        "message": "<NumberField> size must be one of 'XS' | 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NumericSpinner'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|min|max|size|disabled|onChange|key|ref|className|style|children)$/]",
+        "message": "<NumericSpinner> doesn't accept that prop. Declared props: value, min, max, size, disabled, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NumericSpinner'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L)$/]",
+        "message": "<NumericSpinner> size must be one of 'XS' | 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PasswordField'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|placeholder|helpText|error|disabled|variant|onChange|key|ref|className|style|children)$/]",
+        "message": "<PasswordField> doesn't accept that prop. Declared props: label, value, placeholder, helpText, error, disabled, variant, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PasswordField'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:line|box)$/]",
+        "message": "<PasswordField> variant must be one of 'line' | 'box'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PostBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:type|text|items|size|key|ref|className|style|children)$/]",
+        "message": "<PostBlock> doesn't accept that prop. Declared props: type, text, items, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PostBlock'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:h1|h2|h3|h4|paragraph|ordered|unordered)$/]",
+        "message": "<PostBlock> type must be one of 'h1' | 'h2' | 'h3' | 'h4' | 'paragraph' | 'ordered' | 'unordered'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PostBlock'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:M|S|XS)$/]",
+        "message": "<PostBlock> size must be one of 'M' | 'S' | 'XS'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProgressBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|size|color|key|ref|className|style|children)$/]",
+        "message": "<ProgressBar> doesn't accept that prop. Declared props: value, size, color."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProgressBar'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M|L)$/]",
+        "message": "<ProgressBar> size must be one of 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProgressBar'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:brand|neutral|success|danger)$/]",
+        "message": "<ProgressBar> color must be one of 'brand' | 'neutral' | 'success' | 'danger'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProgressStepper'] > JSXAttribute > JSXIdentifier[name!=/^(?:steps|current|labels|key|ref|className|style|children)$/]",
+        "message": "<ProgressStepper> doesn't accept that prop. Declared props: steps, current, labels."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Rating'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|size|kind|readOnly|disabled|onChange|key|ref|className|style|children)$/]",
+        "message": "<Rating> doesn't accept that prop. Declared props: value, size, kind, readOnly, disabled, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Rating'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L|XL)$/]",
+        "message": "<Rating> size must be one of 'XS' | 'S' | 'M' | 'L' | 'XL'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Rating'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:full|compact|iconOnly)$/]",
+        "message": "<Rating> kind must be one of 'full' | 'compact' | 'iconOnly'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Result'] > JSXAttribute > JSXIdentifier[name!=/^(?:asset|title|description|children|key|ref|className|style|children)$/]",
+        "message": "<Result> doesn't accept that prop. Declared props: asset, title, description, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RightAccessory'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|subText|arrow|align|children|key|ref|className|style|children)$/]",
+        "message": "<RightAccessory> doesn't accept that prop. Declared props: text, subText, arrow, align, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RightAccessory'] > JSXAttribute[name.name='arrow'] > Literal[value!=/^(?:none|right|up|down)$/]",
+        "message": "<RightAccessory> arrow must be one of 'none' | 'right' | 'up' | 'down'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RightAccessory'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|right)$/]",
+        "message": "<RightAccessory> align must be one of 'left' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SearchField'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|placeholder|onChange|onClear|key|ref|className|style|children)$/]",
+        "message": "<SearchField> doesn't accept that prop. Declared props: value, placeholder, onChange, onClear."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SegmentedControl'] > JSXAttribute > JSXIdentifier[name!=/^(?:items|value|size|onChange|key|ref|className|style|children)$/]",
+        "message": "<SegmentedControl> doesn't accept that prop. Declared props: items, value, size, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SegmentedControl'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|L)$/]",
+        "message": "<SegmentedControl> size must be one of 'S' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SegmentedItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|selected|size|key|ref|className|style|children)$/]",
+        "message": "<SegmentedItem> doesn't accept that prop. Declared props: children, selected, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SegmentedItem'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M)$/]",
+        "message": "<SegmentedItem> size must be one of 'S' | 'M'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SelectionRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|description|leftAccessory|selected|onClick|key|ref|className|style|children)$/]",
+        "message": "<SelectionRow> doesn't accept that prop. Declared props: title, description, leftAccessory, selected, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SelectorField'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|placeholder|helpText|error|disabled|variant|onClick|key|ref|className|style|children)$/]",
+        "message": "<SelectorField> doesn't accept that prop. Declared props: label, value, placeholder, helpText, error, disabled, variant, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SelectorField'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:line|box)$/]",
+        "message": "<SelectorField> variant must be one of 'line' | 'box'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SheetBody'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|kind|key|ref|className|style|children)$/]",
+        "message": "<SheetBody> doesn't accept that prop. Declared props: children, kind."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SheetBody'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:list|selection|paragraph|asset)$/]",
+        "message": "<SheetBody> kind must be one of 'list' | 'selection' | 'paragraph' | 'asset'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Slider'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|min|max|color|labels|tooltip|onChange|key|ref|className|style|children)$/]",
+        "message": "<Slider> doesn't accept that prop. Declared props: value, min, max, color, labels, tooltip, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Slider'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:blue|red|black)$/]",
+        "message": "<Slider> color must be one of 'blue' | 'red' | 'black'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SliderKnob'] > JSXAttribute > JSXIdentifier[name!=/^(?:color|size|key|ref|className|style|children)$/]",
+        "message": "<SliderKnob> doesn't accept that prop. Declared props: color, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SliderKnob'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:blue|red|black)$/]",
+        "message": "<SliderKnob> color must be one of 'blue' | 'red' | 'black'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SliderTooltip'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|placement|key|ref|className|style|children)$/]",
+        "message": "<SliderTooltip> doesn't accept that prop. Declared props: children, placement."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SliderTooltip'] > JSXAttribute[name.name='placement'] > Literal[value!=/^(?:top|bottom)$/]",
+        "message": "<SliderTooltip> placement must be one of 'top' | 'bottom'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StarIcon'] > JSXAttribute > JSXIdentifier[name!=/^(?:state|size|key|ref|className|style|children)$/]",
+        "message": "<StarIcon> doesn't accept that prop. Declared props: state, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StarIcon'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:filled|half|empty|disabled)$/]",
+        "message": "<StarIcon> state must be one of 'filled' | 'half' | 'empty' | 'disabled'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:os|theme|key|ref|className|style|children)$/]",
+        "message": "<StatusBar> doesn't accept that prop. Declared props: os, theme."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusBar'] > JSXAttribute[name.name='os'] > Literal[value!=/^(?:ios|android)$/]",
+        "message": "<StatusBar> os must be one of 'ios' | 'android'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusBar'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<StatusBar> theme must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:kind|size|disabled|key|ref|className|style|children)$/]",
+        "message": "<StepButton> doesn't accept that prop. Declared props: kind, size, disabled."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepButton'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:plus|minus)$/]",
+        "message": "<StepButton> kind must be one of 'plus' | 'minus'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepButton'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M|L)$/]",
+        "message": "<StepButton> size must be one of 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepIcon'] > JSXAttribute > JSXIdentifier[name!=/^(?:num|icon|theme|size|key|ref|className|style|children)$/]",
+        "message": "<StepIcon> doesn't accept that prop. Declared props: num, icon, theme, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepIcon'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<StepIcon> theme must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepIcon'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M)$/]",
+        "message": "<StepIcon> size must be one of 'S' | 'M'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepperStep'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|description|icon|key|ref|className|style|children)$/]",
+        "message": "<StepperStep> doesn't accept that prop. Declared props: title, description, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepperRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:num|icon|title|description|last|theme|typography|key|ref|className|style|children)$/]",
+        "message": "<StepperRow> doesn't accept that prop. Declared props: num, icon, title, description, last, theme, typography."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepperRow'] > JSXAttribute[name.name='theme'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<StepperRow> theme must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepperRow'] > JSXAttribute[name.name='typography'] > Literal[value!=/^(?:S|M|L)$/]",
+        "message": "<StepperRow> typography must be one of 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Switch'] > JSXAttribute > JSXIdentifier[name!=/^(?:checked|disabled|onChange|key|ref|className|style|children)$/]",
+        "message": "<Switch> doesn't accept that prop. Declared props: checked, disabled, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tab'] > JSXAttribute > JSXIdentifier[name!=/^(?:items|value|alignment|size|onChange|key|ref|className|style|children)$/]",
+        "message": "<Tab> doesn't accept that prop. Declared props: items, value, alignment, size, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tab'] > JSXAttribute[name.name='alignment'] > Literal[value!=/^(?:fixed|fluid)$/]",
+        "message": "<Tab> alignment must be one of 'fixed' | 'fluid'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tab'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|L)$/]",
+        "message": "<Tab> size must be one of 'S' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TabBarItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|redDot|key|ref|className|style|children)$/]",
+        "message": "<TabBarItem> doesn't accept that prop. Declared props: label, icon, redDot."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TabBarItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|selected|redDot|key|ref|className|style|children)$/]",
+        "message": "<TabBarItem> doesn't accept that prop. Declared props: label, icon, selected, redDot."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TabItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|selected|size|key|ref|className|style|children)$/]",
+        "message": "<TabItem> doesn't accept that prop. Declared props: children, selected, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TabItem'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|L)$/]",
+        "message": "<TabItem> size must be one of 'S' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TableRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:left|right|align|leftRatio|key|ref|className|style|children)$/]",
+        "message": "<TableRow> doesn't accept that prop. Declared props: left, right, align, leftRatio."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TableRow'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|space-between)$/]",
+        "message": "<TableRow> align must be one of 'left' | 'space-between'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextArea'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|placeholder|helpText|error|disabled|rows|maxLength|onChange|key|ref|className|style|children)$/]",
+        "message": "<TextArea> doesn't accept that prop. Declared props: label, value, placeholder, helpText, error, disabled, rows, maxLength, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|color|appearance|disabled|key|ref|className|style|children)$/]",
+        "message": "<TextButton> doesn't accept that prop. Declared props: children, size, color, appearance, disabled."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextButton'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M|L)$/]",
+        "message": "<TextButton> size must be one of 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextButton'] > JSXAttribute[name.name='color'] > Literal[value!=/^(?:brand|neutral)$/]",
+        "message": "<TextButton> color must be one of 'brand' | 'neutral'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextButton'] > JSXAttribute[name.name='appearance'] > Literal[value!=/^(?:clear|arrow|underline)$/]",
+        "message": "<TextButton> appearance must be one of 'clear' | 'arrow' | 'underline'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextField'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|placeholder|helpText|error|disabled|variant|type|suffix|onChange|key|ref|className|style|children)$/]",
+        "message": "<TextField> doesn't accept that prop. Declared props: label, value, placeholder, helpText, error, disabled, variant, type, suffix, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextField'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:line|box)$/]",
+        "message": "<TextField> variant must be one of 'line' | 'box'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Title'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|variant|accessory|onClick|key|ref|className|style|children)$/]",
+        "message": "<Title> doesn't accept that prop. Declared props: children, size, variant, accessory, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Title'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L)$/]",
+        "message": "<Title> size must be one of 'XS' | 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Title'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:clear|selector|underlined)$/]",
+        "message": "<Title> variant must be one of 'clear' | 'selector' | 'underlined'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Toast'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|leading|action|onAction|position|key|ref|className|style|children)$/]",
+        "message": "<Toast> doesn't accept that prop. Declared props: children, leading, action, onAction, position."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Toast'] > JSXAttribute[name.name='position'] > Literal[value!=/^(?:top|bottom)$/]",
+        "message": "<Toast> position must be one of 'top' | 'bottom'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|size|placement|align|key|ref|className|style|children)$/]",
+        "message": "<Tooltip> doesn't accept that prop. Declared props: children, size, placement, align."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:S|M|L)$/]",
+        "message": "<Tooltip> size must be one of 'S' | 'M' | 'L'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute[name.name='placement'] > Literal[value!=/^(?:top|bottom)$/]",
+        "message": "<Tooltip> placement must be one of 'top' | 'bottom'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center|right)$/]",
+        "message": "<Tooltip> align must be one of 'left' | 'center' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Top'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subTextTop|subTextBottom|resource|rightItem|lowerCTA|key|ref|className|style|children)$/]",
+        "message": "<Top> doesn't accept that prop. Declared props: title, subTextTop, subTextBottom, resource, rightItem, lowerCTA."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Asset": {
+        "replaces": []
+      },
+      "Badge": {
+        "replaces": []
+      },
+      "BankPickerItem": {
+        "replaces": []
+      },
+      "Bar": {
+        "replaces": []
+      },
+      "BarChart": {
+        "replaces": []
+      },
+      "BoardRow": {
+        "replaces": []
+      },
+      "Border": {
+        "replaces": []
+      },
+      "BottomCTA": {
+        "replaces": []
+      },
+      "BottomInfo": {
+        "replaces": []
+      },
+      "BottomSheet": {
+        "replaces": []
+      },
+      "Bubble": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "ButtonArea": {
+        "replaces": []
+      },
+      "Checkbox": {
+        "replaces": []
+      },
+      "Chip": {
+        "replaces": []
+      },
+      "ChipAccessory": {
+        "replaces": []
+      },
+      "ClearButton": {
+        "replaces": []
+      },
+      "Dialog": {
+        "replaces": []
+      },
+      "FieldPrefix": {
+        "replaces": []
+      },
+      "GridListItem": {
+        "replaces": []
+      },
+      "HeaderAccessory": {
+        "replaces": []
+      },
+      "HomeIndicator": {
+        "replaces": []
+      },
+      "Icon": {
+        "replaces": []
+      },
+      "IconButton": {
+        "replaces": []
+      },
+      "Keyboard": {
+        "replaces": []
+      },
+      "Keypad": {
+        "replaces": []
+      },
+      "KeypadButton": {
+        "replaces": []
+      },
+      "LeftAccessory": {
+        "replaces": []
+      },
+      "ListFooter": {
+        "replaces": []
+      },
+      "ListHeader": {
+        "replaces": []
+      },
+      "ListRow": {
+        "replaces": []
+      },
+      "ListRowText": {
+        "replaces": []
+      },
+      "Loader": {
+        "replaces": []
+      },
+      "MenuItem": {
+        "replaces": []
+      },
+      "Navigation": {
+        "replaces": []
+      },
+      "NavigationAndroid": {
+        "replaces": []
+      },
+      "NumberField": {
+        "replaces": []
+      },
+      "NumericSpinner": {
+        "replaces": []
+      },
+      "PasswordField": {
+        "replaces": []
+      },
+      "PostBlock": {
+        "replaces": []
+      },
+      "ProgressBar": {
+        "replaces": []
+      },
+      "ProgressStepper": {
+        "replaces": []
+      },
+      "Rating": {
+        "replaces": []
+      },
+      "Result": {
+        "replaces": []
+      },
+      "RightAccessory": {
+        "replaces": []
+      },
+      "SearchField": {
+        "replaces": []
+      },
+      "SegmentedControl": {
+        "replaces": []
+      },
+      "SegmentedItem": {
+        "replaces": []
+      },
+      "SelectionRow": {
+        "replaces": []
+      },
+      "SelectorField": {
+        "replaces": []
+      },
+      "SheetBody": {
+        "replaces": []
+      },
+      "Slider": {
+        "replaces": []
+      },
+      "SliderKnob": {
+        "replaces": []
+      },
+      "SliderTooltip": {
+        "replaces": []
+      },
+      "StarIcon": {
+        "replaces": []
+      },
+      "StatusBar": {
+        "replaces": []
+      },
+      "StepButton": {
+        "replaces": []
+      },
+      "StepIcon": {
+        "replaces": []
+      },
+      "StepperStep": {
+        "replaces": []
+      },
+      "StepperRow": {
+        "replaces": []
+      },
+      "Switch": {
+        "replaces": []
+      },
+      "Tab": {
+        "replaces": []
+      },
+      "TabBarItem": {
+        "replaces": []
+      },
+      "TabItem": {
+        "replaces": []
+      },
+      "TableRow": {
+        "replaces": []
+      },
+      "TextArea": {
+        "replaces": []
+      },
+      "TextButton": {
+        "replaces": []
+      },
+      "TextField": {
+        "replaces": []
+      },
+      "Title": {
+        "replaces": []
+      },
+      "Toast": {
+        "replaces": []
+      },
+      "Tooltip": {
+        "replaces": []
+      },
+      "Top": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--adaptive-blue-adaptive-blue-500",
+      "--adaptive-blue-adaptive-blue-600",
+      "--adaptive-blue-opacity-adaptive-blue-opacity-200",
+      "--adaptive-blue-opacity-adaptive-blue-opacity-50",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-100",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-300",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-400",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-800",
+      "--adaptive-orange-adaptive-orange-700",
+      "--adaptive-red-adaptive-red-500",
+      "--adaptive-red-adaptive-red-600",
+      "--adaptive-red-opacity-adaptive-red-opacity-200",
+      "--adaptive-red-opacity-adaptive-red-opacity-50",
+      "--adaptive-yellow-opacity-adaptive-yellow-opacity-200",
+      "--adaptive-yellow-opacity-adaptive-yellow-opacity-50",
+      "--asset-background-dark",
+      "--asset-background-default",
+      "--asset-background-light",
+      "--background-blur-medium",
+      "--background-blur-strong",
+      "--background-blur-weak",
+      "--base-blue-blue-100",
+      "--base-blue-blue-200",
+      "--base-blue-blue-200-2",
+      "--base-blue-blue-300",
+      "--base-blue-blue-300-2",
+      "--base-blue-blue-400",
+      "--base-blue-blue-400-2",
+      "--base-blue-blue-50",
+      "--base-blue-blue-50-2",
+      "--base-blue-blue-500",
+      "--base-blue-blue-500-2",
+      "--base-blue-blue-600",
+      "--base-blue-blue-600-2",
+      "--base-blue-blue-700",
+      "--base-blue-blue-700-2",
+      "--base-blue-blue-800",
+      "--base-blue-blue-800-2",
+      "--base-blue-blue-900",
+      "--base-blue-blue-opacity-blue-opacity-100",
+      "--base-blue-blue-opacity-blue-opacity-100-2",
+      "--base-blue-blue-opacity-blue-opacity-200",
+      "--base-blue-blue-opacity-blue-opacity-300",
+      "--base-blue-blue-opacity-blue-opacity-400",
+      "--base-blue-blue-opacity-blue-opacity-50",
+      "--base-blue-blue-opacity-blue-opacity-500",
+      "--base-green-green-100",
+      "--base-green-green-200",
+      "--base-green-green-200-2",
+      "--base-green-green-300",
+      "--base-green-green-400",
+      "--base-green-green-400-2",
+      "--base-green-green-50",
+      "--base-green-green-500",
+      "--base-green-green-500-2",
+      "--base-green-green-600",
+      "--base-green-green-600-2",
+      "--base-green-green-700",
+      "--base-green-green-700-2",
+      "--base-green-green-800",
+      "--base-green-green-900",
+      "--base-green-green-opacity-green-opacity-100",
+      "--base-green-green-opacity-green-opacity-200",
+      "--base-green-green-opacity-green-opacity-300",
+      "--base-green-green-opacity-green-opacity-400",
+      "--base-green-green-opacity-green-opacity-50",
+      "--base-green-green-opacity-green-opacity-500",
+      "--base-grey-grey-100",
+      "--base-grey-grey-100-2",
+      "--base-grey-grey-200",
+      "--base-grey-grey-200-2",
+      "--base-grey-grey-200-3",
+      "--base-grey-grey-300",
+      "--base-grey-grey-300-2",
+      "--base-grey-grey-300-3",
+      "--base-grey-grey-400",
+      "--base-grey-grey-400-2",
+      "--base-grey-grey-50",
+      "--base-grey-grey-50-2",
+      "--base-grey-grey-50-3",
+      "--base-grey-grey-500",
+      "--base-grey-grey-500-2",
+      "--base-grey-grey-500-3",
+      "--base-grey-grey-600",
+      "--base-grey-grey-600-2",
+      "--base-grey-grey-600-3",
+      "--base-grey-grey-700",
+      "--base-grey-grey-700-2",
+      "--base-grey-grey-800",
+      "--base-grey-grey-800-2",
+      "--base-grey-grey-900",
+      "--base-grey-grey-900-2",
+      "--base-grey-grey-900-3",
+      "--base-grey-grey-opacity-grey-opacity-100",
+      "--base-grey-grey-opacity-grey-opacity-100-2",
+      "--base-grey-grey-opacity-grey-opacity-200",
+      "--base-grey-grey-opacity-grey-opacity-200-2",
+      "--base-grey-grey-opacity-grey-opacity-200-3",
+      "--base-grey-grey-opacity-grey-opacity-300",
+      "--base-grey-grey-opacity-grey-opacity-300-2",
+      "--base-grey-grey-opacity-grey-opacity-400",
+      "--base-grey-grey-opacity-grey-opacity-50",
+      "--base-grey-grey-opacity-grey-opacity-50-2",
+      "--base-grey-grey-opacity-grey-opacity-50-3",
+      "--base-grey-grey-opacity-grey-opacity-500",
+      "--base-grey-grey-opacity-grey-opacity-500-2",
+      "--base-grey-grey-opacity-grey-opacity-600",
+      "--base-grey-grey-opacity-grey-opacity-600-2",
+      "--base-grey-grey-opacity-grey-opacity-700",
+      "--base-grey-grey-opacity-grey-opacity-700-2",
+      "--base-grey-grey-opacity-grey-opacity-800",
+      "--base-grey-grey-opacity-grey-opacity-800-2",
+      "--base-grey-grey-opacity-grey-opacity-900",
+      "--base-orange-orange-100",
+      "--base-orange-orange-200",
+      "--base-orange-orange-300",
+      "--base-orange-orange-300-2",
+      "--base-orange-orange-400",
+      "--base-orange-orange-50",
+      "--base-orange-orange-500",
+      "--base-orange-orange-500-2",
+      "--base-orange-orange-600",
+      "--base-orange-orange-700",
+      "--base-orange-orange-800",
+      "--base-orange-orange-900",
+      "--base-purple-purple-100",
+      "--base-purple-purple-200",
+      "--base-purple-purple-300",
+      "--base-purple-purple-400",
+      "--base-purple-purple-50",
+      "--base-purple-purple-500",
+      "--base-purple-purple-600",
+      "--base-purple-purple-700",
+      "--base-purple-purple-800",
+      "--base-purple-purple-900",
+      "--base-purple-purple-opacity-purple-opacity-100",
+      "--base-purple-purple-opacity-purple-opacity-200",
+      "--base-purple-purple-opacity-purple-opacity-300",
+      "--base-purple-purple-opacity-purple-opacity-400",
+      "--base-purple-purple-opacity-purple-opacity-50",
+      "--base-purple-purple-opacity-purple-opacity-500",
+      "--base-red-red-100",
+      "--base-red-red-200",
+      "--base-red-red-200-2",
+      "--base-red-red-300",
+      "--base-red-red-300-2",
+      "--base-red-red-400",
+      "--base-red-red-50",
+      "--base-red-red-500",
+      "--base-red-red-500-2",
+      "--base-red-red-600",
+      "--base-red-red-700",
+      "--base-red-red-700-2",
+      "--base-red-red-800",
+      "--base-red-red-800-2",
+      "--base-red-red-900",
+      "--base-red-red-opacity-red-opacity-100",
+      "--base-red-red-opacity-red-opacity-200",
+      "--base-red-red-opacity-red-opacity-300",
+      "--base-red-red-opacity-red-opacity-400",
+      "--base-red-red-opacity-red-opacity-50",
+      "--base-red-red-opacity-red-opacity-500",
+      "--base-static-static-black",
+      "--base-static-static-white",
+      "--base-static-static-white-opacity-static-white-opacity-100",
+      "--base-static-static-white-opacity-static-white-opacity-200",
+      "--base-static-static-white-opacity-static-white-opacity-300",
+      "--base-static-static-white-opacity-static-white-opacity-400",
+      "--base-static-static-white-opacity-static-white-opacity-50",
+      "--base-static-static-white-opacity-static-white-opacity-500",
+      "--base-static-static-white-opacity-static-white-opacity-600",
+      "--base-static-static-white-opacity-static-white-opacity-700",
+      "--base-static-static-white-opacity-static-white-opacity-800",
+      "--base-static-static-white-opacity-static-white-opacity-900",
+      "--base-teal-teal-100",
+      "--base-teal-teal-200",
+      "--base-teal-teal-300",
+      "--base-teal-teal-400",
+      "--base-teal-teal-50",
+      "--base-teal-teal-500",
+      "--base-teal-teal-600",
+      "--base-teal-teal-600-2",
+      "--base-teal-teal-700",
+      "--base-teal-teal-700-2",
+      "--base-teal-teal-800",
+      "--base-teal-teal-900",
+      "--base-teal-teal-opacity-teal-opacity-100",
+      "--base-teal-teal-opacity-teal-opacity-200",
+      "--base-teal-teal-opacity-teal-opacity-300",
+      "--base-teal-teal-opacity-teal-opacity-400",
+      "--base-teal-teal-opacity-teal-opacity-50",
+      "--base-teal-teal-opacity-teal-opacity-500",
+      "--base-yellow-yellow-100",
+      "--base-yellow-yellow-200",
+      "--base-yellow-yellow-300",
+      "--base-yellow-yellow-300-2",
+      "--base-yellow-yellow-400",
+      "--base-yellow-yellow-50",
+      "--base-yellow-yellow-500",
+      "--base-yellow-yellow-500-2",
+      "--base-yellow-yellow-600",
+      "--base-yellow-yellow-700",
+      "--base-yellow-yellow-700-2",
+      "--base-yellow-yellow-800",
+      "--base-yellow-yellow-900",
+      "--base-yellow-yellow-900-2",
+      "--base-yellow-yellow-opacity-yellow-opacity-100",
+      "--base-yellow-yellow-opacity-yellow-opacity-200",
+      "--base-yellow-yellow-opacity-yellow-opacity-300",
+      "--base-yellow-yellow-opacity-yellow-opacity-400",
+      "--base-yellow-yellow-opacity-yellow-opacity-50",
+      "--base-yellow-yellow-opacity-yellow-opacity-500",
+      "--blur-semantic-background-blur-medium",
+      "--blur-semantic-background-blur-strong",
+      "--blur-semantic-background-blur-weak",
+      "--border-l",
+      "--border-l-2",
+      "--chart",
+      "--chart-2",
+      "--chart-3",
+      "--chart-4",
+      "--chart-5",
+      "--chart-padding-y",
+      "--color-base-blue-blue-opacity-blue-opacity-100",
+      "--color-base-grey-grey-500",
+      "--color-base-grey-grey-900",
+      "--color-base-grey-grey-opacity-grey-opacity-100",
+      "--color-base-grey-grey-opacity-grey-opacity-500",
+      "--color-base-grey-grey-opacity-grey-opacity-600",
+      "--color-base-white-white-opacity-100",
+      "--color-base-white-white-opacity-400",
+      "--color-base-white-white-opacity-500",
+      "--color-base-white-white-opacity-700",
+      "--color-base-white-white-opacity-800",
+      "--color-blue-blue300",
+      "--color-blue-blue400",
+      "--color-blue-blue50",
+      "--color-blue-blue500",
+      "--color-blue-blue600",
+      "--color-blue-blue700",
+      "--color-green-green200",
+      "--color-green-green400",
+      "--color-green-green500",
+      "--color-green-green600",
+      "--color-green-green700",
+      "--color-grey-grey100",
+      "--color-grey-grey200",
+      "--color-grey-grey300",
+      "--color-grey-grey400",
+      "--color-grey-grey400-2",
+      "--color-grey-grey50",
+      "--color-grey-grey500",
+      "--color-grey-grey600",
+      "--color-grey-grey700",
+      "--color-grey-grey800",
+      "--color-grey-grey900",
+      "--color-greyopacity-greyopacity100",
+      "--color-greyopacity-greyopacity200",
+      "--color-greyopacity-greyopacity300",
+      "--color-greyopacity-greyopacity400",
+      "--color-greyopacity-greyopacity50",
+      "--color-greyopacity-greyopacity500",
+      "--color-greyopacity-greyopacity800",
+      "--color-legacy-semantic-grey-background",
+      "--color-orange-orange300",
+      "--color-orange-orange500",
+      "--color-purple-purple500",
+      "--color-purple-purple500-2",
+      "--color-red-red300",
+      "--color-red-red500",
+      "--color-red-red600",
+      "--color-red-red700",
+      "--color-semantic-surface-brand-weak",
+      "--color-semantic-surface-neutral-weak",
+      "--color-sementic-dimbackground",
+      "--color-sementic-floatedbackground",
+      "--color-sementic-greybackground",
+      "--color-sementic-white-background",
+      "--color-teal-teal50",
+      "--color-teal-teal500",
+      "--color-teal-teal600",
+      "--color-teal-teal700",
+      "--color-white-whiteopacity200",
+      "--color-white-whiteopacity500",
+      "--color-white-whiteopacity700",
+      "--color-white-whiteopacity800",
+      "--color-white-whiteopacity900",
+      "--color-yellow-yellow300",
+      "--color-yellow-yellow500",
+      "--color-yellow-yellow700",
+      "--color-yellow-yellow900",
+      "--component-badge-fill-grey",
+      "--component-badge-fill-grey-2",
+      "--component-badge-fill-teal",
+      "--component-badge-fill-teal-2",
+      "--component-badge-fill-teal-weak",
+      "--component-badge-fill-teal-weak-2",
+      "--component-badge-text-on-teal-weak",
+      "--component-badge-text-on-teal-weak-2",
+      "--component-badge-text-on-warning",
+      "--component-badge-text-on-warning-2",
+      "--component-board-row-content-fill",
+      "--component-board-row-content-fill-2",
+      "--component-bottom-info-text",
+      "--component-bottom-sheet-handle-fill",
+      "--component-bubble-fill-grey",
+      "--component-button-gradient-layer-fill-brand-gradient-end",
+      "--component-button-gradient-layer-fill-brand-gradient-start",
+      "--component-button-gradient-layer-fill-brand-weak-gradient-end",
+      "--component-button-gradient-layer-fill-brand-weak-gradient-start",
+      "--component-button-gradient-layer-fill-danger-gradient-end",
+      "--component-button-gradient-layer-fill-danger-gradient-start",
+      "--component-button-gradient-layer-fill-danger-weak-gradient-end",
+      "--component-button-gradient-layer-fill-danger-weak-gradient-start",
+      "--component-button-gradient-layer-fill-dark-gradient-end",
+      "--component-button-gradient-layer-fill-dark-gradient-start",
+      "--component-button-gradient-layer-fill-dark-weak-gradient-end",
+      "--component-button-gradient-layer-fill-dark-weak-gradient-start",
+      "--component-button-gradient-layer-fill-inverse-gradient-end",
+      "--component-button-gradient-layer-fill-inverse-gradient-start",
+      "--component-button-gradient-layer-fill-inverse-weak-gradient-end",
+      "--component-button-gradient-layer-fill-inverse-weak-gradient-start",
+      "--component-button-loading-state-layer-fill",
+      "--component-button-loading-state-layer-fill-brand-weak",
+      "--component-button-loading-state-layer-fill-danger-weak",
+      "--component-button-loading-state-layer-fill-dark-weak",
+      "--component-button-loading-state-layer-fill-primary-inverse",
+      "--component-button-state-layer-fill",
+      "--component-button-state-layer-fill-brand-weak-pressed",
+      "--component-button-state-layer-fill-danger-weak-pressed",
+      "--component-button-state-layer-fill-dark-weak-pressed",
+      "--component-button-state-layer-fill-inverse-pressed",
+      "--component-button-state-layer-fill-pressed",
+      "--component-button-text-inverse",
+      "--component-checkbox-circle-check-fill-checked-enabled",
+      "--component-chip-border-inverse-selected",
+      "--component-chip-border-inverse-unselected",
+      "--component-chip-border-inverse-weak-selected",
+      "--component-chip-border-inverse-weak-selected-2",
+      "--component-chip-border-selected",
+      "--component-chip-border-unselected",
+      "--component-chip-border-weak-selected",
+      "--component-chip-fill-inverse-selected",
+      "--component-chip-fill-inverse-weak-selected",
+      "--component-chip-fill-selected",
+      "--component-chip-gradient-layer-fill-inverse-selected-gradient-end",
+      "--component-chip-gradient-layer-fill-inverse-selected-gradient-start",
+      "--component-chip-gradient-layer-fill-inverse-weak-selected-gradient-end",
+      "--component-chip-gradient-layer-fill-inverse-weak-selected-gradient-start",
+      "--component-chip-gradient-layer-fill-selected-gradient-end",
+      "--component-chip-gradient-layer-fill-selected-gradient-start",
+      "--component-chip-gradient-layer-fill-weak-selected-gradient-end",
+      "--component-chip-gradient-layer-fill-weak-selected-gradient-start",
+      "--component-chip-icon-inverse-selected",
+      "--component-chip-icon-inverse-unselected",
+      "--component-chip-icon-inverse-weak-selected",
+      "--component-chip-icon-selected",
+      "--component-chip-icon-weak-selected",
+      "--component-chip-red-dot-border",
+      "--component-chip-red-dot-border-inverse",
+      "--component-chip-red-dot-fill-inverse",
+      "--component-chip-state-layer-fill-inverse-unselected",
+      "--component-chip-state-layer-fill-inverse-weak-selected",
+      "--component-chip-state-layer-fill-selected",
+      "--component-chip-state-layer-fill-unselected",
+      "--component-chip-state-layer-fill-weak-selected",
+      "--component-chip-text-inverse-selected",
+      "--component-chip-text-inverse-unselected",
+      "--component-chip-text-selected",
+      "--component-chip-text-weak-selected",
+      "--component-grid-list-fill",
+      "--component-list-row-vertical-paddings-l",
+      "--component-list-row-vertical-paddings-m",
+      "--component-list-row-vertical-paddings-s",
+      "--component-list-row-vertical-paddings-xl",
+      "--component-loader-white-fill",
+      "--component-loader-white-text",
+      "--component-menu-border",
+      "--component-menu-fill",
+      "--component-menu-fill-2",
+      "--component-navigation-appsintoss-icon-container-fill-dark",
+      "--component-navigation-appsintoss-icon-container-fill-light",
+      "--component-navigation-appsintoss-icon-container-icon-dark",
+      "--component-navigation-appsintoss-icon-container-icon-light",
+      "--component-navigation-back-button-icon",
+      "--component-navigation-icon-back-button-icon-static-white",
+      "--component-navigation-right-item-icon",
+      "--component-navigation-right-item-text-static-white",
+      "--component-numeric-spinner-number-field-fill",
+      "--component-numeric-spinner-number-field-text",
+      "--component-progress-bar-indicator-fill",
+      "--component-progress-bar-track-fill",
+      "--component-progress-stepper-compact-indicator-active-outer-fill",
+      "--component-progress-stepper-full-indicator-active-icon-fill",
+      "--component-progress-stepper-full-indicator-active-outer-fill",
+      "--component-progress-stepper-full-indicator-completed-icon-fill",
+      "--component-progress-stepper-progress-fill",
+      "--component-progress-stepper-track-border",
+      "--component-progress-stepper-track-fill",
+      "--component-rating-icon-default",
+      "--component-rating-icon-default-2",
+      "--component-rating-icon-filled",
+      "--component-rating-icon-filled-2",
+      "--component-red-dot-fill",
+      "--component-red-dot-outer",
+      "--component-search-field-fill",
+      "--component-slider-handle-border",
+      "--component-slider-handle-fill",
+      "--component-slider-handle-fill-2",
+      "--component-slider-handle-shadow",
+      "--component-slider-track-fill",
+      "--component-stepper-asset-fill",
+      "--component-switch-container-fill-unchecked-enabled",
+      "--component-switch-handle-fill",
+      "--component-tab-indicator-fill",
+      "--component-tabbar-icon-selected",
+      "--component-tabbar-red-dot-fill",
+      "--component-text-field-box-field-fill-default",
+      "--component-text-field-box-field-fill-disabled",
+      "--component-text-field-box-field-fill-error",
+      "--component-text-field-box-field-fill-focused",
+      "--component-text-field-box-field-text-disabled",
+      "--component-text-field-line-border-error",
+      "--component-text-field-line-border-focused",
+      "--component-toast-bottom-button-fill",
+      "--component-toast-bottom-button-text",
+      "--component-toast-bottom-fill",
+      "--component-toast-text",
+      "--component-toast-top-fill",
+      "--component-tooltip-default-fill",
+      "--component-tooltip-full-fill",
+      "--component-tooltip-full-text",
+      "--device-size-width",
+      "--global-side-padding-m",
+      "--global-side-padding-s",
+      "--labels-primary",
+      "--legacy-semantic-border-hairline",
+      "--legacy-semantic-card-bg-grey",
+      "--legacy-semantic-card-bg-white",
+      "--legacy-semantic-dim-background",
+      "--legacy-semantic-floated-background",
+      "--legacy-semantic-grey-background",
+      "--legacy-semantic-layered-background",
+      "--legacy-semantic-pc-screen-bg",
+      "--legacy-semantic-white-background",
+      "--min-height-button-normal-large",
+      "--min-height-button-normal-medium",
+      "--min-height-button-normal-small",
+      "--min-height-button-normal-xsmall",
+      "--number",
+      "--padding-button-h-normal-large",
+      "--padding-button-h-normal-medium",
+      "--padding-button-h-normal-small",
+      "--padding-button-h-normal-xsmall",
+      "--padding-text-h-normal-large",
+      "--padding-text-h-normal-medium",
+      "--padding-text-h-normal-smalll",
+      "--padding-text-h-normal-xsmall",
+      "--padding-x-badge-large-padding-x",
+      "--padding-x-badge-medium-padding-x",
+      "--padding-x-badge-small-padding-x",
+      "--padding-y-badge-large-padding-y",
+      "--padding-y-badge-medium-padding-y",
+      "--padding-y-badge-small-padding-y",
+      "--radius-component-text-field-box-field",
+      "--radius-component-text-field-box-field-2",
+      "--radius-semantic-full",
+      "--radius-semantic-l",
+      "--radius-semantic-m",
+      "--radius-semantic-s",
+      "--radius-semantic-xs",
+      "--radius-semantic-xxs",
+      "--semantic-background-default",
+      "--semantic-background-dim",
+      "--semantic-background-floated",
+      "--semantic-background-lower",
+      "--semantic-background-upper",
+      "--semantic-border-default",
+      "--semantic-border-thick",
+      "--semantic-fill-brand",
+      "--semantic-fill-brand-inverse",
+      "--semantic-fill-brand-weak",
+      "--semantic-fill-brand-weak-2",
+      "--semantic-fill-brand-weak-inverse",
+      "--semantic-fill-danger",
+      "--semantic-fill-danger-weak",
+      "--semantic-fill-inverse",
+      "--semantic-fill-inverse-weak",
+      "--semantic-fill-neutral",
+      "--semantic-fill-neutral-weak",
+      "--semantic-fill-neutral-weak-2",
+      "--semantic-fill-pressed",
+      "--semantic-fill-success",
+      "--semantic-fill-success-weak",
+      "--semantic-fill-warning",
+      "--semantic-fill-warning-weak",
+      "--semantic-icon-brand",
+      "--semantic-icon-danger",
+      "--semantic-icon-default",
+      "--semantic-icon-default-2",
+      "--semantic-icon-primary",
+      "--semantic-icon-quaternary",
+      "--semantic-icon-secondary",
+      "--semantic-icon-success",
+      "--semantic-icon-tertiary",
+      "--semantic-icon-warning",
+      "--semantic-shadow-medium",
+      "--semantic-shadow-medium-2",
+      "--semantic-shadow-medium-3",
+      "--semantic-shadow-tiny",
+      "--semantic-shadow-tiny-2",
+      "--semantic-shadow-tiny-3",
+      "--semantic-shadow-weak",
+      "--semantic-shadow-weak-2",
+      "--semantic-shadow-weak-3",
+      "--semantic-text-brand",
+      "--semantic-text-danger",
+      "--semantic-text-on-fill",
+      "--semantic-text-on-fill-2",
+      "--semantic-text-on-fill-brand",
+      "--semantic-text-on-fill-warning",
+      "--semantic-text-primary",
+      "--semantic-text-quaternary",
+      "--semantic-text-secondary",
+      "--semantic-text-secondary-2",
+      "--semantic-text-strong",
+      "--semantic-text-subtle",
+      "--semantic-text-success",
+      "--semantic-text-tertiary",
+      "--semantic-text-warning",
+      "--size-icon-medium",
+      "--size-icon-small",
+      "--size-icon-xsmall",
+      "--size-logo-large",
+      "--size-logo-medium",
+      "--size-logo-small",
+      "--size-logo-xsmall",
+      "--sizing-util-device-width",
+      "--sizing-util-semantic-background-blur-medium",
+      "--sizing-util-semantic-background-blur-strong",
+      "--sizing-util-semantic-background-blur-weak",
+      "--slider-handle-fill",
+      "--spacing-component-bar-chart-margin-side",
+      "--spacing-component-bottom-cta-margin-side",
+      "--spacing-component-bottom-info-padding-side",
+      "--spacing-component-bottom-sheet-cta-padding-side",
+      "--spacing-component-bottom-sheet-margin-side",
+      "--spacing-component-bottom-sheet-padding-side",
+      "--spacing-component-button-margin-side",
+      "--spacing-component-button-padding",
+      "--spacing-component-chip-margin-side-l",
+      "--spacing-component-chip-margin-side-m",
+      "--spacing-component-chip-margin-side-s",
+      "--spacing-component-dialog-cta-padding-side",
+      "--spacing-component-dialog-margin-side",
+      "--spacing-component-dialog-padding",
+      "--spacing-component-full-tooltip-padding-side",
+      "--spacing-component-full-tooltip-padding-vertical",
+      "--spacing-component-grid-list-padding-side",
+      "--spacing-component-list-footer-padding-side",
+      "--spacing-component-list-header-padding-bottom-m",
+      "--spacing-component-list-header-padding-bottom-s",
+      "--spacing-component-list-header-padding-side-m",
+      "--spacing-component-list-header-padding-top-m",
+      "--spacing-component-list-header-padding-top-s",
+      "--spacing-component-list-row-padding-side-m",
+      "--spacing-component-list-row-padding-side-m-2",
+      "--spacing-component-list-row-padding-side-s",
+      "--spacing-component-list-row-padding-side-s-2",
+      "--spacing-component-list-row-padding-vertical-l",
+      "--spacing-component-list-row-padding-vertical-m",
+      "--spacing-component-list-row-padding-vertical-s",
+      "--spacing-component-list-row-padding-vertical-xl",
+      "--spacing-component-menu-check-padding-left",
+      "--spacing-component-menu-check-padding-right",
+      "--spacing-component-menu-padding-side",
+      "--spacing-component-post-padding-side",
+      "--spacing-component-progress-stepper-margin-side",
+      "--spacing-component-search-field-margin-side",
+      "--spacing-component-segmented-control-margin-side",
+      "--spacing-component-slider-margin-side",
+      "--spacing-component-stepper-padding-side",
+      "--spacing-component-stepper-with-right-arrow-padding-right",
+      "--spacing-component-tab-bar-padding-side",
+      "--spacing-component-tab-bar-padding-vertical",
+      "--spacing-component-tab-fluid-width-padding-side",
+      "--spacing-component-tab-full-width-padding-side",
+      "--spacing-component-table-row-padding-side",
+      "--spacing-component-text-field-box-field-left-item-padding-right",
+      "--spacing-component-text-field-box-field-left-item-padding-right-2",
+      "--spacing-component-text-field-box-field-margin-side",
+      "--spacing-component-text-field-box-field-padding-side",
+      "--spacing-component-text-field-box-field-padding-side-2",
+      "--spacing-component-text-field-box-field-padding-vertical",
+      "--spacing-component-text-field-box-field-padding-vertical-2",
+      "--spacing-component-text-field-box-field-right-item-padding-left",
+      "--spacing-component-text-field-box-gap",
+      "--spacing-component-text-field-box-help-text-margin-side",
+      "--spacing-component-text-field-box-label-margin-side",
+      "--spacing-component-text-field-box-margin-vertical",
+      "--spacing-component-text-field-line-field-left-item-padding-right",
+      "--spacing-component-text-field-line-field-left-item-padding-right-2",
+      "--spacing-component-text-field-line-field-margin-side",
+      "--spacing-component-text-field-line-field-padding-bottom",
+      "--spacing-component-text-field-line-field-padding-bottom-2",
+      "--spacing-component-text-field-line-field-right-item-padding-left",
+      "--spacing-component-text-field-line-field-right-item-padding-left-2",
+      "--spacing-component-text-field-line-gap",
+      "--spacing-component-text-field-line-gap-2",
+      "--spacing-component-text-field-line-help-text-margin-side",
+      "--spacing-component-text-field-line-help-text-margin-side-2",
+      "--spacing-component-text-field-line-label-margin-side",
+      "--spacing-component-text-field-line-label-margin-side-2",
+      "--spacing-component-text-field-line-margin-vertical",
+      "--spacing-component-text-field-line-margin-vertical-2",
+      "--spacing-component-text-field-split-text-field-box-horizontal-gap",
+      "--spacing-component-text-field-split-text-field-box-vertical-gap",
+      "--spacing-component-text-field-split-text-field-box-vertical-separator-padding-right",
+      "--spacing-component-text-field-split-text-field-box-vertical-separator-padding-right-2",
+      "--spacing-component-text-field-split-text-field-line-horizontal-gap",
+      "--spacing-component-text-field-split-text-field-line-separator-padding-bottom",
+      "--spacing-component-text-field-split-text-field-line-vertical-gap",
+      "--spacing-component-text-field-split-text-field-line-vertical-separator-padding-right",
+      "--spacing-component-toast-bottom-margin-side",
+      "--spacing-component-toast-bottom-padding-side",
+      "--spacing-component-toast-top-margin-side-android",
+      "--spacing-component-toast-top-margin-side-ios",
+      "--spacing-component-toast-top-padding-left",
+      "--spacing-component-toast-top-padding-right",
+      "--spacing-component-tooltip-l-padding-side",
+      "--spacing-component-tooltip-l-padding-vertical",
+      "--spacing-component-tooltip-m-padding-side",
+      "--spacing-component-tooltip-m-padding-vertical",
+      "--spacing-component-tooltip-margin-side",
+      "--spacing-component-tooltip-s-padding-side",
+      "--spacing-component-tooltip-s-padding-vertical",
+      "--spacing-component-top-padding-side",
+      "--spacing-component-top-padding-vertical",
+      "--spacing-semantic-gap-m",
+      "--spacing-semantic-gap-s",
+      "--spacing-semantic-page-margin-side-m",
+      "--spacing-semantic-page-margin-side-m-2",
+      "--spacing-semantic-page-margin-side-m-3",
+      "--spacing-semantic-page-margin-side-s",
+      "--spacing-semantic-page-margin-side-s-2",
+      "--spacing-semantic-page-margin-side-xs",
+      "--spacing-semantic-page-margin-side-xs-2",
+      "--spacing-semantic-page-margin-side-xxs",
+      "--spacing-semantic-page-margin-side-xxs-2",
+      "--spacing-semantic-page-padding-right-with-arrow-m",
+      "--spacing-semantic-page-padding-right-with-arrow-m-2",
+      "--spacing-semantic-page-padding-side-l",
+      "--spacing-semantic-page-padding-side-l-2",
+      "--spacing-semantic-page-padding-side-m",
+      "--spacing-semantic-page-padding-side-m-2",
+      "--spacing-semantic-page-padding-side-medium",
+      "--spacing-semantic-page-padding-side-small",
+      "--spacing-semantic-page-padding-side-small-2",
+      "--spacing-semantic-page-padding-side-xs",
+      "--spacing-semantic-page-padding-vertical-m",
+      "--spacing-semantic-page-padding-vertical-m-2",
+      "--spacing-wip-component-text-field-line-field-margin-side",
+      "--spec-docs-margin",
+      "--spec-docs-touch-target-area",
+      "--spec-docs-transparent-background",
+      "--spec-docs-width",
+      "--tds-blur-medium",
+      "--tds-blur-strong",
+      "--tds-blur-weak",
+      "--tds-device-width",
+      "--tds-font-body",
+      "--tds-font-display",
+      "--tds-font-product",
+      "--tds-font-system",
+      "--tds-gap-1",
+      "--tds-gap-2",
+      "--tds-gap-3",
+      "--tds-gap-4",
+      "--tds-gap-5",
+      "--tds-gap-6",
+      "--tds-gap-7",
+      "--tds-gap-8",
+      "--tds-hairline-inset",
+      "--tds-leading-normal",
+      "--tds-leading-relaxed",
+      "--tds-leading-snug",
+      "--tds-leading-tight",
+      "--tds-listrow-py-l",
+      "--tds-listrow-py-m",
+      "--tds-listrow-py-s",
+      "--tds-listrow-py-xl",
+      "--tds-radius-2xl",
+      "--tds-radius-3xl",
+      "--tds-radius-4xl",
+      "--tds-radius-icon",
+      "--tds-radius-l",
+      "--tds-radius-m",
+      "--tds-radius-pill",
+      "--tds-radius-s",
+      "--tds-radius-xl",
+      "--tds-radius-xs",
+      "--tds-shadow-floating",
+      "--tds-shadow-medium",
+      "--tds-shadow-tiny",
+      "--tds-shadow-weak",
+      "--tds-side-padding-cta",
+      "--tds-side-padding-m",
+      "--tds-side-padding-s",
+      "--tds-size-11",
+      "--tds-size-12",
+      "--tds-size-13",
+      "--tds-size-15",
+      "--tds-size-16",
+      "--tds-size-17",
+      "--tds-size-18",
+      "--tds-size-20",
+      "--tds-size-22",
+      "--tds-size-24",
+      "--tds-size-28",
+      "--tds-size-30",
+      "--tds-touch-target",
+      "--tds-weight-bold",
+      "--tds-weight-medium",
+      "--tds-weight-regular",
+      "--tds-weight-semibold",
+      "--typography-base-fontfamily-brand",
+      "--typography-base-fontfamily-brand-2",
+      "--typography-base-fontfamily-brand-3",
+      "--typography-base-fontfamily-brand-4",
+      "--typography-base-fontweight-bold",
+      "--typography-base-fontweight-bold-2",
+      "--typography-base-fontweight-bold-3",
+      "--typography-base-fontweight-medium",
+      "--typography-base-fontweight-medium-2",
+      "--typography-base-fontweight-medium-3",
+      "--typography-base-fontweight-medium-4",
+      "--typography-base-fontweight-regular",
+      "--typography-base-fontweight-regular-2",
+      "--typography-base-fontweight-regular-3",
+      "--typography-base-fontweight-semibold",
+      "--typography-base-fontweight-semibold-2",
+      "--typography-base-fontweight-semibold-3"
+    ],
+    "tokenKinds": {
+      "--tds-font-system": "font",
+      "--tds-font-product": "font",
+      "--tds-font-body": "font",
+      "--tds-font-display": "font",
+      "--adaptive-blue-adaptive-blue-500": "color",
+      "--adaptive-blue-adaptive-blue-600": "color",
+      "--adaptive-blue-opacity-adaptive-blue-opacity-200": "color",
+      "--adaptive-blue-opacity-adaptive-blue-opacity-50": "color",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-100": "color",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-300": "color",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-400": "color",
+      "--adaptive-grey-opacity-adaptive-grey-opacity-800": "color",
+      "--adaptive-orange-adaptive-orange-700": "color",
+      "--adaptive-red-adaptive-red-500": "color",
+      "--adaptive-red-adaptive-red-600": "color",
+      "--adaptive-red-opacity-adaptive-red-opacity-200": "color",
+      "--adaptive-red-opacity-adaptive-red-opacity-50": "color",
+      "--adaptive-yellow-opacity-adaptive-yellow-opacity-200": "color",
+      "--adaptive-yellow-opacity-adaptive-yellow-opacity-50": "color",
+      "--asset-background-dark": "color",
+      "--asset-background-default": "color",
+      "--asset-background-light": "color",
+      "--background-blur-medium": "other",
+      "--background-blur-strong": "other",
+      "--background-blur-weak": "other",
+      "--base-blue-blue-100": "color",
+      "--base-blue-blue-200-2": "color",
+      "--base-blue-blue-200": "color",
+      "--base-blue-blue-300-2": "color",
+      "--base-blue-blue-300": "color",
+      "--base-blue-blue-400-2": "color",
+      "--base-blue-blue-400": "color",
+      "--base-blue-blue-50-2": "color",
+      "--base-blue-blue-500-2": "color",
+      "--base-blue-blue-500": "color",
+      "--base-blue-blue-50": "color",
+      "--base-blue-blue-600-2": "color",
+      "--base-blue-blue-600": "color",
+      "--base-blue-blue-700-2": "color",
+      "--base-blue-blue-700": "color",
+      "--base-blue-blue-800-2": "color",
+      "--base-blue-blue-800": "color",
+      "--base-blue-blue-900": "color",
+      "--base-blue-blue-opacity-blue-opacity-100-2": "color",
+      "--base-blue-blue-opacity-blue-opacity-100": "color",
+      "--base-blue-blue-opacity-blue-opacity-200": "color",
+      "--base-blue-blue-opacity-blue-opacity-300": "color",
+      "--base-blue-blue-opacity-blue-opacity-400": "color",
+      "--base-blue-blue-opacity-blue-opacity-500": "color",
+      "--base-blue-blue-opacity-blue-opacity-50": "color",
+      "--base-green-green-100": "color",
+      "--base-green-green-200-2": "color",
+      "--base-green-green-200": "color",
+      "--base-green-green-300": "color",
+      "--base-green-green-400-2": "color",
+      "--base-green-green-400": "color",
+      "--base-green-green-500-2": "color",
+      "--base-green-green-500": "color",
+      "--base-green-green-50": "color",
+      "--base-green-green-600-2": "color",
+      "--base-green-green-600": "color",
+      "--base-green-green-700-2": "color",
+      "--base-green-green-700": "color",
+      "--base-green-green-800": "color",
+      "--base-green-green-900": "color",
+      "--base-green-green-opacity-green-opacity-100": "color",
+      "--base-green-green-opacity-green-opacity-200": "color",
+      "--base-green-green-opacity-green-opacity-300": "color",
+      "--base-green-green-opacity-green-opacity-400": "color",
+      "--base-green-green-opacity-green-opacity-500": "color",
+      "--base-green-green-opacity-green-opacity-50": "color",
+      "--base-grey-grey-100-2": "color",
+      "--base-grey-grey-100": "color",
+      "--base-grey-grey-200-2": "color",
+      "--base-grey-grey-200-3": "color",
+      "--base-grey-grey-200": "color",
+      "--base-grey-grey-300-2": "color",
+      "--base-grey-grey-300-3": "color",
+      "--base-grey-grey-300": "color",
+      "--base-grey-grey-400-2": "color",
+      "--base-grey-grey-400": "color",
+      "--base-grey-grey-50-2": "color",
+      "--base-grey-grey-50-3": "color",
+      "--base-grey-grey-500-2": "color",
+      "--base-grey-grey-500-3": "color",
+      "--base-grey-grey-500": "color",
+      "--base-grey-grey-50": "color",
+      "--base-grey-grey-600-2": "color",
+      "--base-grey-grey-600-3": "color",
+      "--base-grey-grey-600": "color",
+      "--base-grey-grey-700-2": "color",
+      "--base-grey-grey-700": "color",
+      "--base-grey-grey-800-2": "color",
+      "--base-grey-grey-800": "color",
+      "--base-grey-grey-900-2": "color",
+      "--base-grey-grey-900-3": "color",
+      "--base-grey-grey-900": "color",
+      "--base-grey-grey-opacity-grey-opacity-100-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-100": "color",
+      "--base-grey-grey-opacity-grey-opacity-200-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-200-3": "color",
+      "--base-grey-grey-opacity-grey-opacity-200": "color",
+      "--base-grey-grey-opacity-grey-opacity-300-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-300": "color",
+      "--base-grey-grey-opacity-grey-opacity-400": "color",
+      "--base-grey-grey-opacity-grey-opacity-50-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-50-3": "color",
+      "--base-grey-grey-opacity-grey-opacity-500-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-500": "color",
+      "--base-grey-grey-opacity-grey-opacity-50": "color",
+      "--base-grey-grey-opacity-grey-opacity-600-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-600": "color",
+      "--base-grey-grey-opacity-grey-opacity-700-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-700": "color",
+      "--base-grey-grey-opacity-grey-opacity-800-2": "color",
+      "--base-grey-grey-opacity-grey-opacity-800": "color",
+      "--base-grey-grey-opacity-grey-opacity-900": "color",
+      "--base-orange-orange-100": "color",
+      "--base-orange-orange-200": "color",
+      "--base-orange-orange-300-2": "color",
+      "--base-orange-orange-300": "color",
+      "--base-orange-orange-400": "color",
+      "--base-orange-orange-500-2": "color",
+      "--base-orange-orange-500": "color",
+      "--base-orange-orange-50": "color",
+      "--base-orange-orange-600": "color",
+      "--base-orange-orange-700": "color",
+      "--base-orange-orange-800": "color",
+      "--base-orange-orange-900": "color",
+      "--base-purple-purple-100": "color",
+      "--base-purple-purple-200": "color",
+      "--base-purple-purple-300": "color",
+      "--base-purple-purple-400": "color",
+      "--base-purple-purple-500": "color",
+      "--base-purple-purple-50": "color",
+      "--base-purple-purple-600": "color",
+      "--base-purple-purple-700": "color",
+      "--base-purple-purple-800": "color",
+      "--base-purple-purple-900": "color",
+      "--base-purple-purple-opacity-purple-opacity-100": "color",
+      "--base-purple-purple-opacity-purple-opacity-200": "color",
+      "--base-purple-purple-opacity-purple-opacity-300": "color",
+      "--base-purple-purple-opacity-purple-opacity-400": "color",
+      "--base-purple-purple-opacity-purple-opacity-500": "color",
+      "--base-purple-purple-opacity-purple-opacity-50": "color",
+      "--base-red-red-100": "color",
+      "--base-red-red-200-2": "color",
+      "--base-red-red-200": "color",
+      "--base-red-red-300-2": "color",
+      "--base-red-red-300": "color",
+      "--base-red-red-400": "color",
+      "--base-red-red-500-2": "color",
+      "--base-red-red-500": "color",
+      "--base-red-red-50": "color",
+      "--base-red-red-600": "color",
+      "--base-red-red-700-2": "color",
+      "--base-red-red-700": "color",
+      "--base-red-red-800-2": "color",
+      "--base-red-red-800": "color",
+      "--base-red-red-900": "color",
+      "--base-red-red-opacity-red-opacity-100": "color",
+      "--base-red-red-opacity-red-opacity-200": "color",
+      "--base-red-red-opacity-red-opacity-300": "color",
+      "--base-red-red-opacity-red-opacity-400": "color",
+      "--base-red-red-opacity-red-opacity-500": "color",
+      "--base-red-red-opacity-red-opacity-50": "color",
+      "--base-static-static-black": "color",
+      "--base-static-static-white-opacity-static-white-opacity-100": "color",
+      "--base-static-static-white-opacity-static-white-opacity-200": "color",
+      "--base-static-static-white-opacity-static-white-opacity-300": "color",
+      "--base-static-static-white-opacity-static-white-opacity-400": "color",
+      "--base-static-static-white-opacity-static-white-opacity-500": "color",
+      "--base-static-static-white-opacity-static-white-opacity-50": "color",
+      "--base-static-static-white-opacity-static-white-opacity-600": "color",
+      "--base-static-static-white-opacity-static-white-opacity-700": "color",
+      "--base-static-static-white-opacity-static-white-opacity-800": "color",
+      "--base-static-static-white-opacity-static-white-opacity-900": "color",
+      "--base-static-static-white": "color",
+      "--base-teal-teal-100": "color",
+      "--base-teal-teal-200": "color",
+      "--base-teal-teal-300": "color",
+      "--base-teal-teal-400": "color",
+      "--base-teal-teal-500": "color",
+      "--base-teal-teal-50": "color",
+      "--base-teal-teal-600-2": "color",
+      "--base-teal-teal-600": "color",
+      "--base-teal-teal-700-2": "color",
+      "--base-teal-teal-700": "color",
+      "--base-teal-teal-800": "color",
+      "--base-teal-teal-900": "color",
+      "--base-teal-teal-opacity-teal-opacity-100": "color",
+      "--base-teal-teal-opacity-teal-opacity-200": "color",
+      "--base-teal-teal-opacity-teal-opacity-300": "color",
+      "--base-teal-teal-opacity-teal-opacity-400": "color",
+      "--base-teal-teal-opacity-teal-opacity-500": "color",
+      "--base-teal-teal-opacity-teal-opacity-50": "color",
+      "--base-yellow-yellow-100": "color",
+      "--base-yellow-yellow-200": "color",
+      "--base-yellow-yellow-300-2": "color",
+      "--base-yellow-yellow-300": "color",
+      "--base-yellow-yellow-400": "color",
+      "--base-yellow-yellow-500-2": "color",
+      "--base-yellow-yellow-500": "color",
+      "--base-yellow-yellow-50": "color",
+      "--base-yellow-yellow-600": "color",
+      "--base-yellow-yellow-700-2": "color",
+      "--base-yellow-yellow-700": "color",
+      "--base-yellow-yellow-800": "color",
+      "--base-yellow-yellow-900-2": "color",
+      "--base-yellow-yellow-900": "color",
+      "--base-yellow-yellow-opacity-yellow-opacity-100": "color",
+      "--base-yellow-yellow-opacity-yellow-opacity-200": "color",
+      "--base-yellow-yellow-opacity-yellow-opacity-300": "color",
+      "--base-yellow-yellow-opacity-yellow-opacity-400": "color",
+      "--base-yellow-yellow-opacity-yellow-opacity-500": "color",
+      "--base-yellow-yellow-opacity-yellow-opacity-50": "color",
+      "--blur-semantic-background-blur-medium": "other",
+      "--blur-semantic-background-blur-strong": "other",
+      "--blur-semantic-background-blur-weak": "other",
+      "--border-l-2": "other",
+      "--border-l": "other",
+      "--chart-2": "other",
+      "--chart-3": "other",
+      "--chart-4": "other",
+      "--chart-5": "other",
+      "--chart-padding-y": "other",
+      "--chart": "other",
+      "--color-base-blue-blue-opacity-blue-opacity-100": "color",
+      "--color-base-grey-grey-500": "color",
+      "--color-base-grey-grey-900": "color",
+      "--color-base-grey-grey-opacity-grey-opacity-100": "color",
+      "--color-base-grey-grey-opacity-grey-opacity-500": "color",
+      "--color-base-grey-grey-opacity-grey-opacity-600": "color",
+      "--color-base-white-white-opacity-100": "color",
+      "--color-base-white-white-opacity-400": "color",
+      "--color-base-white-white-opacity-500": "color",
+      "--color-base-white-white-opacity-700": "color",
+      "--color-base-white-white-opacity-800": "color",
+      "--color-blue-blue300": "color",
+      "--color-blue-blue400": "color",
+      "--color-blue-blue500": "color",
+      "--color-blue-blue50": "color",
+      "--color-blue-blue600": "color",
+      "--color-blue-blue700": "color",
+      "--color-green-green200": "color",
+      "--color-green-green400": "color",
+      "--color-green-green500": "color",
+      "--color-green-green600": "color",
+      "--color-green-green700": "color",
+      "--color-grey-grey100": "color",
+      "--color-grey-grey200": "color",
+      "--color-grey-grey300": "color",
+      "--color-grey-grey400-2": "color",
+      "--color-grey-grey400": "color",
+      "--color-grey-grey500": "color",
+      "--color-grey-grey50": "color",
+      "--color-grey-grey600": "color",
+      "--color-grey-grey700": "color",
+      "--color-grey-grey800": "color",
+      "--color-grey-grey900": "color",
+      "--color-greyopacity-greyopacity100": "color",
+      "--color-greyopacity-greyopacity200": "color",
+      "--color-greyopacity-greyopacity300": "color",
+      "--color-greyopacity-greyopacity400": "color",
+      "--color-greyopacity-greyopacity500": "color",
+      "--color-greyopacity-greyopacity50": "color",
+      "--color-greyopacity-greyopacity800": "color",
+      "--color-legacy-semantic-grey-background": "color",
+      "--color-orange-orange300": "color",
+      "--color-orange-orange500": "color",
+      "--color-purple-purple500-2": "color",
+      "--color-purple-purple500": "color",
+      "--color-red-red300": "color",
+      "--color-red-red500": "color",
+      "--color-red-red600": "color",
+      "--color-red-red700": "color",
+      "--color-semantic-surface-brand-weak": "color",
+      "--color-semantic-surface-neutral-weak": "color",
+      "--color-sementic-dimbackground": "color",
+      "--color-sementic-floatedbackground": "color",
+      "--color-sementic-greybackground": "color",
+      "--color-sementic-white-background": "color",
+      "--color-teal-teal500": "color",
+      "--color-teal-teal50": "color",
+      "--color-teal-teal600": "color",
+      "--color-teal-teal700": "color",
+      "--color-white-whiteopacity200": "color",
+      "--color-white-whiteopacity500": "color",
+      "--color-white-whiteopacity700": "color",
+      "--color-white-whiteopacity800": "color",
+      "--color-white-whiteopacity900": "color",
+      "--color-yellow-yellow300": "color",
+      "--color-yellow-yellow500": "color",
+      "--color-yellow-yellow700": "color",
+      "--color-yellow-yellow900": "color",
+      "--component-badge-fill-grey-2": "color",
+      "--component-badge-fill-grey": "color",
+      "--component-badge-fill-teal-2": "color",
+      "--component-badge-fill-teal-weak-2": "color",
+      "--component-badge-fill-teal-weak": "color",
+      "--component-badge-fill-teal": "color",
+      "--component-badge-text-on-teal-weak-2": "color",
+      "--component-badge-text-on-teal-weak": "color",
+      "--component-badge-text-on-warning-2": "color",
+      "--component-badge-text-on-warning": "color",
+      "--component-board-row-content-fill-2": "color",
+      "--component-board-row-content-fill": "color",
+      "--component-bottom-info-text": "color",
+      "--component-bottom-sheet-handle-fill": "color",
+      "--component-bubble-fill-grey": "color",
+      "--component-button-gradient-layer-fill-brand-gradient-end": "color",
+      "--component-button-gradient-layer-fill-brand-gradient-start": "color",
+      "--component-button-gradient-layer-fill-brand-weak-gradient-end": "color",
+      "--component-button-gradient-layer-fill-brand-weak-gradient-start": "color",
+      "--component-button-gradient-layer-fill-danger-gradient-end": "color",
+      "--component-button-gradient-layer-fill-danger-gradient-start": "color",
+      "--component-button-gradient-layer-fill-danger-weak-gradient-end": "color",
+      "--component-button-gradient-layer-fill-danger-weak-gradient-start": "color",
+      "--component-button-gradient-layer-fill-dark-gradient-end": "color",
+      "--component-button-gradient-layer-fill-dark-gradient-start": "color",
+      "--component-button-gradient-layer-fill-dark-weak-gradient-end": "color",
+      "--component-button-gradient-layer-fill-dark-weak-gradient-start": "color",
+      "--component-button-gradient-layer-fill-inverse-gradient-end": "color",
+      "--component-button-gradient-layer-fill-inverse-gradient-start": "color",
+      "--component-button-gradient-layer-fill-inverse-weak-gradient-end": "color",
+      "--component-button-gradient-layer-fill-inverse-weak-gradient-start": "color",
+      "--component-button-loading-state-layer-fill-brand-weak": "color",
+      "--component-button-loading-state-layer-fill-danger-weak": "color",
+      "--component-button-loading-state-layer-fill-dark-weak": "color",
+      "--component-button-loading-state-layer-fill-primary-inverse": "color",
+      "--component-button-loading-state-layer-fill": "color",
+      "--component-button-state-layer-fill-brand-weak-pressed": "color",
+      "--component-button-state-layer-fill-danger-weak-pressed": "color",
+      "--component-button-state-layer-fill-dark-weak-pressed": "color",
+      "--component-button-state-layer-fill-inverse-pressed": "color",
+      "--component-button-state-layer-fill-pressed": "color",
+      "--component-button-state-layer-fill": "color",
+      "--component-button-text-inverse": "color",
+      "--component-checkbox-circle-check-fill-checked-enabled": "color",
+      "--component-chip-border-inverse-selected": "color",
+      "--component-chip-border-inverse-unselected": "color",
+      "--component-chip-border-inverse-weak-selected-2": "color",
+      "--component-chip-border-inverse-weak-selected": "color",
+      "--component-chip-border-selected": "color",
+      "--component-chip-border-unselected": "color",
+      "--component-chip-border-weak-selected": "color",
+      "--component-chip-fill-inverse-selected": "color",
+      "--component-chip-fill-inverse-weak-selected": "color",
+      "--component-chip-fill-selected": "color",
+      "--component-chip-gradient-layer-fill-inverse-selected-gradient-end": "color",
+      "--component-chip-gradient-layer-fill-inverse-selected-gradient-start": "color",
+      "--component-chip-gradient-layer-fill-inverse-weak-selected-gradient-end": "color",
+      "--component-chip-gradient-layer-fill-inverse-weak-selected-gradient-start": "color",
+      "--component-chip-gradient-layer-fill-selected-gradient-end": "color",
+      "--component-chip-gradient-layer-fill-selected-gradient-start": "color",
+      "--component-chip-gradient-layer-fill-weak-selected-gradient-end": "color",
+      "--component-chip-gradient-layer-fill-weak-selected-gradient-start": "color",
+      "--component-chip-icon-inverse-selected": "color",
+      "--component-chip-icon-inverse-unselected": "color",
+      "--component-chip-icon-inverse-weak-selected": "color",
+      "--component-chip-icon-selected": "color",
+      "--component-chip-icon-weak-selected": "color",
+      "--component-chip-red-dot-border-inverse": "color",
+      "--component-chip-red-dot-border": "color",
+      "--component-chip-red-dot-fill-inverse": "color",
+      "--component-chip-state-layer-fill-inverse-unselected": "color",
+      "--component-chip-state-layer-fill-inverse-weak-selected": "color",
+      "--component-chip-state-layer-fill-selected": "color",
+      "--component-chip-state-layer-fill-unselected": "color",
+      "--component-chip-state-layer-fill-weak-selected": "color",
+      "--component-chip-text-inverse-selected": "color",
+      "--component-chip-text-inverse-unselected": "color",
+      "--component-chip-text-selected": "color",
+      "--component-chip-text-weak-selected": "color",
+      "--component-grid-list-fill": "color",
+      "--component-list-row-vertical-paddings-l": "other",
+      "--component-list-row-vertical-paddings-m": "other",
+      "--component-list-row-vertical-paddings-s": "other",
+      "--component-list-row-vertical-paddings-xl": "other",
+      "--component-loader-white-fill": "color",
+      "--component-loader-white-text": "color",
+      "--component-menu-border": "color",
+      "--component-menu-fill-2": "color",
+      "--component-menu-fill": "color",
+      "--component-navigation-appsintoss-icon-container-fill-dark": "color",
+      "--component-navigation-appsintoss-icon-container-fill-light": "color",
+      "--component-navigation-appsintoss-icon-container-icon-dark": "color",
+      "--component-navigation-appsintoss-icon-container-icon-light": "color",
+      "--component-navigation-back-button-icon": "color",
+      "--component-navigation-icon-back-button-icon-static-white": "color",
+      "--component-navigation-right-item-icon": "color",
+      "--component-navigation-right-item-text-static-white": "color",
+      "--component-numeric-spinner-number-field-fill": "color",
+      "--component-numeric-spinner-number-field-text": "color",
+      "--component-progress-bar-indicator-fill": "color",
+      "--component-progress-bar-track-fill": "color",
+      "--component-progress-stepper-compact-indicator-active-outer-fill": "color",
+      "--component-progress-stepper-full-indicator-active-icon-fill": "color",
+      "--component-progress-stepper-full-indicator-active-outer-fill": "color",
+      "--component-progress-stepper-full-indicator-completed-icon-fill": "color",
+      "--component-progress-stepper-progress-fill": "color",
+      "--component-progress-stepper-track-border": "color",
+      "--component-progress-stepper-track-fill": "color",
+      "--component-rating-icon-default-2": "color",
+      "--component-rating-icon-default": "color",
+      "--component-rating-icon-filled-2": "color",
+      "--component-rating-icon-filled": "color",
+      "--component-red-dot-fill": "color",
+      "--component-red-dot-outer": "color",
+      "--component-search-field-fill": "color",
+      "--component-slider-handle-border": "color",
+      "--component-slider-handle-fill-2": "color",
+      "--component-slider-handle-fill": "color",
+      "--component-slider-handle-shadow": "color",
+      "--component-slider-track-fill": "color",
+      "--component-stepper-asset-fill": "color",
+      "--component-switch-container-fill-unchecked-enabled": "color",
+      "--component-switch-handle-fill": "color",
+      "--component-tab-indicator-fill": "color",
+      "--component-tabbar-icon-selected": "color",
+      "--component-tabbar-red-dot-fill": "color",
+      "--component-text-field-box-field-fill-default": "color",
+      "--component-text-field-box-field-fill-disabled": "color",
+      "--component-text-field-box-field-fill-error": "color",
+      "--component-text-field-box-field-fill-focused": "color",
+      "--component-text-field-box-field-text-disabled": "color",
+      "--component-text-field-line-border-error": "color",
+      "--component-text-field-line-border-focused": "color",
+      "--component-toast-bottom-button-fill": "color",
+      "--component-toast-bottom-button-text": "color",
+      "--component-toast-bottom-fill": "color",
+      "--component-toast-text": "color",
+      "--component-toast-top-fill": "color",
+      "--component-tooltip-default-fill": "color",
+      "--component-tooltip-full-fill": "color",
+      "--component-tooltip-full-text": "color",
+      "--device-size-width": "other",
+      "--global-side-padding-m": "other",
+      "--global-side-padding-s": "other",
+      "--labels-primary": "color",
+      "--legacy-semantic-border-hairline": "color",
+      "--legacy-semantic-card-bg-grey": "color",
+      "--legacy-semantic-card-bg-white": "color",
+      "--legacy-semantic-dim-background": "color",
+      "--legacy-semantic-floated-background": "color",
+      "--legacy-semantic-grey-background": "color",
+      "--legacy-semantic-layered-background": "color",
+      "--legacy-semantic-pc-screen-bg": "color",
+      "--legacy-semantic-white-background": "color",
+      "--min-height-button-normal-large": "other",
+      "--min-height-button-normal-medium": "other",
+      "--min-height-button-normal-small": "other",
+      "--min-height-button-normal-xsmall": "other",
+      "--number": "other",
+      "--padding-button-h-normal-large": "other",
+      "--padding-button-h-normal-medium": "other",
+      "--padding-button-h-normal-small": "other",
+      "--padding-button-h-normal-xsmall": "other",
+      "--padding-text-h-normal-large": "other",
+      "--padding-text-h-normal-medium": "other",
+      "--padding-text-h-normal-smalll": "other",
+      "--padding-text-h-normal-xsmall": "other",
+      "--padding-x-badge-large-padding-x": "other",
+      "--padding-x-badge-medium-padding-x": "other",
+      "--padding-x-badge-small-padding-x": "other",
+      "--padding-y-badge-large-padding-y": "other",
+      "--padding-y-badge-medium-padding-y": "other",
+      "--padding-y-badge-small-padding-y": "other",
+      "--radius-component-text-field-box-field-2": "other",
+      "--radius-component-text-field-box-field": "other",
+      "--radius-semantic-full": "other",
+      "--radius-semantic-l": "other",
+      "--radius-semantic-m": "other",
+      "--radius-semantic-s": "other",
+      "--radius-semantic-xs": "other",
+      "--radius-semantic-xxs": "other",
+      "--semantic-background-default": "color",
+      "--semantic-background-dim": "color",
+      "--semantic-background-floated": "color",
+      "--semantic-background-lower": "color",
+      "--semantic-background-upper": "color",
+      "--semantic-border-default": "color",
+      "--semantic-border-thick": "color",
+      "--semantic-fill-brand-inverse": "color",
+      "--semantic-fill-brand-weak-2": "color",
+      "--semantic-fill-brand-weak-inverse": "color",
+      "--semantic-fill-brand-weak": "color",
+      "--semantic-fill-brand": "color",
+      "--semantic-fill-danger-weak": "color",
+      "--semantic-fill-danger": "color",
+      "--semantic-fill-inverse-weak": "color",
+      "--semantic-fill-inverse": "color",
+      "--semantic-fill-neutral-weak-2": "color",
+      "--semantic-fill-neutral-weak": "color",
+      "--semantic-fill-neutral": "color",
+      "--semantic-fill-pressed": "color",
+      "--semantic-fill-success-weak": "color",
+      "--semantic-fill-success": "color",
+      "--semantic-fill-warning-weak": "color",
+      "--semantic-fill-warning": "color",
+      "--semantic-icon-brand": "color",
+      "--semantic-icon-danger": "color",
+      "--semantic-icon-default-2": "color",
+      "--semantic-icon-default": "color",
+      "--semantic-icon-primary": "color",
+      "--semantic-icon-quaternary": "color",
+      "--semantic-icon-secondary": "color",
+      "--semantic-icon-success": "color",
+      "--semantic-icon-tertiary": "color",
+      "--semantic-icon-warning": "color",
+      "--semantic-shadow-medium-2": "color",
+      "--semantic-shadow-medium-3": "color",
+      "--semantic-shadow-medium": "color",
+      "--semantic-shadow-tiny-2": "color",
+      "--semantic-shadow-tiny-3": "color",
+      "--semantic-shadow-tiny": "color",
+      "--semantic-shadow-weak-2": "color",
+      "--semantic-shadow-weak-3": "color",
+      "--semantic-shadow-weak": "color",
+      "--semantic-text-brand": "color",
+      "--semantic-text-danger": "color",
+      "--semantic-text-on-fill-2": "color",
+      "--semantic-text-on-fill-brand": "color",
+      "--semantic-text-on-fill-warning": "color",
+      "--semantic-text-on-fill": "color",
+      "--semantic-text-primary": "color",
+      "--semantic-text-quaternary": "color",
+      "--semantic-text-secondary-2": "color",
+      "--semantic-text-secondary": "color",
+      "--semantic-text-strong": "color",
+      "--semantic-text-subtle": "color",
+      "--semantic-text-success": "color",
+      "--semantic-text-tertiary": "color",
+      "--semantic-text-warning": "color",
+      "--size-icon-medium": "other",
+      "--size-icon-small": "other",
+      "--size-icon-xsmall": "other",
+      "--size-logo-large": "other",
+      "--size-logo-medium": "other",
+      "--size-logo-small": "other",
+      "--size-logo-xsmall": "other",
+      "--sizing-util-device-width": "other",
+      "--sizing-util-semantic-background-blur-medium": "other",
+      "--sizing-util-semantic-background-blur-strong": "other",
+      "--sizing-util-semantic-background-blur-weak": "other",
+      "--slider-handle-fill": "color",
+      "--spacing-component-bar-chart-margin-side": "other",
+      "--spacing-component-bottom-cta-margin-side": "other",
+      "--spacing-component-bottom-info-padding-side": "other",
+      "--spacing-component-bottom-sheet-cta-padding-side": "other",
+      "--spacing-component-bottom-sheet-margin-side": "other",
+      "--spacing-component-bottom-sheet-padding-side": "other",
+      "--spacing-component-button-margin-side": "other",
+      "--spacing-component-button-padding": "other",
+      "--spacing-component-chip-margin-side-l": "other",
+      "--spacing-component-chip-margin-side-m": "other",
+      "--spacing-component-chip-margin-side-s": "other",
+      "--spacing-component-dialog-cta-padding-side": "other",
+      "--spacing-component-dialog-margin-side": "other",
+      "--spacing-component-dialog-padding": "other",
+      "--spacing-component-full-tooltip-padding-side": "other",
+      "--spacing-component-full-tooltip-padding-vertical": "other",
+      "--spacing-component-grid-list-padding-side": "other",
+      "--spacing-component-list-footer-padding-side": "other",
+      "--spacing-component-list-header-padding-bottom-m": "other",
+      "--spacing-component-list-header-padding-bottom-s": "other",
+      "--spacing-component-list-header-padding-side-m": "other",
+      "--spacing-component-list-header-padding-top-m": "other",
+      "--spacing-component-list-header-padding-top-s": "other",
+      "--spacing-component-list-row-padding-side-m-2": "other",
+      "--spacing-component-list-row-padding-side-m": "other",
+      "--spacing-component-list-row-padding-side-s-2": "other",
+      "--spacing-component-list-row-padding-side-s": "other",
+      "--spacing-component-list-row-padding-vertical-l": "other",
+      "--spacing-component-list-row-padding-vertical-m": "other",
+      "--spacing-component-list-row-padding-vertical-s": "other",
+      "--spacing-component-list-row-padding-vertical-xl": "other",
+      "--spacing-component-menu-check-padding-left": "other",
+      "--spacing-component-menu-check-padding-right": "other",
+      "--spacing-component-menu-padding-side": "other",
+      "--spacing-component-post-padding-side": "other",
+      "--spacing-component-progress-stepper-margin-side": "other",
+      "--spacing-component-search-field-margin-side": "other",
+      "--spacing-component-segmented-control-margin-side": "other",
+      "--spacing-component-slider-margin-side": "other",
+      "--spacing-component-stepper-padding-side": "other",
+      "--spacing-component-stepper-with-right-arrow-padding-right": "other",
+      "--spacing-component-tab-bar-padding-side": "other",
+      "--spacing-component-tab-bar-padding-vertical": "other",
+      "--spacing-component-tab-fluid-width-padding-side": "other",
+      "--spacing-component-tab-full-width-padding-side": "other",
+      "--spacing-component-table-row-padding-side": "other",
+      "--spacing-component-text-field-box-field-left-item-padding-right-2": "other",
+      "--spacing-component-text-field-box-field-left-item-padding-right": "other",
+      "--spacing-component-text-field-box-field-margin-side": "other",
+      "--spacing-component-text-field-box-field-padding-side-2": "other",
+      "--spacing-component-text-field-box-field-padding-side": "other",
+      "--spacing-component-text-field-box-field-padding-vertical-2": "other",
+      "--spacing-component-text-field-box-field-padding-vertical": "other",
+      "--spacing-component-text-field-box-field-right-item-padding-left": "other",
+      "--spacing-component-text-field-box-gap": "other",
+      "--spacing-component-text-field-box-help-text-margin-side": "other",
+      "--spacing-component-text-field-box-label-margin-side": "other",
+      "--spacing-component-text-field-box-margin-vertical": "other",
+      "--spacing-component-text-field-line-field-left-item-padding-right-2": "other",
+      "--spacing-component-text-field-line-field-left-item-padding-right": "other",
+      "--spacing-component-text-field-line-field-margin-side": "other",
+      "--spacing-component-text-field-line-field-padding-bottom-2": "other",
+      "--spacing-component-text-field-line-field-padding-bottom": "other",
+      "--spacing-component-text-field-line-field-right-item-padding-left-2": "other",
+      "--spacing-component-text-field-line-field-right-item-padding-left": "other",
+      "--spacing-component-text-field-line-gap-2": "other",
+      "--spacing-component-text-field-line-gap": "other",
+      "--spacing-component-text-field-line-help-text-margin-side-2": "other",
+      "--spacing-component-text-field-line-help-text-margin-side": "other",
+      "--spacing-component-text-field-line-label-margin-side-2": "other",
+      "--spacing-component-text-field-line-label-margin-side": "other",
+      "--spacing-component-text-field-line-margin-vertical-2": "other",
+      "--spacing-component-text-field-line-margin-vertical": "other",
+      "--spacing-component-text-field-split-text-field-box-horizontal-gap": "other",
+      "--spacing-component-text-field-split-text-field-box-vertical-gap": "other",
+      "--spacing-component-text-field-split-text-field-box-vertical-separator-padding-right-2": "other",
+      "--spacing-component-text-field-split-text-field-box-vertical-separator-padding-right": "other",
+      "--spacing-component-text-field-split-text-field-line-horizontal-gap": "other",
+      "--spacing-component-text-field-split-text-field-line-separator-padding-bottom": "other",
+      "--spacing-component-text-field-split-text-field-line-vertical-gap": "other",
+      "--spacing-component-text-field-split-text-field-line-vertical-separator-padding-right": "other",
+      "--spacing-component-toast-bottom-margin-side": "other",
+      "--spacing-component-toast-bottom-padding-side": "other",
+      "--spacing-component-toast-top-margin-side-android": "other",
+      "--spacing-component-toast-top-margin-side-ios": "other",
+      "--spacing-component-toast-top-padding-left": "other",
+      "--spacing-component-toast-top-padding-right": "other",
+      "--spacing-component-tooltip-l-padding-side": "other",
+      "--spacing-component-tooltip-l-padding-vertical": "other",
+      "--spacing-component-tooltip-m-padding-side": "other",
+      "--spacing-component-tooltip-m-padding-vertical": "other",
+      "--spacing-component-tooltip-margin-side": "other",
+      "--spacing-component-tooltip-s-padding-side": "other",
+      "--spacing-component-tooltip-s-padding-vertical": "other",
+      "--spacing-component-top-padding-side": "other",
+      "--spacing-component-top-padding-vertical": "other",
+      "--spacing-semantic-gap-m": "other",
+      "--spacing-semantic-gap-s": "other",
+      "--spacing-semantic-page-margin-side-m-2": "other",
+      "--spacing-semantic-page-margin-side-m-3": "other",
+      "--spacing-semantic-page-margin-side-m": "other",
+      "--spacing-semantic-page-margin-side-s-2": "other",
+      "--spacing-semantic-page-margin-side-s": "other",
+      "--spacing-semantic-page-margin-side-xs-2": "other",
+      "--spacing-semantic-page-margin-side-xs": "other",
+      "--spacing-semantic-page-margin-side-xxs-2": "other",
+      "--spacing-semantic-page-margin-side-xxs": "other",
+      "--spacing-semantic-page-padding-right-with-arrow-m-2": "other",
+      "--spacing-semantic-page-padding-right-with-arrow-m": "other",
+      "--spacing-semantic-page-padding-side-l-2": "other",
+      "--spacing-semantic-page-padding-side-l": "other",
+      "--spacing-semantic-page-padding-side-m-2": "other",
+      "--spacing-semantic-page-padding-side-m": "other",
+      "--spacing-semantic-page-padding-side-medium": "other",
+      "--spacing-semantic-page-padding-side-small-2": "other",
+      "--spacing-semantic-page-padding-side-small": "other",
+      "--spacing-semantic-page-padding-side-xs": "other",
+      "--spacing-semantic-page-padding-vertical-m-2": "other",
+      "--spacing-semantic-page-padding-vertical-m": "other",
+      "--spacing-wip-component-text-field-line-field-margin-side": "other",
+      "--spec-docs-margin": "other",
+      "--spec-docs-touch-target-area": "color",
+      "--spec-docs-transparent-background": "color",
+      "--spec-docs-width": "other",
+      "--typography-base-fontfamily-brand-2": "other",
+      "--typography-base-fontfamily-brand-3": "other",
+      "--typography-base-fontfamily-brand-4": "other",
+      "--typography-base-fontfamily-brand": "other",
+      "--typography-base-fontweight-bold-2": "other",
+      "--typography-base-fontweight-bold-3": "other",
+      "--typography-base-fontweight-bold": "other",
+      "--typography-base-fontweight-medium-2": "other",
+      "--typography-base-fontweight-medium-3": "other",
+      "--typography-base-fontweight-medium-4": "other",
+      "--typography-base-fontweight-medium": "other",
+      "--typography-base-fontweight-regular-2": "other",
+      "--typography-base-fontweight-regular-3": "other",
+      "--typography-base-fontweight-regular": "other",
+      "--typography-base-fontweight-semibold-2": "other",
+      "--typography-base-fontweight-semibold-3": "other",
+      "--typography-base-fontweight-semibold": "other",
+      "--tds-weight-regular": "font",
+      "--tds-weight-medium": "font",
+      "--tds-weight-semibold": "font",
+      "--tds-weight-bold": "font",
+      "--tds-size-11": "spacing",
+      "--tds-size-12": "spacing",
+      "--tds-size-13": "spacing",
+      "--tds-size-15": "spacing",
+      "--tds-size-16": "spacing",
+      "--tds-size-17": "spacing",
+      "--tds-size-18": "spacing",
+      "--tds-size-20": "spacing",
+      "--tds-size-22": "spacing",
+      "--tds-size-24": "spacing",
+      "--tds-size-28": "spacing",
+      "--tds-size-30": "spacing",
+      "--tds-leading-tight": "font",
+      "--tds-leading-snug": "font",
+      "--tds-leading-normal": "font",
+      "--tds-leading-relaxed": "font",
+      "--tds-radius-xs": "radius",
+      "--tds-radius-s": "radius",
+      "--tds-radius-m": "radius",
+      "--tds-radius-icon": "radius",
+      "--tds-radius-l": "radius",
+      "--tds-radius-xl": "radius",
+      "--tds-radius-2xl": "radius",
+      "--tds-radius-3xl": "radius",
+      "--tds-radius-4xl": "radius",
+      "--tds-radius-pill": "radius",
+      "--tds-side-padding-s": "spacing",
+      "--tds-side-padding-m": "spacing",
+      "--tds-side-padding-cta": "spacing",
+      "--tds-gap-1": "spacing",
+      "--tds-gap-2": "spacing",
+      "--tds-gap-3": "spacing",
+      "--tds-gap-4": "spacing",
+      "--tds-gap-5": "spacing",
+      "--tds-gap-6": "spacing",
+      "--tds-gap-7": "spacing",
+      "--tds-gap-8": "spacing",
+      "--tds-listrow-py-s": "spacing",
+      "--tds-listrow-py-m": "spacing",
+      "--tds-listrow-py-l": "spacing",
+      "--tds-listrow-py-xl": "spacing",
+      "--tds-touch-target": "spacing",
+      "--tds-device-width": "spacing",
+      "--tds-shadow-tiny": "shadow",
+      "--tds-shadow-weak": "shadow",
+      "--tds-shadow-medium": "shadow",
+      "--tds-shadow-floating": "shadow",
+      "--tds-hairline-inset": "spacing",
+      "--tds-blur-weak": "spacing",
+      "--tds-blur-medium": "spacing",
+      "--tds-blur-strong": "spacing"
+    },
+    "fontFamilies": [
+      "Noto Sans KR"
+    ]
+  }
+}

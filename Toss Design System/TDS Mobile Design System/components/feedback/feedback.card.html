@@ -1,0 +1,65 @@
+<!-- @dsCard group="Components" viewport="700x900" name="Feedback — Loader, ProgressBar, Toast, Tooltip, Dialog, Sheet, Result, Bubble, Menu" subtitle="Status, overlays and messaging" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css"><style>body{margin:0;padding:20px;background:var(--semantic-background-default);font-family:var(--tds-font-body)}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.col{display:flex;flex-direction:column;gap:12px}.lbl{font:400 11px/1.3 var(--tds-font-body);color:var(--semantic-text-quaternary);letter-spacing:.02em}</style></head><body><div id="root"></div><script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+
+const __ns = window.TDSMobileDesignSystem_7852d9 || {};
+const __missing = [];
+const __proxy = new Proxy(__ns, { get(t, k) {
+  if (typeof k !== 'string' || k in t) return t[k];
+  if (!__missing.includes(k)) __missing.push(k);
+  return function Missing() { return React.createElement('span', { style: { display:'inline-flex', alignItems:'center', height:24, padding:'0 8px', borderRadius:6, background:'rgba(240,68,82,.12)', color:'var(--semantic-text-danger)', font:'400 11px/1 var(--tds-font-body)' } }, k + ' — not in bundle'); };
+} });
+function MissingNotice() {
+  if (!__missing.length) return null;
+  return React.createElement('div', { style: { marginTop:16, padding:'8px 10px', borderRadius:8, background:'rgba(240,68,82,.08)', color:'var(--semantic-text-danger)', font:'400 11px/1.4 var(--tds-font-body)' } }, 'Not yet compiled into _ds_bundle.js: ' + __missing.join(', '));
+}
+const { Loader, ProgressBar, Toast, Tooltip, Dialog, BottomSheet, Result, Bubble, Menu, MenuItem, ButtonArea, SelectionRow, SheetBody, Icon, ListRow, Button } = __proxy;
+const L = ({children}) => <div className="lbl">{children}</div>;
+const __root = ReactDOM.createRoot(document.getElementById('root'));
+__root.render(<React.Fragment>
+
+  <div className="col" style={{gap:18}}>
+    <div><L>Loader / ProgressBar</L><div className="row" style={{gap:28}}>
+      <Loader size="S"/><Loader label="로딩중이에요"/><Loader size="S" color="neutral"/>
+      <div style={{width:220,display:'flex',flexDirection:'column',gap:8}}><ProgressBar value={30} size="S"/><ProgressBar value={60}/><ProgressBar value={90} size="L" color="success"/></div>
+    </div></div>
+    <div><L>Toast</L><div className="row">
+      <Toast leading={<Icon name="IconCheckCircleMonoFill" size={24}/>} action="공유">계좌번호가 복사되었습니다</Toast>
+      <Toast>저장했어요</Toast>
+    </div></div>
+    <div><L>Tooltip / Bubble</L><div className="row" style={{alignItems:'flex-start',gap:24}}>
+      <Tooltip size="S">Small</Tooltip><Tooltip>Medium</Tooltip><Tooltip placement="top" size="L">Large</Tooltip>
+      <Bubble>동해물과 백두산이</Bubble>
+    </div></div>
+    <div><L>Dialog / BottomSheet / Menu</L><div className="row" style={{alignItems:'flex-start',gap:16}}>
+      <Dialog dim={false} kind="confirm" title="다시 촬영해주세요" description="정보가 맞게 인식됐는지 다시 확인해주세요."/>
+      <div style={{width:375,transform:'scale(.72)',transformOrigin:'top left'}}>
+        <BottomSheet dim={false} title="계좌를 선택해주세요" primaryLabel="확인" secondaryLabel="취소">
+          <SheetBody kind="selection">
+            <SelectionRow title="토스뱅크 통장" description="1,204,000원" selected/>
+            <SelectionRow title="입출금 통장" description="88,000원"/>
+          </SheetBody>
+        </BottomSheet>
+      </div>
+      <Menu title="정렬" items={[{label:'최신순',selected:true},{label:'금액순'},{label:'삭제',danger:true}]}/>
+    </div></div>
+    <div><L>MenuItem / SelectionRow / ButtonArea</L><div className="row" style={{alignItems:'flex-start',gap:20}}>
+      <div style={{width:200,borderRadius:12,background:'#fff',boxShadow:'var(--tds-shadow-floating)',padding:'6px 4px'}}>
+        <MenuItem icon={<Icon name="IconShareMonoShareExternal" size={24}/>}>공유하기</MenuItem>
+        <MenuItem selected>최신순</MenuItem><MenuItem danger>신고하기</MenuItem>
+      </div>
+      <div style={{width:280,border:'1px solid rgba(2,32,71,.05)',borderRadius:12,overflow:'hidden'}}>
+        <SelectionRow title="토스뱅크 통장" description="1,204,000원" selected/>
+        <SelectionRow title="입출금 통장" description="88,000원"/>
+      </div>
+      <div style={{width:280}}><ButtonArea context="dialog">
+        <Button size="XL" variant="weak" color="neutral" style={{flex:1}}>취소</Button>
+        <Button size="XL" style={{flex:1}}>확인</Button>
+      </ButtonArea></div>
+    </div></div>
+    <div><L>Result</L><Result asset={<Icon name="IconCheckCircleMonoFill" size={72} style={{color:'var(--semantic-fill-brand)'}}/>} title="송금했어요" description="1,000원을 보냈어요"/></div>
+  </div>
+<MissingNotice/></React.Fragment>);</script></body></html>

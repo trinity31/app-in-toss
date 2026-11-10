@@ -1,0 +1,11 @@
+/* Layout rhythm read off the mobile frames (375pt canvas). */
+:root{
+  --tds-side-padding-s:16px;
+  --tds-side-padding-m:24px; /* the default screen gutter */
+  --tds-side-padding-cta:20px;
+  --tds-gap-1:4px;--tds-gap-2:6px;--tds-gap-3:8px;--tds-gap-4:10px;
+  --tds-gap-5:12px;--tds-gap-6:14px;--tds-gap-7:16px;--tds-gap-8:20px;
+  --tds-listrow-py-s:8px;--tds-listrow-py-m:12px;--tds-listrow-py-l:16px;--tds-listrow-py-xl:20px;
+  --tds-touch-target:44px;
+  --tds-device-width:375px;
+}

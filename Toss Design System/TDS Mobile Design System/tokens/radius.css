@@ -1,0 +1,13 @@
+/* Corner radii, verbatim from the .fig geometry. */
+:root{
+  --tds-radius-xs:8px;   /* Button S */
+  --tds-radius-s:10px;   /* Segmented item */
+  --tds-radius-m:12px;   /* Badge M, Search Field */
+  --tds-radius-icon:13px;/* Icon Button M */
+  --tds-radius-l:14px;   /* Button L/XL, Segmented container, Numeric Spinner */
+  --tds-radius-xl:16px;  /* Bubble, Tooltip */
+  --tds-radius-2xl:20px; /* Menu */
+  --tds-radius-3xl:24px; /* Dialog, docs frames */
+  --tds-radius-4xl:28px; /* Bottom Sheet */
+  --tds-radius-pill:999px;
+}

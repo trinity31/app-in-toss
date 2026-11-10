@@ -1,0 +1,4 @@
+:root{color-scheme:light dark}
+body{font-family:var(--tds-font-body);color:var(--semantic-text-primary);background:var(--semantic-background-default);-webkit-font-smoothing:antialiased}
+a{color:var(--semantic-text-brand);text-decoration:none}
+a:hover{color:var(--base-blue-blue-700)}

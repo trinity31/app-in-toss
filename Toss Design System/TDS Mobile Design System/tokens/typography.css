@@ -1,0 +1,30 @@
+/* Type scale transcribed from the .fig text layers.
+   SF Pro weights in the source are 400 / 510 / 590 / 700 —
+   these are optical SF Pro weights, not rounded to 500/600. */
+:root{
+  --tds-weight-regular:400;
+  --tds-weight-medium:510;
+  --tds-weight-semibold:590;
+  --tds-weight-bold:700;
+
+  --tds-size-11:11px;--tds-size-12:12px;--tds-size-13:13px;--tds-size-15:15px;
+  --tds-size-16:16px;--tds-size-17:17px;--tds-size-18:18px;--tds-size-20:20px;
+  --tds-size-22:22px;--tds-size-24:24px;--tds-size-28:28px;--tds-size-30:30px;
+
+  /* the four line-height ratios the file actually uses */
+  --tds-leading-tight:1.252;
+  --tds-leading-snug:1.35;
+  --tds-leading-normal:1.5;
+  --tds-leading-relaxed:1.6;
+}
+.tds-t-h1{font:var(--tds-weight-bold) var(--tds-size-28)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-primary)}
+.tds-t-h2{font:var(--tds-weight-bold) var(--tds-size-22)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-primary)}
+.tds-t-h3{font:var(--tds-weight-bold) var(--tds-size-20)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-primary)}
+.tds-t-h4{font:var(--tds-weight-bold) var(--tds-size-17)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-primary)}
+.tds-t-title{font:var(--tds-weight-semibold) var(--tds-size-17)/var(--tds-leading-tight) var(--tds-font-body);color:var(--semantic-text-primary)}
+.tds-t-body-l{font:var(--tds-weight-regular) var(--tds-size-17)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-secondary)}
+.tds-t-body-m{font:var(--tds-weight-regular) var(--tds-size-15)/var(--tds-leading-normal) var(--tds-font-body);color:var(--semantic-text-secondary)}
+.tds-t-body-s{font:var(--tds-weight-regular) var(--tds-size-13)/var(--tds-leading-normal) var(--tds-font-body);color:var(--semantic-text-secondary)}
+.tds-t-label{font:var(--tds-weight-medium) var(--tds-size-13)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-primary)}
+.tds-t-caption{font:var(--tds-weight-regular) var(--tds-size-12)/var(--tds-leading-snug) var(--tds-font-body);color:var(--semantic-text-tertiary)}
+.tds-t-tab{font:var(--tds-weight-medium) var(--tds-size-11)/1.2 var(--tds-font-body);color:var(--semantic-text-primary)}

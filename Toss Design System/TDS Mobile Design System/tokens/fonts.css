@@ -1,0 +1,14 @@
+/* TDS Mobile ships no font binaries in the source .fig.
+   The file's text layers use "SF Pro" (Apple system UI face) and
+   "Toss Product Sans OTF" (proprietary, not distributable).
+   SF Pro resolves natively on Apple platforms via -apple-system.
+   Noto Sans KR is loaded as the substitute for Korean text and for
+   non-Apple platforms. SUBSTITUTION — see readme.md > Typography. */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+:root{
+  --tds-font-system: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "Segoe UI", "Noto Sans KR", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --tds-font-product: "Toss Product Sans OTF", var(--tds-font-system);
+  --tds-font-body: var(--tds-font-system);
+  --tds-font-display: var(--tds-font-product);
+}

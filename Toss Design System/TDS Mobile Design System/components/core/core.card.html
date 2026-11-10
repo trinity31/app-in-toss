@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" viewport="700x560" name="Core — Button, TextButton, IconButton, Badge, Chip, Border" subtitle="Actions, labels and dividers" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css"><style>body{margin:0;padding:20px;background:var(--semantic-background-default);font-family:var(--tds-font-body)}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.col{display:flex;flex-direction:column;gap:12px}.lbl{font:400 11px/1.3 var(--tds-font-body);color:var(--semantic-text-quaternary);letter-spacing:.02em}</style></head><body><div id="root"></div><script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+
+const __ns = window.TDSMobileDesignSystem_7852d9 || {};
+const __missing = [];
+const __proxy = new Proxy(__ns, { get(t, k) {
+  if (typeof k !== 'string' || k in t) return t[k];
+  if (!__missing.includes(k)) __missing.push(k);
+  return function Missing() { return React.createElement('span', { style: { display:'inline-flex', alignItems:'center', height:24, padding:'0 8px', borderRadius:6, background:'rgba(240,68,82,.12)', color:'var(--semantic-text-danger)', font:'400 11px/1 var(--tds-font-body)' } }, k + ' — not in bundle'); };
+} });
+function MissingNotice() {
+  if (!__missing.length) return null;
+  return React.createElement('div', { style: { marginTop:16, padding:'8px 10px', borderRadius:8, background:'rgba(240,68,82,.08)', color:'var(--semantic-text-danger)', font:'400 11px/1.4 var(--tds-font-body)' } }, 'Not yet compiled into _ds_bundle.js: ' + __missing.join(', '));
+}
+const { Button, TextButton, IconButton, Badge, Chip, Border, Asset, Title, ChipAccessory, Icon } = __proxy;
+const L = ({children}) => <div className="lbl">{children}</div>;
+const __root = ReactDOM.createRoot(document.getElementById('root'));
+__root.render(<React.Fragment>
+
+  <div className="col" style={{gap:18}}>
+    <div><L>Button — sizes / fill</L><div className="row">
+      <Button size="S">버튼</Button><Button size="M">버튼</Button><Button size="L">버튼</Button><Button size="XL">버튼</Button>
+    </div></div>
+    <div><L>Button — colors / weak / disabled</L><div className="row">
+      <Button size="M" color="neutral">중립</Button><Button size="M" color="danger">삭제</Button>
+      <Button size="M" variant="weak">약한</Button><Button size="M" variant="weak" color="danger">약한</Button>
+      <Button size="M" disabled>비활성</Button><Button size="M" loading />
+    </div></div>
+    <div><L>TextButton / IconButton</L><div className="row">
+      <TextButton>버튼레이블</TextButton>
+      <TextButton appearance="arrow">자세히</TextButton>
+      <TextButton appearance="underline" color="neutral">약관</TextButton>
+      <IconButton size="L"><Icon name="IconSettingMonoSettingWheel" size={16}/></IconButton>
+      <IconButton size="M"><Icon name="IconSettingMonoSettingWheel" size={20}/></IconButton>
+      <IconButton size="M" variant="border"><Icon name="IconXMonoXDelete" size={20}/></IconButton>
+      <IconButton size="M" variant="clear"><Icon name="IconDotsMonoDotDots" size={20}/></IconButton>
+    </div></div>
+    <div><L>Badge</L><div className="row">
+      <Badge size="XS">XS</Badge><Badge size="S">S</Badge><Badge size="M">M</Badge><Badge size="L">L</Badge>
+      <Badge color="red" variant="weak">지연</Badge><Badge color="green" variant="weak">완료</Badge>
+      <Badge color="yellow" variant="weak">대기</Badge><Badge color="grey" variant="weak">종료</Badge>
+    </div></div>
+    <div><L>Chip</L><div className="row">
+      <Chip selected>전체</Chip><Chip>입금</Chip><Chip shape="square">출금</Chip>
+      <Chip size="S" redDot>알림</Chip>
+      <Chip tailing={<ChipAccessory kind="downChevron" side="tailing"/>}>정렬</Chip>
+      <Chip leading={<ChipAccessory kind="profile"/>} tailing={<ChipAccessory kind="close" side="tailing"/>}>김토스</Chip>
+    </div></div>
+    <div><L>Asset — shapes &amp; sizes</L><div className="row">
+      <Asset size={24}><Icon name="IconBankToss" size={16}/></Asset>
+      <Asset size={30}><Icon name="IconBankToss" size={20}/></Asset>
+      <Asset size={40} shape="squircle"><Icon name="IconBankToss" size={24}/></Asset>
+      <Asset size={48} shape="card"><Icon name="IconBankToss" size={28}/></Asset>
+      <Asset size={56} shape="square"><Icon name="IconBankToss" size={30}/></Asset>
+      <Asset size={48} shape="squircle" src="../../assets/images/service-logo.png"/>
+    </div></div>
+    <div><L>Title</L><div className="row" style={{gap:24}}>
+      <Title size="XS">XSmall</Title><Title size="S">Small</Title><Title>Medium</Title><Title size="L">Large</Title>
+      <Title variant="selector">8월</Title><Title variant="underlined">약관 전문</Title>
+    </div></div>
+    <div><L>Border</L><div style={{width:320}}><Border/><div style={{height:8}}/><Border height="thick"/></div></div>
+  </div>
+<MissingNotice/></React.Fragment>);</script></body></html>

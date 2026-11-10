@@ -1,0 +1,89 @@
+<!-- @dsCard group="Apps in Toss" viewport="420x860" name="Mini-app — click-through" subtitle="Home, transfer, product detail and settings" -->
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><title>Apps in Toss — UI kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>*{box-sizing:border-box}body{margin:0;background:var(--semantic-background-lower);font-family:var(--tds-font-body);display:flex;justify-content:center;padding:16px}
+.phone{width:375px;height:812px;background:var(--semantic-background-default);border-radius:36px;overflow:hidden;position:relative;box-shadow:var(--tds-shadow-floating);display:flex;flex-direction:column}
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.overlay{position:absolute;inset:0;display:flex;pointer-events:none}
+.overlay>*{pointer-events:auto}
+a{color:var(--semantic-text-brand)}a:hover{color:var(--base-blue-blue-700)}
+</style></head><body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="TransferScreen.jsx"></script>
+<script type="text/babel" src="DetailScreen.jsx"></script>
+<script type="text/babel" src="SettingsScreen.jsx"></script>
+<script type="text/babel">
+const { Navigation, StatusBar, HomeIndicator, TabBar, Toast, Dialog, BottomSheet, Menu, Result, Button, BottomCTA, ListRow, Icon } = window.TDSMobileDesignSystem_7852d9;
+
+function App() {
+  const [tab, setTab] = React.useState(0);
+  const [screen, setScreen] = React.useState('home');
+  const [toast, setToast] = React.useState(null);
+  const [sheet, setSheet] = React.useState(false);
+  const [dialog, setDialog] = React.useState(false);
+  const [menu, setMenu] = React.useState(false);
+  const [account, setAccount] = React.useState('토스뱅크 통장');
+  const showToast = (m) => { setToast(m); setTimeout(() => setToast(null), 2200); };
+  const go = (s) => { setScreen(s); document.querySelector('.scroll').scrollTop = 0; };
+
+  let body;
+  if (tab === 3) body = <SettingsScreen onMenu={() => setMenu(true)} />;
+  else if (screen === 'transfer') body = <TransferScreen go={go} openSheet={() => setSheet(true)} account={account} />;
+  else if (screen === 'detail') body = <DetailScreen />;
+  else if (screen === 'done') body = (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+        <Result asset={<Icon name="IconCheckCircleMonoFill" size={72} style={{ color: 'var(--semantic-fill-brand)' }} />} title="보냈어요" description="김토스님에게 송금했어요" />
+      </div>
+      <div style={{ paddingBottom: 20 }}><BottomCTA><Button size="XL" fullWidth onClick={() => go('home')}>확인</Button></BottomCTA></div>
+    </div>
+  );
+  else body = <HomeScreen go={go} toast={showToast} />;
+
+  const canBack = screen !== 'home' && tab !== 3;
+  return (
+    <div className="phone">
+      <StatusBar os="ios" />
+      <Navigation
+        title={tab === 3 ? '설정' : '토스뱅크'}
+        showBack={canBack}
+        onBack={() => go('home')}
+        dynamicIcon={<Icon name="IconHeartMonoHeartLove" size={20} />}
+        onMore={() => setMenu(true)}
+        onClose={() => setDialog(true)}
+      />
+      <div className="scroll">{body}</div>
+      <TabBar value={tab} onChange={(i) => { setTab(i); setScreen('home'); }} items={[
+        { label: '홈', icon: <Icon name="IconHomeMonoHomeFamily" size={24} /> },
+        { label: '혜택', icon: <Icon name="IconGiftMonoBoxGift" size={24} />, redDot: true },
+        { label: '소비', icon: <Icon name="IconGraphBarMonoGraph" size={24} /> },
+        { label: '전체', icon: <Icon name="IconLineThreeMonoThree" size={24} /> },
+      ]} />
+
+      {toast && <div className="overlay" style={{ alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 96 }}><Toast leading={<Icon name="IconCheckCircleMonoFill" size={24} />}>{toast}</Toast></div>}
+      {menu && <div className="overlay" onClick={() => setMenu(false)} style={{ alignItems: 'flex-start', justifyContent: 'flex-end', padding: '52px 12px 0' }}>
+        <Menu title="더보기" items={[{ label: '공유하기' }, { label: '홈에 추가' }, { label: '신고하기', danger: true }]} onSelect={(it) => { setMenu(false); showToast(it.label + ' 했어요'); }} />
+      </div>}
+      {sheet && <div className="overlay" style={{ alignItems: 'flex-end' }}>
+        <BottomSheet title="계좌를 선택해주세요" primaryLabel="확인" secondaryLabel="취소"
+          onPrimary={() => setSheet(false)} onSecondary={() => setSheet(false)}>
+          {['토스뱅크 통장', '입출금 통장'].map((a) => (
+            <ListRow key={a} title={a} description={a === account ? '선택됨' : '잔액 88,000원'} onClick={() => { setAccount(a); setSheet(false); }} />
+          ))}
+        </BottomSheet>
+      </div>}
+      {dialog && <div className="overlay">
+        <Dialog kind="confirm" title="나가시겠어요?" description="입력한 내용은 저장되지 않아요."
+          confirmLabel="나가기" cancelLabel="계속하기"
+          onConfirm={() => { setDialog(false); go('home'); setTab(0); }} onCancel={() => setDialog(false)} />
+      </div>}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script></body></html>
