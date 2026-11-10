@@ -56,7 +56,7 @@ export function createTarotConsultation({ baseUrl, storage, sessionKey = SESSION
     try {
       const response = await fetcher(`${baseUrl.replace(/\/$/, '')}/tarot/sessions${path}`, {
         method: body ? 'POST' : 'GET',
-        headers: { 'Content-Type': 'application/json', 'X-Tarot-Token': credentials.token, ...await accountHeaders(), 'X-Tarot-Deck': 'tarot78-v1' },
+        headers: { 'Content-Type': 'application/json', 'X-Tarot-Token': credentials.token, ...await accountHeaders(`${baseUrl.replace(/\/$/, '')}/tarot/sessions${path}`), 'X-Tarot-Deck': 'tarot78-v1' },
         ...(body ? { body: JSON.stringify(body) } : {}),
         signal: controller.signal,
       })

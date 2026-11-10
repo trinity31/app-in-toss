@@ -1,24 +1,19 @@
 import { createTossAccountHeaders } from './tossAccount.js'
-import { createDeepReadingRequest } from './deepReadingAuth.js'
+import { createDeepReadingRequest, createTossResourceFetch } from './deepReadingAuth.js'
+const baseUrl = import.meta.env?.VITE_API_BASE_URL
+const marker = 'fortune-cat-intro-completed-v1'
 const account = createTossAccountHeaders({
-  baseUrl: import.meta.env?.VITE_API_BASE_URL,
+  baseUrl,
   appLogin: async () => (await import('@apps-in-toss/web-framework')).appLogin(),
-  createAnonymousKeyAuthCode: async () => {
-    const sdk = await import('@apps-in-toss/web-framework')
-    return sdk.User.createAnonymousKeyAuthCode()
-  },
-  checkIntegrated: async () => {
-    const sdk = await import('@apps-in-toss/web-framework')
-    if (typeof sdk.TossAuth?.isIntegrated === 'function') return sdk.TossAuth.isIntegrated()
-    return sdk.getIsTossLoginIntegratedService?.()
-  },
+  createAnonymousKeyAuthCode: async () => (await import('@apps-in-toss/web-framework')).User.createAnonymousKeyAuthCode(),
+  readIntro: () => { try { return localStorage.getItem(marker) === '1' } catch { return false } },
+  writeIntro: () => { try { localStorage.setItem(marker, '1') } catch { /* Presentation only. */ } },
 })
 export const getTossSession = () => account.getSession()
 export const restoreTossAccount = () => account.restore()
 export const subscribeTossAccount = listener => account.subscribe(listener)
-export async function loginTossAccount() {
-  await account()
-  if (!getTossSession()) { account.clear(); throw new Error('계정 정보를 확인하지 못했어요. 다시 로그인해 주세요.') }
-  return getTossSession()
-}
-export const authenticatedReadingFetch = createDeepReadingRequest({ baseUrl: import.meta.env?.VITE_API_BASE_URL, session: getTossSession, onUnauthorized: account.clear })
+export async function loginTossAccount() { await account(); return getTossSession() }
+export const recoverLegacyTossAccount = () => account.recoverLegacy()
+export const getTossAccountHeaders = target => account(target)
+export const authenticatedReadingFetch = createDeepReadingRequest({ baseUrl, session: getTossSession, onUnauthorized: account.clear })
+export const authenticatedTarotFetch = createTossResourceFetch({ baseUrl, session: getTossSession, onUnauthorized: account.clear })

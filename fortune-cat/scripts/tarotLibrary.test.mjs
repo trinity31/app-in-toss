@@ -29,3 +29,10 @@ test('library exposes request failure and rejects mismatched details', async () 
   success = true
   await assert.rejects(client.detail('expected'), /확인하지/)
 })
+
+test('shared account refuses a different Tarot runtime origin before obtaining native proof',async()=>{
+  const {createTossAccountHeaders}=await import('../src/lib/tossAccount.js')
+  const account=createTossAccountHeaders({baseUrl:'https://backend.test',createAnonymousKeyAuthCode:()=>assert.fail('must reject before proof')})
+  const client=createTarotLibrary({baseUrl:'https://other-runtime.test',accountHeaders:account,fetcher:()=>assert.fail('must not leak account token')})
+  await assert.rejects(client.list())
+})

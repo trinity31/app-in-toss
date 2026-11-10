@@ -328,7 +328,7 @@ export default function DeepReadingResult({
 
   useEffect(() => {
     let cancelled = false;
-    if (purchaseBusy.current) return;
+    // Recovery is already single-flight; every effect must observe its completion.
     purchaseBusy.current = true;
     setIsPurchasing(true);
     recoverDeepReadingPurchases().then(async purchases => {

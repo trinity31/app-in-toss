@@ -1,0 +1,128 @@
+[
+  {
+    "case": "reflection",
+    "profile": "gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 7.331,
+    "cost_usd": 0.002966,
+    "score": 80.15,
+    "flags": {
+      "fabricated_fact": 0.62,
+      "wrong_time_or_card": 0.16,
+      "internal_leak": 0.12
+    }
+  },
+  {
+    "case": "reflection",
+    "profile": "gpt_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 10.088,
+    "cost_usd": 0.002785,
+    "score": 79.66,
+    "flags": {
+      "fabricated_fact": 0.65,
+      "wrong_time_or_card": 0.19,
+      "internal_leak": 0.12
+    }
+  },
+  {
+    "case": "reflection",
+    "profile": "gpt_analysis_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 13.557,
+    "cost_usd": 0.005449,
+    "score": 85.18,
+    "flags": {
+      "fabricated_fact": 0.17,
+      "wrong_time_or_card": 0.11,
+      "internal_leak": 0.1
+    }
+  },
+  {
+    "case": "recovery",
+    "profile": "gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 8.831,
+    "cost_usd": 0.004565,
+    "score": 90.71,
+    "flags": {
+      "fabricated_fact": 0.44,
+      "wrong_time_or_card": 0.09,
+      "internal_leak": 0.11
+    }
+  },
+  {
+    "case": "recovery",
+    "profile": "gpt_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 11.252,
+    "cost_usd": 0.004395,
+    "score": 90.95,
+    "flags": {
+      "fabricated_fact": 0.45,
+      "wrong_time_or_card": 0.1,
+      "internal_leak": 0.11
+    }
+  },
+  {
+    "case": "recovery",
+    "profile": "gpt_analysis_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 24.053,
+    "cost_usd": 0.010881,
+    "score": 91.66,
+    "flags": {
+      "fabricated_fact": 0.38,
+      "wrong_time_or_card": 0.09,
+      "internal_leak": 0.14
+    }
+  },
+  {
+    "case": "choice",
+    "profile": "gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 7.64,
+    "cost_usd": 0.003736,
+    "score": 84.62,
+    "flags": {
+      "fabricated_fact": 0.11,
+      "wrong_time_or_card": 0.09,
+      "internal_leak": 0.18
+    }
+  },
+  {
+    "case": "choice",
+    "profile": "gpt_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 9.946,
+    "cost_usd": 0.00341,
+    "score": 83.26,
+    "flags": {
+      "fabricated_fact": 0.11,
+      "wrong_time_or_card": 0.09,
+      "internal_leak": 0.15
+    }
+  },
+  {
+    "case": "choice",
+    "profile": "gpt_analysis_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 14.869,
+    "cost_usd": 0.006434,
+    "score": 87.58,
+    "flags": {
+      "fabricated_fact": 0.1,
+      "wrong_time_or_card": 0.09,
+      "internal_leak": 0.14
+    }
+  }
+]

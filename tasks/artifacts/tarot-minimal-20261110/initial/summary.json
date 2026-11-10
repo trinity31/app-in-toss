@@ -1,0 +1,78 @@
+[
+  {
+    "case": "reflection",
+    "profile": "gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 10.183,
+    "cost_usd": 0.003041,
+    "score": 80.44,
+    "flags": {
+      "fabricated_fact": 0.52,
+      "wrong_time_or_card": 0.16,
+      "internal_leak": 0.25
+    }
+  },
+  {
+    "case": "reflection",
+    "profile": "gpt_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 12.956,
+    "cost_usd": 0.002991,
+    "score": 79.66,
+    "flags": {
+      "fabricated_fact": 0.54,
+      "wrong_time_or_card": 0.18,
+      "internal_leak": 0.24
+    }
+  },
+  {
+    "case": "recovery",
+    "profile": "gemini",
+    "status": "error",
+    "planning_spread_match": true,
+    "seconds": 5.521,
+    "cost_usd": 0.002999,
+    "score": null,
+    "flags": null
+  },
+  {
+    "case": "recovery",
+    "profile": "gpt_gemini",
+    "status": "error",
+    "planning_spread_match": true,
+    "seconds": 8.701,
+    "cost_usd": 0.002835,
+    "score": null,
+    "flags": null
+  },
+  {
+    "case": "choice",
+    "profile": "gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 6.148,
+    "cost_usd": 0.003574,
+    "score": 84.47,
+    "flags": {
+      "fabricated_fact": 0.11,
+      "wrong_time_or_card": 0.1,
+      "internal_leak": 0.23
+    }
+  },
+  {
+    "case": "choice",
+    "profile": "gpt_gemini",
+    "status": "complete",
+    "planning_spread_match": true,
+    "seconds": 8.553,
+    "cost_usd": 0.003228,
+    "score": 82.75,
+    "flags": {
+      "fabricated_fact": 0.11,
+      "wrong_time_or_card": 0.1,
+      "internal_leak": 0.22
+    }
+  }
+]

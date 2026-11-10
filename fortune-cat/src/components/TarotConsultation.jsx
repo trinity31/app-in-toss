@@ -12,7 +12,7 @@ const sectionStyle = { marginTop: 28, paddingTop: 24, borderTop: '1px solid #E6D
 const chipStyle = selected => ({ border: selected ? '1px solid var(--color-primary)' : '1px solid var(--color-primary-light)', borderRadius: 14, padding: '11px 14px', font: 'inherit', fontSize: 15, color: 'var(--color-primary-dark)', background: selected ? 'var(--color-primary-light)' : '#FFFFFF', textAlign: 'left', overflowWrap: 'anywhere' })
 const inputStyle = { width: '100%', padding: 16, font: 'inherit', fontSize: 16, lineHeight: 1.7, color: '#3A2433', background: '#FFFFFF', border: '1px solid #BBAAC9', borderRadius: 16, resize: 'vertical', minHeight: 130, boxSizing: 'border-box' }
 
-function BusyIndicator() {
+function BusyIndicator({ label }) {
   const dialogRef = useRef(null)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function BusyIndicator() {
   return <dialog ref={dialogRef} className="tarot-consultation-busy" aria-labelledby="tarot-busy-label" onCancel={event => event.preventDefault()}>
     <div role="status" aria-live="polite" aria-atomic="true">
       <span className="tarot-consultation-busy__spinner" aria-hidden="true" />
-      <p id="tarot-busy-label">잠시만 기다려 주세요</p>
+      <p id="tarot-busy-label">{label}</p>
     </div>
   </dialog>
 }
@@ -98,6 +98,11 @@ export default function TarotConsultation() {
   const failure = error || session?.error
   const isNewUser = initialized && !session && !hasSaved && !restoreFailed
   const showIntro = isNewUser && !introDone
+  const busyLabel = !initialized ? '저장된 상담을 확인하고 있어요'
+    : session?.status?.startsWith('clarifier') ? '확인 카드가 보충하는 의미를 살펴보고 있어요'
+    : session?.cards?.length ? '뽑힌 카드와 고민을 연결해 풀이하고 있어요'
+    : session?.status === 'ready' ? '함께 살펴볼 카드를 준비하고 있어요'
+    : '고민을 정리하고 상담 방향을 살펴보고 있어요'
 
   useEffect(() => {
     if (!clarifier) window.scrollTo({ top: 0 })
@@ -132,7 +137,7 @@ export default function TarotConsultation() {
   }
 
   return <>
-    {(!initialized || busy) && <BusyIndicator />}
+    {(!initialized || busy) && <BusyIndicator label={busyLabel} />}
     <main aria-busy={!initialized || busy} style={{ background: 'var(--color-bg-soft)', minHeight: '100vh', padding: `20px 22px ${insets.bottom + 140}px`, color: '#3A2433', overflowWrap: 'anywhere' }}>
     <div style={{ maxWidth: 520, margin: '0 auto' }}>
       {sandbox && <p role="status" style={{ padding: 12, background: '#FFF5EF', borderRadius: 12 }}>샌드박스 결제 테스트 · 실제 AI 풀이를 사용하며 상담과 이용권은 테스트용으로 별도 저장돼요.</p>}
@@ -150,7 +155,7 @@ export default function TarotConsultation() {
         </div>)}
       </details>}
 
-      {/* 심사 요구: 토스 로그인(고민 제출 시) 전에 서비스 소개를 먼저 보여준다. */}
+      {/* 첫 고민을 제출하기 전에 서비스 소개를 보여준다. */}
       {showIntro && <section>
         <h1 style={{ ...headingStyle, fontSize: 24, fontWeight: 800, color: '#3A2433' }}>복냥이의 심화 타로상담</h1>
         <p style={{ ...textStyle, marginBottom: 20, color: '#6E5462' }}>마음에 걸리는 고민 하나를 들려주시면, 복냥이가 고민에 맞는 카드를 뽑아 깊이 풀이해 드려요.</p>
@@ -204,14 +209,14 @@ export default function TarotConsultation() {
 
           {reading && <>
             <section>
-              <h1 style={{ ...headingStyle, fontSize: 26, fontWeight: 800, color: '#3A2433', marginBottom: 20 }}>각 카드가 들려주는 이야기</h1>
-              {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} comparison={position.comparison} />)}
-            </section>
-            <section style={sectionStyle}>
               <p style={{ fontSize: 13, color: '#6E5462', marginBottom: 10 }}>고민에 대한 복냥이의 이야기</p>
               <h1 style={{ ...headingStyle, fontSize: 24 }}>{session.plan.summary}</h1>
               <p style={{ ...textStyle, fontSize: 18 }}>{reading.answer}</p>
               {session.plan.limitations && <p style={{ ...textStyle, marginTop: 16, fontSize: 14, color: '#6E5462' }}>{session.plan.limitations}</p>}
+            </section>
+            <section style={sectionStyle}>
+              <h2 style={{ ...headingStyle, fontSize: 26, fontWeight: 800, color: '#3A2433', marginBottom: 20 }}>각 카드가 들려주는 이야기</h2>
+              {reading.positions.map((position, index) => <Card key={position.card_id} card={session.cards[index]} position={position.position} interpretation={position.interpretation} comparison={position.comparison} />)}
             </section>
             <section style={sectionStyle}><h2 style={headingStyle}>카드를 함께 보면</h2><p style={textStyle}>{reading.relationships}</p></section>
             <section style={sectionStyle}><h2 style={headingStyle}>현실에서 확인해 볼 것</h2><Items values={reading.reality_checks} /></section>

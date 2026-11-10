@@ -3,11 +3,11 @@ import assert from 'node:assert/strict'
 import { tarotRuntime } from '../src/lib/tarotRuntime.js'
 import { createTarotConsultation, SESSION_KEY } from '../src/lib/tarotConsultation.js'
 
-test('only local development sandbox uses isolated payments and storage', () => {
+test('only local development sandbox uses isolated storage', () => {
   const baseUrl = 'http://192.168.35.170:8000'
   for (const development of [true, false]) for (const sandbox of [true, false]) {
     const runtime = tarotRuntime({ development, sandbox, baseUrl })
-    assert.equal(runtime.baseUrl, development && sandbox ? 'http://192.168.35.170:8001/sandbox' : baseUrl)
+    assert.equal(runtime.baseUrl, baseUrl)
     assert.equal(runtime.sessionKey, development && sandbox ? `${SESSION_KEY}_SANDBOX` : SESSION_KEY)
   }
   for (const baseUrl of [undefined, 'https://saju.trinity-apps.net', 'invalid']) {

@@ -1,0 +1,532 @@
+{
+  "case": "choice",
+  "profile": "gpt_analysis_gemini",
+  "question": "현재 회사에 남기와 새 회사로 옮기기 중 고민이에요. 현재 회사는 익숙하지만 성장 기회가 적고, 새 회사는 배울 일이 많지만 업무가 낯설어요. 올해는 안정적인 생활과 성장을 함께 고려하고 싶어요.",
+  "metrics": [
+    {
+      "stage": "judgment",
+      "model": "gpt-6-luna",
+      "status": "ok",
+      "seconds": 3.246,
+      "usage": {
+        "input_tokens": 2815,
+        "output_tokens": 180,
+        "total_tokens": 2995,
+        "input_token_details": {
+          "cache_read": 2812
+        },
+        "output_token_details": {
+          "reasoning": 87
+        }
+      },
+      "estimated_cost_usd": 0.0003715
+    },
+    {
+      "stage": "question_wording",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 1.433,
+      "usage": {
+        "input_tokens": 350,
+        "output_tokens": 114,
+        "total_tokens": 464,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      },
+      "estimated_cost_usd": 0.0002585
+    },
+    {
+      "stage": "evidence_analysis",
+      "model": "gpt-6.1-terra",
+      "status": "ok",
+      "seconds": 4.998,
+      "usage": {
+        "input_tokens": 1775,
+        "output_tokens": 247,
+        "total_tokens": 2022,
+        "input_token_details": {
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 0
+        }
+      },
+      "estimated_cost_usd": 0.00301
+    },
+    {
+      "stage": "reading",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 5.181,
+      "usage": {
+        "input_tokens": 3835,
+        "output_tokens": 1100,
+        "total_tokens": 4935,
+        "input_token_details": {
+          "cache_read": 1546
+        }
+      },
+      "estimated_cost_usd": 0.00260875
+    }
+  ],
+  "judgments": {
+    "reading": {
+      "status": "scored",
+      "score": 87.58,
+      "dimensions": {
+        "grounding": 3.39,
+        "relevance": 3.43,
+        "consistency": 3.72,
+        "actionability": 3.64,
+        "readability": 3.4
+      },
+      "flags": {
+        "fabricated_fact": 0.1,
+        "wrong_time_or_card": 0.09,
+        "internal_leak": 0.14
+      },
+      "version": "tarot-jev-v1",
+      "response": {
+        "model": "jev-1.14.0",
+        "answers": {
+          "grounding": {
+            "type": "score",
+            "score": 3.39,
+            "confidence": 0.5,
+            "legend": {
+              "0": "핵심 요구를 충족하지 못한다.",
+              "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+              "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+              "3": "대부분 충족하며 경미한 문제가 있다.",
+              "4": "빠짐없이 충족하며 명확한 오류가 없다."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.01,
+              "2": 0.09,
+              "3": 0.31,
+              "4": 0.57
+            }
+          },
+          "relevance": {
+            "type": "score",
+            "score": 3.43,
+            "confidence": 0.55,
+            "legend": {
+              "0": "핵심 요구를 충족하지 못한다.",
+              "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+              "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+              "3": "대부분 충족하며 경미한 문제가 있다.",
+              "4": "빠짐없이 충족하며 명확한 오류가 없다."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.02,
+              "2": 0.1,
+              "3": 0.2,
+              "4": 0.66
+            }
+          },
+          "consistency": {
+            "type": "score",
+            "score": 3.72,
+            "confidence": 0.76,
+            "legend": {
+              "0": "핵심 요구를 충족하지 못한다.",
+              "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+              "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+              "3": "대부분 충족하며 경미한 문제가 있다.",
+              "4": "빠짐없이 충족하며 명확한 오류가 없다."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.01,
+              "2": 0.03,
+              "3": 0.12,
+              "4": 0.82
+            }
+          },
+          "actionability": {
+            "type": "score",
+            "score": 3.64,
+            "confidence": 0.68,
+            "legend": {
+              "0": "핵심 요구를 충족하지 못한다.",
+              "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+              "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+              "3": "대부분 충족하며 경미한 문제가 있다.",
+              "4": "빠짐없이 충족하며 명확한 오류가 없다."
+            },
+            "probabilities": {
+              "0": 0.01,
+              "1": 0.01,
+              "2": 0.05,
+              "3": 0.21,
+              "4": 0.72
+            }
+          },
+          "readability": {
+            "type": "score",
+            "score": 3.4,
+            "confidence": 0.48,
+            "legend": {
+              "0": "핵심 요구를 충족하지 못한다.",
+              "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+              "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+              "3": "대부분 충족하며 경미한 문제가 있다.",
+              "4": "빠짐없이 충족하며 명확한 오류가 없다."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.01,
+              "2": 0.08,
+              "3": 0.36,
+              "4": 0.53
+            }
+          },
+          "fabricated_fact": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "wrong_time_or_card": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "internal_leak": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "usage": {
+          "input_tokens": 4411,
+          "output_tokens": 137
+        }
+      }
+    }
+  },
+  "status": "complete",
+  "session_id": "cfac2218-7118-4453-9b92-5d19dde85725",
+  "planning_status": "ready",
+  "planning": {
+    "summary": "현재 회사에서의 익숙함과 성장 기회 부족, 그리고 새 회사에서의 새로운 업무와 배움 사이에서 고민하고 계십니다. 올해는 안정적인 생활과 개인적인 성장을 동시에 이루고 싶어 하십니다.",
+    "spread": "choice2",
+    "conditions": [
+      "올해는 안정적인 생활과 성장을 함께 고려하고 싶어요."
+    ],
+    "alternatives": [
+      {
+        "label": "현재 회사에 남기",
+        "evidence": "현재 회사에 남기"
+      },
+      {
+        "label": "새 회사로 옮기기",
+        "evidence": "새 회사로 옮기기"
+      }
+    ],
+    "limitations": "현재 회사의 구체적인 업무 환경이나 새 회사의 제안 조건, 그리고 사용자가 생각하는 '안정'과 '성장'의 우선순위에 대한 상세 정보는 확인되지 않았습니다.",
+    "positions": [
+      "현재 회사에 남기: 선택했을 때의 가능성",
+      "새 회사로 옮기기: 선택했을 때의 가능성"
+    ]
+  },
+  "expected_spread_match": true,
+  "public": {
+    "id": "cfac2218-7118-4453-9b92-5d19dde85725",
+    "version": 5,
+    "question": "현재 회사에 남기와 새 회사로 옮기기 중 고민이에요. 현재 회사는 익숙하지만 성장 기회가 적고, 새 회사는 배울 일이 많지만 업무가 낯설어요. 올해는 안정적인 생활과 성장을 함께 고려하고 싶어요.",
+    "answers": [],
+    "pending_question": null,
+    "plan": {
+      "summary": "현재 회사에 남기와 새 회사로 옮기기 중 고민이에요. 현재 회사는 익숙하지만 성장 기회가 적고, 새 회사는 배울 일이 많지만 업무가 낯설어요. 올해는 안정적인 생활과 성장을 함께 고려하고 싶어요.",
+      "spread": "choice2",
+      "conditions": [],
+      "alternatives": [
+        {
+          "label": "현재 회사에 남기",
+          "evidence": "현재 회사에 남기"
+        },
+        {
+          "label": "새 회사로 옮기기",
+          "evidence": "새 회사로 옮기기"
+        }
+      ],
+      "limitations": "",
+      "positions": [
+        "현재 회사에 남기: 선택했을 때의 가능성",
+        "새 회사로 옮기기: 선택했을 때의 가능성"
+      ]
+    },
+    "cards": [
+      {
+        "id": 22,
+        "name_ko": "완드 에이스",
+        "name_en": "ACE OF WANDS",
+        "orientation": "upright"
+      },
+      {
+        "id": 50,
+        "name_ko": "소드 에이스",
+        "name_en": "ACE OF SWORDS",
+        "orientation": "upright"
+      }
+    ],
+    "reading": {
+      "positions": [
+        {
+          "card_id": 22,
+          "position": "현재 회사에 남기: 선택했을 때의 가능성",
+          "interpretation": "이 카드는 현재 회사에 남았을 때 스스로 새로운 열정을 불어넣을 수 있는 가능성을 살핍니다. 익숙한 환경 속에서도 창조적인 자신감을 발휘하여 기존 업무를 새롭게 재해석하거나, 스스로 도전적인 프로젝트를 만들어낼 수 있는 에너지를 의미합니다. 다만, 이 에너지가 실제 회사 내의 성장 기회로 연결될지는 본인의 주도적인 태도에 달려 있습니다. 현재의 안정감을 유지하면서도 정체되지 않기 위해 어떤 새로운 시도를 할 수 있을지 고민해 보아야 합니다.",
+          "comparison": {
+            "possibility": "익숙한 환경에서 주도적으로 새로운 프로젝트를 시작할 수 있는 에너지를 얻습니다.",
+            "caution": "환경 자체가 변하지 않으므로 스스로 동기를 부여하지 않으면 정체될 위험이 있습니다.",
+            "condition": "회사 내에서 본인이 주도적으로 새로운 업무 영역을 개척할 수 있는지 확인해야 합니다."
+          }
+        },
+        {
+          "card_id": 50,
+          "position": "새 회사로 옮기기: 선택했을 때의 가능성",
+          "interpretation": "이 카드는 새 회사로 옮겼을 때 마주할 낯선 업무를 명확한 분석과 이성적인 판단으로 해결해 나갈 가능성을 살핍니다. 새로운 환경은 치밀한 사고와 지식 습득을 요구하며, 이는 본인의 전문성을 날카롭게 다듬는 계기가 될 것입니다. 감정적인 불안보다는 냉철한 판단력을 바탕으로 이직의 실익을 따져보는 것이 중요합니다. 새로운 시작이 가져올 지적 성장이 올해 본인이 추구하는 성장의 방향과 일치하는지 점검해 보십시오.",
+          "comparison": {
+            "possibility": "낯선 환경에서 지적 성장을 이루고 전문성을 명확하게 다듬을 수 있습니다.",
+            "caution": "새로운 환경에 적응하는 과정에서 요구되는 높은 수준의 분석력과 긴장감이 따릅니다.",
+            "condition": "새 회사의 업무가 본인의 장기적인 커리어 목표와 명확히 부합하는지 이성적으로 판단해야 합니다."
+          }
+        }
+      ],
+      "answer": "현재 회사에 남는 것은 스스로 새로운 열정을 찾아내는 도전의 과정이며, 새 회사로 옮기는 것은 냉철한 분석을 통해 전문성을 확장하는 결단의 과정입니다. 두 카드 모두 에이스로서 새로운 시작의 에너지를 담고 있으나, 전자는 내부적인 태도 변화를, 후자는 외부 환경의 변화를 통한 성장을 가리킵니다. 올해 안정과 성장을 동시에 고려한다면, 현재 회사에서 주도적으로 변화를 꾀할 수 있는 여지가 있는지 먼저 확인하고, 그것이 어렵다면 새 회사로의 이직을 통해 지적 성장을 도모하는 것이 합리적입니다.\n\n현재 회사에서 새로운 프로젝트를 주도할 기회가 있는지 먼저 확인하고, 그 가능성이 낮다면 성장을 위해 새 회사로 옮기는 결단을 내리세요.",
+      "relationships": "완드 에이스는 내면의 열정과 주도적인 태도를 강조하며, 소드 에이스는 외부 환경에 대한 냉철한 분석과 결단을 요구합니다. 두 카드는 모두 새로운 시작을 의미하지만, 완드 에이스는 현재의 기반 위에서 변화를 시도하는 보완적 성격이 강하고, 소드 에이스는 기존의 틀을 깨고 새로운 지식 체계로 나아가는 단절적 성격이 있습니다. 이 두 카드의 조합은 본인이 감정적인 익숙함에 머물지 말고, 성장을 위해 이성적인 판단을 내려야 함을 시사합니다.",
+      "reality_checks": [
+        "현재 회사에서 본인이 제안할 수 있는 새로운 업무나 프로젝트의 범위가 어디까지인지 확인하십시오.",
+        "새 회사의 업무 내용이 본인의 전문성을 어떻게 구체적으로 성장시킬 수 있는지 이성적으로 분석하십시오.",
+        "올해 본인이 생각하는 '안정적인 생활'의 기준이 구체적으로 무엇인지 경제적, 환경적 측면에서 점검하십시오."
+      ],
+      "actions": [
+        "현재 회사에서 성장 기회를 찾기 위해 상사나 동료와 구체적인 업무 확장 가능성을 논의하십시오.",
+        "새 회사로의 이직을 고려한다면, 해당 기업의 업무 환경과 본인의 적응력을 냉정하게 비교하는 리스트를 작성하십시오."
+      ]
+    },
+    "clarifier": null,
+    "status": "complete",
+    "error": null,
+    "deck_version": "tarot78-v1",
+    "notice": "타로는 자기 성찰과 선택을 돕는 참고예요. 상대의 마음이나 미래를 확정하지 않으며, 중요한 의료·법률·재정 판단은 사실 확인과 전문가 상담을 함께해 주세요."
+  },
+  "references": {
+    "documents": [
+      {
+        "card_id": 22,
+        "name": "막대기 에이스",
+        "source_file": "docs/마이너카드/막대기/01_막대기_에이스.md",
+        "source_title": "막대기 에이스 (Ace of Wands)",
+        "source_sha256": "8017676ac7fc1dd03a18dc2fd890e082662aad35e59f88ba54ee25a82fabc447",
+        "original_source_edition": null,
+        "passages": [
+          {
+            "id": "22.upright",
+            "section": "정방향",
+            "source_section": "정방향",
+            "source_file": "docs/마이너카드/막대기/01_막대기_에이스.md",
+            "source_sha256": "8017676ac7fc1dd03a18dc2fd890e082662aad35e59f88ba54ee25a82fabc447",
+            "source_line_start": 4,
+            "source_line_end": 10,
+            "text": "새 출발의 호기심과 창조적 자신감, 프로젝트에 쏟는 열정을 살핀다."
+          },
+          {
+            "id": "22.meaning",
+            "section": "카드 의미",
+            "source_section": "카드 의미 / 강의 노트",
+            "source_file": "docs/마이너카드/막대기/01_막대기_에이스.md",
+            "source_sha256": "8017676ac7fc1dd03a18dc2fd890e082662aad35e59f88ba54ee25a82fabc447",
+            "source_line_start": 15,
+            "source_line_end": 23,
+            "text": "위로 향하는 손과 막대기는 도전하려는 결심과 상승 욕구를 나타낸다."
+          }
+        ],
+        "edition": "2026-09-26.2",
+        "version": "688da242eafddd48ee5cd010f0067c299708405e4f924e75f0d8ec2b0346f192",
+        "source_collection": "사용자 제공 docs/마이너카드"
+      },
+      {
+        "card_id": 50,
+        "name": "검 에이스",
+        "source_file": "docs/마이너카드/검/01_검_에이스.md",
+        "source_title": "검 에이스 (검 Ace)",
+        "source_sha256": "42f4d5e2709f7aa4ff54d3d1fa95c54bfea12d15205924db2b6b86512e18d6d1",
+        "original_source_edition": null,
+        "passages": [
+          {
+            "id": "50.upright",
+            "section": "정방향",
+            "source_section": "정방향",
+            "source_file": "docs/마이너카드/검/01_검_에이스.md",
+            "source_sha256": "42f4d5e2709f7aa4ff54d3d1fa95c54bfea12d15205924db2b6b86512e18d6d1",
+            "source_line_start": 4,
+            "source_line_end": 10,
+            "text": "새로운 생각과 명확한 인식, 분석력과 이성적인 결단을 나타낸다."
+          },
+          {
+            "id": "50.meaning",
+            "section": "카드 의미",
+            "source_section": "카드 의미 / 강의 노트",
+            "source_file": "docs/마이너카드/검/01_검_에이스.md",
+            "source_sha256": "42f4d5e2709f7aa4ff54d3d1fa95c54bfea12d15205924db2b6b86512e18d6d1",
+            "source_line_start": 15,
+            "source_line_end": 25,
+            "text": "검의 날카로움과 공기는 치밀한 사고와 지식, 판단의 상징이다. 결정을 내릴 마음의 각오를 살핀다."
+          }
+        ],
+        "edition": "2026-09-26.2",
+        "version": "688da242eafddd48ee5cd010f0067c299708405e4f924e75f0d8ec2b0346f192",
+        "source_collection": "사용자 제공 docs/마이너카드"
+      }
+    ]
+  },
+  "generation_seconds": 14.869,
+  "judge_inputs": {
+    "reading": {
+      "question": "현재 회사에 남기와 새 회사로 옮기기 중 고민이에요. 현재 회사는 익숙하지만 성장 기회가 적고, 새 회사는 배울 일이 많지만 업무가 낯설어요. 올해는 안정적인 생활과 성장을 함께 고려하고 싶어요.",
+      "answers": [],
+      "plan": {
+        "summary": "현재 회사에 남기와 새 회사로 옮기기 중 고민이에요. 현재 회사는 익숙하지만 성장 기회가 적고, 새 회사는 배울 일이 많지만 업무가 낯설어요. 올해는 안정적인 생활과 성장을 함께 고려하고 싶어요.",
+        "spread": "choice2",
+        "conditions": [],
+        "alternatives": [
+          {
+            "label": "현재 회사에 남기",
+            "evidence": "현재 회사에 남기"
+          },
+          {
+            "label": "새 회사로 옮기기",
+            "evidence": "새 회사로 옮기기"
+          }
+        ],
+        "limitations": "",
+        "positions": [
+          "현재 회사에 남기: 선택했을 때의 가능성",
+          "새 회사로 옮기기: 선택했을 때의 가능성"
+        ]
+      },
+      "cards": [
+        {
+          "id": 22,
+          "name_ko": "완드 에이스",
+          "name_en": "ACE OF WANDS",
+          "orientation": "upright"
+        },
+        {
+          "id": 50,
+          "name_ko": "소드 에이스",
+          "name_en": "ACE OF SWORDS",
+          "orientation": "upright"
+        }
+      ],
+      "references": {
+        "documents": [
+          {
+            "card_id": 22,
+            "name": "막대기 에이스",
+            "source_file": "docs/마이너카드/막대기/01_막대기_에이스.md",
+            "source_title": "막대기 에이스 (Ace of Wands)",
+            "source_sha256": "8017676ac7fc1dd03a18dc2fd890e082662aad35e59f88ba54ee25a82fabc447",
+            "original_source_edition": null,
+            "passages": [
+              {
+                "id": "22.upright",
+                "section": "정방향",
+                "source_section": "정방향",
+                "source_file": "docs/마이너카드/막대기/01_막대기_에이스.md",
+                "source_sha256": "8017676ac7fc1dd03a18dc2fd890e082662aad35e59f88ba54ee25a82fabc447",
+                "source_line_start": 4,
+                "source_line_end": 10,
+                "text": "새 출발의 호기심과 창조적 자신감, 프로젝트에 쏟는 열정을 살핀다."
+              },
+              {
+                "id": "22.meaning",
+                "section": "카드 의미",
+                "source_section": "카드 의미 / 강의 노트",
+                "source_file": "docs/마이너카드/막대기/01_막대기_에이스.md",
+                "source_sha256": "8017676ac7fc1dd03a18dc2fd890e082662aad35e59f88ba54ee25a82fabc447",
+                "source_line_start": 15,
+                "source_line_end": 23,
+                "text": "위로 향하는 손과 막대기는 도전하려는 결심과 상승 욕구를 나타낸다."
+              }
+            ],
+            "edition": "2026-09-26.2",
+            "version": "688da242eafddd48ee5cd010f0067c299708405e4f924e75f0d8ec2b0346f192",
+            "source_collection": "사용자 제공 docs/마이너카드"
+          },
+          {
+            "card_id": 50,
+            "name": "검 에이스",
+            "source_file": "docs/마이너카드/검/01_검_에이스.md",
+            "source_title": "검 에이스 (검 Ace)",
+            "source_sha256": "42f4d5e2709f7aa4ff54d3d1fa95c54bfea12d15205924db2b6b86512e18d6d1",
+            "original_source_edition": null,
+            "passages": [
+              {
+                "id": "50.upright",
+                "section": "정방향",
+                "source_section": "정방향",
+                "source_file": "docs/마이너카드/검/01_검_에이스.md",
+                "source_sha256": "42f4d5e2709f7aa4ff54d3d1fa95c54bfea12d15205924db2b6b86512e18d6d1",
+                "source_line_start": 4,
+                "source_line_end": 10,
+                "text": "새로운 생각과 명확한 인식, 분석력과 이성적인 결단을 나타낸다."
+              },
+              {
+                "id": "50.meaning",
+                "section": "카드 의미",
+                "source_section": "카드 의미 / 강의 노트",
+                "source_file": "docs/마이너카드/검/01_검_에이스.md",
+                "source_sha256": "42f4d5e2709f7aa4ff54d3d1fa95c54bfea12d15205924db2b6b86512e18d6d1",
+                "source_line_start": 15,
+                "source_line_end": 25,
+                "text": "검의 날카로움과 공기는 치밀한 사고와 지식, 판단의 상징이다. 결정을 내릴 마음의 각오를 살핀다."
+              }
+            ],
+            "edition": "2026-09-26.2",
+            "version": "688da242eafddd48ee5cd010f0067c299708405e4f924e75f0d8ec2b0346f192",
+            "source_collection": "사용자 제공 docs/마이너카드"
+          }
+        ]
+      },
+      "candidate": {
+        "positions": [
+          {
+            "card_id": 22,
+            "position": "현재 회사에 남기: 선택했을 때의 가능성",
+            "interpretation": "이 카드는 현재 회사에 남았을 때 스스로 새로운 열정을 불어넣을 수 있는 가능성을 살핍니다. 익숙한 환경 속에서도 창조적인 자신감을 발휘하여 기존 업무를 새롭게 재해석하거나, 스스로 도전적인 프로젝트를 만들어낼 수 있는 에너지를 의미합니다. 다만, 이 에너지가 실제 회사 내의 성장 기회로 연결될지는 본인의 주도적인 태도에 달려 있습니다. 현재의 안정감을 유지하면서도 정체되지 않기 위해 어떤 새로운 시도를 할 수 있을지 고민해 보아야 합니다.",
+            "comparison": {
+              "possibility": "익숙한 환경에서 주도적으로 새로운 프로젝트를 시작할 수 있는 에너지를 얻습니다.",
+              "caution": "환경 자체가 변하지 않으므로 스스로 동기를 부여하지 않으면 정체될 위험이 있습니다.",
+              "condition": "회사 내에서 본인이 주도적으로 새로운 업무 영역을 개척할 수 있는지 확인해야 합니다."
+            }
+          },
+          {
+            "card_id": 50,
+            "position": "새 회사로 옮기기: 선택했을 때의 가능성",
+            "interpretation": "이 카드는 새 회사로 옮겼을 때 마주할 낯선 업무를 명확한 분석과 이성적인 판단으로 해결해 나갈 가능성을 살핍니다. 새로운 환경은 치밀한 사고와 지식 습득을 요구하며, 이는 본인의 전문성을 날카롭게 다듬는 계기가 될 것입니다. 감정적인 불안보다는 냉철한 판단력을 바탕으로 이직의 실익을 따져보는 것이 중요합니다. 새로운 시작이 가져올 지적 성장이 올해 본인이 추구하는 성장의 방향과 일치하는지 점검해 보십시오.",
+            "comparison": {
+              "possibility": "낯선 환경에서 지적 성장을 이루고 전문성을 명확하게 다듬을 수 있습니다.",
+              "caution": "새로운 환경에 적응하는 과정에서 요구되는 높은 수준의 분석력과 긴장감이 따릅니다.",
+              "condition": "새 회사의 업무가 본인의 장기적인 커리어 목표와 명확히 부합하는지 이성적으로 판단해야 합니다."
+            }
+          }
+        ],
+        "answer": "현재 회사에 남는 것은 스스로 새로운 열정을 찾아내는 도전의 과정이며, 새 회사로 옮기는 것은 냉철한 분석을 통해 전문성을 확장하는 결단의 과정입니다. 두 카드 모두 에이스로서 새로운 시작의 에너지를 담고 있으나, 전자는 내부적인 태도 변화를, 후자는 외부 환경의 변화를 통한 성장을 가리킵니다. 올해 안정과 성장을 동시에 고려한다면, 현재 회사에서 주도적으로 변화를 꾀할 수 있는 여지가 있는지 먼저 확인하고, 그것이 어렵다면 새 회사로의 이직을 통해 지적 성장을 도모하는 것이 합리적입니다.\n\n현재 회사에서 새로운 프로젝트를 주도할 기회가 있는지 먼저 확인하고, 그 가능성이 낮다면 성장을 위해 새 회사로 옮기는 결단을 내리세요.",
+        "relationships": "완드 에이스는 내면의 열정과 주도적인 태도를 강조하며, 소드 에이스는 외부 환경에 대한 냉철한 분석과 결단을 요구합니다. 두 카드는 모두 새로운 시작을 의미하지만, 완드 에이스는 현재의 기반 위에서 변화를 시도하는 보완적 성격이 강하고, 소드 에이스는 기존의 틀을 깨고 새로운 지식 체계로 나아가는 단절적 성격이 있습니다. 이 두 카드의 조합은 본인이 감정적인 익숙함에 머물지 말고, 성장을 위해 이성적인 판단을 내려야 함을 시사합니다.",
+        "reality_checks": [
+          "현재 회사에서 본인이 제안할 수 있는 새로운 업무나 프로젝트의 범위가 어디까지인지 확인하십시오.",
+          "새 회사의 업무 내용이 본인의 전문성을 어떻게 구체적으로 성장시킬 수 있는지 이성적으로 분석하십시오.",
+          "올해 본인이 생각하는 '안정적인 생활'의 기준이 구체적으로 무엇인지 경제적, 환경적 측면에서 점검하십시오."
+        ],
+        "actions": [
+          "현재 회사에서 성장 기회를 찾기 위해 상사나 동료와 구체적인 업무 확장 가능성을 논의하십시오.",
+          "새 회사로의 이직을 고려한다면, 해당 기업의 업무 환경과 본인의 적응력을 냉정하게 비교하는 리스트를 작성하십시오."
+        ]
+      }
+    }
+  },
+  "total_generation_seconds": 14.869
+}

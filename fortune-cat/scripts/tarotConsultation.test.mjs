@@ -257,7 +257,7 @@ test('saved consultation login failure is distinguishable and preserves credenti
     fetcher: async () => { requests++; assert.fail('login failed before API request') },
   })
   await client.restore()
-  assert.match(client.getSnapshot().error, /토스 로그인/)
+  assert.match(client.getSnapshot().error, /사용자 확인/)
   assert.equal(client.getSnapshot().hasSaved, true)
   assert.equal(client.getSnapshot().busy, false)
   assert.equal(requests, 0)
@@ -358,7 +358,7 @@ test('typed account failure is shown safely and does not invoke the consultation
     fetcher: async () => { calls++; return reply(complete) },
   })
   await client.restore()
-  assert.match(client.getSnapshot().error, /로그인/)
+  assert.match(client.getSnapshot().error, /사용자 확인/)
   assert.equal(calls, 0)
   failing = false
   await client.retry()
@@ -384,25 +384,25 @@ test('SDK-to-exchange entry failures retry with the original credentials and car
   let stage = 'sdk'
   let exchanges = 0
   let requests = 0
-  const accountHeaders = createTossAccountHeaders({ createAnonymousKeyAuthCode: async () => ({ code: 'test-native-code', expiresIn: 300 }), baseUrl: 'https://example.test',
+  const accountHeaders = createTossAccountHeaders({ createAnonymousKeyAuthCode: async () => { if (stage === 'sdk') throw Error('private native payload'); return { code: 'test-native-code', expiresIn: 300 } }, baseUrl: 'https://example.test',
     appLogin: async () => {
       if (stage === 'sdk') throw { code: 'unknown', message: 'private SDK payload' }
       return { authorizationCode: 'test-code', referrer: 'SANDBOX' }
     },
-    fetcher: async () => { exchanges++; return stage === 'exchange' ? reply({ error: 'private payload' }, 401) : reply({ legacyLinked: true, accessToken: 'test-token', expiresIn: 120, userKey: 123 }) },
+    fetcher: async () => { exchanges++; return stage === 'exchange' ? reply({ error: 'private payload' }, 401) : reply({ token: 'test-token', expiresIn: 900, userId: 'legacy' }) },
   })
   const client = createTarotConsultation({ baseUrl: 'https://example.test', accountHeaders,
     storage: { getItem: async () => JSON.stringify(saved) },
     fetcher: async (url, options) => {
       requests++
       assert.equal(options.headers['X-Tarot-Token'], token)
-      assert.equal(options.headers['X-Toss-Access-Token'], 'test-token')
+      assert.equal(options.headers['X-Toss-Anon-Token'], 'test-token')
       assert.ok(url.endsWith(id))
       return reply(complete)
     },
   })
   await client.restore()
-  assert.match(client.getSnapshot().error, /로그인이 취소/)
+  assert.match(client.getSnapshot().error, /사용자 확인/)
   assert.equal(exchanges, 0)
   assert.equal(requests, 0)
   stage = 'exchange'

@@ -3,7 +3,7 @@ import { Storage } from '@apps-in-toss/web-framework'
 import { purchaseTarot } from '../lib/tarotPurchase'
 import { createTarotConsultation } from '../lib/tarotConsultation'
 import { useTarotTrack } from './useTarotTrack'
-import { createTossAccountHeaders } from '../lib/tossAccount'
+import { getTossAccountHeaders, authenticatedTarotFetch } from '../lib/tossSession'
 import { isSandbox } from '../lib/analytics'
 import { tarotRuntime } from '../lib/tarotRuntime'
 
@@ -68,14 +68,7 @@ export function useTarotConsultation() {
       }
     }
     return createTarotConsultation({ baseUrl: runtime.baseUrl, sessionKey: runtime.sessionKey, storage, purchase,
-      accountHeaders: createTossAccountHeaders({
-        baseUrl: import.meta.env.VITE_API_BASE_URL,
-        development: import.meta.env.DEV,
-        appLogin: async () => {
-          const { appLogin } = await import('@apps-in-toss/web-framework')
-          return appLogin()
-        },
-      }),
+      accountHeaders: getTossAccountHeaders, fetcher: authenticatedTarotFetch,
     })
   })
   const state = useSyncExternalStore(client.subscribe, client.getSnapshot)

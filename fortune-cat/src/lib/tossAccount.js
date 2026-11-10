@@ -1,70 +1,61 @@
 import { EntryError } from './entryErrors.js'
 
-// Cache only a validated exchange; failed attempts remain explicitly retryable.
-export function createTossAccountHeaders({ baseUrl, appLogin, createAnonymousKeyAuthCode, fetcher = fetch, now = Date.now, development = false, checkIntegrated, integrationTimeoutMs = 3000 }) {
+export const validAccountId = value => typeof value === 'string' && /^(?:[A-Za-z0-9_-]{1,200}|toss:[A-Za-z0-9_-]{1,128})$/.test(value)
+const validToken = value => typeof value === 'string' && value.length > 0 && value.length <= 4096 && !/\s/.test(value)
+
+// The saved marker controls introduction presentation only. Credentials stay in memory.
+export function createTossAccountHeaders({ baseUrl, createAnonymousKeyAuthCode, appLogin, fetcher = fetch, now = Date.now, readIntro = () => false, writeIntro = () => {}, timeoutMs = 15000 }) {
   let login = null
   let pending = null
   let restoring = null
+  let recovering = null
   let generation = 0
   let automaticAttempted = false
   const listeners = new Set()
-  const loginError = (reason, error) => {
-    const failure = new EntryError('login')
-    // Never expose native messages, payloads, or authorization codes.
-    if (development) {
-      const code = error?.code
-      const safeCode = Number.isSafeInteger(code) || (typeof code === 'string' && /^[A-Z][A-Z0-9_]{0,47}$/.test(code))
-        ? `; code=${code}` : ''
-      const name = ['Error', 'TypeError', 'ReferenceError', 'NetworkError'].includes(error?.name) ? `; ${error.name}` : ''
-      failure.message += ` [${reason}${name}${safeCode}]`
-    }
-    return failure
-  }
+  const notify = () => listeners.forEach(listener => listener())
   const bounded = async work => {
     let timer
-    try {
-      return await Promise.race([work(), new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('login_timeout')), 15000) })])
-    } finally { clearTimeout(timer) }
+    try { return await Promise.race([Promise.resolve().then(work), new Promise((_, reject) => { timer = setTimeout(() => reject(new EntryError('login')), timeoutMs) })]) }
+    finally { clearTimeout(timer) }
   }
-  const exchange = async (startedAt) => {
-    if (!login || login.expiresAt <= now()) {
-      if (!baseUrl) throw new EntryError('configuration')
-      let result
-      try { result = await bounded(appLogin) } catch (error) { throw loginError('SDK_REJECTED', error) }
-      if (typeof result?.authorizationCode !== 'string' || !result.authorizationCode
-        || typeof result.referrer !== 'string' || !result.referrer) throw loginError('SDK_INVALID_RESULT')
-      if (startedAt !== generation) throw new EntryError('login')
-      // Obtain fresh, single-use native proof after consent so it cannot expire in the login UI.
-      let proof
-      try { proof = await bounded(() => createAnonymousKeyAuthCode()) } catch (error) { throw loginError('PROOF_REJECTED', error) }
-      if (typeof proof?.code !== 'string' || !proof.code.trim() || proof.code.length > 2048
-        || !Number.isFinite(proof.expiresIn) || proof.expiresIn <= 0) throw loginError('PROOF_INVALID_RESULT')
-      if (startedAt !== generation) throw new EntryError('login')
-      let response
-      try {
-        response = await bounded(() => fetcher(`${baseUrl.replace(/\/$/, '')}/toss-login`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ authorizationCode: result.authorizationCode, referrer: result.referrer, anonymousAuthCode: proof.code }),
-          signal: AbortSignal.timeout(15000),
-        }))
-      } catch { throw new EntryError('exchangeNetwork') }
-      if (!response.ok) throw new EntryError(response.status >= 500 ? 'exchangeServer' : 'exchangeRejected')
-      let data
-      try { data = await bounded(() => response.json()) } catch { throw new EntryError('exchangeInvalid') }
-      if (data?.legacyLinked !== true || typeof data?.accessToken !== 'string' || !data.accessToken
-        || !Number.isFinite(data.expiresIn) || data.expiresIn <= 0) throw new EntryError('exchangeInvalid')
-      const key = data.userKey
-      const userId = (typeof key === 'string' || Number.isSafeInteger(key)) && /^(?:0|[1-9][0-9]{0,39})$/.test(String(key)) ? `toss:${key}` : null
-      if (!userId || data.expiresIn <= 60) throw new EntryError('exchangeInvalid')
-      // Clearing a session also invalidates every earlier SDK/exchange result.
-      if (startedAt !== generation) throw new EntryError('login')
-      login = { token: data.accessToken, userId, expiresAt: now() + (Math.min(data.expiresIn, 3600) - 60) * 1000 }
+  const current = started => { if (started !== generation) throw new EntryError('login') }
+  const origin = target => {
+    let base, destination
+    try { base = new URL(baseUrl); destination = new URL(target || baseUrl) } catch { throw new EntryError('configuration') }
+    if (!['https:', 'http:'].includes(base.protocol) || base.username || base.password || destination.origin !== base.origin || destination.username || destination.password) throw new EntryError('configuration')
+    return base.origin
+  }
+  const proof = async started => {
+    let value
+    try { value = await bounded(() => createAnonymousKeyAuthCode()) }
+    catch { throw new EntryError('login') }
+    current(started)
+    if (typeof value?.code !== 'string' || !value.code.trim() || value.code.length > 2048 || !Number.isFinite(value.expiresIn) || value.expiresIn <= 0) throw new EntryError('login')
+    return value.code
+  }
+  const post = async (path, body) => {
+    let response
+    try { response = await bounded(() => fetcher(`${origin()}${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(timeoutMs), redirect: 'error', credentials: 'omit' })) }
+    catch { throw new EntryError('exchangeNetwork') }
+    if (!response.ok) throw new EntryError(response.status >= 500 ? 'exchangeServer' : 'exchangeRejected')
+    try { return await bounded(() => response.json()) } catch { throw new EntryError('exchangeInvalid') }
+  }
+  const exchange = async started => {
+    if (!headers.getSession()) {
+      const data = await post('/toss-anonymous-session', { code: await proof(started) })
+      current(started)
+      if (!validAccountId(data?.userId) || !validToken(data?.token) || data.expiresIn !== 900) throw new EntryError('exchangeInvalid')
+      login = { token: data.token, userId: data.userId, expiresAt: now() + 840000 }
       automaticAttempted = false
-      listeners.forEach(listener => listener())
+      try { await bounded(() => writeIntro(true)) } catch { /* Storage never grants or prevents authentication. */ }
+      current(started)
+      notify()
     }
-    return { 'X-Toss-Access-Token': login.token }
+    return { 'X-Toss-Anon-Token': login.token }
   }
-  const headers = () => {
+  const headers = target => {
+    try { origin(target) } catch (error) { return Promise.reject(error) }
+    if (recovering) return recovering.then(() => headers(target))
     if (!pending) {
       const request = exchange(generation)
       pending = request
@@ -72,43 +63,51 @@ export function createTossAccountHeaders({ baseUrl, appLogin, createAnonymousKey
     }
     return pending
   }
-  headers.getSession = () => login && login.userId && login.expiresAt > now() ? { ...login } : null
+  headers.getSession = () => login?.expiresAt > now() ? { ...login } : null
   headers.subscribe = listener => { listeners.add(listener); return () => listeners.delete(listener) }
   headers.clear = () => {
-    generation++
-    login = null
-    pending = null
-    restoring = null
-    // HTTP 401 must return to an explicit retry, never an automatic loop.
+    generation++; login = null; pending = null; restoring = null
     automaticAttempted = true
-    listeners.forEach(listener => listener())
+    notify()
   }
   headers.restore = () => {
-    const session = headers.getSession()
-    if (session) return Promise.resolve(session)
+    if (headers.getSession()) return Promise.resolve(headers.getSession())
     if (restoring) return restoring
     if (automaticAttempted) return Promise.resolve(null)
     automaticAttempted = true
-    const startedAt = generation
+    const started = generation
     const request = (async () => {
       try {
-        // Native integration only allows a fresh server-verified login attempt.
-        if (!await isTossLoggedIn(checkIntegrated, integrationTimeoutMs) || startedAt !== generation) return null
+        if (await bounded(readIntro) !== true) return null
+        current(started)
         await headers()
-        return startedAt === generation ? headers.getSession() : null
+        return started === generation ? headers.getSession() : null
       } catch { return null }
     })()
     restoring = request
     request.finally(() => { if (restoring === request) restoring = null }).catch(() => {})
     return request
   }
+  // Explicit recovery is the only flow requesting OAuth consent. Never run at startup.
+  headers.recoverLegacy = () => {
+    if (recovering) return recovering
+    generation++; pending = null; restoring = null; automaticAttempted = true
+    const started = generation
+    const request = (async () => {
+      let oauth
+      try { oauth = await bounded(() => appLogin()) } catch { throw new EntryError('login') }
+      current(started)
+      if (typeof oauth?.authorizationCode !== 'string' || !oauth.authorizationCode || typeof oauth.referrer !== 'string' || !oauth.referrer) throw new EntryError('login')
+      const data = await post('/toss-login', { authorizationCode: oauth.authorizationCode, referrer: oauth.referrer, anonymousAuthCode: await proof(started) })
+      current(started)
+      if (data?.legacyLinked !== true) throw new EntryError('exchangeInvalid')
+      login = null
+      try { await exchange(started) } catch (error) { headers.clear(); throw error }
+      return headers.getSession()
+    })()
+    recovering = request
+    request.finally(() => { if (recovering === request) recovering = null }).catch(() => {})
+    return request
+  }
   return headers
-}
-
-// 로그인 창 없이 토스 로그인 연동 여부만 본다. 모르면(구버전 앱·오류·브리지 무응답)
-// 로그인 안 된 것으로 보고 안내부터 보여준다.
-export async function isTossLoggedIn(check, timeoutMs = 3000) {
-  let timer
-  const timeout = new Promise(resolve => { timer = setTimeout(() => resolve(false), timeoutMs) })
-  try { return (await Promise.race([check(), timeout])) === true } catch { return false } finally { clearTimeout(timer) }
 }

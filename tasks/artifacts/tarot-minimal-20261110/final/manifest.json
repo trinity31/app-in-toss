@@ -1,0 +1,45 @@
+{
+  "version": "tarot-gemini-writer-v2",
+  "judge_version": "tarot-jev-v1",
+  "cases": {
+    "reflection": {
+      "question": "친구와 만난 뒤에는 즐거운데 혼자 돌아오면 지쳐요. 당장 관계를 바꾸기보다 지금 내 마음의 두 측면을 이해하고 싶어요.",
+      "spread": "state2",
+      "cards": [
+        2,
+        8
+      ]
+    },
+    "recovery": {
+      "question": "작년에 친구와 다투고 멀어진 뒤 아직 연락하지 않았어요. 제 잘못을 인정하고 먼저 짧게 사과해 관계를 회복하고 싶어요. 그 사건 이후 지금까지와 앞으로의 흐름을 살펴보고 싶어요.",
+      "spread": "flow_past",
+      "cards": [
+        16,
+        9,
+        14
+      ],
+      "clarifier": 17
+    },
+    "choice": {
+      "question": "현재 회사에 남기와 새 회사로 옮기기 중 고민이에요. 현재 회사는 익숙하지만 성장 기회가 적고, 새 회사는 배울 일이 많지만 업무가 낯설어요. 올해는 안정적인 생활과 성장을 함께 고려하고 싶어요.",
+      "spread": "choice2",
+      "cards": [
+        22,
+        50
+      ],
+      "alternatives": [
+        "현재 회사에 남기",
+        "새 회사로 옮기기"
+      ]
+    }
+  },
+  "profiles": [
+    "gemini",
+    "gpt_gemini",
+    "gpt_analysis_gemini"
+  ],
+  "repeats": 1,
+  "writer": "gemini-3.1-flash-lite",
+  "controlled_replay": true,
+  "code_hash": "08e0501e1698851ce1bf6816f0e61cdb2694c7f54b41f122ff1249a3c8ca1458"
+}

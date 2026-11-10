@@ -1,0 +1,179 @@
+{
+  "candidate": {
+    "card_id": 17,
+    "target_index": 0,
+    "meaning": "과거의 타워 카드가 관계의 갑작스러운 붕괴와 익숙했던 소통 방식의 상실을 보여주었다면, 별 카드는 그 혼란 속에서도 관계를 다시 바라볼 수 있는 희망의 이정표를 제시합니다. 당시의 다툼이 단순히 관계의 끝이었는지, 아니면 서로의 마음을 다시 확인하기 위한 성숙의 과정이었는지 스스로 질문해 보십시오. 타워가 기존의 보호막이 무너지는 충격에 집중했다면, 별은 그 폐허 위에서 다시 소통을 꿈꾸는 내적 회복의 가능성을 더합니다. 이는 과거의 사건을 단순히 부정적인 단절로만 기억하지 않고, 관계의 새로운 방향을 모색하는 계기로 삼을 수 있음을 의미합니다.",
+    "reality_check": "당시 다툼의 원인이 되었던 자신의 태도 중, 지금 다시 생각해도 아쉬움이 남는 구체적인 지점이 무엇인지 확인하십시오.",
+    "action": "과거의 갈등을 회복의 관점에서 다시 정리해 보고, 사과 메시지에 담을 진솔한 마음을 짧게 메모해 보십시오."
+  },
+  "judgment": {
+    "status": "scored",
+    "score": 57.89,
+    "dimensions": {
+      "grounding": 2.2,
+      "relevance": 1.81,
+      "consistency": 2.59,
+      "actionability": 2.73,
+      "readability": 2.44
+    },
+    "flags": {
+      "fabricated_fact": 0.4,
+      "wrong_time_or_card": 0.65,
+      "internal_leak": 0.27
+    },
+    "version": "tarot-jev-v1",
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "grounding": {
+          "type": "score",
+          "score": 2.2,
+          "confidence": 0.25,
+          "legend": {
+            "0": "핵심 요구를 충족하지 못한다.",
+            "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+            "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+            "3": "대부분 충족하며 경미한 문제가 있다.",
+            "4": "빠짐없이 충족하며 명확한 오류가 없다."
+          },
+          "probabilities": {
+            "0": 0.11,
+            "1": 0.13,
+            "2": 0.35,
+            "3": 0.27,
+            "4": 0.14
+          }
+        },
+        "relevance": {
+          "type": "score",
+          "score": 1.81,
+          "confidence": 0.32,
+          "legend": {
+            "0": "핵심 요구를 충족하지 못한다.",
+            "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+            "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+            "3": "대부분 충족하며 경미한 문제가 있다.",
+            "4": "빠짐없이 충족하며 명확한 오류가 없다."
+          },
+          "probabilities": {
+            "0": 0.17,
+            "1": 0.16,
+            "2": 0.45,
+            "3": 0.13,
+            "4": 0.09
+          }
+        },
+        "consistency": {
+          "type": "score",
+          "score": 2.59,
+          "confidence": 0.0,
+          "legend": {
+            "0": "핵심 요구를 충족하지 못한다.",
+            "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+            "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+            "3": "대부분 충족하며 경미한 문제가 있다.",
+            "4": "빠짐없이 충족하며 명확한 오류가 없다."
+          },
+          "probabilities": {
+            "0": 0.13,
+            "1": 0.06,
+            "2": 0.23,
+            "3": 0.25,
+            "4": 0.33
+          }
+        },
+        "actionability": {
+          "type": "score",
+          "score": 2.73,
+          "confidence": 0.27,
+          "legend": {
+            "0": "핵심 요구를 충족하지 못한다.",
+            "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+            "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+            "3": "대부분 충족하며 경미한 문제가 있다.",
+            "4": "빠짐없이 충족하며 명확한 오류가 없다."
+          },
+          "probabilities": {
+            "0": 0.07,
+            "1": 0.07,
+            "2": 0.23,
+            "3": 0.33,
+            "4": 0.3
+          }
+        },
+        "readability": {
+          "type": "score",
+          "score": 2.44,
+          "confidence": 0.17,
+          "legend": {
+            "0": "핵심 요구를 충족하지 못한다.",
+            "1": "대부분 충족하지 못하고 중대한 오류가 있다.",
+            "2": "일부 충족하지만 명확한 누락이나 오류가 있다.",
+            "3": "대부분 충족하며 경미한 문제가 있다.",
+            "4": "빠짐없이 충족하며 명확한 오류가 없다."
+          },
+          "probabilities": {
+            "0": 0.12,
+            "1": 0.08,
+            "2": 0.25,
+            "3": 0.33,
+            "4": 0.22
+          }
+        },
+        "fabricated_fact": {
+          "type": "noul",
+          "noul": 0.4
+        },
+        "wrong_time_or_card": {
+          "type": "noul",
+          "noul": 0.65
+        },
+        "internal_leak": {
+          "type": "noul",
+          "noul": 0.27
+        }
+      },
+      "usage": {
+        "input_tokens": 3998,
+        "output_tokens": 137
+      }
+    }
+  },
+  "metrics": [
+    {
+      "stage": "evidence_analysis",
+      "model": "gpt-6.1-terra",
+      "status": "ok",
+      "seconds": 5.426,
+      "usage": {
+        "input_tokens": 2088,
+        "output_tokens": 225,
+        "total_tokens": 2313,
+        "input_token_details": {
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 20
+        }
+      },
+      "estimated_cost_usd": 0.003213
+    },
+    {
+      "stage": "clarifier",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 2.819,
+      "usage": {
+        "input_tokens": 2811,
+        "output_tokens": 307,
+        "total_tokens": 3118,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      },
+      "estimated_cost_usd": 0.00116325
+    }
+  ],
+  "source": "/tmp/tarot-minimal-final-20261110/recovery-gpt_analysis_gemini.json",
+  "version": "tarot-gemini-writer-v3"
+}

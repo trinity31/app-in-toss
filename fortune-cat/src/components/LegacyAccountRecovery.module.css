@@ -1,0 +1,4 @@
+.recovery { margin: 12px 0 20px; color: var(--color-gray-600); font-size: 14px; line-height: 1.6; }
+.link { min-height: 44px; padding: 8px 12px; border: 0; background: transparent; color: var(--color-gray-600); font: inherit; text-decoration: underline; cursor: pointer; }
+.link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.link:disabled { cursor: wait; }

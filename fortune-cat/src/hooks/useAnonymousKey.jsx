@@ -47,23 +47,22 @@ export function AnonymousKeyProvider({ children }) {
           return
         }
         if (result.type !== 'HASH' || typeof result.hash !== 'string') {
-          console.warn('[AnonymousKey] 예상치 못한 응답 형태:', result)
+          console.warn('[AnonymousKey] 예상치 못한 응답 형태')
           return
         }
 
         const hash = result.hash
-        console.log('[AnonymousKey] 발급:', hash)
         if (!cancelled) {
           setAnonymousKey(hash)
           applyToAnalytics(hash)
         }
         try {
           await Storage.setItem(ANONYMOUS_KEY_STORAGE_KEY, hash)
-        } catch (e) {
-          console.warn('[AnonymousKey] Storage 저장 실패:', e)
+        } catch {
+          console.warn('[AnonymousKey] Storage 저장 실패')
         }
-      } catch (err) {
-        console.warn('[AnonymousKey] 발급 실패:', err)
+      } catch {
+        console.warn('[AnonymousKey] 발급 실패')
       } finally {
         if (!cancelled) setLoading(false)
       }

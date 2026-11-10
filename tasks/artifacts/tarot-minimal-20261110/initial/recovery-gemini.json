@@ -1,0 +1,56 @@
+{
+  "case": "recovery",
+  "profile": "gemini",
+  "question": "작년에 친구와 다투고 멀어진 뒤 아직 연락하지 않았어요. 제 잘못을 인정하고 먼저 짧게 사과해 관계를 회복하고 싶어요. 그 사건 이후 지금까지와 앞으로의 흐름을 살펴보고 싶어요.",
+  "metrics": [
+    {
+      "stage": "planning",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 1.344,
+      "usage": {
+        "input_tokens": 2094,
+        "output_tokens": 158,
+        "total_tokens": 2252,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      },
+      "estimated_cost_usd": 0.0007605
+    },
+    {
+      "stage": "reading",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 4.165,
+      "usage": {
+        "input_tokens": 3247,
+        "output_tokens": 951,
+        "total_tokens": 4198,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      },
+      "estimated_cost_usd": 0.00223825
+    }
+  ],
+  "judgments": {},
+  "status": "error",
+  "session_id": "a4895513-9e8d-4dde-8cb3-a89d1486f83d",
+  "planning_status": "ready",
+  "planning": {
+    "summary": "작년에 친구와 다툰 후 연락이 끊긴 상태에서, 본인의 잘못을 인정하고 먼저 사과하여 관계를 회복하고 싶어 합니다. 사건 이후 현재까지의 상황과 앞으로의 관계 흐름을 살펴보고자 합니다.",
+    "spread": "flow_past",
+    "conditions": [],
+    "alternatives": [],
+    "limitations": "사과를 시도하려는 구체적인 방법이나 친구의 현재 반응에 대한 정보는 없으나, 관계 회복의 가능성과 흐름을 살피는 데에는 지장이 없습니다.",
+    "positions": [
+      "과거",
+      "현재",
+      "미래의 가능성"
+    ]
+  },
+  "expected_spread_match": true,
+  "error_type": "ValueError",
+  "total_generation_seconds": 5.521
+}

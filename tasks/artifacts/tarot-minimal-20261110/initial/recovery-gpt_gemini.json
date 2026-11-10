@@ -1,0 +1,78 @@
+{
+  "case": "recovery",
+  "profile": "gpt_gemini",
+  "question": "작년에 친구와 다투고 멀어진 뒤 아직 연락하지 않았어요. 제 잘못을 인정하고 먼저 짧게 사과해 관계를 회복하고 싶어요. 그 사건 이후 지금까지와 앞으로의 흐름을 살펴보고 싶어요.",
+  "metrics": [
+    {
+      "stage": "judgment",
+      "model": "gpt-6-luna",
+      "status": "ok",
+      "seconds": 3.32,
+      "usage": {
+        "input_tokens": 2810,
+        "output_tokens": 167,
+        "total_tokens": 2977,
+        "input_token_details": {
+          "cache_read": 2733
+        },
+        "output_token_details": {
+          "reasoning": 72
+        }
+      },
+      "estimated_cost_usd": 0.0003645
+    },
+    {
+      "stage": "question_wording",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 1.148,
+      "usage": {
+        "input_tokens": 340,
+        "output_tokens": 98,
+        "total_tokens": 438,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      },
+      "estimated_cost_usd": 0.000232
+    },
+    {
+      "stage": "reading",
+      "model": "gemini-3.1-flash-lite",
+      "status": "ok",
+      "seconds": 4.224,
+      "usage": {
+        "input_tokens": 3247,
+        "output_tokens": 951,
+        "total_tokens": 4198,
+        "input_token_details": {
+          "cache_read": 1526
+        }
+      },
+      "estimated_cost_usd": 0.00223825
+    }
+  ],
+  "judgments": {},
+  "status": "error",
+  "session_id": "b3104351-6e06-41c6-a1d2-4047c3ee3927",
+  "planning_status": "ready",
+  "planning": {
+    "summary": "작년에 친구와 다툰 후 연락이 끊긴 상태이며, 본인의 잘못을 인정하고 먼저 사과하여 관계를 회복하고자 합니다. 사건 이후 지금까지의 상황과 앞으로의 관계 흐름에 대해 타로 상담을 요청하셨습니다.",
+    "spread": "flow_past",
+    "conditions": [
+      "작년에 친구와 다투고 멀어진 뒤 아직 연락하지 않았어요.",
+      "제 잘못을 인정하고 먼저 짧게 사과해 관계를 회복하고 싶어요.",
+      "그 사건 이후 지금까지와 앞으로의 흐름을 살펴보고 싶어요."
+    ],
+    "alternatives": [],
+    "limitations": "상대방의 현재 심리 상태나 구체적인 사건의 경위는 확인되지 않았습니다.",
+    "positions": [
+      "과거",
+      "현재",
+      "미래의 가능성"
+    ]
+  },
+  "expected_spread_match": true,
+  "error_type": "ValueError",
+  "total_generation_seconds": 8.701
+}

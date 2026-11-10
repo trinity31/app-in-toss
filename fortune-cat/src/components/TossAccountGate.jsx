@@ -37,7 +37,7 @@ export default function TossAccountGate({ children, hasBottomNavigation = false 
     if (busy) return
     setBusy(true); setError(null)
     try { await loginTossAccount() }
-    catch { if (mounted.current) setError('로그인을 완료하지 못했어요. 원하실 때 다시 시도해 주세요.') }
+    catch { if (mounted.current) setError('사용자 확인을 완료하지 못했어요. 다시 시도해 주세요.') }
     finally { if (mounted.current) setBusy(false) }
   }
   return (
@@ -48,7 +48,7 @@ export default function TossAccountGate({ children, hasBottomNavigation = false 
     >
       {busy && <div className={styles.loading} role="status">
         <span className={styles.spinner} aria-hidden="true" />
-        <p className={styles.status}>토스 계정을 확인하고 있어요.</p>
+        <p className={styles.status}>사용자를 확인하고 있어요.</p>
       </div>}
       {!busy && <div className={styles.content}>
         <img className={styles.illustration} src={hero} alt="" width="600" height="332" />
@@ -67,7 +67,7 @@ export default function TossAccountGate({ children, hasBottomNavigation = false 
       </div>}
       {!busy && <div className={styles.action}>
         {error && <p className={styles.error} role="alert">{error}</p>}
-        <p className={styles.notice}>시작하면 토스 로그인으로 이어져요.<br />일부 풀이와 추가 이용은 결제가 필요해요.</p>
+        <p className={styles.notice}>로그인 없이 바로 시작할 수 있어요.<br />일부 풀이와 추가 이용은 결제가 필요해요.</p>
         <button
           className={styles.loginButton}
           type="button"

@@ -3,12 +3,12 @@ import assert from 'node:assert/strict'
 import { createDeepReadingPurchase } from '../src/lib/deepReadingPurchase.js'
 const products = { deep_reading: { sku: 'reading-sku' }, followup_pack: { sku: 'followup-sku' } }
 const tick = () => new Promise(resolve => setImmediate(resolve))
-function setup({ pending = [], failGrant = false, complete = true, saved = null } = {}) {
+function setup({ userId = 'toss:123', pending = [], failGrant = false, complete = true, saved = null } = {}) {
   const data = new Map(saved ? [['deep_reading_pending_order', JSON.stringify(saved)]] : [])
   const storage = { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) }
   const calls = [], completed = []
   const sdk = { getPendingOrders: async () => ({ orders: pending }), getProductItemList: async () => ({ products: [] }), createOneTimePurchaseOrder(options) { this.options = options; return () => {} }, completeProductGrant: async ({ params }) => { completed.push(params.orderId); return complete } }
-  const client = createDeepReadingPurchase({ products, storage, session: () => ({ userId: 'toss:123' }), getIAP: async () => sdk, request: async (path, options) => {
+  const client = createDeepReadingPurchase({ products, storage, session: () => ({ userId }), getIAP: async () => sdk, request: async (path, options) => {
     calls.push([path, JSON.parse(options.body)])
     if (failGrant) return { ok: false, status: 409, json: async () => ({}) }
     return { ok: true, json: async () => ({ success: true, already: false, product: 'deep_reading', reading_remaining: 1, followup_remaining: 10 }) }
@@ -125,3 +125,24 @@ test('checkout joining recovery returns the recovered order without another char
   assert.equal(s.sdk.options, undefined)
   assert.equal(s.calls.length, 1)
 })
+
+for (const userId of ['preview_legacy', 'toss:opaque-owner']) {
+  test(`verified anonymous owner ${userId} can purchase and recover its durable order`, async () => {
+    const s = setup({ userId })
+    const buying = s.client.purchase('deep_reading', { threadId: 'anonymous-thread' })
+    await tick()
+    assert.equal(s.sdk.options.options.processProductGrant({ orderId: 'anonymous-paid' }), true)
+    const saved = JSON.parse(s.data.get('deep_reading_pending_order'))
+    assert.equal(saved.userId, userId)
+    await s.sdk.options.onEvent({ type: 'success' })
+    assert.equal((await buying).grant.reading_remaining, 1)
+    const restarted = setup({ userId, saved, pending: [{ orderId: saved.orderId, sku: 'reading-sku' }] })
+    const recovered = await restarted.client.recover()
+    assert.equal(recovered.length, 1)
+    assert.equal(restarted.sdk.options, undefined)
+    assert.deepEqual(restarted.completed, ['anonymous-paid'])
+    const other = setup({ userId: 'different-owner', saved })
+    await assert.rejects(other.client.recover())
+    assert.equal(other.calls.length, 0)
+  })
+}

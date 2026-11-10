@@ -1,7 +1,7 @@
 export function createTarotLibrary({ baseUrl, accountHeaders, fetcher = fetch }) {
   async function request(path) {
     if (!baseUrl) throw new Error('타로 보관함 연결 설정을 확인해 주세요.')
-    const headers = await accountHeaders()
+    const headers = await accountHeaders(`${baseUrl.replace(/\/$/, '')}/tarot/sessions/history${path}`)
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 30000)
     try {

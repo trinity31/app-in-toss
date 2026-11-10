@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createTarotLibrary } from '../lib/tarotLibrary'
-import { createTossAccountHeaders, isTossLoggedIn } from '../lib/tossAccount'
+import { getTossAccountHeaders, authenticatedTarotFetch, subscribeTossAccount, getTossSession } from '../lib/tossSession'
 import { tarotRuntime } from '../lib/tarotRuntime'
 import { isSandbox } from '../lib/analytics'
 import TarotCardArt from './TarotCardArt'
@@ -44,13 +44,11 @@ function SavedReading({ session }) {
   </article>
 }
 
-export default function TarotLibrary() {
+export default function TarotLibrary({ onHistoryState } = {}) {
   const [{ client }] = useState(() => {
     const runtime = tarotRuntime({ development: import.meta.env.DEV, sandbox: isSandbox(), baseUrl: import.meta.env.VITE_API_BASE_URL })
     return { client: createTarotLibrary({ baseUrl: runtime.baseUrl,
-      accountHeaders: createTossAccountHeaders({ baseUrl: import.meta.env.VITE_API_BASE_URL, development: import.meta.env.DEV,
-        appLogin: async () => (await import('@apps-in-toss/web-framework')).appLogin(),
-      }),
+      accountHeaders: getTossAccountHeaders, fetcher: authenticatedTarotFetch,
     }) }
   })
   const [items, setItems] = useState(null)
@@ -58,28 +56,49 @@ export default function TarotLibrary() {
   const [selected, setSelected] = useState(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
-  const [needsLogin, setNeedsLogin] = useState(false)
-  async function load(id, append = false) {
-    if (busy) return
+  const requestRef = useRef(0)
+  const busyRef = useRef(false)
+  async function load(id, append = false, replaceOwner = false) {
+    if (busyRef.current && !replaceOwner) return
+    const request = ++requestRef.current
+    const requestOwner = getTossSession()?.userId
+    const current = () => request === requestRef.current && requestOwner === getTossSession()?.userId
+    busyRef.current = true
     setBusy(true); setError(null)
+    if (!id) onHistoryState?.({ owner: requestOwner, status: 'loading' })
     try {
-      if (id) setSelected(await client.detail(id))
+      if (id) {
+        const detail = await client.detail(id)
+        if (current()) setSelected(detail)
+      }
       else {
         const data = await client.list(append ? items.length : 0)
-        setItems(previous => append ? [...previous, ...data.items] : data.items)
-        setMore(data.has_more)
-        setNeedsLogin(false)
+        if (current()) {
+          setItems(previous => append ? [...previous, ...data.items] : data.items)
+          setMore(data.has_more)
+          onHistoryState?.({ owner: requestOwner, status: 'ready',
+            empty: !(append && items?.length) && data.items.length === 0 && !data.has_more })
+        }
       }
-    } catch (error) { setError(error.message) }
-    finally { setBusy(false) }
+    } catch (error) {
+      if (current()) {
+        setError(error.message)
+        if (!id) onHistoryState?.({ owner: requestOwner, status: 'error' })
+      }
+    }
+    finally { if (current()) { busyRef.current = false; setBusy(false) } }
   }
-  // 이미 토스 로그인한 사용자는 바로 불러온다. 아니면 설명 없이 로그인 창을 띄우지 않도록
-  // 안내와 버튼을 먼저 보여준다(앱인토스 심사 요구).
+  const [owner, setOwner] = useState(() => getTossSession()?.userId)
+  useEffect(() => subscribeTossAccount(() => setOwner(getTossSession()?.userId)), [])
   useEffect(() => {
-    isTossLoggedIn(async () => (await import('@apps-in-toss/web-framework')).getIsTossLoginIntegratedService())
-      .then(loggedIn => loggedIn ? load() : setNeedsLogin(true))
+    setItems(null); setSelected(null); setMore(false)
+    if (owner) load(null, false, true)
+    else { busyRef.current = false; setBusy(false); setError(null) }
+    // This ref is a request generation, not a DOM node; invalidate it on cleanup.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    return () => { requestRef.current++; busyRef.current = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [owner])
 
   return <section aria-label="심화 타로 보관함" className="tarot-library">
     {error && <p role="alert">{error}</p>}
@@ -89,11 +108,7 @@ export default function TarotLibrary() {
       <SavedReading session={selected} />
       <button style={buttonStyle} onClick={() => setSelected(null)}>타로 목록으로 돌아가기</button>
     </> : <>
-      {needsLogin && <>
-        <p>로그인하면 저장한 풀이를 볼 수 있어요.</p>
-        <button style={buttonStyle} disabled={busy} onClick={() => load()}>토스 로그인하고 풀이 보기</button>
-      </>}
-      {error && !needsLogin && <button style={buttonStyle} disabled={busy} onClick={() => load()}>다시 시도</button>}
+      {error && <button style={buttonStyle} disabled={busy} onClick={() => load()}>다시 시도</button>}
       {items?.length === 0 && <p>아직 완료한 심화 타로 풀이가 없어요.</p>}
       {items?.map(item => <button key={item.id} style={listItemStyle} disabled={busy} onClick={() => load(item.id)}>
         <span style={{ display: 'block', fontSize: 16, fontWeight: 600, color: 'var(--color-gray-700)', marginBottom: 4 }}>{item.question}</span>

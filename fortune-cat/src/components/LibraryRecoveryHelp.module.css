@@ -1,0 +1,5 @@
+.help { margin: 12px 0 20px; color: var(--color-gray-600); font-size: 14px; line-height: 1.6; }
+.summary { min-height: 44px; padding: 10px 12px; cursor: pointer; }
+.summary:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.content { padding: 0 12px; }
+.content > p { margin: 4px 0; }

@@ -1,9 +1,10 @@
 import { JOB_MENU } from '../lib/jobMenu';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useToast } from "../hooks/useToast";
-import { authenticatedReadingFetch, getTossSession } from "../lib/tossSession";
+import { authenticatedReadingFetch, getTossSession, subscribeTossAccount } from "../lib/tossSession";
 import { useSafeAreaInsets } from "../hooks/useSafeAreaInsets";
 import { supabase } from "../lib/supabase";
+import LibraryRecoveryHelp from "../components/LibraryRecoveryHelp";
 import TarotLibrary from "../components/TarotLibrary";
 import DeepReadingResult from "../components/DeepReadingResult";
 
@@ -23,7 +24,19 @@ const fmtDate = (s) => {
 };
 
 export default function LibraryPage() {
-  const anonymousKey = getTossSession()?.userId;
+  const [anonymousKey, setAnonymousKey] = useState(() => getTossSession()?.userId);
+  const ownerRef = useRef(anonymousKey);
+  const mountedRef = useRef(false);
+  useEffect(() => {
+    mountedRef.current = true;
+    const unsubscribe = subscribeTossAccount(() => {
+      const nextOwner = getTossSession()?.userId;
+      if (ownerRef.current !== nextOwner) { setReadingHistoryOwner(null); setTarotHistory(null); }
+      ownerRef.current = nextOwner;
+      setAnonymousKey(nextOwner);
+    });
+    return () => { mountedRef.current = false; unsubscribe(); };
+  }, []);
   const keyLoading = false;
   const [loadError, setLoadError] = useState(false);
   const insets = useSafeAreaInsets();
@@ -31,6 +44,8 @@ export default function LibraryPage() {
   const { openToast } = useToast();
 
   const [items, setItems] = useState([]);
+  const [readingHistoryOwner, setReadingHistoryOwner] = useState(null);
+  const [tarotHistory, setTarotHistory] = useState(null);
   // 웹 library.tsx 와 같은 세그먼트 탭 — 한 번에 한 종류만 본다.
   const [tarotTab, setTarotTab] = useState(false); // 기본은 사주 풀이 탭
   const [typeMap, setTypeMap] = useState({ job: JOB_MENU.title_ko });
@@ -68,15 +83,29 @@ export default function LibraryPage() {
       setLoading(false);
       return;
     }
+    let active = true;
+    const controller = new AbortController();
+    const current = () => active && ownerRef.current === anonymousKey;
+    setLoading(true); setLoadError(false); setItems([]); setSelected(null);
+    setReadingHistoryOwner(null);
+    setDeletingId(null); setConfirmDeleteId(null);
     authenticatedReadingFetch(
       `${API_BASE_URL}/deep-reading/history?user_anonymous_id=${encodeURIComponent(anonymousKey)}`,
-      {},
+      { signal: controller.signal },
     )
       .then((r) => { if (!r.ok) throw new Error("history_unavailable"); return r.json(); })
-      .then((d) => setItems(d.items || []))
-      .catch(() => setLoadError(true))
-      .finally(() => setLoading(false));
+      .then((d) => {
+        if (!Array.isArray(d.items)) throw new Error("history_invalid");
+        if (current()) { setItems(d.items); setReadingHistoryOwner(anonymousKey); }
+      })
+      .catch(() => { if (current()) setLoadError(true); })
+      .finally(() => { if (current()) setLoading(false); });
+    return () => { active = false; controller.abort(); };
   }, [anonymousKey, keyLoading]);
+
+  const showRecoveryHelp = Boolean(anonymousKey && !anonymousKey.startsWith("toss:")
+    && !loading && !loadError && readingHistoryOwner === anonymousKey && items.length === 0
+    && tarotHistory?.owner === anonymousKey && tarotHistory.status === "ready" && tarotHistory.empty);
 
   const titleFor = (rt) => {
     if (!rt) return "사주 풀이";
@@ -94,6 +123,8 @@ export default function LibraryPage() {
     rt === "lucky_color";
 
   const handleDelete = async (item) => {
+    const requestOwner = anonymousKey;
+    const current = () => mountedRef.current && ownerRef.current === requestOwner;
     setDeletingId(item.thread_id);
     try {
       const r = await authenticatedReadingFetch(
@@ -101,16 +132,17 @@ export default function LibraryPage() {
         { method: "DELETE" },
       );
       if (!r.ok) throw new Error(String(r.status));
-      setItems((prev) => prev.filter((i) => i.thread_id !== item.thread_id));
+      if (current()) setItems((prev) => prev.filter((i) => i.thread_id !== item.thread_id));
     } catch {
-      openToast({ message: "삭제에 실패했어요. 잠시 후 다시 시도해 주세요" });
+      if (current()) openToast({ message: "삭제에 실패했어요. 잠시 후 다시 시도해 주세요" });
     } finally {
-      setDeletingId(null);
-      setConfirmDeleteId(null);
+      if (current()) { setDeletingId(null); setConfirmDeleteId(null); }
     }
   };
 
   const openDetail = async (item) => {
+    const requestOwner = anonymousKey;
+    const current = () => mountedRef.current && ownerRef.current === requestOwner;
     setSelected({ ...item, _loading: true });
     try {
       const r = await authenticatedReadingFetch(
@@ -119,9 +151,9 @@ export default function LibraryPage() {
       );
       if (!r.ok) throw new Error(String(r.status));
       const data = await r.json();
-      setSelected({ ...item, ...data, _loading: false });
+      if (current()) setSelected({ ...item, ...data, _loading: false });
     } catch {
-      setSelected({ ...item, _loading: false, _error: true });
+      if (current()) setSelected({ ...item, _loading: false, _error: true });
     }
   };
 
@@ -253,11 +285,12 @@ export default function LibraryPage() {
             </button>
           ))}
         </div>
+        {showRecoveryHelp && <LibraryRecoveryHelp key={anonymousKey} />}
         <div hidden={!tarotTab}>
-          <TarotLibrary />
+          <TarotLibrary onHistoryState={setTarotHistory} />
         </div>
         <div hidden={tarotTab}>
-        {loadError ? <p role="alert">보관함을 불러오지 못했어요. 다시 로그인한 뒤 시도해 주세요.</p> : loading ? (
+        {loadError ? <p role="alert">보관함을 불러오지 못했어요. 다시 시작한 뒤 시도해 주세요.</p> : loading ? (
           <p
             style={{
               textAlign: "center",

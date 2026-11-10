@@ -1,3 +1,4 @@
+import { validAccountId } from './tossAccount.js'
 import { authenticatedReadingFetch, getTossSession } from './tossSession.js'
 export { parseDisplayAmount } from '../utils/displayAmount.js'
 export const PRODUCTS = {
@@ -31,7 +32,7 @@ export function createDeepReadingPurchase({ products = PRODUCTS, storage = globa
   }
   const account = () => {
     const userId = session()?.userId
-    if (!/^toss:[0-9]+$/.test(userId || '')) throw failure('다시 로그인한 뒤 결제를 진행해 주세요.')
+    if (!validAccountId(userId)) throw failure('사용자 확인 후 결제를 진행해 주세요.')
     return userId
   }
   const productFor = sku => Object.keys(products).find(key => products[key].sku && products[key].sku === sku)
