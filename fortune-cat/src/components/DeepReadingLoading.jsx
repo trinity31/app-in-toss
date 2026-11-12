@@ -41,7 +41,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
       setCurrentStep((prev) =>
         prev < steps.length - 1 ? prev + 1 : prev,
       );
-    }, 4000);
+    }, 60000 / steps.length);
     return () => clearInterval(interval);
   }, [apiCompleted, apiError, isMoving, steps.length]);
 
@@ -66,7 +66,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
 
     try {
       setLoadingMessage(
-        isMoving ? "희망 기간의 이사일을 비교하고 있어요..." : userData.readingType === "job" ? "선택한 관심 분야를 바탕으로 나의 업을 살펴보고 있어요..." : "사주를 풀이하고 있어요.\n10~30초 정도 걸려요...",
+        isMoving ? "희망 기간의 이사일을 비교하고 있어요..." : userData.readingType === "job" ? "선택한 관심 분야를 바탕으로 나의 업을 살펴보고 있어요..." : "사주를 풀이하고 있어요.\n약 60초 정도 걸려요...",
       );
 
       abortControllerRef.current = new AbortController();
@@ -431,6 +431,10 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
           </p>
         </>
       )}
+
+      <p style={{ marginTop: "16px", fontSize: "14px", color: "var(--color-primary)", textAlign: "center" }}>
+        약 60초 정도 걸려요. 정성껏 풀이하고 있어요.
+      </p>
 
       <style>{`
         @keyframes spin {
