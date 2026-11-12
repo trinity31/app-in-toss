@@ -1,0 +1,13 @@
+.job-interest { padding: 24px 20px 120px; color: var(--color-gray-700); line-height: 1.7; }
+.job-interest h1 { font-size: 25px; }
+.job-interest fieldset { border: 0; padding: 0; margin: 24px 0; min-width: 0; }
+.job-interest legend, .job-interest > label { font-weight: 600; margin-bottom: 10px; }
+.job-interest-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.job-interest button { min-height: 48px; border: 1px solid var(--color-gray-300); border-radius: 24px; padding: 10px 16px; background: var(--color-white); color: inherit; font: inherit; }
+.job-interest button[aria-pressed=true] { color: var(--color-primary); border-color: var(--color-primary); background: var(--color-primary-light); }
+.job-interest button:focus-visible, .job-interest textarea:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.job-interest textarea { display: block; box-sizing: border-box; width: 100%; border: 1px solid var(--color-gray-300); border-radius: 12px; padding: 12px; font: inherit; font-size: 16px; }
+.job-interest-actions { display: flex; gap: 12px; margin-top: 24px; }
+.job-interest-actions button { flex: 1; border-radius: 12px; }
+.job-interest-actions button:last-child { background: var(--color-primary); color: white; }
+.job-interest button:disabled { opacity: .4; }

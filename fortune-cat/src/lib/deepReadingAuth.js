@@ -1,6 +1,6 @@
 import { validAccountId } from './tossAccount.js'
 export { validAccountId } from './tossAccount.js'
-const allowedPath = path => /^\/(?:deep-reading(?:-match)?\/(?:start|chat|conversation|history(?:\/[^/]+)?|free-reveal|reveal)|payment\/deep-reading\/toss-grant|quota|track|analytics\/context)$/.test(path)
+const allowedPath = path => path === "/deep-reading/job/keywords" || /^\/(?:deep-reading(?:-match)?\/(?:start|chat|conversation|history(?:\/[^/]+)?|free-reveal|reveal)|payment\/deep-reading\/toss-grant|quota|track|analytics\/context)$/.test(path)
 
 // Reading requests use an explicitly established, memory-only account session.
 export function createDeepReadingRequest({ baseUrl, session, fetcher = fetch, onUnauthorized = () => {} }) {

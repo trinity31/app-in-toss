@@ -5,6 +5,7 @@ import DeepReadingLoading from '../components/DeepReadingLoading'
 import { logEvent } from '../lib/firebase'
 import DeepReadingResult from '../components/DeepReadingResult'
 import MovingPeriodInput from '../components/MovingPeriodInput'
+import JobInterestInput from '../components/JobInterestInput'
 import { useUserInfoStorage } from '../hooks/useUserInfoStorage'
 
 export default function NewYearPage() {
@@ -32,7 +33,7 @@ export default function NewYearPage() {
 
   // 저장된 정보로 초기화 + 선택된 타입 세팅
   useEffect(() => {
-    if (!loading) {
+    if (!loading && isInitializing) {
       const { partnerName, partnerBirthdate, partnerGender, ...baseInfo } = storedUserInfo || {}
       const isCompatibility = selectedType?.fortuneType === 'ai_saju_compatibility'
       const initialData = isCompatibility
@@ -44,10 +45,13 @@ export default function NewYearPage() {
       setUserData(initialData)
       setIsInitializing(false)
     }
-  }, [loading, storedUserInfo])
+  }, [loading, storedUserInfo, isInitializing, selectedType])
 
   const handleNext = (data) => {
     const updatedData = { ...userData, ...data }
+    if (currentPage === 'userInfo' && (JSON.stringify(userData.birthdate) !== JSON.stringify(updatedData.birthdate) || userData.gender !== updatedData.gender)) {
+      delete updatedData.job_preferences;
+    }
     setUserData(updatedData)
 
     if (data.name || data.birthdate || data.gender) {
@@ -63,7 +67,9 @@ export default function NewYearPage() {
     }
 
     if (currentPage === 'userInfo') {
-      setCurrentPage(updatedData.readingType === 'moving_date' ? 'movingPeriod' : 'loading')
+      setCurrentPage(updatedData.readingType === 'job' ? 'jobInterest' : updatedData.readingType === 'moving_date' ? 'movingPeriod' : 'loading')
+    } else if (currentPage === 'jobInterest') {
+      setCurrentPage('loading')
     } else if (currentPage === 'movingPeriod') {
       setEmptyResult(null)
       setCurrentPage('loading')
@@ -97,7 +103,7 @@ export default function NewYearPage() {
       readingType: cta.reading_type,
       fortuneTypeTitle: cta.title,
     }))
-    setCurrentPage(cta.reading_type === 'moving_date' ? 'movingPeriod' : 'loading')
+    setCurrentPage(cta.reading_type === 'job' ? 'jobInterest' : cta.reading_type === 'moving_date' ? 'movingPeriod' : 'loading')
   }
 
   if (!selectedType) return null
@@ -120,10 +126,12 @@ export default function NewYearPage() {
   switch (currentPage) {
     case 'userInfo':
       return <UserInfoInput onNext={handleNext} onBack={handleBack} initialUserInfo={userData} isCompatibility={selectedType?.fortuneType === 'ai_saju_compatibility'} />
+    case 'jobInterest':
+      return <JobInterestInput userData={userData} onNext={handleNext} onBack={() => setCurrentPage('userInfo')} />
     case 'movingPeriod':
       return <MovingPeriodInput initialPeriod={userData.moving_period} emptyResult={emptyResult} onNext={handleNext} onBack={() => setCurrentPage('userInfo')} />
     case 'loading':
-      return <DeepReadingLoading userData={userData} onNext={handleNext} onBack={userData.readingType === 'moving_date' ? () => setCurrentPage('movingPeriod') : undefined} />
+      return <DeepReadingLoading userData={userData} onNext={handleNext} onBack={userData.readingType === 'job' ? () => setCurrentPage('jobInterest') : userData.readingType === 'moving_date' ? () => setCurrentPage('movingPeriod') : undefined} />
     case 'result':
       return <DeepReadingResult userData={userData} onRestart={handleRestart} onCrossReading={handleCrossReading} onChangePeriod={userData.readingType === 'moving_date' ? () => setCurrentPage('movingPeriod') : undefined} />
     default:

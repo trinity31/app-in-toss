@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { authenticatedReadingFetch } from "../lib/tossSession";
+import { appendJobPreferences } from "../lib/jobInterests";
 import { appendMovingPeriod, isMovingResponse } from "../lib/movingDate";
 import { formatBirthdate } from "../utils/dataTransform";
 
@@ -65,7 +66,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
 
     try {
       setLoadingMessage(
-        isMoving ? "희망 기간의 이사일을 비교하고 있어요..." : "사주를 풀이하고 있어요.\n10~30초 정도 걸려요...",
+        isMoving ? "희망 기간의 이사일을 비교하고 있어요..." : userData.readingType === "job" ? "선택한 관심 분야를 바탕으로 나의 업을 살펴보고 있어요..." : "사주를 풀이하고 있어요.\n10~30초 정도 걸려요...",
       );
 
       abortControllerRef.current = new AbortController();
@@ -142,6 +143,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
 
         const formData = new FormData();
         appendMovingPeriod(formData, userData);
+        appendJobPreferences(formData, userData);
         formData.append("name", userData.name || "사용자");
         formData.append("datetime", formatBirthdate(userData.birthdate));
         formData.append("gender", userData.gender);
@@ -301,7 +303,7 @@ export default function DeepReadingLoading({ userData, onNext, onBack }) {
             cursor: "pointer",
           }}
         >
-          {onBack ? "기간 다시 선택하기" : "처음부터 다시하기"}
+          {onBack ? userData.readingType === "job" ? "관심 분야 다시 선택하기" : "기간 다시 선택하기" : "처음부터 다시하기"}
         </button>
       </div>
     );
